@@ -1,0 +1,113 @@
+\section{Normality and Cohen-Macaulay schemes}
+
+\subsection{Height, Depth and Dimension}
+
+    There are three numbers measuring the ``size'' of a local ring $(A,\frakm)$:
+    \begin{itemize}
+        \item $\dim A$: the Krull dimension of $A$.
+        \item $\depth A$: the depth of $A$.
+        \item $\dim_\kk T_{A,\frakm}$: the dimension of Zariski tangent space $T_{A,\frakm} := (\frakm/\frakm^2)^\lor$ as a $\kk$-vector space.
+    \end{itemize}
+
+    \begin{definition}
+        The \textit{height of a prime ideal} $\frakp$ in $A$ is defined as the maximum length of chains of prime ideals contained in $\frakp$, that is, 
+        \[ \idealht(\frakp) := \sup\{ n \mid \exists \text{ a chain of prime ideals } \frakp_0 \subsetneq \frakp_1 \subsetneq \cdots \subsetneq \frakp_n = \frakp\}. \] 
+        The \textit{Krull dimension} of $A$ is defined as $\dim A := \max_{\frakm}\idealht(\frakm)$.
+    \end{definition}
+
+    \begin{definition}
+        Let $(A,\frakm)$ be a noetherian local ring with residue field $\kk$ and $M$ a finitely generated $A$-module. 
+        A sequence $t_1,\cdots,t_n\in \frakm$ is called a \textit{regular sequence for $M$} if $t_i$ is not a zero divisor on $M/(t_1,\cdots,t_{i-1})$, that is, $M/(t_1,\cdots,t_{i-1}) \to t_iM/(t_1,\cdots,t_{i-1})$ is injective.
+        The \textit{depth} of $M$ is defined as the maximum length of regular sequences for $M$.
+    \end{definition}
+
+    These three numbers are related by the following inequalities.
+    \begin{proposition}
+        Let $(A,\frakm)$ be a local noetherian ring with residue field $\kk$.
+        Then the following inequalities hold:
+        \[ \depth A \leq \dim A \leq \dim_\kk T_{A,\frakm}. \]
+    \end{proposition}
+
+    To see these, we need the following well-known theorem.
+
+    
+    \begin{theorem}[Krull's Principal Ideal Theorem]
+        % Let $(A,\frakm)$ be a local noetherian ring with residue field $\kk$.
+        % Then the following inequalities hold:
+        % \[ \dim A \leq \dim_\kk T_{A,\frakm} \leq \dim A + \dim_\kk \kappa(\frakm) - 1. \]
+    \end{theorem}
+
+    \begin{theorem}[Nakayama's Lemma]
+        thhhhh
+    \end{theorem}
+    
+
+
+    \begin{definition}[Cohen-Macaulay]
+        A local noetherian ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
+    \end{definition}
+
+    \begin{example}[Non Cohen-Macaulay rings]
+
+    \end{example}
+
+    \begin{proposition}
+        
+    \end{proposition}
+
+
+    \begin{theorem}[Serre's criterion for normality]
+        Let $X$ be a 
+    \end{theorem}
+    
+\subsection{Normal schemes}
+
+    % Fix a noetherian local ring $(A,\frakm)$ with residue field $\kk$.
+
+    \begin{definition}
+        A ring $A$ is called \textit{normal} if it is an integral domain and integrally closed in its field of fractions $\Frac(A)$.
+    \end{definition}
+
+    \begin{proposition}
+        Normality is a local property. 
+        That is, TFAE:
+        \begin{enumerate}[label=(\alph*)]
+            \item $A$ is normal.
+            \item For any prime ideal $\frakp \in \Spec A$, the localization $A_\frakp$ is normal.
+            \item For any maximal ideal $\frakm \in \mSpec A$, the localization $A_\frakm$ is normal.
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        
+    \end{proof}
+
+    \begin{proposition}
+        Let $A$ be a normal ring.
+        Then $A[X]$ and $A[[X]]$ are normal rings.
+    \end{proposition}
+
+    \begin{definition}
+        A scheme $X$ is called \textit{normal} if the local ring $\calo_{X,x}$ is normal for any point $x\in X$.
+    \end{definition}
+
+    \begin{example}
+        
+    \end{example}
+
+    \begin{definition}
+        Let $X$ be a scheme.
+        The \textit{normalization} of $X$ is a $X$-scheme $X^\nu$ with the following universal property:
+        for any normal $X$-scheme $Y$, its structure morphism $Y \to X$ factors through $X^\nu$.
+    \end{definition}
+
+    \begin{proposition}
+        Let $X$ be an integral scheme.
+        Then the normalization $X^\nu$ of $X$ exists.
+        Moreover, $X^\nu/X$ is birational.
+    \end{proposition}
+
+    \begin{theorem}
+        Let $X$ be a normal noetherian scheme.
+        Let $F \subset X$ be a closed subset of codimension $\geq 2$.
+        Then the restriction $\calo_X(X) \to \calo_X(X\setminus F)$ is an isomorphism.
+    \end{theorem}
