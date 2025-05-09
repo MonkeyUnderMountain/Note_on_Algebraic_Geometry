@@ -2,24 +2,62 @@
 
 \subsection{Height, Depth and Dimension}
 
-    There are three numbers measuring the ``size'' of a local ring $(A,\frakm)$:
-    \begin{itemize}
-        \item $\dim A$: the Krull dimension of $A$.
-        \item $\depth A$: the depth of $A$.
-        \item $\dim_\kk T_{A,\frakm}$: the dimension of Zariski tangent space $T_{A,\frakm} := (\frakm/\frakm^2)^\lor$ as a $\kk$-vector space.
-    \end{itemize}
+    \paragraph{Krull dimension and height of prime ideals}
 
+    Algebraically, we have following definitions.
     \begin{definition}
+        Let $A$ be a noetherian ring.
         The \textit{height of a prime ideal} $\frakp$ in $A$ is defined as the maximum length of chains of prime ideals contained in $\frakp$, that is, 
         \[ \idealht(\frakp) := \sup\{ n \mid \exists \text{ a chain of prime ideals } \frakp_0 \subsetneq \frakp_1 \subsetneq \cdots \subsetneq \frakp_n = \frakp\}. \] 
-        The \textit{Krull dimension} of $A$ is defined as $\dim A := \max_{\frakm}\idealht(\frakm)$.
+        The \textit{Krull dimension} of $A$ is defined as 
+        \[ \dim A := \max_{\frakp \in \Spec A}\idealht(\frakp). \]
     \end{definition}
+
+    Geometrically, we have the corresponding definition.
+    \begin{definition}
+        Let $X$ be a noetherian scheme.
+        The \textit{codimension of a irreducible subscheme} $Y$ in $X$ is defined as the length of the longest chain of irreducible closed subsets containing $Y$, that is, 
+        \[ \codim_X(Y) := \sup\{ n \mid \exists \text{ a chain of irreducible closed subsets } Y = Y_0 \subsetneq Y_1 \subsetneq \cdots \subsetneq Y_n\}. \] 
+        The \textit{dimension} of $X$ is defined as
+        \[ \dim X := \max_{Y \in \text{Irred}(X)}\codim_X(Y). \]
+    \end{definition}
+
+    For an affine schemes $X = \Spec A$, above two definitions coincide by the correspondence of prime ideals and irreducible closed subsets.
+
+    \begin{proposition}
+        Let $A$ be a noetherian ring and $\frakp \in \Spec A$.
+        Then the height of $\frakp$ is equal to the codimension of the irreducible closed subset $V(\frakp)$ in $\Spec A$.
+    \end{proposition}
+
+    For "nice" schemes, the Krull dimension behaves well by following proposition.
+
+    \begin{proposition}
+        Let $S$ be spectrum of a field $\kk$ or an algebraic integer ring $\calo_K$ and $X$ an integral $S$-variety.
+        Then we have the follows:
+        \begin{enumerate}[label=(\roman*)]
+            \item For any point $P \in X$, $\dim X = \dim \calo_{X,P} + \codim \overline{\{P\}}$.
+            \item For any non-empty open subset $U \subset X$, $\dim U = \dim X$.
+            \item $\dim X = \operatorname{trdeg}(\fkk(X)/\fkk(S)) + \dim S$.
+        \end{enumerate}
+    \end{proposition}
+
+
+    \paragraph{Depth}
+
+    For a noetherian local ring $(A,\frakm)$, we can define the depth of an $A$-module $M$.
 
     \begin{definition}
         Let $(A,\frakm)$ be a noetherian local ring with residue field $\kk$ and $M$ a finitely generated $A$-module. 
         A sequence $t_1,\cdots,t_n\in \frakm$ is called a \textit{regular sequence for $M$} if $t_i$ is not a zero divisor on $M/(t_1,\cdots,t_{i-1})$, that is, $M/(t_1,\cdots,t_{i-1}) \to t_iM/(t_1,\cdots,t_{i-1})$ is injective.
         The \textit{depth} of $M$ is defined as the maximum length of regular sequences for $M$.
     \end{definition}
+
+    Up to now, there are three numbers measuring the ``size'' of a local ring $(A,\frakm)$:
+    \begin{itemize}
+        \item $\dim A$: the Krull dimension of $A$.
+        \item $\depth A$: the depth of $A$.
+        \item $\dim_{\rkk(\frakm)} T_{A,\frakm}$: the dimension of Zariski tangent space $T_{A,\frakm} := (\frakm/\frakm^2)^\lor$ as a ${\rkk(\frakm)}$-vector space.
+    \end{itemize}
 
     These three numbers are related by the following inequalities.
     \begin{proposition}
@@ -40,26 +78,7 @@
     \begin{theorem}[Nakayama's Lemma]
         thhhhh
     \end{theorem}
-    
 
-
-    \begin{definition}[Cohen-Macaulay]
-        A local noetherian ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
-    \end{definition}
-
-    \begin{example}[Non Cohen-Macaulay rings]
-
-    \end{example}
-
-    \begin{proposition}
-        
-    \end{proposition}
-
-
-    \begin{theorem}[Serre's criterion for normality]
-        Let $X$ be a 
-    \end{theorem}
-    
 \subsection{Normal schemes}
 
     % Fix a noetherian local ring $(A,\frakm)$ with residue field $\kk$.
@@ -103,11 +122,63 @@
     \begin{proposition}
         Let $X$ be an integral scheme.
         Then the normalization $X^\nu$ of $X$ exists.
-        Moreover, $X^\nu/X$ is birational.
+        Moreover, $X^\nu \to X$ is birational.
     \end{proposition}
 
     \begin{theorem}
         Let $X$ be a normal noetherian scheme.
         Let $F \subset X$ be a closed subset of codimension $\geq 2$.
-        Then the restriction $\calo_X(X) \to \calo_X(X\setminus F)$ is an isomorphism.
+        Then the restriction $H^0(X,\calo_X) \to H^0(X\setminus F, \calo_{X})$ is an isomorphism.
     \end{theorem}
+
+
+    
+\subsection{Regular conditions and Serre's conditions}
+
+    \begin{definition}
+        Let $X$ be a locally noetherian scheme and $k \in \bbz_{\geq 0}$.
+        We say that \textit{$X$ verifies property $R_k$} or \textit{is regular in codimension $k$} if $\forall \xi \in X$ with $\codim \overline{\{\xi\}} \leq k$, 
+        \[ \dim_{\rkk(\xi)} T_{X,\xi} = \dim \calo_{X,\xi}. \]
+        We say that \textit{$X$ verifies property $S_k$} if $\forall \xi \in X$,
+        \[ \depth \calo_{X,\xi} \geq \min\{k, \dim \calo_{X,\xi}\}. \]        
+    \end{definition}
+
+    \begin{definition}[Cohen-Macaulay]
+        A noetherian local ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
+        A locally noetherian scheme $X$ is called \textit{Cohen-Macaulay} if $\calo_{X,\xi}$ is Cohen-Macaulay for any point $\xi \in X$.
+    \end{definition}
+
+    By definition, it is easy to see that $X$ is Cohen-Macaulay if and only if it verifies $S_k$ for all $k \geq 0$.
+
+    \begin{example}[Non Cohen-Macaulay rings]
+
+    \end{example}
+
+    \begin{definition}
+        % We say that the unmixedness theorem holds for a noetherian ring $A$ if 
+        An ideal $I$ of a noetherian ring $A$ is called \textit{unmixed} if 
+        \[ \idealht(I) = \idealht(\frakp), \quad \forall \frakp \in \Ass(A/I). \]
+        We say that \textit{the unmixedness theorem holds for a noetherian ring $A$} if any ideal $I \subset A$ generated by $\idealht(I)$ elements is unmixed.
+        We say that \textit{the unmixedness theorem holds for a locally noetherian scheme $X$} if $\calo_{X,\xi}$ is unmixed for any point $\xi \in X$.
+    \end{definition}
+
+    \begin{remark}
+        Recall that the set of associated primes of a module $M$ is defined as
+        \[ \Ass(M) := \{ \frakp \in \Spec A \colon \exists x \in M \text{ such that } \frakp = \Ann(x) \}. \] 
+        
+    \end{remark}
+
+    \begin{theorem}
+        Let $X$ be a locally noetherian scheme.
+        Then the unmixedness theorem holds for $X$ if and only if $X$ is Cohen-Macaulay.
+    \end{theorem}
+
+    \begin{proposition}
+        
+    \end{proposition}
+
+
+    \begin{theorem}[Serre's criterion for normality]
+        Let $X$ be a 
+    \end{theorem}
+    

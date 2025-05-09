@@ -41,6 +41,7 @@
 \RequirePackage{tikz}           % 矢量绘图
 \RequirePackage[all]{xy}        % 交换图绘制
 \RequirePackage{bbm}            % 黑板粗体数字
+\RequirePackage{enumitem}       % Required for custom labels
 
 % 中文支持
 \RequirePackage[scheme=plain]{ctex} % 中文基础方案
@@ -245,6 +246,7 @@
 % 定义具体定理环境（共享计数器）
 \newtheorem{definition}{Definition}
 \newtheorem{proposition}[definition]{Proposition}
+\newtheorem{def-prop}[definition]{Def-Prop}
 \newtheorem{theorem}[definition]{Theorem}
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{corollary}[definition]{Corollary}
@@ -263,6 +265,21 @@
   right=8pt,           % 右内边距
   enhanced jigsaw,     % 启用高级边框绘制（解决某些兼容问题）
   borderline west={2pt}{0pt}{blue}, % 左侧装饰线（2pt粗细，蓝色）
+  sharp corners,        % 直角边框（默认圆角）
+  before skip=10pt,    % 上方间距
+  after skip=10pt,     % 下方间距
+  breakable            % 允许跨页断行
+}
+
+% 定义-命题环境配置（颜色方案：蓝色-紫色）
+\tcolorboxenvironment{def-prop}{
+  boxrule=0pt,         % 边框粗细（0pt表示无外边框）
+  boxsep=0pt,          % 内容与边框间距
+  colback={blue!10!purple!10},   % 背景颜色（蓝色10%透明度）
+  left=8pt,            % 左内边距
+  right=8pt,           % 右内边距
+  enhanced jigsaw,     % 启用高级边框绘制（解决某些兼容问题）
+  borderline west={2pt}{0pt}{blue!50!purple}, % 左侧装饰线（2pt粗细，蓝色）
   sharp corners,        % 直角边框（默认圆角）
   before skip=10pt,    % 上方间距
   after skip=10pt,     % 下方间距
@@ -347,10 +364,19 @@
 \tcolorboxenvironment{example}{
   boxrule=0pt,
   boxsep=0pt,
-  blanker,
-  borderline west={2pt}{0pt}{Green}, % 绿色左侧线
+  % blanker,
+  % borderline west={2pt}{0pt}{Green}, % 绿色左侧线
+  % left=8pt,
+  % right=8pt,
+  % before skip=10pt,
+  % after skip=10pt,
+  % breakable
+  colback={Green!10}, % 背景色改为橙色10%透明度
   left=8pt,
   right=8pt,
+  enhanced jigsaw,
+  borderline west={2pt}{0pt}{Green}, % 左侧装饰线改为橙色
+  sharp corners,
   before skip=10pt,
   after skip=10pt,
   breakable
@@ -374,7 +400,7 @@
 \tcolorboxenvironment{exercise}{
   boxrule=0pt,
   boxsep=0pt,
-  colback={violet!10}, % 背景色改为紫罗兰10%透明度
+  % colback={violet!10}, % 背景色改为紫罗兰10%透明度
   left=8pt,
   right=8pt,
   enhanced jigsaw,
