@@ -1,0 +1,7 @@
+noetherian
+Krull
+codimension
+subscheme
+Zariski
+TFAE
+Serre

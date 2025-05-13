@@ -4,7 +4,7 @@
 
     \paragraph{Krull dimension and height of prime ideals}
 
-    Algebraically, we have following definitions.
+    Algebraically, we have the following definitions.
     \begin{definition}
         Let $A$ be a noetherian ring.
         The \textit{height of a prime ideal} $\frakp$ in $A$ is defined as the maximum length of chains of prime ideals contained in $\frakp$, that is, 
@@ -16,20 +16,28 @@
     Geometrically, we have the corresponding definition.
     \begin{definition}
         Let $X$ be a noetherian scheme.
-        The \textit{codimension of a irreducible subscheme} $Y$ in $X$ is defined as the length of the longest chain of irreducible closed subsets containing $Y$, that is, 
+        The \textit{codimension of an irreducible subscheme} $Y$ in $X$ is defined as the length of the longest chain of irreducible closed subsets containing $Y$, that is, 
         \[ \codim_X(Y) := \sup\{ n \mid \exists \text{ a chain of irreducible closed subsets } Y = Y_0 \subsetneq Y_1 \subsetneq \cdots \subsetneq Y_n\}. \] 
         The \textit{dimension} of $X$ is defined as
         \[ \dim X := \max_{Y \in \text{Irred}(X)}\codim_X(Y). \]
     \end{definition}
 
-    For an affine schemes $X = \Spec A$, above two definitions coincide by the correspondence of prime ideals and irreducible closed subsets.
+    For an affine scheme $X = \Spec A$, above two definitions coincide by the correspondence of prime ideals and irreducible closed subsets.
 
     \begin{proposition}
         Let $A$ be a noetherian ring and $\frakp \in \Spec A$.
         Then the height of $\frakp$ is equal to the codimension of the irreducible closed subset $V(\frakp)$ in $\Spec A$.
     \end{proposition}
 
-    For "nice" schemes, the Krull dimension behaves well by following proposition.
+    \begin{proposition}
+        Let $X$ be a locally noetherian scheme and $\xi \in X$.
+        Then $\dim \calo_{X,\xi} = \codim Z_{\xi}$.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+    For ``nice'' schemes, the Krull dimension behaves well by following proposition.
 
     \begin{proposition}
         Let $S$ be spectrum of a field $\kk$ or an algebraic integer ring $\calo_K$ and $X$ an integral $S$-variety.
@@ -40,6 +48,9 @@
             \item $\dim X = \operatorname{trdeg}(\fkk(X)/\fkk(S)) + \dim S$.
         \end{enumerate}
     \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
 
 
     \paragraph{Depth}
@@ -70,14 +81,23 @@
 
     
     \begin{theorem}[Krull's Principal Ideal Theorem]
-        % Let $(A,\frakm)$ be a local noetherian ring with residue field $\kk$.
-        % Then the following inequalities hold:
-        % \[ \dim A \leq \dim_\kk T_{A,\frakm} \leq \dim A + \dim_\kk \kappa(\frakm) - 1. \]
+        Let $A$ be a noetherian ring.
+        Suppose $f \in A$ is not a unit or a zero divisor.
+        Then $\dim A/(f) \leq \dim A - 1$.
+        Moreover, if $A$ is local or $\dim A_\frakm$ is constant for all $\frakm$, then the equality holds.
     \end{theorem}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
 
     \begin{theorem}[Nakayama's Lemma]
-        thhhhh
+        Let $(A,\frakm)$ be a local ring.
+        Suppose $M$ is a finitely generated $A$-module.
+        If $\frakm M = M$, then $M = 0$.
     \end{theorem}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
 
 \subsection{Normal schemes}
 
@@ -115,7 +135,7 @@
 
     \begin{definition}
         Let $X$ be a scheme.
-        The \textit{normalization} of $X$ is a $X$-scheme $X^\nu$ with the following universal property:
+        The \textit{normalization} of $X$ is an $X$-scheme $X^\nu$ with the following universal property:
         for any normal $X$-scheme $Y$, its structure morphism $Y \to X$ factors through $X^\nu$.
     \end{definition}
 
@@ -173,12 +193,27 @@
         Then the unmixedness theorem holds for $X$ if and only if $X$ is Cohen-Macaulay.
     \end{theorem}
 
-    \begin{proposition}
-        
-    \end{proposition}
+    \begin{theorem}
+        Let $X$ be a locally noetherian scheme.
+        Suppose that $X$ is Cohen-Macaulay.
+        Let $F \subset X$ be a closed subset of codimension $\geq k$.
+        Then the restriction $H^i(X,\calo_X) \to H^i(X\setminus F, \calo_{X})$ induced by the 
+         is an isomorphism.
+    \end{theorem}
 
 
     \begin{theorem}[Serre's criterion for normality]
-        Let $X$ be a 
+        Let $X$ be a locally noetherian scheme.
+        Then $X$ is normal if and only if it verifies $R_1$ and $S_2$.
     \end{theorem}
+
+    \begin{theorem}
+        Let $X$ be a locally noetherian scheme.
+        Then $X$ is reduced if and only if it verifies $R_0$ and $S_1$.
+    \end{theorem}
+
+\subsection{Associated primes}
     
+    \begin{definition}
+        
+    \end{definition}
