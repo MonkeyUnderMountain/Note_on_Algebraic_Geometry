@@ -1,8 +1,11 @@
 \section{Setup and the first examples}
 
-    % Let $S$ be a locally noetherian, separated and integral scheme.
+    All schemes are assumed to be separated.
+    For a ``scheme'' which is not separated, we will use the term ``prescheme''.
+ 
     Let $S$ be $\spec \kk$, $\spec \calo_K$ or an algebraic variety.
-    An $S$-variety is a separated and integral scheme $X$ which is of finite type and flat over $S$.
+    An $S$-variety is an integral scheme $X$ which is of finite type and flat over $S$.
+    For an algebraic variety, we mean a $\kk$-variety.
 
     We will use $\kk,\KK$ to denote fields, and $\kkk,\KKK$ to denote their algebraically closure relatively.
 
@@ -32,3 +35,19 @@
     \end{enumerate}
 
 \end{example}
+
+    \subsection{Preparation in commutative algebra}
+
+    \begin{definition}[Associated prime ideals]
+        Let $A$ be a noetherian ring and $M$ a finitely generated $A$-module.
+        The \textit{associated prime ideals} of $M$ are the prime ideals $\frakp$ of form $\Ann(x)$ for some $x \in M$.
+        The set of associated prime ideals of $M$ is denoted by $\Ass(M)$.
+    \end{definition}
+
+
+    \begin{definition}
+        Let $A$ be a noetherian ring and $M$ a finitely generated $A$-module.
+        The \textit{support} of $M$ is the set of prime ideals $\frakp$ of $A$ such that $M_\frakp \neq 0$.
+    \end{definition}
+
+
