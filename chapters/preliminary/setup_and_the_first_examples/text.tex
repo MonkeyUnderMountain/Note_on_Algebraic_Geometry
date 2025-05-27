@@ -1,7 +1,12 @@
 \section{Setup and the first examples}
+\subsection{Notations}
 
     All schemes are assumed to be separated.
     For a ``scheme'' which is not separated, we will use the term ``prescheme''.
+
+    Let $A$ be a ring.
+    We denote by $\spec A$ the spectrum of $A$.
+    For an ideal $I \subset A$, we use $V(I)$ to denote the closed subscheme of $\spec A$ defined by $I$.
  
     Let $S$ be $\spec \kk$, $\spec \calo_K$ or an algebraic variety.
     An $S$-variety is an integral scheme $X$ which is of finite type and flat over $S$.
@@ -20,34 +25,248 @@
     A geometrical point is referred a morphism $\spec \kkk \to X$.
 
     When refer a point (may not be closed) in a scheme, we will use the notation $\xi \in X$.
-    We 
+    We use $Z_\xi$ to denote the Zariski closure of $\{\xi\}$ in $X$.
     When we talk about a closed point on an algebraic variety, we will use the notation $x \in X(\kkk)$.
 
-
-\begin{example}
-    Let $\kkk$ be an algebraically closed field and $A$ the localization of $\kkk[x]$ at $(x)$.
-    Let $S = \Spec A$ and $X = \Spec A[y]$. 
-    There are three types of points in $X$:
-    \begin{enumerate}[label=(\roman*)]
-        \item closed points with residue field $\kkk$, like $p = (x,y-a)$;
-        \item closed points with residue field $\kkk(y)$, like $P = (xy-1)$;
-        \item non-closed points, like $\eta_1 = (x),\eta_2 = (y),\eta_3 = (x-y)$.
-    \end{enumerate}
-
-\end{example}
-
-    \subsection{Preparation in commutative algebra}
-
-    \begin{definition}[Associated prime ideals]
-        Let $A$ be a noetherian ring and $M$ a finitely generated $A$-module.
-        The \textit{associated prime ideals} of $M$ are the prime ideals $\frakp$ of form $\Ann(x)$ for some $x \in M$.
-        The set of associated prime ideals of $M$ is denoted by $\Ass(M)$.
-    \end{definition}
+    \subsubsection{Separated and proper morphisms}
 
 
-    \begin{definition}
-        Let $A$ be a noetherian ring and $M$ a finitely generated $A$-module.
-        The \textit{support} of $M$ is the set of prime ideals $\frakp$ of $A$ such that $M_\frakp \neq 0$.
-    \end{definition}
+\subsection{Examples}
 
+    \begin{example}
+        Let $\kkk$ be an algebraically closed field and $A$ the localization of $\kkk[x]$ at $(x)$.
+        Let $S = \Spec A$ and $X = \Spec A[y]$. 
+        There are three types of points in $X$:
+        \begin{enumerate}[label=(\roman*)]
+            \item closed points with residue field $\kkk$, like $p = (x,y-a)$;
+            \item closed points with residue field $\kkk(y)$, like $P = (xy-1)$;
+            \item non-closed points, like $\eta_1 = (x),\eta_2 = (y),\eta_3 = (x-y)$.
+        \end{enumerate}
 
+    \end{example}
+
+\subsection{Preparation in commutative algebra}
+
+    \subsubsection{Associated prime ideals}
+
+        This part refers to \cite[Chapter 3]{Mat70}.
+
+        \begin{definition}[Associated prime ideals]\label{def: associated prime ideals}
+            Let $A$ be a noetherian ring and $M$ an $A$-module.
+            The \textit{associated prime ideals} of $M$ are the prime ideals $\frakp$ of form $\Ann(x)$ for some $x \in M$.
+            The set of associated prime ideals of $M$ is denoted by $\Ass(M)$.
+        \end{definition}
+
+        \begin{example}
+            Let $A = \kkk[x,y]/(xy)$ and $M = A$.
+            First we see that $(x) = \Ann y, (y) = \Ann x \in \Ass M$.
+            Then we check other prime ideals.
+            For $(x,y)$, if $xf = yf = 0$, then $f \in (x) \cap (y) = (0)$.
+            If $(x-a) = \Ann f$ for some $f$, note that $y \in (x-a)$ for $a \in \kkk^*$, then $f \in (x)$.
+            Hence $f = 0$. 
+            Therefore $\Ass M = \{ (x), (y) \}$.
+        \end{example}
+
+        \begin{example}
+            Let $A = \kkk[x,y]/(x^2, xy)$ and $M = A$.
+            The underlying space of $\Spec A$ is the $y$-axis since $\sqrt{(x^2,xy)} = (x)$.
+            First note that $(x) = \Ann y, (x,y) = \Ann x \in \Ass M$.
+            For $(x,y-a)$ with $a \in \kkk^*$, easily see that $xf = (y-a)f = 0$ implies $f=0$ since $A = \kkk \cdot x \oplus \kkk[y]$ as $\kkk$-vector space.
+            Hence $\Ass M = \{ (x), (x,y) \}$.
+        \end{example}
+
+        Let $A$ be a noetherian ring and $M$ an $A$-module.
+        Note that $S^{-1}M = 0$ if and only if $S \cap \Ann M \neq \emptyset$.
+        Then the set 
+        \[ \{ \frakp \in \Spec A \colon M_\frakp \neq 0 \} \]
+        is equal to $V(\Ann M)$.
+        
+        \begin{definition}\label{def: support of a module}
+            Let $A$ be a noetherian ring and $M$ an $A$-module.
+            The \textit{support} of $M$ is the closed subset $V(\Ann M)$ of $\Spec A$, denoted by $\Supp M$.
+        \end{definition}
+
+        \begin{lemma}\label{lem: maximal Ann(x) is prime}
+            Let $A$ be a noetherian ring and $M$ an $A$-module.
+            Then the maximal element of the set 
+            \[ \{ \Ann x \colon x \in M_\frakp, x \neq 0 \} \]
+            belongs to $\Ass M$.
+        \end{lemma}
+        \begin{proof}
+            We just need to show that such $\Ann x$ is prime.
+            Otherwise, there exist $a,b \in A$ such that $ab \in \Ann x$ but $a,b \notin \Ann x$.
+            It follows that $\Ann x \subsetneq \Ann ax$ since $b \in \Ann ax \setminus \Ann x$.
+            This contradicts the maximality of $\Ann x$.
+        \end{proof}
+
+        An element $a \in A$ is called a zero divisor for $M$ if $M \to aM, m\mapsto am$ is not injective.
+
+        \begin{corollary}\label{cor: zero divisors and associated prime ideals}
+            Let $A$ be a noetherian ring and $M$ an $A$-module.
+            Then 
+            \[ \{\text{zero divisors for } M \} = \bigcup_{\frakp \in \Ass M} \frakp. \]
+        \end{corollary}
+
+        \begin{proposition}\label{prop: Ass is subset of Supp}
+            We have $\Ass M \subset \Supp M$.
+            Moreover, if $\frakp \in \Supp M$ satisfies $V(\frakp)$ is an irreducible component of $\Supp M$, then $\frakp \in \Ass M$.
+        \end{proposition}
+        \begin{proof}
+            For any $\frakp = \Ann x \in \Ass M$, we have $A/\frakp \cong A \cdot x \subset M$.
+            Tensoring with $A_\frakp$ gives $A_\frakp/\frakp A_\frakp \injmap M_\frakp$ since $A_\frakp$ is flat.
+            Hence $M_\frakp \neq 0$ and $\frakp \in \Supp M$.
+
+            Now suppose $\frakp \in \Supp M$ and $V(\frakp)$ is an irreducible component of $\Supp M$.
+            First we show that $\frakp \in \Ass_{A_\frakp} M_\frakp$.
+            Let $x \in M_\frakp$ such that $\Ann x$ is maximal in the set 
+            \[ \{ \Ann x \colon x \in M_\frakp, x \neq 0 \}. \]
+            Then we claim that $\Ann x = \frakp A_\frakp$.
+            First, $\Ann x$ is prime by Lemma \ref{lem: maximal Ann(x) is prime}.
+            % Otherwise, there exist $a,b \in A$ such that $ab \in \Ann x$ but $a,b \notin \Ann x$.
+            % It follows that $\Ann x \subsetneq \Ann ax$ since $b \in \Ann ax \setminus \Ann x$.
+            % This contradicts the maximality of $\Ann x$.
+            If $\Ann x \neq \frakp$, then $V(\Ann x) \supset V(\frakp)$.
+            This implies that $\Ann x \notin \Supp M_\frakp$ since $\Supp M_\frakp = \Supp M \cap \Spec A_\frakp$.
+            This is a contradiction.
+            Thus $\frakp A_\frakp \in \Ass_{A_\frakp} M_\frakp$.
+
+            Suppose $x = y_0/c$ for $y_0 \in M$ and $c \in A \setminus \frakp$.
+            For $a \in \Ann y_0$, $ay_0 = 0$.
+            Then $a/1 \in \Ann x = \frakp A_\frakp$.
+            It follows that $a \in \frakp$.
+            Hence $\Ann y_0 \subset \frakp$.
+            Inductively, if $\Ann y_n \subsetneq \frakp$, then there exists $b_{n} \in A \setminus \frakp$ 
+            such that $y_{n+1}:=b_ny_n$, $\Ann y_{n+1} \subset \frakp$ and $\Ann y_n \subsetneq \Ann y_{n+1}$.
+            To see this, choose $a_n \in \frakp\setminus \Ann y_n$.
+            Then $(a_n/1) y_n = 0$ since $a_n/1 \in \frakp A_\frakp$.
+            By definition, there exist $b_n \in A \setminus \frakp$ such that $a_nb_ny_n = 0$.
+            This process must terminate since $A$ is noetherian.
+            Thus $\Ann y_n = \frakp$ for some $n$.
+            Hence $\frakp \in \Ass M$.
+        \end{proof}
+
+        \begin{definition}\label{def: embedded prime}
+            A prime ideal $\frakp \in \Ass M$ is called \textit{embedded} if $V(\frakp)$ is not an irreducible component of $\Supp M$.
+        \end{definition}
+
+        \begin{example}
+            For $M = A = \kkk[x,y]/(x^2,xy)$, the origin $(x,y)$ is an embedded point.
+        \end{example}
+
+        \begin{proposition}\label{prop: Aass under exact sequence}
+            If we have exact sequence $0 \to M_1 \to M_2 \to M_3$, then $\Ass M_2 \subset \Ass M_1 \cup \Ass M_3$.
+        \end{proposition}
+        \begin{proof}
+            Let $\frakp = \Ann x \in \Ass M_2 \setminus \Ass M_1$.
+            Then the image $[x]$ of $x$ in $M_3$ is not equal to $0$.
+            We have that $\Ann x \subset \Ann [x]$.
+            If $a \in \Ann [x] \setminus \Ann x$, then $ax \in M_1$.
+            Since $\Ann x \subsetneq \Ann ax$, there is $b \in \Ann ax \setminus \Ann x$.
+            However, it implies $ba \in \Ann x$, and then $a \in \Ann x$ since $\Ann x$ is prime, which is a contradiction.
+        \end{proof}
+
+        \begin{corollary}\label{cor: Ass is finite}
+            If $M$ is finitely generated, then the set $\Ass M$ is finite.
+        \end{corollary}
+        \begin{proof}
+            For $\frakp = \Ann x \in \Ass M$, we know that the submodule $M_1$ generated by $x$ is isomorphic to $A/\frakp$.
+            Inductively, we can choose $M_n$ be the preimage of a submodule of $M/M_{n-1}$ which is isomorphic to $A/\frakq$ for some $\frakq \in \Ass M/M_{n-1}$.
+            We can take an ascending sequence $0 = M_0 \subset M_1 \subset \cdots \subset M_n \subset \cdots$ such that $M_i/M_{i-1} \cong A/\frakp_i$ for some prime $\frakp_i$.
+            Since $M$ is finitely generated, this is a finite sequence.
+            Then the conclusion follows by Proposition \ref{prop: Aass under exact sequence}.
+        \end{proof}
+
+        \begin{definition}\label{def: co-primary and primary}
+            An $A$-module is called \textit{co-primary} if $\Ass M$ has a single element.
+            Let $M$ be an $A$-module and $N \subset M$ a submodule.
+            Then $N$ is called \textit{primary} if $M/N$ is co-primary.
+            If $\Ass M/N = \{\frakp\}$, then $N$ is called $\frakp$-primary.
+        \end{definition}
+
+        \begin{remark}\label{rem: primary submodule and primary ideal}
+            This definition coincide with primary ideals in the case $M = A$.
+            Recall an ideal $\frakq \subset A$ is called \textit{primary} if $\forall ab \in \frakp$, 
+            $a \notin \frakq$ implies $b^n \in \frakq$ for some $n$. 
+            
+            Let $\frakq$ be a $\frakq$-primary ideal.
+            Since $\Supp A/\frakq = \{\frakp\}$, $\frakp \in \Ass A/\frakq$.
+            Suppose $\Ann [a] \in \Ass A/\frakq$.
+            Then $\frakp \subset \Ann [a]$ since $V(\frakp) = \Supp A/\frakq$.
+            If $b \in \Ann [a]$, then $ab \in \frakq$ and $a\notin \frakq$.
+            Hence $b^n \in \frakq$, and then $b \in \frakp$.
+            This shows that $\Ass A/\frakq = \{\frakp\}$ and $\frakq$ is $\frakp$-primary as an $A$-submodule. 
+
+            Let $\frakq \subset A$ be a $\frakp$-primary $A$-submodule.
+            First we have $\frakp = \sqrt{\frakq}$ since $V(\frakp)$ is the unique irreducible component of $\Supp A/\frakq$.
+            Suppose $ab \in \frakq$ and $a\notin \frakq$.
+            Then $b \in \Ann [a] \subset \frakp$ since $\frakp$ is the unique maximal element in $\{ \Ann [c] \colon c \in A \setminus \frakq\}$.
+            This implies that $b^n \in \frakp$.
+        \end{remark}
+
+        \begin{definition}\label{def: minimal primary decomposition}
+            Let $A$ be a noetherian ring, $M$ an $A$-module and $N \subset M$ a submodule.
+            A \textit{minimal primary decomposition} of $N$ in $M$ is a finite set of primary submodules $\{Q_i\}_{i=1}^n$ such that 
+            \[ N = \bigcap_{i=1}^n Q_i, \] 
+            no $Q_i$ can be omitted and $\Ass M/Q_i$ are pairwise distinct.
+            For $\Ass M/Q_i = \{\frakp\}$, $Q_i$ is called belonging to $\frakp$.
+        \end{definition}
+
+        Indeed, if $N \subset M$ admits a minimal primary decomposition $N = \bigcap Q_i$ with $Q_i$ belonging to $\frakp$,
+        then $\Ass(M/N) = \{\frakp_i\}$.
+        For given $i$, consider $N_i := \bigcap_{j\neq i} Q_j$, then $N_i/N \cong (N_i+Q_i)/Q_i$.
+        Since $N_i \neq N$, $\Ass N_i/N \neq \emptyset$.
+        On the other hand, $\Ass N_i/N \subset \Ass M/Q_i = \{\frakp\}$.
+        It follows that $\Ass N_i/N = \{\frakp_i\}$, whence $\frakp_i \in \Ass M/N$.
+        Conversely, we have an injection $M/N \injmap \bigoplus M/Q_i$, so $\Ass M/N \subset \bigcup \Ass M/Q_i$.
+        Due to this, if $Q_i$ belongs to $\frakp$, we also say that $Q_i$ is the $\frakp$-component of $N$.
+    
+        \begin{proposition}\label{prop: uniqueness of primary components}
+            Suppose $N\subset M$ has a minimal primary decomposition.
+            If $\frakp \in \Ass M/N$ is not embedded, then the $\frakp$ component of $N$ is unique.
+            Explicitly, we have $Q = M \cap N_\frakp$.
+        \end{proposition}
+        \begin{proof}
+            First we show that $Q = M \cap Q_\frakp$, where we regard $M$ as a submodule of $M_\frakp$.
+            Clearly $Q \subset M \cap Q_\frakp$.
+            Suppose $x \in M \cap Q_\frakp$.
+            Then there exists $s \in A \setminus \frakp$ such that $sx \in Q$.
+            That is, $[sx] = 0 \in M/Q$.
+            If $[x] \neq 0$, we have $s \in \Ann [x] \subset \frakp$.
+            This contradiction enforces $Q = M \cap Q_\frakp$.
+
+            Then we show that $N_\frakp = Q_\frakp$.
+            Just need to show that for $\frakp' \neq \frakp$ and the $\frakp'$ component $Q'$ of $N$, $Q'_\frakp = M_\frakp$.
+            Since $\frakp$ is not embedded, $\frakp' \not\subset \frakp$.
+            Then $\frakp \notin V(\frakp) = \Supp M/Q'$.
+            So $M_\frakp/Q'_\frakp = 0$.
+        \end{proof}
+
+        \begin{example}
+            If $\frakp$ is embedded, then its components may not be unique.
+            For example, let $M = A = \kkk[x,y]/(x^2,xy)$.
+            Then for every $n \in \bbz_{\geq 1}$, $(x) \cap (x^2,xy,y^n)$ is a minimal primary decomposition of $(0) \subset M$.
+        \end{example}
+
+        \begin{theorem}\label{thm: primary decomposition for general module}
+            Let $A$ be a noetherian ring and $M$ an $A$-module.
+            Then for every $\frakp \in \Ass M$, there is a $\frakp$-primary submodule $Q(\frakp)$ such that 
+            \[ (0) = \bigcap_{\frakp \in \Ass M} Q(\frakp). \] 
+        \end{theorem}
+        \begin{proof}
+            Consider the set 
+            \[ \caln:= \{N \subset M \colon \frakp \notin \Ass N \}. \]
+            Note that $\Ass \bigcup N_i = \bigcup \Ass N_i$ by definition of associated prime ideals.
+            Then it is easy to check that $\caln$ satisfies the conditions of Zorn's Lemma.
+            Hence $\caln$ has a maximal element $Q(\frakp)$.
+            We claim that $Q(\frakp)$ is $\frakp$-primary.
+            If there is $\frakp' \neq \frakp \in \Ass M/Q(\frakp)$, then there is a submodule $N' \cong A/\frakp$.
+            Let $N''$ be the preimage of $N'$ in $M$.
+            We have $Q(\frakp) \subsetneq N''$ and $N'' \in \caln$.
+            This is a contradiction.
+            By the fact $\Ass \bigcap N_i = \bigcap \Ass N_i$, we get the conclusion.
+        \end{proof}
+
+        \begin{corollary}\label{cor: primary decomposition for finitely generated module}
+            Let $A$ be a noetherian ring and $M$ a finitely generated $A$-module.
+            Then every submodule of $M$ has a minimal primary decomposition.
+        \end{corollary}

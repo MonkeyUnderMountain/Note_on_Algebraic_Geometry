@@ -6,3 +6,4 @@ Zariski
 TFAE
 Serre
 prescheme
+surjective

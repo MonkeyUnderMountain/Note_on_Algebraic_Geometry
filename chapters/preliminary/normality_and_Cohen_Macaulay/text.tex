@@ -1,9 +1,8 @@
-\section{Normality and Cohen-Macaulay schemes}
+\section{Normal, Cohen-Macaulay and regular schemes}
 
 \subsection{Height, Depth and Dimension}
 
     \paragraph{Krull dimension and height of prime ideals}
-
     Algebraically, we have the following definitions.
     \begin{definition}
         Let $A$ be a noetherian ring.
@@ -19,50 +18,86 @@
         The \textit{codimension of an irreducible subscheme} $Y$ in $X$ is defined as the length of the longest chain of irreducible closed subsets containing $Y$, that is, 
         \[ \codim_X(Y) := \sup\{ n \mid \exists \text{ a chain of irreducible closed subsets } Y = Y_0 \subsetneq Y_1 \subsetneq \cdots \subsetneq Y_n\}. \] 
         The \textit{dimension} of $X$ is defined as
-        \[ \dim X := \max_{Y \in \text{Irred}(X)}\codim_X(Y). \]
+        \[ \dim X := \max_{\xi \in X}\codim_X Z_\xi. \]
     \end{definition}
 
     For an affine scheme $X = \Spec A$, above two definitions coincide by the correspondence of prime ideals and irreducible closed subsets.
 
     \begin{proposition}
         Let $A$ be a noetherian ring and $\frakp \in \Spec A$.
-        Then the height of $\frakp$ is equal to the codimension of the irreducible closed subset $V(\frakp)$ in $\Spec A$.
+        Then 
+        \[ \idealht(\frakp) = \codim_{\Spec A} V(\frakp) = \dim A_{\frakp}. \]
     \end{proposition}
+    % \begin{proof}
+    %     The equality $\idealht(\frakp) = \codim_{\Spec A} V(\frakp)$ comes from the correspondence of prime ideals and irreducible closed subsets.
+    %     The equality $\idealht(\frakp) = \dim A_{\frakp}$ comes from the 
+    % \end{proof}
 
-    \begin{proposition}
-        Let $X$ be a locally noetherian scheme and $\xi \in X$.
-        Then $\dim \calo_{X,\xi} = \codim Z_{\xi}$.
-    \end{proposition}
+    % \begin{proposition}
+    %     Let $X$ be a locally noetherian scheme and $\xi \in X$.
+    %     Then $\dim \calo_{X,\xi} = \codim Z_{\xi}$.
+    % \end{proposition}
+    % \begin{proof}
+    %     \Yang{To be continued.}
+    % \end{proof}
+
+    \begin{theorem}[Krull's Principal Ideal Theorem]
+        Let $A$ be a noetherian ring.
+        Suppose $f \in A$ is not a unit or a zero divisor.
+        Then $\dim A/(f) \leq \dim A - 1$.
+        Moreover, if $A$ is local or $\dim A_\frakm$ is constant for all $\frakm$, then the equality holds.
+    \end{theorem}
     \begin{proof}
-        \Yang{To be continued.}
+        Let $\frakp \ni f$ be a minimal prime ideal among those containing $f$.
+        Note that $A_\frakp/(f)$ is a local ring of dimension $0$.
+        \Yang{To be added.}
     \end{proof}
 
     For ``nice'' schemes, the Krull dimension behaves well by following proposition.
 
-    \begin{proposition}
+    \begin{theorem}
         Let $S$ be spectrum of a field $\kk$ or an algebraic integer ring $\calo_K$ and $X$ an integral $S$-variety.
         Then we have the follows:
         \begin{enumerate}[label=(\roman*)]
-            \item For any point $P \in X$, $\dim X = \dim \calo_{X,P} + \codim \overline{\{P\}}$.
+            \item For any point $\xi \in X$, $\dim X = \dim \calo_{X,\xi} + \codim Z_\xi$.
             \item For any non-empty open subset $U \subset X$, $\dim U = \dim X$.
-            \item $\dim X = \operatorname{trdeg}(\fkk(X)/\fkk(S)) + \dim S$.
+            \item $\dim X = \trdeg(\fkk(X)/\fkk(S)) + \dim S$.
         \end{enumerate}
-    \end{proposition}
+    \end{theorem}
     \begin{proof}
         \Yang{To be continued.}
     \end{proof}
 
+    \begin{example}
+        
+    \end{example}
+
 
     \paragraph{Depth}
-
     For a noetherian local ring $(A,\frakm)$, we can define the depth of an $A$-module $M$.
+    Somehow the Krull dimension is ``homological'' and the depth is ``cohomological''.
 
     \begin{definition}
-        Let $(A,\frakm)$ be a noetherian local ring with residue field $\kk$ and $M$ a finitely generated $A$-module. 
-        A sequence $t_1,\cdots,t_n\in \frakm$ is called a \textit{regular sequence for $M$} if $t_i$ is not a zero divisor on $M/(t_1,\cdots,t_{i-1})$, that is, $M/(t_1,\cdots,t_{i-1}) \to t_iM/(t_1,\cdots,t_{i-1})$ is injective.
-        The \textit{depth} of $M$ is defined as the maximum length of regular sequences for $M$.
+        Let $A$ be a noetherian ring, $I \subset A$ an ideal and $M$ a finitely generated $A$-module.
+        A sequence $t_1,\cdots,t_n\in \frakm$ is called an \textit{$M$-regular sequence in $I$} if $t_i$ is not a zero divisor on $M/(t_1,\cdots,t_{i-1})M$ for all $i$. 
+        % Let $(A,\frakm)$ be a noetherian local ring with residue field $\kk$ and $M$ a finitely generated $A$-module. 
+        % A sequence $t_1,\cdots,t_n\in \frakm$ is called a \textit{regular sequence for $M$} if $t_i$ is not a zero divisor on $M/(t_1,\cdots,t_{i-1})$, 
+        % that is, $M/(t_1,\cdots,t_{i-1}) \to t_iM/(t_1,\cdots,t_{i-1})$ is injective.
+        % The \textit{depth} of $M$ is defined as the maximum length of regular sequences for $M$.
     \end{definition}
 
+    \begin{proposition}
+        Suppose $A$ is local and $I = \frakm$ is the maximal ideal of $A$.
+        Then any permutation of an $M$-regular sequence is $M$-regular.
+    \end{proposition}
+
+    \begin{definition}
+        The \textit{$I$-depth} of $M$ is defined as the maximum length of $M$-regular sequences in $I$, denoted by $\depth_I M$. 
+        When $A$ is a local ring with maximal ideal $\frakm$, we write $\depth M$ for $\depth_{\frakm} M$.
+    \end{definition}
+
+
+    \paragraph{Regular and Serre's conditions}
     Up to now, there are three numbers measuring the ``size'' of a local ring $(A,\frakm)$:
     \begin{itemize}
         \item $\dim A$: the Krull dimension of $A$.
@@ -79,19 +114,6 @@
 
     To see these, we need the following well-known theorem.
 
-    
-    \begin{theorem}[Krull's Principal Ideal Theorem]
-        Let $A$ be a noetherian ring.
-        Suppose $f \in A$ is not a unit or a zero divisor.
-        Then $\dim A/(f) \leq \dim A - 1$.
-        Moreover, if $A$ is local or $\dim A_\frakm$ is constant for all $\frakm$, then the equality holds.
-    \end{theorem}
-    \begin{proof}
-        Let $\frakp_0 \subsetneq \cdots \subsetneq \frakp_n$ be a chain of prime ideals in $A$ with $n = \dim A$.
-
-        \Yang{To be added.}
-    \end{proof}
-
     \begin{theorem}[Nakayama's Lemma]
         Let $(A,\frakm)$ be a local ring.
         Suppose $M$ is a finitely generated $A$-module.
@@ -100,6 +122,20 @@
     \begin{proof}
         \Yang{To be added.}
     \end{proof}
+
+    \begin{definition}
+        Let $X$ be a locally noetherian scheme and $k \in \bbz_{\geq 0}$.
+        We say that \textit{$X$ verifies property $R_k$} or \textit{is regular in codimension $k$} if $\forall \xi \in X$ with $\codim \overline{\{\xi\}} \leq k$, 
+        \[ \dim_{\rkk(\xi)} T_{X,\xi} = \dim \calo_{X,\xi}. \]
+        We say that \textit{$X$ verifies property $S_k$} if $\forall \xi \in X$,
+        \[ \depth \calo_{X,\xi} \geq \min\{k, \dim \calo_{X,\xi}\}. \]        
+    \end{definition}
+
+    \begin{proposition}
+        Let $X$ be a locally noetherian scheme.
+        Then $X$ is reduced if and only if it verifies $R_0$ and $S_1$.
+    \end{proposition}
+
 
 \subsection{Normal schemes}
 
@@ -138,13 +174,25 @@
     \begin{definition}
         Let $X$ be a scheme.
         The \textit{normalization} of $X$ is an $X$-scheme $X^\nu$ with the following universal property:
-        for any normal $X$-scheme $Y$, its structure morphism $Y \to X$ factors through $X^\nu$.
+        for any normal $X$-scheme $Y$ with dominant structure morphism, its structure morphism $Y \to X$ factors through $X^\nu$.
     \end{definition}
 
     \begin{proposition}
         Let $X$ be an integral scheme.
         Then the normalization $X^\nu$ of $X$ exists.
-        Moreover, $X^\nu \to X$ is birational.
+        % Moreover, $X^\nu \to X$ is birational.
+    \end{proposition}
+
+    \begin{proposition}
+        Let $S = \Spec \kk$ or $\Spec \calo_K$ and $X$ an $S$-variety.
+        Then the normalization $X^\nu \to X$ is birational.
+        In particular, $\{ \xi \in X \colon \calo_{X,\xi} \text{ is normal} \}$ is open in $X$.
+    \end{proposition}
+
+    \begin{proposition}
+        Let $A$ be a normal noetherian ring $A$ of dimension $\geq 1$.
+        Then 
+        \[ A = \bigcap_{\frakp \in \Spec A, \idealht(\frakp) = 1} A_\frakp. \]
     \end{proposition}
 
     \begin{theorem}
@@ -153,17 +201,20 @@
         Then the restriction $H^0(X,\calo_X) \to H^0(X\setminus F, \calo_{X})$ is an isomorphism.
     \end{theorem}
 
+    \begin{theorem}
+        Let $X$ be a normal noetherian $S$-scheme and $Y$ a proper $S$-scheme.
+        Let $f:X \ratmap Y$ be a rational map.
+        Then $f$ is defined on an open subset $U \subset X$ whose complement has codimension $\geq 2$.
+    \end{theorem}
 
-    
-\subsection{Regular conditions and Serre's conditions}
+    \begin{theorem}[Serre's criterion for normality]
+        Let $X$ be a locally noetherian scheme.
+        Then $X$ is normal if and only if it verifies $R_1$ and $S_2$.
+    \end{theorem}
 
-    \begin{definition}
-        Let $X$ be a locally noetherian scheme and $k \in \bbz_{\geq 0}$.
-        We say that \textit{$X$ verifies property $R_k$} or \textit{is regular in codimension $k$} if $\forall \xi \in X$ with $\codim \overline{\{\xi\}} \leq k$, 
-        \[ \dim_{\rkk(\xi)} T_{X,\xi} = \dim \calo_{X,\xi}. \]
-        We say that \textit{$X$ verifies property $S_k$} if $\forall \xi \in X$,
-        \[ \depth \calo_{X,\xi} \geq \min\{k, \dim \calo_{X,\xi}\}. \]        
-    \end{definition}
+
+
+\subsection{Cohen-Macaulay schemes}
 
     \begin{definition}[Cohen-Macaulay]
         A noetherian local ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
@@ -204,18 +255,25 @@
     \end{theorem}
 
 
-    \begin{theorem}[Serre's criterion for normality]
-        Let $X$ be a locally noetherian scheme.
-        Then $X$ is normal if and only if it verifies $R_1$ and $S_2$.
-    \end{theorem}
-
-    \begin{theorem}
-        Let $X$ be a locally noetherian scheme.
-        Then $X$ is reduced if and only if it verifies $R_0$ and $S_1$.
-    \end{theorem}
-
-\subsection{Associated primes}
     
-    \begin{definition}
-        
-    \end{definition}
+\subsection{Regular schemes}
+
+    \begin{proposition}
+        Let $(A,\frakm)$ be a regular local ring.
+        Then $A$ is integral.
+    \end{proposition}
+
+    \begin{proposition}
+        If $X$ verifies $R_k$, then $\codim_X X_{\text{sing}} \geq k+1$.
+    \end{proposition}
+
+    \begin{proposition}
+        A regular scheme is Cohen-Macaulay.
+    \end{proposition}
+
+    \begin{corollary}
+        A regular scheme is normal.
+    \end{corollary}
+
+
+

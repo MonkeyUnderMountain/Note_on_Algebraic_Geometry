@@ -1,6 +1,7 @@
 % 自定义文档类：noteformyself
 % by Tianle Yang
 % !TeX program = xelatex
+% !Bib program = biber
 % !TEX encoding = UTF-8 Unicode
 \ProvidesClass{noteformyself}[2025/05/03 自定义笔记文档类]
 \LoadClass{article} % 基础文档类（article）
@@ -48,7 +49,7 @@
 \RequirePackage{fontspec}      % 字体配置
 
 % 引用系统
-\RequirePackage[backend=biber,style=numeric]{biblatex} % 参考文献管理
+\RequirePackage[backend=biber,style=alphabetic]{biblatex} % 参考文献管理
 \addbibresource{ref.bib}
 
 % 交互功能
