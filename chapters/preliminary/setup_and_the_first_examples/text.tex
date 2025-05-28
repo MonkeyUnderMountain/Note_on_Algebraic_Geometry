@@ -247,6 +247,16 @@
             Then for every $n \in \bbz_{\geq 1}$, $(x) \cap (x^2,xy,y^n)$ is a minimal primary decomposition of $(0) \subset M$.
         \end{example}
 
+        Let $A$ be a noetherian ring and $\frakp \subset A$ a prime ideal.
+        We consider the $\frakp$ component of $\frakp^n$, which is called $n$-th symbolic power of $\frakp$, denoted by $\frakp^{(n)}$.
+        We have $\frakp^{(n)} = \frakp^nA_\frakp \cap A$.
+        In general, $\frakp^{(n)}$ is not equal to $\frakp^n$; see below example.
+
+        \begin{example}
+            Let $A = \kk[x,y,z,w]/(y^2-zx^2,yz-xw)$ and $\frakp = (y,z,w)$.
+            We have $z = y^2/x^2,w = yz/x \in \frakp^2 A_\frakp$, whence $\frakp^2 A_\frakp = (z,w) \neq \frakp^2$.
+        \end{example}
+        
         \begin{theorem}\label{thm: primary decomposition for general module}
             Let $A$ be a noetherian ring and $M$ an $A$-module.
             Then for every $\frakp \in \Ass M$, there is a $\frakp$-primary submodule $Q(\frakp)$ such that 
