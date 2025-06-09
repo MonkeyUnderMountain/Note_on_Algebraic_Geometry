@@ -401,10 +401,6 @@
         Hence $A$ is normal.
     \end{remark}
 
-    \begin{example}
-        
-    \end{example}
-
     \begin{definition}
         Let $X$ be a scheme.
         The \textit{normalization} of $X$ is an $X$-scheme $X^\nu$ with the following universal property:
@@ -469,7 +465,23 @@
         After similar argument, we see that $\frakm = tA$, whence $A$ is regular.
     \end{proof}
 
-    \begin{proposition}
+    \begin{lemma}\label{lem: normal and regular are equivalent for noetherian rings of dimension 1}
+        Let $(A,\frakm)$ be a noetherian local ring of dimension $1$.
+        Then $A$ is normal iff $A$ is regular.
+    \end{lemma}
+    \begin{proof}
+        By lemma \ref{lem: normal rings verify R_1 and S_2}, we just need to show that regularity implies normality.
+
+        Let $t \in \frakm\setminus \frakm^2$.
+        Since $A$ is regular, $\frakm = (t)$.
+        First we show that $A$ is an integral domain.
+
+        Let $I \subset A$ be a nonzero ideal of $A$.
+        Then $\frakm^n \subset I$ for some $n \geq 1$.
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{proposition}\label{prop: S_2 implies intersection of localization at height 1 prime is A}
         Let $A$ be a noetherian integral domain of dimension $\geq 1$ verifying $(S_2)$.
         Then 
         \[ A = \bigcap_{\frakp \in \Spec A, \idealht(\frakp) = 1} A_\frakp. \]
@@ -494,24 +506,47 @@
         \[ \left(\frac{a}{b}\right)^n + c_1 \left(\frac{a}{b}\right)^{n-1} + \cdots + c_n = 0 \in Q. \]
         Since $A$ verifies $(S_2)$, $b A = \bigcap \nu_\frakp^{-1}(b_\frakp A_\frakp)$.
         So it is sufficient to show that $a_{\frakp} \in b_\frakp A_\frakp$ with $\idealht(\frakp) = 1$.
-        Note that $A_\frakp$ is regular and hence normal by \Yang{?}.
+        Note that $A_\frakp$ is regular and hence normal by Lemma \ref{lem: normal and regular are equivalent for noetherian rings of dimension 1}.
         Then above equation gives us desired result.
-        \Yang{To be completed.}
     \end{proof}
 
     \begin{theorem}\label{thm: extension of function on normal scheme}
-        Let $X$ be a normal noetherian scheme.
+        Let $X$ be a normal and locally noetherian scheme.
         Let $F \subset X$ be a closed subset of codimension $\geq 2$.
         Then the restriction $H^0(X,\calo_X) \to H^0(X\setminus F, \calo_{X})$ is an isomorphism.
     \end{theorem}
     \begin{proof}
-        \Yang{To be completed.}
+        By the exact sequences 
+        \[ 0 \to \calf(X) \to \prod_i \calf(U_i) \to \prod_{i,j} \calf(U_i \cap U_j), \]
+        where $\{U_i\}$ is an affine open cover of $X$, we can reduce to the case that $X$ is affine.
+        Then $X = \Spec A$ for some normal noetherian ring $A$.
+        For any prime ideal $\frakp \in \Spec A$ with $\idealht(\frakp) = 1$, we have $\frakp \in X \setminus F$.
+        By Proposition \ref{prop: S_2 implies intersection of localization at height 1 prime is A}, the conclusion follows.
     \end{proof}
 
+    \begin{theorem}[Valuation criterion for properness]\label{thm: valuation criterion for properness}
+        Let $f:X \to Y$ be a morphism of finite type between noetherian schemes.
+        Then $f$ is proper iff for any valuation ring $A$, $\KK = \Frac A$ and commutative diagram
+        \[ \xymatrix{
+            \Spec \KK \ar[r] \ar[d] & X \ar[d]^f \\
+            \Spec A \ar[r] & Y
+        }, \]
+        the morphism $\Spec A \to Y$ factors through $f$.
+    \end{theorem}
+
+    \begin{proposition}\label{prop: morphism defined on a generic point extends to a open subset}
+        \Yang{To be completed.}
+        Let $X,Y$ be noetherian $S$-schemes with $S$ noetherian.
+        Suppose $X$ is normal and of finite type over $S$, and $Y$ is proper over $S$.
+        Let $\xi \in X$ be a generic point and $\eta \in Y$ a point such that there exists a morphism $\Spec \fkk(\xi) \to Y$.
+        Then there exists an open subset $U \subset X$ containing $\xi$ such that the morphism extends to a morphism $U \to Y$.
+    \end{proposition}
+
     \begin{theorem}\label{thm: extension of morphism form normal to proper}
-        Let $X$ be a normal noetherian $S$-scheme and $Y$ a proper $S$-scheme.
+        Let $X,Y$ be noetherian $S$-schemes with $S$ noetherian.
+        Suppose $X$ is normal and of finite type over $S$, and $Y$ is proper over $S$.
         Let $f:X \ratmap Y$ be a rational map.
-        Then $f$ is defined on an open subset $U \subset X$ whose complement has codimension $\geq 2$.
+        Then $f$ is well-defined on an open subset $U \subset X$ whose complement has codimension $\geq 2$.
     \end{theorem}
     \begin{proof}
         \Yang{To be completed.}
@@ -520,7 +555,10 @@
     \begin{remark}
         Theorem \ref{thm: extension of function on normal scheme} and Theorem \ref{thm: extension of morphism form normal to proper} are very similar.
         However, they are base on different properties.
-        \Yang{To be completed.}
+        Theorem \ref{thm: extension of function on normal scheme} is based on $(S_2)$, while Theorem \ref{thm: extension of morphism form normal to proper} is based on $(R_1)$.
+        Philosophically, the $(S_k)$ conditions are used to control the ``bad part of codimension larger than $k$''.
+        The $(R_k)$ conditions are used to control the ``bad part of codimension smaller than or equal to $k$''.
+        We will see more examples in the next section.\Yang{To be completed.}
     \end{remark}
 
 
@@ -546,6 +584,10 @@
         We say that \textit{the unmixedness theorem holds for a noetherian ring $A$} if any ideal $I \subset A$ generated by $\idealht(I)$ elements is unmixed.
         We say that \textit{the unmixedness theorem holds for a locally noetherian scheme $X$} if $\calo_{X,\xi}$ is unmixed for any point $\xi \in X$.
     \end{definition}
+
+    \begin{proposition}\label{prop: induction on S_k conditions}
+        \Yang{To be completed.}
+    \end{proposition}
 
     \begin{theorem}
         Let $X$ be a locally noetherian scheme.
