@@ -97,7 +97,7 @@
 \newcommand{\coverimage}[1]{\gdef\@coverimage{#1}}
 \gdef\@coverlinecolor{orange!80!yellow} % 封面装饰线颜色
 \newcommand{\coverlinecolor}[1]{\gdef\@coverlinecolor{#1}}
-\gdef\@covertitlefont{Brush Script MT}  % 封面标题字体
+\gdef\@covertitlefont{Arial}  % 封面标题字体
 \newcommand{\covertitlefont}[1]{\gdef\@covertitlefont{#1}}
 \gdef\@covertextcolor{purple!70!blue}   % 封面文字颜色
 \newcommand{\covertextcolor}[1]{\gdef\@covertextcolor{#1}}
