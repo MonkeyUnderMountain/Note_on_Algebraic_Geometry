@@ -3,14 +3,14 @@
 % !TeX program = xelatex
 % !Bib program = biber
 % !TEX encoding = UTF-8 Unicode
-\ProvidesClass{noteformyself}[2025/05/03 自定义笔记文档类]
-\LoadClass{article} % 基础文档类（article）
+\ProvidesClass{notetobook}[2025/05/03 v1.0.0 make sections look like a book]
+\LoadClass{book} % 基础文档类（article）
 
 %--------------------------------------------------------------------------
 % 页面布局配置
 %--------------------------------------------------------------------------
 \RequirePackage[a4paper,
-  top=1in,
+  top=0.75in,
   bottom=0.5in,
   left=.5in,
   right=.5in,
@@ -107,40 +107,53 @@
 % 章节标题格式配置
 %--------------------------------------------------------------------------
 \RequirePackage{titlesec}
-\renewcommand{\thesubsection}{\arabic{subsection}}  % 章节编号格式
-\titleformat{\section}[block]{\normalfont\LARGE\bfseries}{}{0em}{}
-\titleformat{\subsection}[block]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\chapter}[display]
+  {\thispagestyle{mainmatterstyle}\normalfont\Huge\bfseries} % 标题样式
+  {\chaptertitlename\ \thechapter} % 章节编号格式
+  {10pt} % 标题与编号间距
+  {} % 标题前命令
+  [\vspace{1em}] % 标题后命令
 
 %--------------------------------------------------------------------------
 % 页眉页脚样式配置
 %--------------------------------------------------------------------------
 \makeatletter
-\pagestyle{fancy}
-% 页眉样式
-\fancyhead[R]{%
-  \tikz[baseline=(char.base)]{
-    \node[shape=rectangle,fill=gray,text=white,inner sep=2pt] (char) {\thepage};
-  }%
-}
-\fancyhead[L]{\nouppercase{\@title}}
-\renewcommand{\headrule}{%
-  \vbox to 0pt{%
-    \color{gray}%
-    \hrule width \headwidth height \headrulewidth%
-    \vss%
-  }%
-}
-\renewcommand{\headrulewidth}{4pt}
+\fancypagestyle{mainmatterstyle}{ % 主体部分页眉页脚样式
+  \pagestyle{fancy}
+  % 页眉样式
+  \fancyhead[RO]{%
+    \tikz[baseline=(char.base)]{
+      \node[shape=rectangle,fill=gray,text=white,inner sep=2pt] (char) {\thepage};
+    }%
+  }
+  \fancyhead[LO]{\leftmark} % 左侧页眉显示章节标题
 
-% 页脚样式（留空）
-\renewcommand{\footrule}{%
-  \vbox to -10pt{%
-    \color{gray}%
-    \hrule width \headwidth height \headrulewidth%
-    \vss%
-  }%
+  \fancyhead[LE]{%
+    \tikz[baseline=(char.base)]{
+      \node[shape=rectangle,fill=gray,text=white,inner sep=2pt] (char) {\thepage};
+    }%
+  }
+  \fancyhead[RE]{\leftmark} % 左侧页眉显示章节标题
+
+  \renewcommand{\headrule}{%
+    \vbox to 0pt{%
+      \color{gray}%
+      \hrule width \headwidth height \headrulewidth%
+      \vss%
+    }%
+  }
+  \renewcommand{\headrulewidth}{4pt}
+
+  % 页脚样式（留空）
+  \renewcommand{\footrule}{%
+    \vbox to -10pt{%
+      \color{gray}%
+      \hrule width \headwidth height \headrulewidth%
+      \vss%
+    }%
+  }
+  \fancyfoot{}
 }
-\fancyfoot{}
 \makeatother
 
 %--------------------------------------------------------------------------
@@ -149,7 +162,7 @@
 \makeatletter
 \renewcommand{\maketitle}{%
   \newgeometry{%
-    top=.825in,
+    top=.575in,
     bottom=0.7in,
     left=.5in,
     right=.5in,
@@ -219,10 +232,10 @@
   \restoregeometry
   \clearpage
   
-  % 文档信息脚注
-  \renewcommand{\thefootnote}{}
-  \footnotetext{\textbf{Date}: \@date,\ \textbf{Author}: \@author,\ \@authorinfo}
-  \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+  % % 文档信息脚注
+  % \renewcommand{\thefootnote}{}
+  % \footnotetext{\textbf{Date}: \@date,\ \textbf{Author}: \@author,\ \@authorinfo}
+  % \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 }
 \makeatother
 
