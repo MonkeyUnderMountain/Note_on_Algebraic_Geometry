@@ -1,38 +1,72 @@
-\section{here is the text}
+\section{Regularity and Smoothness}
 
-    \lipsum[3-4]
+\subsection{Modules of differentials and derivations}
 
-\subsection{theorems and definitions}
-    \lipsum[5-6]
+    In this subsection, let $R$ be a ring and $A$ an $R$-algebra.
 
-   
-
-    \begin{definition}[this is a definition]
-        \lipsum[1-2]    
+    \begin{definition}[Derivation]\label{def: derivation}
+        A \emph{derivation} of $A$ over $R$ is an $R$-linear map $\P: A \to M$ with an $A$-module such that for all $a, b \in A$, we have
+        \[
+            \P(ab) = a\P(b) + b\P(a).
+        \]
+        Given the module $M$, the set of all derivations of $A$ over $R$ into $M$ forms an \(A\)-module, denoted by $\Der_R(A, M)$.
     \end{definition}
-    \begin{proposition}[this is a proposition]
-        \lipsum[1-2] 
-    \end{proposition}
-    \begin{example}[this is an example]
-        \lipsum[1-2] 
-    \end{example}
-    \begin{theorem}[this is a theorem]
-        \lipsum[1-2] 
-    \end{theorem}
-    \begin{corollary}[this is a corollary]
-        \lipsum[1-2] 
-    \end{corollary}
-    \begin{exercise}[this is an exercise]
-        \lipsum[1-2]
-    \end{exercise}
-    \begin{remark}[this is a remark]
-        \lipsum[1-2]
-    \end{remark}
-    \begin{proof}[this is a proof]
-        \lipsum[1-2]
-    \end{proof}
-    \begin{lemma}[this is a lemma]
-        \lipsum[1-2]
-    \end{lemma}
 
-    \lipsum[100-200] % 生成测试文本
+    Given a module homomorphism \(f: M \to N\) of \(A\)-modules and a derivation \(\P \in \Der_R(A, M)\), the map $f \circ \P$ is a derivation of \(A\) over \(R\) into \(N\).
+    % Hence we get a functor 
+    % \[
+    %     \Der_R(A, -): \Mod_A \to \Mod_A.
+    % \]
+
+    \begin{proposition}\label{prop: module of differentials}
+        The functor \(\Der_R(A, -)\) is 
+    \end{proposition}
+
+    \begin{proposition}\label{prop: module of differentials is stable under base change}
+        Let \(A, R'\) be \(R\)-algebras and \(A':= A\ten_R R'\).
+        Then the module of differentials \(\Omega_{A'/R'}\) is isomorphic to \(\Omega_{A/R} \ten_A A'\).
+    \end{proposition}
+
+    \begin{proposition}\label{prop: module of differentials is finite}
+        Suppose \(A\) is of finite type over \(R\).
+        Then the module of differentials \(\Omega_{A/R}\) is a finitely generated \(A\)-module.
+    \end{proposition}
+
+    \begin{theorem}\label{thm: the first exact sequence of differentials}
+        Let \(A\) be an \(R\)-algebra and \(B\) an \(A\)-algebra. 
+        Then there is a short exact sequence
+        \[ \Omega_{A/R} \ten_A B \to \Omega_{B/R} \to \Omega_{B/A} \to 0. \]
+    \end{theorem}
+
+    \begin{theorem}\label{thm: the second exact sequence of differentials}
+        Let \(A\) be an \(R\)-algebra and \(I\) an ideal of \(A\).
+        Then there is a short exact sequence
+        \[ I/I^2 \to \Omega_{A/R} \ten_A A/I \to \Omega_{(A/I)/R} \to 0. \]
+    \end{theorem}
+
+\subsection{Zariski's tangent space}
+
+    \begin{definition}\label{def: Zariski's tangent space}
+        Let \(A\) be a noetherian ring.
+        For every $\frakp \in \Spec A$, \(\frakp/\frakp^2\) is a vector space over \(\rkk(\frakp)\).
+        The \emph{Zariski's tangent space} $T_{A,\frakp}$ of \(A\) at \(\frakp\) is defined as the dual \(\rkk(\frakp)\)-vector space of \(\frakp/\frakp^2\).
+    \end{definition}
+
+    \begin{definition}\label{def: regular ring}
+        
+    \end{definition}
+
+    \begin{proposition}\label{prop: regularity is stable under localization}
+        
+    \end{proposition}
+
+    \begin{proposition}\label{prop: smoothness is geometric regularity}
+        
+    \end{proposition}
+
+    \begin{example}\label{eg: regular but not smooth}
+    \end{example}
+
+
+\subsection{Jacobiian criterion}
+
