@@ -408,9 +408,8 @@
     \end{definition}
 
     \begin{proposition}
-        Let $X$ be an integral scheme.
-        Then the normalization $X^\nu$ of $X$ exists.
-        Moreover, $X^\nu \to X$ is birational.
+        The normalization $X^\nu$ of $X$ exists.
+        Moreover, if $X$ is reduced, $X^\nu \to X$ is birational.
     \end{proposition}
     \begin{proof}
         Suppose there is a dominant morphism $Y \to X$ with $Y$ normal.
@@ -474,11 +473,15 @@
 
         Let $t \in \frakm\setminus \frakm^2$.
         Since $A$ is regular, $\frakm = (t)$.
-        First we show that $A$ is an integral domain.
-
-        Let $I \subset A$ be a nonzero ideal of $A$.
-        Then $\frakm^n \subset I$ for some $n \geq 1$.
-        \Yang{To be completed.}
+        Let $I \subset \frakm$ be an ideal.
+        If $I \subset \bigcap_{n} \frakm^n$, then for every $a \in I$, there exists $a_n$ such that $a = a_n t^n$.
+        Then we get an ascending chain of ideals $(a_1) \subset (a_2) \subset \cdots$.
+        Hence $a=0$ by Nakayama's Lemma.
+        Suppose $I$ is not zero.
+        Then there is some $n$ such that $I \subset \frakm^n$ and $I \not\subset \frakm^{n+1}$.
+        For every $at^n \in I \setminus \frakm^{n+1}$,  $a \notin \frakm$, whence $a$ is a unit in $A$.
+        Then $I = (t^n)$.
+        Hence $A$ is PID and hence normal.
     \end{proof}
 
     \begin{proposition}\label{prop: S_2 implies intersection of localization at height 1 prime is A}
@@ -531,28 +534,44 @@
             \Spec \KK \ar[r] \ar[d] & X \ar[d]^f \\
             \Spec A \ar[r] & Y
         }, \]
-        the morphism $\Spec A \to Y$ factors through $f$.
+        the morphism $\Spec A \to Y$ factors through $f$ uniquely.
     \end{theorem}
 
     \begin{proposition}\label{prop: morphism defined on a generic point extends to a open subset}
-        \Yang{To be completed.}
-        Let $X,Y$ be noetherian $S$-schemes with $S$ noetherian.
-        Suppose $X$ is normal and of finite type over $S$, and $Y$ is proper over $S$.
-        Let $\xi \in X$ be a generic point and $\eta \in Y$ a point such that there exists a morphism $\Spec \fkk(\xi) \to Y$.
+        Let $X,Y$ be $S$-schemes with $S$ locally noetherian.
+        Suppose $Y$ is of finite type over $S$.
+        Let $\xi \in X$ and $f_x: \Spec \calo_{X,\xi} \to Y$ be a morphism.
         Then there exists an open subset $U \subset X$ containing $\xi$ such that the morphism extends to a morphism $U \to Y$.
     \end{proposition}
+    \begin{proof}
+        Replacing $S,X,Y$ by affine open neighborhoods of images of $\xi$, we can assume that $S = \Spec A$, $X=\Spec B$ and $Y = \Spec A[T_1,\cdots,T_n]/I$ are affine.
+        Then we get a homomorphism $A[T_1,\cdots,T_n]/I \to B_{\xi}$ of $A$-algebra.
+        Denote the image of $T_i$ by $f_i/g_i$ in $B_{\xi}$, where $f_i,g_i \in B$.
+        Then above homomorphism factors through $B[1/g_1,\cdots,1/g_n] \to B_{\xi}$.
+        Let $U$ be the open subset of $X$ defined by $g_1\cdots g_n \neq 0$.
+        Then the morphism $f_x$ extends to a morphism $U \to Y$.
+    \end{proof}
 
     \begin{theorem}\label{thm: extension of morphism form normal to proper}
-        Let $X,Y$ be noetherian $S$-schemes with $S$ noetherian.
-        Suppose $X$ is normal and of finite type over $S$, and $Y$ is proper over $S$.
+        Let $X,Y$ be $S$-schemes of finite type with $S$ noetherian.
+        Suppose $X$ is normal, and $Y$ is proper over $S$.
         Let $f:X \ratmap Y$ be a rational map.
         Then $f$ is well-defined on an open subset $U \subset X$ whose complement has codimension $\geq 2$.
     \end{theorem}
     \begin{proof}
+        We can assume that $X$ is irreducible and hence integral.
+        Suppose $f$ is defined on $U \subset X$.
+        For every $\xi \in X$ with codimension $1$, we have following commutative diagram
+        \[ \xymatrix{
+            \Spec \fkk(X) \ar[r] \ar[d] & U \ar[r]^f & Y \ar[d] \\
+            \Spec \calo_{X,\xi} \ar[rr] & & S
+        }, \]
+        By Theorem \ref{thm: valuation criterion for properness} and Proposition \ref{prop: morphism defined on a generic point extends to a open subset}, there exists an open subset $U_\xi \subset X$ containing $\xi$ such that the morphism extends to a morphism $U_\xi \to Y$.
+
         \Yang{To be completed.}
     \end{proof}
 
-    \begin{remark}
+    \begin{remark}\label{rmk: extension of function on normal scheme and extension of morphism form normal to proper}
         Theorem \ref{thm: extension of function on normal scheme} and Theorem \ref{thm: extension of morphism form normal to proper} are very similar.
         However, they are base on different properties.
         Theorem \ref{thm: extension of function on normal scheme} is based on $(S_2)$, while Theorem \ref{thm: extension of morphism form normal to proper} is based on $(R_1)$.
@@ -566,7 +585,7 @@
 
 \subsection{Cohen-Macaulay schemes}
 
-    \begin{definition}[Cohen-Macaulay]
+    \begin{definition}[Cohen-Macaulay]\label{def: Cohen-Macaulay}
         A noetherian local ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
         A locally noetherian scheme $X$ is called \textit{Cohen-Macaulay} if $\calo_{X,\xi}$ is Cohen-Macaulay for any point $\xi \in X$.
     \end{definition}
@@ -577,39 +596,108 @@
 
     \end{example}
 
-    \begin{definition}
-        % We say that the unmixedness theorem holds for a noetherian ring $A$ if 
+    \begin{proposition}\label{prop: depth equals to grade}
+        Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
+        Then 
+        \[ \depth M := \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}. \]
+    \end{proposition}
+    \begin{proof}
+        Let $a \in \frakm$ be $M$-regular and $N = M/aM$.
+        Then we claim that
+        \[ \inf \{ i: \Ext^i_A(\kk,N) \neq 0 \} = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \} - 1. \]
+        Indeed, we have an exact sequence
+        \[ 0 \to M \xrightarrow{a} M \to N \to 0. \]
+        It induces a long exact sequence
+        \[ \cdots \to \Ext^{i-1}_A(\kk,M) \to \Ext^{i-1}_A(\kk,N) \to \Ext^i_A(\kk,M) \xrightarrow{\Ext^i_A(\kk,\Mult_a)} \Ext^i_A(\kk,M) \to \cdots. \]
+        Note that $a \in \frakm$, then $\Ext^i_A(\kk,\Mult_a) = 0$.
+        It follows that when $\Ext^{i-1}_A(\kk,M) = 0$, we have $\Ext^{i-1}_A(\kk,N) = 0$ iff $\Ext^i_A(\kk,M) = 0$, whence the claim.
+
+        Let $n = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}$.
+        Induct on $n$.
+        Suppose first $n = 0$.
+        Since $\kk$ is a simple $A$-module, there is an injective homomorphism $\kk \to M$.
+        Then $\frakm \in \Ass M$ and hence $\depth M = 0$.
+        
+        Suppose $n > 0$., let $a_1,\cdots,a_m \in \frakm$ be any $M$-regular sequence.
+        Using the claim inductively on $M/(a_1,\cdots,a_m)M$, we have $n \geq \depth$.
+        If $M$ has no regular element, then $\frakm \subset \bigcup_{\frakp \in \Ass M} \frakp$.
+        Then $\frakm = \frakp$ for some $\frakp \in \Ass M$.
+        This show that we can find $x \neq 0 \in M$ such that $\frakp = \Ann x$.
+        It gives a homomorphism $\kk = A/\frakm \to M$.
+        That is a contradiction and hence $M$ has a regular element.
+        Let $a$ be $M$-regular and $N = M/aM$.
+        Then $\depth N = n-1$ by the claim and induction hypothesis.
+        Hence we have $\depth M \geq n$.
+    \end{proof}
+
+    \begin{corollary}\label{cor: induction on depth}
+        Let $A$ be a noetherian ring, $M$ a finite $A$-module and $a \in A$ an $M$-regular element.
+        Then $\depth M = \depth M/aM + 1$.
+    \end{corollary}
+
+    \begin{corollary}\label{cor: induction on S_d conditions}
+        Let $A$ be a noetherian ring $a \in A$ a nonzero divisor.
+        Then $A$ verifies $(S_d)$ iff $A/aA$ verifies $(S_{d-1})$.
+    \end{corollary}
+
+    \begin{definition}\label{def: unmixedness theorem}
         An ideal $I$ of a noetherian ring $A$ is called \textit{unmixed} if 
         \[ \idealht(I) = \idealht(\frakp), \quad \forall \frakp \in \Ass(A/I). \]
+        Here $\idealht(I)$ is defined as 
+        \[ \idealht(I) := \inf \{ \idealht(\frakp) : I \subset \frakp \}. \]
         We say that \textit{the unmixedness theorem holds for a noetherian ring $A$} if any ideal $I \subset A$ generated by $\idealht(I)$ elements is unmixed.
         We say that \textit{the unmixedness theorem holds for a locally noetherian scheme $X$} if $\calo_{X,\xi}$ is unmixed for any point $\xi \in X$.
     \end{definition}
 
-    \begin{proposition}\label{prop: induction on S_k conditions}
-        \Yang{To be completed.}
-    \end{proposition}
 
-    \begin{theorem}
+    \begin{theorem}\label{thm: unmixedness theorem for Cohen-Macaulay schemes}
         Let $X$ be a locally noetherian scheme.
         Then the unmixedness theorem holds for $X$ if and only if $X$ is Cohen-Macaulay.
     \end{theorem}
+    \begin{proof}
+        We can assume that $X = \Spec A$ is affine.
 
-    \begin{theorem}
+        Suppose $X$ is Cohen-Macaulay.
+        Let $I \subset A$ be an ideal generated by $a_1,\cdots,a_r$ with $r = \idealht(I)$.
+        We claim that $a_1,\cdots,a_r$ is an $A$-regular sequence.
+        If so, we get that the unmixedness theorem holds for $A$ by applying Example \ref{eg: S_1 is equivalent to A has no embedded point} on $A/I$. 
+        Since $\idealht(a_1,\cdots,a_{r-1}) \leq r-1$ by Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem} and $\idealht(a_1,\cdots,a_r) = r \leq \idealht(a_1,\cdots,a_{r-1}) + 1$, we have $\idealht(a_1,\cdots,a_{r-1}) = r-1$.
+        By induction on $r$, we can assume that $a_1,\cdots,a_{r-1}$ is an $A$-regular sequence.
+        Hence any prime ideal $\frakp \in \Ass A/(a_1,\cdots,a_{r-1})$ has height $r-1$.
+        Now suppose $a_r$ is a zero divisor in $A/(a_1,\cdots,a_{r-1})$.
+        Then there exists a prime ideal $\frakp \in \Ass A/(a_1,\cdots,a_{r-1})$ such that $a_r \in \frakp$.
+        Then $I \subset \frakp$ and $\idealht(I) \leq r-1$.
+        This contradicts that $\idealht(I) = r$.
+        
+        Suppose the unmixedness theorem holds for $A$.
+        Let $\frakp \in \Spec A$ be a prime ideal with $\idealht(\frakp) = r$.
+        Then $\frakp \in \Ass A$ if and only if $\idealht(\frakp) = 0$.
+        If $r > 0$, there is a nonzero divisor $a \in \frakp$.
+        By Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem}, $\idealht(\frakp A/aA) = r-1$.
+        Inductively, we can find a regular sequence $a_1,\cdots,a_r$ in $\frakp$.
+        Then $\depth A_\frakp = r$.
+        % \Yang{To be completed.}
+    \end{proof}
+
+    \begin{theorem}\label{thm: higher dimensional hartogs lemma for Cohen-Macaulay schemes}
         Let $X$ be a locally noetherian scheme.
         Suppose that $X$ is Cohen-Macaulay.
         Let $F \subset X$ be a closed subset of codimension $\geq k$.
         Then the restriction $H^i(X,\calo_X) \to H^i(X\setminus F, \calo_{X})$ induced by the 
          is an isomorphism.
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 
     
 \subsection{Regular schemes}
 
-    \begin{proposition}
-        Let $(A,\frakm)$ be a regular local ring.
-        Then $A$ is integral.
-    \end{proposition}
+    % \begin{proposition}
+    %     Let $(A,\frakm)$ be a regular local ring.
+    %     Then $A$ is integral.
+    % \end{proposition}
 
     \begin{proposition}
         If $X$ verifies $(R_k)$, then $\codim_X X_{\text{sing}} \geq k+1$.
