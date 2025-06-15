@@ -1,0 +1,110 @@
+\section{Dimension}
+
+    \subsection{Artinian Rings and Length of Modules}
+
+        \begin{definition}\label{def: length of a module}
+            Let $A$ be a ring and $M$ an $A$ module.
+            \textit{A simple module filtration of $M$} is a filtration
+            \[ M = M_0 \supsetneq M_1 \supsetneq \cdots \supsetneq M_n = 0 \] 
+            such that $M_i/M_{i-1}$ is a simple module, i.e. it has no submodule except $0$ and itself.
+            If $M$ has a simple module filtration as above, we define the \textit{length of $M$} as $n$ and say that $M$ has \textit{finite length}.
+        \end{definition}
+
+        The following proposition guarantees the length is well-defined.
+
+        \begin{proposition}\label{prop: length of a module is well defined}
+            Suppose $M$ has a simple module filtration $M = M_{0,0} \supsetneq M_{1,0} \supsetneq \cdots \supsetneq M_{n,0} = 0$.
+            Then for any other filtration $M = M_{0,0} \supset M_{0,1} \supset \cdots \supset M_{0,m} = 0$ with $m > n$, there exist $k<m$ such that $M_{0,k} = M_{0,k+1}$.
+        \end{proposition}
+        \begin{proof}
+            We claim that there are at least $0\leq k_1<\cdots<k_{m-n}<m$ satisfies that $M_{0,k_i} = M_{0,k_i+1}$.
+            Let $M_{i,j} := M_{i,0} \cap M_{0,j}$.
+            Inductively on $n$, we can assume that there exist $k_1,\cdots,k_{n-m+1}$ such that $M_{1,k} = M_{1,k+1}$.
+            Consider the sequence 
+            \[ M_{0,0}/M_{1,0} \supset (M_{0,1}+M_{1,0})/M_{1,0} \supset \cdots \supset (M_{0,m}+M_{1,0})/M_{1,0} = 0 \]
+            in $M_{0,0}/M_{1,0}$.
+            Since $M_{0,0}/M_{1,0}$ is simple, there is at most one $k_i$ with $M_{0,k_i}+M_{1,0} \neq M_{0,k_i+1}+M_{1,0}$.
+            And note that if $M_{0,k_i} + M_{1,0} = M_{0,k_i+1}+M_{1,0}$ and $M_{0,k_i} \cap M_{1,0} = M_{0,k_i} \cap M_{1,0}$, then $M_{0,k_i} = M_{0,k_i+1}$ by the Five Lemma.
+        \end{proof}
+
+        \begin{example}\label{eg: A/m is a simple module}
+            Let $A$ be a ring and $\frakm \in \mSpec A$.
+            Then $A/\frakm$ is a simple module.
+        \end{example}
+
+        \begin{proposition}\label{prop: of finite length iff both acc and dcc}
+            Let $A$ be a ring and $M$ an $A$-module.
+            Then $M$ is of finite length iff it satisfies both a.c.c and d.c.c.
+        \end{proposition}
+        \begin{proof}
+            Note that if $M$ has either a strictly ascending chain or a strictly descending chain, $M$ is of infinite length.
+            Conversely, d.c.c guarantee $M$ has a simple submodule and a.c.c guarantee the sequence terminates.
+        \end{proof}
+
+        \begin{proposition}\label{prop: length is additive for modules of finite length}
+            The length $l(-)$ is an additive function for modules of finite length.
+            That is, if we have an exact sequence $0 \to M_1 \to M_2 \to M_3 \to 0$ with $M_i$ of finite length, then $l(M_2) = l(M_1) + l(M_3)$.
+        \end{proposition}
+        \begin{proof}
+            The simple module filtrations of $M_1$ and $M_3$ will give a simple module filtration of $M_2$.
+        \end{proof}
+
+        \begin{proposition}\label{prop: characteristic of local artinian rings}
+            Let $(A,\frakm)$ be a local ring.
+            Then $A$ is artinian iff $\frakm^n = 0$ for some $n\geq 0$.    
+        \end{proposition}
+        \begin{proof}
+            Suppose $A$ is artinian.
+            Then the sequence $\frakm \supset \frakm^2 \supset \frakm^3 \supset \cdots$ will stable.
+            It follows that $\frakm^n = \frakm^{n+1}$ for some $n$.
+            By the Nakayama's Lemma \ref{thm: Nakayama's lemma}, $\frakm^n = 0$.
+
+            Conversely, we have 
+            \[ \frakm \subset \frakN \subset \bigcap_{\text{minimal prime ideal}} \frakp,\] 
+            whence $\frakm$ is minimal.
+        \end{proof}
+
+        \begin{proposition}\label{prop: artinian ring is of finite length}
+            Let $A$ be a ring. 
+            Then $A$ is artinian iff $A$ is of finite length.
+        \end{proposition}
+        \begin{proof}
+            First we show that $A$ has only finite maximal ideal.
+            Otherwise, consider the set $\{\frakm_1 \cap \frakm_2 \cap \cdots \cap \frakm_k\}$.
+            It has a minimal element $\frakm_1 \cap \cdots \cap \frakm_n$ and for any maximal ideal $\frakm$, $\frakm_1 \cap \cdots \cap \frakm_n \subset \frakm$.
+            It follows that $\frakm = \frakm_i$ for some $i$.
+            Let $\frakM = \frakm_1 \cap \cdots \cap \frakm_n$ be the Jacobi radical of $A$.
+            Consider the sequence $\frakM \supset \frakM^2 \supset \cdots$ and by Nakayama's Lemma, we have $\frakM^k = 0$ for some $k$.
+            Consider the filtration 
+            \[ A \supset \frakm_1 \supset \cdots \supset \frakm_1^k \supset \frakm_1^k\frakm_2 \supset \cdots \supset \frakm_1^k \cdots \frakm_n^k  = (0). \] 
+            We have $\frakm_1^k\cdots\frakm_i^j/\frakm_1^k\cdots\frakm_i^{j+1}$ is an $A/\frakm_i$-vector space.
+            It is artinian and then of finite length.
+            Hence $A$ is of finite length.
+        \end{proof}
+        
+        \begin{proposition}\label{prop: artinian ring is of codimension 0}
+            Let $A$ be a ring. 
+            Then $A$ is artinian iff $A$ is noetherian and of dimension $0$.
+            For definition of dimension, see \ref{def: height of ideals}.
+        \end{proposition}
+        \begin{proof}
+            Suppose $A$ is artinian.
+            Then $A$ is noetherian by Proposition \ref{prop: artinian ring is of finite length}.
+            Let $\frakp \in \Spec A$.
+            Then $A/\frakp$ is an artinian integral domain.
+            If there is $a\in A/\frakp$ is not invertible, consider $(a) \supset (a^2) \supset \cdots$, we see $a=0$.
+            Hence $\frakp$ is maximal and $\dim A = 0$. 
+
+            Suppose that $A$ is noetherian and of dimension $0$.
+            Then every maximal ideal is minimal.
+            In particular, $A$ has only finite maximal ideal $\frakp_1,\cdots,\frakp_n$.
+            Let $\frakq_i$ be the $\frakp_i$-component of $(0)$.
+            Then we have $A \injmap \bigoplus_i A/\frakq_i$.
+            We just need to show that $A/\frakq_i$ is of finite length as $A$-module.
+            If $\frakq_i \subset \frakp_j$, take radical we get $\frakp_i \subset \frakq_j$ and hence $i=j$.
+            So $A/\frakq_i$ is a local ring with maximal ideal $\frakp_i A/\frakq_i$.
+            Then every element in $\frakp_i A/\frakq_i$ is nilpotent.
+            Since $\frakp_i$ is finitely generated, $(\frakp_i A/\frakq_i)^k = 0$ for some $k$.
+            Then $A/\frakq_i$ is artinian and then of finite length as $A/\frakq_i$-module.
+            Then the conclusion follows.
+        \end{proof}
