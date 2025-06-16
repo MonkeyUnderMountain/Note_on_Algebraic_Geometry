@@ -19,30 +19,46 @@
     % \]
 
     \begin{proposition}\label{prop: module of differentials}
-        The functor \(\Der_R(A, -)\) is 
+        The functor \(\Der_R(A, -)\) is representable.
+        The representing object is denoted by \(\Omega_{A/R}\), which is called the \emph{module of differentials} of \(A\) over \(R\).
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{proposition}\label{prop: module of differentials is stable under base change}
         Let \(A, R'\) be \(R\)-algebras and \(A':= A\ten_R R'\).
         Then the module of differentials \(\Omega_{A'/R'}\) is isomorphic to \(\Omega_{A/R} \ten_A A'\).
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{proposition}\label{prop: module of differentials is finite}
         Suppose \(A\) is of finite type over \(R\).
         Then the module of differentials \(\Omega_{A/R}\) is a finitely generated \(A\)-module.
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{theorem}\label{thm: the first exact sequence of differentials}
         Let \(A\) be an \(R\)-algebra and \(B\) an \(A\)-algebra. 
         Then there is a short exact sequence
         \[ \Omega_{A/R} \ten_A B \to \Omega_{B/R} \to \Omega_{B/A} \to 0. \]
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{theorem}\label{thm: the second exact sequence of differentials}
         Let \(A\) be an \(R\)-algebra and \(I\) an ideal of \(A\).
         Then there is a short exact sequence
         \[ I/I^2 \to \Omega_{A/R} \ten_A A/I \to \Omega_{(A/I)/R} \to 0. \]
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 \subsection{Zariski's tangent space}
 
@@ -53,12 +69,22 @@
     \end{definition}
 
     \begin{definition}\label{def: regular ring}
-        
+        A noetherian ring \(A\) is said to be \emph{regular} if for every prime ideal \(\frakp \in \Spec A\), we have 
+        \[ \dim_{\rkk(\frakp)} T_{A,\frakp} = \dim A_\frakp, \]
+        where \(\dim A_\frakp\) is the Krull dimension of the local ring \(A_\frakp\).
     \end{definition}
 
-    \begin{proposition}\label{prop: regularity is stable under localization}
-        
+    \begin{proposition}\label{prop: regularity is a local property}
+        Regularity is a local property, i.e., TFAE:
+        \begin{enumerate}
+            \item \(A\) is regular;
+            \item for every prime ideal \(\frakp \in \Spec A\), the local ring \(A_\frakp\) is regular;
+            \item for every maximal ideal \(\frakm \in \mSpec A\), the local ring \(A_\frakm\) is regular.
+        \end{enumerate}
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{proposition}\label{prop: smoothness is geometric regularity}
         
