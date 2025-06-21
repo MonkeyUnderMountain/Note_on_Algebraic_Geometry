@@ -17,7 +17,14 @@ Somehow the Krull dimension is ``homological'' and the depth is ``cohomological'
     \[ \dim A := \max_{\frakp \in \Spec A}\idealht(\frakp). \]
 \end{definition}
 
-% For a noetherian local ring $(A,\frakm)$, we can define the depth of an $A$-module $M$.
+\begin{example}
+    Let \(A\) be a PID.
+    For every two non-zero prime ideals \(\frakp_1\) and \(\frakp_2\), 
+    if \(\frakp_1 = t_1A \subset \frakp_2 = t_2A\), then \(t_2 \mid t_1\) and hence \(\frakp_1 = \frakp_2\).
+    It follows that \(\dim A = 1\).
+    Consequently, the ring of integers \(\bbz\) and the polynomial ring \(\kk[T]\) in one variable over a field have Krull dimension \(1\).
+\end{example}
+
 \begin{definition}\label{def: regular sequence}
     Let $A$ be a noetherian ring, $I \subset A$ an ideal and $M$ a finitely generated $A$-module.
     A sequence $t_1,\cdots,t_n\in I$ is called an \textit{$M$-regular sequence in $I$} if $t_i$ is not a zero divisor on $M/(t_1,\cdots,t_{i-1})M$ for all $i$. 
@@ -90,7 +97,7 @@ Somehow the Krull dimension is ``homological'' and the depth is ``cohomological'
     \end{proposition}
     \begin{proof}
         Suppose $A$ is artinian.
-        Then the sequence $\frakm \supset \frakm^2 \supset \frakm^3 \supset \cdots$ will stable.
+        Then the sequence $\frakm \supset \frakm^2 \supset \frakm^3 \supset \cdots$ is stable.
         It follows that $\frakm^n = \frakm^{n+1}$ for some $n$.
         By the Nakayama's Lemma \ref{thm: Nakayama's lemma}, $\frakm^n = 0$.
 
@@ -356,7 +363,7 @@ Somehow the Krull dimension is ``homological'' and the depth is ``cohomological'
         Then $A$ verifies $(S_1)$ iff $A$ has no embedded point.
         
         Suppose $A$ verifies $(S_1)$.
-        If $\frakp \in Ass A$, every element in $\frakp$ is a zero divisor.
+        If $\frakp \in \Ass A$, every element in $\frakp$ is a zero divisor.
         Then $\depth A_{\frakp} = 0$.
         It follows that $\dim A_\frakp = 0$ and then $\frakp$ is minimal. 
 

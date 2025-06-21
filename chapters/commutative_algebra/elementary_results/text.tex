@@ -44,6 +44,16 @@
         Then $\Phi-\id$ is invertible and then $M=0$.
     \end{proof}
 
+    \begin{remark}\label{rem: counterexample of Nakayama's lemma when M is not finite}
+        The finiteness of $M$ is crucial in Nakayama's Lemma.
+        For example, let \(\overline{\bbz}\) be the ring of algebraic integers in \(\overline{\bbq}\).
+        Choose a non-zero prime ideal \(\frakp\) of \(\overline{\bbz}\).
+        Then we have that \(\frakp \overline{\bbz}_\frakp= \frakp^2 \overline{\bbz}_\frakp\).
+        Indeed, if \(a \in \frakp \overline{\bbz}_\frakp\), let \(b = \sqrt{a} \in \overline{\bbz}_\frakp\).
+        Then \(b^2 = a \in \frakp \overline{\bbz}_\frakp\) and whence \(b \in \frakp \overline{\bbz}_\frakp\) since \(\frakp\) is prime.
+        It follows that \(a = b^2 \in \frakp^2 \overline{\bbz}_\frakp\).
+    \end{remark}
+
     \begin{proposition}[Geometric form of Nakayama's Lemma]\label{prop: geometric form of Nakayama's lemma}
         Let $X = \Spec A$ be an affine scheme, $x\in X$ a closed point and $\calf$ a coherent sheaf on $X$.
         If $a_1,\cdots,a_k \in \calf(X)$ generate $\calf|_x = \calf \ten \rkk(x)$, then there is an open subset $U \subset X$ such that $a_i|_U$ generate $\calf(U)$. 
