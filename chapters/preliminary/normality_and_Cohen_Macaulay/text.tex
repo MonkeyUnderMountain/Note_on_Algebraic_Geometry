@@ -43,142 +43,142 @@
         Hence $\frakP B_\frakp \cap A_\frakp = \frakp A_\frakp$, and then $\frakP \cap A = \frakp$.
     \end{proof}
 
-    \begin{proposition}\label{prop: finite morphisms preserve dimension}
-        Let $A \subset B$ be noetherian rings such that $B$ is finite over $A$.
-        Then $\dim A = \dim B$.
-    \end{proposition}
-    \begin{proof}
-        If we have a sequence $\frakP_1 \subsetneq \frakP_2$ of prime ideals in $B$, then there exists $f \in \frakP_2 \setminus \frakP_1$.
-        Since $B$ is finite over $A$, there exist $a_1,\cdots,a_n \in A$ such that 
-        \[ f^n + a_1f^{n-1} + \cdots + a_n = 0.\]
+    % \begin{proposition}\label{prop: finite morphisms preserve dimension}
+    %     Let $A \subset B$ be noetherian rings such that $B$ is finite over $A$.
+    %     Then $\dim A = \dim B$.
+    % \end{proposition}
+    % \begin{proof}
+    %     If we have a sequence $\frakP_1 \subsetneq \frakP_2$ of prime ideals in $B$, then there exists $f \in \frakP_2 \setminus \frakP_1$.
+    %     Since $B$ is finite over $A$, there exist $a_1,\cdots,a_n \in A$ such that 
+    %     \[ f^n + a_1f^{n-1} + \cdots + a_n = 0.\]
 
-        Then $a_n \in \frakP_2 \cap A$.
-        If $a_n \in \frakP_1$, $f^{n-1} + \cdots + a_{n_1} \in \frakP_1$ since $f \notin \frakP_1$.
-        Then $a_{n-1} \in \frakP_2$.
-        Repeat the process, it will terminate, whence $\frakP_1 \cap A \subsetneq \frakP_2 \cap A$.
-        Otherwise, we have $f^n \in a_1 B+ \cdots + a_nB \subset \frakP_1$.
+    %     Then $a_n \in \frakP_2 \cap A$.
+    %     If $a_n \in \frakP_1$, $f^{n-1} + \cdots + a_{n_1} \in \frakP_1$ since $f \notin \frakP_1$.
+    %     Then $a_{n-1} \in \frakP_2$.
+    %     Repeat the process, it will terminate, whence $\frakP_1 \cap A \subsetneq \frakP_2 \cap A$.
+    %     Otherwise, we have $f^n \in a_1 B+ \cdots + a_nB \subset \frakP_1$.
 
-        Conversely, suppose we have $\frakp_1,\frakp_2 \in \Spec A$ with $\frakp_1 \subsetneq \frakp_2$.
-        Choose $\frakP_1 \in \Spec B$ such that $\frakP_1 \cap A = \frakp_1$, then we have $A/\frakp_1 \subset B/\frakP_1$.
-        Let $\frakP_2$ be the preimage of the prime ideal in $B/\frakP_1$ which is over image of $\frakp_2$ in $A/\frakp_1$.
-        Proposition \ref{lem: finite inclusion induces surjective morphism} guarantees that such $\frakP_2$ exists.
-        Then we get $\frakP_1 \subsetneq \frakP_2$.
-        Repeat this progress, we get $\dim B \geq \dim A$.
-    \end{proof}
+    %     Conversely, suppose we have $\frakp_1,\frakp_2 \in \Spec A$ with $\frakp_1 \subsetneq \frakp_2$.
+    %     Choose $\frakP_1 \in \Spec B$ such that $\frakP_1 \cap A = \frakp_1$, then we have $A/\frakp_1 \subset B/\frakP_1$.
+    %     Let $\frakP_2$ be the preimage of the prime ideal in $B/\frakP_1$ which is over image of $\frakp_2$ in $A/\frakp_1$.
+    %     Proposition \ref{lem: finite inclusion induces surjective morphism} guarantees that such $\frakP_2$ exists.
+    %     Then we get $\frakP_1 \subsetneq \frakP_2$.
+    %     Repeat this progress, we get $\dim B \geq \dim A$.
+    % \end{proof}
 
-    \begin{theorem}[Krull's Principal Ideal Theorem]\label{thm: Krull's principal ideal theorem}
-        Let $A$ be a noetherian ring.
-        Suppose $f \in A$ is not a unit.
-        Let $\frakp$ be a minimal prime ideal among those containing $f$.
-        Then $\idealht(\frakp)\leq 1$.
-        % Moreover, if $A$ is local or $\dim A_\frakm$ is constant for all $\frakm$, then the equality holds.
-    \end{theorem}
-    \begin{proof}
-        By replacing $A$ by $A_\frakp$, we may assume $A$ is local with maximal ideal $\frakp$.
-        Note that $A/(f)$ is artinian since it has only one prime ideal $\frakp/(f)$.
+    % \begin{theorem}[Krull's Principal Ideal Theorem]\label{thm: Krull's principal ideal theorem}
+    %     Let $A$ be a noetherian ring.
+    %     Suppose $f \in A$ is not a unit.
+    %     Let $\frakp$ be a minimal prime ideal among those containing $f$.
+    %     Then $\idealht(\frakp)\leq 1$.
+    %     % Moreover, if $A$ is local or $\dim A_\frakm$ is constant for all $\frakm$, then the equality holds.
+    % \end{theorem}
+    % \begin{proof}
+    %     By replacing $A$ by $A_\frakp$, we may assume $A$ is local with maximal ideal $\frakp$.
+    %     Note that $A/(f)$ is artinian since it has only one prime ideal $\frakp/(f)$.
 
-        Let $\frakq \subsetneq \frakp$.
-        Consider the sequence $\frakq^{(1)} \supset \frakq^{(2)} \supset \cdots$, its image in $A/(f)$ is stationary.
-        Then there exists $n \in \bbz_{\geq 0}$ such that $\frakq^{(n)} + (f) = \frakq^{(n+1)} +(f)$.
-        For $x \in \frakq^{(n)}$, we may write $x = y + af$ for $y \in \frakq^{(n+1)}$.
-        Then $af \in \frakq^{(n)}$.
-        Since $\frakq^{(n)}$ is $\frakq$-primary and $f \notin \frakq$, $a \in \frakq^{(n)}$.
-        Then we get $\frakq^{(n)} = \frakq^{(n+1)} + f \frakq^{(n)}$.
-        That is, $\frakq^{(n)}/\frakq^{(n+1)} = f \frakq^{(n)}/\frakq^{(n+1)}$.
-        Note that $f \in \frakp$, by Nakayama's Lemma, $\frakq^{(n)} = \frakq^{(n+1)}$.
-        That is, $\frakq^n A_\frakq = \frakq^{n+1} A_\frakq$.
-        By Nakayama's Lemma again, $\frakq^n A_\frakq = 0$.
-        It follows that $\frakq A_\frakq$ is minimal, whence $A_\frakq$ is artinian.
-        Therefore, $\frakq$ is minimal in $A$.
-    \end{proof}
+    %     Let $\frakq \subsetneq \frakp$.
+    %     Consider the sequence $\frakq^{(1)} \supset \frakq^{(2)} \supset \cdots$, its image in $A/(f)$ is stationary.
+    %     Then there exists $n \in \bbz_{\geq 0}$ such that $\frakq^{(n)} + (f) = \frakq^{(n+1)} +(f)$.
+    %     For $x \in \frakq^{(n)}$, we may write $x = y + af$ for $y \in \frakq^{(n+1)}$.
+    %     Then $af \in \frakq^{(n)}$.
+    %     Since $\frakq^{(n)}$ is $\frakq$-primary and $f \notin \frakq$, $a \in \frakq^{(n)}$.
+    %     Then we get $\frakq^{(n)} = \frakq^{(n+1)} + f \frakq^{(n)}$.
+    %     That is, $\frakq^{(n)}/\frakq^{(n+1)} = f \frakq^{(n)}/\frakq^{(n+1)}$.
+    %     Note that $f \in \frakp$, by Nakayama's Lemma, $\frakq^{(n)} = \frakq^{(n+1)}$.
+    %     That is, $\frakq^n A_\frakq = \frakq^{n+1} A_\frakq$.
+    %     By Nakayama's Lemma again, $\frakq^n A_\frakq = 0$.
+    %     It follows that $\frakq A_\frakq$ is minimal, whence $A_\frakq$ is artinian.
+    %     Therefore, $\frakq$ is minimal in $A$.
+    % \end{proof}
 
-    \begin{corollary}\label{cor: geometric form of principal ideal theorem}
-        Let $A$ be a noetherian local ring.
-        Suppose $f \in A$ is not a unit.
-        Then $\dim A/(f) \geq \dim A - 1$.
-        If $f$ is not contained in a minimal prime ideal, the equality holds.
-    \end{corollary}
-    \begin{proof}
-        Let $\frakp_0 \subsetneq \cdots \subsetneq \frakp_n$ be a sequence of prime ideals.
-        By assumption, $f \in \frakp_n$.
-        If $f \in \frakp_0$, we get a sequence of prime ideals in $A/(f)$ of length $n$.
-        Now we suppose $f \notin \frakp_0$.
-        Then there exists $k \geq 0$ such that $f \in \frakp_{k+1} \setminus \frakp_{k}$. 
+    % \begin{corollary}\label{cor: geometric form of principal ideal theorem}
+    %     Let $A$ be a noetherian local ring.
+    %     Suppose $f \in A$ is not a unit.
+    %     Then $\dim A/(f) \geq \dim A - 1$.
+    %     If $f$ is not contained in a minimal prime ideal, the equality holds.
+    % \end{corollary}
+    % \begin{proof}
+    %     Let $\frakp_0 \subsetneq \cdots \subsetneq \frakp_n$ be a sequence of prime ideals.
+    %     By assumption, $f \in \frakp_n$.
+    %     If $f \in \frakp_0$, we get a sequence of prime ideals in $A/(f)$ of length $n$.
+    %     Now we suppose $f \notin \frakp_0$.
+    %     Then there exists $k \geq 0$ such that $f \in \frakp_{k+1} \setminus \frakp_{k}$. 
             
-        Choose $\frakq$ be a minimal prime ideal among those containing $(\frakp_{k-1},f)$ and contained in $\frakp_{k+1}$.
-        Then by Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem}, $\frakq_k \subsetneq \frakp_{k+1}$.
-        Replace $\frakp_k$ by $\frakq_k$, we have $f \in \frakq_{k} \setminus \frakp_{k-1}$
+    %     Choose $\frakq$ be a minimal prime ideal among those containing $(\frakp_{k-1},f)$ and contained in $\frakp_{k+1}$.
+    %     Then by Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem}, $\frakq_k \subsetneq \frakp_{k+1}$.
+    %     Replace $\frakp_k$ by $\frakq_k$, we have $f \in \frakq_{k} \setminus \frakp_{k-1}$
 
-        Repeat this process, we get a sequence $\frakp_0' \subsetneq \cdots \subsetneq \frakp_n'$ such that $f \in \frakp_1'$.
-        This gives a sequence $\frakp_1' \subsetneq \cdots \subsetneq \frakp_n'$ in $A/(f)$.
-        Hence we get $\dim A/(f) \geq \dim A - 1$.
+    %     Repeat this process, we get a sequence $\frakp_0' \subsetneq \cdots \subsetneq \frakp_n'$ such that $f \in \frakp_1'$.
+    %     This gives a sequence $\frakp_1' \subsetneq \cdots \subsetneq \frakp_n'$ in $A/(f)$.
+    %     Hence we get $\dim A/(f) \geq \dim A - 1$.
  
-        % Then there exist a prime ideal $\frakp_0 \subsetneq (f)$.
-        Since $f$ is not contained in minimal prime ideal, preimage of a minimal prime ideal in $A/(f)$ has height $1$.
-        Hence a sequence of prime ideals in $A/fA$ can be extended by a minimal prime ideal in $A$.
-        It follows that $\dim A/(f) + 1 \leq \dim A$.
-    \end{proof}
+    %     % Then there exist a prime ideal $\frakp_0 \subsetneq (f)$.
+    %     Since $f$ is not contained in minimal prime ideal, preimage of a minimal prime ideal in $A/(f)$ has height $1$.
+    %     Hence a sequence of prime ideals in $A/fA$ can be extended by a minimal prime ideal in $A$.
+    %     It follows that $\dim A/(f) + 1 \leq \dim A$.
+    % \end{proof}
 
-    For varieties, the Krull dimension behaves well by follows.
+    % For varieties, the Krull dimension behaves well by follows.
 
-    \begin{lemma}\label{lem: dimension of algebraic varieties}
-        Let $X$ be an algebraic variety over $\kk$.
-        Then for every closed point $x \in X(\kkk)$, we have 
-        \[ \dim X = \dim \calo_{X,x} = \trdeg(\fkk(X)/\kk). \] 
-    \end{lemma}
-    \begin{proof}
-        Since $X$ is irreducible, we may assume that $X = \Spec A$ is affine.
-        Let $d = \trdeg(\fkk(X)/\kk)$.
+    % \begin{lemma}\label{lem: dimension of algebraic varieties}
+    %     Let $X$ be an algebraic variety over $\kk$.
+    %     Then for every closed point $x \in X(\kkk)$, we have 
+    %     \[ \dim X = \dim \calo_{X,x} = \trdeg(\fkk(X)/\kk). \] 
+    % \end{lemma}
+    % \begin{proof}
+    %     Since $X$ is irreducible, we may assume that $X = \Spec A$ is affine.
+    %     Let $d = \trdeg(\fkk(X)/\kk)$.
 
-        By Noether's Normalization Lemma \ref{thm: Noether's Normalization Lemma}, there is an injective and finite homomorphism $A_0 = \kk[T_1,\cdots,T_d] \injmap A$.
-        Let $\frakM$ be the corresponding maximal ideal of $x$ in $A$ and $\frakm = \frakM \cap \kk[T_1,\cdots,T_d]$.
-        Denote the image of $T_i$ in $\exk:=A_0/\frakm$ by $t_i$.
-        The extension $\exk/\kk$ is finite by Nullstellensatz \ref{thm: Nullstellensatz}.
-        Let $f_i\in \kk[T]$ be the minimal polynomial of $t_i$ and $g_i:= f_i(T_i) \in A_0$.
-        Then $g_i \in \frakm$ and $\frakm = g_1A_0 +\cdots,g_d A_0$.
-        In particular, $g_1,\cdots,g_d \in \frakM$.
+    %     By Noether's Normalization Lemma \ref{thm: Noether's Normalization Lemma}, there is an injective and finite homomorphism $A_0 = \kk[T_1,\cdots,T_d] \injmap A$.
+    %     Let $\frakM$ be the corresponding maximal ideal of $x$ in $A$ and $\frakm = \frakM \cap \kk[T_1,\cdots,T_d]$.
+    %     Denote the image of $T_i$ in $\exk:=A_0/\frakm$ by $t_i$.
+    %     The extension $\exk/\kk$ is finite by Nullstellensatz \ref{thm: Nullstellensatz}.
+    %     Let $f_i\in \kk[T]$ be the minimal polynomial of $t_i$ and $g_i:= f_i(T_i) \in A_0$.
+    %     Then $g_i \in \frakm$ and $\frakm = g_1A_0 +\cdots,g_d A_0$.
+    %     In particular, $g_1,\cdots,g_d \in \frakM$.
 
-        We have $A/g_1A+\cdots+g_dA$ is finite over $A_0/\frakm$, whence it is artinian.
-        This implies that $A_\frakM/g_1A_\frakM + \cdots + g_dA_\frakM$ is also artinian.
-        Since $g_{k+1}$ is not a zero divisor in $A_0/g_1A_0+\cdots+g_kA_0$, $g_{k+1}$ is not contained in any minimal prime ideal of $A_0/g_1A_0+\cdots+g_kA_0$.
-        Then $g_{k+1}$ is also not contained in any minimal prime ideal of $A/g_1A+\cdots+g_kA$.
-        By Corollary \ref{cor: geometric form of principal ideal theorem}, $\dim A_\frakM = \dim (A_\frakM/g_1A_\frakM + \cdots + g_dA_\frakM) + d = d$.
-    \end{proof}
+    %     We have $A/g_1A+\cdots+g_dA$ is finite over $A_0/\frakm$, whence it is artinian.
+    %     This implies that $A_\frakM/g_1A_\frakM + \cdots + g_dA_\frakM$ is also artinian.
+    %     Since $g_{k+1}$ is not a zero divisor in $A_0/g_1A_0+\cdots+g_kA_0$, $g_{k+1}$ is not contained in any minimal prime ideal of $A_0/g_1A_0+\cdots+g_kA_0$.
+    %     Then $g_{k+1}$ is also not contained in any minimal prime ideal of $A/g_1A+\cdots+g_kA$.
+    %     By Corollary \ref{cor: geometric form of principal ideal theorem}, $\dim A_\frakM = \dim (A_\frakM/g_1A_\frakM + \cdots + g_dA_\frakM) + d = d$.
+    % \end{proof}
 
-    \begin{theorem}\label{thm: dimension of varieties}
-        Let $S$ be spectrum of a field $\kk$ or an algebraic integer ring $\calo_K$ and $X$ an integral $S$-variety.
-        Then we have the follows:
-        \begin{enumerate}[label=(\roman*)]
-            \item For every point $\xi \in X$, $\dim X = \dim \calo_{X,\xi} + \codim Z_\xi$.
-            \item For every non-empty open subset $U \subset X$, $\dim U = \dim X$.
-            \item $\dim X = \trdeg(\fkk(X)/\fkk(S)) + \dim S$.
-        \end{enumerate}
-    \end{theorem}
-    \begin{proof}
-        \Yang{To be continued.}
-    \end{proof}
+    % \begin{theorem}\label{thm: dimension of varieties}
+    %     Let $S$ be spectrum of a field $\kk$ or an algebraic integer ring $\calo_K$ and $X$ an integral $S$-variety.
+    %     Then we have the follows:
+    %     \begin{enumerate}[label=(\roman*)]
+    %         \item For every point $\xi \in X$, $\dim X = \dim \calo_{X,\xi} + \codim Z_\xi$.
+    %         \item For every non-empty open subset $U \subset X$, $\dim U = \dim X$.
+    %         \item $\dim X = \trdeg(\fkk(X)/\fkk(S)) + \dim S$.
+    %     \end{enumerate}
+    % \end{theorem}
+    % \begin{proof}
+    %     \Yang{To be continued.}
+    % \end{proof}
 
-    \begin{example}
-        For general noetherian schemes, Theorem \ref{thm: dimension of varieties} may not hold.
-        Let $A = \kk[t]$, $\frakm = (t)$, $B=A_\frakm[x]$ and $X = \Spec B$.
-        Then we have $\dim X = 2$ since 
-        \Yang{To be added.}
-    \end{example}
+    % \begin{example}
+    %     For general noetherian schemes, Theorem \ref{thm: dimension of varieties} may not hold.
+    %     Let $A = \kk[t]$, $\frakm = (t)$, $B=A_\frakm[x]$ and $X = \Spec B$.
+    %     Then we have $\dim X = 2$ since 
+    %     \Yang{To be added.}
+    % \end{example}
 
 
-    \paragraph{Depth}
-    For a noetherian local ring $(A,\frakm)$, we can define the depth of an $A$-module $M$.
-    Somehow the Krull dimension is ``homological'' and the depth is ``cohomological''.
+    % \paragraph{Depth}
+    % For a noetherian local ring $(A,\frakm)$, we can define the depth of an $A$-module $M$.
+    % Somehow the Krull dimension is ``homological'' and the depth is ``cohomological''.
 
-    \begin{definition}\label{def: regular sequence}
-        Let $A$ be a noetherian ring, $I \subset A$ an ideal and $M$ a finitely generated $A$-module.
-        A sequence $t_1,\cdots,t_n\in \frakm$ is called an \textit{$M$-regular sequence in $I$} if $t_i$ is not a zero divisor on $M/(t_1,\cdots,t_{i-1})M$ for all $i$. 
-    \end{definition}
+    % \begin{definition}\label{def: regular sequence}
+    %     Let $A$ be a noetherian ring, $I \subset A$ an ideal and $M$ a finitely generated $A$-module.
+    %     A sequence $t_1,\cdots,t_n\in \frakm$ is called an \textit{$M$-regular sequence in $I$} if $t_i$ is not a zero divisor on $M/(t_1,\cdots,t_{i-1})M$ for all $i$. 
+    % \end{definition}
 
-    \begin{example}
-        Let $A = \kk[x,y]/(x^2,xy)$ and $I = (x,y)$.
-        Then $\depth_I A = 0$.
-    \end{example}
+    % \begin{example}
+    %     Let $A = \kk[x,y]/(x^2,xy)$ and $I = (x,y)$.
+    %     Then $\depth_I A = 0$.
+    % \end{example}
 
     % \begin{proposition}\label{lem: permutation of regular sequence is still regular}
     %     Suppose $A$ is local and $I = \frakm$ is the maximal ideal of $A$.
@@ -189,35 +189,35 @@
     %     \Yang{To be completed.}
     % \end{proof}
 
-    \begin{definition}
-        The \textit{$I$-depth} of $M$ is defined as the maximum length of $M$-regular sequences in $I$, denoted by $\depth_I M$. 
-        When $A$ is a local ring with maximal ideal $\frakm$, we write $\depth M$ for $\depth_{\frakm} M$.
-    \end{definition}
+    % \begin{definition}
+    %     The \textit{$I$-depth} of $M$ is defined as the maximum length of $M$-regular sequences in $I$, denoted by $\depth_I M$. 
+    %     When $A$ is a local ring with maximal ideal $\frakm$, we write $\depth M$ for $\depth_{\frakm} M$.
+    % \end{definition}
 
-    \paragraph{Regular and Serre's conditions}
-    Up to now, there are three numbers measuring the ``size'' of a local ring $(A,\frakm)$:
-    \begin{itemize}
-        \item $\dim A$: the Krull dimension of $A$.
-        \item $\depth A$: the depth of $A$.
-        \item $\dim_{\rkk(\frakm)} T_{A,\frakm}$: the dimension of Zariski tangent space $T_{A,\frakm} := (\frakm/\frakm^2)^\lor$ as a ${\rkk(\frakm)}$-vector space.
-    \end{itemize}
+    % \paragraph{Regular and Serre's conditions}
+    % Up to now, there are three numbers measuring the ``size'' of a local ring $(A,\frakm)$:
+    % \begin{itemize}
+    %     \item $\dim A$: the Krull dimension of $A$.
+    %     \item $\depth A$: the depth of $A$.
+    %     \item $\dim_{\rkk(\frakm)} T_{A,\frakm}$: the dimension of Zariski tangent space $T_{A,\frakm} := (\frakm/\frakm^2)^\lor$ as a ${\rkk(\frakm)}$-vector space.
+    % \end{itemize}
 
-    These three numbers are related by the following inequalities.
-    \begin{proposition}\label{prop: inequality of depth, dimension and dimension of tangent space}
-        Let $(A,\frakm)$ be a local noetherian ring with residue field $\kk$.
-        Then the following inequalities hold:
-        \[ \depth A \leq \dim A \leq \dim_\kk T_{A,\frakm}. \]
-    \end{proposition}
-    \begin{proof}
-        The first inequality is a direct corollary of Corollary \ref{cor: geometric form of principal ideal theorem}.
+    % These three numbers are related by the following inequalities.
+    % \begin{proposition}\label{prop: inequality of depth, dimension and dimension of tangent space}
+    %     Let $(A,\frakm)$ be a local noetherian ring with residue field $\kk$.
+    %     Then the following inequalities hold:
+    %     \[ \depth A \leq \dim A \leq \dim_\kk T_{A,\frakm}. \]
+    % \end{proposition}
+    % \begin{proof}
+    %     The first inequality is a direct corollary of Corollary \ref{cor: geometric form of principal ideal theorem}.
 
-        Let $t_1,\cdots,t_n$ be a $\rkk(\frakm)$-basis of $\frakm/\frakm^2$.
-        Then we have $\frakm/(t_1,\cdots,t_n)+\frakm^2 = 0$, whence $\frakm/(t_1,\cdots,t_n) = \frakm(\frakm/(t_1,\cdots,t_n))$.
-        It follows that $\frakm = (t_1,\cdots,t_n)$ by Nakayama's Lemma.
-        By Corollary \ref{cor: geometric form of principal ideal theorem}, 
-        \[ n + \dim A/(t_1,\cdots,t_n) \geq n-1 + \dim A/(t_1,\cdots,t_{n-1}) \geq \cdots \geq 1 + \dim A/(t_1) \geq \dim A. \]  
-        We conclude the result.
-    \end{proof}
+    %     Let $t_1,\cdots,t_n$ be a $\rkk(\frakm)$-basis of $\frakm/\frakm^2$.
+    %     Then we have $\frakm/(t_1,\cdots,t_n)+\frakm^2 = 0$, whence $\frakm/(t_1,\cdots,t_n) = \frakm(\frakm/(t_1,\cdots,t_n))$.
+    %     It follows that $\frakm = (t_1,\cdots,t_n)$ by Nakayama's Lemma.
+    %     By Corollary \ref{cor: geometric form of principal ideal theorem}, 
+    %     \[ n + \dim A/(t_1,\cdots,t_n) \geq n-1 + \dim A/(t_1,\cdots,t_{n-1}) \geq \cdots \geq 1 + \dim A/(t_1) \geq \dim A. \]  
+    %     We conclude the result.
+    % \end{proof}
 
     % To see these, we need the following well-known theorem.
 
@@ -585,69 +585,69 @@
 
 \subsection{Cohen-Macaulay schemes}
 
-    \begin{definition}[Cohen-Macaulay]\label{def: Cohen-Macaulay}
-        A noetherian local ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
-        A locally noetherian scheme $X$ is called \textit{Cohen-Macaulay} if $\calo_{X,\xi}$ is Cohen-Macaulay for any point $\xi \in X$.
-    \end{definition}
+    % \begin{definition}[Cohen-Macaulay]\label{def: Cohen-Macaulay}
+    %     A noetherian local ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
+    %     A locally noetherian scheme $X$ is called \textit{Cohen-Macaulay} if $\calo_{X,\xi}$ is Cohen-Macaulay for any point $\xi \in X$.
+    % \end{definition}
 
-    By definition, it is easy to see that $X$ is Cohen-Macaulay if and only if it verifies $(S_k)$ for all $k \geq 0$.
+    % By definition, it is easy to see that $X$ is Cohen-Macaulay if and only if it verifies $(S_k)$ for all $k \geq 0$.
 
-    \begin{example}[Non Cohen-Macaulay rings]
+    % \begin{example}[Non Cohen-Macaulay rings]
 
-    \end{example}
+    % \end{example}
 
-    \begin{proposition}\label{prop: depth equals to grade}
-        Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
-        Then 
-        \[ \depth M := \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}. \]
-    \end{proposition}
-    \begin{proof}
-        Let $a \in \frakm$ be $M$-regular and $N = M/aM$.
-        Then we claim that
-        \[ \inf \{ i: \Ext^i_A(\kk,N) \neq 0 \} = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \} - 1. \]
-        Indeed, we have an exact sequence
-        \[ 0 \to M \xrightarrow{a} M \to N \to 0. \]
-        It induces a long exact sequence
-        \[ \cdots \to \Ext^{i-1}_A(\kk,M) \to \Ext^{i-1}_A(\kk,N) \to \Ext^i_A(\kk,M) \xrightarrow{\Ext^i_A(\kk,\Mult_a)} \Ext^i_A(\kk,M) \to \cdots. \]
-        Note that $a \in \frakm$, then $\Ext^i_A(\kk,\Mult_a) = 0$.
-        It follows that when $\Ext^{i-1}_A(\kk,M) = 0$, we have $\Ext^{i-1}_A(\kk,N) = 0$ iff $\Ext^i_A(\kk,M) = 0$, whence the claim.
+    % \begin{proposition}\label{prop: depth equals to grade}
+    %     Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
+    %     Then 
+    %     \[ \depth M := \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}. \]
+    % \end{proposition}
+    % \begin{proof}
+    %     Let $a \in \frakm$ be $M$-regular and $N = M/aM$.
+    %     Then we claim that
+    %     \[ \inf \{ i: \Ext^i_A(\kk,N) \neq 0 \} = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \} - 1. \]
+    %     Indeed, we have an exact sequence
+    %     \[ 0 \to M \xrightarrow{a} M \to N \to 0. \]
+    %     It induces a long exact sequence
+    %     \[ \cdots \to \Ext^{i-1}_A(\kk,M) \to \Ext^{i-1}_A(\kk,N) \to \Ext^i_A(\kk,M) \xrightarrow{\Ext^i_A(\kk,\Mult_a)} \Ext^i_A(\kk,M) \to \cdots. \]
+    %     Note that $a \in \frakm$, then $\Ext^i_A(\kk,\Mult_a) = 0$.
+    %     It follows that when $\Ext^{i-1}_A(\kk,M) = 0$, we have $\Ext^{i-1}_A(\kk,N) = 0$ iff $\Ext^i_A(\kk,M) = 0$, whence the claim.
 
-        Let $n = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}$.
-        Induct on $n$.
-        Suppose first $n = 0$.
-        Since $\kk$ is a simple $A$-module, there is an injective homomorphism $\kk \to M$.
-        Then $\frakm \in \Ass M$ and hence $\depth M = 0$.
+    %     Let $n = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}$.
+    %     Induct on $n$.
+    %     Suppose first $n = 0$.
+    %     Since $\kk$ is a simple $A$-module, there is an injective homomorphism $\kk \to M$.
+    %     Then $\frakm \in \Ass M$ and hence $\depth M = 0$.
         
-        Suppose $n > 0$., let $a_1,\cdots,a_m \in \frakm$ be any $M$-regular sequence.
-        Using the claim inductively on $M/(a_1,\cdots,a_m)M$, we have $n \geq \depth$.
-        If $M$ has no regular element, then $\frakm \subset \bigcup_{\frakp \in \Ass M} \frakp$.
-        Then $\frakm = \frakp$ for some $\frakp \in \Ass M$.
-        This show that we can find $x \neq 0 \in M$ such that $\frakp = \Ann x$.
-        It gives a homomorphism $\kk = A/\frakm \to M$.
-        That is a contradiction and hence $M$ has a regular element.
-        Let $a$ be $M$-regular and $N = M/aM$.
-        Then $\depth N = n-1$ by the claim and induction hypothesis.
-        Hence we have $\depth M \geq n$.
-    \end{proof}
+    %     Suppose $n > 0$., let $a_1,\cdots,a_m \in \frakm$ be any $M$-regular sequence.
+    %     Using the claim inductively on $M/(a_1,\cdots,a_m)M$, we have $n \geq \depth$.
+    %     If $M$ has no regular element, then $\frakm \subset \bigcup_{\frakp \in \Ass M} \frakp$.
+    %     Then $\frakm = \frakp$ for some $\frakp \in \Ass M$.
+    %     This show that we can find $x \neq 0 \in M$ such that $\frakp = \Ann x$.
+    %     It gives a homomorphism $\kk = A/\frakm \to M$.
+    %     That is a contradiction and hence $M$ has a regular element.
+    %     Let $a$ be $M$-regular and $N = M/aM$.
+    %     Then $\depth N = n-1$ by the claim and induction hypothesis.
+    %     Hence we have $\depth M \geq n$.
+    % \end{proof}
 
-    \begin{corollary}\label{cor: induction on depth}
-        Let $A$ be a noetherian ring, $M$ a finite $A$-module and $a \in A$ an $M$-regular element.
-        Then $\depth M = \depth M/aM + 1$.
-    \end{corollary}
+    % \begin{corollary}\label{cor: induction on depth}
+    %     Let $A$ be a noetherian ring, $M$ a finite $A$-module and $a \in A$ an $M$-regular element.
+    %     Then $\depth M = \depth M/aM + 1$.
+    % \end{corollary}
 
-    \begin{corollary}\label{cor: induction on S_d conditions}
-        Let $A$ be a noetherian ring $a \in A$ a nonzero divisor.
-        Then $A$ verifies $(S_d)$ iff $A/aA$ verifies $(S_{d-1})$.
-    \end{corollary}
+    % \begin{corollary}\label{cor: induction on S_d conditions}
+    %     Let $A$ be a noetherian ring $a \in A$ a nonzero divisor.
+    %     Then $A$ verifies $(S_d)$ iff $A/aA$ verifies $(S_{d-1})$.
+    % \end{corollary}
 
-    \begin{definition}\label{def: unmixedness theorem}
-        An ideal $I$ of a noetherian ring $A$ is called \textit{unmixed} if 
-        \[ \idealht(I) = \idealht(\frakp), \quad \forall \frakp \in \Ass(A/I). \]
-        Here $\idealht(I)$ is defined as 
-        \[ \idealht(I) := \inf \{ \idealht(\frakp) : I \subset \frakp \}. \]
-        We say that \textit{the unmixedness theorem holds for a noetherian ring $A$} if any ideal $I \subset A$ generated by $\idealht(I)$ elements is unmixed.
-        We say that \textit{the unmixedness theorem holds for a locally noetherian scheme $X$} if $\calo_{X,\xi}$ is unmixed for any point $\xi \in X$.
-    \end{definition}
+    % \begin{definition}\label{def: unmixedness theorem}
+    %     An ideal $I$ of a noetherian ring $A$ is called \textit{unmixed} if 
+    %     \[ \idealht(I) = \idealht(\frakp), \quad \forall \frakp \in \Ass(A/I). \]
+    %     Here $\idealht(I)$ is defined as 
+    %     \[ \idealht(I) := \inf \{ \idealht(\frakp) : I \subset \frakp \}. \]
+    %     We say that \textit{the unmixedness theorem holds for a noetherian ring $A$} if any ideal $I \subset A$ generated by $\idealht(I)$ elements is unmixed.
+    %     We say that \textit{the unmixedness theorem holds for a locally noetherian scheme $X$} if $\calo_{X,\xi}$ is unmixed for any point $\xi \in X$.
+    % \end{definition}
 
 
     \begin{theorem}\label{thm: unmixedness theorem for Cohen-Macaulay schemes}

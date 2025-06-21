@@ -89,18 +89,24 @@
 \gdef\@date{} % 初始化日期变量
 
 % 自定义封面元素
-\gdef\@authorinfo{}     % 作者附加信息
-\newcommand{\authorinfo}[1]{\gdef\@authorinfo{#1}}
+\gdef\@authoremail{}     % 作者邮箱
+\newcommand{\authoremail}[1]{\gdef\@authoremail{#1}}
+\gdef\@authorpage{}     % 作者主页
+\newcommand{\authorpage}[1]{\gdef\@authorpage{#1}} 
 \gdef\@coversentence{}  % 封面标语
 \newcommand{\coversentence}[1]{\gdef\@coversentence{#1}}
 \gdef\@coverimage{}     % 封面图片路径
 \newcommand{\coverimage}[1]{\gdef\@coverimage{#1}}
 \gdef\@coverlinecolor{orange!80!yellow} % 封面装饰线颜色
 \newcommand{\coverlinecolor}[1]{\gdef\@coverlinecolor{#1}}
-\gdef\@covertitlefont{Brush Script MT}  % 封面标题字体
+\gdef\@covertitlefont{Arial}  % 封面标题字体
 \newcommand{\covertitlefont}[1]{\gdef\@covertitlefont{#1}}
 \gdef\@covertextcolor{purple!70!blue}   % 封面文字颜色
 \newcommand{\covertextcolor}[1]{\gdef\@covertextcolor{#1}}
+\gdef\@texsource{} % TeX源代码路径
+\newcommand{\texsource}[1]{\gdef\@texsource{#1}}
+\gdef\@version{1.0.0} % 文档版本
+\newcommand{\version}[1]{\gdef\@version{#1}}
 \makeatother
 
 %--------------------------------------------------------------------------
@@ -113,6 +119,14 @@
   {10pt} % 标题与编号间距
   {} % 标题前命令
   [\vspace{1em}] % 标题后命令
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries} % 小节标题样式
+  {\thesection} % 小节编号格式
+  {1em} % 标题与编号间距
+  {} % 小节标题前命令
+  [] % 小节标题后命令
+\titlespacing{\section}{0pt}{4em}{1em} % 小节标题前后间距
+
 
 %--------------------------------------------------------------------------
 % 页眉页脚样式配置
@@ -133,7 +147,7 @@
       \node[shape=rectangle,fill=gray,text=white,inner sep=2pt] (char) {\thepage};
     }%
   }
-  \fancyhead[RE]{\leftmark} % 左侧页眉显示章节标题
+  \fancyhead[RE]{\rightmark} % 右侧页眉显示小节标题
 
   \renewcommand{\headrule}{%
     \vbox to 0pt{%
@@ -231,11 +245,22 @@
   \end{titlepage}
   \restoregeometry
   \clearpage
+
+  % 信息页
+
+  \thispagestyle{empty}
+    \vspace*{1cm}
+    \noindent {\Huge \textbf{\@title}}\\[0.5cm]
+    {\large \textbf{Author:} \@author}\\[0.5cm]
+    {\large \textbf{Email:} \@authoremail}\\[0.5cm]
+    {\large \textbf{Homepage:} \@authorpage}\\[0.5cm]
+    \vfill
+    \noindent {\large \textit{Source code: \@texsource}}\\[0.5cm]
+    {\large \textit{Version: \@version}}\\[0.5cm]
+    {\large \textit{Last updated: \today}}\\[0.5cm]
+    {\large \textit{Copyright © 2025 Tianle Yang}}
+  \clearpage
   
-  % % 文档信息脚注
-  % \renewcommand{\thefootnote}{}
-  % \footnotetext{\textbf{Date}: \@date,\ \textbf{Author}: \@author,\ \@authorinfo}
-  % \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 }
 \makeatother
 
@@ -264,7 +289,7 @@
 \theoremstyle{mystyle}
 
 % 定义具体定理环境（共享计数器）
-\newtheorem{definition}{Definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{proposition}[definition]{Proposition}
 \newtheorem{def-prop}[definition]{Def-Prop}
 \newtheorem{theorem}[definition]{Theorem}

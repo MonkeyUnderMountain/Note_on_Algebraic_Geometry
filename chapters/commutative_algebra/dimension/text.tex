@@ -311,176 +311,176 @@
 
     % To see these, we need the following well-known theorem.
 
-    \begin{definition}\label{def: regular and Serre's conditions}
-        Let $X$ be a locally noetherian scheme and $k \in \bbz_{\geq 0}$.
-        We say that \textit{$X$ verifies property $(R_k)$} or \textit{is regular in codimension $k$} if $\forall \xi \in X$ with $\codim Z_\xi \leq k$, 
-        \[ \dim_{\rkk(\xi)} T_{X,\xi} = \dim \calo_{X,\xi}. \]
-        We say that \textit{$X$ verifies property $(S_k)$} if $\forall \xi \in X$ with $\depth \calo_{X,\xi} < k$,
-        \[ \depth \calo_{X,\xi} = \dim \calo_{X,\xi}. \]        
-    \end{definition}
+%     \begin{definition}\label{def: regular and Serre's conditions}
+%         Let $X$ be a locally noetherian scheme and $k \in \bbz_{\geq 0}$.
+%         We say that \textit{$X$ verifies property $(R_k)$} or \textit{is regular in codimension $k$} if $\forall \xi \in X$ with $\codim Z_\xi \leq k$, 
+%         \[ \dim_{\rkk(\xi)} T_{X,\xi} = \dim \calo_{X,\xi}. \]
+%         We say that \textit{$X$ verifies property $(S_k)$} if $\forall \xi \in X$ with $\depth \calo_{X,\xi} < k$,
+%         \[ \depth \calo_{X,\xi} = \dim \calo_{X,\xi}. \]        
+%     \end{definition}
 
-    % \begin{lemma}\label{lem: trick lemma: subideal in union of prime belongs one}
-    %     Let $A$ be a ring and $\fraka \subset \bigcup_i \frakp_i$.
-    %     Then $\fraka \subset \frakp_i$ for some $i$.
-    % \end{lemma}
-    % \begin{proof}
-    %     \Yang{To be completed.}
-    % \end{proof}
+%     % \begin{lemma}\label{lem: trick lemma: subideal in union of prime belongs one}
+%     %     Let $A$ be a ring and $\fraka \subset \bigcup_i \frakp_i$.
+%     %     Then $\fraka \subset \frakp_i$ for some $i$.
+%     % \end{lemma}
+%     % \begin{proof}
+%     %     \Yang{To be completed.}
+%     % \end{proof}
 
-    \begin{example}\label{eg: S_1 is equivalent to A has no embedded point}
-        Let $A$ be a noetherian ring.
-        Then $A$ verifies $(S_1)$ iff $A$ has no embedded point.
+%     \begin{example}\label{eg: S_1 is equivalent to A has no embedded point}
+%         Let $A$ be a noetherian ring.
+%         Then $A$ verifies $(S_1)$ iff $A$ has no embedded point.
         
-        Suppose $A$ verifies $(S_1)$.
-        If $\frakp \in Ass A$, every element in $\frakp$ is a zero divisor.
-        Then $\depth A_{\frakp} = 0$.
-        It follows that $\dim A_\frakp = 0$ and then $\frakp$ is minimal. 
+%         Suppose $A$ verifies $(S_1)$.
+%         If $\frakp \in Ass A$, every element in $\frakp$ is a zero divisor.
+%         Then $\depth A_{\frakp} = 0$.
+%         It follows that $\dim A_\frakp = 0$ and then $\frakp$ is minimal. 
 
-        Suppose $A$ has no embedded point.
-        Let $\frakp \in \Spec A$ with $\depth A_\frakp = 0$.
-        This means every element in $\frakp A_\frakp$ is a zero divisor.
-        Then 
-        \[ \frakp \subset \{\text{zero divisors in } A\} = \bigcup_{\text{minimal prime ideals}} \frakq. \]
-        By Lemma \ref{lem: trick lemma: subideal in union of prime belongs one}, $\frakp = \frakq$ for some minimal $\frakq$, whence $\dim A_\frakp = 0$. 
-    \end{example}
+%         Suppose $A$ has no embedded point.
+%         Let $\frakp \in \Spec A$ with $\depth A_\frakp = 0$.
+%         This means every element in $\frakp A_\frakp$ is a zero divisor.
+%         Then 
+%         \[ \frakp \subset \{\text{zero divisors in } A\} = \bigcup_{\text{minimal prime ideals}} \frakq. \]
+%         By Lemma \ref{lem: trick lemma: subideal in union of prime belongs one}, $\frakp = \frakq$ for some minimal $\frakq$, whence $\dim A_\frakp = 0$. 
+%     \end{example}
 
-    \begin{example}\label{eg: S_2 is equivalent to A/fA has no embedded point}
-        Let $A$ be a noetherian ring verifies $(S_1)$.
-        Then $A$ verifies $(S_2)$ iff for any nonzero divisor $f \in A$, $\Ass_A A/fA$ has no embedded point.
+%     \begin{example}\label{eg: S_2 is equivalent to A/fA has no embedded point}
+%         Let $A$ be a noetherian ring verifies $(S_1)$.
+%         Then $A$ verifies $(S_2)$ iff for any nonzero divisor $f \in A$, $\Ass_A A/fA$ has no embedded point.
 
-        Suppose $A$ verifies $(S_2)$.
-        Let $f \in A$ be a nonzero divisor and $\frakp \in \Ass_A A/fA$.
-        There exist $g \in A \setminus fA$ such that $\frakp = (f:g)$.
-        For any $t_1,t_2 \in \frakp$, there exist $s_1,s_2$ with $s_i \notin (t_i)$ and $t_i g = f s_i$.
-        Then $t_1t_2g = fs_1t_2 = fs_2t_1$.
-        Since $f$ is not a zero divisor, $s_1t_2 = s_2t_1$.
-        Then $t_2$ is a zero divisor in $A_\frakp/t_1 A_\frakp$ since $s_1 \notin (t_1)$.
-        Since $f \in \frakp$, $\depth A_\frakp = 1$ and then $\idealht \frakp = 1$.
-        This show that $\frakp$ is not embedded in $\Ass_A A/fA$.
+%         Suppose $A$ verifies $(S_2)$.
+%         Let $f \in A$ be a nonzero divisor and $\frakp \in \Ass_A A/fA$.
+%         There exist $g \in A \setminus fA$ such that $\frakp = (f:g)$.
+%         For any $t_1,t_2 \in \frakp$, there exist $s_1,s_2$ with $s_i \notin (t_i)$ and $t_i g = f s_i$.
+%         Then $t_1t_2g = fs_1t_2 = fs_2t_1$.
+%         Since $f$ is not a zero divisor, $s_1t_2 = s_2t_1$.
+%         Then $t_2$ is a zero divisor in $A_\frakp/t_1 A_\frakp$ since $s_1 \notin (t_1)$.
+%         Since $f \in \frakp$, $\depth A_\frakp = 1$ and then $\idealht \frakp = 1$.
+%         This show that $\frakp$ is not embedded in $\Ass_A A/fA$.
         
-        Conversely, suppose $\Ass_A A/fA$ has no embedded point.
-        Let $\frakp \in \Spec A$ with $\depth A_{\frakp} = 1$.
-        Then there exists $f \in A_{\frakp}$ which is not a zero divisor.
-        We have $\depth A_{\frakp}/fA_\frakp = 0$ and $\Ass_A A/fA$ has no embedded point, whence $\frakp$ is minimal in $A/fA$.
-        Then $\idealht \frakp = 1$ by Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem} and the fact $f$ is not a zero divisor.
-    \end{example}
+%         Conversely, suppose $\Ass_A A/fA$ has no embedded point.
+%         Let $\frakp \in \Spec A$ with $\depth A_{\frakp} = 1$.
+%         Then there exists $f \in A_{\frakp}$ which is not a zero divisor.
+%         We have $\depth A_{\frakp}/fA_\frakp = 0$ and $\Ass_A A/fA$ has no embedded point, whence $\frakp$ is minimal in $A/fA$.
+%         Then $\idealht \frakp = 1$ by Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem} and the fact $f$ is not a zero divisor.
+%     \end{example}
 
-    \begin{example}\label{eg: R-S criterion of reducedness}
-        Let $X$ be a locally noetherian scheme.
-        Then $X$ is reduced iff it verifies $(R_0)$ and $(S_1)$.
+%     \begin{example}\label{eg: R-S criterion of reducedness}
+%         Let $X$ be a locally noetherian scheme.
+%         Then $X$ is reduced iff it verifies $(R_0)$ and $(S_1)$.
 
-        The properties are local, whence we can assume $X=\Spec A$.
-        Suppose $A$ is reduced.
-        Let $\frakp_1,\cdots,\frakp_n$ be all minimal prime ideals of $A$.
-        We have $\bigcap \frakp_i = \frakN = (0)$, where $\frakN$ is the nilradical of $A$.
-        Hence $A$ has no embedded point.
-        Since $A_\frakp$ is artinian, local and reduced, $A_\frakp$ is a field and hence regular.
+%         The properties are local, whence we can assume $X=\Spec A$.
+%         Suppose $A$ is reduced.
+%         Let $\frakp_1,\cdots,\frakp_n$ be all minimal prime ideals of $A$.
+%         We have $\bigcap \frakp_i = \frakN = (0)$, where $\frakN$ is the nilradical of $A$.
+%         Hence $A$ has no embedded point.
+%         Since $A_\frakp$ is artinian, local and reduced, $A_\frakp$ is a field and hence regular.
         
-        Conversely, let $\Ass A$ be equal to $\{\frakp_1,\cdots,\frakp_n\}$.
-        Then every $\frakp_i$ is minimal by $(S_1)$.
-        Let $f$ be in $\frakN$.
-        Then the image of $f$ in $A_{\frakp_i}$ is $0$ since by $(R_0)$, $A_{\frakp_i}$ is a field.
-        It follows that $f \in \frakq_i$, where $\frakq_i$ is the $\frakp_i$ component of $(0)$ in $A$.
-        Hence $f \in \bigcap \frakq_i = (0)$.
-        That is, $A$ is reduced.
-    \end{example}
+%         Conversely, let $\Ass A$ be equal to $\{\frakp_1,\cdots,\frakp_n\}$.
+%         Then every $\frakp_i$ is minimal by $(S_1)$.
+%         Let $f$ be in $\frakN$.
+%         Then the image of $f$ in $A_{\frakp_i}$ is $0$ since by $(R_0)$, $A_{\frakp_i}$ is a field.
+%         It follows that $f \in \frakq_i$, where $\frakq_i$ is the $\frakp_i$ component of $(0)$ in $A$.
+%         Hence $f \in \bigcap \frakq_i = (0)$.
+%         That is, $A$ is reduced.
+%     \end{example}
 
 
-\subsection{Cohen-Macaulay rings}
+% \subsection{Cohen-Macaulay rings}
 
-    \begin{definition}[Cohen-Macaulay]\label{def: Cohen-Macaulay}
-        A noetherian local ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
-        A locally noetherian scheme $X$ is called \textit{Cohen-Macaulay} if $\calo_{X,\xi}$ is Cohen-Macaulay for any point $\xi \in X$.
-    \end{definition}
+%     \begin{definition}[Cohen-Macaulay]\label{def: Cohen-Macaulay}
+%         A noetherian local ring $(A,\frakm)$ is called \textit{Cohen-Macaulay} if $\dim A = \depth A$.
+%         A locally noetherian scheme $X$ is called \textit{Cohen-Macaulay} if $\calo_{X,\xi}$ is Cohen-Macaulay for any point $\xi \in X$.
+%     \end{definition}
 
-    By definition, it is easy to see that $X$ is Cohen-Macaulay if and only if it verifies $(S_k)$ for all $k \geq 0$.
+%     By definition, it is easy to see that $X$ is Cohen-Macaulay if and only if it verifies $(S_k)$ for all $k \geq 0$.
 
-    \begin{example}[Non Cohen-Macaulay rings]
+%     \begin{example}[Non Cohen-Macaulay rings]
 
-    \end{example}
+%     \end{example}
 
-    \begin{proposition}\label{prop: depth equals to grade}
-        Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
-        Then 
-        \[ \depth M := \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}. \]
-    \end{proposition}
-    \begin{proof}
-        Let $a \in \frakm$ be $M$-regular and $N = M/aM$.
-        Then we claim that
-        \[ \inf \{ i: \Ext^i_A(\kk,N) \neq 0 \} = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \} - 1. \]
-        Indeed, we have an exact sequence
-        \[ 0 \to M \xrightarrow{a} M \to N \to 0. \]
-        It induces a long exact sequence
-        \[ \cdots \to \Ext^{i-1}_A(\kk,M) \to \Ext^{i-1}_A(\kk,N) \to \Ext^i_A(\kk,M) \xrightarrow{\Ext^i_A(\kk,\Mult_a)} \Ext^i_A(\kk,M) \to \cdots. \]
-        Note that $a \in \frakm$, then $\Ext^i_A(\kk,\Mult_a) = 0$.
-        It follows that when $\Ext^{i-1}_A(\kk,M) = 0$, we have $\Ext^{i-1}_A(\kk,N) = 0$ iff $\Ext^i_A(\kk,M) = 0$, whence the claim.
+%     \begin{proposition}\label{prop: depth equals to grade}
+%         Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
+%         Then 
+%         \[ \depth M := \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}. \]
+%     \end{proposition}
+%     \begin{proof}
+%         Let $a \in \frakm$ be $M$-regular and $N = M/aM$.
+%         Then we claim that
+%         \[ \inf \{ i: \Ext^i_A(\kk,N) \neq 0 \} = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \} - 1. \]
+%         Indeed, we have an exact sequence
+%         \[ 0 \to M \xrightarrow{a} M \to N \to 0. \]
+%         It induces a long exact sequence
+%         \[ \cdots \to \Ext^{i-1}_A(\kk,M) \to \Ext^{i-1}_A(\kk,N) \to \Ext^i_A(\kk,M) \xrightarrow{\Ext^i_A(\kk,\Mult_a)} \Ext^i_A(\kk,M) \to \cdots. \]
+%         Note that $a \in \frakm$, then $\Ext^i_A(\kk,\Mult_a) = 0$.
+%         It follows that when $\Ext^{i-1}_A(\kk,M) = 0$, we have $\Ext^{i-1}_A(\kk,N) = 0$ iff $\Ext^i_A(\kk,M) = 0$, whence the claim.
 
-        Let $n = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}$.
-        Induct on $n$.
-        Suppose first $n = 0$.
-        Since $\kk$ is a simple $A$-module, there is an injective homomorphism $\kk \to M$.
-        Then $\frakm \in \Ass M$ and hence $\depth M = 0$.
+%         Let $n = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}$.
+%         Induct on $n$.
+%         Suppose first $n = 0$.
+%         Since $\kk$ is a simple $A$-module, there is an injective homomorphism $\kk \to M$.
+%         Then $\frakm \in \Ass M$ and hence $\depth M = 0$.
         
-        Suppose $n > 0$., let $a_1,\cdots,a_m \in \frakm$ be any $M$-regular sequence.
-        Using the claim inductively on $M/(a_1,\cdots,a_m)M$, we have $n \geq \depth$.
-        If $M$ has no regular element, then $\frakm \subset \bigcup_{\frakp \in \Ass M} \frakp$.
-        Then $\frakm = \frakp$ for some $\frakp \in \Ass M$.
-        This show that we can find $x \neq 0 \in M$ such that $\frakp = \Ann x$.
-        It gives a homomorphism $\kk = A/\frakm \to M$.
-        That is a contradiction and hence $M$ has a regular element.
-        Let $a$ be $M$-regular and $N = M/aM$.
-        Then $\depth N = n-1$ by the claim and induction hypothesis.
-        Hence we have $\depth M \geq n$.
-    \end{proof}
+%         Suppose $n > 0$., let $a_1,\cdots,a_m \in \frakm$ be any $M$-regular sequence.
+%         Using the claim inductively on $M/(a_1,\cdots,a_m)M$, we have $n \geq \depth$.
+%         If $M$ has no regular element, then $\frakm \subset \bigcup_{\frakp \in \Ass M} \frakp$.
+%         Then $\frakm = \frakp$ for some $\frakp \in \Ass M$.
+%         This show that we can find $x \neq 0 \in M$ such that $\frakp = \Ann x$.
+%         It gives a homomorphism $\kk = A/\frakm \to M$.
+%         That is a contradiction and hence $M$ has a regular element.
+%         Let $a$ be $M$-regular and $N = M/aM$.
+%         Then $\depth N = n-1$ by the claim and induction hypothesis.
+%         Hence we have $\depth M \geq n$.
+%     \end{proof}
 
-    \begin{corollary}\label{cor: induction on depth}
-        Let $A$ be a noetherian ring, $M$ a finite $A$-module and $a \in A$ an $M$-regular element.
-        Then $\depth M = \depth M/aM + 1$.
-    \end{corollary}
+%     \begin{corollary}\label{cor: induction on depth}
+%         Let $A$ be a noetherian ring, $M$ a finite $A$-module and $a \in A$ an $M$-regular element.
+%         Then $\depth M = \depth M/aM + 1$.
+%     \end{corollary}
 
-    \begin{corollary}\label{cor: induction on S_d conditions}
-        Let $A$ be a noetherian ring $a \in A$ a nonzero divisor.
-        Then $A$ verifies $(S_d)$ iff $A/aA$ verifies $(S_{d-1})$.
-    \end{corollary}
+%     \begin{corollary}\label{cor: induction on S_d conditions}
+%         Let $A$ be a noetherian ring $a \in A$ a nonzero divisor.
+%         Then $A$ verifies $(S_d)$ iff $A/aA$ verifies $(S_{d-1})$.
+%     \end{corollary}
 
-    \begin{definition}\label{def: unmixedness theorem}
-        An ideal $I$ of a noetherian ring $A$ is called \textit{unmixed} if 
-        \[ \idealht(I) = \idealht(\frakp), \quad \forall \frakp \in \Ass(A/I). \]
-        Here $\idealht(I)$ is defined as 
-        \[ \idealht(I) := \inf \{ \idealht(\frakp) : I \subset \frakp \}. \]
-        We say that \textit{the unmixedness theorem holds for a noetherian ring $A$} if any ideal $I \subset A$ generated by $\idealht(I)$ elements is unmixed.
-        We say that \textit{the unmixedness theorem holds for a locally noetherian scheme $X$} if $\calo_{X,\xi}$ is unmixed for any point $\xi \in X$.
-    \end{definition}
+%     \begin{definition}\label{def: unmixedness theorem}
+%         An ideal $I$ of a noetherian ring $A$ is called \textit{unmixed} if 
+%         \[ \idealht(I) = \idealht(\frakp), \quad \forall \frakp \in \Ass(A/I). \]
+%         Here $\idealht(I)$ is defined as 
+%         \[ \idealht(I) := \inf \{ \idealht(\frakp) : I \subset \frakp \}. \]
+%         We say that \textit{the unmixedness theorem holds for a noetherian ring $A$} if any ideal $I \subset A$ generated by $\idealht(I)$ elements is unmixed.
+%         We say that \textit{the unmixedness theorem holds for a locally noetherian scheme $X$} if $\calo_{X,\xi}$ is unmixed for any point $\xi \in X$.
+%     \end{definition}
 
 
-    \begin{theorem}\label{thm: unmixedness theorem for Cohen-Macaulay schemes}
-        Let $X$ be a locally noetherian scheme.
-        Then the unmixedness theorem holds for $X$ if and only if $X$ is Cohen-Macaulay.
-    \end{theorem}
-    \begin{proof}
-        We can assume that $X = \Spec A$ is affine.
+%     \begin{theorem}\label{thm: unmixedness theorem for Cohen-Macaulay schemes}
+%         Let $X$ be a locally noetherian scheme.
+%         Then the unmixedness theorem holds for $X$ if and only if $X$ is Cohen-Macaulay.
+%     \end{theorem}
+%     \begin{proof}
+%         We can assume that $X = \Spec A$ is affine.
 
-        Suppose $X$ is Cohen-Macaulay.
-        Let $I \subset A$ be an ideal generated by $a_1,\cdots,a_r$ with $r = \idealht(I)$.
-        We claim that $a_1,\cdots,a_r$ is an $A$-regular sequence.
-        If so, we get that the unmixedness theorem holds for $A$ by applying Example \ref{eg: S_1 is equivalent to A has no embedded point} on $A/I$. 
-        Since $\idealht(a_1,\cdots,a_{r-1}) \leq r-1$ by Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem} and $\idealht(a_1,\cdots,a_r) = r \leq \idealht(a_1,\cdots,a_{r-1}) + 1$, we have $\idealht(a_1,\cdots,a_{r-1}) = r-1$.
-        By induction on $r$, we can assume that $a_1,\cdots,a_{r-1}$ is an $A$-regular sequence.
-        Hence any prime ideal $\frakp \in \Ass A/(a_1,\cdots,a_{r-1})$ has height $r-1$.
-        Now suppose $a_r$ is a zero divisor in $A/(a_1,\cdots,a_{r-1})$.
-        Then there exists a prime ideal $\frakp \in \Ass A/(a_1,\cdots,a_{r-1})$ such that $a_r \in \frakp$.
-        Then $I \subset \frakp$ and $\idealht(I) \leq r-1$.
-        This contradicts that $\idealht(I) = r$.
+%         Suppose $X$ is Cohen-Macaulay.
+%         Let $I \subset A$ be an ideal generated by $a_1,\cdots,a_r$ with $r = \idealht(I)$.
+%         We claim that $a_1,\cdots,a_r$ is an $A$-regular sequence.
+%         If so, we get that the unmixedness theorem holds for $A$ by applying Example \ref{eg: S_1 is equivalent to A has no embedded point} on $A/I$. 
+%         Since $\idealht(a_1,\cdots,a_{r-1}) \leq r-1$ by Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem} and $\idealht(a_1,\cdots,a_r) = r \leq \idealht(a_1,\cdots,a_{r-1}) + 1$, we have $\idealht(a_1,\cdots,a_{r-1}) = r-1$.
+%         By induction on $r$, we can assume that $a_1,\cdots,a_{r-1}$ is an $A$-regular sequence.
+%         Hence any prime ideal $\frakp \in \Ass A/(a_1,\cdots,a_{r-1})$ has height $r-1$.
+%         Now suppose $a_r$ is a zero divisor in $A/(a_1,\cdots,a_{r-1})$.
+%         Then there exists a prime ideal $\frakp \in \Ass A/(a_1,\cdots,a_{r-1})$ such that $a_r \in \frakp$.
+%         Then $I \subset \frakp$ and $\idealht(I) \leq r-1$.
+%         This contradicts that $\idealht(I) = r$.
         
-        Suppose the unmixedness theorem holds for $A$.
-        Let $\frakp \in \Spec A$ be a prime ideal with $\idealht(\frakp) = r$.
-        Then $\frakp \in \Ass A$ if and only if $\idealht(\frakp) = 0$.
-        If $r > 0$, there is a nonzero divisor $a \in \frakp$.
-        By Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem}, $\idealht(\frakp A/aA) = r-1$.
-        Inductively, we can find a regular sequence $a_1,\cdots,a_r$ in $\frakp$.
-        Then $\depth A_\frakp = r$.
-        % \Yang{To be completed.}
-    \end{proof}
+%         Suppose the unmixedness theorem holds for $A$.
+%         Let $\frakp \in \Spec A$ be a prime ideal with $\idealht(\frakp) = r$.
+%         Then $\frakp \in \Ass A$ if and only if $\idealht(\frakp) = 0$.
+%         If $r > 0$, there is a nonzero divisor $a \in \frakp$.
+%         By Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem}, $\idealht(\frakp A/aA) = r-1$.
+%         Inductively, we can find a regular sequence $a_1,\cdots,a_r$ in $\frakp$.
+%         Then $\depth A_\frakp = r$.
+%         % \Yang{To be completed.}
+%     \end{proof}
 
     % \begin{theorem}\label{thm: higher dimensional hartogs lemma for Cohen-Macaulay schemes}
     %     Let $X$ be a locally noetherian scheme.
@@ -568,25 +568,25 @@
     \end{proof}
 
 
-    \begin{proposition}\label{prop: regularity under base field extension}
-        Let \(\kk\) be a field, \(\kk'\) an algebraic extension of \(\kk\), \(A\) an integral \(\kk\)-algebra of finite type and \(A' \coloneqq A \ten_{\kk} \kk'\).
-        Let \(\frakm \in \mSpec A\) and \(\frakm'\) be a maximal ideal of \(A'\) lying over \(\frakm\).
-        Then 
-        \begin{enumerate}
-            \item If \(A'\) is regular at \(\frakm'\), then \(A\) is regular at \(\frakm\);
-            \item suppose \(\rkk(\frakm)\) is separable over \(\kk\), the converse holds.
-        \end{enumerate}
-    \end{proposition}
-    \begin{proof}
-        We claim that $\frakm'^2 \cap A = \frakm^2$.
-        Suppose \(\frakm = (g_1,\cdots,g_n)\).
-        Let \(f \in A \cap \frakm'^2\).
-        We can assume that \(f\) is in the form \(f = \sum_{i=1}^n a_i g_i\) for some \(a_i \in A\) satisfy that \(\deg_{T_i} a_j \leq \deg g_i, \forall i,j\).
+    % \begin{proposition}\label{prop: regularity under base field extension}
+    %     Let \(\kk\) be a field, \(\kk'\) an algebraic extension of \(\kk\), \(A\) an integral \(\kk\)-algebra of finite type and \(A' \coloneqq A \ten_{\kk} \kk'\).
+    %     Let \(\frakm \in \mSpec A\) and \(\frakm'\) be a maximal ideal of \(A'\) lying over \(\frakm\).
+    %     Then 
+    %     \begin{enumerate}
+    %         \item If \(A'\) is regular at \(\frakm'\), then \(A\) is regular at \(\frakm\);
+    %         \item suppose \(\rkk(\frakm)\) is separable over \(\kk\), the converse holds.
+    %     \end{enumerate}
+    % \end{proposition}
+    % \begin{proof}
+    %     We claim that $\frakm'^2 \cap A = \frakm^2$.
+    %     Suppose \(\frakm = (g_1,\cdots,g_n)\).
+    %     Let \(f \in A \cap \frakm'^2\).
+    %     We can assume that \(f\) is in the form \(f = \sum_{i=1}^n a_i g_i\) for some \(a_i \in A\) satisfy that \(\deg_{T_i} a_j \leq \deg g_i, \forall i,j\).
 
-        The map $\frakm \to \frakm' \to \frakm'/\frakm'^2$ induces a map $\frakm/\frakm^2 \to \frakm'/\frakm'^2$.
-        This is a \(\rkk(\frakm)\)-linear map.
-        \Yang{To be completed.}
-    \end{proof}
+    %     The map $\frakm \to \frakm' \to \frakm'/\frakm'^2$ induces a map $\frakm/\frakm^2 \to \frakm'/\frakm'^2$.
+    %     This is a \(\rkk(\frakm)\)-linear map.
+    %     \Yang{To be completed.}
+    % \end{proof}
 
     \begin{remark}\label{remark: Taylor expansion with respect to irreducible polynomials}
         Let \(\kk\) be arbitrary field, \(A = \kk[T_1,\cdots,T_n]\) and \(g_i\) irreducible polynomials in one variable \(T_i\) over \(\kk\).
