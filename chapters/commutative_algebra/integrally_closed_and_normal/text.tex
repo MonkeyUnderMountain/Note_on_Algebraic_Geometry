@@ -1,3 +1,181 @@
-\section{integrally closed and normality}
+\section{Finite Algebra and Normality \Yang{To be completed}}
+
+    % Fix a noetherian local ring $(A,\frakm)$ with residue field $\kk$.
+
+    \begin{definition}\label{def: normal domain}
+        An integral domain $A$ is called \textit{normal} if it is integrally closed in its field of fractions $\Frac(A)$.
+    \end{definition}
+
+    \begin{lemma}\label{lem: integral closed under localization}
+        Let $A \subset C$ be rings and $B$ the integral closure of $A$ in $C$, $S$ a multiplicatively closed subset of $A$.
+        Then the integral closure of  $S^{-1}A$ in $S^{-1}C$ is $S^{-1}B$.
+    \end{lemma}
+    \begin{proof}
+            For every $b \in B$ and $\forall s \in S$, there exists $a_i \in A$ s.t. 
+            \[ 
+                b^n + a_1 b^{n-1} + \cdots + a_n = 0.
+            \] 
+            Then 
+            \[ 
+                \left( \frac{b}{s} \right)^n + \frac{a_1}{s^1} \left( \frac{b}{s} \right)^{n-1} + \cdots + \frac{a_n}{s^n} = 0.
+            \] 
+            Hence $b/s$ is integral over $S^{-1}A$, $S^{-1}B$ is integral over $S^{-1}A$.
+
+            If $c/s \in S^{-1}C$ is integral over $S^{-1}A$, then $\exists a_i \in S^{-1}A$ s.t.
+            \[ 
+                \left( \frac{c}{s} \right)^n + a_1 \left( \frac{c}{s} \right)^{n-1} + \cdots + a_n = 0.
+            \]
+            Then 
+            \[ 
+                c^n + a_1 s c^{n-1} + \cdots + a_n s^n = 0 \in S^{-1}C
+            \] 
+            Then $\exists t \in S$ s.t. 
+            \[
+                t (c^n + a_1 s c^{n-1} + \cdots + a_n s^n) = 0 \in C.
+            \] 
+            Then 
+            \[ 
+                (ct)^n + a_1 s t (ct)^{n-1} + \cdots + a_n s^n t^n  = t^n (c^n + a_1 s c^{n-1} + \cdots + a_n s^n) = 0.
+            \] 
+            Hence $ct$ is integral over $A$, then $ct \in B$.
+            Then $c/s = (ct)/(st) \in S^{-1}B$.
+            This completes the proof.
+    \end{proof}
+
+    \begin{proposition}\label{prop: normality is a local property}
+        Normality is a local property. 
+        That is, for an integral domain $A$, TFAE:
+        \begin{enumerate}[label=(\roman*)]
+            \item $A$ is normal.
+            \item For any prime ideal $\frakp \in \Spec A$, the localization $A_\frakp$ is normal.
+            \item For any maximal ideal $\frakm \in \mSpec A$, the localization $A_\frakm$ is normal.
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        When $A$ is normal, $A_\frakp$ is normal by Lemma \ref{lem: integral closed under localization}.
+
+        Assume that $A_\frakm$ is normal for every $\frakm \in \mSpec A$.
+        If $A$ is not normal, let $\tilde{A}$ be the integral closure of $A$ in $\Frac A$, $\tilde{A}/A$ is a nonzero $A$-module.
+        Suppose $\frakp \in \Supp \tilde{A}/A$ and $\frakp \subset \frakm$.
+        We have $\tilde{A}_\frakm/A_\frakm = 0$ and $\tilde{A}_\frakp/A_\frakp = (\tilde{A}_\frakm/A_\frakm)_\frakp \neq 0$.
+        This is a contradiction.
+    \end{proof}
+
+    \begin{proposition}
+        Let $A$ be a normal ring.
+        Then $A[X]$ is also normal.
+    \end{proposition}
+
+    \begin{definition}\label{def: normal of scheme and general ring}
+        A scheme $X$ is called \textit{normal} if the local ring $\calo_{X,\xi}$ is normal for any point $\xi \in X$.
+        A ring $A$ is called \textit{normal} if $\Spec A$ is normal.
+    \end{definition}
+
+    \begin{remark}\label{rmk: total ring of fractions and normality of general reduced ring}
+        For a general ring $A$, let $S := A\setminus (\bigcup_{\frakp \in \Ass A} \frakp) = \bigcap_{\frakp \in \Ass A}A\setminus \frakp$.
+        Then $S$ is a multiplicative set.
+        The localization $S^{-1}A$ is called \textit{the total ring of fractions} of $A$.
+        
+        Suppose $A$ is reduced and $\Ass A = \{\frakp_1,\cdots,\frakp_n\}$.
+        Denote its total ring of fractions by $Q$.
+        Note that elements in $Q$ are either unit or zero divisor.
+        Hence any maximal ideal $\frakm$ is contained in $\bigcup \frakp_iQ$, whence contained in some $\frakp_i Q$.
+        Thus $\frakp_i Q$ are maximal ideals.
+        And we have $\bigcap \frakp_i Q = 0$. 
+        By the Chinese Remainder Theorem, we have $Q = \prod Q/{\frakp_i}Q = \prod A_{\frakp_i}$.
+        
+        Let $A$ be a reduced ring with total ring of fractions $Q$.
+        Then $A$ is normal iff $A$ is integral closed in $Q$.
+        If $A$ is normal, then for every $\frakp \in \Spec A$, $A_\frakp$ is integral.
+        Then there is unique minimal prime ideal $\frakp_i \subset \frakp$.
+        In particular, any two minimal prime ideal are relatively prime.
+        By the Chinese Remainder Theorem, $A = \prod A/\frakp_i$.
+        Just need to check $A/\frakp_i$ is integral closed in $A_{\frakp_i}$.
+        This is clear by check pointwise.
+
+        Conversely, suppose $A$ is integral closed in $Q$.
+        Let $e_i$ be the unit element of $A_{\frakp_i}$.
+        It belongs to $A$ since $e_i^2 - e_i = 0$.
+        Since $1 = e_1 + \cdots + e_n$ and $e_ie_j = \delta_{ij}$, we have $A = \prod Ae_i$.
+        Since $Ae_i$ is integral closed in $A_{\frakp_i}$, it is normal.
+        Hence $A$ is normal.
+    \end{remark}
+
+    \begin{lemma}\label{lem: normal rings verify R_1 and S_2}
+        Let $A$ be a normal ring.
+        Then $A$ verifies $(R_1)$ and $(S_2)$.
+    \end{lemma}
+    \begin{proof}
+        Since all properties are local, we can assume $A$ is integral and local.
+
+        For $(S_2)$, by Example \ref{eg: S_2 is equivalent to A/fA has no embedded point}, we only need to show that $\Ass_A A/f$ has no embedded point.
+        Let $\frakp = (f:g) = \in \Ass_A A/fA$ and $t:= f/g \in \Frac A$.
+        After Replacing $A$ by $A_\frakp$, we can assume that $\frakp$ is maximal.
+        By definition, $t^{-1}\frakp \subset A$.
+        If $t^{-1}\frakp \subset \frakp$, suppose $\frakp$ is generated by $(x_1,\cdots,x_n)$ and $t^{-1}(x_1,\cdots,x_n)^T = \Phi(x_1,\cdots,x_n)^T$ for $\Phi \in M_n(A)$.
+        There is a monic polynomial $\chi(T) \in A[T]$ vanishing $\Phi$.
+        Then $\chi(t^{-1}) = 0$ and $t^{-1} \in A$.
+        This is impossible by definition of $t$.
+        Then $t^{-1}\frakp = A$, and $\frakp = (t)$ is principal. 
+        By Krull's Principal Ideal Theorem \ref{thm: Krull's principal ideal theorem}, $\idealht(\frakp) = 1$.
+
+        Now we show that $A$ verifies $(R_1)$.
+        Suppose $(A, \frakm)$ is local of dimension $1$.
+        Choosing $a \in \frakm$, $A/a$ is of dimension $0$.
+        Then by \ref{prop: characteristic of local artinian rings}, $\frakm^n \subset aA$ for some $n\geq 1$.
+        Suppose $\frakm^{n-1} \not\subset aA$.
+        Choose $b \in \frakm^{n-1} \setminus aA$ and let $t = a/b$.
+        By construction, $t^{-1} \notin A$ and $t^{-1}\frakm \subset A$.
+        After similar argument, we see that $\frakm = tA$, whence $A$ is regular.
+    \end{proof}
+
+    \begin{lemma}\label{lem: normal and regular are equivalent for noetherian rings of dimension 1}
+        Let $(A,\frakm)$ be a noetherian local ring of dimension $1$.
+        Then $A$ is normal iff $A$ is regular.
+    \end{lemma}
+    \begin{proof}
+        By lemma \ref{lem: normal rings verify R_1 and S_2}, we just need to show that regularity implies normality.
+
+        Let $t \in \frakm\setminus \frakm^2$.
+        Since $A$ is regular, $\frakm = (t)$.
+        Let $I \subset \frakm$ be an ideal.
+        If $I \subset \bigcap_{n} \frakm^n$, then for every $a \in I$, there exists $a_n$ such that $a = a_n t^n$.
+        Then we get an ascending chain of ideals $(a_1) \subset (a_2) \subset \cdots$.
+        Hence $a=0$ by Nakayama's Lemma.
+        Suppose $I$ is not zero.
+        Then there is some $n$ such that $I \subset \frakm^n$ and $I \not\subset \frakm^{n+1}$.
+        For every $at^n \in I \setminus \frakm^{n+1}$,  $a \notin \frakm$, whence $a$ is a unit in $A$.
+        Then $I = (t^n)$.
+        Hence $A$ is PID and hence normal.
+    \end{proof}
+
+    \begin{proposition}\label{prop: S_2 implies intersection of localization at height 1 prime is A}
+        Let $A$ be a noetherian integral domain of dimension $\geq 1$ verifying $(S_2)$.
+        Then 
+        \[ A = \bigcap_{\frakp \in \Spec A, \idealht(\frakp) = 1} A_\frakp. \]
+    \end{proposition}
+    \begin{proof}
+        Clearly $A \subset \bigcap A_\frakp$.
+        Let $t = f/g \in \bigcap A_\frakp$.
+        Since $f\in gA_\frakp$ and we have $g A = \bigcap (gA_\frakp \cap A)$, $f \in gA$.
+        It follows that $t \in A$.
+    \end{proof}
+
+    \begin{theorem}[Serre's criterion for normality]
+        Let $X$ be a locally noetherian scheme.
+        Then $X$ is normal if and only if it verifies $(R_1)$ and $(S_2)$.
+    \end{theorem}
+    \begin{proof}
+        One direction has been proved in Lemma \ref{lem: normal rings verify R_1 and S_2}.
+        Suppose $X$ verifies $(R_1)$ and $(S_2)$.
+        Again we can assume $X = \Spec A$ is affine and $A$ is local.
+        By Remark \ref{rmk: total ring of fractions and normality of general reduced ring}, we just need to show that $A$ is integral closed in its total ring of fractions $Q$.
+        Suppose we have 
+        \[ \left(\frac{a}{b}\right)^n + c_1 \left(\frac{a}{b}\right)^{n-1} + \cdots + c_n = 0 \in Q. \]
+        Since $A$ verifies $(S_2)$, $b A = \bigcap \nu_\frakp^{-1}(b_\frakp A_\frakp)$.
+        So it is sufficient to show that $a_{\frakp} \in b_\frakp A_\frakp$ with $\idealht(\frakp) = 1$.
+        Note that $A_\frakp$ is regular and hence normal by Lemma \ref{lem: normal and regular are equivalent for noetherian rings of dimension 1}.
+        Then above equation gives us desired result.
+    \end{proof}
 
     
