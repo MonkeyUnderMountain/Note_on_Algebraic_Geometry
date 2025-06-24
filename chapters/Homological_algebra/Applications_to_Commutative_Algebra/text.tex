@@ -1,5 +1,558 @@
 \section{Applications to Commutative Algebra}
 
-\subsection{Depth and Ext}
 
-\subsection{Regularity and cohomological dimension}
+\subsection{Cohomological dimension}
+
+    \begin{lemma}\label{lem: cohomological dimension is well-defined}
+        Let \(A\) be a ring and \(M\) an \(A\)-module.
+        Then 
+        \[ \sup_{M} \projdim M = \sup_{N} \injdim N. \]
+    \end{lemma}
+    \begin{proof}
+        Note that 
+        \[ \projdim M \leq n \] 
+        if and only if 
+        \[ \Ext_{n+1}^A(M,N) = 0, \quad \forall N. \]
+        And this is equivalent to
+        \[ \injdim N \leq n. \]
+    \end{proof}
+
+    \begin{remark}\label{rmk: checking projective dimension of finite module is enough for cohomological dimension}
+        In fact, for fix \(N\), we have 
+        \[ \injdim N \leq n \]
+        if and only if
+        \[ \Ext_{n+1}^A(A/I,N) = 0, \quad \forall I \]
+        By Lemma \Yang{?}.
+        Hence we have 
+        \[ \sup_{M \text{ finite }} \projdim M = \sup_{M} \projdim M = \sup_{N} \injdim N. \]
+    \end{remark}
+
+    \begin{definition}
+        Let \(A\) be a ring.
+        The \emph{cohomological dimension} of \(A\), denoted \(\cohdim A\), is defined as
+        \[ \cohdim A \coloneqq \sup_{M} \projdim M = \sup_{M} \injdim M. \]
+    \end{definition}
+
+    \begin{definition}\label{def: minimal homomorphism}
+        Let \((A,\frakm,\kk)\) be a noetherian local ring.
+        We say that a homomorphism of \(A\)-modules \(f: M \to N\) is \emph{minimal} 
+        if the induced map \(M \ten \kk \to N \ten \kk\) is an isomorphism.
+        Equivalently, \(f\) is minimal if and only if \(f\) is surjective and \(\Ker f \subset \frakm M\).
+    \end{definition}
+
+    \begin{definition}\label{def: minimal projective resolution}
+        Let \(A\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+        A \emph{minimal projective resolution} of \(M\) is a projective resolution
+        \[ \cdots \to P_n \xrightarrow{d_n} P_{n-1} \xrightarrow{d_{n-1}} \cdots \to P_1 \xrightarrow{d_1} P_0 \xrightarrow{d_0} M \to 0 \]
+        such that each homomorphism \(P_i \to \Ker d_{i-1}\) is minimal.
+    \end{definition}
+
+    \begin{proposition}\label{prop: minimal projective resolution exists and unique}
+        Let \((A,\frakm,\kk)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+        Then \(M\) has a minimal projective resolution.
+        Moreover, any two minimal projective resolutions of \(M\) are isomorphic.
+    \end{proposition}
+    \begin{proof}
+        Suppose \(M\ten_A \kk = \bigoplus \kk \cdot \overline{x_i} \).
+        Lift \(x_i\) to elements of \(M\).
+        Then we have a minimal homomorphism \(\d_0: \bigoplus A \cdot x_i \to M\).
+        Similarly choose minimal homomorphisms \( \d_k: A^{n_i} \to \Ker \d_{i-1} \) for \(i = 1,2,\cdots\).
+        This gives a minimal projective resolution.
+
+        Suppose we have two minimal homomorphism \(f,g: A^n \to M\).
+        After tensoring with \(\kk\), we have isomorphisms between \(f\ten \kk\) and \(g\ten \kk\).
+        Lifting to $A$, we get an homomorphism \(\varphi: f \to g\).
+        Here homomorphism between \(f,g\) means a homomorphism \(A^n \to A^n\) such that \(f = g \circ \varphi\).
+        The homomorphism \(\varphi\) is represented by a matrix \(T\).
+        We have \(\det T \not\in \frakm\), whence \(\varphi\) is an isomorphism.
+    \end{proof}
+
+    \begin{proposition}\label{prop: projective resolution is a direct sum of minimal projective resolution}
+        Let \(L_\bullet \to M\) be a minimal projective resolution and \(P_\bullet\) be an arbitrary projective resolution of \(M\).
+        Then we have \(P_\bullet \cong L_\bullet \oplus P_\bullet'\) for some exact complexes \(P_\bullet'\).
+    \end{proposition}
+    \begin{proof}
+        By Propostion \ref{prop: morphism induces morphism of resolution complexes}, we have homomorphism 
+        \[ L_\bullet \xrightarrow{\varphi_\bullet} P_\bullet \xrightarrow{\psi_\bullet} L_\bullet. \]
+        between complexes.
+        By Propostion \ref{prop: morphism induces morphism of resolution complexes} again, \(T_\bullet \coloneqq \psi_\bullet \circ \varphi_\bullet\) is homotopic to the identity by \(h_\bullet\).
+        Suppose \(T_\bullet\) is represented by a matrix.
+        Since \(L_\bullet\) is minimal, we have 
+        \[ (T - \id)(L_n) = (\d_{{n+1}} \circ h_n + h_{n-1} \circ \d_{n})(L_n) \subset \frakm L_n. \]
+        Then \(\det T \not\in \frakm\) and hence \(T_\bullet\) is an isomorphism.
+        It follows that \(\psi_\bullet\) is surjective, whence it splits \(P_\bullet\) into a direct sum \( L \oplus P_\bullet'\) since \(L_\bullet\) is projective. 
+        By the Five Lemma, we see that \(P'_\bullet\) is exact.
+        % \Yang{To be completed.}
+    \end{proof}
+
+    % \begin{lemma}\label{lem: dimension of tangent space is bounded by projective dimension of k}
+    %     Let \((A,\frakm,\kk)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+    %     Suppose there is an injective homomorphism \(\kk \to M\).
+    %     Then \(\projdim M \geq \dim_\kk T_{A,\frakm}\).
+    % \end{lemma}
+    % \begin{proof}
+    %     Let \(x_1,\cdots,x_n \subset \frakm \setminus \frakm^2\) such that their images in \(\frakm/\frakm^2\) form a basis.
+    %     Then we have a complex
+    %     \[ K_\bullet \coloneqq 0 \to \wedge^n A^{\oplus n} \xrightarrow{\d_n} \wedge^{n-1} A^{\oplus n} \xrightarrow{\d_{n-1}} \cdots \to \wedge^1 A^{\oplus n} \xrightarrow{\d_1} \wedge^0 A^{\oplus n} \xrightarrow{\d_0} \kk \to 0, \]
+    %     where 
+    %     \[ \d_r: \wedge^r A^{\oplus n} \to \wedge^{r-1} A^{\oplus n}, \quad e_{i_1}\wedge \cdots \wedge e_{i_r} \mapsto \sum_{k=1}^r (-1)^k x_{i_k} e_{i_1}\wedge \cdots \wedge \widehat{e_{i_k}} \wedge \cdots \wedge e_{i_r}. \]
+    %     Here \(\widehat{e_{i_k}}\) means that we omit the \(k\)-th element.
+    %     Let \(P_\bullet \to M\) be the minimal projective resolution of \(M\).
+    %     Then we have a homomorphism of complexes
+    %     \[ \varphi_\bullet: K_\bullet \to P_\bullet \]
+    %     induced by the injective homomorphism \(\kk \to M\).
+        
+    %     We claim that \(\varphi_i\) is injective and splits \(P_i\) into a direct sum \(K_i \oplus F_i\) with \(F_i\) free for all \(i \geq 0\).
+    %     Since \(K_i\) and \(P_i\) are free, we just need to show that \(\varphi_i \ten_A \id_\kk\) is injective.
+    %     Induct on \(i\).
+    %     For \(i = 0\), note that \( \kk \to M\ten_A \kk\) is injective, by the commutative diagram
+    %     \[ \xymatrix{
+    %         A \ar[r] \ar[d]_{\varphi_0\ten_A \id_\kk} & \kk \ar[d] \\
+    %         P_0\ten_A \kk \ar[r]^{\cong} & M\ten_A \kk
+    %     }, \]
+    %     the image of \(\varphi_0\ten_A \id_\kk\) is not zero in \(P_0\ten_A \kk\).
+        
+    %     For \(i > 0\), since \(K_{i-1}\) and \(P_{i-1}\) are free, we have a natural isomorphism between
+    %     \[ \frakm K_{i-1} \ten_A \kk\to \frakm P_{i-1} \ten_A \kk \]
+    %     and 
+    %     \[ K_{i-1} \ten_A \frakm/\frakm^2 \to P_{i-1} \ten_A \frakm/\frakm^2. \]
+    %     We have a commutative diagram
+    %     \begin{equation}\label{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i}
+    %         \xymatrix{
+    %             K_i \ten_A \kk \ar[r] \ar[d] & \frakm K_{i-1} \ten_A \kk  \ar[d] \\
+    %             P_{i} \ten_A \kk \ar[r] & \frakm P_{i-1} \ten_A \kk
+    %         }. 
+    %     \end{equation}
+    %     Since \(P_{i-1}/K_{i-1} \cong F_{i-1}\) is free, the right vertical map in \eqref{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i} is injective.
+    %     By construction of \(K_\bullet\), \(K_i \ten_A \kk \to \frakm K_{i-1} \ten_A \kk\) is injective.
+    %     Hence the left vertical map in \eqref{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i} is injective.
+    %     This completes the proof of the claim.
+
+    %     By the claim, \(P_i \neq 0\) for all \(i \leq n\) and the conclusion follows.
+    % \end{proof}
+
+        \begin{lemma}\label{lem: tor control the projective dimension}
+        Let \((A,\frakm,\kk)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+        Then \(\projdim M \leq n\) if and only if \(\Tor_{n+1}^A(M,\kk) = 0\).
+    \end{lemma}
+    \begin{proof}
+        The necessity is clear.
+        For the sufficiency, we have a minimal projective resolution
+        \[ \cdots \to P_{n+1} \xrightarrow{\d_{n+1}} P_n \xrightarrow{\d_n} P_{n-1} \xrightarrow{\d_{n-1}} \cdots \to P_1 \xrightarrow{\d_1} P_0 \xrightarrow{\d_0} M \to 0. \]
+        Let \(C \coloneqq \Im \d_n\).
+        Then we have 
+        \[ 0 \to P_{n+1} \xrightarrow{\d_{n+1}} P_n \xrightarrow{\d_n} C \to 0. \]
+        Hence \(\Tor_{1}^A(C,\kk) \cong \Tor_{n+1}^A(M,\kk) = 0\).
+        Let \(K = \Ker \d_n\).
+        Then we have the short exact sequence
+        \[ 0 \to K \to P_n \to C \to 0. \]
+        Since \(\Tor_{1}^A(C,\kk) = 0\), there is an exact sequence
+        \[ 0 \to K \ten_A \kk \to P_n \ten_A \kk \to C \ten_A \kk \to 0. \]
+        Since \(P_n \to C\) is minimal, we have \(K \ten_A \kk = 0\).
+        By the Nakayama's lemma, \(K = 0\).
+        This implies that \( \projdim C \leq 0\) and hence \(\projdim M \leq n\).
+        % \Yang{To be completed.}
+    \end{proof}
+
+    % \begin{lemma}\label{lem: dimension of tangent space is bounded by projective dimension of k}
+    %     Let \((A,\frakm,\kk)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+    %     Suppose there is an injective homomorphism \(\kk \to M\).
+    %     Then \(\projdim M \geq \dim_\kk T_{A,\frakm}\).
+    % \end{lemma}
+    % \begin{proof}
+    %     Let \(x_1,\cdots,x_n \subset \frakm \setminus \frakm^2\) such that their images in \(\frakm/\frakm^2\) form a basis.
+    %     Then we have a complex
+    %     \[ K_\bullet \coloneqq 0 \to \wedge^n A^{\oplus n} \xrightarrow{\d_n} \wedge^{n-1} A^{\oplus n} \xrightarrow{\d_{n-1}} \cdots \to \wedge^1 A^{\oplus n} \xrightarrow{\d_1} \wedge^0 A^{\oplus n} \xrightarrow{\d_0} \kk \to 0, \]
+    %     where 
+    %     \[ \d_r: \wedge^r A^{\oplus n} \to \wedge^{r-1} A^{\oplus n}, \quad e_{i_1}\wedge \cdots \wedge e_{i_r} \mapsto \sum_{k=1}^r (-1)^k x_{i_k} e_{i_1}\wedge \cdots \wedge \widehat{e_{i_k}} \wedge \cdots \wedge e_{i_r}. \]
+    %     Here \(\widehat{e_{i_k}}\) means that we omit the \(k\)-th element.
+    %     Let \(P_\bullet \to M\) be the minimal projective resolution of \(M\).
+    %     Then we have a homomorphism of complexes
+    %     \[ \varphi_\bullet: K_\bullet \to P_\bullet \]
+    %     induced by the injective homomorphism \(\kk \to M\).
+        
+    %     We claim that \(\varphi_i\) is injective and splits \(P_i\) into a direct sum \(K_i \oplus F_i\) with \(F_i\) free for all \(i \geq 0\).
+    %     Since \(K_i\) and \(P_i\) are free, we just need to show that \(\varphi_i \ten_A \id_\kk\) is injective.
+    %     Induct on \(i\).
+    %     For \(i = 0\), note that \( \kk \to M\ten_A \kk\) is injective, by the commutative diagram
+    %     \[ \xymatrix{
+    %         A \ar[r] \ar[d]_{\varphi_0\ten_A \id_\kk} & \kk \ar[d] \\
+    %         P_0\ten_A \kk \ar[r]^{\cong} & M\ten_A \kk
+    %     }, \]
+    %     the image of \(\varphi_0\ten_A \id_\kk\) is not zero in \(P_0\ten_A \kk\).
+        
+    %     For \(i > 0\), since \(K_{i-1}\) and \(P_{i-1}\) are free, we have a natural isomorphism between
+    %     \[ \frakm K_{i-1} \ten_A \kk\to \frakm P_{i-1} \ten_A \kk \]
+    %     and 
+    %     \[ K_{i-1} \ten_A \frakm/\frakm^2 \to P_{i-1} \ten_A \frakm/\frakm^2. \]
+    %     We have a commutative diagram
+    %     \begin{equation}\label{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i}
+    %         \xymatrix{
+    %             K_i \ten_A \kk \ar[r] \ar[d] & \frakm K_{i-1} \ten_A \kk  \ar[d] \\
+    %             P_{i} \ten_A \kk \ar[r] & \frakm P_{i-1} \ten_A \kk
+    %         }. 
+    %     \end{equation}
+    %     Since \(P_{i-1}/K_{i-1} \cong F_{i-1}\) is free, the right vertical map in \eqref{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i} is injective.
+    %     By construction of \(K_\bullet\), \(K_i \ten_A \kk \to \frakm K_{i-1} \ten_A \kk\) is injective.
+    %     Hence the left vertical map in \eqref{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i} is injective.
+    %     This completes the proof of the claim.
+
+    %     By the claim, \(P_i \neq 0\) for all \(i \leq n\) and the conclusion follows.
+    % \end{proof}
+
+    \begin{proposition}\label{prop: cohomological dimension of local ring is projective dimension of residue field}
+        Let \((A,\frakm,\kk)\) be a noetherian local ring.
+        Then \(\cohdim A = \projdim \kk\) (finite or infinite).
+    \end{proposition}
+    \begin{proof}
+        The inequality \(\cohdim A \geq \projdim \kk\) is by definition.
+        Conversely, we can compute \(\Tor_{n+1}^A(M,\kk)\) using minimal projective resolution of \(\kk\) for any finite \(A\)-module \(M\).
+        By Lemma \ref{lem: tor control the projective dimension}, we have \(\projdim M \leq n\) if and only if \(\Tor_{n+1}^A(M,\kk) = 0\).
+        This implies that \(\projdim M \leq n\) for all finite \(A\)-modules \(M\) if \(\projdim \kk = n\).
+        By Remark \ref{rmk: checking projective dimension of finite module is enough for cohomological dimension}, we have \(\cohdim A \leq n\).
+        % \Yang{Finiteness of \(M\)?}
+        % \Yang{To be completed.}
+    \end{proof}
+
+    \begin{proposition}\label{prop: induction on projective dimension}
+        Let \((A,\frakm)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+        Let \(a \in \frakm\) be an \(M\)-regular element.
+        % Suppose \(\projdim M < \infty\).
+        Then \(\projdim M/aM = \projdim M + 1\).
+        Here we set \(\infty + 1 = \infty\).
+    \end{proposition}
+    \begin{proof}
+        % Let \(P_\bullet\) be a minimal projective resolution of \(M\).
+        We have an exact sequence
+        \[ 0 \to M  \xrightarrow{*a} M \to M/aM \to 0. \]
+        Take the long exact sequence with respect to \(\Tor(-,\kk)\), we get
+        \[ \cdots \to \Tor_{i+1}^A(M,\kk) \to \Tor_{i+1}^A(M/aM,\kk) \to \Tor_i^A(M,\kk) \xrightarrow{*a} \Tor_i^A(M,\kk) \to \cdots \]
+        Since the derived homomorphism of \(*a\) is zero, we have \(\Tor_{i+1}^A(M/aM,\kk) = 0\) if and only if \(\Tor_{i}^A(M,\kk) = 0\).
+        By Lemma \ref{lem: tor control the projective dimension}, we have \(\projdim M/aM = \projdim M + 1\).
+        % \Yang{To be completed.}
+    \end{proof}
+
+\subsection{Depth and regularity by homological algebra}
+
+    \begin{proposition}\label{prop: depth equals to grade}
+        Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
+        Then 
+        \[ \depth M := \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}. \]
+    \end{proposition}
+    \begin{proof}
+        Let $a \in \frakm$ be $M$-regular and $N = M/aM$.
+        Then we claim that
+        \[ \inf \{ i: \Ext^i_A(\kk,N) \neq 0 \} = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \} - 1. \]
+        Indeed, we have an exact sequence
+        \[ 0 \to M \xrightarrow{a} M \to N \to 0. \]
+        It induces a long exact sequence
+        \[ \cdots \to \Ext^{i-1}_A(\kk,M) \to \Ext^{i-1}_A(\kk,N) \to \Ext^i_A(\kk,M) \xrightarrow{\Ext^i_A(\kk,\Mult_a)} \Ext^i_A(\kk,M) \to \cdots. \]
+        Note that $a \in \frakm$, then $\Ext^i_A(\kk,\Mult_a) = 0$.
+        It follows that when $\Ext^{i-1}_A(\kk,M) = 0$, we have $\Ext^{i-1}_A(\kk,N) = 0$ iff $\Ext^i_A(\kk,M) = 0$, whence the claim.
+
+        Let $n = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}$.
+        Induct on $n$.
+        Suppose first $n = 0$.
+        Since $\kk$ is a simple $A$-module, there is an injective homomorphism $\kk \to M$.
+        Then $\frakm \in \Ass M$ and hence $\depth M = 0$.
+        
+        Suppose $n > 0$., let $a_1,\cdots,a_m \in \frakm$ be any $M$-regular sequence.
+        Using the claim inductively on $M/(a_1,\cdots,a_m)M$, we have $n \geq \depth$.
+        If $M$ has no regular element, then $\frakm \subset \bigcup_{\frakp \in \Ass M} \frakp$.
+        Then $\frakm = \frakp$ for some $\frakp \in \Ass M$.
+        This show that we can find $x \neq 0 \in M$ such that $\frakp = \Ann x$.
+        It gives a homomorphism $\kk = A/\frakm \to M$.
+        That is a contradiction and hence $M$ has a regular element.
+        Let $a$ be $M$-regular and $N = M/aM$.
+        Then $\depth N = n-1$ by the claim and induction hypothesis.
+        Hence we have $\depth M \geq n$.
+    \end{proof}
+
+    \begin{lemma}\label{lem: finite minimal projective resolution and depth}
+        Let \((A,\frakm,\kk)\) be a noetherian local ring.
+        Suppose we have exact sequences
+        \[ 0 \to A^{n_r} \xrightarrow{\d_r} A^{n_{r-1}} \xrightarrow{\d_{r-1}} \cdots \to A^{n_1} \xrightarrow{\d_1} A^{n_0}, \]
+        such that \( A^{n_i} \to \Ker \d_{i-1} \) is minimal for all \(i\).
+        Then \(\depth A \geq r\).
+    \end{lemma}
+    \begin{proof}
+        Since \(\d_r\) is injective and its image is contained in \(\frakm A^{n_{r-1}}\), we can choose \(t \in \frakm\) that is not a zero divisor.
+        Denote the sequence by \(C_\bullet\).
+        Then we have a short exact sequence of complexes
+        \[ 0 \to C_\bullet \xrightarrow{*t} C_\bullet \to C_\bullet/tC_\bullet \to 0. \]
+        Consider the long exact sequence in homology
+        \[ \cdots \to H_{i}(C_\bullet) \xrightarrow{*t} H_i(C_\bullet) \to H_i(C_\bullet/tC_\bullet) \to H_{i-1}(C_\bullet) \xrightarrow{*t} H_{i-1}(C_\bullet) \to \cdots. \]
+        Since \(C_\bullet\) is exact, we have \(H_i(C_\bullet) = 0\) for all \(i\).
+        In particular, \(H_i(C_\bullet/tC_\bullet) = 0\) for all \(i\geq 2\).
+        Inductively, we can choose a regular sequence of length \(r\) in \(\frakm\).
+        % \Yang{To be completed.}
+    \end{proof}
+
+    
+    \begin{lemma}\label{lem: dimension of tangent space is bounded by projective dimension of k}
+        Let \((A,\frakm,\kk)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+        Suppose there is an injective homomorphism \(\kk \to M\).
+        Then \(\projdim M \geq \dim_\kk T_{A,\frakm}\).
+    \end{lemma}
+    \begin{proof}
+        Let \(x_1,\cdots,x_n \subset \frakm \setminus \frakm^2\) such that their images in \(\frakm/\frakm^2\) form a basis.
+        Then we have a complex
+        \[ K_\bullet \coloneqq 0 \to \wedge^n A^{\oplus n} \xrightarrow{\d_n} \wedge^{n-1} A^{\oplus n} \xrightarrow{\d_{n-1}} \cdots \to \wedge^1 A^{\oplus n} \xrightarrow{\d_1} \wedge^0 A^{\oplus n} \xrightarrow{\d_0} \kk \to 0, \]
+        where 
+        \[ \d_r: \wedge^r A^{\oplus n} \to \wedge^{r-1} A^{\oplus n}, \quad e_{i_1}\wedge \cdots \wedge e_{i_r} \mapsto \sum_{k=1}^r (-1)^k x_{i_k} e_{i_1}\wedge \cdots \wedge \widehat{e_{i_k}} \wedge \cdots \wedge e_{i_r}. \]
+        Here \(\widehat{e_{i_k}}\) means that we omit the \(k\)-th element.
+        Let \(P_\bullet \to M\) be the minimal projective resolution of \(M\).
+        Then we have a homomorphism of complexes
+        \[ \varphi_\bullet: K_\bullet \to P_\bullet \]
+        induced by the injective homomorphism \(\kk \to M\).
+        
+        We claim that \(\varphi_i\) is injective and splits \(P_i\) into a direct sum \(K_i \oplus F_i\) with \(F_i\) free for all \(i \geq 0\).
+        Since \(K_i\) and \(P_i\) are free, we just need to show that \(\varphi_i \ten_A \id_\kk\) is injective.
+        Induct on \(i\).
+        For \(i = 0\), note that \( \kk \to M\ten_A \kk\) is injective, by the commutative diagram
+        \[ \xymatrix{
+            A \ar[r] \ar[d]_{\varphi_0\ten_A \id_\kk} & \kk \ar[d] \\
+            P_0\ten_A \kk \ar[r]^{\cong} & M\ten_A \kk
+        }, \]
+        the image of \(\varphi_0\ten_A \id_\kk\) is not zero in \(P_0\ten_A \kk\).
+        
+        For \(i > 0\), since \(K_{i-1}\) and \(P_{i-1}\) are free, we have a natural isomorphism between
+        \[ \frakm K_{i-1} \ten_A \kk\to \frakm P_{i-1} \ten_A \kk \]
+        and 
+        \[ K_{i-1} \ten_A \frakm/\frakm^2 \to P_{i-1} \ten_A \frakm/\frakm^2. \]
+        We have a commutative diagram
+        \begin{equation}\label{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i}
+            \xymatrix{
+                K_i \ten_A \kk \ar[r] \ar[d] & \frakm K_{i-1} \ten_A \kk  \ar[d] \\
+                P_{i} \ten_A \kk \ar[r] & \frakm P_{i-1} \ten_A \kk
+            }. 
+        \end{equation}
+        Since \(P_{i-1}/K_{i-1} \cong F_{i-1}\) is free, the right vertical map in \eqref{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i} is injective.
+        By construction of \(K_\bullet\), \(K_i \ten_A \kk \to \frakm K_{i-1} \ten_A \kk\) is injective.
+        Hence the left vertical map in \eqref{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i} is injective.
+        This completes the proof of the claim.
+
+        By the claim, \(P_i \neq 0\) for all \(i \leq n\) and the conclusion follows.
+    \end{proof}
+
+
+    \begin{proposition}[Auslander-Buchsbaum formula]\label{prop: Auslander-Buchsbaum formula}
+        Let \(A\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+        Suppose \(\projdim M < \infty\).
+        Then \(\projdim M = \depth A - \depth M\).
+    \end{proposition}
+    \begin{proof}
+        We have a minimal projective resolution
+        \[ 0 \to A^{n_r} \to A^{n_{r-1}} \to \cdots \to A^{n_1} \to A^{n_0} \to M \to 0. \]
+        By Lemma \ref{lem: finite minimal projective resolution and depth}, we have \(\depth A \geq \projdim M\).
+
+        Induct on \(\depth M\).
+        Suppose \(\depth M = 0\).
+        Then by Proposition \ref{prop: depth equals to grade}, we have \(\Hom_A(\kk,M) \neq 0\), whence there is an injective homomorphism \(\kk \to M\).
+        By Lemma \ref{lem: dimension of tangent space is bounded by projective dimension of k}, we have 
+        \[ \depth A \geq \projdim M \geq \dim_\kk T_{A,\frakm} \geq \depth A. \]
+        If \(\depth M > 0\), choose a regular element \(a \in \frakm\) that is \(M\)-regular.
+        Then by Propostion \ref{prop: induction on projective dimension}, we have 
+        \[ \depth M + \projdim M = \depth (M/aM) - 1 + \projdim (M/aM) + 1 = \depth A. \]
+        % \Yang{To be completed.}
+    \end{proof}
+
+% \subsection{Minimal resolution}
+
+%     \begin{lemma}\label{lem: cohomological dimension is well-defined}
+%         Let \(A\) be a ring and \(M\) an \(A\)-module.
+%         Then 
+%         \[ \sup_{M} \projdim M = \sup_{N} \injdim N. \]
+%     \end{lemma}
+%     \begin{proof}
+%         \Yang{To be completed.}
+%     \end{proof}
+
+%     \begin{definition}
+%         Let \(A\) be a ring.
+%         The \emph{cohomological dimension} of \(A\), denoted \(\cohdim A\), is defined as
+%         \[ \cohdim A \coloneqq \sup_{M} \projdim M = \sup_{M} \injdim M. \]
+%     \end{definition}
+
+%     \begin{definition}\label{def: minimal homomorphism}
+%         Let \((A,\frakm,\kk)\) be a noetherian local ring.
+%         We say that a homomorphism of \(A\)-modules \(f: M \to N\) is \emph{minimal} 
+%         if the induced map \(M \ten \kk \to N \ten \kk\) is an isomorphism.
+%         Equivalently, \(f\) is minimal if and only if \(f\) is surjective and \(\Ker f \subset \frakm M\).
+%     \end{definition}
+
+%     % \begin{lemma}\label{lem: minimal homomorphism and kernel contained in maximal ideal}
+%     %     A homomorphism \(f: M \to N\) of \(A\)-modules is minimal if and only if \(\Ker f \subset \frakm M\).
+%     % \end{lemma}
+%     % \Yang{To be completed.}
+
+%     \begin{definition}\label{def: minimal projective resolution}
+%         Let \(A\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+%         A \emph{minimal projective resolution} of \(M\) is a projective resolution
+%         \[ \cdots \to P_n \xrightarrow{d_n} P_{n-1} \xrightarrow{d_{n-1}} \cdots \to P_1 \xrightarrow{d_1} P_0 \xrightarrow{d_0} M \to 0 \]
+%         such that each homomorphism \(P_i \to \Ker d_{i-1}\) is minimal.
+%     \end{definition}
+
+%     \begin{proposition}\label{prop: minimal projective resolution exists and unique}
+%         Let \((A,\frakm,\kk)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+%         Then \(M\) has a minimal projective resolution.
+%         Moreover, any two minimal projective resolutions of \(M\) are isomorphic.
+%     \end{proposition}
+%     \begin{proof}
+%         Suppose \(M\ten_A \kk = \bigoplus \kk \cdot \overline{x_i} \).
+%         Lift \(x_i\) to elements of \(M\).
+%         Then we have a minimal homomorphism \(\d_0: \bigoplus A \cdot x_i \to M\).
+%         Similarly choose minimal homomorphisms \( \d_k: A^{n_i} \to \Ker \d_{i-1} \) for \(i = 1,2,\cdots\).
+%         This gives a minimal projective resolution.
+
+%         Suppose we have two minimal homomorphism \(f,g: A^n \to M\).
+%         After tensoring with \(\kk\), we have isomorphisms between \(f\ten \kk\) and \(g\ten \kk\).
+%         Lifting to $A$, we get an homomorphism \(\varphi: f \to g\).
+%         Here homomorphism between \(f,g\) means a homomorphism \(A^n \to A^n\) such that \(f = g \circ \varphi\).
+%         The homomorphism \(\varphi\) is represented by a matrix \(T\).
+%         We have \(\det T \not\in \frakm\), whence \(\varphi\) is an isomorphism.
+%     \end{proof}
+
+%     \begin{proposition}\label{prop: projective resolution is a direct sum of minimal projective resolution}
+%         Let \(L_\bullet \to M\) be a minimal projective resolution and \(P_\bullet\) be an arbitrary projective resolution of \(M\).
+%         Then we have \(P_\bullet \cong L_\bullet \oplus P_\bullet'\) for some exact complexes \(P_\bullet'\).
+%     \end{proposition}
+%     \begin{proof}
+%         By Propostion \ref{prop: morphism induces morphism of resolution complexes}, we have homomorphism 
+%         \[ L_\bullet \xrightarrow{\varphi_\bullet} P_\bullet \xrightarrow{\psi_\bullet} L_\bullet. \]
+%         between complexes.
+%         By Propostion \ref{prop: morphism induces morphism of resolution complexes} again, \(T_\bullet \coloneqq \psi_\bullet \circ \varphi_\bullet\) is homotopic to the identity by \(h_\bullet\).
+%         Suppose \(T_\bullet\) is represented by a matrix.
+%         Since \(L_\bullet\) is minimal, we have 
+%         \[ (T - \id)(L_n) = (\d_{{n+1}} \circ h_n + h_{n-1} \circ \d_{n})(L_n) \subset \frakm L_n. \]
+%         Then \(\det T \not\in \frakm\) and hence \(T_\bullet\) is an isomorphism.
+%         It follows that \(\psi_\bullet\) is surjective, whence it splits \(P_\bullet\) into a direct sum \( L \oplus P_\bullet'\) since \(L_\bullet\) is projective. 
+%         By the Five Lemma, we see that \(P'_\bullet\) is exact.
+%         % \Yang{To be completed.}
+%     \end{proof}
+
+% \subsection{Regularity by homological algebra}
+
+    % \begin{lemma}\label{lem: tor control the projective dimension}
+    %     Let \((A,\frakm,\kk)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+    %     Then \(\projdim M \leq n\) if and only if \(\Tor_{n+1}^A(M,\kk) = 0\).
+    % \end{lemma}
+    % \begin{proof}
+    %     The necessity is clear.
+    %     For the sufficiency, we have a minimal projective resolution
+    %     \[ \cdots \to P_{n+1} \xrightarrow{\d_{n+1}} P_n \xrightarrow{\d_n} P_{n-1} \xrightarrow{\d_{n-1}} \cdots \to P_1 \xrightarrow{\d_1} P_0 \xrightarrow{\d_0} M \to 0. \]
+    %     Let \(C \coloneqq \Im \d_n\).
+    %     Then we have 
+    %     \[ 0 \to P_{n+1} \xrightarrow{\d_{n+1}} P_n \xrightarrow{\d_n} C \to 0. \]
+    %     Hence \(\Tor_{1}^A(C,\kk) \cong \Tor_{n+1}^A(M,\kk) = 0\).
+    %     Let \(K = \Ker \d_n\).
+    %     Then we have the short exact sequence
+    %     \[ 0 \to K \to P_n \to C \to 0. \]
+    %     Since \(\Tor_{1}^A(C,\kk) = 0\), there is an exact sequence
+    %     \[ 0 \to K \ten_A \kk \to P_n \ten_A \kk \to C \ten_A \kk \to 0. \]
+    %     Since \(P_n \to C\) is minimal, we have \(K \ten_A \kk = 0\).
+    %     By the Nakayama's lemma, \(K = 0\).
+    %     This implies that \( \projdim C \leq 0\) and hence \(\projdim M \leq n\).
+    %     % \Yang{To be completed.}
+    % \end{proof}
+
+    % % \begin{lemma}\label{lem: dimension of tangent space is bounded by projective dimension of k}
+    % %     Let \((A,\frakm,\kk)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+    % %     Suppose there is an injective homomorphism \(\kk \to M\).
+    % %     Then \(\projdim M \geq \dim_\kk T_{A,\frakm}\).
+    % % \end{lemma}
+    % % \begin{proof}
+    % %     Let \(x_1,\cdots,x_n \subset \frakm \setminus \frakm^2\) such that their images in \(\frakm/\frakm^2\) form a basis.
+    % %     Then we have a complex
+    % %     \[ K_\bullet \coloneqq 0 \to \wedge^n A^{\oplus n} \xrightarrow{\d_n} \wedge^{n-1} A^{\oplus n} \xrightarrow{\d_{n-1}} \cdots \to \wedge^1 A^{\oplus n} \xrightarrow{\d_1} \wedge^0 A^{\oplus n} \xrightarrow{\d_0} \kk \to 0, \]
+    % %     where 
+    % %     \[ \d_r: \wedge^r A^{\oplus n} \to \wedge^{r-1} A^{\oplus n}, \quad e_{i_1}\wedge \cdots \wedge e_{i_r} \mapsto \sum_{k=1}^r (-1)^k x_{i_k} e_{i_1}\wedge \cdots \wedge \widehat{e_{i_k}} \wedge \cdots \wedge e_{i_r}. \]
+    % %     Here \(\widehat{e_{i_k}}\) means that we omit the \(k\)-th element.
+    % %     Let \(P_\bullet \to M\) be the minimal projective resolution of \(M\).
+    % %     Then we have a homomorphism of complexes
+    % %     \[ \varphi_\bullet: K_\bullet \to P_\bullet \]
+    % %     induced by the injective homomorphism \(\kk \to M\).
+        
+    % %     We claim that \(\varphi_i\) is injective and splits \(P_i\) into a direct sum \(K_i \oplus F_i\) with \(F_i\) free for all \(i \geq 0\).
+    % %     Since \(K_i\) and \(P_i\) are free, we just need to show that \(\varphi_i \ten_A \id_\kk\) is injective.
+    % %     Induct on \(i\).
+    % %     For \(i = 0\), note that \( \kk \to M\ten_A \kk\) is injective, by the commutative diagram
+    % %     \[ \xymatrix{
+    % %         A \ar[r] \ar[d]_{\varphi_0\ten_A \id_\kk} & \kk \ar[d] \\
+    % %         P_0\ten_A \kk \ar[r]^{\cong} & M\ten_A \kk
+    % %     }, \]
+    % %     the image of \(\varphi_0\ten_A \id_\kk\) is not zero in \(P_0\ten_A \kk\).
+        
+    % %     For \(i > 0\), since \(K_{i-1}\) and \(P_{i-1}\) are free, we have a natural isomorphism between
+    % %     \[ \frakm K_{i-1} \ten_A \kk\to \frakm P_{i-1} \ten_A \kk \]
+    % %     and 
+    % %     \[ K_{i-1} \ten_A \frakm/\frakm^2 \to P_{i-1} \ten_A \frakm/\frakm^2. \]
+    % %     We have a commutative diagram
+    % %     \begin{equation}\label{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i}
+    % %         \xymatrix{
+    % %             K_i \ten_A \kk \ar[r] \ar[d] & \frakm K_{i-1} \ten_A \kk  \ar[d] \\
+    % %             P_{i} \ten_A \kk \ar[r] & \frakm P_{i-1} \ten_A \kk
+    % %         }. 
+    % %     \end{equation}
+    % %     Since \(P_{i-1}/K_{i-1} \cong F_{i-1}\) is free, the right vertical map in \eqref{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i} is injective.
+    % %     By construction of \(K_\bullet\), \(K_i \ten_A \kk \to \frakm K_{i-1} \ten_A \kk\) is injective.
+    % %     Hence the left vertical map in \eqref{eq in lem: dimension of tangent space is bounded by projective dimension of k : commutative diagram for varphi_i} is injective.
+    % %     This completes the proof of the claim.
+
+    % %     By the claim, \(P_i \neq 0\) for all \(i \leq n\) and the conclusion follows.
+    % % \end{proof}
+
+    % \begin{proposition}\label{prop: cohomological dimension of local ring is projective dimension of residue field}
+    %     Let \((A,\frakm,\kk)\) be a noetherian local ring.
+    %     Then \(\cohdim A = \projdim \kk\) (finite or infinite).
+    % \end{proposition}
+    % \begin{proof}
+    %     \Yang{To be completed.}
+    % \end{proof}
+
+    % \begin{proposition}\label{prop: induction on projective dimension}
+    %     Let \((A,\frakm)\) be a noetherian local ring and \(M\) a finite \(A\)-module.
+    %     Let \(a \in \frakm\) be an \(M\)-regular element.
+    %     % Suppose \(\projdim M < \infty\).
+    %     Then \(\projdim M/aM = \projdim M + 1\).
+    %     Here we set \(\infty + 1 = \infty\).
+    % \end{proposition}
+    % \begin{proof}
+    %     % Let \(P_\bullet\) be a minimal projective resolution of \(M\).
+    %     We have an exact sequence
+    %     \[ 0 \to M  \xrightarrow{*a} M \to M/aM \to 0. \]
+    %     Take the long exact sequence with respect to \(\Tor(-,\kk)\), we get
+    %     \[ \cdots \to \Tor_{i+1}^A(M,\kk) \to \Tor_{i+1}^A(M/aM,\kk) \to \Tor_i^A(M,\kk) \xrightarrow{*a} \Tor_i^A(M,\kk) \to \cdots \]
+    %     Since the derived of \(*a\) is zero, we have \(\Tor_{i+1}^A(M/aM,\kk) = 0\) if and only if \(\Tor_{i}^A(M,\kk) = 0\).
+    %     By Lemma \ref{lem: tor control the projective dimension}, we have \(\projdim M/aM = \projdim M + 1\).
+    %     % \Yang{To be completed.}
+    % \end{proof}
+
+    \begin{theorem}\label{thm: regularity and finite cohomological dimension}
+        Let \((A,\frakm)\) be a noetherian local ring.
+        Then \(A\) is regular at \(\frakm\) if and only if \(\cohdim A < \infty\).
+    \end{theorem}
+    \begin{proof}
+        Suppose \(A\) is regular at \(\frakm\).
+        Let \(x_1,\cdots,x_n\) be a minimal generating set of \(\frakm\).
+        Then \(x_1,\cdots,x_n\) is an \(A\)-regular sequence since \(A\) is regular at \(\frakm\).
+        By Proposition \ref{prop: induction on projective dimension}, we have 
+        \( \projdim \kk = \projdim A/(x_1,\cdots,x_n)A = n + \projdim A = n\).
+
+        Conversely, suppose \(\cohdim A < \infty\).
+        Then by Proposition \ref{prop: cohomological dimension of local ring is projective dimension of residue field}, we have \(\projdim \kk < \infty\).
+        We have 
+        \[ \dim_\kk T_{A,\frakm} \leq \projdim \kk \leq \depth A \leq \dim_\kk T_{A,\frakm}. \]
+        The first ``\(\leq\)'' follows from Lemma \ref{lem: dimension of tangent space is bounded by projective dimension of k}.
+        The second ``\(\leq\)'' follows from Proposition \ref{prop: Auslander-Buchsbaum formula}.
+        Hence we see that \(A\) is regular at \(\frakm\).
+        % \Yang{To be completed.}
+    \end{proof}
+
+    \begin{theorem}\label{thm: regular local ring is UFD}
+        Let \(A,\frakm\) be a regular noetherian local ring.
+        Then \(A\) is UFD.
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}

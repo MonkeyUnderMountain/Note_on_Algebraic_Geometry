@@ -1,3 +1,15 @@
 \section{Complexes and Homology}
 
-    
+    \begin{definition}\label{def: homotopy between morphisms of complexes}
+        Let \(A_\bullet\) and \(B_\bullet\) be two complexes in \(\cala\) and \(\varphi_\bullet, \psi_\bullet: A_\bullet \to B_\bullet\) be two morphisms of complexes.
+        A \emph{homotopy} between \(\varphi_\bullet\) and \(\psi_\bullet\) is a collection of morphisms \(h_n: A_n \to B_{n-1}\) such that
+        \[
+            \varphi_n - \psi_n = \d_{B_{n+1}} \circ h_n + h_{n-1} \circ \d_{A_n}.
+        \]
+    \end{definition}
+
+    In diagram, we have 
+    \[ \xymatrix{
+        \cdots \ar[r] & A_{n+1} \ar[r] & A_n \ar[r]^{\d_{A_{n}}} \ar[ld]_{h_n} \ar@<0.5ex>[d]^{\varphi_n} \ar@<-0.5ex>[d]_{\psi_n} & A_{n-1} \ar[ld]^{h_{n-1}} \ar[r] & \cdots \\
+        \cdots \ar[r] & B_{n+1} \ar[r]^{\d_{B_{n+1}}} & B_n \ar[r]  & B_{n-1} \ar[r] & \cdots \\
+    }. \]

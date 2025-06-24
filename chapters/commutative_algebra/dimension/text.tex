@@ -502,39 +502,39 @@ Somehow the Krull dimension is ``homological'' and the depth is ``cohomological'
         \Yang{To be completed.}
     \end{example}
 
-    \begin{proposition}\label{prop: depth equals to grade}
-        Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
-        Then 
-        \[ \depth M := \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}. \]
-    \end{proposition}
-    \begin{proof}
-        Let $a \in \frakm$ be $M$-regular and $N = M/aM$.
-        Then we claim that
-        \[ \inf \{ i: \Ext^i_A(\kk,N) \neq 0 \} = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \} - 1. \]
-        Indeed, we have an exact sequence
-        \[ 0 \to M \xrightarrow{a} M \to N \to 0. \]
-        It induces a long exact sequence
-        \[ \cdots \to \Ext^{i-1}_A(\kk,M) \to \Ext^{i-1}_A(\kk,N) \to \Ext^i_A(\kk,M) \xrightarrow{\Ext^i_A(\kk,\Mult_a)} \Ext^i_A(\kk,M) \to \cdots. \]
-        Note that $a \in \frakm$, then $\Ext^i_A(\kk,\Mult_a) = 0$.
-        It follows that when $\Ext^{i-1}_A(\kk,M) = 0$, we have $\Ext^{i-1}_A(\kk,N) = 0$ iff $\Ext^i_A(\kk,M) = 0$, whence the claim.
+    % \begin{proposition}\label{prop: depth equals to grade}
+    %     Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
+    %     Then 
+    %     \[ \depth M := \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}. \]
+    % \end{proposition}
+    % \begin{proof}
+    %     Let $a \in \frakm$ be $M$-regular and $N = M/aM$.
+    %     Then we claim that
+    %     \[ \inf \{ i: \Ext^i_A(\kk,N) \neq 0 \} = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \} - 1. \]
+    %     Indeed, we have an exact sequence
+    %     \[ 0 \to M \xrightarrow{a} M \to N \to 0. \]
+    %     It induces a long exact sequence
+    %     \[ \cdots \to \Ext^{i-1}_A(\kk,M) \to \Ext^{i-1}_A(\kk,N) \to \Ext^i_A(\kk,M) \xrightarrow{\Ext^i_A(\kk,\Mult_a)} \Ext^i_A(\kk,M) \to \cdots. \]
+    %     Note that $a \in \frakm$, then $\Ext^i_A(\kk,\Mult_a) = 0$.
+    %     It follows that when $\Ext^{i-1}_A(\kk,M) = 0$, we have $\Ext^{i-1}_A(\kk,N) = 0$ iff $\Ext^i_A(\kk,M) = 0$, whence the claim.
 
-        Let $n = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}$.
-        Induct on $n$.
-        Suppose first $n = 0$.
-        Since $\kk$ is a simple $A$-module, there is an injective homomorphism $\kk \to M$.
-        Then $\frakm \in \Ass M$ and hence $\depth M = 0$.
+    %     Let $n = \inf \{ i : \Ext^i_A(\kk,M) \neq 0 \}$.
+    %     Induct on $n$.
+    %     Suppose first $n = 0$.
+    %     Since $\kk$ is a simple $A$-module, there is an injective homomorphism $\kk \to M$.
+    %     Then $\frakm \in \Ass M$ and hence $\depth M = 0$.
         
-        Suppose $n > 0$., let $a_1,\cdots,a_m \in \frakm$ be any $M$-regular sequence.
-        Using the claim inductively on $M/(a_1,\cdots,a_m)M$, we have $n \geq \depth$.
-        If $M$ has no regular element, then $\frakm \subset \bigcup_{\frakp \in \Ass M} \frakp$.
-        Then $\frakm = \frakp$ for some $\frakp \in \Ass M$.
-        This show that we can find $x \neq 0 \in M$ such that $\frakp = \Ann x$.
-        It gives a homomorphism $\kk = A/\frakm \to M$.
-        That is a contradiction and hence $M$ has a regular element.
-        Let $a$ be $M$-regular and $N = M/aM$.
-        Then $\depth N = n-1$ by the claim and induction hypothesis.
-        Hence we have $\depth M \geq n$.
-    \end{proof}
+    %     Suppose $n > 0$., let $a_1,\cdots,a_m \in \frakm$ be any $M$-regular sequence.
+    %     Using the claim inductively on $M/(a_1,\cdots,a_m)M$, we have $n \geq \depth$.
+    %     If $M$ has no regular element, then $\frakm \subset \bigcup_{\frakp \in \Ass M} \frakp$.
+    %     Then $\frakm = \frakp$ for some $\frakp \in \Ass M$.
+    %     This show that we can find $x \neq 0 \in M$ such that $\frakp = \Ann x$.
+    %     It gives a homomorphism $\kk = A/\frakm \to M$.
+    %     That is a contradiction and hence $M$ has a regular element.
+    %     Let $a$ be $M$-regular and $N = M/aM$.
+    %     Then $\depth N = n-1$ by the claim and induction hypothesis.
+    %     Hence we have $\depth M \geq n$.
+    % \end{proof}
 
     \begin{corollary}\label{cor: induction on depth}
         Let $A$ be a noetherian ring, $M$ a finite $A$-module and $a \in A$ an $M$-regular element.
