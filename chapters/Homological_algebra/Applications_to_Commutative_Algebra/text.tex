@@ -1,9 +1,9 @@
 \section{Applications to Commutative Algebra}
 
 
-\subsection{Cohomological dimension}
+\subsection{Homological dimension}
 
-    \begin{lemma}\label{lem: cohomological dimension is well-defined}
+    \begin{lemma}\label{lem: homological dimension is well-defined}
         Let \(A\) be a ring and \(M\) an \(A\)-module.
         Then 
         \[ \sup_{M} \projdim M = \sup_{N} \injdim N. \]
@@ -17,7 +17,7 @@
         \[ \injdim N \leq n. \]
     \end{proof}
 
-    \begin{remark}\label{rmk: checking projective dimension of finite module is enough for cohomological dimension}
+    \begin{remark}\label{rmk: checking projective dimension of finite module is enough for homological dimension}
         In fact, for fix \(N\), we have 
         \[ \injdim N \leq n \]
         if and only if
@@ -27,11 +27,30 @@
         \[ \sup_{M \text{ finite }} \projdim M = \sup_{M} \projdim M = \sup_{N} \injdim N. \]
     \end{remark}
 
-    \begin{definition}
+    \begin{definition}\label{def: homological dimension}
         Let \(A\) be a ring.
-        The \emph{cohomological dimension} of \(A\), denoted \(\cohdim A\), is defined as
-        \[ \cohdim A \coloneqq \sup_{M} \projdim M = \sup_{M} \injdim M. \]
+        The \emph{homological dimension} of \(A\), denoted \(\hldim A\), is defined as
+        \[ \hldim A \coloneqq \sup_{M} \projdim M = \sup_{M} \injdim M. \]
     \end{definition}
+
+    \begin{lemma}\label{lem: Ext commute with flat tensor for finite module in first item}
+        Let \(A\) be a noetherian ring, \(B\) a flat \(A\)-algebra and \(M\) a finite \(A\)-module.
+        Then we have
+        \[ \Ext^i_A(M,N)\ten B \cong \Ext^i_B(M \ten B, N \ten M), \quad \forall N. \]
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{proposition}\label{prop: homological dimension is local}
+        Let \(A\) be a noetherian ring.
+        Then 
+        \[ \hldim A = \sup_{\frakp \in \Spec A} \hldim A_\frakp. \]
+    \end{proposition}
+    \begin{proof}
+        Compute homological dimension of \(A\) using \(\Ext_A^i(M,N)\) for finite \(M\).
+        The conclusion follows from Propostion \ref{prop: homological dimension is local}.
+    \end{proof}
 
     \begin{definition}\label{def: minimal homomorphism}
         Let \((A,\frakm,\kk)\) be a noetherian local ring.
@@ -200,16 +219,16 @@
     %     By the claim, \(P_i \neq 0\) for all \(i \leq n\) and the conclusion follows.
     % \end{proof}
 
-    \begin{proposition}\label{prop: cohomological dimension of local ring is projective dimension of residue field}
+    \begin{proposition}\label{prop: homological dimension of local ring is projective dimension of residue field}
         Let \((A,\frakm,\kk)\) be a noetherian local ring.
-        Then \(\cohdim A = \projdim \kk\) (finite or infinite).
+        Then \(\hldim A = \projdim \kk\) (finite or infinite).
     \end{proposition}
     \begin{proof}
-        The inequality \(\cohdim A \geq \projdim \kk\) is by definition.
+        The inequality \(\hldim A \geq \projdim \kk\) is by definition.
         Conversely, we can compute \(\Tor_{n+1}^A(M,\kk)\) using minimal projective resolution of \(\kk\) for any finite \(A\)-module \(M\).
         By Lemma \ref{lem: tor control the projective dimension}, we have \(\projdim M \leq n\) if and only if \(\Tor_{n+1}^A(M,\kk) = 0\).
         This implies that \(\projdim M \leq n\) for all finite \(A\)-modules \(M\) if \(\projdim \kk = n\).
-        By Remark \ref{rmk: checking projective dimension of finite module is enough for cohomological dimension}, we have \(\cohdim A \leq n\).
+        By Remark \ref{rmk: checking projective dimension of finite module is enough for homological dimension}, we have \(\hldim A \leq n\).
         % \Yang{Finiteness of \(M\)?}
         % \Yang{To be completed.}
     \end{proof}
@@ -233,6 +252,8 @@
     \end{proof}
 
 \subsection{Depth and regularity by homological algebra}
+
+    % \paragraph{Depth.}
 
     \begin{proposition}\label{prop: depth equals to grade}
         Let $(A, \frakm, \kk)$ be a noetherian local ring and $M$ a finite $A$-module.
@@ -359,7 +380,7 @@
 
 % \subsection{Minimal resolution}
 
-%     \begin{lemma}\label{lem: cohomological dimension is well-defined}
+%     \begin{lemma}\label{lem: homological dimension is well-defined}
 %         Let \(A\) be a ring and \(M\) an \(A\)-module.
 %         Then 
 %         \[ \sup_{M} \projdim M = \sup_{N} \injdim N. \]
@@ -370,8 +391,8 @@
 
 %     \begin{definition}
 %         Let \(A\) be a ring.
-%         The \emph{cohomological dimension} of \(A\), denoted \(\cohdim A\), is defined as
-%         \[ \cohdim A \coloneqq \sup_{M} \projdim M = \sup_{M} \injdim M. \]
+%         The \emph{homological dimension} of \(A\), denoted \(\hldim A\), is defined as
+%         \[ \hldim A \coloneqq \sup_{M} \projdim M = \sup_{M} \injdim M. \]
 %     \end{definition}
 
 %     \begin{definition}\label{def: minimal homomorphism}
@@ -502,9 +523,9 @@
     % %     By the claim, \(P_i \neq 0\) for all \(i \leq n\) and the conclusion follows.
     % % \end{proof}
 
-    % \begin{proposition}\label{prop: cohomological dimension of local ring is projective dimension of residue field}
+    % \begin{proposition}\label{prop: homological dimension of local ring is projective dimension of residue field}
     %     Let \((A,\frakm,\kk)\) be a noetherian local ring.
-    %     Then \(\cohdim A = \projdim \kk\) (finite or infinite).
+    %     Then \(\hldim A = \projdim \kk\) (finite or infinite).
     % \end{proposition}
     % \begin{proof}
     %     \Yang{To be completed.}
@@ -528,9 +549,9 @@
     %     % \Yang{To be completed.}
     % \end{proof}
 
-    \begin{theorem}\label{thm: regularity and finite cohomological dimension}
+    \begin{theorem}\label{thm: regularity and finite homological dimension}
         Let \((A,\frakm)\) be a noetherian local ring.
-        Then \(A\) is regular at \(\frakm\) if and only if \(\cohdim A < \infty\).
+        Then \(A\) is regular at \(\frakm\) if and only if \(\hldim A < \infty\).
     \end{theorem}
     \begin{proof}
         Suppose \(A\) is regular at \(\frakm\).
@@ -539,14 +560,32 @@
         By Proposition \ref{prop: induction on projective dimension}, we have 
         \( \projdim \kk = \projdim A/(x_1,\cdots,x_n)A = n + \projdim A = n\).
 
-        Conversely, suppose \(\cohdim A < \infty\).
-        Then by Proposition \ref{prop: cohomological dimension of local ring is projective dimension of residue field}, we have \(\projdim \kk < \infty\).
+        Conversely, suppose \(\hldim A < \infty\).
+        Then by Proposition \ref{prop: homological dimension of local ring is projective dimension of residue field}, we have \(\projdim \kk < \infty\).
         We have 
         \[ \dim_\kk T_{A,\frakm} \leq \projdim \kk \leq \depth A \leq \dim_\kk T_{A,\frakm}. \]
         The first ``\(\leq\)'' follows from Lemma \ref{lem: dimension of tangent space is bounded by projective dimension of k}.
         The second ``\(\leq\)'' follows from Proposition \ref{prop: Auslander-Buchsbaum formula}.
         Hence we see that \(A\) is regular at \(\frakm\).
         % \Yang{To be completed.}
+    \end{proof}
+
+    % \paragraph{Regular local rings are UFDs.}
+
+    \begin{lemma}\label{lem: UFD iff height 1 prime is principal}
+        Let \(A\) be a noetherian integral domain.
+        Then \(A\) is a UFD if and only if every height \(1\) prime ideal of \(A\) is principal.
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{lemma}\label{lem: UFD iff localization at prime element x is UFD}
+        Let \(A\) be a noetherian integral domain and \((x) \subset A\) a non-zero prime ideal.
+        Then \(A\) is a UFD if and only if \(A[1/x]\) is a UFD.
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be completed.}
     \end{proof}
 
     \begin{theorem}\label{thm: regular local ring is UFD}
