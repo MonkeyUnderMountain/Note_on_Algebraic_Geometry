@@ -49,7 +49,7 @@
     \end{proposition}
     \begin{proof}
         Compute homological dimension of \(A\) using \(\Ext_A^i(M,N)\) for finite \(M\).
-        The conclusion follows from Propostion \ref{prop: homological dimension is local}.
+        The conclusion follows from Propostion \ref{lem: Ext commute with flat tensor for finite module in first item}.
     \end{proof}
 
     \begin{definition}\label{def: minimal homomorphism}
@@ -568,6 +568,19 @@
         The second ``\(\leq\)'' follows from Proposition \ref{prop: Auslander-Buchsbaum formula}.
         Hence we see that \(A\) is regular at \(\frakm\).
         % \Yang{To be completed.}
+    \end{proof}
+
+    \begin{corollary}\label{cor: regular local ring is regular}
+        Let \((A,\frakm)\) be a noetherian local ring.
+        Then \(A\) is regular if and only if it is regular at \(\frakm\).
+    \end{corollary}
+    \begin{proof}
+        The sufficiency is trivial.
+        For the necessity, note that if \(A\) is regular, then \(\hldim A < \infty\) by Theorem \ref{thm: regularity and finite homological dimension}.
+        For any \(\frakp \in \Spec A\), we have a finite projective resolution 
+        \[ 0 \to P_n \to P_{n-1} \to \cdots \to P_1 \to P_0 \to A/\frakp \to 0. \]
+        Tensoring with \(A_\frakp\), we have a finite projective resolution of \(\rkk(\frakp)\).
+        By Theorem \ref{thm: regularity and finite homological dimension} again, we see that \(A_\frakp\) is regular at \(\frakp\).
     \end{proof}
 
     % \paragraph{Regular local rings are UFDs.}

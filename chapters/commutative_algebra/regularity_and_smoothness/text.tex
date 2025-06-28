@@ -159,6 +159,13 @@
         In particular, we have \(\Ker v = \Im u\).
     \end{proof}
 
+    \begin{remark}\label{rmk: the first exact sequence of differentials is left exact}
+        The exact sequence in Theorem~\ref{thm: the first exact sequence of differentials} is left exact 
+        if and only if every \(R\)-derivation of \(A\) into \(B\)-module extends to an \(R\)-derivation of \(B\) into \(B\)-module.
+        
+        \Yang{To be completed.}
+    \end{remark}
+
     \begin{theorem}\label{thm: the second exact sequence of differentials}
         Let \(A\) be an \(R\)-algebra and \(I\) an ideal of \(A\).
         Set \(B \coloneqq A/I\).
@@ -183,6 +190,41 @@
         We say \(A\) is \emph{smooth at \(\frakp \in \Spec A\)} if the module of differentials \(\Omega_{A,\frakp}\) is a free \(A_\frakp\)-module of rank \(n\).
     \end{definition}
 
+    \begin{example}\label{eg: module of differential for field extensions}
+        Let \(\KK/\kk\) be a finite generated field extension and \(\kk'\) be the algebraic closure of \(\kk\) in \(\KK\).
+        Then 
+        \[ \dim_\KK \Omega_{\KK/\kk} = \trdeg(\KK/\kk) + \dim_{\kk'} \Omega_{\kk'/\kk}, \]
+        and \(\dim_{\kk'} \Omega_{\kk'/\kk} = 0\) if and only if \(\kk'\) is separable over \(\kk\).
+
+        First suppose \(\KK = \kk'\) is algebraic over \(\kk\).
+        Suppose \(\kk'/\kk\) is separable.
+        For every \(\alpha \in \kk'\), suppose \(f(\alpha) = 0\) for \(f \in \kk[T]\).
+        Then \(\d f(\alpha) = f'(\alpha) \d \alpha = 0\).
+        By the separability of \(\kk'/\kk\), we have \(f'(\alpha) \neq 0\).
+        It follows that \(\d \alpha = 0\).
+        Conversely, let \(\alpha \in \kk'\) be a inseparable element over \(\kk\).
+        Since \(\kk[\alpha] \to \kk[\alpha], \alpha^n \mapsto n\alpha^{n-1}\) is a non-zero \(R\)-derivation, we have \(\Omega_{\kk[\alpha]/\kk} \neq 0\).
+        By induction on number of generated elements, choosing a middle field \(\kk \subset \kk'' \subset \kk'\), at least one of \(\Omega_{\kk''/\kk}\) and \(\Omega_{\kk'/\kk''}\) is non-zero.
+        Then \(\Omega_{\KK/\kk} \neq 0\) by Theorem \ref{thm: the first exact sequence of differentials}.
+
+        Then suppose \(\kk' = \kk\).
+        By the Noether's Normalization Lemma, we can find a finite set of elements \(T_1, \cdots, T_n \in \KK\) such that \(\KK\) is algebraic over \(\kk'(T_1, \ldots, T_n)\).
+        Note that we can choose \(T_i\) such that \(\KK/\kk'(T_1, \cdots, T_n)\) is separable.
+        To see this, if \(\alpha \in \KK\) is an inseparable element over \(\kk'(T_1,\cdots,T_n)\), 
+        then by replacing a suitable \(T_i\) with \(\alpha\), we reduce the inseparable degree of \(\KK/\kk'(T_1, \cdots, T_n)\).
+        
+        Since \(\KK/\kk'(T_1, \cdots, T_n)\) is finite, every \(\kk\)-derivation of \(\kk'(T_1,\cdots,T_n)\) into \(\KK\)-module extends to a \(\kk\)-derivation of \(\KK\) into \(\KK\)-module.
+        Then by Remark~\ref{rmk: the first exact sequence of differentials is left exact}, we have 
+        % \[ \dim_{\KK} \Omega_{\KK/\kk'} = \dim_{\kk'(T_1,\cdots,T_n)} \Omega_{\kk'(T_1, \cdots, T_n)/\kk'} = n. \]
+        \[ 0 \to \Omega_{\kk'(T_1, \cdots, T_n)/\kk} \ten_{\kk'(T_1,\cdots,T_n)} \KK \to \Omega_{\KK/\kk} \to \Omega_{\KK/\kk'(T_1,\cdots,T_n)} \to 0. \]
+        
+        Finally, note that every \(\kk\)-derivation \(\P\) of \(\kk'\) into \(\KK\)-module can be extended to \(\kk'[T_1,\cdots,T_n]\) by setting \(\P T_i = 0\).
+        Thus, we have 
+        \[ 0 \to \Omega_{\kk'/\kk} \ten_{\kk'} \kk'[T_1,\cdots,T_n] \to \Omega_{\kk'[T_1,\cdots,T_n]/\kk} \to \Omega_{\kk'[T_1,\cdots,T_n]/\kk'} \to 0. \]
+        This follows that 
+        \[ \dim_\KK \Omega_{\KK/\kk} = \dim_{\KK} \Omega_{\KK/\kk'} + \dim_{\kk'}\Omega_{\kk'/\kk}. \]
+    \end{example}
+
 
 \subsection{Applications to affine varieties}
 
@@ -204,12 +246,33 @@
     It coincides with the usual derivation \(f \mapsto \P f/ \P T_i\).
     Consider the restriction of \(\P_i\) to \(\frakm\) and take values in the residue field \(\rkk(\frakm)\), we get 
     \[ \Phi : \frakm \xrightarrow{(\P_1,\cdots,\P_n)^T} A_\frakm^n \to \rkk(\frakm)^n.\]
-    Since \(\rkk(\frakm)\) is separable over \(\kk\), the map \(\Ker \Phi = \frakm^2\).
-    Hence \(\Phi\) induces an isomorphism \( \frakm/{\frakm^2} \cong \rkk(\frakm)^n \) of \(\rkk(\frakm)\)-vector spaces.
+    Since \(\rkk(\frakm)\) is separable over \(\kk\), we claim that \(\Ker \Phi = \frakm^2\).
+    Indeed, by Remark \ref{remark: Taylor expansion with respect to irreducible polynomials}, we can write every \(f \in \frakm \setminus \frakm^2\) as \(\sum_i a_i g_i\).
+    Then 
+    \[ \frac{\P f}{\P T_i} = a_i \frac{\P g_i}{\P T_i} + g_i \frac{\P a_i}{\P T_i}. \]
+    Since \(g_i\) is separable, the image of \(\P g_i/\P T_i\) in \(\rkk(\frakm)\) is not zero.
+    Hence \(\Phi(f) \neq 0\).
+    By the claim, \(\Phi\) induces an isomorphism \( \frakm/{\frakm^2} \cong \rkk(\frakm)^n \) of \(\rkk(\frakm)\)-vector spaces.
     Then we get 
     \[ T_{A,\frakm} = (\frakm/\frakm^2)^\lor \cong \bigoplus_{i=1}^n \rkk(\frakm)\cdot \P_i|_x, \]
     where \(x \in \bba_\kk^n\) is the point corresponding to \(\frakm\).
     This coincides with the usual tangent space at \(x\) in language of differential geometry.
+
+    \begin{remark}\label{remark: Taylor expansion with respect to irreducible polynomials}
+        Let \(\kk\) be arbitrary field, \(A = \kk[T_1,\cdots,T_n]\) and \(g_i\) irreducible polynomials in one variable \(T_i\) over \(\kk\).
+        Then for every \(f \in A\), we can write
+        \[ f = \sum_{I=(i_1,\cdots,i_n) \in \bbz_{\geq 0}^n} a_I g_1^{i_1}\cdots g_n^{i_n}, \quad a_I \in A, \quad \deg_{T_i} a_I \leq \deg g_i.\]
+        This is called the \textit{Taylor expansion of \(f\) with respect to \(g_1,\cdots,g_n\)}. 
+
+        When \(n = 1\), it follows from division algorithm.
+        For \(n > 1\), we can use induction on \(n\).
+        Let \(\KK = \kk(T_1,\cdots,T_{n-1})\).
+        Then we can write \(f\) as
+        \[ f = \sum_{i=0}^{r} a_i g_n^i, \quad a_i \in \KK[T_n],\quad \deg a_i < \deg g_n. \.\]
+        Comparing the coefficients of two sides from the highest degree of \(T_n\) to the lowest degree, we see that 
+        \[a_i \in \kk[T_1,\cdots,T_{n-1}].\]
+        By induction hypothesis, the conclusion follows.
+    \end{remark}
 
     Let \(B = A/I\) be a \(\kk\) of finite type, \(I = (F_1,\ldots,F_m) \subset \frakm\) and \(\frakn\) the image of \(\frakm\) in \(B\).
     We have an exact sequence of \(\rkk(\frakm)\)-vector spaces
