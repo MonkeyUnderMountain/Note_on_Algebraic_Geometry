@@ -1,6 +1,32 @@
-\section{Elementary Results\Yang{To be completed}}
+\section{Elementary Results}
+
+\Yang{To be completed}
 
 \subsection{Notations}
+
+    In the appendix and all the note, the ``ring'' is always commutative and with identity.
+    We denote by \(\Spec A\) the set of prime ideals of a ring \(A\).
+    We denote by \(\mSpec A\) the set of maximal ideals of \(A\).
+    Let \(I \subset A\) be an ideal of \(A\).
+    We define 
+    \[ V(I) \coloneqq \{ \frakp \in \Spec A \colon I \subset \frakp\}. \]
+
+    Let \(\fraka,\frakb\) be ideals of \(A\).
+    We define 
+    \[ (\fraka : \frakb) \coloneqq \{ a \in A \colon a\frakb \subset \fraka\}. \]
+    This is an ideal of \(A\).
+    
+    Let \(\rad(A)\) be the Jacobian radical of \(A\), i.e., the intersection of all maximal ideals of \(A\).
+    Let \(\nil(A)\) be the nilradical of \(A\), i.e., the ideal of \(A\) consisting of all nilpotent elements.
+    
+    \begin{proposition}
+        Let \(A\) be a ring.
+        Then we have 
+        \[ \nil(A) = \bigcap_{\frakp \in \Spec A} \frakp. \]
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{proposition}\label{prop: prime avoidance lemma primity of prime ideals}
         Let $A$ be a ring, $\frakp,\frakp_i$ prime ideals of $A$ and \(\fraka,\fraka_i\) ideals of $A$. 
@@ -11,6 +37,16 @@
             Then there exists \(i\) such that \(\fraka_i \subset \frakp\).
         \end{enumerate}
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    Let \(M\) be an \(A\)-module.
+    We say that \(M\) is \emph{finite} if there exists an exact sequence
+    \[ A^n \to M \to 0. \]
+    We say that \(M\) is \emph{coherent} if there exists an exact sequence
+    \[ A^m \to A^n \to M \to 0. \]
+    If \(A\) is a noetherian ring, then every finite \(A\)-module is coherent.
 
     \begin{definition}\label{def: support of a module}
         Let \(A\) be a ring and \(M\) an \(A\)-module.
@@ -20,6 +56,10 @@
         \]
     \end{definition}
 
+    The \emph{annihilator} of \(M\) is defined as
+    \[ \Ann M \coloneqq \{ a \in A \colon aM = 0\}. \]
+    This is an ideal of \(A\).
+
     \begin{proposition}\label{prop: support of a finite module}
         Let \(A\) be a ring and \(M\) a finite \(A\)-module.
         Then \(\Supp M = V(\Ann M)\).
@@ -28,6 +68,18 @@
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
+
+    \begin{definition}\label{def: localization}
+        Let \(A\) be a ring and \(S \subset A\) a multiplicative subset, i.e., \(1 \in S\) and \(s_1,s_2 \in S\) implies \(s_1 s_2 \in S\).
+        The \emph{localization} of \(A\) at \(S\) is defined as
+        \[ S^{-1}A \coloneqq A \times S / \sim, \]
+        where \((a,s) \sim (b,t)\) if there exists \(u \in S\) such that \(u(at - bs) = 0\).
+        \Yang{To be completed.}
+    \end{definition}
+
+    \begin{proposition}\label{prop: when is localization injective}
+        
+    \end{proposition}
 
 \subsection{Nakayama's Lemma}
 
@@ -63,7 +115,8 @@
     \end{proof}
 
     \begin{corollary}\label{cor: upper semicontinuity of dimension of restriction of coherent sheaf to fiber}
-        
+        Let \(X\) be a scheme and \(\calf\) a coherent sheaf on \(X\).
+        Then the function \(x \mapsto \dim_{\rkk(x)} \calf|_x\) is upper semicontinuous.
     \end{corollary}
     \begin{proof}
         \Yang{To be completed.}

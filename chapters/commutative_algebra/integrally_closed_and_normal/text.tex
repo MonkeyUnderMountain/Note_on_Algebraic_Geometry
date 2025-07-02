@@ -1,5 +1,58 @@
 \section{Finite Algebra and Normality}
 
+Let \(R\) be a ring and \(A\) be an \(R\)-algebra.
+We say that \(A\) is \textit{of finite type} over \(R\) if there exists a surjective \(R\)-algebra homomorphism \(R[T_1,\cdots,T_n] \to A\) for some \(n\geq 0\).
+We say that \(A\) is finite over \(R\) if it is finite as an \(R\)-module.
+
+\subsection{Finite algebra}
+
+    Let \(A\) be a ring and \(B\) a finite \(A\)-algebra.
+
+    \begin{example}
+        Let \(K\) be a number field.
+        Then \(O_K\) is a finite \(\bbz\)-algebra.
+        \Yang{To be completed.}
+    \end{example}
+
+    \begin{lemma}\label{lem: finite inclusion induces surjective morphism}
+        Let $A \subset B$ be noetherian rings such that $B$ is finite over $A$.
+        Then the induced morphism $\Spec B \to \Spec A$ is surjective.
+    \end{lemma}
+    \begin{proof}
+        For $\frakp \in \Spec A$, let $S:= A-\frakp$ and denote $S^{-1}B$ by $B_\frakp$.
+        Then we have $A_\frakp \injmap B_\frakp$ and $B_\frakp$ is finite over $A_\frakp$.
+        Let $\frakP B_\frakp$ be a maximal ideal of $B_\frakp$.
+        We claim that $\frakP B_\frakp \cap A_\frakp$ is maximal.
+        Indeed, consider $A_\frakp/(\frakP \cap A_\frakp) \injmap B_\frakp/\frakP B_\frakp$, the latter is finite over the former.
+        This enforces $A_\frakp/(\frakP B_\frakp \cap A_\frakp)$ be a field.
+        Hence $\frakP B_\frakp \cap A_\frakp = \frakp A_\frakp$, and then $\frakP \cap A = \frakp$.
+    \end{proof}
+
+    \begin{proposition}\label{prop: finite morphisms preserve dimension}
+        Let $A \subset B$ be noetherian rings such that $B$ is finite over $A$.
+        Then $\dim A = \dim B$.
+    \end{proposition}
+    \begin{proof}
+        If we have a sequence $\frakP_1 \subsetneq \frakP_2$ of prime ideals in $B$, then there exists $f \in \frakP_2 \setminus \frakP_1$.
+        Since $B$ is finite over $A$, there exist $a_1,\cdots,a_n \in A$ such that 
+        \[ f^n + a_1f^{n-1} + \cdots + a_n = 0.\]
+
+        Then $a_n \in \frakP_2 \cap A$.
+        If $a_n \in \frakP_1$, $f^{n-1} + \cdots + a_{n_1} \in \frakP_1$ since $f \notin \frakP_1$.
+        Then $a_{n-1} \in \frakP_2$.
+        Repeat the process, it will terminate, whence $\frakP_1 \cap A \subsetneq \frakP_2 \cap A$.
+        Otherwise, we have $f^n \in a_1 B+ \cdots + a_nB \subset \frakP_1$.
+
+        Conversely, suppose we have $\frakp_1,\frakp_2 \in \Spec A$ with $\frakp_1 \subsetneq \frakp_2$.
+        Choose $\frakP_1 \in \Spec B$ such that $\frakP_1 \cap A = \frakp_1$, then we have $A/\frakp_1 \subset B/\frakP_1$.
+        Let $\frakP_2$ be the preimage of the prime ideal in $B/\frakP_1$ which is over image of $\frakp_2$ in $A/\frakp_1$.
+        Proposition \ref{lem: finite inclusion induces surjective morphism} guarantees that such $\frakP_2$ exists.
+        Then we get $\frakP_1 \subsetneq \frakP_2$.
+        Repeat this progress, we get $\dim B \geq \dim A$.
+    \end{proof}
+
+
+
 \Yang{To be completed}
     % Fix a noetherian local ring $(A,\frakm)$ with residue field $\kk$.
 

@@ -618,6 +618,11 @@ Somehow the Krull dimension is ``homological'' and the depth is ``cohomological'
         This is equivalent to the condition that \(A\) verifies \((R_k)\) for all \(k \geq 0\).
     \end{definition}
 
+    \begin{remark}\label{prop: regularity is a local property}
+        A noetherian ring \(A\) is regular if and only if it is regular at every maximal ideal \(\frakm \in \mSpec A\). 
+        The proof uses homological tools; see Theorem \ref{thm: regularity and finite homological dimension} and Corollary \ref{cor: regular local ring is regular}.
+    \end{remark}
+
     \begin{definition}\label{def: regular system of parameters}
         Let \(A\) be a noetherian ring that is regular at \(\frakp \in \Spec A\).
         A sequence \(t_1,\cdots,t_n \in \frakp\) is called a \emph{regular system of parameters} at \(\frakp\) if their images form a basis of the \(\rkk(\frakp)\)-vector space \(\frakp/\frakp^2\).
@@ -650,18 +655,19 @@ Somehow the Krull dimension is ``homological'' and the depth is ``cohomological'
     \end{proof}
 
     \begin{corollary}\label{cor: regular ring is Cohen-Macaulay}
-        A regular ring is Cohen-Macaulay.
+        A regular noetherian ring is Cohen-Macaulay.
     \end{corollary}
 
-    \begin{corollary}
-        A regular ring is normal.
+    \begin{corollary}\label{cor: regular ring is normal}
+        A regular noetherian ring is normal.
     \end{corollary}
 
-
-    \begin{remark}\label{prop: regularity is a local property}
-        A noetherian ring \(A\) is regular if and only if it is regular at every maximal ideal \(\frakm \in \mSpec A\). 
-        The proof uses homomorphism tools; see Theorem \ref{thm: regularity and finite homological dimension} and Corollary \ref{cor: regular local ring is regular}.
+    \begin{remark}
+        Indeed we can show a stronger result: a noetherian regular local ring is a UFD; see \Yang{ref}.
     \end{remark}
+
+
+
     % \begin{proof}
     %     Suppose \(\frakp \subset \frakm\) and \(A\) is regular at \(\frakm\).
         

@@ -409,22 +409,22 @@
 \tcolorboxenvironment{example}{
   boxrule=0pt,
   boxsep=0pt,
-  % blanker,
-  % borderline west={2pt}{0pt}{Green}, % 绿色左侧线
-  % left=8pt,
-  % right=8pt,
-  % before skip=10pt,
-  % after skip=10pt,
-  % breakable
-  colback={Green!10}, % 背景色改为橙色10%透明度
+  blanker,
+  borderline west={2pt}{0pt}{Green}, % 绿色左侧线
   left=8pt,
   right=8pt,
-  enhanced jigsaw,
-  borderline west={2pt}{0pt}{Green}, % 左侧装饰线改为橙色
-  sharp corners,
   before skip=10pt,
   after skip=10pt,
   breakable
+  % colback={Green!10}, % 背景色改为橙色10%透明度
+  % left=8pt,
+  % right=8pt,
+  % enhanced jigsaw,
+  % borderline west={2pt}{0pt}{Green}, % 左侧装饰线改为橙色
+  % sharp corners,
+  % before skip=10pt,
+  % after skip=10pt,
+  % breakable
 }
  
 % 注记环境配置（特殊样式：无背景色，左侧线为黑色）
