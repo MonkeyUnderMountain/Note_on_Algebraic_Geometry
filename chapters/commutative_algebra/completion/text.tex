@@ -13,43 +13,118 @@
     \end{definition}
 
     \begin{definition}\label{def: I-adic topology}
-        Let \(A\) be a ring and \(I\) an ideal of \(A\). 
-        The \emph{\(I\)-adic topology} on \(A\) is the topology defined by the basis of open sets \(a + I^n\) for all \(n \geq 0\).
-
-        A sequence \(\{a_n\}\) in \(A\) is said to \emph{converge to \(a \in A\)} if for every \(n\), there exists \(N\) such that for all \(m \geq N\), we have \(a_m - a \in I^n\).
-
-        A sequence \(\{a_n\}\) in \(A\) is said to be \emph{Cauchy} if for every \(n\), there exists \(N\) such that for all \(m, k \geq N\), we have \(a_m - a_k \in I^n\).
+        Let \(A\) be a ring, \(I\) an ideal of \(A\) and \(M\) an \(A\)-module. 
+        The \emph{\(I\)-adic topology} on \(M\) is the topology defined by the basis of open sets \(x + I^kM\) for all \(x \in M, k \geq 0\).
+        % A sequence \(\{a_n\}\) in \(M\) is said to \emph{converge to \(a \in M\)} if for every \(n\), there exists \(N\) such that for all \(m \geq N\), we have \(a_m - a \in I^nM\).
+        % A sequence \(\{a_n\}\) in \(A\) is said to be \emph{Cauchy} if for every \(k\), there exists \(N\) such that for all \(n,m \geq N\), we have \(a_n - a_m \in I^k\).
     \end{definition}
 
-    \begin{definition}[Formal Completion]\label{def: formal completion}
-        Let \(A\) be a ring and \(I\) an ideal of \(A\). 
-        The \emph{formal completion} of \(A\) with respect to \(I\), denoted by \(\widehat{A}\), is defined as 
-        \[ \widehat{A} := \varprojlim ( \cdots \to A/I^n \to A/I^{n-1} \to \cdots \to A/I), \]
-        where the maps are the natural projections \(A/I^n \to A/I^{n-1}\).
+    \begin{example}\label{eg: p-adic topology on Z}
+        Let \(A = \bbz\) be the ring of integers and \(p\) a prime number.
+        The \(p\)-adic topology on \(\bbz\) is defined by the metric
+        \[ d(x, y) \coloneqq \|x-y\|_p \coloneqq p^{-v(x-y)}, \]
+        where \(v\) is the valuation defined by the ideal \(p\bbz\).
+    \end{example}
 
-        Let \(M\) be a \(A\)-module.
+    Let \(M\) be an \(A\)-module equipped with the \(I\)-adic topology.
+    Note that \(M\) is Hausdorff as a topological space if and only if \(\bigcap_{n \geq 0} I^nM = \{0\}\).
+    In this case, we say that \(M\) is \emph{\(I\)-adically separated}.
+    
+    When \(M\) is \(I\)-adically separated, we can see that \(M\) is indeed a metric space.
+    Fix \(r \in (0,1)\). 
+    For every \(x\neq y \in M\), there is a unique \(k \geq 0\) such that \(x - y \in I^kM\) but \(x - y \notin I^{k+1}M\).
+    We can define a metric on \(M\) by
+    \[ d(x, y) \coloneqq r^k. \]
+    This metric induces the \(I\)-adic topology on \(M\).
+    
+    To analyze the \(I\)-adic separation property of \(M\), the following Artin-Rees Lemma is particularly useful.
+
+    \begin{theorem}[Artin-Rees Lemma]\label{thm: Artin Rees Lemma}
+        Let \(A\) be a noetherian ring, \(I\) an ideal of \(A\), \(M\) a finite \(A\)-module and \(N\) a submodule of \(M\). 
+        Then there exists an integer \(N\) such that for all \(n \geq 0\), we have
+        \[ (I^{N+n}M) \cap N = I^n (I^N M \cap N). \]
+    \end{theorem}
+    \begin{proof}
+        Clearly \(I^n(I^N M \cap N) \subset (I^{N+n}M) \cap N\).
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{corollary}\label{cor: subspace topology coincides with I-adic topology}
+        Let \(A\) be a noetherian ring, \(I\) an ideal of \(A\), \(M\) a finite \(A\)-module and \(N\) a submodule of \(M\).
+        Then the subspace topology on \(N\) induced by \(N \subset M\) coincides with the \(I\)-adic topology on \(N\).
+    \end{corollary}
+    \begin{proof}
+        This is a direct consequence of the Artin-Rees Lemma.
+    \end{proof}
+
+    \begin{corollary}\label{cor: finite module over noetherian ring is I-adically separated}
+        Let \(A\) be a noetherian ring, \(I\) an ideal of \(A\), and \(M\) a finite \(A\)-module. 
+        Let \(N = \bigcap_{n \geq 0} I^n M\).
+        Then \(I N = N\).
+        In particular, if \(I \subset \rad(A)\), then \(M\) is \(I\)-adically separated.
+    \end{corollary}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{lemma}\label{lem: formal completion exists}
+        Let \(A\) be a ring, \(I\) an ideal of \(A\) and \(M\) an \(A\)-module. 
+        Then the inverse limit
+        \[ \widehat{M} \coloneqq \varprojlim ( \cdots \to M/I^nM \to M/I^{n-1}M \to \cdots \to M/IM) \]
+        exists in the category of \(A\)-modules.
+        Moreover, \(\widehat{A}\) is an \(A\)-algebra and \(\widehat{M}\) is an \(\widehat{A}\)-module.
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{definition}[Formal Completion]\label{def: formal completion}
+        Let \(A\) be a ring, \(I\) an ideal of \(A\) and \(M\) an \(A\)-module. 
         The \emph{formal completion} of \(M\) with respect to \(I\), denoted by \(\widehat{M}\), is defined as
         \[ \widehat{M} := \varprojlim ( \cdots \to M/I^n M \to M/I^{n-1} M \to \cdots \to M/I M), \]
         where the maps are the natural projections \(M/I^n M \to M/I^{n-1} M\).
     \end{definition}
 
-    By the universal property of the inverse limit, 
-    we get a covariant functor from the category of \(A\)-modules to the category of topological \(\widehat{A}\)-modules, 
-    which sends an \(A\)-module \(M\) to \(\widehat{M}\) and a morphism \(f: M \to N\) to the induced morphism \(\widehat{f}: \widehat{M} \to \widehat{N}\).
+    \begin{example}\label{eg: p-adic integer ring}
+        Let \(A = \bbz\) be the ring of integers and \(I = p\bbz\).
+        The formal completion of \(\bbz\) with respect to \(p\bbz\) is the ring of \(p\)-adic integers, denoted by \(\bbz_p\).
+        The elements of \(\bbz_p\) can be represented as infinite series of the form
+        \[ a_0 + a_1 p + a_2 p^2 + \cdots, \]
+        where \(a_i \in \{0, 1, \ldots, p-1\}\).
+    \end{example}
 
-    \begin{lemma}\label{lem: completion is exact}
-        The functor of completion with respect to an ideal is exact.
-        \Yang{finite}.
-    \end{lemma}
-    \begin{proof}
-        \Yang{To be completed.}
-    \end{proof}
+    \begin{example}\label{eg: ring of formal power series}
+        Let \(R\) be a ring, \(A=R[X_1, \ldots, X_n]\) and \(I = (X_1, \ldots, X_n)\).
+        The formal completion of \(A\) with respect to \(I\) is the ring of formal power series \(R[[X_1, \ldots, X_n]]\).
+        The elements of \(R[[X_1, \ldots, X_n]]\) can be represented as infinite series of the form
+        \[ \sum_{i_1,\ldots,i_n} a_{i_1, \ldots, i_n} X_1^{i_1} \cdots X_n^{i_n}, \]
+        where \(a_{i_1, \ldots, i_n} \in R\) and the multi-index \((i_1, \ldots, i_n)\) runs over all non-negative integers.
+    \end{example}
 
     \begin{proposition}\label{prop: completion is complete}
         The formal completion \(\widehat{A}\) of a ring \(A\) with respect to an ideal \(I\) is a complete topological ring with respect to the \(I\)-adic topology.
         That is, every Cauchy sequence in \(\widehat{A}\) converges to an element in \(\widehat{A}\).
     \end{proposition}
     \Yang{To be completed.}
+
+    \Yang{When is the homomorphism \(M \to N\) continuous?}
+
+    By the universal property of the inverse limit, 
+    we get a covariant functor from the category of \(A\)-modules to the category of topological \(\widehat{A}\)-modules, 
+    which sends an \(A\)-module \(M\) to \(\widehat{M}\) and a morphism \(f: M \to N\) to the induced morphism \(\widehat{f}: \widehat{M} \to \widehat{N}\).
+
+    \begin{lemma}\label{lem: completion is exact}
+        Let 
+        \[ 0 \to M_1 \to M_2 \to M_3 \to 0 \]
+        be an exact sequence of finite \(A\)-modules.
+        Then the sequence of \(\widehat{A}\)-modules
+        \[ 0 \to \widehat{M_1} \to \widehat{M_2} \to \widehat{M_3} \to 0 \]
+        is still exact.
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
 
     \begin{lemma}\label{lem: completion is isomorphic to image of power series}
         Let \(\widehat{A}\) be the formal completion of a noetherian ring \(A\) with respect to an ideal \(I\). 
@@ -85,15 +160,6 @@
         \Yang{To be completed.}
     \end{proof}
 
-    \begin{theorem}[Artin-Rees Lemma]\label{thm: Artin Rees Lemma}
-        Let \(A\) be a noetherian ring, \(I\) an ideal of \(A\), \(M\) a finite \(A\)-module and \(N\) a submodule of \(M\). 
-        Then there exists an integer \(N\) such that for all \(n \geq 0\), we have
-        \[ (I^{N+n}M) \cap N = I^n (I^N M \cap N). \]
-    \end{theorem}
-    \begin{proof}
-        \Yang{To be completed.}
-    \end{proof}
-
     \begin{proposition}\label{prop: completion with respect to maximal ideal is local}
         Let \(A\) be a noetherian ring and \(\frakm\) a maximal ideal of \(A\). 
         Then the formal completion \(\widehat{A}\) of \(A\) with respect to \(\frakm\) is a local ring with maximal ideal \(\frakm \widehat{A}\).
@@ -104,33 +170,146 @@
 
 \subsection{Complete local rings}
 
-    \begin{definition}[Coefficient rings]\label{def: coefficient rings}
-        
-    \end{definition}
+    Let \((A, \frakm, \kk)\) be a noetherian complete local ring.
+    We say that \(A\) is \emph{of equal characteristic} if \(\characteristic A = \characteristic \kk\), and \emph{of mixed characteristic} if \(\characteristic A \neq \characteristic \kk\).
+    In latter case, \(\characteristic \kk = p\) and \(\characteristic A = 0\) or \(\characteristic A = p^k\).
 
+    The goal of this subsection is the following structure theorem for noetherian complete local rings due to Cohen. 
+
+    \begin{theorem}[Cohen Structure Theorem]\label{thm: Cohen Structure Theorem}
+        Let \((A,\frakm,\kk)\) be a noetherian complete local ring of dimension \(d\).
+        Then 
+        \begin{enumerate}
+            \item \(A\) is a quotient of a noetherian regular complete local ring;
+            \item if \(A\) is regular and of equal characteristic, then \(A \cong \kk[[X_1, \ldots, X_d]]\);
+            \item if \(A\) is regular, of mixed characteristic \((0,p)\) and \(p \not\in \frakm^2\), then \(A \cong D[[X_1, \ldots, X_{d-1}]]\), where \((D,p,\kk)\) is a complete DVR;
+            \item if \(A\) is regular, of mixed characteristic \((0,p)\) and \(p \in \frakm^2\), then \(A \cong D[[X_1, \ldots, X_{d}]]/(f)\), where \((D,p,\kk)\) is a complete DVR and \(f\) a regular parameter.
+        \end{enumerate}
+    \end{theorem}
+
+    \subsubsection{Some facts about complete local rings}
+
+        To prove the Cohen Structure Theorem, we first list some preliminary results on complete local rings.
+        Most of them are independently important and can be used in other contexts.
+
+        \begin{theorem}[Hensel's Lemma]\label{thm: Hensel Lemma}
+            Let \((A,\frakm, \kk)\) be a complete local ring, \(f \in A[X]\) a monic polynomial and \(\overline{f} \in \kk[X]\) its reduction modulo \(\frakm\).
+            Suppose that \(\overline{f} = \overline{g} \cdot \overline{h}\) for some polynomials \(\overline{g}, \overline{h} \in \kk[X]\) such that \(\gcd (\overline{g},\overline{h}) = 1\).
+            Then the factorization lifts to a unique factorization \(f = g \cdot h\) in \(A[X]\) such that \(g\) and \(h\) are monic polynomials.
+        \end{theorem}
+        \begin{proof}
+            \Yang{To be completed.}
+        \end{proof}
+
+        \begin{remark}\label{rmk: Hensel's Lemma does not require A to be noetherian}
+            Note that the Hensel's Lemma does not require \(A\) to be noetherian.
+        \end{remark}
+
+        \begin{lemma}\label{lem: DVR with certain residue field}
+            Let \(\kk\) be a field of characteristic \(p\).
+            Then there exists a complete DVR \((D,p,\kk)\) of mixed characteristic \((0,p)\).
+        \end{lemma}
+        \begin{proof}
+            \Yang{To be completed.}
+        \end{proof}
+
+        \begin{lemma}\label{lem: unique complete local ring of mixed characteristic (p^k,p)}
+            Given \(\kk\) a field of characteristic \(p\), 
+            there exists a unique complete local ring \((R,pR,\kk)\) of mixed characteristic \((p^k,p)\).
+        \end{lemma}
+        \begin{proof}
+            \Yang{To be completed.}
+        \end{proof}
+
+        \begin{proposition}\label{prop: Nakayama's Lemma for I-adically separated modules}
+            Let \((A,\frakm,\kk)\) be a noetherian complete local ring and \(M\) an \(A\)-module that is \(\frakm\)-adically separated.
+            Suppose \(\dim_\kk M/\frakm M < \infty\).
+            Then the basis of \(M \ten_A \kk\) as \(\kk\)-vector space can be lifted to a generating set of \(M\) as an \(A\)-module.
+        \end{proposition}
+        \begin{proof}
+            \Yang{To be completed.}
+        \end{proof}
+
+    \subsubsection{Existence of coefficient rings}
+
+        \begin{definition}[Coefficient rings]\label{def: coefficient rings}
+            Let \((A,\frakm,\kk)\) be a noetherian complete local ring.
+            
+            When \(A\) is equal-characteristic, the coefficient ring (or coefficient field) is a homomorphism of rings \(\kk \to A\) such that \(\kk \to A \to A/\frakm\) is an isomorphism.
+            
+            When \(A\) is mixed-characteristic, the coefficient ring is a complete DVR \((D,t)\) with a local homomorphism of rings \(D \injmap A\) such that the induced homomorphism \(D/(t) \to A/\frakm\) is an isomorphism.
+        \end{definition}
+        \begin{remark}
+            Recall that a homomorphism of local rings \(f:(A,\frakm_A) \to (B,\frakm_B)\) is said to be local if \(f^{-1}(\frakm_B) = \frakm_A\).
+        \end{remark}
+
+        This subsubsection we show the following existence result of coefficient rings due to Cohen.
+
+        \begin{theorem}\label{thm: existence of coefficient rings}
+            Every noetherian complete local ring \((A,\frakm,\kk)\) has a coefficient ring.
+        \end{theorem}
+
+        \begin{proof}[Proof of Theorem \ref{thm: existence of coefficient rings} in characteristic \(0\)]
+            Note that for any \(n \in \bbz\), \(n \not\in \frakm\).
+            Hence \(\bbq \subset A\).
+            Let \( \Sigma := \{ \text{ subfield in } A \} \) and \(K\) a maximal element in \(\Sigma\) with respect to the inclusion.
+            The set \(\Sigma\) is non-empty since \(\bbq \in \Sigma\). 
+            By Zorn's Lemma, \(K\) exists.
+            Then \(K\) is a subfield of \(\kk\) by \(K \injmap A \surjmap A/\frakm \cong \kk\).
+            We claim that \(K\) is a coefficient field of \(A\).
+
+            Suppose there is \(\overline{t} \in \kk \setminus K\). 
+            If \(\overline{t}\) is transcendent over \(K\), lift \(\overline{t}\) to an element \(t \in A\).
+            Then for any polynomial \(f \neq 0\in K[T]\), we have \(f(\overline{t}) \neq 0 \in \kk\).
+            Hence \(f(t) \notin \frakm\).
+            This implies that \(1/f(t) \in A\), whence \(K(t) \subset A\).
+            This contradicts the maximality of \(K\).
+            If \(\overline{t}\) is algebraic over \(K\), let \(f \in K[T]\) be the minimal polynomial of \(\overline{t}\).
+            Then \(f\) is irreducible in \(K[T]\) and \(f(\overline{t}) = 0\).
+            Regard \(f\) as a polynomial in \(A[T]\) by \(K \injmap A\).
+            Note that \(\characteristic A = 0\) implies that \(f\) is separable.
+            By Hensel's Lemma (Theorem \ref{thm: Hensel Lemma}), we can lift the root \(\overline{t}\) to an element \(t \in A\) such that \(f(t) = 0\).
+            Then \(K(t)\) is a field extension of \(K\) and \(K(t) \subset A\).
+            This contradicts the maximality of \(K\) again.
+        \end{proof}
+
+        The same strategy does not work when \(\characteristic \kk = p > 0\) since there might be inseparable extensions.
+        To fix this, we need to introduce the notion of \(p\)-basis.
+
+        \begin{definition}\label{def: p-basis for field of characteristic p}
+            Let \(\kk\) be a field of characteristic \(p\).
+            A finite set \(\{t_1,\ldots,t_n\} \subset \kk \setminus \kk^p\) is called \emph{\(p\)-independent} if \([\kk(t_1,\ldots,t_n):\kk]=p^n\).
+            A set \(\Theta \subset \kk \setminus \kk^p\) is called a \emph{\(p\)-independent} if its any finite subset is \(p\)-independent.
+            A \emph{\(p\)-basis} for \(\kk\) is a maximal \(p\)-independent set \(\Theta \subset \kk \setminus \kk^p\).
+        \end{definition}
+
+        \begin{proof}[Proof of Theorem \ref{thm: existence of coefficient rings} in characteristic \(p\)]
+            Choose \(\Theta \subset A\) such that its image in \(A/\frakm\) is a \(p\)-basis for \(\kk\).
+            
+            \Yang{To be completed.}
+        \end{proof}
+
+        \begin{proof}[Proof of Theorem \ref{thm: existence of coefficient rings} in mixed characteristic]
+            \Yang{To be completed.}
+        \end{proof}
+
+        
+
+
+    \subsubsection{Proof of Cohen Structure Theorem}
+
+    
+        
+
+
+\subsection{Unique factorization of regular local rings}
+    
     \begin{theorem}[Weierstrass Preparation Theorem]\label{thm: Weierstrass Preparation Theorem}
         Let \((A,\frakm)\) be a noetherian complete local ring, \(f = \sum_{n=0}^\infty a_n X^n \in A[[X]]\) a power series with \(f \not\equiv 0 \mod \frakm\).
         Then there exists a unique factorization of the form \(f = u g\), where \(u\) is a unit in \(A[[X]]\) and \(g\) is a polynomial of the form
         \[ g = X^d + b_{d-1} X^{d-1} + \cdots + b_0, \]
         where \(b_i \in \frakm\) for all \(i\).
     \end{theorem}
-
-    \begin{theorem}[Hensel's Lemma]\label{thm: Hensel's Lemma}
-        Let \((A,\frakm, \kk)\) be a noetherian complete local ring, 
-        % and let \(f \in A[[X]]\) be a power series such that \(f(0) = 0\) and \(f'(0) \not\in \frakm\).
-        % Then there exists a unique \(x \in A\) such that \(f(x) = 0\).
-    \end{theorem}
-
-    \begin{theorem}[Cohen Structure Theorem]\label{thm: Cohen Structure Theorem}
-        Let \(A,\frakm,\kk\) be a noetherian complete local ring with coefficient field \(\kk\).
-        Then 
-        \begin{enumerate}
-            \item If \(A\) is regular of dimension \(d\), then \(A \cong \kk[[X_1, \ldots, X_d]]\).
-        \end{enumerate}
-    \end{theorem}
-
-
-\subsection{Unique factorization of regular local rings}
 
 
 

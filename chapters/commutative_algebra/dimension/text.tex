@@ -152,58 +152,20 @@ Somehow the Krull dimension is ``homological'' and the depth is ``cohomological'
     \end{proof}
 
 
-\subsection{Dedekind Domains\Yang{To be completed}}
+\subsection{Dedekind Domains}
 
-    % \begin{definition}\label{def: Dedekind domain}
-    %     A Dedekind domain is an integral domain $A$ such that
-    %     \begin{enumerate}
-    %         \item $A$ is noetherian;
-    %         \item every nonzero prime ideal of $A$ is maximal;
-    %         \item every nonzero prime ideal $\frakp$ of $A$ is of finite type, i.e. $A/\frakp$ is a finitely generated $A$-module.
-    %     \end{enumerate}
-    % \end{definition}
+    \Yang{To be completed}
 
-    % \begin{proposition}\label{prop: Dedekind domain is artinian iff dimension 0}
-    %     Let $A$ be a Dedekind domain.
-    %     Then $A$ is artinian iff $\dim A = 0$.
-    % \end{proposition}
-    % \begin{proof}
-    %     If $A$ is artinian, then it has only finite maximal ideals and hence $\dim A = 0$ by Proposition \ref{prop: artinian ring is of codimension 0}.
-    %     Conversely, if $\dim A = 0$, then every prime ideal is maximal and hence $A$ is artinian by Proposition \ref{prop: artinian ring is of codimension 0}.
-    % \end{proof}
+    
 
 
 \subsection{Krull's Principal Ideal Theorem}
-
-    % \begin{proposition}\label{prop: finite morphisms preserve dimension}
-    %     Let $A \subset B$ be noetherian rings such that $B$ is finite over $A$.
-    %     Then $\dim A = \dim B$.
-    % \end{proposition}
-    % \begin{proof}
-    %     If we have a sequence $\frakP_1 \subsetneq \frakP_2$ of prime ideals in $B$, then there exists $f \in \frakP_2 \setminus \frakP_1$.
-    %     Since $B$ is finite over $A$, there exist $a_1,\cdots,a_n \in A$ such that 
-    %     \[ f^n + a_1f^{n-1} + \cdots + a_n = 0.\]
-
-    %     Then $a_n \in \frakP_2 \cap A$.
-    %     If $a_n \in \frakP_1$, $f^{n-1} + \cdots + a_{n_1} \in \frakP_1$ since $f \notin \frakP_1$.
-    %     Then $a_{n-1} \in \frakP_2$.
-    %     Repeat the process, it will terminate, whence $\frakP_1 \cap A \subsetneq \frakP_2 \cap A$.
-    %     Otherwise, we have $f^n \in a_1 B+ \cdots + a_nB \subset \frakP_1$.
-
-    %     Conversely, suppose we have $\frakp_1,\frakp_2 \in \Spec A$ with $\frakp_1 \subsetneq \frakp_2$.
-    %     Choose $\frakP_1 \in \Spec B$ such that $\frakP_1 \cap A = \frakp_1$, then we have $A/\frakp_1 \subset B/\frakP_1$.
-    %     Let $\frakP_2$ be the preimage of the prime ideal in $B/\frakP_1$ which is over image of $\frakp_2$ in $A/\frakp_1$.
-    %     Proposition \ref{lem: finite inclusion induces surjective morphism} guarantees that such $\frakP_2$ exists.
-    %     Then we get $\frakP_1 \subsetneq \frakP_2$.
-    %     Repeat this progress, we get $\dim B \geq \dim A$.
-    % \end{proof}
 
     \begin{theorem}[Krull's Principal Ideal Theorem]\label{thm: Krull's principal ideal theorem}
         Let $A$ be a noetherian ring.
         Suppose $f \in A$ is not a unit.
         Let $\frakp$ be a minimal prime ideal among those containing $f$.
         Then $\idealht(\frakp)\leq 1$.
-        % Moreover, if $A$ is local or $\dim A_\frakm$ is constant for all $\frakm$, then the equality holds.
     \end{theorem}
     \begin{proof}
         By replacing $A$ by $A_\frakp$, we may assume $A$ is local with maximal ideal $\frakp$.

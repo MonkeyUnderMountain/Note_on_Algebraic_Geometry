@@ -4,7 +4,7 @@
 % !Bib program = biber
 % !TEX encoding = UTF-8 Unicode
 \ProvidesClass{noteformyself}[2025/05/03 自定义笔记文档类]
-\LoadClass{article} % 基础文档类（article）
+\LoadClass[12pt]{article} % 基础文档类（article）
 
 %--------------------------------------------------------------------------
 % 页面布局配置
@@ -17,6 +17,7 @@
   includefoot,    % 包含页脚区域
   footskip=0pt    % 首页页脚基线距离
 ]{geometry}
+\renewcommand{\baselinestretch}{1.3}
 
 %--------------------------------------------------------------------------
 % 警告过滤配置（抑制常见编译警告）
@@ -364,29 +365,31 @@
   sharp corners,
   before skip=10pt,
   after skip=10pt,
-  breakable
+  breakable,
+  before upper={\setlength{\parindent}{2em}},
 }
  
 % 示例环境配置（特殊样式：无背景色，左侧线为绿色）
 \tcolorboxenvironment{example}{
   boxrule=0pt,
   boxsep=0pt,
-  % blanker,
-  % borderline west={2pt}{0pt}{Green}, % 绿色左侧线
-  % left=8pt,
-  % right=8pt,
-  % before skip=10pt,
-  % after skip=10pt,
-  % breakable
-  colback={Green!10}, % 背景色改为橙色10%透明度
+  blanker,
+  borderline west={2pt}{0pt}{Green}, % 绿色左侧线
   left=8pt,
   right=8pt,
-  enhanced jigsaw,
-  borderline west={2pt}{0pt}{Green}, % 左侧装饰线改为橙色
-  sharp corners,
   before skip=10pt,
   after skip=10pt,
-  breakable
+  breakable,
+  % colback={Green!10}, % 背景色改为橙色10%透明度
+  % left=8pt,
+  % right=8pt,
+  % enhanced jigsaw,
+  % borderline west={2pt}{0pt}{Green}, % 左侧装饰线改为绿色
+  % sharp corners,
+  % before skip=10pt,
+  % after skip=10pt,
+  % breakable,
+  before upper={\setlength{\parindent}{2em}},
 }
  
 % 注记环境配置（特殊样式：无背景色，左侧线为黑色）
@@ -400,7 +403,8 @@
   sharp corners,
   before skip=10pt,
   after skip=10pt,
-  breakable
+  breakable,
+  before upper={\setlength{\parindent}{2em}},
 }
  
 % 练习环境配置（颜色方案：紫罗兰系）
