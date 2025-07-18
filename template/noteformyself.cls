@@ -62,6 +62,7 @@
 \RequirePackage{adjustbox}      % 高级图片调整（支持max width/height）
 \RequirePackage{framed}         % 边框环境
 \RequirePackage{amsmath,amsthm,amssymb,amsfonts} % 数学公式基础包
+\RequirePackage{thmtools}       % 高级定理工具包（提供declaretheorem）
 \RequirePackage{mathtools}      % 数学公式增强包
 \RequirePackage{mathrsfs}       % 数学特殊字体
 \RequirePackage[dvipsnames]{xcolor} % 颜色支持
@@ -322,31 +323,29 @@
   % 章节级别：section模式（默认）
   \newtheorem{definition}{Definition}
 }%
+% Use \declaretheorem instead of \newtheorem for better cleveref support
+\declaretheorem[sibling=definition,name=Proposition]{proposition}
+\declaretheorem[sibling=definition,name=Def-Prop]{def-prop}
+\declaretheorem[sibling=definition,name=Theorem]{theorem}
+\declaretheorem[sibling=definition,name=Lemma]{lemma}
+\declaretheorem[sibling=definition,name=Corollary]{corollary}
+\declaretheorem[sibling=definition,name=Remark]{remark}
+\declaretheorem[sibling=definition,name=Claim]{claim}
+\declaretheorem[sibling=definition,name=Example]{example}
+\declaretheorem[sibling=definition,name=Exercise,style=definition]{exercise}
 \makeatother
-\newtheorem{proposition}[definition]{Proposition}
-\newtheorem{def-prop}[definition]{Def-Prop}
-\newtheorem{theorem}[definition]{Theorem}
-\newtheorem{lemma}[definition]{Lemma}
-\newtheorem{corollary}[definition]{Corollary}
-\newtheorem{remark}[definition]{Remark}
-\newtheorem{claim}[definition]{Claim}
-\newtheorem{example}[definition]{Example}
-\theoremstyle{definition}
-\newtheorem{exercise}[definition]{Exercise}
 
 % 定义step子环境（在proof环境中使用，每个proof重置计数器）
 \newcounter{step}
-
 % 简化的step环境，不使用theorem结构
 \newenvironment{step}[1][]{%
   \refstepcounter{step}%
-  \par\medskip%
+  \par\smallskip%
   \noindent\textbf{Step \thestep\if\relax\detokenize{#1}\relax\else\ (#1)\fi.}%
-  \par\nopagebreak%
+  \ 
 }{%
-  \par\medskip%
+  \par\smallskip%
 }
-
 % 在proof环境开始时重置step计数器
 \AtBeginEnvironment{proof}{\setcounter{step}{0}}
 
@@ -524,6 +523,20 @@
   after skip=10pt,
   breakable
 }
+
+
+% 设置cleveref引用格式
+\crefname{definition}{Definition}{Definitions}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{remark}{Remark}{Remarks}
+\crefname{example}{Example}{Examples}
+\crefname{exercise}{Exercise}{Exercises}
+\crefname{step}{Step}{Steps}
+\crefname{proof}{Proof}{Proofs}
+\crefname{claim}{Claim}{Claims}
 
 
 

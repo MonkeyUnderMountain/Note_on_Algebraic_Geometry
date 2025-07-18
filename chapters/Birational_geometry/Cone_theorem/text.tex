@@ -9,6 +9,11 @@
         Then for \(n \gg 0\), the rational maps \(\varphi_n\) stable to a fibration \(\varphi_\infty: X \ratmap Y_\infty\) up to birational equivalence.
     \end{theorem}
 
+    \begin{proof}
+        Here we test cref for the step environment.
+        Test \cref{step: test label} for a step label.
+    \end{proof}
+
 
 \subsection{Non-vanishing Theorem}
 
@@ -65,7 +70,7 @@
         why it is so long?
 
 
-        \begin{step}
+        \begin{step}[Test Name]\label{step: test label}
             This is a test.
         \end{step}
 
@@ -76,10 +81,12 @@
     \begin{proof}
         The follows are test steps for the step environment.
         \begin{step}
-            test again
+            test again.
+            In this step, we refer to \ref{step: test label} for a test.
         \end{step}
         \begin{step}
             This is a test.
+            Test cref \cref{thm: base point free theorem}.
         \end{step}
     \end{proof}
 
