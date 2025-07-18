@@ -4,7 +4,27 @@
 % !Bib program = biber
 % !TEX encoding = UTF-8 Unicode
 \ProvidesClass{noteformyself}[2025/05/03 自定义笔记文档类]
+
+% 定义类选项
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=noteformyself,
+  prefix=noteformyself@
+}
+
+% 定义sectionlevel选项
+\DeclareStringOption[section]{sectionlevel}
+
+% 处理未知选项，传递给article类
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
+
+% 处理选项
+\ProcessKeyvalOptions*
+
 \LoadClass[12pt]{article} % 基础文档类（article）
+
+
+
 
 %--------------------------------------------------------------------------
 % 页面布局配置
@@ -19,6 +39,9 @@
 ]{geometry}
 \renewcommand{\baselinestretch}{1.3}
 
+
+
+
 %--------------------------------------------------------------------------
 % 警告过滤配置（抑制常见编译警告）
 %--------------------------------------------------------------------------
@@ -27,6 +50,9 @@
 \WarningFilter{fancyhdr}{\footheight is too small}  % 抑制页脚高度警告
 \WarningFilter{fancyhdr}{\footskip is too small}    % 抑制页脚间距警告
 \WarningFilter{hyperref}{Ignoring empty anchor}     % 抑制空锚点警告
+
+
+
 
 %--------------------------------------------------------------------------
 % 核心包加载（按功能分组，保持加载顺序）
@@ -60,6 +86,9 @@
 % 页面装饰
 \RequirePackage{fancyhdr}       % 页眉页脚定制
 \RequirePackage[bottom,multiple]{footmisc} % 脚注增强
+
+
+
 
 %--------------------------------------------------------------------------
 % 文档元数据定义（支持封面页调用）
@@ -104,13 +133,8 @@
 \newcommand{\covertextcolor}[1]{\gdef\@covertextcolor{#1}}
 \makeatother
 
-%--------------------------------------------------------------------------
-% 章节标题格式配置
-%--------------------------------------------------------------------------
-\RequirePackage{titlesec}
-\renewcommand{\thesubsection}{\arabic{subsection}}  % 章节编号格式
-\titleformat{\section}[block]{\normalfont\LARGE\bfseries}{}{0em}{}
-\titleformat{\subsection}[block]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+
+
 
 %--------------------------------------------------------------------------
 % 页眉页脚样式配置
@@ -143,6 +167,9 @@
 }
 \fancyfoot{}
 \makeatother
+
+
+
 
 %--------------------------------------------------------------------------
 % 封面页重定义
@@ -227,6 +254,9 @@
 }
 \makeatother
 
+
+
+
 %--------------------------------------------------------------------------
 % 超链接全局配置
 %--------------------------------------------------------------------------
@@ -238,11 +268,43 @@
     citecolor=cyan,
 }
 
+
+
+
 %--------------------------------------------------------------------------
 % 列表环境配置
 %--------------------------------------------------------------------------
 \setlist[enumerate,1]{label=(\alph*)} % 第一层级：小写字母加括号 (a), (b), ...)
 \setlist[enumerate,2]{label=(\roman*)} % 第二层级：小写罗马数字加括号 (i), (ii), ...)
+
+
+
+
+%--------------------------------------------------------------------------
+% 章节标题格式配置
+%--------------------------------------------------------------------------
+\RequirePackage{titlesec}
+\RequirePackage{etoolbox} % 条件判断包
+
+% 定义sectionlevel命令来控制章节级别
+\makeatletter
+\edef\@sectionlevel{\noteformyself@sectionlevel}
+\ifdefstring{\@sectionlevel}{chapter}{%
+  % 章节级别：chapter模式
+  \renewcommand{\thesection}{\arabic{section}}  % 章节编号：1, 2, 3...
+  \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}  % 小节编号：1.1, 1.2...
+  \titleformat{\section}[block]{\normalfont\LARGE\bfseries}{\thesection}{1em}{}
+  \titleformat{\subsection}[block]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+}{%
+  % 章节级别：section模式（默认）
+  \renewcommand{\thesubsection}{\arabic{subsection}}  % 小节编号格式
+  \titleformat{\section}[block]{\normalfont\LARGE\bfseries}{}{0em}{}
+  \titleformat{\subsection}[block]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+}%
+\makeatother
+
+
+
 
 %--------------------------------------------------------------------------
 % 定理环境可视化配置
@@ -252,7 +314,15 @@
 \theoremstyle{mystyle}
 
 % 定义具体定理环境（共享计数器）
-\newtheorem{definition}{Definition}
+\makeatletter
+\ifdefstring{\@sectionlevel}{chapter}{%
+  % 章节级别：chapter模式
+  \newtheorem{definition}{Definition}[section] % 定义环境按章节编号
+}{%
+  % 章节级别：section模式（默认）
+  \newtheorem{definition}{Definition}
+}%
+\makeatother
 \newtheorem{proposition}[definition]{Proposition}
 \newtheorem{def-prop}[definition]{Def-Prop}
 \newtheorem{theorem}[definition]{Theorem}
@@ -264,6 +334,23 @@
 \theoremstyle{definition}
 \newtheorem{exercise}[definition]{Exercise}
 
+% 定义step子环境（在proof环境中使用，每个proof重置计数器）
+\newcounter{step}
+
+% 简化的step环境，不使用theorem结构
+\newenvironment{step}[1][]{%
+  \refstepcounter{step}%
+  \par\medskip%
+  \noindent\textbf{Step \thestep\if\relax\detokenize{#1}\relax\else\ (#1)\fi.}%
+  \par\nopagebreak%
+}{%
+  \par\medskip%
+}
+
+% 在proof环境开始时重置step计数器
+\AtBeginEnvironment{proof}{\setcounter{step}{0}}
+
+
 % 定理环境可视化配置（统一使用tcolorbox实现）
 % 定义环境配置（颜色方案：蓝色系）
 \tcolorboxenvironment{definition}{
@@ -274,21 +361,6 @@
   right=8pt,           % 右内边距
   enhanced jigsaw,     % 启用高级边框绘制（解决某些兼容问题）
   borderline west={2pt}{0pt}{blue}, % 左侧装饰线（2pt粗细，蓝色）
-  sharp corners,        % 直角边框（默认圆角）
-  before skip=10pt,    % 上方间距
-  after skip=10pt,     % 下方间距
-  breakable            % 允许跨页断行
-}
-
-% 定义-命题环境配置（颜色方案：蓝色-紫色）
-\tcolorboxenvironment{def-prop}{
-  boxrule=0pt,         % 边框粗细（0pt表示无外边框）
-  boxsep=0pt,          % 内容与边框间距
-  colback={blue!10!purple!10},   % 背景颜色（蓝色10%透明度）
-  left=8pt,            % 左内边距
-  right=8pt,           % 右内边距
-  enhanced jigsaw,     % 启用高级边框绘制（解决某些兼容问题）
-  borderline west={2pt}{0pt}{blue!50!purple}, % 左侧装饰线（2pt粗细，蓝色）
   sharp corners,        % 直角边框（默认圆角）
   before skip=10pt,    % 上方间距
   after skip=10pt,     % 下方间距
@@ -422,6 +494,21 @@
   breakable,
   before upper={\setlength{\parindent}{2em}},
 }
+
+% 步骤环境配置（特殊样式：无背景色，左侧线为品红色）
+\tcolorboxenvironment{step}{
+  boxrule=0pt,
+  boxsep=0pt,
+  blanker,
+  borderline west={2pt}{0pt}{magenta},  % 品红色左侧线
+  left=8pt,
+  right=8pt,
+  sharp corners,
+  before skip=5pt,
+  after skip=5pt,
+  breakable,
+  before upper={\setlength{\parindent}{2em}},
+}
  
 % 练习环境配置（颜色方案：紫罗兰系）
 \tcolorboxenvironment{exercise}{
@@ -437,6 +524,9 @@
   after skip=10pt,
   breakable
 }
+
+
+
 
 %--------------------------------------------------------------------------
 % 自定义实用命令
