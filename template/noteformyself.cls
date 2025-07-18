@@ -227,11 +227,55 @@
     \end{flushleft}
     
     % 封面图片
+    % 封面图片
     \vfill
-    \begin{figure}[ht]
-      \centering
-      \adjustimage{max width=0.6\textwidth, max height=0.5\textheight, keepaspectratio}{\@coverimage}
-    \end{figure}
+    % \makeatletter
+    \ifx\@coverimage\@empty
+      % 如果没有定义封面图片，显示警告
+      \PackageWarning{noteformyself}{No cover image specified. Use \string\coverimage{filename} to add a cover image}%
+      \begin{center}
+        \begin{minipage}{0.6\textwidth}
+          \centering
+          \fbox{%
+            \begin{minipage}{0.8\textwidth}
+              \centering
+              \vspace{2cm}
+              \textcolor{gray}{\Large No Cover Image}\\[0.5cm]
+              \textcolor{gray}{\footnotesize Use \texttt{\textbackslash coverimage\{filename\}} to add an image}
+              \vspace{2cm}
+            \end{minipage}%
+          }
+        \end{minipage}
+      \end{center}
+    \else
+      % 如果定义了封面图片，正常显示
+      \IfFileExists{\@coverimage}{%
+        \begin{figure}[ht]
+          \centering
+          \adjustimage{max width=0.6\textwidth, max height=0.5\textheight, keepaspectratio}{\@coverimage}
+        \end{figure}
+      }{%
+        % 图片文件不存在的警告
+        \PackageError{noteformyself}{Cover image file '\@coverimage' not found}{%
+          Please check that the file '\@coverimage' exists in your project directory.%
+        }%
+        \begin{center}
+          \begin{minipage}{0.6\textwidth}
+            \centering
+            \fbox{%
+              \begin{minipage}{0.8\textwidth}
+                \centering
+                \vspace{2cm}
+                \textcolor{red}{\Large Image Not Found}\\[0.5cm]
+                \textcolor{red}{\footnotesize File '\@coverimage' does not exist}
+                \vspace{2cm}
+              \end{minipage}%
+            }
+          \end{minipage}
+        \end{center}
+      }
+    \fi
+    % \makeatother
     
     % 封面标语
     \vspace{0.8cm}
