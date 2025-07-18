@@ -259,6 +259,7 @@
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{corollary}[definition]{Corollary}
 \newtheorem{remark}[definition]{Remark}
+\newtheorem{claim}[definition]{Claim}
 \newtheorem{example}[definition]{Example}
 \theoremstyle{definition}
 \newtheorem{exercise}[definition]{Exercise}
@@ -398,6 +399,21 @@
   boxsep=0pt,
   blanker,
   borderline west={2pt}{0pt}{Black},  % 黑色左侧线
+  left=8pt,
+  right=8pt,
+  sharp corners,
+  before skip=10pt,
+  after skip=10pt,
+  breakable,
+  before upper={\setlength{\parindent}{2em}},
+}
+
+% 断言环境配置（特殊样式：无背景色，左侧线为品红）
+\tcolorboxenvironment{claim}{
+  boxrule=0pt,
+  boxsep=0pt,
+  blanker,
+  borderline west={2pt}{0pt}{magenta},  % 品红色左侧线
   left=8pt,
   right=8pt,
   sharp corners,

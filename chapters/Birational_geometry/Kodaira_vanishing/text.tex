@@ -1,0 +1,252 @@
+\section{Kodaira Vanishing Theorem}
+
+\subsection{Preliminary}
+
+    % \begin{theorem}[GAGA]\label{thm: GAGA for cohomology}
+    %     Let $X$ be a smooth projective variety over $\mathbb{C}$ and \(\calf\) a coherent sheaf on \(X\).
+    %     Then 
+    %     \[
+    %         H^i(X, \calf) \cong H^i(X^{an}, \calf^{an}).
+    %     \]
+    % \end{theorem}
+
+    \begin{theorem}[Serre Duality]\label{thm: Serre duality for line bundles}
+        Let \(X\) be a Cohen-Macaulay projective variety of dimension \(n\) over \(\kk\) and \(D\) a divisor on \(X\).
+        Then there is an isomorphism
+        \[
+            H^i(X, D) \cong H^{n-i}(X, K_X - D)^\vee, \quad \forall i = 0, 1, \ldots, n.
+        \]
+    \end{theorem}
+
+    % \begin{theorem}[Serre Vanishing]\label{thm: Serre vanishing theorem}
+    %     Let \(X\) be a proper variety of dimension \(n\) over \(\kk\), \(\calf\) a coherent sheaf and \(\call\) an ample line bundle on \(X\). 
+    %     Then there exists an integer \(m_0 > 0\) such that for all \(m \geq m_0\),
+    %     \[
+    %         H^i(X, L^m\ten \calf) = 0,\quad \forall i > 0.
+    %     \]
+    % \end{theorem}
+
+    \begin{theorem}[Log Resolution of Singularities]\label{thm: log resolution of singularities}
+        Let X be an irreducible reduced algebraic variety over $\bbc$ (or a suitably small neighborhood of a compact set of an irreducible reduced analytic space) and $I \subset \calo_X$ a coherent sheaf of ideals defining a closed subscheme (or subspace) $Z$. Then there is a smooth variety (or analytic space) $Y$ and a projective morphism $f: Y \to X$ such that
+        \begin{enumerate}
+            \item $f$ is an isomorphism over $X - (\Sing(X) \cup \Supp Z)$,
+            \item $f^*I \subset \calo_Y$ is an invertible sheaf $\calo_Y(-D)$ and 
+            \item $\Exc(f) \cup D$ is an snc divisor.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{theorem}[Lefschetz Hyperplane Theorem]\label{thm: Lefschetz hyperplane theorem}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbc\) and \(Y\) a hyperplane section of \(X\).
+        Then the restriction map
+        \[
+            H^k(X,\bbc) \to H^k(Y, \bbc)
+        \]
+        is an isomorphism for \(k < n - 1\) and an injection for \(k = n - 1\).
+    \end{theorem}
+
+    \begin{theorem}[Hodge Decomposition]\label{thm: Hodge decomposition}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbc\).
+        Then for any \(k\), there is a functorial decomposition
+        \[
+            H^k(X, \bbc) = \bigoplus_{p+q=k} H^{p}(X, \Omega^q_X).
+        \]
+    \end{theorem}
+
+    Combine Theorem \ref{thm: Lefschetz hyperplane theorem} and Theorem \ref{thm: Hodge decomposition}, we have the following lemma.
+
+    \begin{lemma}\label{lem: Lefschetz hyperplane theorem for cohomology of structure sheaf}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbc\) and \(Y\) a hyperplane section of \(X\).
+        Then the restriction map \(r_k: H^k(X,\bbc) \to H^k(Y, \bbc)\) decomposes as 
+        \[
+            r_k = \bigoplus_{p+q=k} r_{p,q},\quad r_{p,q}: H^{p}(X, \Omega^q_X) \to H^{p}(Y, \Omega^q_Y).
+        \]
+        And \(r_{p,q}\) is an isomorphism for \(p + q < n - 1\) and an injection for \(p + q = n - 1\).
+        In particular, 
+        \[ H^p(X, \calo_X) \to H^p(Y, \calo_Y) \]
+        is an isomorphism for \(p < n - 1\) and an injection for \(p = n - 1\).
+    \end{lemma}
+
+    \begin{theorem}[Leray spectral sequence]\label{thm: Leray spectral sequence}
+        Let \(f: Y \to X\) be a morphism of varieties and \(\calf\) a coherent sheaf on \(Y\).
+        Then there is a spectral sequence
+        \[
+            E_2^{p,q} = H^p(X, R^q f_* \calf) \implies H^{p+q}(Y, \calf).
+        \]
+    \end{theorem}
+        
+
+\subsection{Kodaira Vanishing Theorem}
+
+    \begin{lemma}\label{lem: cyclic covering map in Kodaira Vanishing}
+        Let \(X\) be a smooth projective variety over \(\kk\) and \(\call\) a line bundle on \(X\).
+        Suppose there is an integer \(m\) and a smooth divisor \(D \in H^0(X, \call^m)\).
+        Then there exists a finite surjective morphism \(f:Y \to X\) of smooth projective varieties such that \(D':= f^{-1}(D)\) is smooth and satisfies that \(bD' = af^*D\).
+    \end{lemma}
+    \begin{proof}
+        Let \(s \in \call^m\) be the section defining \(D\).
+        It induces a homomorphism \(\call^{-m} \to \calo_X\).
+        Consider the \(\calo_X\)-algebra 
+        \[ \cala := \left(\bigoplus_{i = 0}^{\infty} \call^{-i}\right) \bigg/\left(\call^{-m} \to \calo_X\right) \cong \bigoplus_{i = 0}^{m-1} \call^{-i}. \]
+        Then \(\cala\) is a finite \(\calo_X\)-algebra.
+        Let \(Y \coloneqq \Spec_X \cala\).
+        Then \(Y\) is a finite \(\calo_X\)-scheme and the natural morphism \(f: Y \to X\) is finite and surjective.
+
+        For every \(x \in X\), let \(\call\) locally generated by \(t\) near \(x\).
+        Then \(\calo_Y\) locally equal to \(\calo_X[t]/(t^m - s)\).
+        Let \(D'\) be the divisor locally given by \(t=0\) on \(Y\).
+        Since \(X\) and \(D\) are smooth, then \(Y\) is a smooth variety and \(D'\) is smooth.
+        Since \(f\) is finite, it is proper.
+        Then \(Y\) is proper and hence \(Y\) is projective.
+    \end{proof}
+    \begin{remark}\label{rmk: cyclic covering map in Kodaira Vanishing can preverse snc}
+        Let \(D_i\) be reduced effective divisors on \(X\) such that \(D + \sum_{i=1}^k D_i\) is snc.
+        Set \(D_i' = f^*(D_i)\).
+        Then \(D' + \sum_{i=1}^k D_i'\) is snc on \(Y\) by considering the local regular system of parameters.
+    \end{remark}
+
+    \begin{lemma}\label{lem: injectivity of cohomology of finite pullback of line bundle}
+        Let \(f:Y \to X\) be a finite surjective morphism of projective varieties and \(\call\) a line bundle on \(X\).
+        Suppose that \(X\) is normal.
+        Then for any \(i \geq 0\), \(H^i(X,\call)\) is a direct summand of \(H^i(Y, f^*\call)\).
+    \end{lemma}
+    \begin{proof}
+        Since \(f\) is finite, we have \(H^i(Y, f^*\call) \cong H^i(X, f_*\calo_Y \ten \call)\).
+        Since \(X\) are normal, the inclusion \(\calo_X \to f_*\calo_Y\) splits by the trace map \((1/n)\Tr_{Y/X}\).
+        Thus we have \(f_*\calo_Y \cong \calo_X \oplus \calf\) and hence 
+        \[ H^i(X, f_*\calo_Y \ten \call) \cong H^i(X, \call) \oplus H^i(X, \calf \ten \call). \]
+        Then the conclusion follows.
+    \end{proof}
+
+    \begin{theorem}[Kodaira Vanishing Theorem]\label{thm: Kodaira Vanishing Theorem}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(A\) an ample divisor on \(X\). 
+        Then
+        \[
+            H^i(X, \calo_X(-A)) = 0,\quad \forall i < n.
+        \]
+        Equivalently, we have
+        \[
+            H^i(X, K_X + A) = 0,\quad \forall i > 0.
+        \]
+    \end{theorem}
+    \begin{proof}
+        By Lemma \ref{lem: cyclic covering map in Kodaira Vanishing} and \ref{lem: injectivity of cohomology of finite pullback of line bundle}, after taking a multiple of \(A\), we can assume that \(A\) is effective.
+        Then we have an exact sequence
+        \[ 0 \to \calo_X(-A) \to \calo_X \to \calo_A \to 0. \]
+        Taking the long exact sequence of cohomology, we have
+        \[ H^{i-1}(X,\calo_X) \to H^{i-1}(X, \calo_A) \to H^{i}(X, \calo_X(-A)) \to H^{i}(X, \calo_X) \to H^{i}(X, \calo_A). \]
+        Then the conclusion follows from Lemma \ref{lem: Lefschetz hyperplane theorem for cohomology of structure sheaf} and Serre duality (Theorem \ref{thm: Serre duality for line bundles}).
+    \end{proof}
+
+\subsection{Vanishing theorem for nef and big divisors}
+
+    \begin{lemma}\label{lem: vanishing for ample plus snc divisor}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\), \(A\) an ample divisor and \(E\) an snc divisor on \(X\).
+        % Suppose that \(E\) is an effective divisor on \(X\) with snc support.
+        Then
+        \[
+            H^i(X, K_X + A + E) = 0,\quad \forall i > 0.
+        \]
+    \end{lemma}
+    \begin{proof}
+        Let \(E = \sum_{i=1}^k E_i\).
+        We induct on \(k\).
+        Consider the exact sequence
+        \[ 0 \to \calo_X(-A-\sum_{i=1}^{k} E_i) \to \calo_X(-A-\sum_{i=1}^{k-1} E_i) \to \calo_{E_k}(-A-\sum_{i=1}^{k-1} E_i) \to 0. \]
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem for nef and big divisors]\label{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef and big \(\bbr\)-divisor on \(X\).
+        Then 
+        \[ H^i(X, K_X + D) = 0,\quad \forall i > 0. \]
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+\subsection{Kawamata-Viehweg Vanishing Theorem for klt pairs}
+
+    \begin{lemma}\label{lem: divide a divisor by a finite surjective morphism}
+        Let \(X\) be a projective variety, \(\call\) a line bundle on \(X\) and \(m \in \bbz_{\geq 0}\).
+        Then there exists a finite surjective morphism \(f: Y \to X\) and a line bundle \(\call'\) on \(Y\) such that \(f^*\call \sim \call'^{m}\).
+        If \(X\) is smooth, then we can take \(Y\) to be smooth.
+        Moreover, if \(D = \sum D_i\) is an snc divisor on \(X\), then we can take \(f\) such that \(f^*D\) is an snc divisor on \(Y\).
+    \end{lemma}
+    \begin{proof}
+        We can assume that \(\call\) is very ample by writing it as a difference of two very ample line bundles.
+        Consider the fiber product \(Y:= \bbp^N \times_{\bbp^N} X\) as the following diagram
+        \[ \xymatrix{
+            Y \ar[r]^{\psi} \ar[d]_{f} & \mathbb{P}^N \ar[d]^{g} \\
+            X \ar[r]^{\varphi_\call} & \mathbb{P}^N
+        }, \]
+        where \(g: [x_0: \ldots: x_N] \mapsto [x_0^m: \ldots: x_N^m]\).
+        The morphism \(f\) is finite and surjective since so is \(g\).
+        Let \(\call'\coloneqq \psi^*\call\calo(1)\).
+
+        For smoothness, we can compose \(g\) with a general automorphism of \(\bbp^N\).
+        Then the conclusion follows from \cite[Chapter III, Theorem 10.8]{Har77}.
+    \end{proof}
+
+    % \begin{lemma}\label{lem: finite surjective morphism to make snc divisor}
+    %     Let \(X\) be a smooth projective variety and \(B = \sum_{i=1}^k b_i B_i\) an effective \(\bbq\)-divisor with snc support.
+    %     Then there exists a finite surjective morphism \(f: Y \to X\) such that \(Y\) is smooth and \(f^*B\) is an snc divisor.
+    % \end{lemma}
+
+    \begin{theorem}\label{thm: Kawamata-Viehweg Vanishing Theorem in KM98}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef \(\bbr\)-divisor on \(X\).
+        Suppose that \(\lceil D \rceil - D\) has snc support.
+        Then
+        \[
+            H^i(X, K_X + \lceil D \rceil) = 0,\quad \forall i > 0.
+        \]
+    \end{theorem}
+    \begin{proof}
+        By the Bertini, we can assume that \(A \coloneqq D\) is ample and a \(\bbq\)-divisor by adding a sufficiently small ample divisor and adjusting the coefficients slightly.
+        Set \(M:= \lceil D \rceil\).
+        Let 
+        \[ B \coloneqq \sum_{i=1}^k b_i B_i \coloneqq \lceil D \rceil - D = M - A, \quad b_i \in (0,1) \cap \bbq. \]
+        We do not require that \(B_i\) are irreducible but we require that \(B_i\) are smooth.
+
+        We induct on \(k\).
+        Let \(b_k = a/c\) with lowest terms.
+        Then \(a<c\).
+        By Lemma \ref{lem: divide a divisor by a finite surjective morphism} and \ref{lem: injectivity of cohomology of finite pullback of line bundle}, we can assume that \((1/c)B_k\) is a Cartier divisor (not necessarily effective).
+        Applying Lemma \ref{lem: cyclic covering map in Kodaira Vanishing} on \(B_k\),
+        we can find a finite surjective morphism \(f: X' \to X\) such that \(f^*B_k = cB_k', B_i' = f^*B_i\) for \(i < k\) and \(\sum_{i=1}^{k} B_i'\) is an snc divisor on \(X'\).
+        Let \(B' = \sum_{i=1}^{k-1}B_i', A' = f^*A\) and \(M' = f^*M\).
+        Then \(A'+ B' =  M'-aB_k'\) is Cartier.
+        Hence by induction hypothesis, \( H^i(X', -A' - B')\) vanishes for \(i > 0\).
+        On the other hand, we have
+        \[ \calo_{X'}(-M' + aB_k') \cong \sum_{i=0}^{c-1} f^*\calo_X(-M + (a-i) B_k). \]
+        Hence \(H^i(X,\calo_X(-M))\) is a direct summand of \(H^i(X', \calo_{X'}(-M' + aB_k'))\) by Lemma \ref{lem: injectivity of cohomology of finite pullback of line bundle}.
+    \end{proof}
+
+    \begin{lemma}[{ref. \cite[Theorem 5.10, 5.22]{KM98}}]\label{lem: klt pair has rational singularities and is Cohen-Macaulay}
+        Let \((X,B)\) be a klt pair over \(\kk\) of characteristic \(0\).
+        Then \(X\) has rational singularities and is Cohen-Macaulay.
+    \end{lemma}
+
+    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem for klt pairs]\label{thm: Kodaira Vanishing Theorem for klt pair}
+        Let \((X,B)\) be a klt pair over \(\kk\) of characteristic \(0\).
+        Let \(D\) be a nef \(\bbr\)-divisor on \(X\) such that \(D + K_{(X,B)}\) is a Cartier divisor.
+        Then
+        \[ H^i(X, K_{(X,B)} + D) = 0,\quad \forall i > 0. \]
+    \end{theorem}
+    \begin{proof}
+        Let \(f: \tilde{X} \to X\) be a resolution such that \(\Supp f^*B \cup \Exc f\) is snc.
+        We can write
+        \[ f^*(K_{(X,B)} + D) + E = K_{(\tilde{X},\tilde{B})} + f^*D, \]
+        where \(\tilde{B} \in (0,1)\) has snc support and \(E\) is an effective exceptional divisor.
+
+        \begin{claim}\label{claim: higher direct image vanish in section Kodaira vanishing}
+            The higher direct image sheaves \(R^if_*(\calo_{\tilde{X}}(f^*(K_{(X,B)} + D) + E))\) vanish for \(i > 0\) and \(f_*(\calo_{\tilde{X}}(f^*(K_{(X,B)} + D) + E)) \cong \calo_X(K_{(X,B)}+D)\).
+        \end{claim}
+
+        By the Claim, we have 
+        \[ H^i(\tilde{X}, K_{(\tilde{X},\tilde{B})} + f^*D) = H^i(X, K_{(X,B)}+D), \] 
+        and the left hand vanishes by Theorem \ref{thm: Kawamata-Viehweg Vanishing Theorem in KM98}.
+    \end{proof}
+    \begin{proof}[Proof of Claim \ref{claim: higher direct image vanish in section Kodaira vanishing}]
+        Let \(\calf\coloneqq \calo_{\tilde{X}}(f^*(K_{(X,B)} + D) + E)\).
+        \Yang{To be completed.}
+    \end{proof}
