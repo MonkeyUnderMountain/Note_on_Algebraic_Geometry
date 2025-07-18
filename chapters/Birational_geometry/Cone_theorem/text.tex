@@ -1,38 +1,74 @@
-\section{here is the text}
+\section{Cone Theorem}
 
-    \lipsum[3-4]
 
-\subsection{theorems and definitions}
-    \lipsum[5-6]
+\subsection{Preliminary}
 
-   
-
-    \begin{definition}[this is a definition]
-        \lipsum[1-2]    
-    \end{definition}
-    \begin{proposition}[this is a proposition]
-        \lipsum[1-2] 
-    \end{proposition}
-    \begin{example}[this is an example]
-        \lipsum[1-2] 
-    \end{example}
-    \begin{theorem}[this is a theorem]
-        \lipsum[1-2] 
+    \begin{theorem}[Iitaka fibration]\label{thm: Iitaka fibration}
+        Let \(X\) be a projective variety and \(\call\) a line bundle on \(X\).
+        Let \(\varphi_n: X \ratmap Y_n\) be the dominant rational map associated to \(\call^n\).
+        Then for \(n \gg 0\), the rational maps \(\varphi_n\) stable to a fibration \(\varphi_\infty: X \ratmap Y_\infty\) up to birational equivalence.
     \end{theorem}
-    \begin{corollary}[this is a corollary]
-        \lipsum[1-2] 
-    \end{corollary}
-    \begin{exercise}[this is an exercise]
-        \lipsum[1-2]
-    \end{exercise}
-    \begin{remark}[this is a remark]
-        \lipsum[1-2]
-    \end{remark}
-    \begin{proof}[this is a proof]
-        \lipsum[1-2]
-    \end{proof}
-    \begin{lemma}[this is a lemma]
-        \lipsum[1-2]
-    \end{lemma}
 
-    \lipsum[100-200] % 生成测试文本
+
+\subsection{Non-vanishing Theorem}
+
+    \begin{theorem}[Non-vanishing Theorem]\label{thm: non-vanishing theorem}
+        Let \((X,B)\) be a projective klt pair and \(D\) a Cartier divisor on \(X\).
+        Suppose that \(D\) is nef and \(aD-K_{(X,B)}\) is nef and big for some \(a > 0\).
+        Then for \(m \gg 0\), we have 
+        \[ H^0(X,mD) \neq 0. \]
+    \end{theorem}
+
+
+\subsection{Base Point Free Theorem}
+
+    \begin{theorem}[Base Point Free Theorem]\label{thm: base point free theorem}
+        Let \((X,B)\) be a projective klt pair and \(D\) a Cartier divisor on \(X\).
+        Suppose that \(D\) is nef and \(aD-K_{(X,B)}\) is nef and big for some \(a > 0\).
+        Then \(D\) is semiample.
+    \end{theorem}
+
+
+\subsection{Rationality Theorem}
+
+    \begin{theorem}[Rationality Theorem]\label{thm: rationality theorem}
+        Let \((X,B)\) be a projective klt pair, \(a = a(X) \in \bbz\) with \(aK_{(X,B)}\) Cartier and \(H\) an ample divisor on \(X\).
+        Let 
+        \[ t \coloneqq \inf \{s \geq 0: K_{(X,B)} + sH \text{ is nef}\} \]
+        be the nef threshold of \((X,B)\) with respect to \(H\).
+        Then \(t = u/v \in \bbq\) and 
+        \[ 0 \leq u \leq a(X)\cdot (\dim X + 1). \]
+    \end{theorem}
+
+
+\subsection{Cone Theorem and Contraction Theorem}
+
+    \begin{theorem}[Cone Theorem]\label{thm: cone theorem}
+        Let \((X,B)\) be a projective klt pair.
+        Then there exist countably many rational curves \(C_i \subset X\) with 
+        \[ 0 < -K_{(X,B)} \cdot C_i \leq 2 \dim X \]
+        such that 
+        \begin{enumerate}
+            \item we have a decomposition of cones
+            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum \bbr_{\geq 0}[C_i]; \]
+            \item and for any \(\varepsilon > 0\) and an ample divisor \(H\) on \(X\), we have 
+            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)}+\varepsilon H \geq 0} + \sum_{\text{finite}} \bbr_{\geq 0}[C_i]. \]
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        We only need to prove (b) and (a) follows from (b) by taking \(\varepsilon = 1/n\).
+
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{theorem}[Contraction Theorem]\label{thm: contraction theorem}
+        Let \((X,B)\) be a projective klt pair and \(F \subset \Psef_1(X)\) a \(K_{(X,B)}\)-negative extremal face of \(\Psef_1(X)\).
+        Then there exists a fibration \(\varphi_F: X \to Y\) of projective varieties such that
+        \begin{enumerate}
+            \item an irreducible curve \(C \subset X\) is contracted by \(\varphi_F\) if and only if \([C] \in F\);
+            \item any line bundle \(\call\) with \(F \subset \call^{\perp} = \{\alpha \in N_1(X) : \alpha \cdot \call = 0\}\) comes from a line bundle on \(Y\), 
+                i.e., there exists a line bundle \(\call_Y\) on \(Y\) such that \(\call \cong \varphi_F^* \call_Y\).
+        \end{enumerate}
+    \end{theorem}
+
+    
