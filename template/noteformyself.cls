@@ -381,17 +381,36 @@
 
 % 定义step子环境（在proof环境中使用，每个proof重置计数器）
 \newcounter{step}
-% 简化的step环境，不使用theorem结构
+\newcounter{globalstep} % Global unique step counter for anchors
+% 简化的step环境，使用全局唯一计数器进行引用，但显示本地计数器
 \newenvironment{step}[1][]{%
   \refstepcounter{step}%
+  \refstepcounter{globalstep}% This creates unique anchors
   \par\smallskip%
-  \noindent\textbf{Step \thestep\if\relax\detokenize{#1}\relax\else\ (#1)\fi.}%
-  \ 
+  \noindent\textbf{Step \thestep\if\relax\detokenize{#1}\relax\else\ (#1)\fi.}\ %
 }{%
   \par\smallskip%
 }
 % 在proof环境开始时重置step计数器
-\AtBeginEnvironment{proof}{\setcounter{step}{0}}
+\AtBeginEnvironment{proof}{%
+  \setcounter{step}{0}%
+}
+% 重新定义globalstep的显示格式，让它显示为local step number
+\renewcommand{\theglobalstep}{\arabic{step}}
+
+
+% 设置cleveref引用格式
+\crefname{definition}{Definition}{Definitions}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{remark}{Remark}{Remarks}
+\crefname{example}{Example}{Examples}
+\crefname{exercise}{Exercise}{Exercises}
+\crefname{proof}{Proof}{Proofs}
+\crefname{claim}{Claim}{Claims}
+\crefname{globalstep}{Step}{Steps} % Global unique step counter
 
 
 % 定理环境可视化配置（统一使用tcolorbox实现）
@@ -567,20 +586,6 @@
   after skip=10pt,
   breakable
 }
-
-
-% 设置cleveref引用格式
-\crefname{definition}{Definition}{Definitions}
-\crefname{proposition}{Proposition}{Propositions}
-\crefname{theorem}{Theorem}{Theorems}
-\crefname{lemma}{Lemma}{Lemmas}
-\crefname{corollary}{Corollary}{Corollaries}
-\crefname{remark}{Remark}{Remarks}
-\crefname{example}{Example}{Examples}
-\crefname{exercise}{Exercise}{Exercises}
-\crefname{step}{Step}{Steps}
-\crefname{proof}{Proof}{Proofs}
-\crefname{claim}{Claim}{Claims}
 
 
 

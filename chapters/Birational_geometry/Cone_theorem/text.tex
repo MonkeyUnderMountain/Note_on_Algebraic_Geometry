@@ -3,17 +3,12 @@
 
 \subsection{Preliminary}
 
-    \begin{theorem}[Iitaka fibration]\label{thm: Iitaka fibration}
-        Let \(X\) be a projective variety and \(\call\) a line bundle on \(X\).
-        Let \(\varphi_n: X \ratmap Y_n\) be the dominant rational map associated to \(\call^n\).
-        Then for \(n \gg 0\), the rational maps \(\varphi_n\) stable to a fibration \(\varphi_\infty: X \ratmap Y_\infty\) up to birational equivalence.
+    \begin{theorem}[{Iitaka fibration, semiample case, ref. \cite[Theorem 2.1.27]{Laz04a}}]\label{thm: Iitaka fibration in semiample case}
+        Let \(X\) be a projective variety and \(\call\) an semiample line bundle on \(X\).
+        Then there exists a fibration \(\varphi: X \to Y\) of projective varieties 
+        such that for any \(m\gg 0\) with \(\call^m\) base point free, we have that the morphism \(\varphi_{\call^m}\) induced by \(\call^m\) is isomorphic to \(\varphi\).
+        Such a fibration is called the \emph{Iitaka fibration} associated to \(\call\).
     \end{theorem}
-
-    \begin{proof}
-        Here we test cref for the step environment.
-        Test \cref{step: test label} for a step label.
-    \end{proof}
-
 
 \subsection{Non-vanishing Theorem}
 
@@ -24,7 +19,6 @@
         \[ H^0(X,mD) \neq 0. \]
     \end{theorem}
 
-
 \subsection{Base Point Free Theorem}
 
     \begin{theorem}[Base Point Free Theorem]\label{thm: base point free theorem}
@@ -32,7 +26,6 @@
         Suppose that \(D\) is nef and \(aD-K_{(X,B)}\) is nef and big for some \(a > 0\).
         Then \(D\) is semiample.
     \end{theorem}
-
 
 \subsection{Rationality Theorem}
 
@@ -61,34 +54,33 @@
         \end{enumerate}
     \end{theorem}
     \begin{proof}
-        We only need to prove (b) and (a) follows from (b) by taking \(\varepsilon = 1/n\).
+        We follow the following steps to prove the theorem.
+        \begin{step}\label{step1:thm:cone_theorem}
+            Let \(F_D \coloneqq \Psef_1(X) \cap D^\perp\) for a nef divisor \(D\) on \(X\).
+            We show that if \(\dim F_D > 1\) and \(F_D \not\subset \Psef_1(X)_{K_{(X,B)} \geq 0}\), then we can choose \(D'\) nef such that \(F_{D'} \subset F_{D}\) and \(\dim F_{D'} < \dim F_D\).
+        \end{step}
+        \Yang{To be completed.}
 
         \begin{step}
+            If \(\dim F_D = 1\), we also write \(R_D \coloneqq F_D\).
             We show that 
-            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum \bbr_{\geq 0}[C_i] \]
+            \[ \Psef_1(X) = \overline{ \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum R_D }. \]
         \end{step}
-        why it is so long?
+        \Yang{To be completed.}
 
-
-        \begin{step}[Test Name]\label{step: test label}
-            This is a test.
+        \begin{step}
+            For any \(\varepsilon > 0\) and an ample divisor \(H\) on \(X\), we show that
+            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)}+\varepsilon H \geq 0} + \sum_{\text{finite}} R_D . \]
         \end{step}
+        \Yang{To be completed.}
 
+        \begin{step}
+            We show that any \(K_{(X,B)}\)-negative extremal ray \(R_D\) contains the class of a rational curve \(C\) with \(0 < -K_{(X,B)} \cdot C \leq 2 \dim X\).
+        \end{step}
 
         \Yang{To be completed.}
     \end{proof}
 
-    \begin{proof}
-        The follows are test steps for the step environment.
-        \begin{step}
-            test again.
-            In this step, we refer to \ref{step: test label} for a test.
-        \end{step}
-        \begin{step}
-            This is a test.
-            Test cref \cref{thm: base point free theorem}.
-        \end{step}
-    \end{proof}
 
     \begin{theorem}[Contraction Theorem]\label{thm: contraction theorem}
         Let \((X,B)\) be a projective klt pair and \(F \subset \Psef_1(X)\) a \(K_{(X,B)}\)-negative extremal face of \(\Psef_1(X)\).
@@ -99,5 +91,31 @@
                 i.e., there exists a line bundle \(\call_Y\) on \(Y\) such that \(\call \cong \varphi_F^* \call_Y\).
         \end{enumerate}
     \end{theorem}
+    \begin{proof}
+        We follow the following steps to prove the theorem.
+        \begin{step}\label{step:K_negative_face_is_rational_in_thm:contraction_theorem}
+            We show that there exists a nef divisor \(D\) on \(X\) such that \(F = D^\perp \cap \Psef_1(X)\).
+            In other words, \(F\) is defined on \(N_1(X)_\bbq\).
+        \end{step}
+        \Yang{To be completed.}
+
+        \begin{step}
+            We show that \(D\) is semiample.
+        \end{step}
+        \Yang{To be completed.}
+
+        \begin{step}
+            Let \(\varphi: X \to Y\) be the Iitaka fibration associated to \(D\) by \cref{thm: Iitaka fibration in semiample case}.
+            We show that \(\varphi\) is the desired fibration.
+        \end{step}
+        \Yang{To be completed.}
+    \end{proof}
+    \begin{remark}\label{rmk_K_negative_face_is_rational}
+        The \cref{step:K_negative_face_is_rational_in_thm:contraction_theorem} is amazing.
+        If \(F\) is not \(K_{(X,B)}\)-negative, then it may not be rational.
+        For example, let \(X = E \times E\) for a general elliptic curve \(E\).
+        By \cite[Lemma 1.5.4]{Laz04a}, we know that \(\Psef_1(X)\) is a circular cone.
+        The we see there indeed exist some irrational extremal faces of \(\Psef_1(X)\).
+    \end{remark}
 
     
