@@ -1,8 +1,8 @@
-\documentclass{noteformyself}
+\documentclass[sectionlevel=chapter]{noteformyself}
 \usepackage{lipsum} % 生成测试文本
 
 
-\title{Template for the class ``Note for Myself''}
+\title{Abelian Varieties}
 \author{Tianle Yang}
 \date{\today}
 \authorinfo{\href{www.tianleyang.com}{My Website}}
@@ -18,7 +18,13 @@
 
     \maketitle
 
-    \input{text.tex} % 这里是正文
+    \tableofcontents
+
+    \input{definition_and_examples/text.tex} % 这里是正文
+
+    \input{Picard_groups_of_abelian_varieties/text.tex}
+
+    % \input{Structure_of_endomorphism_rings/text.tex}
 
     % \printbibliography
 \end{document}

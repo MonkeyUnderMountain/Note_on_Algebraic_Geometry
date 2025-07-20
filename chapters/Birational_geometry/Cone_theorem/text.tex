@@ -10,6 +10,28 @@
         Such a fibration is called the \emph{Iitaka fibration} associated to \(\call\).
     \end{theorem}
 
+    \begin{theorem}[{Rigidity Lemma, ref. \cite[Lemma 1.15]{Deb01}}]\label{thm: Rigidity Lemma}
+        Let \(\pi_i: X \to Y_i\) be proper morphisms of varieties over a field \(\kk\) for \(i=1,2\).
+        Suppose that \(\pi_1\) is a fibration and \(\pi_2\) contracts \(\pi_1^{-1}(y_0)\).
+        Then there exists a rational map \(\varphi: Y_1 \ratmap Y_2\) such that \(\pi_2 \circ \varphi = \pi_1\) and \(\varphi\) is well-defined near \(Y_1 \setminus \{y_0\}\). 
+    \end{theorem}
+
+    \begin{theorem}\label{thm:convex_separation_theorem}
+        Let \(A,B \subset \bbr^n\) be disjoint convex sets.
+        Then there exists a linear functional \(f: \bbr^n \to \bbr\) such that \(f|_A \leq c\) and \(f|_B \geq c\) for some \(c \in \bbr\).
+    \end{theorem}
+
+    % \begin{theorem}[{Upper semicontinuity of cohomology, ref. \cite[Chapter III, Theorem 12.8]{Har77}}]\label{thm: upper semicontinuity of cohomology}
+    %     Let \(f:X \to Y\) be a projective morphism of noetherian schemes and \(\calf\) a coherent sheaf on \(X\) flat over \(Y\).
+    %     Then the function \(y \mapsto h^i(y,\calf)\) is upper semicontinuous on \(Y\) for every \(i\).   
+    % \end{theorem}
+
+    % \begin{theorem}[{Grauert's Theorem, ref. \cite[Chapter III, Corollary 12.9]{Har77}}]\label{thm: Grauert's Theorem}
+    %     Let \(f:X \to Y\) be a projective morphism of noetherian schemes and \(\calf\) a coherent sheaf on \(X\) flat over \(Y\).
+    %     Suppose that \(Y\) is integral and \(h^i(y,\calf)\) is constant on \(Y\) for some \(i\).
+    %     Then \(R^if_*\calf\) is locally free sheaf on \(Y\) and the natural map \(R^if_*\calf \ten \rkk(y) \to H^i(X_y,\calf_y)\) is an isomorphism for every \(y \in Y\).
+    % \end{theorem}
+
 \subsection{Non-vanishing Theorem}
 
     \begin{theorem}[Non-vanishing Theorem]\label{thm: non-vanishing theorem}
@@ -24,8 +46,14 @@
     \begin{theorem}[Base Point Free Theorem]\label{thm: base point free theorem}
         Let \((X,B)\) be a projective klt pair and \(D\) a Cartier divisor on \(X\).
         Suppose that \(D\) is nef and \(aD-K_{(X,B)}\) is nef and big for some \(a > 0\).
-        Then \(D\) is semiample.
+        Then for \(m \gg 0\), \(mD\) is base point free.
     \end{theorem}
+
+    \begin{remark}\label{rmk:statement_in_BPF_theorem_stronger_than_semiample}
+        In general, we say that a Cartier divisor \(D\) is \emph{semiample} if there exists a positive integer \(m\) such that \(mD\) is base point free.
+        The statement in Base Point Free Theorem (\cref{thm: base point free theorem}) is strictly stronger than the semiample condition.
+        For example, let \(\call\) be a torsion line bundle, then \(\call\) is semiample but there exists no positive integer \(M\) such that \(m\call\) is base point free for all \(m>M\).
+    \end{remark}
 
 \subsection{Rationality Theorem}
 
@@ -54,31 +82,49 @@
         \end{enumerate}
     \end{theorem}
     \begin{proof}
-        We follow the following steps to prove the theorem.
-        \begin{step}\label{step1:thm:cone_theorem}
-            Let \(F_D \coloneqq \Psef_1(X) \cap D^\perp\) for a nef divisor \(D\) on \(X\).
-            We show that if \(\dim F_D > 1\) and \(F_D \not\subset \Psef_1(X)_{K_{(X,B)} \geq 0}\), then we can choose \(D'\) nef such that \(F_{D'} \subset F_{D}\) and \(\dim F_{D'} < \dim F_D\).
+        Let \(F_D \coloneqq \Psef_1(X) \cap D^\perp\) for a nef divisor \(D\) on \(X\).
+        If \(\dim F_D = 1\), we also write \(R_D \coloneqq F_D\).
+        Let \(H_1,\cdots,H_{\rho-1}\) be ample divisors on \(X\) such that they together with \(K_{(X,B)}\) form a basis of \(N^1(X)_\bbr\).
+        Let \(S^{\rho-1} \coloneqq S(N_1(X)_\bbr)\) be the unit sphere in \(N_1(X)_\bbr\).
+        
+        \begin{step}\label{step_in_thm:cone_theorem:nagetive_extremal_rays_form_a_lattice}
+            Let \(\Phi: N_1(X)_{K_{(X,B)}<0} \to \bbr^{\rho-1}\) be the map defined by 
+            \[ [C] \mapsto \left( \frac{H_1 \cdot C}{K_{(X,B)}\cdot C},\ldots, \frac{H_{\rho-1} \cdot C}{K_{(X,B)}\cdot C}\right). \]
+            We show that the image of \(R_D\) under \(\Phi\) lying a \(\bbz\)-lattice in \(\bbr^{\rho-1}\).
         \end{step}
         \Yang{To be completed.}
 
-        \begin{step}
-            If \(\dim F_D = 1\), we also write \(R_D \coloneqq F_D\).
-            We show that 
-            \[ \Psef_1(X) = \overline{ \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum R_D }. \]
+        \begin{step}\label{step_in_thm:cone_theorem:negative_extremal_rays_are_rational}
+            We show that every \(K_{(X,B)}\)-negative extremal ray of \(\Psef_1(X)\) is of the form \(R_D\) for some nef divisor \(D\) on \(X\).
         \end{step}
         \Yang{To be completed.}
 
-        \begin{step}
-            For any \(\varepsilon > 0\) and an ample divisor \(H\) on \(X\), we show that
-            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)}+\varepsilon H \geq 0} + \sum_{\text{finite}} R_D . \]
-        \end{step}
-        \Yang{To be completed.}
-
-        \begin{step}
+        \begin{step}\label{step_in_thm:cone_theorem:nagetive_extremal_rays_have_class_of_rational_curves}
             We show that any \(K_{(X,B)}\)-negative extremal ray \(R_D\) contains the class of a rational curve \(C\) with \(0 < -K_{(X,B)} \cdot C \leq 2 \dim X\).
         \end{step}
 
         \Yang{To be completed.}
+
+        \begin{step}\label{step_in_thm:cone_theorem:finish_the_proof}
+            Proof of the theorem.
+        \end{step}
+        Given an ample divisor \(H\) on \(X\), note that \(\varepsilon H\) has positive minimum \(\delta\) on \(\Psef_1(X) \cap S^{\rho-1}\).
+        Note that the set \(\{\alpha \in \Psef_1(X)\cap S^{\rho-1} : K_{(X,B)}\cdot H \leq \delta/2\}\) is compact.
+        By \cref{step_in_thm:cone_theorem:negative_extremal_rays_are_rational,step_in_thm:cone_theorem:nagetive_extremal_rays_form_a_lattice}, 
+        there are only finitely many extremal rays on \(\Psef_1(X)_{K_{(X,B)}+\varepsilon H \leq 0}\).
+        By \cref{step_in_thm:cone_theorem:nagetive_extremal_rays_have_class_of_rational_curves}, we get (b).
+
+        For (a), note that any closed cone is equal to the closure of the cone generated by its extremal ray.
+        We only need to show that the cone
+        \[ \calc\coloneqq \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum \bbr_{\geq 0}[C_i] \]
+        is closed.
+        Choose a Cauchy sequence \(\{\alpha_n\} \subset \calc\) such that \(\alpha_n \to \alpha \in N_1(X)_\bbr\).
+        Note that \(\Psef_1(X)\) is closed, hence \(\alpha \in \Psef_1(X)\).
+        We only need to consider the case \(\alpha \cdot K_{(X,B)} < 0\).
+        We can choose an ample divisor and \(\varepsilon > 0\) such that \(\alpha \cdot (K_{(X,B)}+\varepsilon H) < 0\).
+        Then \(\alpha_n \cdot (K_{(X,B)}+\varepsilon H) < 0\) for all \(n\) large enough.
+        Note that \(\calc \cap \{K_{(X,B)}+\varepsilon H \leq 0\}\) is a polyhedral cone by \cref{step_in_thm:cone_theorem:nagetive_extremal_rays_form_a_lattice} and hence is closed.
+        Then \(\alpha \in \calc\) and the conclusion follows.
     \end{proof}
 
 
@@ -87,8 +133,8 @@
         Then there exists a fibration \(\varphi_F: X \to Y\) of projective varieties such that
         \begin{enumerate}
             \item an irreducible curve \(C \subset X\) is contracted by \(\varphi_F\) if and only if \([C] \in F\);
-            \item any line bundle \(\call\) with \(F \subset \call^{\perp} = \{\alpha \in N_1(X) : \alpha \cdot \call = 0\}\) comes from a line bundle on \(Y\), 
-                i.e., there exists a line bundle \(\call_Y\) on \(Y\) such that \(\call \cong \varphi_F^* \call_Y\).
+            \item up to linearly equivalence, any Cartier divisor \(G\) with \(F \subset G^{\perp} = \{\alpha \in N_1(X) : \alpha \cdot G= 0\}\) comes from a Cartier divisor on \(Y\), 
+                i.e., there exists a Cartier divisor \(G_Y\) on \(Y\) such that \(G \sim \varphi_F^* G_Y\).
         \end{enumerate}
     \end{theorem}
     \begin{proof}
@@ -97,18 +143,41 @@
             We show that there exists a nef divisor \(D\) on \(X\) such that \(F = D^\perp \cap \Psef_1(X)\).
             In other words, \(F\) is defined on \(N_1(X)_\bbq\).
         \end{step}
-        \Yang{To be completed.}
-
-        \begin{step}
-            We show that \(D\) is semiample.
-        \end{step}
-        \Yang{To be completed.}
-
+        We can choose an ample divisor \(H\) and \(n > 0\) such that \(K_{(X,B)}+(1/n)H\) is negative on \(F\) since \(F \cap S^{\rho-1}\) is compact and \(K_{(X,B)}\) is strictly negative on it,
+        where \(S^{\rho-1}\) is the unit sphere in \(N_1(X)_\bbr\).
+        Then by Cone Theorem (\cref{thm: cone theorem}), \(F\) is an extremal face of a rational polyhedral cone, namely \(\Psef_1(X)_{K_{(X,B)}+(1/n) H \leq 0}\).
+        It follows that \(F^\perp \subset N^1(X)_\bbr\) is defined on \(\bbq\).
+        Since \(F\) is extremal and \(K_{(X,B)}+(1/n)H\)-negative, the set \(\{L \in F^\perp: L|_{\Psef_1(X)\setminus F}>0\}\) has non-empty interior in \(F^\perp\) by \cref{thm: cone theorem,thm:convex_separation_theorem}.
+        Then there exists a Cartier divisor \(D\) such that \(D \in F^\perp\) and \(D|_{\Psef_1(X)\setminus F} > 0\).
+        It follows that \(D\) is nef and \(F = D^\perp \cap \Psef_1(X)\).
+        
         \begin{step}
             Let \(\varphi: X \to Y\) be the Iitaka fibration associated to \(D\) by \cref{thm: Iitaka fibration in semiample case}.
             We show that \(\varphi\) is the desired fibration.
         \end{step}
-        \Yang{To be completed.}
+        Note that \(\Psef_1(X)_{K_{(X,B)} \geq 0} \cap S^{\rho-1}\) is compact and \(D\) is strictly positive on it.
+        Then there exist \(a \geq 0\) such that \(aD - K_{(X,B)}\) is strictly positive on \(\Psef_1(X)_{K_{(X,B)} \geq 0} \cap S^{\rho-1}\).
+        And \(K_{(X,B)}\) is strictly negative on \(F\setminus \{0\}\) since \(F\) is \(K_{(X,B)}\)-negative.
+        Then by Base Point Free Theorem (\cref{thm: base point free theorem}), we know that \(mD\) is base point free for all \(m \gg 0\).
+        Hence we can apply \cref{thm: Iitaka fibration in semiample case} to get a fibration \(\varphi_D: X \to Y\).
+
+        First we show that \(D\) comes from \(Y\).
+        Note that \(mD\) and \((m+1)D\) induces the same fibration \(\varphi_D\) for \(m \gg 0\).
+        Then there exists \(D_{Y,m}\) and \(D_{Y,m+1}\) such that \(\varphi_D^* D_{Y,m} \sim mD\) and \(\varphi_D^* D_{Y,m+1} \sim (m+1)D\).
+        Then set \(D_Y = D_{Y,m+1} - D_{Y,m}\), we have \(\varphi_D^* D_Y \sim D\).
+
+        Note that \(D_Y \equiv (1/m) D_{Y,m}\) and \(D_{Y,m}\) is ample.
+        Hence \(D_Y\) is ample.
+        Then for any curve \(C \subset X\), we have
+        \[ D \cdot C = \varphi^* D_Y \cdot C = D_Y \cdot (\varphi_D)_* C. \]
+        It follows that \(C\) is contracted by \(\varphi_D\) if and only if \(D \cdot C = 0\), which is equivalent to \([C] \in F\).
+        
+        Let \(G\) be arbitrary Cartier divisor on \(X\) such that \(F \subset G^\perp\).
+        Since \(D\) is strictly positive on \(\Psef_1(X) \setminus F\), for \(m \gg 0\), let \(D'\coloneqq mD+G\), we have \(D'^\perp \cap \Psef_1(X) = F\).
+        Then by the same argument as above, we get an other fibration \(\varphi_{D'}: X \to Y'\) such that a curve \(C\) is contracted by \(\varphi_{D'}\) if and only if \([C] \in F\).
+        Then by Rigidity Lemma (\cref{thm: Rigidity Lemma}), we see that \(\varphi_D = \varphi_{D'}\) up to an isomorphism on \(Y\).
+        In particular, \(D' \sim \varphi_D^* D'_Y\) for some Cartier divisor \(D'_Y\) on \(Y\).
+        Then \(G = D' - mD\) also comes from \(Y\).
     \end{proof}
     \begin{remark}\label{rmk_K_negative_face_is_rational}
         The \cref{step:K_negative_face_is_rational_in_thm:contraction_theorem} is amazing.
@@ -117,5 +186,24 @@
         By \cite[Lemma 1.5.4]{Laz04a}, we know that \(\Psef_1(X)\) is a circular cone.
         The we see there indeed exist some irrational extremal faces of \(\Psef_1(X)\).
     \end{remark}
+
+    \begin{definition}\label{def:types_of_contractions_in_MMP}
+        Let \((X,B)\) be a projective klt pair and \(R\) a \(K_{(X,B)}\)-negative extremal ray of \(\Psef_1(X)\) with contraction \(\varphi_R: X \to Y\).
+        There are three types of contractions:
+        \begin{enumerate}
+            \item \emph{Divisorial contraction}: if \(\dim X = \dim Y\) and the exceptional locus of \(\varphi_R\) is of codimension one;
+            \item \emph{Small contraction}: if \(\dim X = \dim Y\) and the exceptional locus of \(\varphi_R\) is of codimension at least two;
+            \item \emph{Mori fiber space}: if \(\dim X > \dim Y\).
+        \end{enumerate}
+    \end{definition}
+
+    \begin{proposition}\label{prop:divisorial_or_fibered_contraction_preverses_Q_factorial}
+        Let \((X,B)\) be a \(\bbq\)-factorial projective klt pair and \(R\) a \(K_{(X,B)}\)-negative extremal ray of \(\Psef_1(X)\).
+        Suppose that the contraction \(\varphi_R:X\to Y\) associated to \(R\) is either divisorial or a Mori fiber space. 
+        Then \(Y\) is \(\bbq\)-factorial.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     

@@ -1,38 +1,45 @@
-\section{here is the text}
+\section{Bend and Break}
 
-    \lipsum[3-4]
+\subsection{Preliminary}
 
-\subsection{theorems and definitions}
-    \lipsum[5-6]
-
-   
-
-    \begin{definition}[this is a definition]
-        \lipsum[1-2]    
+    \begin{definition}[Frobinius morphism]\label{def:Frobinius_morphism}
+        Let \(X\) be a variety over a field \(\kkk\) of characteristic \(p > 0\).
+        Denote the structure morphism by \(\pi: X \to \Spec \kkk\).
+        The \emph{absolute Frobenius morphism} is the morphism given by \(\calo_X \to \calo_X, f \mapsto f^p\), denoted by \(\Frob_{X/\bbf_p}\).
+        The \emph{relative Frobenius morphism} is the morphism \(\Frob_{X/\kkk}\) given by the following commutative diagram:
+        \[ \xymatrix{
+            X \ar@/^/[rrd]^{\Frob_{X/\bbf_p}}  \ar@/_/[ddr]_\pi \ar[rd]|{\Frob_{X/\kkk}}  &   & \\
+                & X\times_{\kkk} \Spec \kkk \ar[r] \ar[d] & X \ar[d]^\pi \\
+                & \Spec \kkk \ar[r]^{\Frob_{\kkk/\bbf_p}} &  \Spec \kkk
+        }. \] 
+        We usually denote \(X \times_{\kkk} \Spec \kkk\) appearing above by \(X^{(p)}\).
     \end{definition}
-    \begin{proposition}[this is a proposition]
-        \lipsum[1-2] 
-    \end{proposition}
-    \begin{example}[this is an example]
-        \lipsum[1-2] 
-    \end{example}
-    \begin{theorem}[this is a theorem]
-        \lipsum[1-2] 
-    \end{theorem}
-    \begin{corollary}[this is a corollary]
-        \lipsum[1-2] 
-    \end{corollary}
-    \begin{exercise}[this is an exercise]
-        \lipsum[1-2]
-    \end{exercise}
-    \begin{remark}[this is a remark]
-        \lipsum[1-2]
-    \end{remark}
-    \begin{proof}[this is a proof]
-        \lipsum[1-2]
-    \end{proof}
-    \begin{lemma}[this is a lemma]
-        \lipsum[1-2]
-    \end{lemma}
 
-    \lipsum[100-200] % 生成测试文本
+    \begin{proposition}\label{prop:relative_frobinius_is_finite_of_degree_p^d}
+        Let \(X\) be a variety of dimension \(d\) over a field \(\kkk\) of characteristic \(p > 0\).
+        Then the relative Frobenius morphism \(\Frob_{X/\kkk}: X \to X^{(p)}\) is a finite morphism of degree \(p^d\) over \(\kkk\).
+    \end{proposition}
+
+\subsection{Deformation of curves}
+
+    \begin{theorem}[{ref. \cite[Chapter II, Theorem 1.2]{Kol96}}]\label{thm:dimension_of_deformation_space_of_curves}
+        Let \(C\) be a projective smooth curve of genus \(g\) and \(X\) a smooth projective variety of dimension \(n\).
+        Let \(f:C \to X\) be a non-constant morphism.
+        Then every irreducible component of \(\Mor(C, X)\) containing \(f\) has dimension at least
+        \[ -K_Y\cdot f(C) + (1-g)n. \]
+    \end{theorem}
+
+\subsection{Find rational curves}
+
+    \begin{theorem}\label{thm:rational_curve_on_smooth_fano}
+        Let \(X\) be a smooth Fano variety.
+        Then for any \(x \in X(\kkk)\), there is a rational curve \(C\) passing through \(x\) with 
+        \[ 0 < - C \cdot K_X \leq \dim X + 1. \]
+    \end{theorem}
+
+    \begin{theorem}\label{thm:rational_curve_on_smooth_variety_with_not_nef_K}
+        Let \(X\) be a smooth projective variety such that \(K_X \cdot C < 0\) for some irreducible curve \(C \subset X\).
+        Let \(H\) be an ample divisor on \(X\).
+        Then there exists a rational curve \(\Gamma\) such that
+        \[ -(K_X \cdot C) \cdot \frac{H\cdot \Gamma}{H \cdot C} \leq -K_X \cdot \Gamma \leq \dim X + 1. \]
+    \end{theorem}

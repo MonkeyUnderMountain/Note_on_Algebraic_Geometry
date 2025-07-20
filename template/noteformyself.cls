@@ -177,88 +177,64 @@
 %--------------------------------------------------------------------------
 \makeatletter
 \renewcommand{\maketitle}{%
-  \newgeometry{%
-    top=.825in,
-    bottom=0.7in,
-    left=.5in,
-    right=.5in,
-    includefoot,
-    footskip=0pt
-  }
-  \begin{titlepage}
-    \thispagestyle{fancy}
-    
-    % 封面装饰线配置
-    \gdef\biglineheight{10pt}
-    \gdef\smalllineheight{4pt}
-    \gdef\spaceheight{11pt}
-    \renewcommand{\headrule}{%
-      \vbox to 0pt{%
-        \color{\@coverlinecolor}%
-        \hrule width \headwidth height \biglineheight%
-        \vspace{\spaceheight}%
-        \hrule width \headwidth height \smalllineheight%
-        \vss%
-      }%
+  \ifdefstring{\@sectionlevel}{chapter}{%
+    % Chapter模式, full page title
+    \newgeometry{%
+      top=.825in,
+      bottom=0.7in,
+      left=.5in,
+      right=.5in,
+      includefoot,
+      footskip=0pt
     }
-    \renewcommand{\headrulewidth}{2mm}
-    \fancyhead{}
-    
-    % 页脚装饰线配置
-    \renewcommand{\footrule}{%
-      \vbox to 0pt{%
-        \color{\@coverlinecolor}%
-        \hrule width \headwidth height \smalllineheight%
-        \vspace{\spaceheight}%
-        \hrule width \headwidth height \biglineheight%
-        \vss%
-      }%
-    }
-    \fancyfoot{}
-    
-    % 标题排版
-    \vspace*{1mm}
-    \begin{flushleft}
-      \begin{minipage}{0.8\textwidth}
-        \fontspec{\@covertitlefont}
-        \fontsize{40pt}{48pt}\selectfont
-        \textcolor{\@covertextcolor}{\@title}
-      \end{minipage}
-    \end{flushleft}
-    
-    % 封面图片
-    % 封面图片
-    \vfill
-    % \makeatletter
-    \ifx\@coverimage\@empty
-      % 如果没有定义封面图片，显示警告
-      \PackageWarning{noteformyself}{No cover image specified. Use \string\coverimage{filename} to add a cover image}%
-      \begin{center}
-        \begin{minipage}{0.6\textwidth}
-          \centering
-          \fbox{%
-            \begin{minipage}{0.8\textwidth}
-              \centering
-              \vspace{2cm}
-              \textcolor{gray}{\Large No Cover Image}\\[0.5cm]
-              \textcolor{gray}{\footnotesize Use \texttt{\textbackslash coverimage\{filename\}} to add an image}
-              \vspace{2cm}
-            \end{minipage}%
-          }
-        \end{minipage}
-      \end{center}
-    \else
-      % 如果定义了封面图片，正常显示
-      \IfFileExists{\@coverimage}{%
-        \begin{figure}[ht]
-          \centering
-          \adjustimage{max width=0.6\textwidth, max height=0.5\textheight, keepaspectratio}{\@coverimage}
-        \end{figure}
-      }{%
-        % 图片文件不存在的警告
-        \PackageError{noteformyself}{Cover image file '\@coverimage' not found}{%
-          Please check that the file '\@coverimage' exists in your project directory.%
+    \begin{titlepage}
+      \thispagestyle{fancy}
+      
+      % 封面装饰线配置
+      \gdef\biglineheight{10pt}
+      \gdef\smalllineheight{4pt}
+      \gdef\spaceheight{11pt}
+      \renewcommand{\headrule}{%
+        \vbox to 0pt{%
+          \color{\@coverlinecolor}%
+          \hrule width \headwidth height \biglineheight%
+          \vspace{\spaceheight}%
+          \hrule width \headwidth height \smalllineheight%
+          \vss%
         }%
+      }
+      \renewcommand{\headrulewidth}{2mm}
+      \fancyhead{}
+      
+      % 页脚装饰线配置
+      \renewcommand{\footrule}{%
+        \vbox to 0pt{%
+          \color{\@coverlinecolor}%
+          \hrule width \headwidth height \smalllineheight%
+          \vspace{\spaceheight}%
+          \hrule width \headwidth height \biglineheight%
+          \vss%
+        }%
+      }
+      \fancyfoot{}
+      
+      % 标题排版
+      \vspace*{1mm}
+      \begin{flushleft}
+        \begin{minipage}{0.8\textwidth}
+          \fontspec{\@covertitlefont}
+          \fontsize{40pt}{48pt}\selectfont
+          \textcolor{\@covertextcolor}{\@title}
+        \end{minipage}
+      \end{flushleft}
+      
+      % 封面图片
+      % 封面图片
+      \vfill
+      % \makeatletter
+      \ifx\@coverimage\@empty
+        % 如果没有定义封面图片，显示警告
+        \PackageWarning{noteformyself}{No cover image specified. Use \string\coverimage{filename} to add a cover image}%
         \begin{center}
           \begin{minipage}{0.6\textwidth}
             \centering
@@ -266,31 +242,60 @@
               \begin{minipage}{0.8\textwidth}
                 \centering
                 \vspace{2cm}
-                \textcolor{red}{\Large Image Not Found}\\[0.5cm]
-                \textcolor{red}{\footnotesize File '\@coverimage' does not exist}
+                \textcolor{gray}{\Large No Cover Image}\\[0.5cm]
+                \textcolor{gray}{\footnotesize Use \texttt{\textbackslash coverimage\{filename\}} to add an image}
                 \vspace{2cm}
               \end{minipage}%
             }
           \end{minipage}
         \end{center}
-      }
-    \fi
-    % \makeatother
+      \else
+        % 如果定义了封面图片，正常显示
+        \IfFileExists{\@coverimage}{%
+          \begin{figure}[ht]
+            \centering
+            \adjustimage{max width=0.6\textwidth, max height=0.4\textheight, keepaspectratio}{\@coverimage}
+          \end{figure}
+        }{%
+          % 图片文件不存在的警告
+          \PackageError{noteformyself}{Cover image file '\@coverimage' not found}{%
+            Please check that the file '\@coverimage' exists in your project directory.%
+          }%
+          \begin{center}
+            \begin{minipage}{0.6\textwidth}
+              \centering
+              \fbox{%
+                \begin{minipage}{0.8\textwidth}
+                  \centering
+                  \vspace{2cm}
+                  \textcolor{red}{\Large Image Not Found}\\[0.5cm]
+                  \textcolor{red}{\footnotesize File '\@coverimage' does not exist}
+                  \vspace{2cm}
+                \end{minipage}%
+              }
+            \end{minipage}
+          \end{center}
+        }
+      \fi
     
-    % 封面标语
-    \vspace{0.8cm}
-    \begin{flushright}
-      \begin{minipage}{0.5\textwidth}
-        \begin{flushright}
-          \large \textcolor{\@covertextcolor}{\@coversentence}
-        \end{flushright}
-      \end{minipage}
-    \end{flushright}
     
-    \vspace{0.8cm}
-  \end{titlepage}
-  \restoregeometry
-  \clearpage
+      % 封面标语
+      \vspace{0.8cm}
+      \begin{flushright}
+        \begin{minipage}{0.8\textwidth}
+          \begin{flushright}
+            \large \textcolor{\@covertextcolor}{\@coversentence}
+          \end{flushright}
+        \end{minipage}
+      \end{flushright}
+      
+      \vspace{0.8cm}
+    \end{titlepage}
+    \restoregeometry
+    \clearpage
+  }{%
+    % Section模式（默认），简化封面
+  }
   
   % 文档信息脚注
   \renewcommand{\thefootnote}{}

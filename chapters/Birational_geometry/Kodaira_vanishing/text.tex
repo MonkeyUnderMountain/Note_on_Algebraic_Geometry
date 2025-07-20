@@ -137,7 +137,7 @@
         Then the conclusion follows from Lemma \ref{lem: Lefschetz hyperplane theorem for cohomology of structure sheaf} and Serre duality (Theorem \ref{thm: Serre duality for line bundles}).
     \end{proof}
 
-\subsection{Vanishing theorem for nef and big divisors}
+\subsection{Kawamata-Viehweg Vanishing Theorem}
 
     \begin{lemma}\label{lem: vanishing for ample plus snc divisor}
         Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\), \(A\) an ample divisor and \(E\) an snc divisor on \(X\).
@@ -155,7 +155,7 @@
         \Yang{To be completed.}
     \end{proof}
 
-    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem for nef and big divisors]\label{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor}
+    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem I]\label{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor}
         Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef and big \(\bbr\)-divisor on \(X\).
         Then 
         \[ H^i(X, K_X + D) = 0,\quad \forall i > 0. \]
@@ -164,7 +164,7 @@
         \Yang{To be completed.}
     \end{proof}
 
-\subsection{Kawamata-Viehweg Vanishing Theorem for klt pairs}
+% \subsection{Kawamata-Viehweg Vanishing Theorem for klt pairs}
 
     \begin{lemma}\label{lem: divide a divisor by a finite surjective morphism}
         Let \(X\) be a projective variety, \(\call\) a line bundle on \(X\) and \(m \in \bbz_{\geq 0}\).
@@ -192,8 +192,8 @@
     %     Then there exists a finite surjective morphism \(f: Y \to X\) such that \(Y\) is smooth and \(f^*B\) is an snc divisor.
     % \end{lemma}
 
-    \begin{theorem}\label{thm: Kawamata-Viehweg Vanishing Theorem in KM98}
-        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef \(\bbr\)-divisor on \(X\).
+    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem II]\label{thm: Kawamata-Viehweg Vanishing Theorem in KM98}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef and big \(\bbq\)-divisor on \(X\).
         Suppose that \(\lceil D \rceil - D\) has snc support.
         Then
         \[
@@ -201,13 +201,14 @@
         \]
     \end{theorem}
     \begin{proof}
-        By the Bertini, we can assume that \(A \coloneqq D\) is ample and a \(\bbq\)-divisor by adding a sufficiently small ample divisor and adjusting the coefficients slightly.
+        % By the Bertini, we can assume that \(A \coloneqq D\) is ample and a \(\bbq\)-divisor by adding a sufficiently small ample divisor and adjusting the coefficients slightly.
         Set \(M:= \lceil D \rceil\).
         Let 
         \[ B \coloneqq \sum_{i=1}^k b_i B_i \coloneqq \lceil D \rceil - D = M - A, \quad b_i \in (0,1) \cap \bbq. \]
         We do not require that \(B_i\) are irreducible but we require that \(B_i\) are smooth.
 
         We induct on \(k\).
+        When \(k = 0\), the conclusion follows from \cref{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor}.
         Let \(b_k = a/c\) with lowest terms.
         Then \(a<c\).
         By Lemma \ref{lem: divide a divisor by a finite surjective morphism} and \ref{lem: injectivity of cohomology of finite pullback of line bundle}, we can assume that \((1/c)B_k\) is a Cartier divisor (not necessarily effective).
@@ -226,7 +227,7 @@
         Then \(X\) has rational singularities and is Cohen-Macaulay.
     \end{lemma}
 
-    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem for klt pairs]\label{thm: Kodaira Vanishing Theorem for klt pair}
+    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem III]\label{thm: Kodaira Vanishing Theorem for klt pair}
         Let \((X,B)\) be a klt pair over \(\kk\) of characteristic \(0\).
         Let \(D\) be a nef \(\bbr\)-divisor on \(X\) such that \(D + K_{(X,B)}\) is a Cartier divisor.
         Then
@@ -239,7 +240,7 @@
         where \(\tilde{B} \in (0,1)\) has snc support and \(E\) is an effective exceptional divisor.
 
         \begin{claim}\label{claim: higher direct image vanish in section Kodaira vanishing}
-            The higher direct image sheaves \(R^if_*(\calo_{\tilde{X}}(f^*(K_{(X,B)} + D) + E))\) vanish for \(i > 0\) and \(f_*(\calo_{\tilde{X}}(f^*(K_{(X,B)} + D) + E)) \cong \calo_X(K_{(X,B)}+D)\).
+            The higher direct image sheaves \(R^if_*(\calo_{\tilde{X}}(f^*(K_{(X,B)} + D)) + E)\) vanish for \(i > 0\) and \(f_*(\calo_{\tilde{X}}(f^*(K_{(X,B)} + D) + E)) \cong \calo_X(K_{(X,B)}+D)\).
         \end{claim}
 
         By the Claim, we have 
