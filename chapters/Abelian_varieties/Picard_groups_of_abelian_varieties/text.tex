@@ -49,12 +49,27 @@
         We can define a map
         \[ \Phi_\call: A(\kkk) \to \Pic(A), \quad x \mapsto t_x^*\call \ten \call^{-1}. \]
         Then theorem of the square implies that \(\Phi_\call\) is a homomorphism of groups.
-        When we vary \(\call\), this gives an action of \(A(\kkk)\) on \(\Pic(A)\).
+        When we vary \(\call\), the map 
+        \[ \Phi_{\square}: \Pic(A) \to \Hom_{\Grp}(A(\kkk), \Pic(A)), \quad \call \mapsto \Phi_\call \]
+        is a group homomorphism.
+        For any \(x \in A(\kkk)\), we have
+        \[ \Phi_{t_x^*\call} = \Phi_\call. \]
+        In the other words, 
+        \[ \Phi_\call(x) \in \Ker \Phi_{\square}, \quad \forall \call \in \Pic(A), x \in A(\kkk). \]
         \Yang{To be completed.}
     \end{remark}
 
+    If we assume the scheme structure on \(\Pic(A)\), then \(\Phi_\call\) is a morphism of scheme and factors through \(\Pic^0(A)\).
+    Let \(K(\call) \coloneqq \Ker \Phi_\call\), then \(K(\call)\) is a subgroup scheme of \(A\).
+    We give another description of \(K(\call)\).
+    From this point, we can recover the dual abelian variety \(A^\vee = \Pic^0(A)\) as the quotient \(A/K(\call)\).
+    \Yang{To be completed.}
 
-\subsection{Positivity}
+
+    
+
+
+\subsection{Projectivity}
 
     \begin{theorem}\label{thm: abelian varieties are projective}
         Let $A$ be an abelian variety over $\kk$. 

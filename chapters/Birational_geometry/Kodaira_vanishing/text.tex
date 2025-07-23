@@ -137,34 +137,81 @@
         Then the conclusion follows from Lemma \ref{lem: Lefschetz hyperplane theorem for cohomology of structure sheaf} and Serre duality (Theorem \ref{thm: Serre duality for line bundles}).
     \end{proof}
 
+
 \subsection{Kawamata-Viehweg Vanishing Theorem}
 
-    \begin{lemma}\label{lem: vanishing for ample plus snc divisor}
-        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\), \(A\) an ample divisor and \(E\) an snc divisor on \(X\).
-        % Suppose that \(E\) is an effective divisor on \(X\) with snc support.
-        Then
-        \[
-            H^i(X, K_X + A + E) = 0,\quad \forall i > 0.
-        \]
-    \end{lemma}
-    \begin{proof}
-        Let \(E = \sum_{i=1}^k E_i\).
-        We induct on \(k\).
-        Consider the exact sequence
-        \[ 0 \to \calo_X(-A-\sum_{i=1}^{k} E_i) \to \calo_X(-A-\sum_{i=1}^{k-1} E_i) \to \calo_{E_k}(-A-\sum_{i=1}^{k-1} E_i) \to 0. \]
-        \Yang{To be completed.}
-    \end{proof}
+    We list three versions of Kawamata-Viehweg Vanishing Theorem here.
 
     \begin{theorem}[Kawamata-Viehweg Vanishing Theorem I]\label{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor}
         Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef and big \(\bbr\)-divisor on \(X\).
         Then 
         \[ H^i(X, K_X + D) = 0,\quad \forall i > 0. \]
     \end{theorem}
-    \begin{proof}
-        \Yang{To be completed.}
+    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem II]\label{thm: Kawamata-Viehweg Vanishing Theorem in KM98}
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef and big \(\bbq\)-divisor on \(X\).
+        Suppose that \(\lceil D \rceil - D\) has snc support.
+        Then
+        \[
+            H^i(X, K_X + \lceil D \rceil) = 0,\quad \forall i > 0.
+        \]
+    \end{theorem}
+    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem III]\label{thm: Kawamata-Viehweg Vanishing Theorem for klt pair}
+        Let \((X,B)\) be a klt pair over \(\kk\) of characteristic \(0\).
+        Let \(D\) be a nef \(\bbq\)-divisor on \(X\) such that \(D + K_{(X,B)}\) is a Cartier divisor.
+        Then
+        \[ H^i(X, K_{(X,B)} + D) = 0,\quad \forall i > 0. \]
+    \end{theorem}
+
+    If we replace the assumption "nef and big" of \(D\) by "ample" in II and III, we denote them as ``II(ample)'' and ``III(ample)'' respectively.
+    Then the proof follows the following line:
+    \[ \text{Kodaira Vanishing} \implies \text{II(ample)} \implies \text{III(ample)} \implies \text{I} \implies \text{II} \implies \text{III}. \]
+    The proofs leave here and the lemmas used in the proofs are collected in the end of this section.
+    
+    \begin{proof}[Proof of II (\cref{thm: Kawamata-Viehweg Vanishing Theorem in KM98})]
+        Set \(M:= \lceil D \rceil\).
+        Let 
+        \[ B \coloneqq \sum_{i=1}^k b_i B_i \coloneqq \lceil D \rceil - D = M - A, \quad b_i \in (0,1) \cap \bbq. \]
+        We do not require that \(B_i\) are irreducible but we require that \(B_i\) are smooth.
+
+        We induct on \(k\).
+        When \(k = 0\), the conclusion follows from \cref{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor}.
+        (For the ample case, it follows Kodaira Vanishing Theorem (\cref{thm: Kodaira Vanishing Theorem}.))
+        Let \(b_k = a/c\) with lowest terms.
+        Then \(a<c\).
+        By Lemma \ref{lem: divide a divisor by a finite surjective morphism} and \ref{lem: injectivity of cohomology of finite pullback of line bundle}, we can assume that \((1/c)B_k\) is a Cartier divisor (not necessarily effective).
+        Applying Lemma \ref{lem: cyclic covering map in Kodaira Vanishing} on \(B_k\),
+        we can find a finite surjective morphism \(f: X' \to X\) such that \(f^*B_k = cB_k', B_i' = f^*B_i\) for \(i < k\) and \(\sum_{i=1}^{k} B_i'\) is an snc divisor on \(X'\).
+        Let \(B' = \sum_{i=1}^{k-1}B_i', A' = f^*A\) and \(M' = f^*M\).
+        Then \(A'+ B' =  M'-aB_k'\) is Cartier.
+        Hence by induction hypothesis, \( H^i(X', -A' - B')\) vanishes for \(i > 0\).
+        On the other hand, we have
+        \[ \calo_{X'}(-M' + aB_k') \cong \sum_{i=0}^{c-1} f^*\calo_X(-M + (a-i) B_k). \]
+        Hence \(H^i(X,\calo_X(-M))\) is a direct summand of \(H^i(X', \calo_{X'}(-M' + aB_k'))\) by Lemma \ref{lem: injectivity of cohomology of finite pullback of line bundle}.
+    \end{proof}
+    \begin{proof}[Proof of III (\cref{thm: Kawamata-Viehweg Vanishing Theorem for klt pair})]
+        Let \(f: \tilde{X} \to X\) be a resolution such that \(\Supp f^*B \cup \Exc f\) is snc.
+        We can write
+        \[ f^*(K_{(X,B)} + D) + E = K_{(\tilde{X},\tilde{B})} + f^*D, \]
+        where \(\tilde{B} \in (0,1)\) has snc support and \(E\) is an effective exceptional divisor.
+
+        By \cref{lem:higher_direct_image_of_exceptional_divisor}, we have 
+        \[ H^i(\tilde{X}, K_{(\tilde{X},\tilde{B})} + f^*D) = H^i(X, f_*\calo_Y(f^*(K_{(X,B)}+D)+E)) = H^i(X, K_{(X,B)}+D), \] 
+        and the left hand vanishes by \cref{thm: Kawamata-Viehweg Vanishing Theorem in KM98} in either case relative to the assumption of \(D\).
+    \end{proof}
+    \begin{proof}[Proof of I (\cref{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor})]
+        By \cref{lem:nef_and_big_approximation_by_ample}, we can choose \(k \gg 0\) such that \((X,1/k B)\) is a klt pair with \(D \sim_\bbq A + \frac{1}{k}B\) for some ample divisor \(A\).
+        Then the theorem comes down to \cref{thm: Kawamata-Viehweg Vanishing Theorem for klt pair}.
     \end{proof}
 
-% \subsection{Kawamata-Viehweg Vanishing Theorem for klt pairs}
+    \begin{lemma}\label{lem:higher_direct_image_of_exceptional_divisor}
+        Let \(f:Y \to X\) be a birational morphism of projective varieties with \(Y\) smooth and \(X\) has only rational singularities.
+        Let \(E\) be an effective exceptional divisor on \(Y\) and \(D\) a divisor on \(X\).
+        Then we have
+        \[ f_*(\calo_Y(f^*D + E)) \cong \calo_X(D), \quad R^if_*(\calo_Y(f^*D + E)) = 0,\quad \forall i > 0. \]
+    \end{lemma}
+    \begin{proof}
+        \Yang{I am unable to proof this lemma.}
+    \end{proof}
 
     \begin{lemma}\label{lem: divide a divisor by a finite surjective morphism}
         Let \(X\) be a projective variety, \(\call\) a line bundle on \(X\) and \(m \in \bbz_{\geq 0}\).
@@ -181,45 +228,10 @@
         }, \]
         where \(g: [x_0: \ldots: x_N] \mapsto [x_0^m: \ldots: x_N^m]\).
         The morphism \(f\) is finite and surjective since so is \(g\).
-        Let \(\call'\coloneqq \psi^*\call\calo(1)\).
+        Let \(\call'\coloneqq \psi^*\call\).
 
         For smoothness, we can compose \(g\) with a general automorphism of \(\bbp^N\).
         Then the conclusion follows from \cite[Chapter III, Theorem 10.8]{Har77}.
-    \end{proof}
-
-    % \begin{lemma}\label{lem: finite surjective morphism to make snc divisor}
-    %     Let \(X\) be a smooth projective variety and \(B = \sum_{i=1}^k b_i B_i\) an effective \(\bbq\)-divisor with snc support.
-    %     Then there exists a finite surjective morphism \(f: Y \to X\) such that \(Y\) is smooth and \(f^*B\) is an snc divisor.
-    % \end{lemma}
-
-    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem II]\label{thm: Kawamata-Viehweg Vanishing Theorem in KM98}
-        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef and big \(\bbq\)-divisor on \(X\).
-        Suppose that \(\lceil D \rceil - D\) has snc support.
-        Then
-        \[
-            H^i(X, K_X + \lceil D \rceil) = 0,\quad \forall i > 0.
-        \]
-    \end{theorem}
-    \begin{proof}
-        % By the Bertini, we can assume that \(A \coloneqq D\) is ample and a \(\bbq\)-divisor by adding a sufficiently small ample divisor and adjusting the coefficients slightly.
-        Set \(M:= \lceil D \rceil\).
-        Let 
-        \[ B \coloneqq \sum_{i=1}^k b_i B_i \coloneqq \lceil D \rceil - D = M - A, \quad b_i \in (0,1) \cap \bbq. \]
-        We do not require that \(B_i\) are irreducible but we require that \(B_i\) are smooth.
-
-        We induct on \(k\).
-        When \(k = 0\), the conclusion follows from \cref{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor}.
-        Let \(b_k = a/c\) with lowest terms.
-        Then \(a<c\).
-        By Lemma \ref{lem: divide a divisor by a finite surjective morphism} and \ref{lem: injectivity of cohomology of finite pullback of line bundle}, we can assume that \((1/c)B_k\) is a Cartier divisor (not necessarily effective).
-        Applying Lemma \ref{lem: cyclic covering map in Kodaira Vanishing} on \(B_k\),
-        we can find a finite surjective morphism \(f: X' \to X\) such that \(f^*B_k = cB_k', B_i' = f^*B_i\) for \(i < k\) and \(\sum_{i=1}^{k} B_i'\) is an snc divisor on \(X'\).
-        Let \(B' = \sum_{i=1}^{k-1}B_i', A' = f^*A\) and \(M' = f^*M\).
-        Then \(A'+ B' =  M'-aB_k'\) is Cartier.
-        Hence by induction hypothesis, \( H^i(X', -A' - B')\) vanishes for \(i > 0\).
-        On the other hand, we have
-        \[ \calo_{X'}(-M' + aB_k') \cong \sum_{i=0}^{c-1} f^*\calo_X(-M + (a-i) B_k). \]
-        Hence \(H^i(X,\calo_X(-M))\) is a direct summand of \(H^i(X', \calo_{X'}(-M' + aB_k'))\) by Lemma \ref{lem: injectivity of cohomology of finite pullback of line bundle}.
     \end{proof}
 
     \begin{lemma}[{ref. \cite[Theorem 5.10, 5.22]{KM98}}]\label{lem: klt pair has rational singularities and is Cohen-Macaulay}
@@ -227,27 +239,33 @@
         Then \(X\) has rational singularities and is Cohen-Macaulay.
     \end{lemma}
 
-    \begin{theorem}[Kawamata-Viehweg Vanishing Theorem III]\label{thm: Kodaira Vanishing Theorem for klt pair}
-        Let \((X,B)\) be a klt pair over \(\kk\) of characteristic \(0\).
-        Let \(D\) be a nef \(\bbr\)-divisor on \(X\) such that \(D + K_{(X,B)}\) is a Cartier divisor.
-        Then
-        \[ H^i(X, K_{(X,B)} + D) = 0,\quad \forall i > 0. \]
-    \end{theorem}
+    \begin{lemma}\label{lem:nef_and_big_approximation_by_ample}
+        Let \(X\) be a projective variety of dimension \(n\) and \(D\) a nef and big divisor on \(X\).
+        Then there exists an effective divisor \(B\) such that for every \(k\), there is an ample divisor \(A_k\) such that 
+        \[ D \sim_\bbq A_k + \frac{1}{k}B. \]
+    \end{lemma}
     \begin{proof}
-        Let \(f: \tilde{X} \to X\) be a resolution such that \(\Supp f^*B \cup \Exc f\) is snc.
-        We can write
-        \[ f^*(K_{(X,B)} + D) + E = K_{(\tilde{X},\tilde{B})} + f^*D, \]
-        where \(\tilde{B} \in (0,1)\) has snc support and \(E\) is an effective exceptional divisor.
-
-        \begin{claim}\label{claim: higher direct image vanish in section Kodaira vanishing}
-            The higher direct image sheaves \(R^if_*(\calo_{\tilde{X}}(f^*(K_{(X,B)} + D)) + E)\) vanish for \(i > 0\) and \(f_*(\calo_{\tilde{X}}(f^*(K_{(X,B)} + D) + E)) \cong \calo_X(K_{(X,B)}+D)\).
-        \end{claim}
-
-        By the Claim, we have 
-        \[ H^i(\tilde{X}, K_{(\tilde{X},\tilde{B})} + f^*D) = H^i(X, K_{(X,B)}+D), \] 
-        and the left hand vanishes by Theorem \ref{thm: Kawamata-Viehweg Vanishing Theorem in KM98}.
+        By \Yang{definition} of big divisor, there exists an ample divisor \(A_1\) and effective divisor \(B\) such that
+        \[ D \sim_\bbq A_1 + B. \]
+        Then we have 
+        \[ D \sim_\bbq \frac{A + (k-1)D}{k} + \frac{1}{k}B. \]
+        Since \(A\) is ample and \(D\) is nef, we can take \(A_k = (A + (k-1)D)/k\) which is ample.
+        % \Yang{To be completed.}
     \end{proof}
-    \begin{proof}[Proof of Claim \ref{claim: higher direct image vanish in section Kodaira vanishing}]
-        Let \(\calf\coloneqq \calo_{\tilde{X}}(f^*(K_{(X,B)} + D) + E)\).
-        \Yang{To be completed.}
-    \end{proof}
+ 
+    
+    % \begin{lemma}\label{lem: vanishing for ample plus snc divisor}
+    %     Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\), \(A\) an ample divisor and \(E\) an snc divisor on \(X\).
+    %     % Suppose that \(E\) is an effective divisor on \(X\) with snc support.
+    %     Then
+    %     \[
+    %         H^i(X, K_X + A + E) = 0,\quad \forall i > 0.
+    %     \]
+    % \end{lemma}
+    % \begin{proof}
+    %     Let \(E = \sum_{i=1}^k E_i\).
+    %     We induct on \(k\).
+    %     Consider the exact sequence
+    %     \[ 0 \to \calo_X(-A-\sum_{i=1}^{k} E_i) \to \calo_X(-A-\sum_{i=1}^{k-1} E_i) \to \calo_{E_k}(-A-\sum_{i=1}^{k-1} E_i) \to 0. \]
+    %     \Yang{To be completed.}
+    % \end{proof}

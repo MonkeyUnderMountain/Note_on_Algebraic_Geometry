@@ -77,11 +77,18 @@
 \RequirePackage{fontspec}      % 字体配置
 
 % 引用系统
-\RequirePackage[backend=biber,style=alphabetic]{biblatex} % 参考文献管理
+\RequirePackage[backend=biber,style=alphabetic, backref=true]{biblatex} % 参考文献管理
 \addbibresource{ref.bib}
 
 % 交互功能
 \RequirePackage{hyperref}       % 超链接支持
+\hypersetup{
+  colorlinks = true,
+  linkcolor = blue,
+  filecolor = blue,
+  urlcolor = blue,
+  citecolor=cyan,
+}
 \RequirePackage[nameinlink]{cleveref} % 智能引用（自动添加前缀）
 
 % 页面装饰
@@ -303,20 +310,6 @@
   \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 }
 \makeatother
-
-
-
-
-%--------------------------------------------------------------------------
-% 超链接全局配置
-%--------------------------------------------------------------------------
-\hypersetup{
-    colorlinks = true,
-    linkcolor = blue,
-    filecolor = blue,
-    urlcolor = blue,
-    citecolor=cyan,
-}
 
 
 
