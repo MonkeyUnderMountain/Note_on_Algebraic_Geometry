@@ -27,14 +27,14 @@ mkdir "%full_path%" || (
 
 :: Copy template files (assuming template_files in script directory)
 echo Copying template files...
-xcopy /E /I /Q "%~dp0template\main.tex" "%full_path%" || (
+copy /Y "%~dp0template\main.tex" "%full_path%\%project_name%.tex" || (
     echo Error: File copy failed
     goto :retry_prompt
 )
-xcopy /E /I /Q "%~dp0template\text.tex" "%full_path%" || (
-    echo Error: File copy failed
-    goto :retry_prompt
-)
+@REM xcopy /E /I /Q "%~dp0template\text.tex" "%full_path%" || (
+@REM     echo Error: File copy failed
+@REM     goto :retry_prompt
+@REM )
 xcopy /E /I /Q "%~dp0template\placeholder.jpg" "%full_path%" || (
     echo Error: File copy failed
     goto :retry_prompt

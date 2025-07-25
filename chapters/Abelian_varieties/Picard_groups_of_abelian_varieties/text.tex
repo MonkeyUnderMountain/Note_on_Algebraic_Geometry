@@ -71,6 +71,22 @@
 
 \subsection{Projectivity}
 
+    \begin{proposition}\label{prop:2D_is_base_point_free}
+        Let \(A\) be an abelian variety over \(\kkk\) and \(D\) an effective divisor on \(A\).
+        Then \(|2D|\) is base point free.
+    \end{proposition}
+
+    \begin{theorem}\label{thm:ample_criteria_for_abelian_varieties}
+        Let \(A\) be an abelian variety over \(\kkk\) and \(D\) an effective divisor on \(A\).
+        TFAE:
+        \begin{enumerate}
+            \item the stabilizer \(\Stab(D)\) of \(D\) is finite;
+            \item the morphism \(\Phi_{|2D|}\) induced by the complete linear system \(|2D|\) is finite;
+            \item \(D\) is ample;
+            \item \(K(\calo_A(D))\) is finite.
+        \end{enumerate}
+    \end{theorem}
+
     \begin{theorem}\label{thm: abelian varieties are projective}
         Let $A$ be an abelian variety over $\kk$. 
         Then $A$ is projective.
@@ -94,6 +110,11 @@
         \Yang{To be completed.}
     \end{proof}
 
+    \begin{theorem}\label{thm:isogenies_and_finite_subgroups}
+        Let \(A\) be an abelian variety over \(\kkk\). 
+        There is a bijection between the isogenies from \(A\) over \(\kkk\) and the finite subgroup schemes of \(A\).
+    \end{theorem}
+
 
 \subsection{Dual abelian varieties}
 
@@ -103,5 +124,5 @@
     \end{theorem}
 
     \begin{proposition}\label{prop: the Poincare line bundle}
-        
+        There exists a unique line bundle \(\calp\) on \(A \times A^\vee\) such that for every \(y = \call \in A^\vee = \Pic^0(A)\), we have \(\calp|_{A \times \{y\}} \cong \call\).
     \end{proposition}
