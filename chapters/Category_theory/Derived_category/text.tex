@@ -15,3 +15,16 @@
         \(\mathbb{abcdefghijklmnopqrstuvwxyz}\).
         \(\mathbb{1}\)
     \end{definition}
+
+    \begin{example}[Test of manually defined mathtools commands]
+        Here we test the commands we defined manually:
+        
+        The function is defined as:
+        \[f(x) \coloneqq \begin{dcases}
+            x^2 & \text{if } x \geq 0 \\
+            -x^2 & \text{if } x < 0 \\
+            0 & \text{otherwise}
+        \end{dcases}\]
+        
+        This shows that both \verb|\coloneqq| and the \verb|dcases| environment work correctly without mathtools.
+    \end{example}

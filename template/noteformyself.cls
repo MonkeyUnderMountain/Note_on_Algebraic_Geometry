@@ -3,7 +3,7 @@
 % !TeX program = xelatex
 % !Bib program = biber
 % !TEX encoding = UTF-8 Unicode
-\ProvidesClass{noteformyself}[2025/05/03 自定义笔记文档类]
+\ProvidesClass{noteformyself}[2025/08/01 for notes to myself]
 
 % 定义类选项
 \RequirePackage{kvoptions}
@@ -15,13 +15,31 @@
 % 定义sectionlevel选项
 \DeclareStringOption[section]{sectionlevel}
 
-% 处理未知选项，传递给article类
-\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
+% 处理未知选项，传递给基础文档类
+\DeclareDefaultOption{%
+  \edef\@sectionlevel{\noteformyself@sectionlevel}%
+  \ifdefstring{\@sectionlevel}{book}{%
+    \PassOptionsToClass{\CurrentOption}{book}%
+  }{%
+    \PassOptionsToClass{\CurrentOption}{article}%
+  }%
+}
 
 % 处理选项
 \ProcessKeyvalOptions*
 
-\LoadClass[12pt]{article} % 基础文档类（article）
+% 加载条件判断包（在使用\ifdefstring之前）
+\RequirePackage{etoolbox}
+
+% 根据sectionlevel选项加载相应的基础文档类
+\makeatletter
+\edef\@sectionlevel{\noteformyself@sectionlevel}
+\ifdefstring{\@sectionlevel}{book}{%
+  \LoadClass[12pt]{book} % 基础文档类（book）
+}{%
+  \LoadClass[12pt]{article} % 基础文档类（article）
+}%
+\makeatother
 
 
 
@@ -50,6 +68,7 @@
 \WarningFilter{fancyhdr}{\footheight is too small}  % 抑制页脚高度警告
 \WarningFilter{fancyhdr}{\footskip is too small}    % 抑制页脚间距警告
 \WarningFilter{hyperref}{Ignoring empty anchor}     % 抑制空锚点警告
+% 注意：移除mathtools后，不再需要抑制unicode-math的包冲突警告
 
 
 
@@ -61,9 +80,8 @@
 \RequirePackage{graphicx}       % 图形插入支持
 \RequirePackage{adjustbox}      % 高级图片调整（支持max width/height）
 \RequirePackage{framed}         % 边框环境
-\RequirePackage{amsmath,amsthm,amssymb,amsfonts} % 数学公式基础包
+\RequirePackage{amsthm,amssymb,amsfonts} % 数学符号和字体支持，注意：unicode-math会自动加载amsmath，所以不需要单独加载amsmath
 \RequirePackage{thmtools}       % 高级定理工具包（提供declaretheorem）
-\RequirePackage[noabbrev, notcolon]{mathtools}      % 数学公式增强包
 \RequirePackage[dvipsnames]{xcolor} % 颜色支持
 \RequirePackage[most]{tcolorbox} % 彩色盒子环境
 \RequirePackage{tikz}           % 矢量绘图
@@ -75,7 +93,7 @@
 \RequirePackage[scheme=plain]{ctex} % 中文基础方案
 \RequirePackage{fontspec}      % 字体配置
 
-% Unicode数学字体支持
+% Unicode数学字体支持 - 必须在mathtools之后加载
 \RequirePackage{unicode-math}  
 % 设置数学字体, needs to load the main font first
 \setmathfont{Cambria Math}  % like cal, support lowercase, seems only available in Windows
@@ -111,6 +129,31 @@
 
 
 %--------------------------------------------------------------------------
+% Define useful commands provided by the package mathtools
+%--------------------------------------------------------------------------
+% 手动定义mathtools中的关键命令，避免包冲突
+
+% 定义dcases环境（带花括号的分段函数）
+\newenvironment{dcases}
+  {\left\{\begin{array}{@{}l@{\quad}l@{}}}
+  {\end{array}\right.}
+
+% 定义垂直居中的冒号
+\newcommand{\vcentcolon}{\mathrel{\mathop:}}
+
+% 定义coloneqq命令（:= 符号）
+\newcommand{\coloneqq}{\mathrel{\vcentcolon=}}
+
+% 如果需要其他mathtools命令，可以在这里继续添加
+% 例如：
+% \newcommand{\eqqcolon}{\mathrel{=\vcentcolon}}
+% \newcommand{\Coloneqq}{\mathrel{\dblcolon=}}
+% \newcommand{\dblcolon}{\mathrel{\dblcolon}}
+
+
+
+
+%--------------------------------------------------------------------------
 % 文档元数据定义（支持封面页调用）
 %--------------------------------------------------------------------------
 \makeatletter
@@ -139,6 +182,10 @@
 \gdef\@date{} % 初始化日期变量
 
 % 自定义封面元素
+\gdef\@authoremail{}     % 作者邮箱
+\newcommand{\authoremail}[1]{\gdef\@authoremail{#1}}
+\gdef\@authorpage{}     % 作者主页
+\newcommand{\authorpage}[1]{\gdef\@authorpage{#1}} 
 \gdef\@authorinfo{}     % 作者附加信息
 \newcommand{\authorinfo}[1]{\gdef\@authorinfo{#1}}
 \gdef\@coversentence{}  % 封面标语
@@ -151,6 +198,10 @@
 \newcommand{\covertitlefont}[1]{\gdef\@covertitlefont{#1}}
 \gdef\@covertextcolor{purple!70!blue}   % 封面文字颜色
 \newcommand{\covertextcolor}[1]{\gdef\@covertextcolor{#1}}
+\gdef\@texsource{} % TeX源代码路径
+\newcommand{\texsource}[1]{\gdef\@texsource{#1}}
+\gdef\@version{v 1.0.0} % 文档版本
+\newcommand{\version}[1]{\gdef\@version{#1}}
 \makeatother
 
 
@@ -159,6 +210,7 @@
 %--------------------------------------------------------------------------
 % 页眉页脚样式配置
 %--------------------------------------------------------------------------
+% for section and book mode
 \makeatletter
 \pagestyle{fancy}
 % 页眉样式
@@ -187,6 +239,45 @@
 }
 \fancyfoot{}
 \makeatother
+% for book mode, use a different style
+\makeatletter
+\fancypagestyle{mainmatterstyle}{ % 主体部分页眉页脚样式
+  \pagestyle{fancy}
+  % 页眉样式
+  \fancyhead[RO]{%
+    \tikz[baseline=(char.base)]{
+      \node[shape=rectangle,fill=gray,text=white,inner sep=2pt] (char) {\thepage};
+    }%
+  }
+  \fancyhead[LO]{\leftmark} % 左侧页眉显示章节标题
+
+  \fancyhead[LE]{%
+    \tikz[baseline=(char.base)]{
+      \node[shape=rectangle,fill=gray,text=white,inner sep=2pt] (char) {\thepage};
+    }%
+  }
+  \fancyhead[RE]{\rightmark} % 右侧页眉显示小节标题
+
+  \renewcommand{\headrule}{%
+    \vbox to 0pt{%
+      \color{gray}%
+      \hrule width \headwidth height \headrulewidth%
+      \vss%
+    }%
+  }
+  \renewcommand{\headrulewidth}{4pt}
+
+  % 页脚样式（留空）
+  \renewcommand{\footrule}{%
+    \vbox to -10pt{%
+      \color{gray}%
+      \hrule width \headwidth height \headrulewidth%
+      \vss%
+    }%
+  }
+  \fancyfoot{}
+}
+\makeatother
 
 
 
@@ -196,8 +287,8 @@
 %--------------------------------------------------------------------------
 \makeatletter
 \renewcommand{\maketitle}{%
-  \ifdefstring{\@sectionlevel}{chapter}{%
-    % Chapter模式, full page title
+  \ifdefstring{\@sectionlevel}{book}{%
+    % Book模式, full page title (similar to chapter mode)
     \newgeometry{%
       top=.825in,
       bottom=0.7in,
@@ -312,14 +403,150 @@
     \end{titlepage}
     \restoregeometry
     \clearpage
+
+    % 信息页
+    \thispagestyle{empty}
+      \vspace*{1cm}
+      \noindent {\Huge \textbf{\@title}}\\[0.5cm]
+      {\large \textbf{Author:} \@author}\\[0.5cm]
+      {\large \textbf{Email:} \@authoremail}\\[0.5cm]
+      {\large \textbf{Homepage:} \@authorpage}\\[0.5cm]
+      \vfill
+      \noindent {\large \textit{Source code: \@texsource}}\\[0.5cm]
+      {\large \textit{Version: \@version}}\\[0.5cm]
+      {\large \textit{Last updated: \today}}\\[0.5cm]
+      {\large \textit{Copyright © 2025 Tianle Yang}}
+    \clearpage
   }{%
-    % Section模式（默认），简化封面
-  }
-  
-  % 文档信息脚注
-  \renewcommand{\thefootnote}{}
-  \footnotetext{\textbf{Date}: \@date,\ \textbf{Author}: \@author,\ \@authorinfo}
-  \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+    \ifdefstring{\@sectionlevel}{chapter}{%
+      % Chapter模式, full page title
+      \newgeometry{%
+        top=.825in,
+        bottom=0.7in,
+        left=.5in,
+        right=.5in,
+        includefoot,
+        footskip=0pt
+      }
+      \begin{titlepage}
+        \thispagestyle{fancy}
+        
+        % 封面装饰线配置
+        \gdef\biglineheight{10pt}
+        \gdef\smalllineheight{4pt}
+        \gdef\spaceheight{11pt}
+        \renewcommand{\headrule}{%
+          \vbox to 0pt{%
+            \color{\@coverlinecolor}%
+            \hrule width \headwidth height \biglineheight%
+            \vspace{\spaceheight}%
+            \hrule width \headwidth height \smalllineheight%
+            \vss%
+          }%
+        }
+        \renewcommand{\headrulewidth}{2mm}
+        \fancyhead{}
+        
+        % 页脚装饰线配置
+        \renewcommand{\footrule}{%
+          \vbox to 0pt{%
+            \color{\@coverlinecolor}%
+            \hrule width \headwidth height \smalllineheight%
+            \vspace{\spaceheight}%
+            \hrule width \headwidth height \biglineheight%
+            \vss%
+          }%
+        }
+        \fancyfoot{}
+        
+        % 标题排版
+        \vspace*{1mm}
+        \begin{flushleft}
+          \begin{minipage}{0.8\textwidth}
+            \fontspec{\@covertitlefont}
+            \fontsize{40pt}{48pt}\selectfont
+            \textcolor{\@covertextcolor}{\@title}
+          \end{minipage}
+        \end{flushleft}
+        
+        % 封面图片
+        % 封面图片
+        \vfill
+        % \makeatletter
+        \ifx\@coverimage\@empty
+          % 如果没有定义封面图片，显示警告
+          \PackageWarning{noteformyself}{No cover image specified. Use \string\coverimage{filename} to add a cover image}%
+          \begin{center}
+            \begin{minipage}{0.6\textwidth}
+              \centering
+              \fbox{%
+                \begin{minipage}{0.8\textwidth}
+                  \centering
+                  \vspace{2cm}
+                  \textcolor{gray}{\Large No Cover Image}\\[0.5cm]
+                  \textcolor{gray}{\footnotesize Use \texttt{\textbackslash coverimage\{filename\}} to add an image}
+                  \vspace{2cm}
+                \end{minipage}%
+              }
+            \end{minipage}
+          \end{center}
+        \else
+          % 如果定义了封面图片，正常显示
+          \IfFileExists{\@coverimage}{%
+            \begin{figure}[ht]
+              \centering
+              \adjustimage{max width=0.6\textwidth, max height=0.4\textheight, keepaspectratio}{\@coverimage}
+            \end{figure}
+          }{%
+            % 图片文件不存在的警告
+            \PackageError{noteformyself}{Cover image file '\@coverimage' not found}{%
+              Please check that the file '\@coverimage' exists in your project directory.%
+            }%
+            \begin{center}
+              \begin{minipage}{0.6\textwidth}
+                \centering
+                \fbox{%
+                  \begin{minipage}{0.8\textwidth}
+                    \centering
+                    \vspace{2cm}
+                    \textcolor{red}{\Large Image Not Found}\\[0.5cm]
+                    \textcolor{red}{\footnotesize File '\@coverimage' does not exist}
+                    \vspace{2cm}
+                  \end{minipage}%
+                }
+              \end{minipage}
+            \end{center}
+          }
+        \fi
+      
+      
+        % 封面标语
+        \vspace{0.8cm}
+        \begin{flushright}
+          \begin{minipage}{0.8\textwidth}
+            \begin{flushright}
+              \large \textcolor{\@covertextcolor}{\@coversentence}
+            \end{flushright}
+          \end{minipage}
+        \end{flushright}
+        
+        \vspace{0.8cm}
+      \end{titlepage}
+      \restoregeometry
+      \clearpage
+
+      % 文档信息脚注
+      \renewcommand{\thefootnote}{}
+      \footnotetext{\textbf{Date}: \@date,\ \textbf{Author}: \@author,\ \@authorinfo}
+      \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+    }{%
+      % Section模式（默认），简化封面
+      % 文档信息脚注
+      \renewcommand{\thefootnote}{}
+      \footnotetext{\textbf{Date}: \@date,\ \textbf{Author}: \@author,\ \@authorinfo}
+      \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+    }%
+  }%
 }
 \makeatother
 
@@ -339,22 +566,38 @@
 % 章节标题格式配置
 %--------------------------------------------------------------------------
 \RequirePackage{titlesec}
-\RequirePackage{etoolbox} % 条件判断包
 
 % 定义sectionlevel命令来控制章节级别
 \makeatletter
 \edef\@sectionlevel{\noteformyself@sectionlevel}
-\ifdefstring{\@sectionlevel}{chapter}{%
-  % 章节级别：chapter模式
-  \renewcommand{\thesection}{\arabic{section}}  % 章节编号：1, 2, 3...
-  \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}  % 小节编号：1.1, 1.2...
-  \titleformat{\section}[block]{\normalfont\LARGE\bfseries}{\thesection}{1em}{}
-  \titleformat{\subsection}[block]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+\ifdefstring{\@sectionlevel}{book}{%
+  % 书籍级别：book模式 
+  \titleformat{\chapter}[display]
+    {\thispagestyle{mainmatterstyle}\normalfont\Huge\bfseries} % 标题样式
+    {\chaptertitlename\ \thechapter} % 章节编号格式
+    {10pt} % 标题与编号间距
+    {} % 标题前命令
+    [\vspace{1em}] % 标题后命令
+  \titleformat{\section}
+    {\normalfont\LARGE\bfseries} % 小节标题样式
+    {\thesection} % 小节编号格式
+    {1em} % 标题与编号间距
+    {} % 小节标题前命令
+    [] % 小节标题后命令
+  \titlespacing{\section}{0pt}{3em}{1em} % 小节标题前后间距
 }{%
-  % 章节级别：section模式（默认）
-  \renewcommand{\thesubsection}{\arabic{subsection}}  % 小节编号格式
-  \titleformat{\section}[block]{\normalfont\LARGE\bfseries}{}{0em}{}
-  \titleformat{\subsection}[block]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+  \ifdefstring{\@sectionlevel}{chapter}{%
+    % 章节级别：chapter模式
+    \renewcommand{\thesection}{\arabic{section}}  % 章节编号：1, 2, 3...
+    \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}  % 小节编号：1.1, 1.2...
+    \titleformat{\section}[block]{\normalfont\LARGE\bfseries}{\thesection}{1em}{}
+    \titleformat{\subsection}[block]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+  }{%
+    % 章节级别：section模式（默认）
+    \renewcommand{\thesubsection}{\arabic{subsection}}  % 小节编号格式
+    \titleformat{\section}[block]{\normalfont\LARGE\bfseries}{}{0em}{}
+    \titleformat{\subsection}[block]{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+  }%
 }%
 \makeatother
 
@@ -370,12 +613,17 @@
 
 % 定义具体定理环境（共享计数器）
 \makeatletter
-\ifdefstring{\@sectionlevel}{chapter}{%
-  % 章节级别：chapter模式
+\ifdefstring{\@sectionlevel}{book}{%
+  % 书籍级别：book模式
   \newtheorem{definition}{Definition}[section] % 定义环境按章节编号
 }{%
-  % 章节级别：section模式（默认）
-  \newtheorem{definition}{Definition}
+  \ifdefstring{\@sectionlevel}{chapter}{%
+    % 章节级别：chapter模式
+    \newtheorem{definition}{Definition}[section] % 定义环境按章节编号
+  }{%
+    % 章节级别：section模式（默认）
+    \newtheorem{definition}{Definition}
+  }%
 }%
 % Use \declaretheorem instead of \newtheorem for better cleveref support
 \declaretheorem[sibling=definition,name=Proposition]{proposition}

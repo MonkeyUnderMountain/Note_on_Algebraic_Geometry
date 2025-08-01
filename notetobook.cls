@@ -1,10 +1,13 @@
-% 自定义文档类：noteformyself
+% 自定义文档类：notetobook
 % by Tianle Yang
 % !TeX program = xelatex
 % !Bib program = biber
 % !TEX encoding = UTF-8 Unicode
-\ProvidesClass{notetobook}[2025/05/03 v1.0.0 make sections look like a book]
+\ProvidesClass{notetobook}[2025/07/01 v1.0.0 make sections look like a book]
 \LoadClass[12pt]{book} % 基础文档类（article）
+
+
+
 
 %--------------------------------------------------------------------------
 % 页面布局配置
@@ -19,6 +22,9 @@
 ]{geometry}
 \renewcommand{\baselinestretch}{1.3}
 
+
+
+
 %--------------------------------------------------------------------------
 % 警告过滤配置（抑制常见编译警告）
 %--------------------------------------------------------------------------
@@ -27,6 +33,9 @@
 \WarningFilter{fancyhdr}{\footheight is too small}  % 抑制页脚高度警告
 \WarningFilter{fancyhdr}{\footskip is too small}    % 抑制页脚间距警告
 \WarningFilter{hyperref}{Ignoring empty anchor}     % 抑制空锚点警告
+
+
+
 
 %--------------------------------------------------------------------------
 % 核心包加载（按功能分组，保持加载顺序）
