@@ -1,0 +1,77 @@
+\section{F-singularities}
+
+    Let \(\kkk\) be an algebraically closed field of characteristic \(p > 0\).
+    Let \(X\) be a projective variety over \(\kkk\).
+    Let \(F\) denote the relative Frobenius morphism on \(X\).
+
+
+    \begin{definition}
+        We say that \(X\) is \emph{\(F\)-finite} if \(F: X \to X^{(p)}\) is finite.
+    \end{definition}
+
+    \begin{definition}
+        We say that \(X\) is \emph{globally \(F\)-split} if \(\calo_X \to F_*^e\calo_X\) splits as \(\calo_X\)-modules for some \(e \geq 0\).
+        This is equivalent to for every \(e \in \bbz_{> 0}\), \(\calo_X \to F_*^e\calo_X\) splits as \(\calo_X\)-modules.
+    \end{definition}
+
+    \begin{definition}
+        Fix \(\phi: F_*^eL \to \calo_X\) a splitting of \(\calo_X \to F_*^e\calo_X\).
+        Define \(\phi^n: F_*^{ne}L^{1+p^e + \cdots + p^{(n-1)e}} \to \calo_X\) by induction:
+        \[ \phi^{n} \coloneqq \phi \circ F_*^e(\phi^{n-1}). \]
+    \end{definition}
+
+    \begin{theorem}
+        Above \(\phi^n\) will be stable.
+        That is, \(\Im \phi^n = \Im \phi^{n+1}\) for all \(n \gg 0\).
+    \end{theorem}
+
+    \begin{definition}
+        Let \(\sigma(X,\phi) \coloneqq \Im \phi^n\). 
+        We say that \((X,\phi)\) is \emph{\(F\)-pure} if \(\sigma(X,\phi) = \calo_X\).
+    \end{definition}
+
+    \begin{proposition}
+        There is a bijection between 
+        \[ \{\text{effective } \bbq \text{-divisor } \Delta \text{ such that } (p^e-1)(K_X + \Delta) \text{ is Cartier} \}/\sim \]
+        and 
+        \[ \{ \text{line bundles } \call \text{ and } \phi: F_*^e \call \to \calo_X \} . \]
+    \end{proposition}
+    \begin{proof}
+        We have 
+        \[ F_X^e\calo_X((1-p^e)K_X) \to \calo_X \]
+        given by \(F^e\calo_X(K_X) \to \calo_X(K_X)\) and reflexivity of \(\calo_X(K_X)\).
+        Since \(\Delta\) is effective, we have 
+        \[ F^e(\calo_X((1-p^e)(K_X + \Delta))) \to F^e\calo_X((1-p^e)(K_X)) \to \calo_X. \]
+
+        The another direction is by Grothendieck's duality 
+        \[ \calh om_{\calo_X}(F^e\call, \calo_X) \cong F_*^e(\call^{-1}\ten\calo_X((1-p^e)K_X)). \]
+    \end{proof}
+
+    \begin{definition}
+        Let \(\phi_{e,\Delta}: F_*^e(\calo_X((1-p^e)(K_X + \Delta))) \to \calo_X\) be the morphism corresponding to the effective \(\bbq\)-divisor \(\Delta\).
+        
+        We say that \((X,\Delta)\) is \emph{\(F\)-pure} if \((X,\phi_{e,\Delta})\) is \(F\)-pure.
+        
+        We say that \((X,\Delta)\) is \emph{globally \(F\)-split} if for every Weil divisor \(D \geq 0\), \(\calo_X \to F_*^e(\calo_X(\lceil (p^e-1)\Delta \rceil + D))\) admits a splitting for some \(e \geq 0\).
+        
+        We say that \((X,\Delta)\) is \emph{strongly \(F\)-split} if for every Weil divisor \(D \geq 0\), \(\calo_X \to F_*^e(\calo_X(\lceil (p^e-1)\Delta \rceil + D))\) admits a local splitting for some \(e \geq 0\).
+    \end{definition}
+
+    \begin{definition}\label{def:test_ideals}
+        
+    \end{definition}
+
+    \begin{definition}
+        \(S^0(X,\sigma(X,\Delta)\ten \calm)\)
+    \end{definition}
+
+    \begin{proposition}
+        Let \(X\) be a globally \(F\)-split projective variety.
+        Then we have 
+        \begin{enumerate}
+            \item suppose that \(H^i(X,\call^{n}) = 0\) for all \(i > 0\) and all \(n \gg 0\), then \(H^i(X,\call) = 0\) for all \(i > 0\);
+            \item for every ample divisor \(A\) on \(X\), we have \(H^i(X,\calo_X(A)) = 0\) for all \(i > 0\);
+            \item suppose that \(X\) is Cohen-Macaulay and \(A\)-ample, then \(H^i(X,\calo_X(-A)) = 0\) for all \(i < \dim X\);
+            \item suppose that \(X\) is normal and \(A\)-ample, then \(H^i(X,\omega_X(A)) = 0\) for all \(i>0\).
+        \end{enumerate}
+    \end{proposition}

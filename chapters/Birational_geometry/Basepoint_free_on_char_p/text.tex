@@ -1,8 +1,9 @@
 \section{Basepoint Free Theorem on Positive Characteristic}
 
-    This section refers to \cite{Kee99}, \cite{Art70} and \cite{FGA05}.
-    Throughout this section, all schemes are of finite type over a base scheme \(S\) with \(S\) noetherian.
-    we assume that the base field \(\kkk\) is algebraically closed and of positive characteristic $p$.
+    This section refers to \cite{Kee99}.
+    For site and algebraic space, we refer to \cite{Knu71}, \cite{Art70}, \cite{Stacks} and \cite{FGA05}.
+    Throughout this section, all schemes (or algebraic space) are of finite type over a base scheme \(S\) with \(S\) noetherian.
+    % we assume that the base field \(\kkk\) is algebraically closed and of positive characteristic $p$.
 
 \subsection{Preliminaries}
 
@@ -11,6 +12,21 @@
         Suppose that \(\call\) is relatively ample.
         Then there exists \(n_0 \in \bbn\) such that for all \(n \geq n_0\), the higher direct image sheaves \(R^if_* \calf \ten \call^{\otimes n}\) are zero for all \(i > 0\).
     \end{theorem}
+
+    \begin{theorem}[{ref. \cite[Proposition 1.4.37]{Laz04a}}]\label{thm:numerically_trivial_line_bundle_on_projective_scheme}
+        Let \(X\) be a projective scheme over a field \(\kkk\).
+        Then there exists a scheme \(T\) of finite type over \(\kkk\) and a line bundle \(\call\) on \(X \times T\) 
+        such that every numerically trivial line bundle on \(X\) arises as the restriction \(\call|_{X \times \{t\}}\) for some \(t \in T\).
+    \end{theorem}
+
+        \begin{theorem}[Theorem on Formal Functions, ref. {\cite[Chapter III, Theorem 11.1]{Har77}}]\label{thm:formal_functions}
+            Let \(f: X \to Y\) be a projective morphism of noetherian schemes, let \(\calf\) be a coherent sheaf on \(X\), and let \(y \in Y\).
+            Then the natural map
+            \[
+                (R^i f_* \calf)^{\wedge}_y \to \varprojlim H^i(X_n, \calf_n)
+            \]
+            is an isomorphism for all \(i \geq 0\), where \(X_n = X \times_Y \Spec \calo_{Y,y}/\mathfrak{m}_y^{n}\) and \(\calf_n = \calf|_{X_n}\).
+        \end{theorem}
 
     \begin{definition}\label{def:exceptional_locus_of_nef_line_bundle}
         Let \(X\) be a proper variety and \(\call\) a nef line bundle on \(X\).
@@ -29,10 +45,22 @@
     \begin{proposition}\label{lem:fundamental_properties_of_EWM}
         Let \(X\) be a proper variety and \(\call\) a nef line bundle on \(X\) endowed with a map.
         Let \(\varphi: X \to Y\) be the associated fibration.
-        Then the \(\call\) is semiample iff there is line bundle \(\call_Y\) and \(m \in \bbz_{>0}\) such that \(\call^{\otimes m} = \varphi^*\call_Y\).
+        Then TFAE:
+        \begin{enumerate}
+            \item \(\call\) is semiample;
+            \item \(\call^{\ten m}\) is pulled back from an ample line bundle on \(Y\) for some \(m \in \bbz_{>0}\);
+            \item \(\call^{\ten m}\) is pulled back from a line bundle on \(Y\) for some \(m \in \bbz_{>0}\);
+        \end{enumerate}
     \end{proposition}
     \begin{proof}
-        \Yang{To be completed.}
+        (a) \(\Leftrightarrow \) (b) \(\implies\) (c) is clear.
+        Replacing \(\call\) by \(\call^{\ten m}\) for some \(m \in \bbz_{>0}\), suppose that \(\call = \varphi^*\call_Y\) for some line bundle \(\call_Y\) on \(Y\).
+        We show that \(\call_Y\) is ample.
+        Indeed, for all closed subvarieties \(Z \subset Y\), we can find \(Z' \subset X\) such that \(Z' \surjmap Z\) and \(\dim Z' = \dim Z\).
+        Then 
+        \[ \call_Y^{\dim Z} \cdot Z = d \call^{\dim Z'} \cdot Z' > 0 \]
+        where \(d = \deg(Z' \to Z)\).
+        Hence \(\call_Y\) is ample.
     \end{proof}
 
     \begin{definition}\label{def:universally_homeomorphism}
@@ -51,13 +79,16 @@
         The morphism \(\Spec \bbc \to \Spec \bbr\) is not a universal homeomorphism.
     \end{example}
 
-    \begin{lemma}\label{lem:pic0_over_overline_bbf_p_is_torsion}
-        Let \(X\) be a projective scheme over \(\kkk = \overline{\bbf_p}\).
-        Then \(\Pic^0(X)\) is a torsion group.
+    \begin{lemma}\label{lem:degeneration_of_Grothendieck_spectral_sequence}
+        Let \(f: X \to Y\) and \(g: Y \to Z\) be two morphisms of schemes with \(g\) finite.
+        Let \(\calf\) be a coherent sheaf on \(X\).
+        Then the we have 
+        \[ R^i(g \circ f)_* \calf = g_*(R^if_* \calf). \]
     \end{lemma}
     \begin{proof}
-        \Yang{To be completed.}
+        \Yang{This is a simple application of the Grothendieck spectral sequence. However, I do not know anything about it.}
     \end{proof}
+
 
 \subsection{Algebraic space}
 
@@ -118,14 +149,6 @@
     \end{array}     \right\}\Bigg/ \sim, \]
     where 
     \[ \alpha \sim \beta \quad \text{ if } \exists \{S_i \to T\} \text{ such that } (\alpha|_{S_i},\beta|_{S_i}) \in h_R(S_i). \]
-    
-    % \begin{example}\label{eg:algebraic_space_as_quiotient}
-    %     Let \(U = \bba_\bbc^1\) and \(R \subset U \times U\) given by \(y=x+n, n \in \bbz\).
-    %     Then \(R\) is a disjoint union of lines in \(U \times U\).
-    %     Easily see that the projection \(\pi_i: R \to U\) is \'etale and surjective for \(i=1,2\).
-    %     Then \(X := (U,R)\) is an algebraic space.
-    %     % \Yang{To be completed.}
-    % \end{example}
 
     \begin{definition}\label{def:algebraic_space_as_sheaf}
         An \emph{algebraic space} over a base scheme \(S\) is a sheaf \(F\) on the big \'etale site \((\Sch/S)_{\text{\'et}}\) such that 
@@ -163,22 +186,6 @@
         Hence the first condition in \cref{def:algebraic_space_as_sheaf} is equivalent to that \(h_{U_1} \times_F h_{U_2}\) is representable for any \(U_1,U_2\) over \(F\).
         This implies that \(h_U \to F\) is representable, whence the second condition in \cref{def:algebraic_space_as_sheaf} makes sense.
     \end{remark}
-
-    % \begin{example}\label{eg:algebraic_space_as_sheaf}
-    %     We explain \cref{eg:algebraic_space_as_quiotient} as a sheaf.
-    %     For any scheme \(T\) over \(\bbc\), let 
-    %     \[ h_X(T):= \Eq(\pi_1,\pi_2) = \{f\in h_R(T): \pi_1\circ f = \pi_2 \circ g\}. \]
-    %     Easy to check that \(h_X\) is a sheaf on the big \'etale site \((\Sch/\bbc)_{\text{\'et}}\).
-
-    %     First we show that \(h_U \to X\) is representable.
-    %     \Yang{To be completed.}
-
-    %     Second we show that \(h_U \to X\) is surjective and \'etale.
-
-    %     Finally we show that the diagonal \(X \to X \times X\) is representable.
-
-    %     \Yang{To be completed.}
-    % \end{example}
 
     \begin{definition}\label{def:underlying_set_of_algebraic_space}
         Let \(X\) be an algebraic space over a base scheme \(S\).
@@ -228,13 +235,6 @@
         % Easy to check that \(h_X\) is a sheaf on the big \'etale site \((\Sch/\bbc)_{\text{\'et}}\).
         We do not check the representability here but give an example.
         Let \(U \to X\) be the natural morphism given by \(\id_U \in X(U)\).
-        % \[ 
-        %     \begin{tikzcd}
-        %         U \arrow[r, "f"] & R \arrow[r, shift left=0.5ex, "\pi_1"] 
-        %                         \arrow[r, shift right=0.5ex, swap, "\pi_2"] & U
-        %     \end{tikzcd} , 
-        %     \quad x \mapsto (x,x+n) \text{ for } n \in \bbz, 
-        % \]
         For any scheme \(T\) over \(\bbc\), we have
         \[ (U\times_X U)(T) = \{(f,g) \in h_{U\times U}(T): \exists \{T_i \to T\} \text{ s.t. } (f_i,g_i) \in h_R(T_i) \} = h_R(T). \]
         Hence the fiber product \(h_U \times_X h_U\) is represented by \(R\).
@@ -246,8 +246,13 @@
         In particular, \(\calo_X(X) = \bbc \neq \bbc[t,t^{-1}]\).
 
         The underlying set \(|X|\) is union of the quotient set \(\bbc/\bbz\) and a generic point.
-        \Yang{The Zariski topology on \(|X|\) is the quiotient topology induced by \(|U| \to |X|\).}
+        The Zariski topology on \(|X|\) is the trivial topology.
     \end{example}
+
+    In following, we will use the technique of \emph{local construction} to construct many scheme-like objects on algebraic spaces.
+    For local construction, see \cite{Knu71}.
+    Roughly speaking, for every \'etale morphism \(U \to X\) with \(U\) a scheme, we construct a scheme-theoretic object on \(U\) which is compatible under base change.
+    Then we glue these objects together to get a global object on \(X\).
 
     \begin{definition}\label{def:coherent_sheaf_on_algebraic_space}
         Let \(X\) be an algebraic space over a base scheme \(S\).
@@ -259,10 +264,32 @@
         And every closed subspace \(Y \subset X\) is defined by an ideal sheaf \(\cali_Y\) such that \(V(\cali_Y) = Y\).
     \end{definition}
 
+    \begin{definition}\label{def:line_bundles_and_divisors_on_algebraic_space}
+        Let \(X\) be an algebraic space over a base scheme \(S\).
+        A \emph{line bundle} on \(X\) is a coherent sheaf \(\call\) on \(X\) such that for every covering \(\{U_i \to X\}\) with \(U_i\) schemes, the sheaf \(\call|_{U_i}\) is a line bundle on \(U_i\).
+        It extends to a sheaf on the site \(X_{\text{sp, \'et}}\) uniquely.
+    \end{definition}
+
+    % \begin{theorem}[{ref. \cite{Wiki}}]\label{thm:one-dimensional_algebraic_space_is_scheme}
+    %     Let \(X\) be an algebraic space over a field \(\kkk\).
+    %     Suppose that \(X\) is one-dimensional and proper.
+    %     Then \(X\) is a scheme.
+    % \end{theorem}
+
+    % Hence we can define the intersection number of line bundles and curves on proper algebraic spaces over a field.
+
+    \begin{theorem}[{ref. \cite[Theorem 76.36.4]{Stacks}}]\label{thm:Stein_factorization_for_algebraic_space}
+        Let \(f: X \to Y\) be a proper morphism of algebraic spaces over a base scheme \(S\).
+        Then there exists a factorization 
+        \[ X \xrightarrow{f_1} Z \xrightarrow{f_2} Y, \]
+        where \(f_1\) has geometrically connected fibers and \((f_1)_*\calo_X = \calo_Z\) and \(f_2\) is finite.
+    \end{theorem}
+
     \begin{definition}\label{def:formal_completion_of_algebraic_space}
         Let \(X\) be an algebraic space over a base scheme \(S\) and \(Y\) a closed subset of \(|X|\).
-        The \emph{formal completion} of \(X\) along \(Y\), denoted by \(\frakX\), is the functor defined as 
-        \[ (\Sch/S)_{\text{\'et}} \to \Set, \quad U \mapsto \{f: U \to X: f(|U|) \subset |Y|\}. \]
+        The \emph{formal completion} of \(X\) along \(Y\), denoted by \(\frakX\), is 
+
+        Its structure sheaf \(\calo_{\frakX}\) is defined as \(\varprojlim_n \calo_X / \cali^n\) where \(\cali\) is the ideal sheaf of \(Y\) in \(\calo_X\).
         \Yang{to be completed.}
     \end{definition}
 
@@ -307,83 +334,313 @@
         \Yang{To be completed.}
     \end{example}
 
+
+\subsection{A sufficient and necessary condition for EWM}
+
+    In this and next subsection, we assume that all schemes (algebraic spaces) are of finite type over a field \(\kkk\) with characteristic \(p>0\).
+
     \begin{lemma}\label{lem:relative_frob_factors_through_universal_homeomorphism}
-        Let \(f: X \to Y\) be a finite morphism of algebraic space and is a universal homeomorphism.
+        Let \(f: X \to Y\) be a finite morphism of algebraic space which is of finite type over \(\kkk\).
+        Suppose that \(f\) is a universal homeomorphism.
         Then there exists \(q= p^n\) such that the relative Frobinius morphism \(\Frob_{X/\kkk}^n\) factors as 
         \[ \Frob_{X/\kkk}^n: X \xrightarrow{f} Y \to X^{(q)}. \]
     \end{lemma}
     \begin{proof}
-        \Yang{To be completed.}
+        \Yang{I can only prove this for schemes.}
+        Suppose that \(X,Y\) are affine.
+        Factor it as \(A \surjmap B \injmap C\) with \(A,B,C\) \(\kkk\)-algebras.
+
+        For \(A \surjmap B\), let \(I\) be the kernel of the surjection.
+        Since \(\Spec B \to \Spec A\) is finite universal homeomorphism, we have that \(I\) is a nilpotent ideal.
+        Hence there exists \(q\) such that \(I^q = 0\).
+        Let \(a,a' \in A\) with the same image \(b\) in \(B\).
+        Then we have \(a^q - a'^q \in I^q = 0\).
+        Hence \(a^q = a'^q\) in \(A\).
+        This gives a map \(B^{q} \to A, b^q \mapsto a^q\).
+
+        For \(B \injmap C\), we induct on the dimension.
+        If \(C\) is artinian, then \(0 = C^q \subset B \subset C\).
+        In general case, this shows that \(B \cdot C^{q_1} \subset C\) is an isomorphism at generic points.
+        Let \(I \coloneqq \Ann(B \cdot C^q/B) \subset B\).
+        This is the conductor of extension \(B \cdot C^{q_1} \subset C\), whence also an ideal of \(B \cdot C^{q_1}\).
+        To see this, for every \(x \in B \cdot C^{q_1}\), \(b \in I\), we have \(x b B \cdot C^{q_1} = bB \cdot C^{q_1} \subset B\).
+        By induction hypothesis, we have \((BC^{q_1}/I)^{q_2} \subset B/I\).
+        For \(x \in BC^{q_1}\), there exists \(b \in B\) and \(\delta \in I \subset B\) such that \(x^{q_2} = b + \delta \in B\).
+        Hence we have \((BC^{q_1})^{q_2} \subset B\).
+        In particular, we have \(C^{q_1 q_2} \subset (B \cdot C^{q_1})^{q_2} \subset B\).
+
+        In general case, we have 
+        \[ \begin{tikzcd}
+            C^{q_1 q_2} \arrow[r] & A' \arrow[r, two heads] \arrow[d] & C^{q_1} \arrow[d] \\
+            & A \arrow[r, two heads] & B \arrow[r, hook] & C
+        \end{tikzcd}, \]
+        where \(A'\) is the preimage of \(C^{q_1}\) in \(A\).
+        One we have \(C^q \to A \to C\), note that \(A\to C\) is over \(\kkk\), then it gives 
+        \[ C^q \to C^{(q)} \to A \to C. \]
+        % \Yang{To be completed.}
     \end{proof}
 
     \begin{corollary}\label{lem:amalgamated_sum_exist_for_finite_universal_homeomorphism_in_char_p}
-        Let \(Z \to X\) be a finite universal homeomorphism of algebraic spaces and \(Z \to Y\) any morphism of algebraic spaces.
+        Let \(Z \to X\) be a finite universal homeomorphism of algebraic spaces and \(Z \to Y\) any finite morphism of algebraic spaces.
         Suppose that \(X,Y,Z\) are all of finite type over \(\kkk\).
         Then the amalgamated sum \(X \amalg_Z Y\) exists in the category of algebraic spaces.
         Moreover, \(Y \to X \amalg_Z Y\) is a finite universal homeomorphism.
     \end{corollary}
     \begin{proof}
-        \Yang{To be completed.}
+        By \cref{lem:relative_frob_factors_through_universal_homeomorphism}, we have a diagram 
+        \[ \begin{tikzcd}
+            Y^{(q)}  & Y \arrow[l] \\
+            Z^{(q)} \arrow[u] &  \\
+            X \arrow[u] & Z \arrow[l, "f"] \arrow[uu, "g"]
+        \end{tikzcd}. \]
+        Denote \(X \to Y^{(q)}\) by \(f\).
+        Let 
+        \[ \cala \coloneqq \Ker (\calo_X \times \calo_Y \to \calo_{Z}, \quad (s,t) \mapsto f^*s - g^*t). \]
+        Then \(\cala\) is an \(\calo_{Y^{(q)}}\)-algebra.
+        Set \(W \coloneqq \Spec_{Y^{(q)}} \cala\).
+        Then \(W = X \amalg_Z Y\) is the amalgamated sum in the category of algebraic spaces.
+        \Yang{The most important point is that \(Z \to W\) is finite.}
+        \Yang{At least in the cat of schemes.}
     \end{proof}
 
-\subsection{A sufficient and necessary condition for basepoint free}
-
-    \begin{proposition}\label{prop:bpf_for_non-reduced}
+    \begin{proposition}\label{prop:EWM_for_non-reduced}
         Let \(g: X' \to X\) be a proper, finite universal homeomorphism between algebraic spaces.
         Then a line bundle \(\call\) on \(X\) is endowed with a map if and only if \(g^*\call\) is endowed with a map.
     \end{proposition}
     \begin{proof}
-        \Yang{To be completed.}
+        Let \(f:X' \to Z\) be the map endowed on \(g^*\call\).
+        By \cref{lem:relative_frob_factors_through_universal_homeomorphism}, we have a commutative diagram
+        \[ \begin{tikzcd}
+            X' \arrow[r, "g"] \arrow[dd, "f"] & X \arrow[d] \\
+             & X'^{(q)} \arrow[d]  \\
+            Z \arrow[r] & Z^{(q)}
+        \end{tikzcd}. \]
+        Easy to check that \(X \to Z^{(q)}\) is a map associated to \(\call\).
     \end{proof}
 
-    \begin{proposition}\label{prop:bpf_for_reducible}
+    \begin{proposition}\label{prop:EWM_for_reducible}
         Let \(X\) be a projective scheme and \(\call\) a nef line bundle on \(X\).
         Assume that \(X = X_1 \cup X_2\) for closed subsets \(X_1\) and \(X_2\).
-        Suppose that \(\call|_{X_i}\) is endowed with a map \(g_i:X_i \to Z_i\) for \(i = 1,2\).
-        Assume that for all but finitely many points \(x \in X\), the geometric fiber of \(g_1|_{X_1\cap X_2}\) are connected.
+        Suppose that \(\call|_{X_i}\) is endowed with a fibration \(g_i:X_i \to Z_i\) for \(i = 1,2\).
+        % Assume that for all but finitely many points \(x \in X\), the geometric fiber of \(g_1|_{X_1\cap X_2}\) are connected.
         Then \(\call\) is endowed with a map \(g: X \to Z\).
     \end{proposition}
     \begin{proof}
-        \Yang{To be completed.}
+        Let \(X_{12} \coloneqq X_1 \cap X_2\).
+        Let \(X_{12} \to Z_{12}\) be the Stein factorization of the map \(g_1|_{X_{12}}\).
+        Then by \Yang{Rigidity Lemma}, it is also the Stein factorization of the map \(g_2|_{X_{12}}\).
+        Denote \(Y_i\) be the image of \(Z_{12}\) in \(Z_i\) for \(i=1,2\).
+        Then we have a commutative diagram
+        \[ \begin{tikzcd}
+             & & Z_1 & \\
+             & X & X_1 \arrow[l] \arrow[u] & Y_1 \arrow[lu, "h'"] \\
+            Z_2 & X_2 \arrow[l] \arrow[u] & X_{12} \arrow[l] \arrow[u] \arrow[rd] & \\
+            & Y_2 \arrow[lu] & & Z_{12} \arrow[uu, "h"] \arrow[ll] \arrow[lllu, "f"]
+        \end{tikzcd}. \]
+        Consider the sub-diagram
+        \[ \begin{tikzcd}
+            & Z_1 \\
+            & Y_1 \arrow[u, "h'"] \\
+            Z_2 & Z_{12} \arrow[l, "f"] \arrow[u, "h"]
+        \end{tikzcd}. \]
+        Here \(f\) is finite, \(h\) is finite universal homeomorphism and \(h'\) is a closed immersion.
+        By \cref{lem:amalgamated_sum_exist_for_finite_universal_homeomorphism_in_char_p}, we have the amalgamated sum \(Z' \coloneqq Y_1 \amalg_{Z_{12}} Z_2\) exists in the category of algebraic spaces.
+        Since \(f\) is finite, so is the induced morphism \(Y_{1} \to Z'\).
+        Then by \cref{thm:finite_modification}, the amalgamated sum \(Z \coloneqq Z' \amalg_{Y_1} Z_1\) exists in the category of algebraic spaces.
+
+        Then we have a commutative diagram
+        \[ \begin{tikzcd}
+            Z & & Z_1 \arrow[ll] \\
+             & X \arrow[lu, "g"] & X_1 \arrow[l] \arrow[u] \\
+            Z_2 \arrow[uu] & X_2 \arrow[l] \arrow[u] & X_{12} \arrow[l] \arrow[u]
+        \end{tikzcd}. \]
+        Directly check shows that \(g\) is a map associated to \(\call\).
+        % \Yang{To be completed.}
     \end{proof}
 
-    \begin{proposition}\label{prop:basepoint_free_nef_big_iff_effective_locus_char_p}
-        Let \(X\) be a proper variety and \(D\) a nef and big divisor on \(X\).
+    \begin{proposition}\label{prop:EWM_nef_big_iff_effective_locus_char_p}
+        Let \(X\) be a projective scheme and \(D\) a nef and big divisor on \(X\).
         Then we can write \(D = A + E\) where \(A\) is an ample divisor and \(E\) is an effective divisor.
         Then \(D\) is endowed with a map iff \(D|_{E_{red}}\) is endowed with a map.
     \end{proposition}
     \begin{proof}
-        By \cref{prop:bpf_for_non-reduced}, we may assume that \(D|_E\) is endowed with a map \(f: E \to Z\).
+        By \cref{prop:EWM_for_non-reduced}, we may assume that \(D|_E\) is endowed with a map \(f: E \to Z\).
         Let \(\call = \calo_X(-E)\) be the ideal sheaf of \(E\).
-        note that \(-E = D - A\) and \(D\) is \(f\)-numerically trivial.
+        note that \(-E = A - D\) and \(D\) is \(f\)-numerically trivial.
         Hence \(\call|_E\) is \(f\)-ample.
         By Serre's vanishing, for every coherent sheaf \(\calf\) on \(X\), 
         there exists \(n_0 \in \bbn\) such that for all \(n \geq n_0\), we have 
-        \[ R^if_* \calf|_E \ten \call^{\otimes n} = R^if_* (\call^n\calf/\call^{n+1}\calf) = 0 \]
+        \[ R^if_* \calf|_E \ten \call|_{E}^{\otimes n} =  0 \]
         for all \(i > 0\).
-        
+        In particular, let \(n \in \bbz\) such that \(R^if_* \calo_X/\call \ten \call^{\otimes m} = 0\) for all \(i > 0,m\geq n\).
+        Set \(\cali \coloneqq \call^{\otimes n}\).
+        Then by the exact sequence
+        \[ 0 \to \call^{n-1} \ten \calo_X/\call \to \calo_X/\call^n \to \calo_X/\call \to 0, \]
+        we have that \(R^if_* (\calo_X/\cali \ten \cali^t) = 0\) for all \(i > 0, t\geq 1\).
+        This implies that \(f_*\calo_X/\cali^t \to f_*\calo_X/\cali\) is surjective for all \(t \geq 1\).
 
+        Let 
+        \begin{align*}
+            \cala &\coloneqq \calo_X \oplus \cali T \oplus \cali^2 T^2 \oplus \cdots, \\
+            \calm &\coloneqq \calf \oplus \cali \calf T \oplus \cali^2 \calf T^2 \oplus \cdots,
+        \end{align*}
+        where \(T\) is a formal variable to denote the grading.
+        Then \(\cala\) is a graded \(\calo_X\)-algebra of finite type and \(\calm\) is a finite graded \(\cala\)-module.
+        We have an exact sequence of graded \(\cala\)-modules
+        \[ 0 \to \calk \to \calm \ten_{\cala} \cali T \to \calm \to 0, \]
+        where \(\calk = \bigoplus \calk_r T^r\) is a finite graded \(\cala\)-module.
+        Hence for \(r \gg 1\), we have that \(\cali T \cdot \calk_r T^r = \calk_{r+1} T^{r+1}\).
+        It implies that the image of \(\calk_{r+1} T^{r+1} \to \calm_r T^r \ten_{\cala} \cali T\) is contained in \(\cali \calm_r\) for all \(r \gg 1\).
+        Tensor with \(\cala \ten_{\calo_X} \calo_X/\cali\), we have that
+        \[ \calk_{r+1} \ten_{\calo_X} \calo_X/\cali \to 0 \to \calm_r \ten_{\calo_X} \cali \ten_{\calo_X} \calo_X/\cali \to \calm_{r+1} \ten_{\calo_X} \calo_X/\cali \to 0. \]
+        That is, \(\cali^{r}\calf/\cali^{r+1}\calf \ten_{\calo_X/\cali} \cali/\cali^2 \cong \cali^{r+1}\calf/\cali^{r+2}\calf\) for all \(r \gg 1\).
+        Hence we have that
+        \[ R^if_* (\cali^{r-1}\calf/\cali^{r}\calf) = 0 \]
+        for all \(i > 0, r \gg 1\).
+
+        Let \(E' \coloneqq V(\cali)\), we have that \(D|_{E'}\) is endowed with a map \(f':E' \to Z'\) by \cref{prop:EWM_for_non-reduced}.
+        Moreover, we have a commutative diagram
+        \[ \begin{tikzcd}
+            E \arrow[r, "f"] \arrow[d] & Z \arrow[d, "g"] \\
+            E' \arrow[r, "f'"] & Z'
+        \end{tikzcd} \]
+        with \(g\) finite.
+        Then by Grothendieck Spectral Sequence, we have that
+        \[ R^if'_*(\cali^{r-1}\calf/\cali^{r}\calf) = 0 \]
+        for all \(i > 0, r \gg 1\).
+        
+        Then we can apply \cref{thm:Artin_higher_direct_image_and_modification,thm:Artin_existence_of_modification} to get a modification \(X \to Y\).
+        Note that \(\Exc D \subset \Supp E\).
+        It follows that \(X \to Y\) is a map associated to \(D\).
+        % \Yang{To be completed.}
+    \end{proof}
+
+    \begin{theorem}\label{thm:EWM_iff_EWM_on_exceptional_locus}
+        Let \(X\) be a proper variety and \(\call\) a nef line bundle on \(X\).
+        Then \(\call\) is endowed with a map if and only if \(\call|_{\Exc \call}\) is endowed with a map.
+    \end{theorem}
+    \begin{proof}
+        By \cref{prop:EWM_for_reducible}, we can assume that \(\call\) is big.
+        Then the result follows from \cref{prop:EWM_nef_big_iff_effective_locus_char_p} and induction on dimension.
+    \end{proof}
+
+
+\subsection{For semiample}
+
+    \begin{lemma}\label{lem:pic0_over_overline_bbf_p_is_torsion}
+        Let \(X\) be a projective scheme over \(\kkk = \overline{\bbf_p}\).
+        Then \(\call\) is numerically trivial if and only if \(\call\) is torsion in \(\Pic(X)\).
+    \end{lemma}
+    \begin{proof}
+        Let \(T\) be the scheme in \cref{thm:numerically_trivial_line_bundle_on_projective_scheme}.
+        Then \(\call\) corresponds to a \(\bbf_q\)-point of \(T\).
+        Note that there are only finitely many \(\bbf_q\)-points in \(T\).
+        Hence \(\call\) is torsion in \(\Pic(X)\). 
+    \end{proof}
+
+    \begin{proposition}\label{prop:Pic_finite_universal_homeomorphism}
+        Let \(f:X \to Y\) be a finite universal homeomorphism between algebraic spaces of finite type over \(\kkk\) and \(\call\) a line bundle on \(Y\).
+        Then there exists \(q=p^n\) such that 
+        \begin{enumerate}
+            \item for every section \(s \in H^0(X, f^*\call)\), we have \(s^q \in \Im(H^0(Y,\call^{\otimes q}) \to H^0(X, f^*\call^{\otimes q}))\);
+            \item \(\call\) is semiample if and only if \(f^*\call\) is semiample;
+            \item the map 
+                \[ f^*: \Pic(Y) \ten \bbz[1/q] \to \Pic(X) \ten \bbz[1/q] \]
+                is an isomorphism;
+            \item if \(f^*s_1 = f^*s_2\) for two sections \(s_1,s_2 \in H^0(Y,\call)\), then \(s_1^q = s_2^q\) in \(H^0(X,\call^{\otimes q})\).
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        Note that \(\Frob^*\call \cong \call^{\otimes p}\).
+        Then all the properties follows from \cref{lem:relative_frob_factors_through_universal_homeomorphism}.
+    \end{proof}
+
+    \begin{proposition}\label{prop:semiample_for_reducible}
+        Let \(X\) be a projective scheme and \(\call\) a nef line bundle on \(X\).
+        Assume that \(X = X_1 \cup X_2\) for closed subsets \(X_1\) and \(X_2\).
+        Suppose that \(\call|_{X_i}\) is semiample for \(i = 1,2\).
+        % Assume that for all but finitely many points \(x \in X\), the geometric fiber of \(g_1|_{X_1\cap X_2}\) are connected.
+        Then \(\call\) is semiample.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be learned.}
+    \end{proof}
+
+    \begin{lemma}
+        Let \(f:X \to Y\) be a proper map between algebraic spaces with \(f_*\calo_X = \calo_Y\) and \(\call\) a line bundle on \(X\).
+        Let \(D = V(\cali) \subset X\) be a closed subspace defined by an ideal sheaf \(\cali\), \(Z = f(D)\) and \(D_k \coloneqq V(\cali^k)\).
+        Suppose that \(f\) is a modification with respect to \(D,Z\) and \(R^1f_*\cali^k/\cali^{k+1} = 0\) for all \(k \gg 0\).
+        Suppose for every \(k\), there exists \(r>0\) such that \(\call^{\ten r}|_{D_k}\) is pulled back from \(f(D_k)\).
+        Then \(\call^{\ten r}\) is pulled back from \(Y\) for some \(r>0\).
+    \end{lemma}
+    \begin{proof}
+        Replace \(D\) by \(D_k\) and \(\call\) by \(\call^{\ten r}\) for some \(k,r>0\), we can assume that \(R^1f_*\cali^k/\cali^{k+1} = 0\) for all \(k\) and \(\call|_D\) is pulled back from \(f(D)\).
+        Then we show that \(f_*\call\) is a line bundle and \(f^*f_*\call \cong \call\).
+        Both of them are local, so we can assume that \(X = \Spec B,Z=\Spec A\) are spectrum of local rings.
+        Hence \(\call|_{D_k}\) is trivial for all \(k\).
+        By vanishing of \(R^1f_*\cali^k/\cali^{k+1}\), we have a surjection \(H^0(D_{k+1}, \call|_{D_{k+1}}) \surjmap H^0(D_k, \call|_{D_k})\) for all \(k\).
+        This allow us to choose a section \(s_k \in H^0(D_k, \call|_{D_k})\) such that \(s_k = s_{k+1}|_{D_k}\) for all \(k\).
+        Then we have a section \(s \in H^0(D, \call|_D)\) such that \(s|_{D_k} = s_k\) for all \(k\).
+        By Nakayama's Lemma, we can assume that \(s_k\) is nowhere vanishing.
         \Yang{To be completed.}
     \end{proof}
 
-    \begin{theorem}\label{thm:bpf_iff_bpf_on_exceptional_locus}
+    \begin{proposition}\label{prop:semiample_nef_big_iff_effective_locus_char_p}
+        Let \(X\) be a projective scheme and \(D\) a nef and big divisor on \(X\).
+        Then we can write \(D = A + E\) where \(A\) is an ample divisor and \(E\) is an effective divisor.
+        Then \(D\) is semiample iff \(D|_{E_{red}}\) is semiample.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{theorem}\label{thm:semiample_iff_semiample_on_exceptional_locus}
         Let \(X\) be a proper variety and \(\call\) a nef line bundle on \(X\).
-        Then \(\call\) is basepoint free if and only if \(\call|_{\Exc \call}\) is basepoint free.
+        Then \(\call\) is semiample if and only if \(\call|_{\Exc \call}\) is semiample.
     \end{theorem}
     \begin{proof}
         \Yang{To be completed.}
+        % By \cref{prop:EWM_for_reducible}, we can assume that \(\call\) is big.
+        % Then the result follows from \cref{prop:EWM_nef_big_iff_effective_locus_char_p} and induction on dimension.
     \end{proof}
 
 
 \subsection{Basepoint free theorem on positive characteristic}
 
+    \begin{proposition}[{ref. \Yang{}}]\label{prop:adjunction_bpf_char_p}
+        Let \(T \subset X\) be a reduced Weil divisor on a normal variety \(X\).
+        Let \(T^\nu \to T\) be the normalization, \(C\subset T^\nu\) the effective Weil divisor defined by the conductor and \(p:T^\nu \to T \injmap X\) the composition.
+        Suppose that \(K_X + T\) is \(\bbq\)-Cartier.
+        Then there exists an effective \(\bbq\)-Weil divisor \(D\) on \(T^\nu\) such that 
+        \[ K_{T^\nu} + C + D = p^*(K_X + T). \]
+    \end{proposition}
+
     \begin{theorem}\label{thm:basepoint_free_nef_big_char_p}
         Let $X$ be a normal projective \(\bbq\)-factorial threefold and \(B \in (0,1)\) a \(\bbq\)-divisor.
         Let \(\call\) be a nef and big line bundle on \(X\) such that \(\call - K_{(X,B)}\) is nef and big.
         Then \(\call\) is endowed with a map.
-        Moreover, if \(\kkk = \overline{\bbf_p}\), \(\call\) is basepoint free.
+        Moreover, if \(\kkk = \overline{\bbf_p}\), \(\call\) is semiample.
     \end{theorem}
     \begin{proof}
+        Let \(\call=\calo_X(A+E)\) with \(A\) an ample divisor and \(E\) an effective divisor.
+        Write \(E = E_0 + E_1 + E_2\) such that the restriction of \(\call\) to every irreducible component of \(E_i\) is of numerical dimension \(i\).
+        Let \(S \coloneqq \Supp E_1\) and \(S = \sum S_i\) with \(S_i\) irreducible components.
+        Let \(S^\nu \to S\) and \(S_i^\nu \to S_i\) be the normalizations.
+       
+        \begin{step}
+            Reduce to show that \(\call|_{S}\) is endowed with a map (semiample).
+        \end{step}
+        \Yang{To be completed.}
+
+        \begin{step}
+            Reduce to show that \(\call|_{S_i^\nu}\) is endowed with a map (semiample).
+        \end{step}
+        \Yang{To be completed.}
+
+        \begin{step}
+            Show that \(\call|_{S_i^\nu}\) is endowed with a map (semiample).
+        \end{step}
+
         \Yang{To be completed.}
     \end{proof}
 
