@@ -1,4 +1,4 @@
-\documentclass{notetobook}
+\documentclass[sectionlevel=book]{noteformyself}
 \usepackage{lipsum} % 生成测试文本
 
 
@@ -35,6 +35,13 @@
         \input{chapters/preliminary/setup_and_the_first_examples/text.tex} 
         % \input{chapters/preliminary/normality_and_Cohen_Macaulay/text.tex}
 
+    \chapter{Birational Geometry}
+        \input{chapters/Birational_geometry/bend_and_break/text.tex}
+        \input{chapters/Birational_geometry/Kodaira_vanishing/text.tex}
+        \input{chapters/Birational_geometry/Cone_theorem/text.tex}
+        \input{chapters/Birational_geometry/Basepoint_free_on_char_p/text.tex}
+        \input{chapters/Birational_geometry/F-singularties/text.tex}
+
     \appendix
 
     \chapter{Commutative Algebra}
@@ -51,6 +58,6 @@
         \input{chapters/Homological_algebra/Applications_to_Commutative_Algebra/text.tex}
 
 
-    \printbibliography
+    \printbibliography[heading=bibintoc]
     
 \end{document}

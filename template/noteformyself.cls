@@ -5,6 +5,10 @@
 % !TEX encoding = UTF-8 Unicode
 \ProvidesClass{noteformyself}[2025/08/01 for notes to myself]
 
+
+% 加载条件判断包（在使用\ifdefstring之前）
+\RequirePackage{etoolbox}
+
 % 定义类选项
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
@@ -27,9 +31,6 @@
 
 % 处理选项
 \ProcessKeyvalOptions*
-
-% 加载条件判断包（在使用\ifdefstring之前）
-\RequirePackage{etoolbox}
 
 % 根据sectionlevel选项加载相应的基础文档类
 \makeatletter
@@ -68,7 +69,6 @@
 \WarningFilter{fancyhdr}{\footheight is too small}  % 抑制页脚高度警告
 \WarningFilter{fancyhdr}{\footskip is too small}    % 抑制页脚间距警告
 \WarningFilter{hyperref}{Ignoring empty anchor}     % 抑制空锚点警告
-% 注意：移除mathtools后，不再需要抑制unicode-math的包冲突警告
 
 
 
