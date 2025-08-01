@@ -3,10 +3,10 @@
 \subsection{Preliminary}
 
     % \begin{theorem}[GAGA]\label{thm: GAGA for cohomology}
-    %     Let $X$ be a smooth projective variety over $\mathbb{C}$ and \(\calf\) a coherent sheaf on \(X\).
+    %     Let $X$ be a smooth projective variety over $\mathbb{C}$ and \(\calF\) a coherent sheaf on \(X\).
     %     Then 
     %     \[
-    %         H^i(X, \calf) \cong H^i(X^{an}, \calf^{an}).
+    %         H^i(X, \calF) \cong H^i(X^{an}, \calF^{an}).
     %     \]
     % \end{theorem}
 
@@ -19,58 +19,58 @@
     \end{theorem}
 
     % \begin{theorem}[Serre Vanishing]\label{thm: Serre vanishing theorem}
-    %     Let \(X\) be a proper variety of dimension \(n\) over \(\kk\), \(\calf\) a coherent sheaf and \(\call\) an ample line bundle on \(X\). 
+    %     Let \(X\) be a proper variety of dimension \(n\) over \(\kk\), \(\calF\) a coherent sheaf and \(\calL\) an ample line bundle on \(X\). 
     %     Then there exists an integer \(m_0 > 0\) such that for all \(m \geq m_0\),
     %     \[
-    %         H^i(X, L^m\ten \calf) = 0,\quad \forall i > 0.
+    %         H^i(X, L^m\ten \calF) = 0,\quad \forall i > 0.
     %     \]
     % \end{theorem}
 
     \begin{theorem}[Log Resolution of Singularities]\label{thm: log resolution of singularities}
-        Let X be an irreducible reduced algebraic variety over $\bbc$ (or a suitably small neighborhood of a compact set of an irreducible reduced analytic space) and $I \subset \calo_X$ a coherent sheaf of ideals defining a closed subscheme (or subspace) $Z$. Then there is a smooth variety (or analytic space) $Y$ and a projective morphism $f: Y \to X$ such that
+        Let X be an irreducible reduced algebraic variety over $\bbC$ (or a suitably small neighborhood of a compact set of an irreducible reduced analytic space) and $I \subset \calO_X$ a coherent sheaf of ideals defining a closed subscheme (or subspace) $Z$. Then there is a smooth variety (or analytic space) $Y$ and a projective morphism $f: Y \to X$ such that
         \begin{enumerate}
             \item $f$ is an isomorphism over $X - (\Sing(X) \cup \Supp Z)$,
-            \item $f^*I \subset \calo_Y$ is an invertible sheaf $\calo_Y(-D)$ and 
+            \item $f^*I \subset \calO_Y$ is an invertible sheaf $\calO_Y(-D)$ and 
             \item $\Exc(f) \cup D$ is an snc divisor.
         \end{enumerate}
     \end{theorem}
 
     \begin{theorem}[Lefschetz Hyperplane Theorem]\label{thm: Lefschetz hyperplane theorem}
-        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbc\) and \(Y\) a hyperplane section of \(X\).
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbC\) and \(Y\) a hyperplane section of \(X\).
         Then the restriction map
         \[
-            H^k(X,\bbc) \to H^k(Y, \bbc)
+            H^k(X,\bbC) \to H^k(Y, \bbC)
         \]
         is an isomorphism for \(k < n - 1\) and an injection for \(k = n - 1\).
     \end{theorem}
 
     \begin{theorem}[Hodge Decomposition]\label{thm: Hodge decomposition}
-        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbc\).
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbC\).
         Then for any \(k\), there is a functorial decomposition
         \[
-            H^k(X, \bbc) = \bigoplus_{p+q=k} H^{p}(X, \Omega^q_X).
+            H^k(X, \bbC) = \bigoplus_{p+q=k} H^{p}(X, \Omega^q_X).
         \]
     \end{theorem}
 
     Combine Theorem \ref{thm: Lefschetz hyperplane theorem} and Theorem \ref{thm: Hodge decomposition}, we have the following lemma.
 
     \begin{lemma}\label{lem: Lefschetz hyperplane theorem for cohomology of structure sheaf}
-        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbc\) and \(Y\) a hyperplane section of \(X\).
-        Then the restriction map \(r_k: H^k(X,\bbc) \to H^k(Y, \bbc)\) decomposes as 
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\bbC\) and \(Y\) a hyperplane section of \(X\).
+        Then the restriction map \(r_k: H^k(X,\bbC) \to H^k(Y, \bbC)\) decomposes as 
         \[
             r_k = \bigoplus_{p+q=k} r_{p,q},\quad r_{p,q}: H^{p}(X, \Omega^q_X) \to H^{p}(Y, \Omega^q_Y).
         \]
         And \(r_{p,q}\) is an isomorphism for \(p + q < n - 1\) and an injection for \(p + q = n - 1\).
         In particular, 
-        \[ H^p(X, \calo_X) \to H^p(Y, \calo_Y) \]
+        \[ H^p(X, \calO_X) \to H^p(Y, \calO_Y) \]
         is an isomorphism for \(p < n - 1\) and an injection for \(p = n - 1\).
     \end{lemma}
 
     \begin{theorem}[Leray spectral sequence]\label{thm: Leray spectral sequence}
-        Let \(f: Y \to X\) be a morphism of varieties and \(\calf\) a coherent sheaf on \(Y\).
+        Let \(f: Y \to X\) be a morphism of varieties and \(\calF\) a coherent sheaf on \(Y\).
         Then there is a spectral sequence
         \[
-            E_2^{p,q} = H^p(X, R^q f_* \calf) \implies H^{p+q}(Y, \calf).
+            E_2^{p,q} = H^p(X, R^q f_* \calF) \implies H^{p+q}(Y, \calF).
         \]
     \end{theorem}
         
@@ -78,21 +78,21 @@
 \subsection{Kodaira Vanishing Theorem}
 
     \begin{lemma}\label{lem: cyclic covering map in Kodaira Vanishing}
-        Let \(X\) be a smooth projective variety over \(\kk\) and \(\call\) a line bundle on \(X\).
-        Suppose there is an integer \(m\) and a smooth divisor \(D \in H^0(X, \call^m)\).
+        Let \(X\) be a smooth projective variety over \(\kk\) and \(\calL\) a line bundle on \(X\).
+        Suppose there is an integer \(m\) and a smooth divisor \(D \in H^0(X, \calL^m)\).
         Then there exists a finite surjective morphism \(f:Y \to X\) of smooth projective varieties such that \(D':= f^{-1}(D)\) is smooth and satisfies that \(bD' = af^*D\).
     \end{lemma}
     \begin{proof}
-        Let \(s \in \call^m\) be the section defining \(D\).
-        It induces a homomorphism \(\call^{-m} \to \calo_X\).
-        Consider the \(\calo_X\)-algebra 
-        \[ \cala := \left(\bigoplus_{i = 0}^{\infty} \call^{-i}\right) \bigg/\left(\call^{-m} \to \calo_X\right) \cong \bigoplus_{i = 0}^{m-1} \call^{-i}. \]
-        Then \(\cala\) is a finite \(\calo_X\)-algebra.
-        Let \(Y \coloneqq \Spec_X \cala\).
-        Then \(Y\) is a finite \(\calo_X\)-scheme and the natural morphism \(f: Y \to X\) is finite and surjective.
+        Let \(s \in \calL^m\) be the section defining \(D\).
+        It induces a homomorphism \(\calL^{-m} \to \calO_X\).
+        Consider the \(\calO_X\)-algebra 
+        \[ \calA := \left(\bigoplus_{i = 0}^{\infty} \calL^{-i}\right) \bigg/\left(\calL^{-m} \to \calO_X\right) \cong \bigoplus_{i = 0}^{m-1} \calL^{-i}. \]
+        Then \(\calA\) is a finite \(\calO_X\)-algebra.
+        Let \(Y \coloneqq \Spec_X \calA\).
+        Then \(Y\) is a finite \(\calO_X\)-scheme and the natural morphism \(f: Y \to X\) is finite and surjective.
 
-        For every \(x \in X\), let \(\call\) locally generated by \(t\) near \(x\).
-        Then \(\calo_Y\) locally equal to \(\calo_X[t]/(t^m - s)\).
+        For every \(x \in X\), let \(\calL\) locally generated by \(t\) near \(x\).
+        Then \(\calO_Y\) locally equal to \(\calO_X[t]/(t^m - s)\).
         Let \(D'\) be the divisor locally given by \(t=0\) on \(Y\).
         Since \(X\) and \(D\) are smooth, then \(Y\) is a smooth variety and \(D'\) is smooth.
         Since \(f\) is finite, it is proper.
@@ -105,15 +105,15 @@
     \end{remark}
 
     \begin{lemma}\label{lem: injectivity of cohomology of finite pullback of line bundle}
-        Let \(f:Y \to X\) be a finite surjective morphism of projective varieties and \(\call\) a line bundle on \(X\).
+        Let \(f:Y \to X\) be a finite surjective morphism of projective varieties and \(\calL\) a line bundle on \(X\).
         Suppose that \(X\) is normal.
-        Then for any \(i \geq 0\), \(H^i(X,\call)\) is a direct summand of \(H^i(Y, f^*\call)\).
+        Then for any \(i \geq 0\), \(H^i(X,\calL)\) is a direct summand of \(H^i(Y, f^*\calL)\).
     \end{lemma}
     \begin{proof}
-        Since \(f\) is finite, we have \(H^i(Y, f^*\call) \cong H^i(X, f_*\calo_Y \ten \call)\).
-        Since \(X\) are normal, the inclusion \(\calo_X \to f_*\calo_Y\) splits by the trace map \((1/n)\Tr_{Y/X}\).
-        Thus we have \(f_*\calo_Y \cong \calo_X \oplus \calf\) and hence 
-        \[ H^i(X, f_*\calo_Y \ten \call) \cong H^i(X, \call) \oplus H^i(X, \calf \ten \call). \]
+        Since \(f\) is finite, we have \(H^i(Y, f^*\calL) \cong H^i(X, f_*\calO_Y \ten \calL)\).
+        Since \(X\) are normal, the inclusion \(\calO_X \to f_*\calO_Y\) splits by the trace map \((1/n)\Tr_{Y/X}\).
+        Thus we have \(f_*\calO_Y \cong \calO_X \oplus \calF\) and hence 
+        \[ H^i(X, f_*\calO_Y \ten \calL) \cong H^i(X, \calL) \oplus H^i(X, \calF \ten \calL). \]
         Then the conclusion follows.
     \end{proof}
 
@@ -121,7 +121,7 @@
         Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(A\) an ample divisor on \(X\). 
         Then
         \[
-            H^i(X, \calo_X(-A)) = 0,\quad \forall i < n.
+            H^i(X, \calO_X(-A)) = 0,\quad \forall i < n.
         \]
         Equivalently, we have
         \[
@@ -131,9 +131,9 @@
     \begin{proof}
         By Lemma \ref{lem: cyclic covering map in Kodaira Vanishing} and \ref{lem: injectivity of cohomology of finite pullback of line bundle}, after taking a multiple of \(A\), we can assume that \(A\) is effective.
         Then we have an exact sequence
-        \[ 0 \to \calo_X(-A) \to \calo_X \to \calo_A \to 0. \]
+        \[ 0 \to \calO_X(-A) \to \calO_X \to \calO_A \to 0. \]
         Taking the long exact sequence of cohomology, we have
-        \[ H^{i-1}(X,\calo_X) \to H^{i-1}(X, \calo_A) \to H^{i}(X, \calo_X(-A)) \to H^{i}(X, \calo_X) \to H^{i}(X, \calo_A). \]
+        \[ H^{i-1}(X,\calO_X) \to H^{i-1}(X, \calO_A) \to H^{i}(X, \calO_X(-A)) \to H^{i}(X, \calO_X) \to H^{i}(X, \calO_A). \]
         Then the conclusion follows from Lemma \ref{lem: Lefschetz hyperplane theorem for cohomology of structure sheaf} and Serre duality (Theorem \ref{thm: Serre duality for line bundles}).
     \end{proof}
 
@@ -185,8 +185,8 @@
         Then \(A'+ B' =  M'-aB_k'\) is Cartier.
         Hence by induction hypothesis, \( H^i(X', -A' - B')\) vanishes for \(i > 0\).
         On the other hand, we have
-        \[ \calo_{X'}(-M' + aB_k') \cong \sum_{i=0}^{c-1} f^*\calo_X(-M + (a-i) B_k). \]
-        Hence \(H^i(X,\calo_X(-M))\) is a direct summand of \(H^i(X', \calo_{X'}(-M' + aB_k'))\) by Lemma \ref{lem: injectivity of cohomology of finite pullback of line bundle}.
+        \[ \calO_{X'}(-M' + aB_k') \cong \sum_{i=0}^{c-1} f^*\calO_X(-M + (a-i) B_k). \]
+        Hence \(H^i(X,\calO_X(-M))\) is a direct summand of \(H^i(X', \calO_{X'}(-M' + aB_k'))\) by Lemma \ref{lem: injectivity of cohomology of finite pullback of line bundle}.
     \end{proof}
     \begin{proof}[Proof of III (\cref{thm: Kawamata-Viehweg Vanishing Theorem for klt pair})]
         Let \(f: \tilde{X} \to X\) be a resolution such that \(\Supp f^*B \cup \Exc f\) is snc.
@@ -195,7 +195,7 @@
         where \(\tilde{B} \in (0,1)\) has snc support and \(E\) is an effective exceptional divisor.
 
         By \cref{lem:higher_direct_image_of_exceptional_divisor}, we have 
-        \[ H^i(\tilde{X}, K_{(\tilde{X},\tilde{B})} + f^*D) = H^i(X, f_*\calo_Y(f^*(K_{(X,B)}+D)+E)) = H^i(X, K_{(X,B)}+D), \] 
+        \[ H^i(\tilde{X}, K_{(\tilde{X},\tilde{B})} + f^*D) = H^i(X, f_*\calO_Y(f^*(K_{(X,B)}+D)+E)) = H^i(X, K_{(X,B)}+D), \] 
         and the left hand vanishes by \cref{thm: Kawamata-Viehweg Vanishing Theorem in KM98} in either case relative to the assumption of \(D\).
     \end{proof}
     \begin{proof}[Proof of I (\cref{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor})]
@@ -207,28 +207,28 @@
         Let \(f:Y \to X\) be a birational morphism of projective varieties with \(Y\) smooth and \(X\) has only rational singularities.
         Let \(E\) be an effective exceptional divisor on \(Y\) and \(D\) a divisor on \(X\).
         Then we have
-        \[ f_*(\calo_Y(f^*D + E)) \cong \calo_X(D), \quad R^if_*(\calo_Y(f^*D + E)) = 0,\quad \forall i > 0. \]
+        \[ f_*(\calO_Y(f^*D + E)) \cong \calO_X(D), \quad R^if_*(\calO_Y(f^*D + E)) = 0,\quad \forall i > 0. \]
     \end{lemma}
     \begin{proof}
         \Yang{I am unable to proof this lemma.}
     \end{proof}
 
     \begin{lemma}\label{lem: divide a divisor by a finite surjective morphism}
-        Let \(X\) be a projective variety, \(\call\) a line bundle on \(X\) and \(m \in \bbz_{\geq 0}\).
-        Then there exists a finite surjective morphism \(f: Y \to X\) and a line bundle \(\call'\) on \(Y\) such that \(f^*\call \sim \call'^{m}\).
+        Let \(X\) be a projective variety, \(\calL\) a line bundle on \(X\) and \(m \in \bbZ_{\geq 0}\).
+        Then there exists a finite surjective morphism \(f: Y \to X\) and a line bundle \(\calL'\) on \(Y\) such that \(f^*\calL \sim \calL'^{m}\).
         If \(X\) is smooth, then we can take \(Y\) to be smooth.
         Moreover, if \(D = \sum D_i\) is an snc divisor on \(X\), then we can take \(f\) such that \(f^*D\) is an snc divisor on \(Y\).
     \end{lemma}
     \begin{proof}
-        We can assume that \(\call\) is very ample by writing it as a difference of two very ample line bundles.
+        We can assume that \(\calL\) is very ample by writing it as a difference of two very ample line bundles.
         Consider the fiber product \(Y:= \bbp^N \times_{\bbp^N} X\) as the following diagram
         \[ \xymatrix{
             Y \ar[r]^{\psi} \ar[d]_{f} & \mathbb{P}^N \ar[d]^{g} \\
-            X \ar[r]^{\varphi_\call} & \mathbb{P}^N
+            X \ar[r]^{\varphi_\calL} & \mathbb{P}^N
         }, \]
         where \(g: [x_0: \ldots: x_N] \mapsto [x_0^m: \ldots: x_N^m]\).
         The morphism \(f\) is finite and surjective since so is \(g\).
-        Let \(\call'\coloneqq \psi^*\call\).
+        Let \(\calL'\coloneqq \psi^*\calL\).
 
         For smoothness, we can compose \(g\) with a general automorphism of \(\bbp^N\).
         Then the conclusion follows from \cite[Chapter III, Theorem 10.8]{Har77}.
@@ -266,6 +266,6 @@
     %     Let \(E = \sum_{i=1}^k E_i\).
     %     We induct on \(k\).
     %     Consider the exact sequence
-    %     \[ 0 \to \calo_X(-A-\sum_{i=1}^{k} E_i) \to \calo_X(-A-\sum_{i=1}^{k-1} E_i) \to \calo_{E_k}(-A-\sum_{i=1}^{k-1} E_i) \to 0. \]
+    %     \[ 0 \to \calO_X(-A-\sum_{i=1}^{k} E_i) \to \calO_X(-A-\sum_{i=1}^{k-1} E_i) \to \calO_{E_k}(-A-\sum_{i=1}^{k-1} E_i) \to 0. \]
     %     \Yang{To be completed.}
     % \end{proof}
