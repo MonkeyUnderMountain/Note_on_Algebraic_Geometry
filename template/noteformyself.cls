@@ -63,8 +63,8 @@
 \RequirePackage{framed}         % 边框环境
 \RequirePackage{amsmath,amsthm,amssymb,amsfonts} % 数学公式基础包
 \RequirePackage{thmtools}       % 高级定理工具包（提供declaretheorem）
-\RequirePackage{mathtools}      % 数学公式增强包
-\RequirePackage{mathrsfs}       % 数学特殊字体
+% \RequirePackage[noabbrev, notcolon]{mathtools}      % 数学公式增强包
+% \RequirePackage{mathrsfs}       % 数学特殊字体
 \RequirePackage[dvipsnames]{xcolor} % 颜色支持
 \RequirePackage[most]{tcolorbox} % 彩色盒子环境
 \RequirePackage{tikz}           % 矢量绘图
@@ -76,6 +76,15 @@
 % 中文支持
 \RequirePackage[scheme=plain]{ctex} % 中文基础方案
 \RequirePackage{fontspec}      % 字体配置
+
+% Unicode数学字体支持
+\RequirePackage{unicode-math}  
+% 设置数学字体
+\setmathfont{XITS Math} % like scr, support lowercase
+% \setmathfont{TeX Gyre Termes Math}[range=scr] % like scr, support lowercase 
+% \setmathfont{Latin Modern Math}[range=cal]  % like cal, do not support lowercase
+\setmathfont{Cambria Math}[range=cal]  % like cal, support lowercase, seems only available in Windows
+% \setmathfont{Asana Math}[range=scr] % like scr, support lowercase
 
 % 引用系统
 \RequirePackage[backend=biber,style=alphabetic, backref=true]{biblatex} % 参考文献管理
