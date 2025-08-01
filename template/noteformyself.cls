@@ -69,7 +69,6 @@
 \RequirePackage{tikz}           % 矢量绘图
 \RequirePackage{tikz-cd}        % 交换图绘制
 \RequirePackage[all]{xy}        % 交换图绘制
-% \RequirePackage{bbm}            % 黑板粗体数字
 \RequirePackage{enumitem}       % Required for custom labels
 
 % 中文支持
