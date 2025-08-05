@@ -1,4 +1,149 @@
 %一些常用的宏定义
+\newcommand{\kk}{{\mathbf{k}}}
+\newcommand{\kkk}{{\mathbb{k}}}
+\newcommand{\KK}{{\mathbf{K}}}
+\newcommand{\KKK}{{\mathbb{K}}}
+\newcommand{\rkk}{{\kappa}} % residue field
+\newcommand{\fkk}{{\mathscr{K}}} % fraction field
+
+\renewcommand{\d}{{\mathrm{d}}}
+\renewcommand{\i}{{\mathrm{i}}}
+\renewcommand{\P}{\partial}
+
+
+% for category theory
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Var}{\mathbf{Var}}
+\newcommand{\Sch}{\mathbf{Sch}}
+\newcommand{\Alg}{\mathbf{Alg}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\Mod}{\mathbf{Mod}}
+\newcommand{\TopMod}{\mathbf{TopMod}}
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Cat}{\mathbf{Cat}}
+\newcommand{\AlgSp}{\mathbf{AlgSp}}
+\newcommand{\Obj}{\operatorname{Obj}}
+
+
+\newcommand{\ten}{\otimes}
+\newcommand{\ratmap}{\dasharrow}
+\newcommand{\injmap}{\hookrightarrow}
+\newcommand{\surjmap}{\twoheadrightarrow}
+
+\newcommand{\id}{{\operatorname{id}}}
+
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\Der}{\operatorname{Der}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\mSpec}{\operatorname{mSpec}}
+\newcommand{\depth}{\operatorname{depth}}
+\newcommand{\idealht}{\operatorname{ht}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\trdeg}{\operatorname{trdeg}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Eq}{\operatorname{Eq}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Mor}{\operatorname{Mor}}
+\newcommand{\Mult}{\operatorname{Mult}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\cohdim}{\operatorname{coh.dim}}
+\newcommand{\hldim}{\operatorname{hl.dim}}
+\newcommand{\projdim}{\operatorname{proj.dim}}
+\newcommand{\injdim}{\operatorname{inj.dim}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\nil}{\operatorname{nil}}
+\newcommand{\characteristic}{\operatorname{char}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\NS}{\operatorname{NS}}
+\newcommand{\Exc}{\operatorname{Exc}}
+\newcommand{\Sing}{\operatorname{Sing}}
+\newcommand{\Bl}{\operatorname{Bl}}
+\newcommand{\Reg}{\operatorname{Reg}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Psef}{\operatorname{Psef}}
+\newcommand{\Nef}{\operatorname{Nef}}
+\newcommand{\Amp}{\operatorname{Amp}}
+\newcommand{\Bigcone}{\operatorname{Big}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Bs}{\operatorname{Bs}}
+\newcommand{\Stab}{\operatorname{Stab}}
+\newcommand{\Cone}{\operatorname{Cone}}
+
+
+\newcommand{\calHom}{{\mathcal{H\!o\!m}}}
+\newcommand{\calExt}{{\mathcal{Ext}}}
+\newcommand{\calProj}{{\mathcal{P\!r\!o\!j}}}
+\newcommand{\calSpec}{{\mathcal{S\!p\!e\!c}}}
+
+
+\newcommand{\mat}[4]{\left[ \begin{array}{cc}#1 &#2 \\ #3 &#4\end{array}\right]}
+\newcommand{\threemat}[9]{\left[ \begin{array}{ccc}
+  #1 & #2 & #3 \\
+  #4 & #5 & #6 \\
+  #7 & #8 & #9
+\end{array}\right]}
+\newcommand{\genmat}[9]{\left( \begin{array}{cccc}
+  #1 & #2 & \cdots & #3 \\
+  #4 & #5 & \cdots & #6 \\  
+  \ldots & \ldots & \ddots & \ldots \\
+  #7 & #8 & \cdots & #9
+\end{array}\right)}
+
+
+
+
+
+\newcommand{\contradiction}{
+    \raisebox{-0.6ex}{\makebox[2.4ex][c]{\begin{tikzpicture}
+        \draw (0,0) circle (1.2ex);
+        \draw (0.7 ex, 0.7 ex) -- (-0.4 ex, 0.7 ex);
+        \draw (-0.4 ex, 0.7 ex) -- (0.7 ex, -0.4 ex);
+        \draw (0.7 ex, -0.4 ex) -- (0.7 ex, 0.7 ex);
+        \draw (0.7 ex, 0.7 ex) -- (-0.848 ex, -0.848 ex);
+    \end{tikzpicture}}}
+    \ \ 
+}
+
+% legendre符号
+\makeatletter
+\def\legendre@dash#1#2{\hb@xt@#1{%
+  \kern-#2\p@
+  \cleaders\hbox{\kern.5\p@
+    \vrule\@height.2\p@\@depth.2\p@\@width\p@
+    \kern.5\p@}\hfil
+  \kern-#2\p@
+  }}
+\def\@legendre#1#2#3#4#5{\mathopen{}\left(
+  \sbox\z@{$\genfrac{}{}{0pt}{#1}{#3#4}{#3#5}$}%
+  \dimen@=\wd\z@
+  \kern-\p@\vcenter{\box0}\kern-\dimen@\vcenter{\legendre@dash\dimen@{#2}}\kern-\p@
+  \right)\mathclose{}}
+\newcommand\legendre[2]{\mathchoice
+  {\@legendre{0}{1}{}{#1}{#2}}
+  {\@legendre{1}{.5}{\vphantom{1}}{#1}{#2}}
+  {\@legendre{2}{0}{\vphantom{1}}{#1}{#2}}
+  {\@legendre{3}{0}{\vphantom{1}}{#1}{#2}}
+}
+\def\dlegendre{\@legendre{0}{1}{}}
+\def\tlegendre{\@legendre{1}{0.5}{\vphantom{1}}}
+\makeatother
+
+
+
+
+
+% 单一字母in mathbb mathfrak mathcal mathsf mathbf
 \newcommand{\bbA}{{\mathbb{A}}}
 \newcommand{\bba}{{\mathbb{a}}}
 \newcommand{\bbB}{{\mathbb{B}}}
@@ -316,134 +461,3 @@
 \newcommand{\sfy}{{\mathsf{y}}}
 \newcommand{\sfZ}{{\mathsf{Z}}}
 \newcommand{\sfz}{{\mathsf{z}}}
-
-
-\newcommand{\kk}{{\mathbf{k}}}
-\newcommand{\kkk}{{\mathbb{k}}}
-\newcommand{\KK}{{\mathbf{K}}}
-\newcommand{\KKK}{{\mathbb{K}}}
-\newcommand{\rkk}{{\kappa}} % residue field
-\newcommand{\fkk}{{\mathscr{K}}} % fraction field
-
-\renewcommand{\d}{{\mathrm{d}}}
-\renewcommand{\i}{{\mathrm{i}}}
-\renewcommand{\P}{\partial}
-
-
-\newcommand{\Set}{\mathbf{Set}}
-\newcommand{\Var}{\mathbf{Var}}
-\newcommand{\Sch}{\mathbf{Sch}}
-\newcommand{\Alg}{\mathbf{Alg}}
-\newcommand{\Ring}{\mathbf{Ring}}
-\newcommand{\Mod}{\mathbf{Mod}}
-\newcommand{\TopMod}{\mathbf{TopMod}}
-\newcommand{\Grp}{\mathbf{Grp}}
-\newcommand{\Ab}{\mathbf{Ab}}
-\newcommand{\Top}{\mathbf{Top}}
-\newcommand{\Cat}{\mathbf{Cat}}
-\newcommand{\AlgSp}{\mathbf{AlgSp}}
-\newcommand{\Obj}{\operatorname{Obj}}
-
-
-\newcommand{\ten}{\otimes}
-\newcommand{\ratmap}{\dasharrow}
-\newcommand{\injmap}{\hookrightarrow}
-\newcommand{\surjmap}{\twoheadrightarrow}
-
-\newcommand{\id}{{\operatorname{id}}}
-
-\newcommand{\Frac}{\operatorname{Frac}}
-\newcommand{\Der}{\operatorname{Der}}
-\newcommand{\Spec}{\operatorname{Spec}}
-\newcommand{\spec}{\operatorname{Spec}}
-\newcommand{\mSpec}{\operatorname{mSpec}}
-\newcommand{\depth}{\operatorname{depth}}
-\newcommand{\idealht}{\operatorname{ht}}
-\newcommand{\codim}{\operatorname{codim}}
-\newcommand{\Supp}{\operatorname{Supp}}
-\newcommand{\trdeg}{\operatorname{trdeg}}
-\newcommand{\Ass}{\operatorname{Ass}}
-\newcommand{\Ann}{\operatorname{Ann}}
-\newcommand{\Ext}{\operatorname{Ext}}
-\newcommand{\Tor}{\operatorname{Tor}}
-\newcommand{\Hom}{\operatorname{Hom}}
-\newcommand{\Eq}{\operatorname{Eq}}
-\newcommand{\End}{\operatorname{End}}
-\newcommand{\Mor}{\operatorname{Mor}}
-\newcommand{\Mult}{\operatorname{Mult}}
-\renewcommand{\Im}{\operatorname{Im}}
-\newcommand{\Ker}{\operatorname{Ker}}
-\newcommand{\rank}{\operatorname{rank}}
-\newcommand{\cohdim}{\operatorname{coh.dim}}
-\newcommand{\hldim}{\operatorname{hl.dim}}
-\newcommand{\projdim}{\operatorname{proj.dim}}
-\newcommand{\injdim}{\operatorname{inj.dim}}
-\newcommand{\rad}{\operatorname{rad}}
-\newcommand{\nil}{\operatorname{nil}}
-\newcommand{\characteristic}{\operatorname{char}}
-\newcommand{\Pic}{\operatorname{Pic}}
-\newcommand{\NS}{\operatorname{NS}}
-\newcommand{\Exc}{\operatorname{Exc}}
-\newcommand{\Sing}{\operatorname{Sing}}
-\newcommand{\Reg}{\operatorname{Reg}}
-\newcommand{\Tr}{\operatorname{Tr}}
-\newcommand{\Psef}{\operatorname{Psef}}
-\newcommand{\Nef}{\operatorname{Nef}}
-\newcommand{\Amp}{\operatorname{Amp}}
-\newcommand{\Bigcone}{\operatorname{Big}}
-\newcommand{\Frob}{\operatorname{Frob}}
-\newcommand{\Bs}{\operatorname{Bs}}
-\newcommand{\Stab}{\operatorname{Stab}}
-
-
-\newcommand{\mat}[4]{\left[ \begin{array}{cc}#1 &#2 \\ #3 &#4\end{array}\right]}
-\newcommand{\threemat}[9]{\left[ \begin{array}{ccc}
-  #1 & #2 & #3 \\
-  #4 & #5 & #6 \\
-  #7 & #8 & #9
-\end{array}\right]}
-\newcommand{\genmat}[9]{\left( \begin{array}{cccc}
-  #1 & #2 & \cdots & #3 \\
-  #4 & #5 & \cdots & #6 \\  
-  \ldots & \ldots & \ddots & \ldots \\
-  #7 & #8 & \cdots & #9
-\end{array}\right)}
-
-
-
-
-
-\newcommand{\contradiction}{
-    \raisebox{-0.6ex}{\makebox[2.4ex][c]{\begin{tikzpicture}
-        \draw (0,0) circle (1.2ex);
-        \draw (0.7 ex, 0.7 ex) -- (-0.4 ex, 0.7 ex);
-        \draw (-0.4 ex, 0.7 ex) -- (0.7 ex, -0.4 ex);
-        \draw (0.7 ex, -0.4 ex) -- (0.7 ex, 0.7 ex);
-        \draw (0.7 ex, 0.7 ex) -- (-0.848 ex, -0.848 ex);
-    \end{tikzpicture}}}
-    \ \ 
-}
-
-% legendre符号
-\makeatletter
-\def\legendre@dash#1#2{\hb@xt@#1{%
-  \kern-#2\p@
-  \cleaders\hbox{\kern.5\p@
-    \vrule\@height.2\p@\@depth.2\p@\@width\p@
-    \kern.5\p@}\hfil
-  \kern-#2\p@
-  }}
-\def\@legendre#1#2#3#4#5{\mathopen{}\left(
-  \sbox\z@{$\genfrac{}{}{0pt}{#1}{#3#4}{#3#5}$}%
-  \dimen@=\wd\z@
-  \kern-\p@\vcenter{\box0}\kern-\dimen@\vcenter{\legendre@dash\dimen@{#2}}\kern-\p@
-  \right)\mathclose{}}
-\newcommand\legendre[2]{\mathchoice
-  {\@legendre{0}{1}{}{#1}{#2}}
-  {\@legendre{1}{.5}{\vphantom{1}}{#1}{#2}}
-  {\@legendre{2}{0}{\vphantom{1}}{#1}{#2}}
-  {\@legendre{3}{0}{\vphantom{1}}{#1}{#2}}
-}
-\def\dlegendre{\@legendre{0}{1}{}}
-\def\tlegendre{\@legendre{1}{0.5}{\vphantom{1}}}
-\makeatother
