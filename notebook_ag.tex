@@ -1,5 +1,9 @@
 \documentclass[sectionlevel=book]{noteformyself}
-\usepackage{lipsum} % 生成测试文本
+
+
+\input{Accessories/notation.tex}
+\addbibresource{Accessories/ref.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{#1}}
 
 
 \title{Notes in Algebraic Geometry}
@@ -12,7 +16,7 @@
 
 \setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
 \coversentence{\CJKfamily{lxgwwenkai}阿巴阿巴阿巴阿巴阿巴阿巴！}
-\coverimage{template/placeholder.jpg} % 封面图片
+\coverimage{placeholder.jpg} % 封面图片
 % \coverlinecolor{red}
 \covertitlefont{Allura} % 封面标题字体, 若未安装，可注释掉此行编译或使用其他字体
 % \covertextcolor{green}
@@ -20,12 +24,10 @@
 
 \begin{document}
 
-    \pagestyle{empty}
+    % \pagestyle{empty}
     \maketitle
 
     \frontmatter
-
-    \pagestyle{mainmatterstyle}
 
     \tableofcontents
 
@@ -58,6 +60,6 @@
         \input{chapters/Homological_algebra/Applications_to_Commutative_Algebra/text.tex}
 
 
-    \printbibliography[heading=bibintoc]
+    \printbibliography[heading=bibintoc, title={References}]
     
 \end{document}

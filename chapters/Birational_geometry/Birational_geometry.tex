@@ -1,11 +1,15 @@
 \documentclass[sectionlevel=chapter]{noteformyself}
-\usepackage{lipsum} % 生成测试文本
+
+
+\input{../../Accessories/notation.tex}
+\addbibresource{../../Accessories/ref.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{#1}}
 
 
 \title{Birational Geometry}
 \author{Tianle Yang}
 \date{\today}
-\authorinfo{\href{www.tianleyang.com}{My Homepage}}
+\authorpage{\href{www.tianleyang.com}{My Homepage}}
 \setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
 \coversentence{\CJKfamily{lxgwwenkai}“要知道你为什么出枪，你的心里有闷烧的火，那是大地上燃烧的煤矿，它的火焰终有一天烧破地面去点燃天空。你会吼叫，因为你若是不吐出那火焰，它会烧穿你的胸膛，它像是愤怒，又像是高亢的歌，龙虎的吼声让时间停止。”}
 \coverimage{spear_and_loong.jpg} % 封面图片
@@ -26,9 +30,9 @@
 
     \input{Cone_theorem/text.tex}
 
-    \input{Basepoint_free_on_char_p/text.tex}
+    % \input{Basepoint_free_on_char_p/text.tex}
 
     \input{F-singularties/text.tex}
 
-    \printbibliography[heading=bibintoc]
+    \printbibliography[heading=bibintoc, title={References}]
 \end{document}

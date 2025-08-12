@@ -1,0 +1,3 @@
+[submodule "Accessories"]
+	path = Accessories
+	url = https://github.com/MonkeyUnderMountain/Accessories_tex.git
