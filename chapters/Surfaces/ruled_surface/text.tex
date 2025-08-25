@@ -1,0 +1,94 @@
+\section{Ruled Surface}
+
+In this section, fix an algebraically closed field $\kkk$.
+
+\subsection{Preliminaries on Projective Bundles}
+
+    Let \(S\) be a variety over \(\kkk\) and \(\calE\) a vector bundle of rank \(r+1\) on \(S\).
+
+    \begin{proposition}\label{prop:isomorphic_projective_bundle_iff_twist_by_line_bundle}
+        The \(S\)-varieties \(\bbP_X(\calE) \cong \bbP_X(\calE')\) if and only if \(\calE \cong \calE' \otimes \calL\) for some line bundle \(\calL\) on \(S\).
+    \end{proposition}
+
+    \begin{theorem}\label{thm:Eulur_sequence_for_projective_bundle}
+        Let \(\pi: X=\bbP_S(\calE) \to S\) be the projective bundle associated to a vector bundle \(\calE\) of rank \(r+1\) on \(S\). 
+        Then there is an exact sequence of vector bundles on \(\bbP_S(\calE)\)
+        \[
+            0 \to \Omega_{\bbP_S(\calE)/S} \to \pi^*(\calE)(-1) \to \calO_{\bbP_S(\calE)} \to 0.
+        \]
+        In particular, \(K_X \sim \pi^*(K_S + \det \calE) - (r+1)\calO_{\bbP_S(\calE)}(1)\).
+        \Yang{To be continued...}
+    \end{theorem}
+
+    \begin{theorem}[Tsen's Theorem]\label{thm:Tsen_theorem}
+        Let \(C\) be a smooth curve over an algebraically closed field \(\kkk\). 
+        Then \(\KK=\kkk(C)\) is a \(C_1\) field, i.e., every degree \(d\) hypersurface in \(\bbP^n_{\KK}\) has a \(\KK\)-rational point provided \(d \leq n\).
+        \Yang{Need a reference.}
+    \end{theorem}
+
+\subsection{Minimal Section and Classification}
+
+    \begin{definition}[Ruled surface]\label{def:ruled_surface}
+        A \emph{ruled surface} is a projective surface \(X\) together with a surjective morphism \(\pi:X \to C\) to a smooth curve \(C\) such that all fibers of \(\pi\) are isomorphic to \(\bbP^1\).
+    \end{definition}
+
+    Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\).
+
+
+    \begin{lemma}\label{lem:existence_of_section_of_ruled_surface}
+        There exists a section of \(\pi\).
+    \end{lemma}
+
+    \begin{proposition}\label{prop:ruled_surface_as_projective_bundle}
+        % Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\). 
+        Then there exists a vector bundle \(\calE\) of rank \(2\) on \(C\) such that \(X \cong \bbP_C(\calE)\) over \(C\).
+    \end{proposition}
+
+    \begin{lemma}\label{lem:correspondence_between_sections_and_quotient_line_bundles}
+        There is a one-to-one correspondence between sections of \(\pi\) and quotient line bundles of \(\calE\).
+    \end{lemma}
+
+    \begin{lemma}\label{lem:existence_of_normalized_vector_bundle}
+        It is possible to write \(X \cong \bbP_C(\calE)\) such that \(H^0(C,\calE) \neq 0\) but \(H^0(C,\calE \otimes \calL) = 0\) for any line bundle \(\calL\) on \(C\) with \(\deg \calL < 0\).
+        Such a vector bundle \(\calE\) is called a \emph{normalized vector bundle}.
+    \end{lemma}
+
+    \begin{definition}\label{def:minimal_section_of_ruled_surface}
+        A section \(C_0\) of \(\pi\) is called a \emph{minimal section} if \(C_0^2 \leq C_1^2\) for any other section \(C_1\) of \(\pi\).
+        
+    \end{definition}
+
+    \begin{theorem}\label{thm:restriction_of_e}
+        Let
+        
+    \end{theorem}
+
+    \begin{theorem}\label{thm:classification_of_ruled_surface_on_P1}
+        Let \(\pi:X \to C\) be a ruled surface over \(C = \bbP^1\) with invariant \(e\).
+        Then \(X \cong \bbP_{C}(\calO_C \oplus \calO_C(-e))\).
+    \end{theorem}
+
+    \begin{theorem}\label{thm:classification_of_ruled_surface_on_elliptic_curve}
+        Let 
+        
+    \end{theorem}
+
+
+\subsection{The N\'eron-Severi Group of Ruled Surfaces}
+
+    \begin{proposition}\label{prop:canonical_divisor_of_ruled_surface}
+        Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\). 
+        Let \(C_0\) be a minimal section of \(\pi\) and let \(f\) be a fiber of \(\pi\). 
+        Then \(K_X \sim -2C_0 + (K_C-)f\) where \(e = -C_0^2\).
+        \Yang{Check this carefully.}
+    \end{proposition}
+
+    \paragraph{Rational case.} Let \(\pi:X = \bbP_{\bbP^1}(\calE) \to \bbP^1\) be a ruled surface over \(\bbP^1\) with \(\calE \cong \calO \oplus \calO(-e)\) for some \(e \geq 0\).
+
+    \paragraph{Elliptic case.} Let \(\pi:X = \bbP_C(\calE) \to E\) be a ruled surface over an elliptic curve \(E\) with \(\calE\) a normalized vector bundle of rank \(2\) and degree \(-e\).
+
+    % \begin{theorem}\label{thm:nef_and_effective_cone_of_ruled_surface}
+    %     Let 
+        
+    % \end{theorem}
+
