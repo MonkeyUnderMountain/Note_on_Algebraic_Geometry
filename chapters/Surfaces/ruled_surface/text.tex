@@ -2,7 +2,7 @@
 
 In this section, fix an algebraically closed field $\kkk$.
 
-\subsection{Preliminaries on Projective Bundles}
+\subsection{Preliminaries}
 
     Let \(S\) be a variety over \(\kkk\) and \(\calE\) a vector bundle of rank \(r+1\) on \(S\).
 
@@ -23,33 +23,33 @@ In this section, fix an algebraically closed field $\kkk$.
     \begin{theorem}[Tsen's Theorem, {\cite[Tag 03RD]{Stacks}}]\label{thm:Tsen_theorem}
         Let \(C\) be a smooth curve over an algebraically closed field \(\kkk\). 
         Then \(\KK=\kkk(C)\) is a \(C_1\) field, i.e., every degree \(d\) hypersurface in \(\bbP^n_{\KK}\) has a \(\KK\)-rational point provided \(d \leq n\).
-        \Yang{Need a reference.}
+        % \Yang{Need a reference.}
     \end{theorem}
 
-    \begin{theorem}[Cohomology and Base Change, {\cite[Theorem 12.11]{Har77}}]\label{thm:cohomology_and_base_change}
-        Let \(f:X \to S\) be a projective morphism of noetherian schemes and \(\calF\) a coherent sheaf on \(X\) which is flat over \(S\). 
-        Then for each \(i \geq 0\) and each point \(s \in S\) there is a natural base change homomorphism
-        \[
-            \varphi_s^i: \sfR^i f_*\calF \ten \rkk(s) \to H^i(X_s,\calF_s).
-        \]
-        Suppose that \(\varphi_s^i\) is surjective. 
-        Then
-        \begin{enumerate}
-            \item there exists an open neighborhood \(U\) of \(s\) such that \(\varphi_{s'}^i\) is an isomorphism for all \(s' \in U\);
-            \item TFAE:
-                \begin{enumerate}
-                    \item \(\varphi_{s}^{i-1}\) is surjective;
-                    \item \(\sfR^i f_*\calF\) is locally free on an open neighborhood of \(s\).
-                \end{enumerate}
-        \end{enumerate}
-    \end{theorem}
+    % \begin{theorem}[Cohomology and Base Change, {\cite[Theorem 12.11]{Har77}}]\label{thm:cohomology_and_base_change}
+    %     Let \(f:X \to S\) be a projective morphism of noetherian schemes and \(\calF\) a coherent sheaf on \(X\) which is flat over \(S\). 
+    %     Then for each \(i \geq 0\) and each point \(s \in S\) there is a natural base change homomorphism
+    %     \[
+    %         \varphi_s^i: \sfR^i f_*\calF \ten_{\calO_S} \rkk(s) \to H^i(X_s,\calF_s).
+    %     \]
+    %     Suppose that \(\varphi_s^i\) is surjective. 
+    %     Then
+    %     \begin{enumerate}
+    %         \item there exists an open neighborhood \(U\) of \(s\) such that \(\varphi_{s'}^i\) is an isomorphism for all \(s' \in U\);
+    %         \item TFAE:
+    %             \begin{enumerate}
+    %                 \item \(\varphi_{s}^{i-1}\) is surjective;
+    %                 \item \(\sfR^i f_*\calF\) is locally free on an open neighborhood of \(s\).
+    %             \end{enumerate}
+    %     \end{enumerate}
+    % \end{theorem}
 
     \begin{theorem}[Grauert's Theorem, {\cite[Corollary 12.9]{Har77}}]\label{thm:Grauert_theorem}
         Let \(f:X \to S\) be a projective morphism of noetherian schemes and \(\calF\) a coherent sheaf on \(X\) which is flat over \(S\).
         Suppose that \(S\) is integral and the function \(s \mapsto \dim_{\rkk(s)} H^i(X_s,\calF_s)\) is constant on \(S\) for some \(i \geq 0\). 
         Then \(\sfR^i f_*\calF\) is locally free and the base change homomorphism
         \[
-            \varphi_s^i: \sfR^i f_*\calF \ten \rkk(s) \to H^i(X_s,\calF_s)
+            \varphi_s^i: \sfR^i f_*\calF \ten_{\calO_S} \rkk(s) \to H^i(X_s,\calF_s)
         \]
         is an isomorphism for all \(s \in S\).
     \end{theorem}
@@ -60,23 +60,33 @@ In this section, fix an algebraically closed field $\kkk$.
         If all fibers of \(f\) have the same dimension \(d = \dim X - \dim Y\), then \(f\) is flat.
     \end{theorem}
 
+    \begin{proposition}[Geometric form of Nakayama's Lemma]\label{prop: geometric form of Nakayama's lemma}
+        Let \(X\) be a variety, $x\in X$ a closed point and $\calF$ a coherent sheaf on $X$.
+        If $a_1,\cdots,a_k \in \calF(X)$ generate $\calF|_x = \calF \ten \rkk(x)$, then there is an open subset $U \subset X$ such that $a_i|_U$ generate $\calF(U)$. 
+    \end{proposition}
+
     \begin{proposition}\label{prop:relative_projective_morphism}
-        Let \(X\) be a noetherian scheme and \(\calE\) a vector bundle of rank \(r+1\) on \(X\). 
+        Let \(S\) be a noetherian scheme and \(\calE\) a vector bundle of rank \(r+1\) on \(S\). 
         % Then the projection \(\pi:\bbP_X(\calE) \to X\) is a projective morphism.
-        Let \(Y\) be a \(X\)-scheme via a morphism \(g:Y \to X\).
+        Let \(X\) be a \(S\)-scheme via a morphism \(g:X \to S\).
         Then there is a bijection
         \[
-            \{X\text{-morphisms } Y \to \bbP_X(\calE)\}
+            \{S\text{-morphisms } X \to \bbP_S(\calE)\}
             \leftrightarrow
             \left\{
                 \begin{array}{l}
-                    \text{surjective morphisms } g^*\calE \to \calL \\
-                    \text{where } \calL \text{ is a line bundle on } Y
+                    \text{surjective homomorphisms } g^*\calE \to \calL \\
+                    \text{where } \calL \text{ is a line bundle on } X
                 \end{array}
             \right\}.
         \]
         \Yang{Need to check.}
     \end{proposition}
+    \begin{proof}
+        Take an affine cover \(\{U_i\}\) of \(S\) such that \(\calE|_{U_i}\) is trivial.
+        On \(U_i\), the surjection \(g^*\calE|_{U_i} \surjmap \calL|_{X_{U_i}}\) gives a morphism \(X_{U_i} \to \bbP_{U_i}(\calE|_{U_i}) \cong \bbP_{S}(\calE)_{U_i}\) by \Yang{ref}.
+
+    \end{proof}
 
 \subsection{Minimal Section and Classification}
 
@@ -91,7 +101,7 @@ In this section, fix an algebraically closed field $\kkk$.
         There exists a section of \(\pi\).
     \end{lemma}
     \begin{proof}
-        
+        \Yang{To be continued...}
     \end{proof}
 
     \begin{proposition}\label{prop:ruled_surface_as_projective_bundle}
@@ -101,16 +111,33 @@ In this section, fix an algebraically closed field $\kkk$.
     \begin{proof}
         Let \(\sigma:C \to X\) be a section of \(\pi\) and \(D\) be its image.
         Let \(\calL = \calO_X(D)\) and \(\calE = \pi_*\calL\).
-        Since \(D\) is a section of \(\pi\), \(\calL|_{X_c} \cong \calO_{\bbP^1}(1)\) for any \(c \in C\), whence \(h^0(X_c,\calL|_{X_c}) = 2\) for any \(c \in C\).
+        Since \(D\) is a section of \(\pi\), \(\calL|_{X_t} \cong \calO_{\bbP^1}(1)\) for any \(t \in C\), whence \(h^0(X_t,\calL|_{X_t}) = 2\) for any \(t \in C\).
         By Miracle Flatness (\cref{thm:miracle_flatness}), \(f\) is flat.
-        By Grauert's Theorem (\cref{thm:Grauert_theorem}), \(\calE\) is a vector bundle of rank \(2\) on \(C\).
+        By Grauert's Theorem (\cref{thm:Grauert_theorem}), \(\calE\) is a vector bundle of rank \(2\) on \(C\) and we have a natural isomorphism \(\calE \ten \rkk(t) \cong H^0(X_t,\calL|_{X_t})\) for any \(t \in C\).
+
+        This gives a surjective homomorphism 
+        \[ \calE \ten_{\calO_C} \rkk(t) \ten_{\rkk(t)} \calO_{X_t} \cong H^0(X_t,\calL|_{X_t}) \ten_{\rkk(t)} \calO_{X_t} \surjmap \calL|_{X_t}. \]
+        For every \(x \in X\), we have 
+        \[ \calE \ten_{\calO_C} \rkk(\pi(x)) \ten_{\rkk(\pi(x))} \calO_{X_{\pi(x)}} \ten_{\calO_{X_{\pi(x)}}} \rkk(x)  \surjmap \calL|_{X_{\pi(x)}}\ten_{\calO_{X_{\pi(x)}}} \rkk(x). \]
+        \Yang{The left side coincides with \(\pi^*\calE\ten_{\calO_X} \rkk(x)\) naturally.}
+        Hence by Nakayama's Lemma, the natural homomorphism \(\pi^*\calE \to \calL\) is surjective.
+
+        Denote by \(p: \bbP_C(\calE) \to C\) the projection.
+        Take an affine open cover \(\{U_i\}\) of \(C\) such that \(\calE|_{U_i}\) is trivial.
+        On \(U_i\), the surjection \(\pi^*\calE|_{X_{U_i}} \surjmap \calL|_{X_{U_i}}\) gives a morphism \(\varphi_i: X_{U_i} \to \bbP_{U_i}(\calE|_{U_i}) \cong \bbP_{C}(\calE)_{U_i}\) by \Yang{ref}.
+        Since \(\varphi_i\) and \(\varphi_j\) agree on \(X_{U_i \cap U_j}\), they glue to give a morphism \(\varphi:X \to \bbP_C(\calE)\) over \(C\).
+        Since \(\varphi|_{X_t}:X_t \to \bbP_C(\calE)_t\) is an isomorphism for any \(t \in C\), \(\varphi\) is 
+        % Since both \(X\) and \(\bbP_C(\calE)\) are smooth, \(\varphi\) is an isomorphism.
     \end{proof}
 
     \begin{lemma}\label{lem:correspondence_between_sections_and_quotient_line_bundles}
-        There is a one-to-one correspondence between sections of \(\pi\) and quotient line bundles of \(\calE\).
+        Fix a vector bundle \(\calE\) of rank \(2\) on \(C\) such that \(X \cong \bbP_C(\calE)\).
+        There is a one-to-one correspondence between sections of \(\pi\) and quotient line bundles of \(\calE\) on \(\calC\).
     \end{lemma}
     \begin{proof}
-        
+        Suppose we have a quotient \(\calE \to \calL \to 0\) on \(C\) where \(\calL\) is a line bundle on \(C\).
+        By \cref{prop:relative_projective_morphism}, we have a morphism \(s:C \to \bbP_C(\calE)\) over \(C\).
+        Conversely, let \(\sigma:C \to X\) be a section of \(\pi\) and \(D\) be its image.
     \end{proof}
 
     \begin{lemma}\label{lem:existence_of_normalized_vector_bundle}
@@ -125,15 +152,23 @@ In this section, fix an algebraically closed field $\kkk$.
         A section \(C_0\) of \(\pi\) is called a \emph{minimal section} if \Yang{to be continued...}
     \end{definition}
 
-    \begin{theorem}\label{thm:restriction_of_e}
-        Let
-        
-    \end{theorem}
+    \begin{lemma}\label{thm:restriction_of_e}
+        Let \(X=\bbP_C(\calE) \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\) with invariant \(e\) and normalized \(\calE\). 
+        \begin{enumerate}
+            \item If \(\calE\) is decomposable, then \(e \geq 0\) and \(\calE \cong \calO_C \oplus \calL\) where \(\calL\) is a line bundle on \(C\) with \(\deg \calL = -e\).
+            \item If \(\calE\) is indecomposable, then \(-2g \leq e \leq 2g - 2\).
+        \end{enumerate} 
+    \end{lemma}
 
     \begin{theorem}\label{thm:classification_of_ruled_surface_on_P1}
         Let \(\pi:X \to C\) be a ruled surface over \(C = \bbP^1\) with invariant \(e\).
         Then \(X \cong \bbP_{C}(\calO_C \oplus \calO_C(-e))\).
     \end{theorem}
+
+    \begin{example}\label{eg:explicit_description_of_rational_ruled_surface}
+        Here we give an explicit description of the ruled surface \(X = \bbP_{\bbP^1}(\calO \oplus \calO(-e))\) for \(e \geq 0\).
+        \Yang{To be continued...}
+    \end{example}
 
     \begin{theorem}\label{thm:classification_of_ruled_surface_on_elliptic_curve}
         Let \(\pi:X = \bbP_E(\calE) \to E\) be a ruled surface over an elliptic curve \(E\) with invariant \(e\) and normalized \(\calE\). 
@@ -143,8 +178,22 @@ In this section, fix an algebraically closed field $\kkk$.
         \end{enumerate}
     \end{theorem}
 
+    \begin{example}
+        \Yang{To be continued...}
+    \end{example}
+
 
 \subsection{The N\'eron-Severi Group of Ruled Surfaces}
+
+    \begin{proposition}\label{prop:Picard_group_of_ruled_surface}
+        Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\). 
+        Let \(C_0\) be a minimal section of \(\pi\) and let \(f\) be a fiber of \(\pi\). 
+        Then \(\Pic(X) \cong \bbZ C_0 \oplus \pi^*\Pic(C)\).
+        \Yang{Check this carefully.}
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
 
     \begin{proposition}\label{prop:canonical_divisor_of_ruled_surface}
         Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\). 
@@ -152,13 +201,53 @@ In this section, fix an algebraically closed field $\kkk$.
         Then \(K_X \sim -2C_0 + (K_C-)f\) where \(e = -C_0^2\).
         \Yang{Check this carefully.}
     \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
 
     \paragraph{Rational case.} Let \(\pi:X = \bbP_{\bbP^1}(\calE) \to \bbP^1\) be a ruled surface over \(\bbP^1\) with \(\calE \cong \calO \oplus \calO(-e)\) for some \(e \geq 0\).
 
+    \begin{theorem}\label{thm:positivity_of_divisors_on_rational_ruled_surface}
+        Let \(\pi:X \to \bbP^1\) be a ruled surface over \(\bbP^1\) with invariant \(e\).
+        Let \(C_0\) be a minimal section of \(\pi\) and let \(F\) be a fiber of \(\pi\). 
+        Let \(D \sim aC_0 + bF\) be a divisor on \(X\) with \(a,b \in \bbZ\).
+        \begin{enumerate}
+            \item \(D\) is ample \(\iff\) \(D\) is very ample \(\iff\) \(a > 0\) and \(b > ae\);
+            \item \(D\) is effective \(\iff\) \(a,b \geq 0\).
+        \end{enumerate} 
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
+
     \paragraph{Elliptic case.} Let \(\pi:X = \bbP_C(\calE) \to E\) be a ruled surface over an elliptic curve \(E\) with \(\calE\) a normalized vector bundle of rank \(2\) and degree \(-e\).
 
-    % \begin{theorem}\label{thm:nef_and_effective_cone_of_ruled_surface}
-    %     Let 
-        
-    % \end{theorem}
+    \begin{theorem}\label{thm:positivity_of_divisors_on_decomposable_ruled_surface_over_elliptic_curve}
+        Let \(\pi:X \to E\) be a ruled surface over an elliptic curve \(E\) with invariant \(e\).
+        Assume that \(\calE\) is decomposable.
+        Let \(C_0\) be a minimal section of \(\pi\) and let \(F\) be a fiber of \(\pi\). 
+        Let \(D \equiv aC_0 + bF\) be a divisor on \(X\) with \(a,b \in \bbZ\).
+        \begin{enumerate}
+            \item \(D\) is ample \(\iff\) \(D\) is very ample \(\iff\) \(a > 0\) and \(b > ae\);
+            \item \(D\) is effective \(\iff\) \(a \geq 0\) and \(b \geq ae\).
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
+    \begin{theorem}\label{thm:positivity_of_divisors_on_indecomposable_ruled_surface_over_elliptic_curve}
+        Let \(\pi:X \to E\) be a ruled surface over an elliptic curve \(E\) with invariant \(e\).
+        Assume that \(\calE\) is indecomposable.
+        Let \(C_0\) be a minimal section of \(\pi\) and let \(F\) be a fiber of \(\pi\). 
+        Let \(D \equiv aC_0 + bF\) be a divisor on \(X\) with \(a,b \in \bbZ\).
+        \begin{enumerate}
+            \item \(D\) is ample \(\iff\) \(D\) is very ample \(\iff\) \(a > 0\) and \(b > \frac{1}{2}ae\);
+            \item \(D\) is effective \(\iff\) \(a \geq 0\) and \(b \geq \frac{1}{2}ae\).
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
 
