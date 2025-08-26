@@ -1,0 +1,26 @@
+\documentclass[sectionlevel=chapter]{noteformyself}
+
+\input{../../Accessories/notation.tex}
+\addbibresource{../../Accessories/ref.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
+
+\title{}
+\author{Tianle Yang}
+\date{\today}
+\authorpage{\href{www.tianleyang.com}{My Homepage}}
+\setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
+\coversentence{\CJKfamily{lxgwwenkai}“”}
+\coverimage{} % 封面图片
+% \coverlinecolor{red}
+\covertitlefont{Allura} % 封面标题字体
+% \covertextcolor{green}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \printbibliography[heading=bibintoc, title={References}]
+    
+\end{document}

@@ -20,16 +20,68 @@ In this section, fix an algebraically closed field $\kkk$.
         \Yang{To be continued...}
     \end{theorem}
 
-    \begin{theorem}[Tsen's Theorem]\label{thm:Tsen_theorem}
+    \begin{theorem}[Tsen's Theorem, {\cite[Tag 03RD]{Stacks}}]\label{thm:Tsen_theorem}
         Let \(C\) be a smooth curve over an algebraically closed field \(\kkk\). 
         Then \(\KK=\kkk(C)\) is a \(C_1\) field, i.e., every degree \(d\) hypersurface in \(\bbP^n_{\KK}\) has a \(\KK\)-rational point provided \(d \leq n\).
         \Yang{Need a reference.}
     \end{theorem}
 
+    \begin{theorem}[Cohomology and Base Change, {\cite[Theorem 12.11]{Har77}}]\label{thm:cohomology_and_base_change}
+        Let \(f:X \to S\) be a projective morphism of noetherian schemes and \(\calF\) a coherent sheaf on \(X\) which is flat over \(S\). 
+        Then for each \(i \geq 0\) and each point \(s \in S\) there is a natural base change homomorphism
+        \[
+            \varphi_s^i: \sfR^i f_*\calF \ten \rkk(s) \to H^i(X_s,\calF_s).
+        \]
+        Suppose that \(\varphi_s^i\) is surjective. 
+        Then
+        \begin{enumerate}
+            \item there exists an open neighborhood \(U\) of \(s\) such that \(\varphi_{s'}^i\) is an isomorphism for all \(s' \in U\);
+            \item TFAE:
+                \begin{enumerate}
+                    \item \(\varphi_{s}^{i-1}\) is surjective;
+                    \item \(\sfR^i f_*\calF\) is locally free on an open neighborhood of \(s\).
+                \end{enumerate}
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{theorem}[Grauert's Theorem, {\cite[Corollary 12.9]{Har77}}]\label{thm:Grauert_theorem}
+        Let \(f:X \to S\) be a projective morphism of noetherian schemes and \(\calF\) a coherent sheaf on \(X\) which is flat over \(S\).
+        Suppose that \(S\) is integral and the function \(s \mapsto \dim_{\rkk(s)} H^i(X_s,\calF_s)\) is constant on \(S\) for some \(i \geq 0\). 
+        Then \(\sfR^i f_*\calF\) is locally free and the base change homomorphism
+        \[
+            \varphi_s^i: \sfR^i f_*\calF \ten \rkk(s) \to H^i(X_s,\calF_s)
+        \]
+        is an isomorphism for all \(s \in S\).
+    \end{theorem}
+
+    \begin{theorem}[Miracle Flatness, {\cite[Theorem 23.1]{Mat89}}]\label{thm:miracle_flatness}
+        Let \(f:X \to Y\) be a morphism of noetherian schemes. 
+        Assume that \(Y\) is regular and \(X\) is Cohen-Macaulay. 
+        If all fibers of \(f\) have the same dimension \(d = \dim X - \dim Y\), then \(f\) is flat.
+    \end{theorem}
+
+    \begin{proposition}\label{prop:relative_projective_morphism}
+        Let \(X\) be a noetherian scheme and \(\calE\) a vector bundle of rank \(r+1\) on \(X\). 
+        % Then the projection \(\pi:\bbP_X(\calE) \to X\) is a projective morphism.
+        Let \(Y\) be a \(X\)-scheme via a morphism \(g:Y \to X\).
+        Then there is a bijection
+        \[
+            \{X\text{-morphisms } Y \to \bbP_X(\calE)\}
+            \leftrightarrow
+            \left\{
+                \begin{array}{l}
+                    \text{surjective morphisms } g^*\calE \to \calL \\
+                    \text{where } \calL \text{ is a line bundle on } Y
+                \end{array}
+            \right\}.
+        \]
+        \Yang{Need to check.}
+    \end{proposition}
+
 \subsection{Minimal Section and Classification}
 
     \begin{definition}[Ruled surface]\label{def:ruled_surface}
-        A \emph{ruled surface} is a projective surface \(X\) together with a surjective morphism \(\pi:X \to C\) to a smooth curve \(C\) such that all fibers of \(\pi\) are isomorphic to \(\bbP^1\).
+        A \emph{ruled surface} is a smooth projective surface \(X\) together with a surjective morphism \(\pi:X \to C\) to a smooth curve \(C\) such that all fibers of \(\pi\) are isomorphic to \(\bbP^1\).
     \end{definition}
 
     Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\).
@@ -38,24 +90,39 @@ In this section, fix an algebraically closed field $\kkk$.
     \begin{lemma}\label{lem:existence_of_section_of_ruled_surface}
         There exists a section of \(\pi\).
     \end{lemma}
+    \begin{proof}
+        
+    \end{proof}
 
     \begin{proposition}\label{prop:ruled_surface_as_projective_bundle}
         % Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\). 
         Then there exists a vector bundle \(\calE\) of rank \(2\) on \(C\) such that \(X \cong \bbP_C(\calE)\) over \(C\).
     \end{proposition}
+    \begin{proof}
+        Let \(\sigma:C \to X\) be a section of \(\pi\) and \(D\) be its image.
+        Let \(\calL = \calO_X(D)\) and \(\calE = \pi_*\calL\).
+        Since \(D\) is a section of \(\pi\), \(\calL|_{X_c} \cong \calO_{\bbP^1}(1)\) for any \(c \in C\), whence \(h^0(X_c,\calL|_{X_c}) = 2\) for any \(c \in C\).
+        By Miracle Flatness (\cref{thm:miracle_flatness}), \(f\) is flat.
+        By Grauert's Theorem (\cref{thm:Grauert_theorem}), \(\calE\) is a vector bundle of rank \(2\) on \(C\).
+    \end{proof}
 
     \begin{lemma}\label{lem:correspondence_between_sections_and_quotient_line_bundles}
         There is a one-to-one correspondence between sections of \(\pi\) and quotient line bundles of \(\calE\).
     \end{lemma}
+    \begin{proof}
+        
+    \end{proof}
 
     \begin{lemma}\label{lem:existence_of_normalized_vector_bundle}
         It is possible to write \(X \cong \bbP_C(\calE)\) such that \(H^0(C,\calE) \neq 0\) but \(H^0(C,\calE \otimes \calL) = 0\) for any line bundle \(\calL\) on \(C\) with \(\deg \calL < 0\).
         Such a vector bundle \(\calE\) is called a \emph{normalized vector bundle}.
     \end{lemma}
+    \begin{proof}
+        
+    \end{proof}
 
     \begin{definition}\label{def:minimal_section_of_ruled_surface}
-        A section \(C_0\) of \(\pi\) is called a \emph{minimal section} if \(C_0^2 \leq C_1^2\) for any other section \(C_1\) of \(\pi\).
-        
+        A section \(C_0\) of \(\pi\) is called a \emph{minimal section} if \Yang{to be continued...}
     \end{definition}
 
     \begin{theorem}\label{thm:restriction_of_e}
@@ -69,8 +136,11 @@ In this section, fix an algebraically closed field $\kkk$.
     \end{theorem}
 
     \begin{theorem}\label{thm:classification_of_ruled_surface_on_elliptic_curve}
-        Let 
-        
+        Let \(\pi:X = \bbP_E(\calE) \to E\) be a ruled surface over an elliptic curve \(E\) with invariant \(e\) and normalized \(\calE\). 
+        \begin{enumerate}
+            \item If \(\calE\) is indecomposable, then \(e = 0\) or \(-1\), and for each \(e\) there exists a unique such ruled surface up to isomorphism.
+            \item If \(\calE\) is decomposable, then \(e \geq 0\) and \(\calE \cong \calO_E \oplus \calL\) where \(\calL\) is a line bundle on \(E\) with \(\deg \calL = -e\).
+        \end{enumerate}
     \end{theorem}
 
 
