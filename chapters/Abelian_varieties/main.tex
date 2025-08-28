@@ -1,11 +1,14 @@
 \documentclass[sectionlevel=chapter]{noteformyself}
-\usepackage{lipsum} % 生成测试文本
+
+\input{../../Accessories/notation.tex}
+\addbibresource{../../Accessories/ref.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
 
 
 \title{Abelian Varieties}
 \author{Tianle Yang}
 \date{\today}
-\authorinfo{\href{www.tianleyang.com}{My Website}}
+\authorpage{\href{www.tianleyang.com}{My Homepage}}
 \setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
 \coversentence{\CJKfamily{lxgwwenkai}“如果是勇者辛美尔，他一定会这么做的！”}
 \coverimage{cover.png} % 封面图片

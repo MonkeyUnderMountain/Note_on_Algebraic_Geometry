@@ -8,9 +8,9 @@
     \end{theorem}
 
     \begin{theorem}[Theorem of the cube]\label{thm: theorem of the cube}
-        Let \(X,Y,Z\) be completed varieties over \(\kkk\) and \(\call\) a line bundle on \(X \times Y \times Z\). 
-        Suppose that there exist \(x \in X(\kkk), y \in Y(\kkk), z \in Z(\kkk)\) such that the restriction \(\call|_{\{x\} \times Y \times Z}\), \(\call|_{X \times \{y\} \times Z}\) and \(\call|_{X \times Y \times \{z\}}\) are trivial. 
-        Then \(\call\) is trivial.
+        Let \(X,Y,Z\) be completed varieties over \(\kkk\) and \(\calL\) a line bundle on \(X \times Y \times Z\). 
+        Suppose that there exist \(x \in X(\kkk), y \in Y(\kkk), z \in Z(\kkk)\) such that the restriction \(\calL|_{\{x\} \times Y \times Z}\), \(\calL|_{X \times \{y\} \times Z}\) and \(\calL|_{X \times Y \times \{z\}}\) are trivial. 
+        Then \(\calL\) is trivial.
     \end{theorem}
     \begin{proof}
         \Yang{To be completed.}
@@ -22,47 +22,47 @@
     \end{remark}
 
     \begin{proposition}
-        Let \(A\) be an abelian variety over \(\kkk\), \(f,g,h: X \to A\) morphisms from a variety \(X\) to \(A\) and \(\call\) a line bundle on \(A\).
+        Let \(A\) be an abelian variety over \(\kkk\), \(f,g,h: X \to A\) morphisms from a variety \(X\) to \(A\) and \(\calL\) a line bundle on \(A\).
         Then 
-        \[ (f+g+h)^*\call \cong (f+g)^*\call \ten (f+h)^*\call \ten (g+h)^*\call \ten f^*\call^{-1} \ten g^*\call^{-1} \ten h^*\call^{-1}. \]
+        \[ (f+g+h)^*\calL \cong (f+g)^*\calL \ten (f+h)^*\calL \ten (g+h)^*\calL \ten f^*\calL^{-1} \ten g^*\calL^{-1} \ten h^*\calL^{-1}. \]
     \end{proposition}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
 
     \begin{proposition}\label{prop: pull back of line bundles along the multiplication by n}
-        Let \(A\) be an abelian variety over \(\kkk\), \(n\in \bbz\) and \(\call\) a line bundle on \(A\). 
+        Let \(A\) be an abelian variety over \(\kkk\), \(n\in \bbZ\) and \(\calL\) a line bundle on \(A\). 
         Then we have 
-        \[ [n]_A^*\call \cong \call^{\ten \frac{1}{2}(n^2+n)} \ten [-1]_A^*\call^{\ten \frac{1}{2}(n^2-n)}. \]
+        \[ [n]_A^*\calL \cong \calL^{\ten \frac{1}{2}(n^2+n)} \ten [-1]_A^*\calL^{\ten \frac{1}{2}(n^2-n)}. \]
     \end{proposition}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
 
     \begin{theorem}[Theorem of the square]\label{thm: theorem of the square}
-        Let \(A\) be an abelian variety over \(\kkk\), \(x,y \in A(\kkk)\) two points and \(\call\) a line bundle on \(A\).
+        Let \(A\) be an abelian variety over \(\kkk\), \(x,y \in A(\kkk)\) two points and \(\calL\) a line bundle on \(A\).
         Then 
-        \[ t_{x+y}^*\call \ten \call \cong t_x^*\call \ten t_y^*\call. \]
+        \[ t_{x+y}^*\calL \ten \calL \cong t_x^*\calL \ten t_y^*\calL. \]
     \end{theorem}
 
     \begin{remark}\label{rmk: theorem of the square and homomorphism to Picard group}
         We can define a map
-        \[ \Phi_\call: A(\kkk) \to \Pic(A), \quad x \mapsto t_x^*\call \ten \call^{-1}. \]
-        Then theorem of the square implies that \(\Phi_\call\) is a homomorphism of groups.
-        When we vary \(\call\), the map 
-        \[ \Phi_{\square}: \Pic(A) \to \Hom_{\Grp}(A(\kkk), \Pic(A)), \quad \call \mapsto \Phi_\call \]
+        \[ \Phi_\calL: A(\kkk) \to \Pic(A), \quad x \mapsto t_x^*\calL \ten \calL^{-1}. \]
+        Then theorem of the square implies that \(\Phi_\calL\) is a homomorphism of groups.
+        When we vary \(\calL\), the map 
+        \[ \Phi_{\square}: \Pic(A) \to \Hom_{\Grp}(A(\kkk), \Pic(A)), \quad \calL \mapsto \Phi_\calL \]
         is a group homomorphism.
         For any \(x \in A(\kkk)\), we have
-        \[ \Phi_{t_x^*\call} = \Phi_\call. \]
+        \[ \Phi_{t_x^*\calL} = \Phi_\calL. \]
         In the other words, 
-        \[ \Phi_\call(x) \in \Ker \Phi_{\square}, \quad \forall \call \in \Pic(A), x \in A(\kkk). \]
+        \[ \Phi_\calL(x) \in \Ker \Phi_{\square}, \quad \forall \calL \in \Pic(A), x \in A(\kkk). \]
         \Yang{To be completed.}
     \end{remark}
 
-    If we assume the scheme structure on \(\Pic(A)\), then \(\Phi_\call\) is a morphism of scheme and factors through \(\Pic^0(A)\).
-    Let \(K(\call) \coloneqq \Ker \Phi_\call\), then \(K(\call)\) is a subgroup scheme of \(A\).
-    We give another description of \(K(\call)\).
-    From this point, we can recover the dual abelian variety \(A^\vee = \Pic^0(A)\) as the quotient \(A/K(\call)\).
+    If we assume the scheme structure on \(\Pic(A)\), then \(\Phi_\calL\) is a morphism of scheme and factors through \(\Pic^0(A)\).
+    Let \(K(\calL) \coloneqq \Ker \Phi_\calL\), then \(K(\calL)\) is a subgroup scheme of \(A\).
+    We give another description of \(K(\calL)\).
+    From this point, we can recover the dual abelian variety \(A^\vee = \Pic^0(A)\) as the quotient \(A/K(\calL)\).
     \Yang{To be completed.}
 
 
@@ -102,7 +102,7 @@
         Let \(A\) be an abelian variety of dimension \(d\) over \(\kkk\). 
         Then the subgroup \(A[n]\) of \(n\) torsion points is finite and we have 
         \begin{enumerate}
-            \item if \(n\) is coprime to \(\characteristic(\kk)\), then \(A[n] \cong (\bbz/n\bbz)^{2d}\);
+            \item if \(n\) is coprime to \(\characteristic(\kk)\), then \(A[n] \cong (\bbZ/n\bbZ)^{2d}\);
             \item if \(n = p^k\) for \(p = \characteristic(\kk) > 0\)
         \end{enumerate}
     \end{theorem}
@@ -124,5 +124,5 @@
     \end{theorem}
 
     \begin{proposition}\label{prop: the Poincare line bundle}
-        There exists a unique line bundle \(\calp\) on \(A \times A^\vee\) such that for every \(y = \call \in A^\vee = \Pic^0(A)\), we have \(\calp|_{A \times \{y\}} \cong \call\).
+        There exists a unique line bundle \(\calP\) on \(A \times A^\vee\) such that for every \(y = \calL \in A^\vee = \Pic^0(A)\), we have \(\calP|_{A \times \{y\}} \cong \calL\).
     \end{proposition}
