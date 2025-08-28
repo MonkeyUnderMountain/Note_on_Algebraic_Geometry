@@ -1,6 +1,7 @@
 \section{Ruled Surface}
 
 In this section, fix an algebraically closed field $\kkk$.
+This section is mainly based on \cite[Chapter V.2]{Har77}.
 
 \subsection{Preliminaries}
 
@@ -65,37 +66,92 @@ In this section, fix an algebraically closed field $\kkk$.
         If $a_1,\cdots,a_k \in \calF(X)$ generate $\calF|_x = \calF \ten \rkk(x)$, then there is an open subset $U \subset X$ such that $a_i|_U$ generate $\calF(U)$. 
     \end{proposition}
 
-    \begin{proposition}\label{prop:relative_projective_morphism}
-        Let \(S\) be a noetherian scheme and \(\calE\) a vector bundle of rank \(r+1\) on \(S\). 
-        % Then the projection \(\pi:\bbP_X(\calE) \to X\) is a projective morphism.
-        Let \(X\) be a \(S\)-scheme via a morphism \(g:X \to S\).
+    \begin{proposition}\label{prop:relative_morphism_to_projective_bundle}
+        Let \(S\) be a noetherian scheme and \(\calE\) a vector bundle of rank \(r+1\) on \(S\).
+        Denote by \(\pi: \bbP_S(\calE) \to S\) the projection.
+        Let \(X\) be an \(S\)-scheme via a morphism \(g:X \to S\).
         Then there is a bijection
         \[
-            \{S\text{-morphisms } X \to \bbP_S(\calE)\}
+            \left\{\begin{array}{l}
+                S\text{-morphisms }\\
+                X \to \bbP_S(\calE)
+            \end{array}\right\}
             \leftrightarrow
             \left\{
                 \begin{array}{l}
-                    \text{surjective homomorphisms } g^*\calE \to \calL \\
-                    \text{where } \calL \text{ is a line bundle on } X
+                    \calL \in \Pic(X) \text{ and surjective}\\
+                    \text{homomorphisms } g^*\calE \to \calL
                 \end{array}
             \right\}.
         \]
-        \Yang{Need to check.}
+        % \Yang{Need to check.}
     \end{proposition}
     \begin{proof}
-        Take an affine cover \(\{U_i\}\) of \(S\) such that \(\calE|_{U_i}\) is trivial.
-        On \(U_i\), the surjection \(g^*\calE|_{U_i} \surjmap \calL|_{X_{U_i}}\) gives a morphism \(X_{U_i} \to \bbP_{U_i}(\calE|_{U_i}) \cong \bbP_{S}(\calE)_{U_i}\) by \Yang{ref}.
+        We have a surjection \(\pi^*\calE \to \calO_{\bbP_S(\calE)}(1)\) by the definition of \(\bbP_S(\calE)\).
+        If we have a morphism \(f:X \to \bbP_S(\calE)\) over \(S\), then we have a surjective homomorphism \(f^*\pi^*\calE \to f^*\calO_{\bbP_S(\calE)}(1)\).
 
+        Suppose we have a surjective homomorphism \(g^*\calE \surjmap \calL\) where \(\calL\) is a line bundle on \(X\).
+        Take an affine cover \(\{U_i\}\) of \(S\) such that \(\calE|_{U_i}\) is trivial.
+        On \(U_i\), choose a basis \(e_0^{(i)},\ldots,e_r^{(i)}\) of \(\calE|_{U_i}\).
+        Suppose \(\bbP_S(\calE)\) is given by gluing \(\bbP^r_{U_i}\) via \(\varphi_{ij}\) induced by the transition functions of \(\calE\).
+        
+        The surjection \(g^*\calE|_{U_i} \surjmap \calL|_{X_{U_i}}\) gives a unique morphism \(f_i: X_{U_i} \to \bbP^r_{U_i}\) by \cref{thm:morphism_to_projective_space}.
+        On \(X_{U_i \cap U_j}\), \(f_i\) and \(f_j\) agree since we have 
+        \[ \begin{tikzcd}
+            X_{U_i \cap U_j} \arrow[r, "="] \arrow[d, "f_i"'] & X_{U_i \cap U_j} \arrow[d, "f_j"]  \\
+            \bbP_{U_i\cap U_j}(\bigoplus\calO_{U_i \cap U_j} e_k^{(i)}) \arrow[r, "\varphi_{ij}"] & \bbP_{U_i\cap U_j}(\bigoplus\calO_{U_i \cap U_j} e_k^{(j)})
+        \end{tikzcd} \]
+        and the bottom arrow is identical to the identity map on \(\bbP_{S}(\calE)_{U_i\cap U_j}\).
+        Gluing \(f_i\) gives a morphism \(f:X \to \bbP_S(\calE)\) over \(S\).
+        In particular, we have \(\calL \cong f^*\calO_{\bbP_S(\calE)}(1)\).
+    \end{proof}
+
+    \begin{definition}\label{def:extension}
+        An \emph{extension} of a coherent sheaf \(\calF\) by a coherent sheaf \(\calG\) on a scheme \(X\) is an exact sequence of coherent sheaves
+        \[ S = (0 \to \calG \to \calE \to \calF \to 0). \]
+        Two extensions \(S\) and \(S'\) are \emph{equivalent} if there is a commutative diagram
+        \[
+            \begin{tikzcd}
+                0 \arrow[r] & \calG \arrow[r] \arrow[d, "\id_{\calG}"] & \calE \arrow[r] \arrow[d, "\cong"] & \calF \arrow[r] \arrow[d, "\id_{\calF}"] & 0 \\
+                0 \arrow[r] & \calG \arrow[r] & \calE' \arrow[r] & \calF \arrow[r] & 0.
+            \end{tikzcd}
+        \]
+    \end{definition}
+
+    \begin{proposition}\label{prop:extension_and_Ext1}
+        Let \(X\) be a scheme and \(\calF,\calG\) be coherent sheaves on \(X\).
+        Then there is a one-to-one correspondence between equivalence classes of extensions
+        \[ S = (0 \to \calG \to \calE \to \calF \to 0) \]
+        and elements of \(\Ext^1_X(\calF,\calG)\) given by 
+        \[ S \mapsto \delta(\id_{\calF}) \]
+        where \(\delta:\Hom_X(\calF,\calF) \to \Ext^1_X(\calF,\calG)\) is the connecting homomorphism.
+    \end{proposition}
+    \begin{proof}
+        Take an exact sequence
+        \[ 0 \to \calG \to \calI \xrightarrow{\varphi} \calC \to 0 \] 
+        with \(\calI\) injective.
+        Applying \(\Hom_X(\calF,-)\) gives a long exact sequence
+        \[ 0 \to \Hom_X(\calF,\calG) \to \Hom_X(\calF,\calI) \to \Hom_X(\calF,\calC) \xrightarrow{\delta} \Ext^1_X(\calF,\calG) \to 0. \]
+        For \(a \in \Ext^1_X(\calF,\calG)\), choose a lifting \(\alpha \in \Hom_X(\calF,\calC)\) of \(a\).
+        Let \(\calE := \Ker (\calI \oplus \calF \to \calC, (i,f) \mapsto \varphi(i) - \alpha(f))\).
+
+        Let \(\calE \to \calF\) be the projection to the second factor.
+        It is surjective since \(\varphi\) is surjective.
+        Consider the inclusion \(\calG \to \calI \to \calI \oplus \calF\), which factors through \(\calE\).
+        On the other hand, if \(e \in \calE\) maps to \(0\) in \(\calF\), then \(e \in \calI\) and \(\varphi(e) = 0\), whence \(e \in \calG\).
+        Hence we have an extension \(S = (0 \to \calG \to \calE \to \calF \to 0)\).
+
+        \Yang{To be continued...}
     \end{proof}
 
 \subsection{Minimal Section and Classification}
 
     \begin{definition}[Ruled surface]\label{def:ruled_surface}
-        A \emph{ruled surface} is a smooth projective surface \(X\) together with a surjective morphism \(\pi:X \to C\) to a smooth curve \(C\) such that all fibers of \(\pi\) are isomorphic to \(\bbP^1\).
+        A \emph{ruled surface} is a smooth projective surface \(X\) together with a surjective morphism \(\pi:X \to C\) to a smooth curve \(C\) 
+        such that all geometric fibers of \(\pi\) are isomorphic to \(\bbP^1\).
     \end{definition}
 
     Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\).
-
 
     \begin{lemma}\label{lem:existence_of_section_of_ruled_surface}
         There exists a section of \(\pi\).
@@ -122,53 +178,90 @@ In this section, fix an algebraically closed field $\kkk$.
         \Yang{The left side coincides with \(\pi^*\calE\ten_{\calO_X} \rkk(x)\) naturally.}
         Hence by Nakayama's Lemma, the natural homomorphism \(\pi^*\calE \to \calL\) is surjective.
 
-        Denote by \(p: \bbP_C(\calE) \to C\) the projection.
-        Take an affine open cover \(\{U_i\}\) of \(C\) such that \(\calE|_{U_i}\) is trivial.
-        On \(U_i\), the surjection \(\pi^*\calE|_{X_{U_i}} \surjmap \calL|_{X_{U_i}}\) gives a morphism \(\varphi_i: X_{U_i} \to \bbP_{U_i}(\calE|_{U_i}) \cong \bbP_{C}(\calE)_{U_i}\) by \Yang{ref}.
-        Since \(\varphi_i\) and \(\varphi_j\) agree on \(X_{U_i \cap U_j}\), they glue to give a morphism \(\varphi:X \to \bbP_C(\calE)\) over \(C\).
-        Since \(\varphi|_{X_t}:X_t \to \bbP_C(\calE)_t\) is an isomorphism for any \(t \in C\), \(\varphi\) is 
-        % Since both \(X\) and \(\bbP_C(\calE)\) are smooth, \(\varphi\) is an isomorphism.
+        By \cref{prop:relative_morphism_to_projective_bundle}, we have a morphism \(\varphi:X \to \bbP_C(\calE)\) over \(C\) such that \(\calL \cong \varphi^*\calO_{\bbP_C(\calE)}(1)\).
+        Since \(\calL|_{X_t} \cong \calO_{\bbP^1}(1)\) for any \(t \in C\), \(\varphi|_{X_t}:X_t \to \bbP_C(\calE)_t\) is an isomorphism for any \(t \in C\).
+        Hence \(\varphi\) is bijection on the underlying sets.
+        By Miracle Flatness (\cref{thm:miracle_flatness}), \(\varphi\) is flat.
+        \Yang{\(\calO_{\bbP_C(\calE),\varphi(x)} \to \calO_{X,x}\) is finite}.
+        % By Nakayama's Lemma, \(\calO_{\bbP_C(\calE),\varphi(x)} \to \calO_{X,x}\) is surjective 
     \end{proof}
 
-    \begin{lemma}\label{lem:correspondence_between_sections_and_quotient_line_bundles}
-        Fix a vector bundle \(\calE\) of rank \(2\) on \(C\) such that \(X \cong \bbP_C(\calE)\).
-        There is a one-to-one correspondence between sections of \(\pi\) and quotient line bundles of \(\calE\) on \(\calC\).
-    \end{lemma}
-    \begin{proof}
-        Suppose we have a quotient \(\calE \to \calL \to 0\) on \(C\) where \(\calL\) is a line bundle on \(C\).
-        By \cref{prop:relative_projective_morphism}, we have a morphism \(s:C \to \bbP_C(\calE)\) over \(C\).
-        Conversely, let \(\sigma:C \to X\) be a section of \(\pi\) and \(D\) be its image.
-    \end{proof}
+    % \begin{lemma}\label{lem:correspondence_between_sections_and_quotient_line_bundles}
+    %     Fix a vector bundle \(\calE\) of rank \(2\) on \(C\) such that \(X \cong \bbP_C(\calE)\).
+    %     There is a one-to-one correspondence between sections of \(\pi\) and quotient line bundles of \(\calE\) on \(\calC\).
+    % \end{lemma}
+    % \begin{proof}
+    %     Suppose we have a quotient \(\calE \to \calL \to 0\) on \(C\) where \(\calL\) is a line bundle on \(C\).
+    %     By \cref{prop:relative_projective_morphism}, we have a morphism \(s:C \to \bbP_C(\calE)\) over \(C\).
+    %     Conversely, let \(\sigma:C \to X\) be a section of \(\pi\) and \(D\) be its image.
+    % \end{proof}
 
     \begin{lemma}\label{lem:existence_of_normalized_vector_bundle}
         It is possible to write \(X \cong \bbP_C(\calE)\) such that \(H^0(C,\calE) \neq 0\) but \(H^0(C,\calE \otimes \calL) = 0\) for any line bundle \(\calL\) on \(C\) with \(\deg \calL < 0\).
         Such a vector bundle \(\calE\) is called a \emph{normalized vector bundle}.
     \end{lemma}
     \begin{proof}
-        
+        % Choose \(\calM\) of degree \(1\) on \(C\).
+        % We have \(H^0(C,\calE \otimes \calM^n) \neq 0\) for \(n \gg 0\) since \(\calM\) is ample.
+        % By \cref{prop:relative_morphism_to_projective_bundle,lem:existence_of_section_of_ruled_surface}, we have that \(\calE\) is an extension of line bundles.
+        % In particular, \(\calE \ten \calM^n\) has no global sections for \(n \ll 0\) since line bundles on curve of negative degree have no global sections.
+        % Hence there exists \(n_0\) such that \(H^0(C,\calE \otimes \calM^{n_0}) \neq 0\) but \(H^0(C,\calE \otimes \calM^{n}) = 0\) for any \(n < n_0\).
+        % Take \(\calE' = \calE \otimes \calM^{n_0}\).
     \end{proof}
+
+    \Yang{To be continued...}
 
     \begin{definition}\label{def:minimal_section_of_ruled_surface}
         A section \(C_0\) of \(\pi\) is called a \emph{minimal section} if \Yang{to be continued...}
     \end{definition}
 
-    \begin{lemma}\label{thm:restriction_of_e}
+    \begin{lemma}\label{lem:restriction_of_e}
         Let \(X=\bbP_C(\calE) \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\) with invariant \(e\) and normalized \(\calE\). 
         \begin{enumerate}
             \item If \(\calE\) is decomposable, then \(e \geq 0\) and \(\calE \cong \calO_C \oplus \calL\) where \(\calL\) is a line bundle on \(C\) with \(\deg \calL = -e\).
             \item If \(\calE\) is indecomposable, then \(-2g \leq e \leq 2g - 2\).
         \end{enumerate} 
     \end{lemma}
+    \begin{proof}
+        If \(\calE = \calL_1 \oplus \calL_2\) is decomposable, we can assume that \(H^0(C,\calL_1) \neq 0\).
+        If \(\deg \calL_1 > 0\), then \(H^0(C,\calE \otimes \calL_1^{-1}) \neq 0\), contradicting the normalization of \(\calE\).
+        Similarly \(\deg \calL_2 \leq 0\).
+        Then \(\calL_1 \cong \calO_C\).
+        And hence \(e = -\deg c_1(\calE) = -\deg \calL_2 \geq 0\).
+
+        If \(\calE\) is indecomposable, we have an exact sequence
+        \[ 0 \to \calO_C \to \calE \to \calL \to 0 \]
+        which is a non-trivial extension, with \(\calL\) a line bundle on \(C\) of degree \(-e\).
+        Hence by \cref{prop:extension_and_Ext1}, we have \(0 \neq \Ext^1_C(\calL,\calO_C) \cong H^1(C,\calL^{-1})\).
+        By Serre duality, we have \(H^1(C,\calL^{-1}) \cong H^0(C,\calL \otimes \omega_C)\).
+        Hence \(\deg(\calL \otimes \omega_C) = 2g - 2 - e \geq 0\).
+
+        \Yang{To be continued...}
+    \end{proof}
 
     \begin{theorem}\label{thm:classification_of_ruled_surface_on_P1}
         Let \(\pi:X \to C\) be a ruled surface over \(C = \bbP^1\) with invariant \(e\).
         Then \(X \cong \bbP_{C}(\calO_C \oplus \calO_C(-e))\).
     \end{theorem}
+    \begin{proof}
+        This is a direct consequence of \cref{lem:restriction_of_e}.
+    \end{proof}
 
     \begin{example}\label{eg:explicit_description_of_rational_ruled_surface}
         Here we give an explicit description of the ruled surface \(X = \bbP_{\bbP^1}(\calO \oplus \calO(-e))\) for \(e \geq 0\).
-        \Yang{To be continued...}
+        
+        Let \(C\) be covered by two standard affine charts \(U_0,U_1\) with coordinate \(u\) on \(U_0\) and \(v\) on \(U_1\) such that \(u = 1/v\) on \(U_0 \cap U_1\).
+        On \(U_i\), let \(\calO(-e)|_{U_i}\) be generated by \(s_i\) for \(i=0,1\).
+        We have \(s_0 = u^e s_1\) on \(U_0 \cap U_1\).
+
+        On \(X_i = X_{U_i} \cong U_i \times \bbP^1\), let \([x_0:x_1]\) and \([y_0:y_1]\) be the homogeneous coordinates of \(\bbP^1\) on \(X_0\) and \(X_1\) respectively.
+        Then the transition function on \(X_0 \cap X_1\) is given by 
+        \[ (u,[x_0:x_1]) \mapsto (1/u, [x_0:u^ex_1]). \]
     \end{example}
+
+    \begin{remark}\label{rmk:Hirzebruch_surface}
+        The surface \(X = \bbP_{\bbP^1}(\calO \oplus \calO(-e))\) is also called the \emph{Hirzebruch surface}.
+    \end{remark}
 
     \begin{theorem}\label{thm:classification_of_ruled_surface_on_elliptic_curve}
         Let \(\pi:X = \bbP_E(\calE) \to E\) be a ruled surface over an elliptic curve \(E\) with invariant \(e\) and normalized \(\calE\). 
@@ -177,6 +270,31 @@ In this section, fix an algebraically closed field $\kkk$.
             \item If \(\calE\) is decomposable, then \(e \geq 0\) and \(\calE \cong \calO_E \oplus \calL\) where \(\calL\) is a line bundle on \(E\) with \(\deg \calL = -e\).
         \end{enumerate}
     \end{theorem}
+    \begin{proof}
+        Only the indecomposable case needs a proof.
+        By \cref{lem:restriction_of_e}, we have \(-2 \leq e \leq 0\) and a non-trivial extension
+        \[ 0 \to \calO_E \to \calE \to \calL \to 0 \]
+        where \(\calL\) is a line bundle on \(E\) of degree \(-e\).
+        \begin{case}
+            \(e=0\).
+        \end{case}
+        In this case, \(\calL\) is of degree \(0\) and \(H^1(E,\calL^{-1}) \cong H^0(E,\calL \otimes \omega_E) \cong H^0(E,\calL) \neq 0\).
+        Hence \(\calL \cong \calO_E\).
+        \Yang{To be continued...}
+
+        \begin{case}
+            \(e=-1\).
+        \end{case}
+        In this case, \(\calL\) is of degree \(1\) and \(H^1(E,\calL) \cong H^0(E,\calL^{-1}) = 0\).
+        By Riemann-Roch, we have \(h^0(E,\calL) = 1\).
+
+        \begin{case}
+            \(e=-2\).
+        \end{case}
+
+        \Yang{To be continued...}
+
+    \end{proof}
 
     \begin{example}
         \Yang{To be continued...}
@@ -187,18 +305,25 @@ In this section, fix an algebraically closed field $\kkk$.
 
     \begin{proposition}\label{prop:Picard_group_of_ruled_surface}
         Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\). 
-        Let \(C_0\) be a minimal section of \(\pi\) and let \(f\) be a fiber of \(\pi\). 
-        Then \(\Pic(X) \cong \bbZ C_0 \oplus \pi^*\Pic(C)\).
-        \Yang{Check this carefully.}
+        Let \(C_0\) be a minimal section of \(\pi\) and \(F\) a fiber of \(\pi\). 
+        Then \(\Pic(X) \cong \bbZ [C_0] \oplus \pi^*\Pic(C)\).
+        % \Yang{Check this carefully.}
     \end{proposition}
     \begin{proof}
-        \Yang{To be continued...}
+        Let \(D\) be any divisor on \(X\) with \(D.F = a \in \bbZ\).
+        Then \(D - aC_0\) is numerically trivial on the fibers of \(\pi\).
+        Let \(\calL = \calO_X(D - aC_0)\).
+        Then \(\calL|_{X_t} \cong \calO_{X_t}\) for any \(t \in C\).
+        By Grauert's Theorem (\cref{thm:Grauert_theorem}), \(\pi_*\calL\) is a line bundle on \(C\) 
+        \Yang{and the natural map \(\pi^*\pi_*\calL \to \calL\) is an isomorphism.}
+        % \Yang{To be continued...}
     \end{proof}
 
     \begin{proposition}\label{prop:canonical_divisor_of_ruled_surface}
         Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\) of genus \(g\). 
-        Let \(C_0\) be a minimal section of \(\pi\) and let \(f\) be a fiber of \(\pi\). 
-        Then \(K_X \sim -2C_0 + (K_C-)f\) where \(e = -C_0^2\).
+        Let \(C_0\) be a minimal section of \(\pi\) and let \(F\) be a fiber of \(\pi\). 
+        Then \(K_X \sim -2C_0 + \pi^*(K_C-c_1(\calE))\).
+        Numerically, we have \(K_X \equiv -2C_0 + (2g-2-e)F\) where \(e\) is the invariant of \(X\).
         \Yang{Check this carefully.}
     \end{proposition}
     \begin{proof}
@@ -220,6 +345,51 @@ In this section, fix an algebraically closed field $\kkk$.
         \Yang{To be continued...}
     \end{proof}
 
+    \begin{example}\label{eg:Neron_Severi_group_of_Hirzebruch_surface}
+        Here we draw the N\'eron-Severi group of the rational ruled surface \(X_e = \bbP_{\bbP^1}(\calO \oplus \calO(-e))\) for \(e = 1,2,3\).
+        \begin{center}
+        \begin{tikzpicture}[scale=1]
+            % First coordinate system
+            \begin{scope}[shift={(0,0)}]
+                \draw[->] (-0.5,0) -- (2,0) node[right] {$C_0$};
+                \draw[->] (0,-0.5) -- (0,3) node[above] {$F$};
+                \draw[thick] (0,0) -- (1.5,1.5) node[above right] {$b = a$};
+                \fill[red, opacity=0.2] (0,0) -- (1.5,1.5) -- (0,2.5) -- cycle;
+                \fill[orange, opacity=0.2] (0,0) -- (0,2.5) -- (1.5,1.5) -- (1.5,0) -- cycle;
+                \filldraw[black] (0.5,0.75) circle (1pt);
+                \node[above] at (0.5,0.75) {$-K$};
+                \node at (0,-0.9) {$X_1$};
+            \end{scope}
+            % Second coordinate system
+            \begin{scope}[shift={(4,0)}]
+                \draw[->] (-0.5,0) -- (2,0) node[right] {$C_0$};
+                \draw[->] (0,-0.5) -- (0,3) node[above] {$F$};
+                \draw[thick] (0,0) -- (1,2) node[above right] {$b = 2a$};
+                \fill[red, opacity=0.2] (0,0) -- (1,2) -- (0,2.5) -- cycle;
+                \fill[orange, opacity=0.2] (0,0) -- (0,2.5) -- (1,2) -- (1.5,0) -- cycle;
+                \filldraw[black] (0.5,1) circle (1pt);
+                \node[right] at (0.5,1) {$-K$};
+                \node at (0,-0.9) {$X_2$};
+            \end{scope}
+            % Third coordinate system
+            \begin{scope}[shift={(8,0)}]
+                \draw[->] (-0.5,0) -- (2,0) node[right] {$C_0$};
+                \draw[->] (0,-0.5) -- (0,3) node[above] {$F$};
+                \draw[thick] (0,0) -- (1,3) node[above right] {$b = 3a$};
+                \fill[red, opacity=0.2] (0,0) -- (1,3) -- (0,2.5) -- cycle;
+                \fill[orange, opacity=0.2] (0,0) -- (0,2.5) -- (1,3) -- (1.5,0) -- cycle;
+                \filldraw[black] (0.5,1.25) circle (1pt);
+                \node[right] at (0.5,1.25) {$-K$};
+                \node at (0,-0.9) {$X_3$};
+            \end{scope}
+        \end{tikzpicture}
+        \end{center}
+        We have \(-K_{X_e} \equiv 2C_0 + (2+e)F\).
+        For \(e=1\), \(-K\) is ample and hence \(X_1\) is a del Pezzo surface.
+        For \(e=2\), \(-K\) is nef and big but not ample.
+        For \(e\geq 3\), \(-K\) is big but not nef.
+    \end{example}
+
 
     \paragraph{Elliptic case.} Let \(\pi:X = \bbP_C(\calE) \to E\) be a ruled surface over an elliptic curve \(E\) with \(\calE\) a normalized vector bundle of rank \(2\) and degree \(-e\).
 
@@ -237,6 +407,48 @@ In this section, fix an algebraically closed field $\kkk$.
         \Yang{To be continued...}
     \end{proof}
 
+    \begin{example}\label{eg:Neron_Severi_group_of_decomposable_ruled_surface_over_elliptic_curve}
+        Here we draw the N\'eron-Severi group of the ruled surface \(X\) over an elliptic curve \(E\) with decomposable normalized \(\calE\) for \(e = 1,2,3\).
+        \begin{center}
+        \begin{tikzpicture}[scale=1]
+            % First coordinate system
+            \begin{scope}[shift={(0,0)}]
+                \draw[->] (-0.5,0) -- (2,0) node[right] {$C_0$};
+                \draw[->] (0,-0.5) -- (0,3) node[above] {$F$};
+                \draw[thick] (0,0) -- (1.5,1.5) node[above right] {$b = a$};
+                \fill[red, opacity=0.2] (0,0) -- (1.5,1.5) -- (0,2.5) -- cycle;
+                \fill[orange, opacity=0.2] (0,0) -- (0,2.5) -- (1.5,1.5) -- (1.5,0) -- cycle;
+                \filldraw[black] (0.5,0.25) circle (1pt);
+                \node[right] at (0.5,0.25) {$-K$};
+                \node at (0,-0.9) {$e = 1$};
+            \end{scope}
+            % Second coordinate system
+            \begin{scope}[shift={(4,0)}]
+                \draw[->] (-0.5,0) -- (2,0) node[right] {$C_0$};
+                \draw[->] (0,-0.5) -- (0,3) node[above] {$F$};
+                \draw[thick] (0,0) -- (1,2) node[above right] {$b = 2a$};
+                \fill[red, opacity=0.2] (0,0) -- (1,2) -- (0,2.5) -- cycle;
+                \fill[orange, opacity=0.2] (0,0) -- (0,2.5) -- (1,2) -- (1.5,0) -- cycle;
+                \filldraw[black] (0.5,0.5) circle (1pt);
+                \node[right] at (0.5,0.5) {$-K$};
+                \node at (0,-0.9) {$e = 2$};
+            \end{scope}
+            % Third coordinate system
+            \begin{scope}[shift={(8,0)}]
+                \draw[->] (-0.5,0) -- (2,0) node[right] {$C_0$};
+                \draw[->] (0,-0.5) -- (0,3) node[above] {$F$};
+                \draw[thick] (0,0) -- (1,3) node[above right] {$b = 3a$};
+                \fill[red, opacity=0.2] (0,0) -- (1,3) -- (0,2.5) -- cycle;
+                \fill[orange, opacity=0.2] (0,0) -- (0,2.5) -- (1,3) -- (1.5,0) -- cycle;
+                \filldraw[black] (0.5,0.75) circle (1pt);
+                \node[right] at (0.5,0.75) {$-K$};
+                \node at (0,-0.9) {$e = 3$};
+            \end{scope}
+        \end{tikzpicture}
+        \end{center}
+        In this case, \(-K\equiv 2C_0 + eF\) is always big but not nef.
+    \end{example}
+
     \begin{theorem}\label{thm:positivity_of_divisors_on_indecomposable_ruled_surface_over_elliptic_curve}
         Let \(\pi:X \to E\) be a ruled surface over an elliptic curve \(E\) with invariant \(e\).
         Assume that \(\calE\) is indecomposable.
@@ -250,4 +462,35 @@ In this section, fix an algebraically closed field $\kkk$.
     \begin{proof}
         \Yang{To be continued...}
     \end{proof}
+
+    \begin{example}\label{eg:Neron_Severi_group_of_indecomposable_ruled_surface_over_elliptic_curve}
+        Here we draw the N\'eron-Severi group of the ruled surface \(X\) over an elliptic curve \(E\) with indecomposable normalized \(\calE\) for \(e = -1,0\).
+        \begin{center}
+        \begin{tikzpicture}[scale=1]
+            % First coordinate system
+            \begin{scope}[shift={(0,0)}]
+                \draw[->] (-0.5,0) -- (2,0) node[right] {$C_0$};
+                \draw[->] (0,-2) -- (0,2) node[above] {$F$};
+                \draw[thick] (0,0) -- (1.5,-0.75) node[below right] {$b = -\frac{1}{2}a$};
+                \fill[red, opacity=0.2] (0,0) -- (1.5,-0.75) -- (0,1.5) -- cycle;
+                \fill[orange, opacity=0.2] (0,0) -- (0,1.5) -- (1.5,-0.75) -- cycle;
+                \filldraw[black] (0.5,-0.25) circle (1pt);
+                \node[right] at (0.5,-0.25) {$-K$};
+                \node at (0,-2.4) {$e = -1$};
+            \end{scope}
+            % Second coordinate system
+            \begin{scope}[shift={(6,0)}]
+                \draw[->] (-0.5,0) -- (2,0) node[right] {$C_0$};
+                \draw[->] (0,-2) -- (0,2) node[above] {$F$};
+                % \draw[thick] (0,0) -- (1,1.5) node[above right] {$b = 0$};
+                \fill[red, opacity=0.2] (0,0) -- (1.5,0) -- (0,1.5) -- cycle;
+                \fill[orange, opacity=0.2] (0,0) -- (1.5,0) -- (0,1.5) -- cycle;
+                \filldraw[black] (0.5,0) circle (1pt);
+                \node[above] at (0.5,0) {$-K$};
+                \node at (0,-2.4) {$e = 0$};
+            \end{scope}
+        \end{tikzpicture}
+        \end{center}
+        In this case, \(-K\equiv 2C_0 + eF\) is always nef but not big.
+    \end{example}
 
