@@ -1,20 +1,52 @@
 \section{The First Properties of Abelian Varieties}
 
 \subsection{Definition and examples of Abelian Varieties}
-    \begin{theorem}[Rigidity Lemma]\label{thm: Rigidity Lemma}
-        Let \(\pi_i: X \to Y_i\) be proper morphisms of varieties over a field \(\kk\) for \(i=1,2\).
-        Suppose that \(\pi_1\) is a fibration and \(\pi_2\) contracts \(\pi_1^{-1}(y_0)\).
-        Then there exists a rational map \(\varphi: Y_1 \ratmap Y_2\) such that \(\pi_2 \circ \varphi = \pi_1\) and \(\varphi\) is well-defined near \(Y_1 \setminus \{y_0\}\). 
-    \end{theorem}
+    % \begin{theorem}[Rigidity Lemma]\label{thm: Rigidity Lemma}
+    %     Let \(\pi_i: X \to Y_i\) be proper morphisms of varieties over a field \(\kk\) for \(i=1,2\).
+    %     Suppose that \(\pi_1\) is a fibration and \(\pi_2\) contracts \(\pi_1^{-1}(y_0)\).
+    %     Then there exists a rational map \(\varphi: Y_1 \ratmap Y_2\) such that \(\pi_2 \circ \varphi = \pi_1\) and \(\varphi\) is well-defined near \(Y_1 \setminus \{y_0\}\). 
+    % \end{theorem}
 
-    \begin{definition}\label{def: abelian varieties}
+    \begin{definition}\label{def: abelian schemes}
         Let \(S\) be a scheme.
         An \emph{abelian scheme over \(S\)} is a group object in the category \(\Sch_S\) such that the structure morphism is proper, smooth and a fibration.
         If \(S = \Spec \kk\) for some field \(\kk\), then it is called an \emph{abelian variety over \(\kk\)}.
     \end{definition}
+
+    \begin{definition}\label{def:abelian_varieties}
+        Let \(\kk\) be a field.
+        An \emph{abelian variety over \(\kk\)} is a proper variety \(A\) over \(\kk\) together with morphisms \emph{identity} \(e: \Spec \kk \to A\), \emph{multiplication} \(m: A \times A \to A\) and \emph{inversion} \(i: A \to A\) such that the following diagrams commute:
+        \begin{enumerate}
+            \item (Associativity)
+            \[
+                \begin{tikzcd}
+                    & A \times A \times A \arrow[rd, "m \times \id_A"] \arrow[ld, "\id_A \times m"'] & \\
+                    A \times A \arrow[rd, "m"] & & A \times A \arrow[ld, "m"'] \\
+                     & A & 
+                \end{tikzcd};
+            \]
+            \item (Identity)
+            \[
+                \begin{tikzcd}
+                    A \times \Spec \kk \arrow[r, "\id_A \times e"] \arrow[rd, "\cong"'] & A \times A \arrow[d, "m"] & \Spec \kk \times A \arrow[l, "e \times \id_A"'] \arrow[ld, "\cong"] \\
+                    & A &
+                \end{tikzcd};
+            \]
+            \item (Inversion)
+            \[
+                \begin{tikzcd}
+                    & A \arrow[ld, "\id_A \times i"'] \arrow[rd, "i \times \id_A"] \arrow[d] & \\
+                    A \times A \arrow[rd, "m"'] & \Spec \kk \arrow[d, "e"] & A \times A \arrow[ld, "m"] \\
+                    & A &
+                \end{tikzcd}.
+            \]
+        \end{enumerate}
+    \end{definition}
+    \Yang{Can we just say that \(A(\kk)\) is a group with \(e,m,i\) satisfying the axioms?}
     
     \begin{example}\label{eg: elliptic curves as abelian varieties}
-        
+        Let \(E\) be an elliptic curve over a field \(\kk\).
+        Then \(E\) is an abelian variety of dimension \(1\).
     \end{example}
 
     \begin{example}\label{eg: product of abelian varieties as abelian varieties}
@@ -28,6 +60,9 @@
     In the following, we will always assume that \(A\) is an abelian variety over a field \(\kk\) of dimension \(d\).
 
     Temporarily, we will use the notation \(e_A,m_A,i_A\) to denote the identity section, multiplication morphism and inversion morphism of an abelian variety \(A\).
+    The left translation by \(a \in A(\kk)\) is defined as
+    \[ l_a: A \xrightarrow{\cong} \Spec \kk \times A \xrightarrow{a \times \id_A} A \times A \xrightarrow{m_A} A. \]
+    Similar definition applies to the right translation \(r_a\).
 
     \begin{proposition}\label{prop: abelian varieties are smooth}
         Let \( A \) be an abelian variety. 
@@ -43,6 +78,12 @@
         Then the cotangent bundle \( \Omega_A \) is trivial, i.e., \(\Omega_A \cong \calO_A^{\oplus d}\) where \(d = \dim A\).
     \end{proposition}
     \begin{proof}
+        % Choose an open neighborhood \(U\) of \(e_A\) such that \(\Omega_A|_U \cong \bigoplus_{i=1}^d \calO_U \cdot \alpha_i\) is trivial.
+        % Choose a basis \(\{\alpha_i\}_{i=1}^d\) of \(\Omega_{A,e_A}\).
+        % Then define a global form \(\omega_i\) on \(A\) by \(\omega_i(a) = l_{-a}^* \alpha_i\) for every \(a \in A(\kk)\). 
+        Consider \(\Omega_A\) as a geometric vector bundle of rank \(d\).
+        Then the conclusion follows from the fact that the left translation morphism \(l_a\) induces a morphism of varieties \(\Omega_A \to \Omega_A\) for every \(a \in A(\kk)\).
+        \Yang{But how to show it is a morphism of varieties?}
         \Yang{To be completed.}
     \end{proof}
 
@@ -64,7 +105,7 @@
 
     \begin{proposition}\label{prop: abelian varieties are abelian groups}
         Let \( A \) be an abelian variety. 
-        Then \( A \) is an abelian group.
+        Then \( A(\kk) \) is an abelian group.
     \end{proposition}
     \begin{proof}
         Note that a group is abelian if and only if the inversion map is a homomorphism of groups.

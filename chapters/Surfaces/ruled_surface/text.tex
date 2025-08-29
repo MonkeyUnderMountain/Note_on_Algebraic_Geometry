@@ -181,9 +181,10 @@ This section is mainly based on \cite[Chapter V.2]{Har77}.
         By \cref{prop:relative_morphism_to_projective_bundle}, we have a morphism \(\varphi:X \to \bbP_C(\calE)\) over \(C\) such that \(\calL \cong \varphi^*\calO_{\bbP_C(\calE)}(1)\).
         Since \(\calL|_{X_t} \cong \calO_{\bbP^1}(1)\) for any \(t \in C\), \(\varphi|_{X_t}:X_t \to \bbP_C(\calE)_t\) is an isomorphism for any \(t \in C\).
         Hence \(\varphi\) is bijection on the underlying sets.
-        By Miracle Flatness (\cref{thm:miracle_flatness}), \(\varphi\) is flat.
-        \Yang{\(\calO_{\bbP_C(\calE),\varphi(x)} \to \calO_{X,x}\) is finite}.
+        % By Miracle Flatness (\cref{thm:miracle_flatness}), \(\varphi\) is flat.
+        % \Yang{\(\calO_{\bbP_C(\calE),\varphi(x)} \to \calO_{X,x}\) is finite}.
         % By Nakayama's Lemma, \(\calO_{\bbP_C(\calE),\varphi(x)} \to \calO_{X,x}\) is surjective 
+        \Yang{Here is a serious gap. Why fiberwise isomorphism implies isomorphism?}
     \end{proof}
 
     % \begin{lemma}\label{lem:correspondence_between_sections_and_quotient_line_bundles}
@@ -199,15 +200,28 @@ This section is mainly based on \cite[Chapter V.2]{Har77}.
     \begin{lemma}\label{lem:existence_of_normalized_vector_bundle}
         It is possible to write \(X \cong \bbP_C(\calE)\) such that \(H^0(C,\calE) \neq 0\) but \(H^0(C,\calE \otimes \calL) = 0\) for any line bundle \(\calL\) on \(C\) with \(\deg \calL < 0\).
         Such a vector bundle \(\calE\) is called a \emph{normalized vector bundle}.
+        In particular, if \(\calE\) is normalized, then \(e = -\deg c_1(\calE)\) is an invariant of the ruled surface \(X\).
     \end{lemma}
     \begin{proof}
-        % Choose \(\calM\) of degree \(1\) on \(C\).
-        % We have \(H^0(C,\calE \otimes \calM^n) \neq 0\) for \(n \gg 0\) since \(\calM\) is ample.
-        % By \cref{prop:relative_morphism_to_projective_bundle,lem:existence_of_section_of_ruled_surface}, we have that \(\calE\) is an extension of line bundles.
-        % In particular, \(\calE \ten \calM^n\) has no global sections for \(n \ll 0\) since line bundles on curve of negative degree have no global sections.
-        % Hence there exists \(n_0\) such that \(H^0(C,\calE \otimes \calM^{n_0}) \neq 0\) but \(H^0(C,\calE \otimes \calM^{n}) = 0\) for any \(n < n_0\).
-        % Take \(\calE' = \calE \otimes \calM^{n_0}\).
+        We can suppose that \(\calE\) is globally generated since we can always twist \(\calE\) by a sufficiently ample line bundle on \(C\).
+        Then for all line bundle \(\calL\) of degree sufficiently large, \(\calL\) is very ample and hence \(H^0(C,\calE \otimes \calL) \neq 0\).
+        By \cref{lem:existence_of_section_of_ruled_surface,prop:relative_morphism_to_projective_bundle}, \(\calE\) is an extension of line bundles.
+        Then for all line bundle \(\calL\) of degree sufficiently negative, \(H^0(C,\calE \otimes \calL) = 0\) since line bundles of negative degree have no global sections.
+        Hence we can find a line bundle \(\calM\) on \(C\) of lowest degree such that \(H^0(C,\calE \otimes \calM) \neq 0\).
+        Replacing \(\calE\) by \(\calE \otimes \calM\), we are done.
     \end{proof}
+
+    \begin{remark}\label{rmk:e_is_unique_but_normalization_is_not}
+        The invariant \(e\) is unique but the normalization of \(\calE\) is not unique.
+        For example, if \(\calE\) is normalized, then so is \(\calE \otimes \calL\) for any line bundle \(\calL\) on \(C\) of degree \(0\).
+        \Yang{To be continued...}
+    \end{remark}
+
+    Suppose that \(X \cong \bbP_C(\calE)\) where \(\calE\) is a normalized vector bundle of rank \(2\) on \(C\).
+    Since \(H^0(C,\calE) \neq 0\), choosing a non-zero section \(s\), we get an exact sequence
+    \[ 0 \to \calO_C \xrightarrow{s} \calE \to \calE/\calO_C \to 0. \]
+    We claim that \(\calE/\calO_C\) is a line bundle on \(C\).
+    Since \(C\) is a curve, we only need to check that \(\calE/\calO_C\) is torsion-free.
 
     \Yang{To be continued...}
 
@@ -236,7 +250,15 @@ This section is mainly based on \cite[Chapter V.2]{Har77}.
         By Serre duality, we have \(H^1(C,\calL^{-1}) \cong H^0(C,\calL \otimes \omega_C)\).
         Hence \(\deg(\calL \otimes \omega_C) = 2g - 2 - e \geq 0\).
 
-        \Yang{To be continued...}
+        On the other hand, let \(\calM\) be a line bundle on \(C\) of degree \(-1\).
+        Twist the above exact sequence by \(\calM\) and take global sections, we have an equation
+        \[ h^0(\calM) - h^0(\calE \ten \calM) + h^0(\calL \ten \calM) - h^1(\calM) + h^1(\calE \ten \calM) - h^1(\calL \ten \calM) = 0. \]
+        Since \(\deg \calM < 0\) and \(\calE\) is normalized, we have \(h^0(\calM) = h^0(\calE \ten \calM) = 0\).
+        By Riemann-Roch, we have \(h^1(\calM) = g\) and \(h^0(\calL \ten \calM) - h^1(\calL \ten \calM) = -e - 1 + 1 - g\).
+        Hence 
+        \[ h^1(\calE \ten \calM) = e + 2g \geq 0. \]
+        This gives \(e \geq -2g\).
+        % \Yang{To be continued...}
     \end{proof}
 
     \begin{theorem}\label{thm:classification_of_ruled_surface_on_P1}
@@ -493,4 +515,11 @@ This section is mainly based on \cite[Chapter V.2]{Har77}.
         \end{center}
         In this case, \(-K\equiv 2C_0 + eF\) is always nef but not big.
     \end{example}
+
+
+    \begin{proposition}\label{prop:nef_is_bpf_on_ruled_surface}
+        Let \(\pi:X \to C\) be a ruled surface over a smooth curve \(C\).
+        Then every nef divisor on \(X\) is semi-ample.
+        \Yang{Check this carefully.}
+    \end{proposition}
 
