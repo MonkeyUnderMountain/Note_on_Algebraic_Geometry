@@ -1,11 +1,20 @@
 \section{The First Properties of Abelian Varieties}
 
+
+\subsection{Preliminaries}
+    \begin{proposition}\label{prop:upper semicontinuity of fiber dimension}
+        Let \(f: X \to Y\) be a morphism of varieties over a field \(\kk\).
+        Then the function \(y \mapsto \dim f^{-1}(y)\) is upper semicontinuous, i.e., for every integer \(m\), the set \(\{y \in Y: \dim f^{-1}(y) \geq m\}\) is closed in \(Y\).
+        \Yang{To be check.}
+    \end{proposition}
+
+    
 \subsection{Definition and examples of Abelian Varieties}
-    % \begin{theorem}[Rigidity Lemma]\label{thm: Rigidity Lemma}
-    %     Let \(\pi_i: X \to Y_i\) be proper morphisms of varieties over a field \(\kk\) for \(i=1,2\).
-    %     Suppose that \(\pi_1\) is a fibration and \(\pi_2\) contracts \(\pi_1^{-1}(y_0)\).
-    %     Then there exists a rational map \(\varphi: Y_1 \ratmap Y_2\) such that \(\pi_2 \circ \varphi = \pi_1\) and \(\varphi\) is well-defined near \(Y_1 \setminus \{y_0\}\). 
-    % \end{theorem}
+    \begin{theorem}[Rigidity Lemma]\label{thm: Rigidity Lemma}
+        Let \(\pi_i: X \to Y_i\) be proper morphisms of varieties over a field \(\kk\) for \(i=1,2\).
+        Suppose that \(\pi_1\) is a fibration and \(\pi_2\) contracts \(\pi_1^{-1}(y_0)\).
+        Then there exists a rational map \(\varphi: Y_1 \ratmap Y_2\) such that \(\pi_2 \circ \varphi = \pi_1\) and \(\varphi\) is well-defined near \(Y_1 \setminus \{y_0\}\). 
+    \end{theorem}
 
     \begin{definition}\label{def: abelian schemes}
         Let \(S\) be a scheme.
@@ -13,9 +22,9 @@
         If \(S = \Spec \kk\) for some field \(\kk\), then it is called an \emph{abelian variety over \(\kk\)}.
     \end{definition}
 
-    \begin{definition}\label{def:abelian_varieties}
-        Let \(\kk\) be a field.
-        An \emph{abelian variety over \(\kk\)} is a proper variety \(A\) over \(\kk\) together with morphisms \emph{identity} \(e: \Spec \kk \to A\), \emph{multiplication} \(m: A \times A \to A\) and \emph{inversion} \(i: A \to A\) such that the following diagrams commute:
+    \begin{definition}\label{def:abelian_varieties_over_algebraically_closed_field}
+        Let \(\kk\) be an algebraically closed field.
+        An \emph{abelian variety over \(\kkk\)} is a proper variety \(A\) over \(\kk\) together with morphisms \emph{identity} \(e: \Spec \kk \to A\), \emph{multiplication} \(m: A \times A \to A\) and \emph{inversion} \(i: A \to A\) such that the following diagrams commute:
         \begin{enumerate}
             \item (Associativity)
             \[
@@ -88,8 +97,11 @@
     \end{proof}
 
     \begin{lemma}\label{lem: rigidity lemma for X product type}
-        Let \(p: X \times Y \to Z\) be a proper morphism of varieties over \(\kk\) such that \(p\) contracts \(\{x_0\} \times Y\) for some point \(x_0 \in X\).
-        Then there exists a unique morphism \(f: Y \to Z\) such that \(p = f \circ p_Y\).
+        Let \(X, Y, Z\) be proper varieties over a field \(\kk\) and \(g:X \times Y \to Z\) a morphism over \(\kk\).
+        Suppose that \(g\) contracts \(X \times y_0\) for some point \(y_0 \in X(\kk)\).
+        Then there exists a unique morphism \(f: Y \to Z\) such that \(g = f \circ p_Y\), where \(p_Y: X \times Y \to Y\) is the projection to the second factor.
+        % Let \(p: X \times Y \to Z\) be a proper morphism of varieties over \(\kk\) such that \(p\) contracts \(\{x_0\} \times Y\) for some point \(x_0 \in X\).
+        % Then there exists a unique morphism \(f: Y \to Z\) such that \(p = f \circ p_Y\).
     \end{lemma}
     \begin{proof}
         \Yang{To be completed.}
@@ -100,6 +112,15 @@
         Then any morphism \(f: A \to B\) with \(f(e_A) = e_B\) is a group homomorphism.
     \end{theorem}
     \begin{proof}
+        \Yang{We have \((m_A)_*(\calO_{A\times A}) \cong \calO_A\).}
+        Then consider the diagram
+        \[ \begin{tikzcd}
+            A \times A \arrow[r, "f \times f"] \arrow[d, "m_A"'] & B \times B \arrow[d, "m_B"] \\
+            A & B.
+        \end{tikzcd} \]
+        For every closed point \(a \in A\), the fiber \(m_A^{-1}(a)\) is isomorphic to \(m_{A_{\rkk(a)}}^{-1}(a)\) and 
+        % Let \(f:A\times A \to B\) be given by \(A\times A \xrightarrow{f\times f} B \times B \xrightarrow{m_B} B\).
+        % Then \(f\) contracts \(A \times e_A\) to \(e_B\).
         \Yang{To be completed.}
     \end{proof}
 

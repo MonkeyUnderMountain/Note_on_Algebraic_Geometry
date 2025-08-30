@@ -31,7 +31,7 @@
         Then there exists a linear transformation \(\phi:\bbP^n_\kk \ratmap \bbP^m_\kk\) which is well defined near image of \(f\) and satisfies \(g=\phi \circ f\).
     \end{proposition}
     \begin{proof}
-        
+        \Yang{To be continued.}
     \end{proof}
 
     \begin{example}\label{eg:d-uple_embedding_or_Veronese_embedding}
@@ -61,6 +61,15 @@
         Let \(X=\bbF_2\) be the second Hirzebruch surface, i.e., the projective bundle \(\bbP_{\bbP^1}(\calO_{\bbP^1}\oplus \calO_{\bbP^1}(-2))\) over \(\bbP^1\).
         \Yang{To be continued.}
     \end{example}
+
+    \begin{definition}\label{def:general_linear_system}
+        A \emph{linear system} on a scheme \(X\) is a pair \((\calL,V)\) where \(\calL\) is a line bundle on \(X\) and \(V\subseteq \Gamma(X,\calL)\) is a subspace.
+        The dimension of the linear system is \(\dim V - 1\).
+        A linear system is \emph{base-point free} if \(V\) is base-point free.
+        A linear system is \emph{complete} if \(V=\Gamma(X,\calL)\).
+        \Yang{To be continued.}
+        
+    \end{definition}
 
 
     \begin{definition}\label{def:ample_line_bundle}
@@ -102,29 +111,48 @@
     % \end{definition}
 
     \begin{theorem}\label{thm:ample_very_ample}
-        Let \(X\) be a scheme over a ring \(A\) and \(\calL\) a line bundle on \(X\).
+        Let \(X\) be a scheme of finite type over a noetherian ring \(A\) and \(\calL\) a line bundle on \(X\).
         Then the following are equivalent:
         \begin{enumerate}
             \item \(\calL\) is ample;
-            \item for some \(n>0\), \(\calL^{\otimes n}\) is very ample.
-            % \item suppose that \(X\) is of fibFor all \(n \gg 0\), \(\calL^{\otimes n}\) is very ample.
-        \end{enumerate}
-        If furthermore \(X\) is of finite type over noetherian ring \(A\), then the above are also equivalent to:
-        \begin{enumerate}
-            \item[(c)] for all \(n \gg 0\), \(\calL^{\otimes n}\) is very ample.
+            \item for some \(n>0\), \(\calL^{\otimes n}\) is very ample;
+            \item for all \(n \gg 0\), \(\calL^{\otimes n}\) is very ample.
         \end{enumerate}
         \Yang{To be continued.}
     \end{theorem}
 
     \begin{proposition}\label{prop:tensor_with_ample_very_ample_and_bpf}
+        Let \(X\) be a scheme of finite type over a noetherian ring \(A\) and \(\calL\), \(\calM\) line bundles on \(X\).
+        Then we have the following:
+        \begin{enumerate}
+            \item if \(\calL\) is ample and \(\calM\) is globally generated, then \(\calL \otimes \calM\) is ample;
+            \item if \(\calL\) is very ample and \(\calM\) is globally generated, then \(\calL \otimes \calM\) is very ample;
+            \item if both \(\calL\) and \(\calM\) are ample, then so is \(\calL \otimes \calM\);
+            \item if both \(\calL\) and \(\calM\) are globally generated, then so \(\calL \otimes \calM\);
+            \item if \(\calL\) is ample and \(\calM\) is arbitrary, then for some \(n>0\), \(\calL^{\otimes n} \ten \calM\) is ample;
+        \end{enumerate}
+        \Yang{To be continued.}
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:very_ample_iff_separates_points_and_vectors}
+        Let \(X\) be a scheme of finite type over a noetherian ring \(A\) and \(\calL\) a line bundle on \(X\).
+        Then \(\calL\) is very ample if and only if the following two conditions hold:
+        \begin{enumerate}
+            \item (separate points) for any two distinct points \(x,y\in X\), there exists \(s\in \Gamma(X,\calL)\) such that \(s(x)=0\) but \(s(y)\neq 0\);
+            \item (separate tangent vectors) for any point \(x\in X\) and non-zero tangent vector \(v\in T_xX\), there exists \(s\in \Gamma(X,\calL)\) such that \(s(x)=0\) but \(v(s)\neq 0\).
+        \end{enumerate}
+        \Yang{To be continued.}
         
     \end{proposition}
 
 \subsection{Linear systems}
 
-    In this subsection, we give a more geometric interpretation of last subsection using the language of linear systems.
+    In this subsection, when work over a field, we give a more geometric interpretation of last subsection using the language of linear systems.
 
-    \begin{definition}\label{def:complete_linear_system}
+    \begin{definition}\label{def:geometric_complete_linear_system}
         Let \(X\) be a normal proper variety over a field \(\kk\), \(D\) a (Cartier) divisor on \(X\) and \(\calL=\calO_X(D)\) the associated line bundle.
         The \emph{complete linear system} associated to \(D\) is the set 
         \[ |D| = \{D'\in \CaDiv(X) : D'\sim D, D' \geq 0\}. \]
@@ -174,31 +202,6 @@
     \begin{example}\label{eg:base_locus_-K_of_Hirzebruch_surface}
         Let \(X=\bbF_2\) be the second Hirzebruch surface, i.e., the projective bundle \(\bbP(\calO_{\bbP^1}\oplus \calO_{\bbP^1}(2))\) over \(\bbP^1\).
         Let \(\pi:X\to \bbP^1\) be the projection and \(E\) the unique section of \(\pi\) with self-intersection \(-2\).
-        Then the anticanonical bundle \(-K_X\) is big but not base-point free.
-        In fact, we have
-        \[
-            K_X = -2E - 4F,
-        \]
-        where \(F\) is a fiber of \(\pi\).
-        Thus
-        \[
-            -K_X = 2E + 4F.
-        \]
-        Since \(E^2=-2<0\), any section of \(-K_X\) must vanish on \(E\).
-        Thus \(E\subseteq \Bs(-K_X)\), so \(-K_X\) is not base-point free.
-        On the other hand, we have
-        \[
-            H^0(X,\calO_X(-nK_X)) = H^0(X,\calO_X(2nE + 4nF)).
-        \]
-        Using the projection formula and the fact that \(\pi_*\calO_X(E) = \calO_{\bbP^1} \oplus \calO_{\bbP^1}(-2)\), we can compute that
-        \[
-            H^0(X,\calO_X(2nE + 4nF)) = H^0(\bbP^1, S^{2n}(\calO_{\bbP^1} \oplus \calO_{\bbP^1}(-2)) \otimes \calO_{\bbP^1}(4n)).
-        \]
-        The right-hand side can be computed to be a direct sum of line bundles on \(\bbP^1\), and for large \(n\), it contains many global sections.
-        In fact, one can show that
-        \[
-            \dim H^0(X,\calO_X(-nK_X)) \sim 4n^2 \text{ for large } n,
-        \]
         \Yang{To be continued.}
         
     \end{example}
