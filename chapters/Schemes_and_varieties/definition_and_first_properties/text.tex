@@ -24,7 +24,7 @@
         \[U \mapsto \{\text{constant functions on }U\}\] 
         defines a presheaf \(\calC\) of rings on \(X\) but not a sheaf.
 
-        For a concrete example, let \(X = [0,1]\cup [2,3]\) with the subspace topology from \(\bbR\).
+        For a concrete example, let \(X = (0,1)\cup (2,3)\) with the subspace topology from \(\bbR\).
         Consider the open covering \(\{(0,1), (2,3)\}\) of \(X\).
         The sections \(s_1 = 1 \in \calC((0,1))\) and \(s_2 = 2 \in \calC((2,3))\) agree on the intersection (which is empty), 
         but there is no global section \(s \in \calC(X)\) such that \(s|_{(0,1)} = s_1\) and \(s|_{(2,3)} = s_2\).
@@ -32,7 +32,8 @@
 
     \begin{definition}\label{def:locally_ringed_space}
         A \emph{locally ringed space} is a pair \((X, \calO_X)\) where \(X\) is a topological space and \(\calO_X\) is a sheaf of rings on \(X\) such that for every \(x \in X\), the stalk \(\calO_{X,x}\) is a local ring.
-        A morphism of locally ringed spaces \(f : (X, \calO_X) \to (Y, \calO_Y)\) consists of a continuous map \(f : X \to Y\) and a morphism of sheaves of rings \(f^\sharp : \calO_Y \to f_*\calO_X\) 
+        
+        A \emph{morphism of locally ringed spaces} \(f : (X, \calO_X) \to (Y, \calO_Y)\) consists of a continuous map \(f : X \to Y\) and a morphism of sheaves of rings \(f^\sharp : \calO_Y \to f_*\calO_X\) 
         such that for every \(x \in X\), the induced map on stalks \(f_x^\sharp : \calO_{Y,f(x)} \to \calO_{X,x}\) is a local homomorphism, 
         i.e., it maps the maximal ideal of \(\calO_{Y,f(x)}\) to the maximal ideal of \(\calO_{X,x}\).
     \end{definition}
@@ -50,7 +51,7 @@
         then there exists a unique morphism \(f : (X, \calO_X) \to (Y, \calO_Y)\) such that \(f|_{U_i} = f_i\) for all \(i \in I\).
     \end{example}
 
-    \begin{example}[Glue open subspace]\label{eg:glue_open_locally_ringed_subspace}
+    \begin{example}[Glue locally ringed space]\label{eg:glue_open_locally_ringed_subspace}
         We construct a locally ringed space by gluing open subspaces.
         Let \((X_i, \calO_{X_i})\) be locally ringed spaces for \(i \in I\) and \((U_{ij}, \calO_{X_i}|_{U_{ij}})\) be open subspaces for \(i,j \in I\).
         Suppose we have isomorphisms \(\varphi_{ij} : (U_{ij}, \calO_{X_i}|_{U_{ij}}) \to (U_{ji}, \calO_{X_j}|_{U_{ji}})\) such that
