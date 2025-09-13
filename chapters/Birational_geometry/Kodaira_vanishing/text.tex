@@ -148,7 +148,7 @@
         \[ H^i(X, K_X + D) = 0,\quad \forall i > 0. \]
     \end{theorem}
     \begin{theorem}[Kawamata-Viehweg Vanishing Theorem II]\label{thm: Kawamata-Viehweg Vanishing Theorem in KM98}
-        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef and big \(\bbq\)-divisor on \(X\).
+        Let \(X\) be a smooth projective variety of dimension \(n\) over \(\kk\) of characteristic \(0\) and \(D\) a nef and big \(\bbQ\)-divisor on \(X\).
         Suppose that \(\lceil D \rceil - D\) has snc support.
         Then
         \[
@@ -157,7 +157,7 @@
     \end{theorem}
     \begin{theorem}[Kawamata-Viehweg Vanishing Theorem III]\label{thm: Kawamata-Viehweg Vanishing Theorem for klt pair}
         Let \((X,B)\) be a klt pair over \(\kk\) of characteristic \(0\).
-        Let \(D\) be a nef \(\bbq\)-divisor on \(X\) such that \(D + K_{(X,B)}\) is a Cartier divisor.
+        Let \(D\) be a nef \(\bbQ\)-divisor on \(X\) such that \(D + K_{(X,B)}\) is a Cartier divisor.
         Then
         \[ H^i(X, K_{(X,B)} + D) = 0,\quad \forall i > 0. \]
     \end{theorem}
@@ -170,7 +170,7 @@
     \begin{proof}[Proof of II (\cref{thm: Kawamata-Viehweg Vanishing Theorem in KM98})]
         Set \(M:= \lceil D \rceil\).
         Let 
-        \[ B \coloneqq \sum_{i=1}^k b_i B_i \coloneqq \lceil D \rceil - D = M - A, \quad b_i \in (0,1) \cap \bbq. \]
+        \[ B \coloneqq \sum_{i=1}^k b_i B_i \coloneqq \lceil D \rceil - D = M - A, \quad b_i \in (0,1) \cap \bbQ. \]
         We do not require that \(B_i\) are irreducible but we require that \(B_i\) are smooth.
 
         We induct on \(k\).
@@ -199,7 +199,7 @@
         and the left hand vanishes by \cref{thm: Kawamata-Viehweg Vanishing Theorem in KM98} in either case relative to the assumption of \(D\).
     \end{proof}
     \begin{proof}[Proof of I (\cref{thm: Kawamata-Viehweg Vanishing Theorem for nef and big divisor})]
-        By \cref{lem:nef_and_big_approximation_by_ample}, we can choose \(k \gg 0\) such that \((X,1/k B)\) is a klt pair with \(D \sim_\bbq A + \frac{1}{k}B\) for some ample divisor \(A\).
+        By \cref{lem:nef_and_big_approximation_by_ample}, we can choose \(k \gg 0\) such that \((X,1/k B)\) is a klt pair with \(D \sim_\bbQ A + \frac{1}{k}B\) for some ample divisor \(A\).
         Then the theorem comes down to \cref{thm: Kawamata-Viehweg Vanishing Theorem for klt pair}.
     \end{proof}
 
@@ -242,13 +242,13 @@
     \begin{lemma}\label{lem:nef_and_big_approximation_by_ample}
         Let \(X\) be a projective variety of dimension \(n\) and \(D\) a nef and big divisor on \(X\).
         Then there exists an effective divisor \(B\) such that for every \(k\), there is an ample divisor \(A_k\) such that 
-        \[ D \sim_\bbq A_k + \frac{1}{k}B. \]
+        \[ D \sim_\bbQ A_k + \frac{1}{k}B. \]
     \end{lemma}
     \begin{proof}
         By \Yang{definition} of big divisor, there exists an ample divisor \(A_1\) and effective divisor \(B\) such that
-        \[ D \sim_\bbq A_1 + B. \]
+        \[ D \sim_\bbQ A_1 + B. \]
         Then we have 
-        \[ D \sim_\bbq \frac{A + (k-1)D}{k} + \frac{1}{k}B. \]
+        \[ D \sim_\bbQ \frac{A + (k-1)D}{k} + \frac{1}{k}B. \]
         Since \(A\) is ample and \(D\) is nef, we can take \(A_k = (A + (k-1)D)/k\) which is ample.
         % \Yang{To be completed.}
     \end{proof}

@@ -4,10 +4,10 @@
 \subsection{Preliminary}
 
     \begin{theorem}[{Iitaka fibration, semiample case, ref. \cite[Theorem 2.1.27]{Laz04a}}]\label{thm: Iitaka fibration in semiample case}
-        Let \(X\) be a projective variety and \(\call\) an semiample line bundle on \(X\).
+        Let \(X\) be a projective variety and \(\calL\) an semiample line bundle on \(X\).
         Then there exists a fibration \(\varphi: X \to Y\) of projective varieties 
-        such that for any \(m\gg 0\) with \(\call^m\) base point free, we have that the morphism \(\varphi_{\call^m}\) induced by \(\call^m\) is isomorphic to \(\varphi\).
-        Such a fibration is called the \emph{Iitaka fibration} associated to \(\call\).
+        such that for any \(m\gg 0\) with \(\calL^m\) base point free, we have that the morphism \(\varphi_{\calL^m}\) induced by \(\calL^m\) is isomorphic to \(\varphi\).
+        Such a fibration is called the \emph{Iitaka fibration} associated to \(\calL\).
     \end{theorem}
 
     \begin{theorem}[{Rigidity Lemma, ref. \cite[Lemma 1.15]{Deb01}}]\label{thm: Rigidity Lemma}
@@ -17,8 +17,8 @@
     \end{theorem}
 
     \begin{theorem}\label{thm:convex_separation_theorem}
-        Let \(A,B \subset \bbr^n\) be disjoint convex sets.
-        Then there exists a linear functional \(f: \bbr^n \to \bbr\) such that \(f|_A \leq c\) and \(f|_B \geq c\) for some \(c \in \bbr\).
+        Let \(A,B \subset \bbR^n\) be disjoint convex sets.
+        Then there exists a linear functional \(f: \bbR^n \to \bbR\) such that \(f|_A \leq c\) and \(f|_B \geq c\) for some \(c \in \bbR\).
     \end{theorem}
 
     % \begin{theorem}[{Upper semicontinuity of cohomology, ref. \cite[Chapter III, Theorem 12.8]{Har77}}]\label{thm: upper semicontinuity of cohomology}
@@ -71,6 +71,9 @@
         Then for \(m \gg 0\), we have 
         \[ H^0(X,mD) \neq 0. \]
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 \subsection{Base Point Free Theorem}
 
@@ -79,11 +82,14 @@
         Suppose that \(D\) is nef and \(aD-K_{(X,B)}\) is nef and big for some \(a > 0\).
         Then for \(m \gg 0\), \(mD\) is base point free.
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{remark}\label{rmk:statement_in_BPF_theorem_stronger_than_semiample}
         In general, we say that a Cartier divisor \(D\) is \emph{semiample} if there exists a positive integer \(m\) such that \(mD\) is base point free.
         The statement in Base Point Free Theorem (\cref{thm: base point free theorem}) is strictly stronger than the semiample condition.
-        For example, let \(\call\) be a torsion line bundle, then \(\call\) is semiample but there exists no positive integer \(M\) such that \(m\call\) is base point free for all \(m>M\).
+        For example, let \(\calL\) be a torsion line bundle, then \(\calL\) is semiample, but there exists no positive integer \(M\) such that \(m\calL\) is base point free for all \(m>M\).
     \end{remark}
 
 \subsection{Rationality Theorem}
@@ -91,9 +97,9 @@
     
 
     % \begin{lemma}\label{lem:polynomial_vanishes_along_strips}
-    %     Let \(P(x,y) \neq 0\in \bbq[x,y]\) with \(\deg P \leq n\).
+    %     Let \(P(x,y) \neq 0\in \bbQ[x,y]\) with \(\deg P \leq n\).
     %     Then for every \(r,\varepsilon > 0\) with \(n+1 \leq v(r)\varepsilon\) and for all \(M>0\), \(P\) is not identically zero on the set 
-    %     \[ \Lambda_{r,\varepsilon} \coloneqq \{(p,q) \in \bbz^2 : p,q>M, 0\leq pr-q \leq \varepsilon\}.\]
+    %     \[ \Lambda_{r,\varepsilon} \coloneqq \{(p,q) \in \bbZ^2 : p,q>M, 0\leq pr-q \leq \varepsilon\}.\]
     %     \Yang{Need to modify}
     % \end{lemma}
     % \begin{proof}
@@ -108,31 +114,31 @@
     \end{lemma}
 
     \begin{theorem}[Rationality Theorem]\label{thm: rationality theorem}
-        Let \((X,B)\) be a projective klt pair, \(a = a(X) \in \bbz\) with \(aK_{(X,B)}\) Cartier and \(H\) an ample divisor on \(X\).
+        Let \((X,B)\) be a projective klt pair, \(a = a(X) \in \bbZ\) with \(aK_{(X,B)}\) Cartier and \(H\) an ample divisor on \(X\).
         Let 
         \[ t \coloneqq \inf \{s \geq 0: K_{(X,B)} + sH \text{ is nef}\} \]
         be the nef threshold of \((X,B)\) with respect to \(H\).
-        Then \(t = v/u \in \bbq\) and 
+        Then \(t = v/u \in \bbQ\) and 
         \[ 0 \leq v \leq a(X)\cdot (\dim X + 1). \]
     \end{theorem}
     \begin{proof}
-        For every \(r \in \bbr_{> 0}\), let 
+        For every \(r \in \bbR_{> 0}\), let 
         \[ v(r) \coloneqq \begin{cases}
-            v, & \text{if } r = \frac{v}{u} \in \bbq \text{ in lowest term; } \\
-            \infty, & \text{if } r \in \bbr\setminus \bbq.
+            v, & \text{if } r = \frac{v}{u} \in \bbQ \text{ in lowest term; } \\
+            \infty, & \text{if } r \in \bbR\setminus \bbQ.
         \end{cases} \]
         We need to show that \(v(t) \leq a(\dim X + 1)\).
-        For every \((p,q) \in \bbz_{>0}^2\), set \(D(p,q) \coloneqq paK_{(X,B)} + qH\).
-        If \((p,q)\in \bbz^2_{>0}\) with \(0< atp-q < t\), then we have \(D(p,q)\) is not nef and \(D(p,q) - K_{(X,B)}\) is ample.
+        For every \((p,q) \in \bbZ_{>0}^2\), set \(D(p,q) \coloneqq paK_{(X,B)} + qH\).
+        If \((p,q)\in \bbZ^2_{>0}\) with \(0< atp-q < t\), then we have \(D(p,q)\) is not nef and \(D(p,q) - K_{(X,B)}\) is ample.
 
         \begin{step}\label{step_in_thm:rationality_theorem:polynomial_non-vanishing_on_strips}
-            We show that a polynomial \(P(x,y) \neq 0 \in \bbq[x,y]\) of degree at most \(n\) is not identically zero on the set
-            \[  \{(p,q) \in \bbz^2 : p,q>M, 0< atp-q < t\varepsilon\}, \quad \forall M > 0, \] 
+            We show that a polynomial \(P(x,y) \neq 0 \in \bbQ[x,y]\) of degree at most \(n\) is not identically zero on the set
+            \[  \{(p,q) \in \bbZ^2 : p,q>M, 0< atp-q < t\varepsilon\}, \quad \forall M > 0, \] 
             if \(v(t)\varepsilon > a(n+1)\). 
         \end{step}
         If \(v(t) = \infty\), for any \(n\), we show that we can find infinitely many lines \(L\) such that \(\#L\cap \Lambda \geq n+1\).
-        If so, \(\Lambda\) is Zariski dense in \(\bbq^2\).
-        Since \(1/at\in \bbr\setminus \bbq\), there exist \(p_0,q_0>M\) such that 
+        If so, \(\Lambda\) is Zariski dense in \(\bbQ^2\).
+        Since \(1/at\in \bbR\setminus \bbQ\), there exist \(p_0,q_0>M\) such that 
         \[ 0 < \frac{p_0}{q_0} - \frac{1}{at} < \frac{\varepsilon}{(n+1)a} \cdot \frac{1}{q_0}, \text{ i.e. } 0<atp_0 - q_0 < \frac{\varepsilon t}{n+1}. \]
         Then \((ip_0,iq_0) \in \Lambda \cap \{p_0y=q_0x\}\) for \(i = 1,\cdots,n+1\).
         Since \(M\) is arbitrary, there are infinitely many such lines \(L\).
@@ -145,15 +151,34 @@
         % \Yang{To be completed.}
 
         \begin{step}
-            There exists an index set \(\Lambda \subset \bbz^2\) such that \(\Lambda\) contains all sufficiently large \((p,q)\) with \(0 \leq at p - q \leq t\) and 
+            There exists an index set \(\Lambda \subset \bbZ^2\) such that \(\Lambda\) contains all sufficiently large \((p,q)\) with \(0 \leq at p - q \leq t\) and 
             \[ Z \coloneqq \Bs |D(p,q)| = \Bs |D(p',q')| \neq \emptyset, \quad \forall (p,q), (p',q') \in \Lambda. \]
         \end{step}
-        For every \((p,q) \in \bbz^2_{>0}\) with \(0 < atp-q < t\), choose \(k \in \bbz_{>0}\) such that \(k(atp - q) > t\).
-        Then for all \(p', q' > kp\) with \(0 < atp'-q' < t\), we have 
-        \[ p' - kp \geq 0, \quad q'-kp > t(p'-kp). \]
-        It follows that 
-        
-        \Yang{To be completed.}
+        For every \((p,q) \in \bbZ^2_{>0}\) with \(0 < atp-q < t\), there exists \(M > 0\) such that 
+        \[D(\alpha,\beta) = \alpha a K_{(X,B)} + \beta H\]
+        is base point free for all \(\alpha = 0,\cdots,p\) and \(\beta > M\).
+        Choose \(M'\) large enough such that for all \((p',q') \in \bbZ^2_{>0}\) with \(p',q' > M'\) and \(0 < atp'-q' < t\), write
+        \[ p' = lp + p_0, \quad q' = lq + q_0 \]
+        for some \(l \in \bbZ_{\geq 0}\) and \(0 \leq p_0 < p\),
+        we have \(q_0 > M\).
+        The existence of such \(M'\) follows from the estimate
+        \[ q_0 = q' - lq = q' - \frac{p'-p_0}{p}q > q' - (p'-p_0)(at-\delta) > p'\delta, \]
+        where \(\delta > 0\) is a small enough number such that \(at - \delta > q/p\).
+        \[ \begin{tikzpicture}[scale=1.5]
+            \draw[->] (-0.5,0) -- (4,0) node[right] {\(H\)};
+            \draw[->] (0,-0.5) -- (0,4) node[above] {\(aK_{(X,B)}\)};
+            \draw[thick] (0,0) -- (3.5,3.5) node[above right] {\(q = atp\)};
+            \draw[dashed] (0,0.5) -- (3.3,3.8) node[above right] {\(q = atp - t\)};
+            \draw (0.1,0.4) circle (1pt) node[right] {\(D(p,q)\)};
+            \draw (0.8,3.2) circle (1pt) node[above] {\(lD(p,q)\)};
+            \draw[->] (0.1,0.4) -- (0.8,3.2);
+            \draw (3.1,3.4) circle (1pt) node[below right] {\(D(p',q')\)};
+            \draw[->] (0.8,3.2) -- (3.1,3.4);
+        \end{tikzpicture} \]
+        Then \(D(p',q') - lD(p,q) = D(p_0,q_0)\) is base point free.
+        It follows that \(\Bs |D(p',q')| \subseteq \Bs |D(p,q)|\).
+        By noetherian induction, there exists an index set \(\Lambda\) such that \(\Bs |D(p,q)| = Z\) for all \((p,q) \in \Lambda\).
+        % \Yang{To be completed.}
 
         \begin{step}\label{step_in_thm:rationality_theorem:non-vanishing_on_strips}
             Suppose the contradiction that \(v(t) > a(\dim X + 1)\).
@@ -181,7 +206,7 @@
         \begin{enumerate}
             \item \(K_{Y,B_Y} = f^*K_{(X,B)} + E_Y\) for some effective exceptional divisor \(E_Y\), and \(Y,B_Y\) is a klt pair;
             \item \(f^*|D(p,q)| = |L| + F\) for some effective divisor \(F\) and a base point free divisor \(L\), and \(f(\Supp F) = Z\);
-            \item \(f^*D(p,q) - f^*K_{(X,B)} - E_0\) is ample for some effective \(\bbq\)-divisor \(E_0 \in (0,1)\), and coefficients of \(E_0\) are sufficiently small;
+            \item \(f^*D(p,q) - f^*K_{(X,B)} - E_0\) is ample for some effective \(\bbQ\)-divisor \(E_0 \in (0,1)\), and coefficients of \(E_0\) are sufficiently small;
             \item \(B_Y + E_Y + F + E_0\) has snc support.
         \end{enumerate}
         \Yang{Such resolution exists by \cite{KM98}.}
@@ -219,57 +244,60 @@
 
     \begin{theorem}[Cone Theorem]\label{thm: cone theorem}
         Let \((X,B)\) be a projective klt pair.
-        Then there exist countably many rational curves \(C_i \subset X\) with 
-        \[ 0 < -K_{(X,B)} \cdot C_i \leq 2 \dim X \]
+        Then there exist countably many curves \(C_i \subset X\) 
+        % with 
+        % \[ 0 < -K_{(X,B)} \cdot C_i \leq 2 \dim X \]
         such that 
         \begin{enumerate}
             \item we have a decomposition of cones
-            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum \bbr_{\geq 0}[C_i]; \]
+            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum \bbR_{\geq 0}[C_i]; \]
             \item and for any \(\varepsilon > 0\) and an ample divisor \(H\) on \(X\), we have 
-            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)}+\varepsilon H \geq 0} + \sum_{\text{finite}} \bbr_{\geq 0}[C_i]. \]
+            \[ \Psef_1(X) = \Psef_1(X)_{K_{(X,B)}+\varepsilon H \geq 0} + \sum_{\text{finite}} \bbR_{\geq 0}[C_i]. \]
         \end{enumerate}
     \end{theorem}
     \begin{proof}
         Let \(F_D \coloneqq \Psef_1(X) \cap D^\perp\) for a nef divisor \(D\) on \(X\).
         If \(\dim F_D = 1\), we also write \(R_D \coloneqq F_D\).
-        Let \(H_1,\cdots,H_{\rho-1}\) be ample divisors on \(X\) such that they together with \(K_{(X,B)}\) form a basis of \(N^1(X)_\bbq\).
-        Fix a norm \(\|\cdot\|\) on \(N_1(X)_\bbr\) and let \(S^{\rho-1} \coloneqq S(N_1(X)_\bbr)\) be the unit sphere in \(N_1(X)_\bbr\).
+        Let \(H_1,\cdots,H_{\rho-1}\) be ample divisors on \(X\) such that they together with \(K_{(X,B)}\) form a basis of \(N^1(X)_\bbQ\).
+        Fix a norm \(\|\cdot\|\) on \(N_1(X)_\bbR\) and let \(S^{\rho-1} \coloneqq S(N_1(X)_\bbR)\) be the unit sphere in \(N_1(X)_\bbR\).
         
         \begin{step}\label{step_in_thm:cone_theorem:negative_extremal_faces_will_be_stable}
             There exists an integer \(N\) such that for every \(K_{(X,B)}\)-negative extremal face \(F_D\) and for every ample divisor \(H\), 
-            there exists \(n_0, r \in \bbz_{>0}\) such that for all \(n>n_0\), \(\{0\} \neq F_{nD+rK_{(X,B)}+N H} \subset F_D\). 
+            there exists \(n_0, r \in \bbZ_{>0}\) such that for all \(n>n_0\), \(\{0\} \neq F_{nD+rK_{(X,B)}+N H} \subset F_D\). 
         \end{step}
         Let \(N \coloneqq (a(X)(\dim X + 1))!\), where \(a(X)\) is the number in \cref{thm: rationality theorem}.
         For every \(n\), \(nD+H\) is an ample divisor and by \cref{thm: rationality theorem}, the nef threshold of \(K_{(X,B)}\) with respect to \(nD+H\) is of form
-        \[ \inf \{s \geq 0: K_{(X,B)} + s(nD+H) \text{ is nef}\} = \frac{N}{r_n}, \quad r_n \in \bbz_{\geq 0}. \]
+        \[ \inf \{s \geq 0: K_{(X,B)} + s(nD+H) \text{ is nef}\} = \frac{N}{r_n}, \quad r_n \in \bbZ_{\geq 0}. \]
         Since \(K_{(X,B)} + (N/r_n)((n+1)D+H)\) is nef, we have \(r_{n} \leq r_{n+1}\).
         On the other hand, let \(\xi \in F_{D}\setminus \{0\}\). 
         Then \(\xi \cdot (K_{(X,B)} + (N/r_n)(nD+H)) \geq 0\) implies that
         \[ r_n \leq - N \cdot \frac{K_{(X,B)}\cdot \xi}{H \cdot \xi}. \]
-        Hence \(r_n \to r \in \bbz_{\geq 0}\).
+        Hence \(r_n \to r \in \bbZ_{\geq 0}\).
         It follows that \(rK_{(X,B)}+nND+NH\) is a nef but not ample divisor for all \(n \gg 0\).
         Note that for every nef divisors \(N_1,N_2\), we have \(F_{N_1+N_2} = F_{N_1} \cap F_{N_2}\).
         Then for all \(n \gg 0\), there exists \(m\) large enough such that
         \[ \{0\} \neq F_{rK_{(X,B)}+mND+N H} \subset F_{rK_{(X,B)}+nD+NH} \subset F_D. \]
 
         \begin{step}\label{step_in_thm:cone_theorem:nagetive_extremal_rays_form_a_lattice}
-            Let \(\Phi: N_1(X)_{K_{(X,B)}<0} \to \bbr^{\rho-1}\) be the map defined by 
+            Let \(\Phi: N_1(X)_{K_{(X,B)}<0} \to \bbR^{\rho-1}\) be the map defined by 
             \[ \alpha \mapsto \left( \frac{H_1 \cdot \alpha}{K_{(X,B)}\cdot \alpha},\ldots, \frac{H_{\rho-1} \cdot \alpha}{K_{(X,B)}\cdot \alpha}\right). \]
-            We show that the image of \(R_D\) under \(\Phi\) lies in a \(\bbz\)-lattice in \(\bbr^{\rho-1}\).
+            We show that the image of \(R_D\) under \(\Phi\) lies in a \(\bbZ\)-lattice in \(\bbR^{\rho-1}\).
         \end{step}
-        Suppose \(R = \bbr_{\geq 0}\xi\) for a class \(\xi\).
+        Suppose \(R = \bbR_{\geq 0}\xi\) for a class \(\xi\).
         By \cref{step_in_thm:cone_theorem:negative_extremal_faces_will_be_stable}, we have \(R_{nD+rK_{(X,B)}+N H_i} = R_{D}\) for some integers \(n,r\).
         Then \( \xi \cdot (nD+rK_{(X,B)}+N H_i) = 0 \) implies that
-        \[ \frac{H_i \cdot \xi}{K_{(X,B)}\cdot \xi} = \frac{-r}{N} \in \frac{1}{N}\bbz. \]
-        It follows that the image of \(R_D\) under \(\Phi\) lies in \(\frac{1}{N} \bbz^{\rho-1}\).
+        \[ \frac{H_i \cdot \xi}{K_{(X,B)}\cdot \xi} = \frac{-r}{N} \in \frac{1}{N}\bbZ. \]
+        It follows that the image of \(R_D\) under \(\Phi\) lies in \(\frac{1}{N} \bbZ^{\rho-1}\).
 
         \begin{step}\label{step_in_thm:cone_theorem:negative_extremal_rays_are_rational}
             We show that every \(K_{(X,B)}\)-negative extremal ray of \(\Psef_1(X)\) is of the form \(R_D\) for some nef divisor \(D\) on \(X\).
         \end{step}
-        Let \(R = \bbr_{\geq 0}\xi\) be a \(K_{(X,B)}\)-negative extremal ray.
-        \Yang{Then \(R\) is of form \(D^\perp \cap \Psef_1(X)\) for some nef \(\bbr\)-divisor \(D\) on \(X\) by \cref{thm:convex_separation_theorem}.}
-        We need to show that \(D\) can be choose as a nef \(\bbq\)-divisor.
-        There is a sequence of nef but not ample \(\bbq\)-divisors \(D_m\) such that \(D_m \to D\) as \(m \to \infty\).
+        Let \(R = \bbR_{\geq 0}\xi\) be a \(K_{(X,B)}\)-negative exposed ray.
+        % \Yang{Then \(R\) is of form \(D^\perp \cap \Psef_1(X)\) for some nef \(\bbR\)-divisor \(D\) on \(X\) by \cref{thm:convex_separation_theorem}.}
+        % \Yang{This is wrong, we need the Straszewicz theorem to get an exposed ray.}
+        Then \(R\) is of form \(D^\perp \cap \Psef_1(X)\) for some nef \(\bbR\)-divisor \(D\) on \(X\).
+        We need to show that \(D\) can be choose as a nef \(\bbQ\)-divisor.
+        There is a sequence of nef but not ample \(\bbQ\)-divisors \(D_m\) such that \(D_m \to D\) as \(m \to \infty\).
         We adjust \(D_m\) such that \(\dim F_{D_m} = 1\) for all \(n\).
 
         By re-choosing \(H_i\), we can assume that \(D = a_1H_1 + \cdots + a_{\rho-1}H_{\rho-1} + a_\rho K_{(X,B)}\) for \(a_i > 0\) since \(aD-K\) is ample for \(a \gg 0\).
@@ -280,28 +308,31 @@
         We can assume that\(r_1K_{(X,B)}+N H_1\) is not identically zero on \(F_{D_m}\).
         Then we can choose \(n\) large enough such that \(\|r_1K_{(X,B)}+N H_1\|/n < 1/m\).
         Replace \(D_m\) by \(D_m + (r_1K_{(X,B)}+N H_1)/n\).
-        Inductively we construct \(D_m\) nef \(\bbq\)-divisor with \(D_m \to D\) and \(\dim F_{D_m} = 1\).
+        Inductively we construct \(D_m\) nef \(\bbQ\)-divisor with \(D_m \to D\) and \(\dim F_{D_m} = 1\).
         
-        Let \(R_{D_m} = \bbr_{\geq 0} \xi_m\).
+        Let \(R_{D_m} = \bbR_{\geq 0} \xi_m\).
         Suppose that \(\|\xi_m\|=\|\xi\| = 1\).
         By passing to a subsequence, we can assume that \(\xi_m\) converges.
         Then \(\xi_m \to \xi\) since \(\lim D_m \cdot \xi_m = D \cdot \lim \xi_m = 0\).
         However, \(\Phi\) is well-defined at \(\xi\) and the image of \(\xi_m\) under \(\Phi\) is discrete.
         Hence \(\xi=\xi_m\) for all \(m\) large enough.
-        It follows that \(R = R_{D_m}\) for a nef \(\bbq\)-divisor \(D_m\).
+        It follows that \(R = R_{D_m}\) for a nef \(\bbQ\)-divisor \(D_m\).
 
-        \begin{step}\label{step_in_thm:cone_theorem:nagetive_extremal_rays_have_class_of_rational_curves}
-            We show that any \(K_{(X,B)}\)-negative extremal ray \(R_D\) contains the class of a rational curve \(C\) with \(0 < -K_{(X,B)} \cdot C \leq 2 \dim X\).
-        \end{step}
-        By \cref{thm: contraction theorem}, let \(\varphi_D: X \to Y\) be the contraction associated to \(R_D\) (note that we do not need the step to proof \cref{thm: contraction theorem}).
-        If \(\dim Y < \dim X\), let \(F\) be a general fiber of \(\varphi_D\).
-        \Yang{By adjunction, \((F,B|_F)\) is a klt pair and \(K_{(F,B|_F)} = K_{(X,B)}|_F\).
-        Take \(H=aD-K_{(X,B)}\) for some \(a > 0\) such that \(H\) is ample on \(F\).
-        By \cref{prop:general_rational_curve_on_klt_variety_with_negative_intersection}.}
-        \Yang{In birational case, by adjunction, suppose \(\varphi_D(E)\) is a point. By \cref{lem:the_pair_controls_the_exceptional_locus}, 
-        we can use \cref{prop:general_rational_curve_on_klt_variety_with_negative_intersection} to get the result.}
+        By \cref{step_in_thm:cone_theorem:nagetive_extremal_rays_form_a_lattice}, the \(K_{(X,B)}\)-negative extremal rays form a discrete set in \(\{\alpha \in \Psef_1(X): K_{(X,B)}\cdot \alpha < 0\}\).
+        Hence every \(K_{(X,B)}\)-negative extremal ray is an exposed ray by Straszewicz's Theorem.
 
-        \Yang{To be completed.}
+        % \begin{step}\label{step_in_thm:cone_theorem:nagetive_extremal_rays_have_class_of_rational_curves}
+        %     We show that any \(K_{(X,B)}\)-negative extremal ray \(R_D\) contains the class of a rational curve \(C\) with \(0 < -K_{(X,B)} \cdot C \leq 2 \dim X\).
+        % \end{step}
+        % By \cref{thm: contraction theorem}, let \(\varphi_D: X \to Y\) be the contraction associated to \(R_D\) (note that we do not need the step to proof \cref{thm: contraction theorem}).
+        % If \(\dim Y < \dim X\), let \(F\) be a general fiber of \(\varphi_D\).
+        % \Yang{By adjunction, \((F,B|_F)\) is a klt pair and \(K_{(F,B|_F)} = K_{(X,B)}|_F\).
+        % Take \(H=aD-K_{(X,B)}\) for some \(a > 0\) such that \(H\) is ample on \(F\).
+        % By \cref{prop:general_rational_curve_on_klt_variety_with_negative_intersection}.}
+        % \Yang{In birational case, by adjunction, suppose \(\varphi_D(E)\) is a point. By \cref{lem:the_pair_controls_the_exceptional_locus}, 
+        % we can use \cref{prop:general_rational_curve_on_klt_variety_with_negative_intersection} to get the result.}
+
+        % \Yang{To be completed.}
 
         \begin{step}\label{step_in_thm:cone_theorem:finish_the_proof}
             Proof of the theorem.
@@ -312,13 +343,13 @@
         is compact, and \(\Phi\) is well-defined on it.
         By \cref{step_in_thm:cone_theorem:negative_extremal_rays_are_rational,step_in_thm:cone_theorem:nagetive_extremal_rays_form_a_lattice}, 
         there are only finitely many extremal rays on \(\Psef_1(X)_{K_{(X,B)}+\varepsilon H \leq 0}\).
-        By \cref{step_in_thm:cone_theorem:nagetive_extremal_rays_have_class_of_rational_curves}, we get (b).
+        Hence we get (b).
 
         For (a), note that any closed cone is equal to the closure of the cone generated by its extremal ray.
         We only need to show that the cone
-        \[ \calc\coloneqq \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum \bbr_{\geq 0}[C_i] \]
+        \[ \calc\coloneqq \Psef_1(X)_{K_{(X,B)} \geq 0} + \sum \bbR_{\geq 0}[C_i] \]
         is closed.
-        Choose a Cauchy sequence \(\{\alpha_n\} \subset \calc\) such that \(\alpha_n \to \alpha \in N_1(X)_\bbr\).
+        Choose a Cauchy sequence \(\{\alpha_n\} \subset \calc\) such that \(\alpha_n \to \alpha \in N_1(X)_\bbR\).
         Note that \(\Psef_1(X)\) is closed, hence \(\alpha \in \Psef_1(X)\).
         We only need to consider the case \(\alpha \cdot K_{(X,B)} < 0\).
         We can choose an ample divisor and \(\varepsilon > 0\) such that \(\alpha \cdot (K_{(X,B)}+\varepsilon H) < 0\).
@@ -327,7 +358,8 @@
         Then \(\alpha \in \calc\) and the conclusion follows.
     \end{proof}
     \begin{remark}\label{rmk:extremal_ray_may_not_be_exposed}
-        \Yang{Thanks for my friend Qin for pointing out that the extremal ray in \cref{thm: cone theorem} may not be exposed.}
+        % \Yang{Thanks for my friend Qin for pointing out that the extremal ray in \cref{thm: cone theorem} may not be exposed.}
+        Thanks for my friend Qin for pointing out that the extremal ray may not be exposed.
     \end{remark}
 
 
@@ -344,12 +376,12 @@
         We follow the following steps to prove the theorem.
         \begin{step}\label{step:K_negative_face_is_rational_in_thm:contraction_theorem}
             We show that there exists a nef divisor \(D\) on \(X\) such that \(F = D^\perp \cap \Psef_1(X)\).
-            In other words, \(F\) is defined on \(N_1(X)_\bbq\).
+            In other words, \(F\) is defined on \(N_1(X)_\bbQ\).
         \end{step}
         We can choose an ample divisor \(H\) and \(n > 0\) such that \(K_{(X,B)}+(1/n)H\) is negative on \(F\) since \(F \cap S^{\rho-1}\) is compact and \(K_{(X,B)}\) is strictly negative on it,
-        where \(S^{\rho-1}\) is the unit sphere in \(N_1(X)_\bbr\).
+        where \(S^{\rho-1}\) is the unit sphere in \(N_1(X)_\bbR\).
         Then by Cone Theorem (\cref{thm: cone theorem}), \(F\) is an extremal face of a rational polyhedral cone, namely \(\Psef_1(X)_{K_{(X,B)}+(1/n) H \leq 0}\).
-        It follows that \(F^\perp \subset N^1(X)_\bbr\) is defined on \(\bbq\).
+        It follows that \(F^\perp \subset N^1(X)_\bbR\) is defined on \(\bbQ\).
         Since \(F\) is extremal and \(K_{(X,B)}+(1/n)H\)-negative, the set \(\{L \in F^\perp: L|_{\Psef_1(X)\setminus F}>0\}\) has non-empty interior in \(F^\perp\) by \cref{thm: cone theorem,thm:convex_separation_theorem}.
         Then there exists a Cartier divisor \(D\) such that \(D \in F^\perp\) and \(D|_{\Psef_1(X)\setminus F} > 0\).
         It follows that \(D\) is nef and \(F = D^\perp \cap \Psef_1(X)\).
@@ -390,6 +422,25 @@
         The we see there indeed exist some irrational extremal faces of \(\Psef_1(X)\).
     \end{remark}
 
+    \begin{theorem}[Length of extremal rays]\label{thm:length_of_extremal_rays}
+        Let \((X,B)\) be a projective klt pair and \(R\) a \(K_{(X,B)}\)-negative extremal ray of \(\Psef_1(X)\).
+        Then there exists a rational curve \(C \subset X\) such that \([C] \in R\) and 
+        \[ 0 < -K_{(X,B)} \cdot C \leq 2 \dim X. \]
+    \end{theorem}
+    \begin{proof}
+        % \begin{step}\label{step_in_thm:cone_theorem:nagetive_extremal_rays_have_class_of_rational_curves}
+        %     We show that any \(K_{(X,B)}\)-negative extremal ray \(R_D\) contains the class of a rational curve \(C\) with \(0 < -K_{(X,B)} \cdot C \leq 2 \dim X\).
+        % \end{step}
+        By \cref{thm: contraction theorem}, let \(\varphi_D: X \to Y\) be the contraction associated to \(R_D\) (note that we do not need the step to proof \cref{thm: contraction theorem}).
+        If \(\dim Y < \dim X\), let \(F\) be a general fiber of \(\varphi_D\).
+        \Yang{By adjunction, \((F,B|_F)\) is a klt pair and \(K_{(F,B|_F)} = K_{(X,B)}|_F\).
+        Take \(H=aD-K_{(X,B)}\) for some \(a > 0\) such that \(H\) is ample on \(F\).
+        By \cref{prop:general_rational_curve_on_klt_variety_with_negative_intersection}.}
+        \Yang{In birational case, by adjunction, suppose \(\varphi_D(E)\) is a point. By \cref{lem:the_pair_controls_the_exceptional_locus}, 
+        we can use \cref{prop:general_rational_curve_on_klt_variety_with_negative_intersection} to get the result.}
+        \Yang{To be completed.}
+    \end{proof}
+
     \begin{definition}\label{def:types_of_contractions_in_MMP}
         Let \((X,B)\) be a projective klt pair and \(R\) a \(K_{(X,B)}\)-negative extremal ray of \(\Psef_1(X)\) with contraction \(\varphi_R: X \to Y\).
         There are three types of contractions:
@@ -401,34 +452,34 @@
     \end{definition}
 
     \begin{proposition}\label{prop:divisorial_or_fibered_contraction_preverses_Q_factorial}
-        Let \((X,B)\) be a \(\bbq\)-factorial projective klt pair and \(R\) a \(K_{(X,B)}\)-negative extremal ray of \(\Psef_1(X)\).
+        Let \((X,B)\) be a \(\bbQ\)-factorial projective klt pair and \(R\) a \(K_{(X,B)}\)-negative extremal ray of \(\Psef_1(X)\).
         Suppose that the contraction \(\varphi:X\to Y\) associated to \(R\) is either divisorial or a Mori fiber space. 
-        Then \(Y\) is \(\bbq\)-factorial.
+        Then \(Y\) is \(\bbQ\)-factorial.
     \end{proposition}
     \begin{proof}
         Let \(D\) be a prime Weil divisor on \(Y\) and \(U \subset Y\) a big open smooth subset.
-        Let \(R = \bbr_{\geq 0}[C]\) for an irreducible curve \(C\) contracted by \(\varphi\).
+        Let \(R = \bbR_{\geq 0}[C]\) for an irreducible curve \(C\) contracted by \(\varphi\).
         Set \(D_X \coloneqq \overline{\varphi|_{\varphi^{-1}(U)}^{-1} D}\).
-        Then \(D_X\) is a prime Weil divisor on \(X\) and hence is \(\bbq\)-Cartier.
+        Then \(D_X\) is a prime Weil divisor on \(X\) and hence is \(\bbQ\)-Cartier.
 
         If \(\varphi\) is a Mori fiber space, then \(D_X|_F \equiv 0\) for general fiber \(F\) of \(\varphi\).
         Then by Contraction Theorem (\cref{thm: contraction theorem}), we see that \(mD_X \sim \varphi^* D'\) for some Cartier divisor \(D'\) on \(Y\).
         We have \(mD|_{U} \sim D'|_{U}\) since \(\varphi|_{\varphi^{-1}(U)}\) is a fibration.
-        Then \(mD \sim D'\) and hence \(D\) is \(\bbq\)-Cartier.
+        Then \(mD \sim D'\) and hence \(D\) is \(\bbQ\)-Cartier.
 
         If \(\varphi\) is a divisorial contraction, let \(E\) be the exceptional divisor of \(\varphi\) and assume that \(\varphi^{-1}|_U\) is an isomorphism.
-        Then \(E \cdot C \neq 0\) (otherwise \(E \sim_{\bbq} f^*E_Y\) for some Cartier \(\bbq\)-divisor \(E_Y\) on \(Y\)).
-        Then we can choose \(a\in\bbq\) such that \((D_X + aE)\cdot C = 0\).
+        Then \(E \cdot C \neq 0\) (otherwise \(E \sim_{\bbQ} f^*E_Y\) for some Cartier \(\bbQ\)-divisor \(E_Y\) on \(Y\)).
+        Then we can choose \(a\in\bbQ\) such that \((D_X + aE)\cdot C = 0\).
         By Contraction Theorem (\cref{thm: contraction theorem}), we have \(mD_X + maE \sim \varphi^* D'\) for some Cartier divisor \(D'\) on \(Y\).
         Then we also have \(D|_{U} \sim mD'|_{U}\) since \(\varphi|_{\varphi^{-1}(U)}\) is an isomorphism.
-        Hence \(D\) is \(\bbq\)-Cartier.
+        Hence \(D\) is \(\bbQ\)-Cartier.
     \end{proof}
     \begin{remark}\label{rmk:small_contraction_is_never_Q_factorial}
-        If \(\varphi\) is a small contraction, then \(Y\) is never \(\bbq\)-factorial.
+        If \(\varphi\) is a small contraction, then \(Y\) is never \(\bbQ\)-factorial.
         Otherwise, let \(B_Y\) be the strict transform of \(B\) on \(Y\).
         Note that \(K_{(Y,B_Y)}|_U \sim K_{(X,B)}|_U\) on a big open subset \(U\).
-        Suppose \(K_{(Y,B_Y)}\) is \(\bbq\)-Cartier.
-        Then \(\varphi^*K_{(Y,B_Y)} \sim_\bbq K_{(X,B)}\).
+        Suppose \(K_{(Y,B_Y)}\) is \(\bbQ\)-Cartier.
+        Then \(\varphi^*K_{(Y,B_Y)} \sim_\bbQ K_{(X,B)}\).
         Then we have
         \[ \varphi^*K_{(Y,B_Y)}\cdot C = 0 = K_{(X,B)}\cdot C < 0. \]
         This is a contradiction.
@@ -436,6 +487,7 @@
 
     \begin{example}
         Let \(X = E\times E \times \bbP^1\).
+        \Yang{To be completed.}
     \end{example}
 
     

@@ -1,9 +1,10 @@
 \documentclass[sectionlevel=chapter]{noteformyself}
 
+\usepackage{draftwatermark}
 
 \input{../../Accessories/notation.tex}
 \addbibresource{../../Accessories/ref.bib}
-\newcommand{\Yang}[1]{\textcolor{red}{#1}}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
 
 
 \title{Birational Geometry}
@@ -18,13 +19,17 @@
 % \covertextcolor{green}
 
 
+
+
 \begin{document}
 
     \maketitle
 
     \tableofcontents
 
-    {\Large{\Yang{This note is full of errors. Do not believe anything it says.}}}
+    % {\Large{\Yang{This note is full of errors. Do not believe anything it says.}}}
+
+    \input{Technical_preparation/text.tex}
 
     \input{Kodaira_vanishing/text.tex} 
 
@@ -32,7 +37,7 @@
 
     % \input{Basepoint_free_on_char_p/text.tex}
 
-    \input{F-singularties/text.tex}
+    % \input{F-singularties/text.tex}
 
     \printbibliography[heading=bibintoc, title={References}]
 \end{document}

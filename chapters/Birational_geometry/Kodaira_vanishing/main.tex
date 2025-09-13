@@ -1,11 +1,16 @@
 \documentclass{noteformyself}
-\usepackage{lipsum} % 生成测试文本
+
+\usepackage{draftwatermark}
+
+\input{../../../Accessories/notation.tex}
+\addbibresource{../../../Accessories/ref.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
 
 
 \title{Kodaira Vanishing Theorem}
 \author{Tianle Yang}
 \date{\today}
-\authorinfo{\href{www.tianleyang.com}{My Website}}
+\authorpage{\href{www.tianleyang.com}{My Website}}
 % \setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
 % \coversentence{\CJKfamily{lxgwwenkai}阿巴阿巴阿巴阿巴阿巴阿巴！}
 % \coverimage{placeholder.jpg} % 封面图片
@@ -20,5 +25,5 @@
 
     \input{text.tex} % 这里是正文
 
-    \printbibliography
+    \printbibliography[heading=bibintoc, title={References}]
 \end{document}
