@@ -1,30 +1,30 @@
 \section{The First Properties of Abelian Varieties}
 
 
-\subsection{Preliminaries}
-    \begin{proposition}\label{prop:upper semicontinuity of fiber dimension}
-        Let \(f: X \to Y\) be a morphism of varieties over a field \(\kk\).
-        Then the function \(y \mapsto \dim f^{-1}(y)\) is upper semicontinuous, i.e., for every integer \(m\), the set \(\{y \in Y: \dim f^{-1}(y) \geq m\}\) is closed in \(Y\).
-        \Yang{To be check.}
-    \end{proposition}
+% \subsection{Preliminaries}
+%     \begin{proposition}\label{prop:upper semicontinuity of fiber dimension}
+%         Let \(f: X \to Y\) be a morphism of varieties over a field \(\kk\).
+%         Then the function \(y \mapsto \dim f^{-1}(y)\) is upper semicontinuous, i.e., for every integer \(m\), the set \(\{y \in Y: \dim f^{-1}(y) \geq m\}\) is closed in \(Y\).
+%         \Yang{To be check.}
+%     \end{proposition}
 
     
 \subsection{Definition and examples of Abelian Varieties}
-    \begin{theorem}[Rigidity Lemma]\label{thm: Rigidity Lemma}
-        Let \(\pi_i: X \to Y_i\) be proper morphisms of varieties over a field \(\kk\) for \(i=1,2\).
-        Suppose that \(\pi_1\) is a fibration and \(\pi_2\) contracts \(\pi_1^{-1}(y_0)\).
-        Then there exists a rational map \(\varphi: Y_1 \ratmap Y_2\) such that \(\pi_2 \circ \varphi = \pi_1\) and \(\varphi\) is well-defined near \(Y_1 \setminus \{y_0\}\). 
-    \end{theorem}
+    % \begin{theorem}[Rigidity Lemma]\label{thm: Rigidity Lemma}
+    %     Let \(\pi_i: X \to Y_i\) be proper morphisms of varieties over a field \(\kk\) for \(i=1,2\).
+    %     Suppose that \(\pi_1\) is a fibration and \(\pi_2\) contracts \(\pi_1^{-1}(y_0)\).
+    %     Then there exists a rational map \(\varphi: Y_1 \ratmap Y_2\) such that \(\pi_2 \circ \varphi = \pi_1\) and \(\varphi\) is well-defined near \(Y_1 \setminus \{y_0\}\). 
+    % \end{theorem}
 
-    \begin{definition}\label{def: abelian schemes}
-        Let \(S\) be a scheme.
-        An \emph{abelian scheme over \(S\)} is a group object in the category \(\Sch_S\) such that the structure morphism is proper, smooth and a fibration.
-        If \(S = \Spec \kk\) for some field \(\kk\), then it is called an \emph{abelian variety over \(\kk\)}.
-    \end{definition}
+    % \begin{definition}\label{def: abelian schemes}
+    %     Let \(S\) be a scheme.
+    %     An \emph{abelian scheme over \(S\)} is a group object in the category \(\Sch_S\) such that the structure morphism is proper, smooth and a fibration.
+    %     If \(S = \Spec \kk\) for some field \(\kk\), then it is called an \emph{abelian variety over \(\kk\)}.
+    % \end{definition}
 
-    \begin{definition}\label{def:abelian_varieties_over_algebraically_closed_field}
-        Let \(\kk\) be an algebraically closed field.
-        An \emph{abelian variety over \(\kkk\)} is a proper variety \(A\) over \(\kk\) together with morphisms \emph{identity} \(e: \Spec \kk \to A\), \emph{multiplication} \(m: A \times A \to A\) and \emph{inversion} \(i: A \to A\) such that the following diagrams commute:
+    \begin{definition}\label{def:abelian_varieties_over_field}
+        Let \(\kk\) be a field.
+        An \emph{abelian variety over \(\kk\)} is a proper variety \(A\) over \(\kk\) together with morphisms \emph{identity} \(e: \Spec \kk \to A\), \emph{multiplication} \(m: A \times A \to A\) and \emph{inversion} \(i: A \to A\) such that the following diagrams commute:
         \begin{enumerate}
             \item (Associativity)
             \[
@@ -50,26 +50,27 @@
                 \end{tikzcd}.
             \]
         \end{enumerate}
+        In other words, an abelian variety is a group object in the category of proper varieties over \(\kk\).
     \end{definition}
-    \Yang{Can we just say that \(A(\kk)\) is a group with \(e,m,i\) satisfying the axioms?}
     
     \begin{example}\label{eg: elliptic curves as abelian varieties}
         Let \(E\) be an elliptic curve over a field \(\kk\).
         Then \(E\) is an abelian variety of dimension \(1\).
+        \Yang{To be completed.}
     \end{example}
 
-    \begin{example}\label{eg: product of abelian varieties as abelian varieties}
+    % \begin{example}\label{eg: product of abelian varieties as abelian varieties}
         
-    \end{example}
+    % \end{example}
 
-    \begin{example}\label{eg: base change of abelian varieties as abelian varieties}
+    % \begin{example}\label{eg: base change of abelian varieties as abelian varieties}
         
-    \end{example}
+    % \end{example}
 
     In the following, we will always assume that \(A\) is an abelian variety over a field \(\kk\) of dimension \(d\).
 
     Temporarily, we will use the notation \(e_A,m_A,i_A\) to denote the identity section, multiplication morphism and inversion morphism of an abelian variety \(A\).
-    The left translation by \(a \in A(\kk)\) is defined as
+    The \emph{left translation} by \(a \in A(\kk)\) is defined as
     \[ l_a: A \xrightarrow{\cong} \Spec \kk \times A \xrightarrow{a \times \id_A} A \times A \xrightarrow{m_A} A. \]
     Similar definition applies to the right translation \(r_a\).
 
@@ -78,7 +79,8 @@
         Then \( A \) is smooth.
     \end{proposition}
     \begin{proof}
-        Note that there is an open subset \(U\subset A\) which is smooth.
+        By base changing to the algebraic closure of \(\kk\), we may assume that \(\kk\) is algebraically closed.
+        Note that there is a non-empty open subset \(U\subset A\) which is smooth.
         Then apply the left translation morphism \(l_a\).
     \end{proof}
 
@@ -96,29 +98,39 @@
         \Yang{To be completed.}
     \end{proof}
 
-    \begin{lemma}\label{lem: rigidity lemma for X product type}
-        Let \(X, Y, Z\) be proper varieties over a field \(\kk\) and \(g:X \times Y \to Z\) a morphism over \(\kk\).
-        Suppose that \(g\) contracts \(X \times y_0\) for some point \(y_0 \in X(\kk)\).
-        Then there exists a unique morphism \(f: Y \to Z\) such that \(g = f \circ p_Y\), where \(p_Y: X \times Y \to Y\) is the projection to the second factor.
-        % Let \(p: X \times Y \to Z\) be a proper morphism of varieties over \(\kk\) such that \(p\) contracts \(\{x_0\} \times Y\) for some point \(x_0 \in X\).
-        % Then there exists a unique morphism \(f: Y \to Z\) such that \(p = f \circ p_Y\).
-    \end{lemma}
-    \begin{proof}
-        \Yang{To be completed.}
-    \end{proof}
+    % \begin{lemma}\label{lem: rigidity lemma for X product type}
+    %     Let \(X, Y, Z\) be proper varieties over a field \(\kk\) and \(g:X \times Y \to Z\) a morphism over \(\kk\).
+    %     Suppose that \(g\) contracts \(X \times y_0\) for some point \(y_0 \in X(\kk)\).
+    %     Then there exists a unique morphism \(f: Y \to Z\) such that \(g = f \circ p_Y\), where \(p_Y: X \times Y \to Y\) is the projection to the second factor.
+    %     % Let \(p: X \times Y \to Z\) be a proper morphism of varieties over \(\kk\) such that \(p\) contracts \(\{x_0\} \times Y\) for some point \(x_0 \in X\).
+    %     % Then there exists a unique morphism \(f: Y \to Z\) such that \(p = f \circ p_Y\).
+    % \end{lemma}
+    % \begin{proof}
+    %     \Yang{To be completed.}
+    % \end{proof}
 
     \begin{theorem}\label{thm: structure of morphism between abelian varieties}
         Let \(A\) and \(B\) be abelian varieties. 
-        Then any morphism \(f: A \to B\) with \(f(e_A) = e_B\) is a group homomorphism.
+        Then any morphism \(f: A \to B\) with \(f(e_A) = e_B\) is a group homomorphism, i.e., for every \(\kk\)-scheme \(T\), the induced map \(f_T: A(T) \to B(T)\) is a group homomorphism.
     \end{theorem}
     \begin{proof}
-        \Yang{We have \((m_A)_*(\calO_{A\times A}) \cong \calO_A\).}
+        Let \(\kkk\) be the algebraical closure of \(\kk\).
+        For every \(\kk\)-scheme \(T\), we have the inclusion \(A(T) \subset A_{\kkk}(T_{\kkk})\) and \(B(T) \subset B_{\kkk}(T_{\kkk})\) which is compatible with the group structure and the morphism \(f\).
+        Thus we may assume that \(\kk\) is algebraically closed.
+
+        For every \(a \in A(\kk)\), the fiber \(m_A^{-1}(a)\) is isomorphic to \(A\) via the projection to the first factor.
+        In particular, \(m_A^{-1}(a)\) is connected.
+
+        Consider the composition 
+        \[ A \times A \xrightarrow{\varphi} A \times A \xrightarrow{m_A} A, \quad (x,y) \mapsto (x,m_A(i_A(x), y)) \mapsto m_A(x, m_A(i_A(x), y)) = y. \]
+        Hence we have \((m_A \circ \varphi)_* \calO_{A \times A} \cong \calO_A \cong m_{A*} \calO_{A \times A}\) since \(\varphi\) is an isomorphism.
         Then consider the diagram
         \[ \begin{tikzcd}
             A \times A \arrow[r, "f \times f"] \arrow[d, "m_A"'] & B \times B \arrow[d, "m_B"] \\
             A & B.
         \end{tikzcd} \]
-        For every closed point \(a \in A\), the fiber \(m_A^{-1}(a)\) is isomorphic to \(m_{A_{\rkk(a)}}^{-1}(a)\) and 
+        For every closed point \(a \in A\), the fiber \(m_A^{-1}(a) = \{(x, m_A(i_A(x), a)) | x \in A\}\) is contrac
+        % is isomorphic to \(m_{A_{\rkk(a)}}^{-1}(a)\) and 
         % Let \(f:A\times A \to B\) be given by \(A\times A \xrightarrow{f\times f} B \times B \xrightarrow{m_B} B\).
         % Then \(f\) contracts \(A \times e_A\) to \(e_B\).
         \Yang{To be completed.}
@@ -138,13 +150,13 @@
     \[ [n]_A: A \xrightarrow{\Delta} A \times A \xrightarrow{[n-1]_A\times \id_A} A \times A \xrightarrow{+} A, \]
     where \(\Delta\) is the diagonal morphism.
 
-    \begin{proposition}\label{prop: multiplication by n is etale}
-        Let \(A\) be an abelian variety over \(\kkk\) and \(n\) a positive integer.
-        Then the multiplication by \(n\) morphism \([n]_A: A \to A\) is finite surjective and \'etale.
-    \end{proposition}
-    \begin{proof}
-        \Yang{To be completed.}
-    \end{proof}
+    % \begin{proposition}\label{prop: multiplication by n is etale}
+    %     Let \(A\) be an abelian variety over \(\kkk\) and \(n\) a positive integer.
+    %     Then the multiplication by \(n\) morphism \([n]_A: A \to A\) is finite surjective and \'etale.
+    % \end{proposition}
+    % \begin{proof}
+    %     \Yang{To be completed.}
+    % \end{proof}
 
 \subsection{Complex abelian varieties}
 

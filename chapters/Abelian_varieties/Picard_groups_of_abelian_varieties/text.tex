@@ -1,14 +1,17 @@
 \section{Picard Groups of Abelian Varieties}
 
+Let \(\kk\) be a field and \(\kkk\) its algebraic closure.
+Let \(A\) be an abelian variety over \(\kk\).
+
 \subsection{Pullback along group operations}
 
-    \begin{theorem}[Seesaw Theorem]\label{thm: seesaw theorem}
-        Let \(A\) be an abelian variety over \(\kkk\). 
+    % \begin{theorem}[Seesaw Theorem]\label{thm: seesaw theorem}
+    %     Let \(A\) be an abelian variety over \(\kkk\). 
         
-    \end{theorem}
+    % \end{theorem}
 
     \begin{theorem}[Theorem of the cube]\label{thm: theorem of the cube}
-        Let \(X,Y,Z\) be completed varieties over \(\kkk\) and \(\calL\) a line bundle on \(X \times Y \times Z\). 
+        Let \(X,Y,Z\) be proper varieties over \(\kk\) and \(\calL\) a line bundle on \(X \times Y \times Z\). 
         Suppose that there exist \(x \in X(\kkk), y \in Y(\kkk), z \in Z(\kkk)\) such that the restriction \(\calL|_{\{x\} \times Y \times Z}\), \(\calL|_{X \times \{y\} \times Z}\) and \(\calL|_{X \times Y \times \{z\}}\) are trivial. 
         Then \(\calL\) is trivial.
     \end{theorem}
@@ -17,12 +20,19 @@
     \end{proof}
 
     \begin{remark}\label{rmk: theorem of the cube by rigidity lemma and picard scheme}
-        If we assume the existence of the Picard scheme, then the theorem of the cube can be deduced from the Rigidity Lemma.
-        \Yang{To be completed.}
+        If we assume the existence of the Picard scheme, then the \cref{thm: theorem of the cube} can be deduced from the Rigidity Lemma.
+        Consider the morphism
+        \[ \varphi: X \times Y \to \Pic(Z), \quad (x,y) \mapsto \calL|_{\{x\} \times \{y\} \times Z}. \]
+        Since \(\varphi(x,y) = \calO_Z\), \(\varphi\) factors through \(\Pic^0(Z)\).
+        Then the assumption implies that \(\varphi\) contracts \(\{x\} \times Y\), \(X \times \{y\}\) and hence it maps \(X \times Y\) to a point.
+        Thus \(\varphi(x',y') = \calO_Z\) for every \((x',y') \in X \times Y\).
+        Then by Grauert's theorem, we have \(\calL \cong p^*p_*\calL\) where \(p: X \times Y \times Z \to X \times Y\) is the projection.
+        Note that \(p_*\calL \cong \calL|_{X \times Y \times \{z\}} \cong \calO_{X \times Y}\).
+        Hence \(\calL\) is trivial.
     \end{remark}
 
     \begin{proposition}
-        Let \(A\) be an abelian variety over \(\kkk\), \(f,g,h: X \to A\) morphisms from a variety \(X\) to \(A\) and \(\calL\) a line bundle on \(A\).
+        Let \(A\) be an abelian variety over \(\kk\), \(f,g,h: X \to A\) morphisms from a variety \(X\) to \(A\) and \(\calL\) a line bundle on \(A\).
         Then 
         \[ (f+g+h)^*\calL \cong (f+g)^*\calL \ten (f+h)^*\calL \ten (g+h)^*\calL \ten f^*\calL^{-1} \ten g^*\calL^{-1} \ten h^*\calL^{-1}. \]
     \end{proposition}
@@ -39,11 +49,19 @@
         \Yang{To be completed.}
     \end{proof}
 
+    \begin{definition}\label{def:symmetric_and_antisymmetric_line_bundles}
+        Let \(A\) be an abelian variety over \(\kkk\) and \(\calL\) a line bundle on \(A\).
+        We say that \(\calL\) is \emph{symmetric} if \([-1]_A^*\calL \cong \calL\) and \emph{antisymmetric} if \([-1]_A^*\calL \cong \calL^{-1}\).
+    \end{definition}
+
     \begin{theorem}[Theorem of the square]\label{thm: theorem of the square}
         Let \(A\) be an abelian variety over \(\kkk\), \(x,y \in A(\kkk)\) two points and \(\calL\) a line bundle on \(A\).
         Then 
         \[ t_{x+y}^*\calL \ten \calL \cong t_x^*\calL \ten t_y^*\calL. \]
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{remark}\label{rmk: theorem of the square and homomorphism to Picard group}
         We can define a map
@@ -65,8 +83,6 @@
     From this point, we can recover the dual abelian variety \(A^\vee = \Pic^0(A)\) as the quotient \(A/K(\calL)\).
     \Yang{To be completed.}
 
-
-    
 
 
 \subsection{Projectivity}
@@ -126,3 +142,12 @@
     \begin{proposition}\label{prop: the Poincare line bundle}
         There exists a unique line bundle \(\calP\) on \(A \times A^\vee\) such that for every \(y = \calL \in A^\vee = \Pic^0(A)\), we have \(\calP|_{A \times \{y\}} \cong \calL\).
     \end{proposition}
+
+
+\subsection{The N\'eron-Severi group}
+
+
+    \begin{theorem}\label{thm:NS_A_as_homomorphisms_from_A_to_A_dual}
+        Let \(A\) be an abelian variety over \(\kkk\).
+        The we have an inclusion \(\NS(A) \injmap \Hom_{\Grp}(A, A^\vee)\) given by \Yang{To be completed.}
+    \end{theorem}
