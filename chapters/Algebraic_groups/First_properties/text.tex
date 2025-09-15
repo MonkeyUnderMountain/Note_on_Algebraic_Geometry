@@ -5,15 +5,63 @@ All varieties are defined over \(\kk\) unless otherwise specified.
 
 \subsection{Basic concepts}
 
+    \begin{definition}\label{def:group_scheme}
+        A \emph{group scheme} over \(S\) is an \(S\)-scheme \(G\) together with morphisms \emph{multiplication} \(\mu: G \times G \to G\), \emph{identity} \(\varepsilon: S \to G\) and \emph{inversion} \(\iota: G \to G\) over \(S\) such that the following diagrams commute:
+        \begin{enumerate}
+            \item (Associativity)
+            \[
+                \begin{tikzcd}
+                    & G \times G \times G \arrow[rd, "\mu \times \id_G"] \arrow[ld, "\id_G \times \mu"'] & \\
+                    G \times G \arrow[rd, "\mu"] & & G \times G \arrow[ld, "\mu"'] \\
+                     & G & 
+                \end{tikzcd};
+            \]
+            \item (Identity)
+            \[
+                \begin{tikzcd}
+                    G \times S \arrow[r, "\id_G \times \varepsilon"] \arrow[rd, "\cong"'] & G \times G \arrow[d, "\mu"] & S \times G \arrow[l, "\varepsilon \times \id_G"'] \arrow[ld, "\cong"] \\
+                    & G &
+                \end{tikzcd};
+            \]
+            \item (Inversion)
+            \[
+                \begin{tikzcd}
+                    & G \arrow[ld, "\id_G \times i"'] \arrow[rd, "i \times \id_G"] \arrow[d] & \\
+                    G \times G \arrow[rd, "\mu"'] & S \arrow[d, "\varepsilon"] & G\times G\arrow[ld, "\mu"]\\
+                    & G &
+                \end{tikzcd}.
+            \]
+        \end{enumerate}
+        In other words, a group scheme is a group object in the category of schemes.
+        % \Yang{To be continued...}
+    \end{definition}
+
     \begin{definition}\label{def:algebraic_group}
-        An \emph{algebraic group} is a group object in the category of algebraic varieties, i.e. an algebraic variety $G$ together with morphisms
-        \Yang{To be continued...}
+        An \emph{algebraic group} is a \(\kk\)-group scheme \(G\) which is reduced, separated and of finite type over a field \(\kk\).
+    \end{definition}
+
+    \begin{definition}\label{def:transition_morphism}
+        Let \(G\) be an algebraic group and \(x \in G(\kk)\) a \(\kk\)-point.
+        The \emph{left translation} by \(x\) is the morphism
+        \[
+            l_x: G \xrightarrow{\cong} \Spec \kk \times G \xrightarrow{x \times \id_G} G \times G \xrightarrow{\mu} G.
+        \]
+        Similar definition applies to the right translation \(r_x\).
     \end{definition}
 
     \begin{proposition}\label{prop:algebraic_group_is_smooth}
         Let \(G\) be an algebraic group.
-        Then \(G\) is a smooth variety over \(\kk\).
+        Then \(G\) is a smooth over \(\kk\).
     \end{proposition}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
+    \begin{remark}\label{rmk:irreducible_and_connected_components_of_algebraic_group}
+        Let \(G\) be an algebraic group.
+        Then the irreducible components of \(G\) coincide with the connected components of \(G\).
+        We will use the term ``connected'' to refer to both concepts since ``irreducible'' has other meanings in the theory of representations.
+    \end{remark}
 
     \begin{example}\label{eg:additive_group}
         The \emph{additive group} $\bbG_a$ is defined to be the affine line $\mathbb{A}^1$ with the group law given by addition.
@@ -23,7 +71,7 @@ All varieties are defined over \(\kk\) unless otherwise specified.
             \iota:\bbG_a \to \bbG_a \quad & \kk[T] \to \kk[T], \quad T \mapsto -T. \\
             \varepsilon:\Spec \kk \to \bbG_a \quad & \kk[T] \to \kk, \quad T \mapsto 0.
         \end{align*}
-        \Yang{To be continued...}
+        % \Yang{To be continued...}
     \end{example}
 
     \begin{example}\label{eg:multiplicative_group}
@@ -34,74 +82,68 @@ All varieties are defined over \(\kk\) unless otherwise specified.
             \iota: \bbG_m \to \bbG_m & \leadsto \kk[T,T^{-1}] \to \kk[T,T^{-1}], \quad T \mapsto T^{-1}. \\
             \varepsilon: \Spec \kk \to \bbG_m & \leadsto \kk[T,T^{-1}] \to \kk, \quad T \mapsto 1.
         \end{align*}
-        \Yang{To be continued...}
+        % \Yang{To be continued...}
     \end{example}
 
     \begin{example}\label{eg:general_linear_group}
         The \emph{general linear group} $\GL_n$ is defined to be the open subvariety of $\mathbb{A}^{n^2}$ consisting of invertible matrices, with the group law given by matrix multiplication.
         Concretely, we can write \(\GL_n = \Spec \kk[T_{ij}, \det(T_{ij})^{-1}]\) where \(1 \leq i,j \leq n\) and the group law is given by the morphism
-        \Yang{To be continued...}
+        \begin{align*}
+            \mu: & \GL_n \times \GL_n \to \GL_n, \quad (A,B) \mapsto AB, \\
+            \iota: & \GL_n \to \GL_n, \quad A \mapsto A^{-1}, \\
+            \varepsilon: & \Spec \kk \to \GL_n, \quad 1 \mapsto I_n.
+        \end{align*}
+        % \Yang{To be continued...}
     \end{example}
 
-    % \begin{example}\label{eg:special_linear_group}
-    %     The \emph{special linear group} $\SL_n$ is defined to be the closed subvariety of $\GL_n$ consisting of matrices with determinant equal to \(1\), with the group law given by matrix multiplication.
-        
-    %     \Yang{To be continued...}
-    % \end{example}
-
-    \begin{example}\label{eg:elliptic_curve}
-        An \emph{elliptic curve} is a smooth projective curve of genus \(1\) with a specified point \(O\).
-        Given an elliptic curve \(E\), we can define a group law on \(E\) using the chord-tangent process.
-        Concretely, for any two points \(P,Q \in E\), we can define their sum \(P+Q\) as follows:
-        \begin{itemize}
-            \item If \(P \neq Q\), then let \(L\) be the line passing through \(P\) and \(Q\).
-                Since \(E\) is a cubic curve, \(L\) intersects \(E\) at a third point \(R\).
-                Then we define \(P+Q\) to be the point obtained by reflecting \(R\) across the x-axis (i.e., if \(R=(x,y)\), then \(P+Q=(x,-y)\)).
-            \item If \(P = Q\), then let \(L\) be the tangent line to \(E\) at \(P\).
-                Again, since \(E\) is a cubic curve, \(L\) intersects \(E\) at a second point \(R\).
-                Then we define \(2P = P+P\) to be the point obtained by reflecting \(R\) across the x-axis.
-            \item The identity element is the specified point \(O\).
-            \item The inverse of a point \(P=(x,y)\) is given by \(-P=(x,-y)\).
-        \end{itemize}
-        This group law makes \(E\) into an algebraic group.
-        We can identify the \(\kkk\)-points of \(E\) with the set of points on the elliptic curve defined over \(\kkk\).
-        \Yang{To be continued...}
+    \begin{example}\label{eg:abelian_varieties_as_algebraic_groups}
+        An abelian variety is an algebraic group that is also a proper variety.
     \end{example}
 
-    \begin{definition}\label{def:transition_morphism}
-        Let \(G\) be an algebraic group and \(x \in G(\kk)\) a \(\kk\)-point.
-        The \emph{left translation} by \(x\) is the morphism
+    \begin{example}\label{eg:product_of_algebraic_groups}
+        Let \(G\) and \(H\) be algebraic groups.
+        The \emph{product} \(G \times H\) is an algebraic group with the group law defined by
+        \begin{align*}
+            \mu_{G \times H} = \mu_G \times \mu_H &: (G \times H) \times (G \times H) \cong (G \times G) \times (H \times H) \to G \times H, \\   
+            \varepsilon_{G \times H} = \varepsilon_G \times \varepsilon_H &: \Spec \kk \cong \Spec \kk \times \Spec \kk \to G \times H, \\
+            \iota_{G \times H} = \iota_G \times \iota_H &: G \times H \to G \times H.
+        \end{align*}
+        %     
+        % \]
+        % where \(\mu_G\) and \(\mu_H\) are the group laws of \(G\) and \(H\), respectively.
+        % \Yang{To be continued...}
+    \end{example}
+
+    \begin{definition}\label{def:homomorphism_of_algebraic_groups}
+        A \emph{homomorphism} of algebraic groups is a morphism of schemes that is also a group homomorphism.
+        Explicitly, a morphism \(f: G \to H\) between algebraic groups \(G\) and \(H\) is a homomorphism if the following diagram commutes:
         \[
-            L_x: G \xrightarrow{\cong} \Spec \kk \times G \xrightarrow{x \times \id_G} G \times G \xrightarrow{\mu} G,
+            \begin{tikzcd}
+                G \times G \arrow{r}{\mu_G} \arrow[d, "f\times f" swap] & G \arrow{d}{f} \\
+                H \times H \arrow{r}{\mu_H} & H
+            \end{tikzcd}
         \]
+        where \(\mu_G\) and \(\mu_H\) are the group laws of \(G\) and \(H\), respectively.
+        % \Yang{To be continued...}
     \end{definition}
 
     \begin{definition}\label{def:algebraic_subgroup}
-        An \emph{algebraic subgroup} of an algebraic group \(G\) is a closed subvariety \(H \subseteq G\) that is also a subgroup of \(G\).
-        In other words, the inclusion morphism \(H \hookrightarrow G\) is a morphism of algebraic groups.
+        An \emph{algebraic subgroup} of an algebraic group \(G\) is a closed subscheme \(H \subseteq G\) that is also a subgroup of \(G\).
+        More precisely, \(H\) is an algebraic subgroup and the inclusion morphism \(H \hookrightarrow G\) is a morphism of algebraic groups.
+        % \Yang{To be continued...}
     \end{definition}
 
     \begin{example}\label{eg:special_linear_group}
-        The \emph{special linear group} $\SL_n$ is defined to be the closed subvariety of $\GL_n$ consisting of matrices with determinant equal to \(1\), with the group law given by matrix multiplication.
-        Concretely, we can write \(\SL_n = \Spec \kk[T_{ij}]/(\det(T_{ij}) - 1)\) where \(1 \leq i,j \leq n\) and the group law is given by the morphism
+        The \emph{special linear group} $\SL_n$ is defined to be the closed subvariety of $\GL_n$ defined by the equation \(\det = 1\).
+        It is an algebraic subgroup of \(\GL_n\).
         \Yang{To be continued...}
     \end{example}
-
-    \begin{definition}\label{def:product_of_algebraic_groups}
-        Let \(G\) and \(H\) be algebraic groups.
-        The \emph{product} \(G \times H\) is an algebraic group with the group law defined by
-        \[
-            \mu_{G \times H} = (\mu_G, \mu_H): (G \times H) \times (G \times H) \cong (G \times G) \times (H \times H) \to G \times H,
-        \]
-        where \(\mu_G\) and \(\mu_H\) are the group laws of \(G\) and \(H\), respectively.
-        \Yang{To be continued...}
-    \end{definition}
 
     \begin{definition}\label{def:neutral_component}
         Let \(G\) be an algebraic group.
         The \emph{neutral component} \(G^0\) is the connected component of \(G\) containing the identity element \(\varepsilon\).
         % It is a closed, normal algebraic subgroup of \(G\).
-        \Yang{To be continued...}
+        % \Yang{To be continued...}
     \end{definition}
 
     \begin{proposition}\label{prop:neutral_component_is_subgroup}
@@ -112,38 +154,67 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         \Yang{To be continued...}
     \end{proof}
 
-    \begin{definition}\label{def:homomorphism_of_algebraic_groups}
-        A \emph{homomorphism} of algebraic groups is a morphism of varieties that is also a group homomorphism.
-        In other words, a morphism \(f: G \to H\) between algebraic groups \(G\) and \(H\) is a homomorphism if the following diagram commutes:
-        \[
-            \begin{tikzcd}
-                G \times G \arrow{r}{\mu_G} \arrow{d}{f \times f} & G \arrow{d}{f} \\
-                H \times H \arrow{r}{\mu_H} & H
-            \end{tikzcd}
-        \]
-        where \(\mu_G\) and \(\mu_H\) are the group laws of \(G\) and \(H\), respectively.
-        \Yang{To be continued...}
-    \end{definition}
-
     \begin{proposition}\label{prop:closure_of_subgroup_is_subgroup}
         Let \(G\) be an algebraic group and \(H \subseteq G\) a subgroup (not necessarily closed).
         Then the Zariski closure \(\overline{H}\) of \(H\) in \(G\) is an algebraic subgroup of \(G\).
+        If \(H\) is constructible, then \(H = \overline{H}\).
         \Yang{To be continued...}
     \end{proposition}
     \begin{proof}
         \Yang{To be continued...}
     \end{proof}
 
+    % \begin{remark}\label{rmk:closure_of_subgroup_is_subgroup}
+    %     The assumption that \(H\) is a subgroup is essential.
+    %     \Yang{To be continued...}
+    % \end{remark}
+
+    \begin{example}\label{eg:product_of_closed_algebraic_subgroups_which_is_not_closed}
+        Let \(G = \SL_2\) over \(\kkk\), \(T = \{\diag(t,t^{-1})|t \in \kkk^\times\}\) and \(g = \begin{pmatrix}
+            1 & 1 \\
+            0 & 1
+        \end{pmatrix}\).
+        Set \(S = gTg^{-1}\).
+        Then both \(T\) and \(S\) are closed algebraic subgroups of \(G\), but the product \(TS\) is not closed in \(G\).
+        By direct computation, we have
+        \[ S = \left\{ \begin{pmatrix}
+            s & s^{-1}-s \\
+            0 & s^{-1}
+        \end{pmatrix} \;\middle|\; s \in \kkk^\times \right\}.
+        \]
+        Then 
+        \[ TS = \left\{ \begin{pmatrix}
+            ts & t(s^{-1}-s) \\
+            0 & (ts)^{-1}
+        \end{pmatrix} \;\middle|\; t,s \in \kkk^\times \right\}.
+        \]
+        We have 
+        \[ TS \cap \left\{ \begin{pmatrix}
+            1 & a \\
+            0 & 1
+        \end{pmatrix} \;\middle|\; a \in \kkk \right\} = \left\{ \begin{pmatrix}
+            1 & s^{-2}-1 \\
+            0 & 1
+        \end{pmatrix} \;\middle|\; s \in \kkk^\times \right\}. \]
+        The right hand side is not closed in \(\SL_2\) since it does not contain the matrix \(\begin{pmatrix}
+            1 & -1 \\
+            0 & 1
+        \end{pmatrix}\).
+        Hence \(TS\) is not closed in \(G\).
+    \end{example}
+
     \begin{proposition}\label{prop:generate_subgroup_by_irred_constructible_subset}
-        Let \(G\) be an algebraic group, \(Y_i\) irreducible constructible subsets of \(G\) containing the identity element for \(i=1,\ldots,n\).
-        Then the closed subgroup \Yang{To be continued...}
+        Let \(G\) be an algebraic group, \(X_i\) varieties over \(\kk\) and \(f_i: X_i \to G\) morphisms for \(i=1,\ldots,n\) with images \(Y_i = f_i(X_i)\).
+        Suppose that \(Y_i\) pass through the identity element of \(G\).
+        Let \(H\) be the closed subgroup of \(G\) generated by \(Y_1,\ldots,Y_n\), i.e. the smallest closed subgroup of \(G\) containing \(Y_1,\ldots,Y_n\).
+        Then \(H\) is connected and \(H = Y_{a_1}^{e_1} \cdots Y_{a_m}^{e_m}\) for some \(a_1,\ldots,a_m \in \{1,\ldots,n\}\) and \(e_1,\ldots,e_m \in \{\pm 1\}\).
     \end{proposition}
     \begin{proof}
         \Yang{To be continued...}
     \end{proof}
 
     \begin{remark}\label{rmk:generated_subgroup_by_irred_constructible_subset}
-        We can take \(n \leq 2 \dim G\).
+        We can take \(m \leq 2 \dim G\) in \cref{prop:generate_subgroup_by_irred_constructible_subset}.
         \Yang{To be continued...}
     \end{remark}
 
@@ -170,7 +241,7 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         where \(\mu\) is the group law of \(G\) and \(\varepsilon\) is the identity element of \(G\).
         In other words, for any field extension \(K/\kk\), the induced map \(G(K) \times X(K) \to X(K)\) defines a group action of the abstract group \(G(K)\) on the set \(X(K)\).
         We say that \(X\) is a \(G\)-variety.
-        \Yang{To be continued...}
+        \Yang{To be checked.}
     \end{definition}
 
     \begin{example}\label{eg:linear_representation}
@@ -181,5 +252,5 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         such that for any field extension \(K/\kk\), the induced map \(G(K) \times V(K) \to V(K)\) defines a group homomorphism from the abstract group \(G(K)\) to the general linear group of the vector space \(V(K)\).
         In other words, for any \(g \in G(K)\), the map \(\rho_g: V(K) \to V(K)\) defined by \(\rho_g(v) = \rho(g,v)\) is a linear automorphism of \(V(K)\).
         We say that \(V\) is a \(G\)-module.
-        \Yang{To be continued...}
+        \Yang{To be checked.}
     \end{example}
