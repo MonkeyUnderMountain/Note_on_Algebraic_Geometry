@@ -1,1 +1,185 @@
-\section{}
+\section{First properties of algebraic groups}
+
+Let \(\kk\) be a field and \(\kkk\) its algebraic closure. 
+All varieties are defined over \(\kk\) unless otherwise specified.
+
+\subsection{Basic concepts}
+
+    \begin{definition}\label{def:algebraic_group}
+        An \emph{algebraic group} is a group object in the category of algebraic varieties, i.e. an algebraic variety $G$ together with morphisms
+        \Yang{To be continued...}
+    \end{definition}
+
+    \begin{proposition}\label{prop:algebraic_group_is_smooth}
+        Let \(G\) be an algebraic group.
+        Then \(G\) is a smooth variety over \(\kk\).
+    \end{proposition}
+
+    \begin{example}\label{eg:additive_group}
+        The \emph{additive group} $\bbG_a$ is defined to be the affine line $\mathbb{A}^1$ with the group law given by addition.
+        Concretely, we can write $\bbG_a = \Spec \kk[T]$ with the group law given by the morphism
+        \begin{align*}
+            \mu:\bbG_a \times \bbG_a \to \bbG_a \quad & \kk[T] \to \kk[T]\ten_\kk \kk[T], \quad T \mapsto T\ten 1 + 1 \ten T. \\
+            \iota:\bbG_a \to \bbG_a \quad & \kk[T] \to \kk[T], \quad T \mapsto -T. \\
+            \varepsilon:\Spec \kk \to \bbG_a \quad & \kk[T] \to \kk, \quad T \mapsto 0.
+        \end{align*}
+        \Yang{To be continued...}
+    \end{example}
+
+    \begin{example}\label{eg:multiplicative_group}
+        The \emph{multiplicative group} $\bbG_m$ is defined to be the affine variety $\mathbb{A}^1 \setminus \{0\}$ with the group law given by multiplication.
+        Concretely, we can write $\bbG_m = \Spec \kk[T,T^{-1}]$ with the group law given by the morphism
+        \begin{align*}
+            \mu: \bbG_m \times \bbG_m \to \bbG_m & \leadsto \kk[T,T^{-1}] \to \kk[T,T^{-1}]\ten_\kk \kk[T,T^{-1}], \quad T \mapsto T\ten T. \\
+            \iota: \bbG_m \to \bbG_m & \leadsto \kk[T,T^{-1}] \to \kk[T,T^{-1}], \quad T \mapsto T^{-1}. \\
+            \varepsilon: \Spec \kk \to \bbG_m & \leadsto \kk[T,T^{-1}] \to \kk, \quad T \mapsto 1.
+        \end{align*}
+        \Yang{To be continued...}
+    \end{example}
+
+    \begin{example}\label{eg:general_linear_group}
+        The \emph{general linear group} $\GL_n$ is defined to be the open subvariety of $\mathbb{A}^{n^2}$ consisting of invertible matrices, with the group law given by matrix multiplication.
+        Concretely, we can write \(\GL_n = \Spec \kk[T_{ij}, \det(T_{ij})^{-1}]\) where \(1 \leq i,j \leq n\) and the group law is given by the morphism
+        \Yang{To be continued...}
+    \end{example}
+
+    % \begin{example}\label{eg:special_linear_group}
+    %     The \emph{special linear group} $\SL_n$ is defined to be the closed subvariety of $\GL_n$ consisting of matrices with determinant equal to \(1\), with the group law given by matrix multiplication.
+        
+    %     \Yang{To be continued...}
+    % \end{example}
+
+    \begin{example}\label{eg:elliptic_curve}
+        An \emph{elliptic curve} is a smooth projective curve of genus \(1\) with a specified point \(O\).
+        Given an elliptic curve \(E\), we can define a group law on \(E\) using the chord-tangent process.
+        Concretely, for any two points \(P,Q \in E\), we can define their sum \(P+Q\) as follows:
+        \begin{itemize}
+            \item If \(P \neq Q\), then let \(L\) be the line passing through \(P\) and \(Q\).
+                Since \(E\) is a cubic curve, \(L\) intersects \(E\) at a third point \(R\).
+                Then we define \(P+Q\) to be the point obtained by reflecting \(R\) across the x-axis (i.e., if \(R=(x,y)\), then \(P+Q=(x,-y)\)).
+            \item If \(P = Q\), then let \(L\) be the tangent line to \(E\) at \(P\).
+                Again, since \(E\) is a cubic curve, \(L\) intersects \(E\) at a second point \(R\).
+                Then we define \(2P = P+P\) to be the point obtained by reflecting \(R\) across the x-axis.
+            \item The identity element is the specified point \(O\).
+            \item The inverse of a point \(P=(x,y)\) is given by \(-P=(x,-y)\).
+        \end{itemize}
+        This group law makes \(E\) into an algebraic group.
+        We can identify the \(\kkk\)-points of \(E\) with the set of points on the elliptic curve defined over \(\kkk\).
+        \Yang{To be continued...}
+    \end{example}
+
+    \begin{definition}\label{def:transition_morphism}
+        Let \(G\) be an algebraic group and \(x \in G(\kk)\) a \(\kk\)-point.
+        The \emph{left translation} by \(x\) is the morphism
+        \[
+            L_x: G \xrightarrow{\cong} \Spec \kk \times G \xrightarrow{x \times \id_G} G \times G \xrightarrow{\mu} G,
+        \]
+    \end{definition}
+
+    \begin{definition}\label{def:algebraic_subgroup}
+        An \emph{algebraic subgroup} of an algebraic group \(G\) is a closed subvariety \(H \subseteq G\) that is also a subgroup of \(G\).
+        In other words, the inclusion morphism \(H \hookrightarrow G\) is a morphism of algebraic groups.
+    \end{definition}
+
+    \begin{example}\label{eg:special_linear_group}
+        The \emph{special linear group} $\SL_n$ is defined to be the closed subvariety of $\GL_n$ consisting of matrices with determinant equal to \(1\), with the group law given by matrix multiplication.
+        Concretely, we can write \(\SL_n = \Spec \kk[T_{ij}]/(\det(T_{ij}) - 1)\) where \(1 \leq i,j \leq n\) and the group law is given by the morphism
+        \Yang{To be continued...}
+    \end{example}
+
+    \begin{definition}\label{def:product_of_algebraic_groups}
+        Let \(G\) and \(H\) be algebraic groups.
+        The \emph{product} \(G \times H\) is an algebraic group with the group law defined by
+        \[
+            \mu_{G \times H} = (\mu_G, \mu_H): (G \times H) \times (G \times H) \cong (G \times G) \times (H \times H) \to G \times H,
+        \]
+        where \(\mu_G\) and \(\mu_H\) are the group laws of \(G\) and \(H\), respectively.
+        \Yang{To be continued...}
+    \end{definition}
+
+    \begin{definition}\label{def:neutral_component}
+        Let \(G\) be an algebraic group.
+        The \emph{neutral component} \(G^0\) is the connected component of \(G\) containing the identity element \(\varepsilon\).
+        % It is a closed, normal algebraic subgroup of \(G\).
+        \Yang{To be continued...}
+    \end{definition}
+
+    \begin{proposition}\label{prop:neutral_component_is_subgroup}
+        The neutral component \(G^0\) is a closed, normal algebraic subgroup of \(G\) of finite index.
+        Moreover, each closed subgroup \(H\) of finite index contains \(G^0\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
+    \begin{definition}\label{def:homomorphism_of_algebraic_groups}
+        A \emph{homomorphism} of algebraic groups is a morphism of varieties that is also a group homomorphism.
+        In other words, a morphism \(f: G \to H\) between algebraic groups \(G\) and \(H\) is a homomorphism if the following diagram commutes:
+        \[
+            \begin{tikzcd}
+                G \times G \arrow{r}{\mu_G} \arrow{d}{f \times f} & G \arrow{d}{f} \\
+                H \times H \arrow{r}{\mu_H} & H
+            \end{tikzcd}
+        \]
+        where \(\mu_G\) and \(\mu_H\) are the group laws of \(G\) and \(H\), respectively.
+        \Yang{To be continued...}
+    \end{definition}
+
+    \begin{proposition}\label{prop:closure_of_subgroup_is_subgroup}
+        Let \(G\) be an algebraic group and \(H \subseteq G\) a subgroup (not necessarily closed).
+        Then the Zariski closure \(\overline{H}\) of \(H\) in \(G\) is an algebraic subgroup of \(G\).
+        \Yang{To be continued...}
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
+    \begin{proposition}\label{prop:generate_subgroup_by_irred_constructible_subset}
+        Let \(G\) be an algebraic group, \(Y_i\) irreducible constructible subsets of \(G\) containing the identity element for \(i=1,\ldots,n\).
+        Then the closed subgroup \Yang{To be continued...}
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
+    \begin{remark}\label{rmk:generated_subgroup_by_irred_constructible_subset}
+        We can take \(n \leq 2 \dim G\).
+        \Yang{To be continued...}
+    \end{remark}
+
+
+\subsection{Action and representations}
+
+    \begin{definition}\label{def:action_of_algebraic_group}
+        An \emph{action} of an algebraic group \(G\) on a variety \(X\) is a morphism
+        \[
+            \sigma: G \times X \to X
+        \]
+        such that the following diagrams commute:
+        \[
+            \begin{tikzcd}
+                G \times G \times X \arrow{r}{\mu \times \id_X} \arrow{d}{\id_G \times \sigma} & G \times X \arrow{d}{\sigma} \\
+                G \times X \arrow{r}{\sigma} & X
+            \end{tikzcd}
+            \quad
+            \begin{tikzcd}
+                \Spec \kk \times X \arrow{r}{\varepsilon \times \id_X} \arrow{dr}[swap]{\cong} & G \times X \arrow{d}{\sigma} \\
+                & X
+            \end{tikzcd}
+        \]
+        where \(\mu\) is the group law of \(G\) and \(\varepsilon\) is the identity element of \(G\).
+        In other words, for any field extension \(K/\kk\), the induced map \(G(K) \times X(K) \to X(K)\) defines a group action of the abstract group \(G(K)\) on the set \(X(K)\).
+        We say that \(X\) is a \(G\)-variety.
+        \Yang{To be continued...}
+    \end{definition}
+
+    \begin{example}\label{eg:linear_representation}
+        A \emph{linear representation} of an algebraic group \(G\) on a finite-dimensional vector space \(V\) over \(\kk\) is an action of \(G\) on the affine space associated to \(V\), i.e. a morphism
+        \[
+            \rho: G \times V \to V
+        \]
+        such that for any field extension \(K/\kk\), the induced map \(G(K) \times V(K) \to V(K)\) defines a group homomorphism from the abstract group \(G(K)\) to the general linear group of the vector space \(V(K)\).
+        In other words, for any \(g \in G(K)\), the map \(\rho_g: V(K) \to V(K)\) defined by \(\rho_g(v) = \rho(g,v)\) is a linear automorphism of \(V(K)\).
+        We say that \(V\) is a \(G\)-module.
+        \Yang{To be continued...}
+    \end{example}
