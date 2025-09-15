@@ -4,4 +4,18 @@
 
 \subsection{Line Bundles and Picard Group}
 
+    \begin{definition}\label{def:picard_group}
+        Let \(X\) be a scheme. 
+        The \emph{Picard group} of \(X\) is defined to be \(\Pic(X) = H^1(X, \calO_X^*)\).
+        The group operation is given by the tensor product of line bundles.
+    \end{definition}
+
+    \begin{definition}\label{def:algebraically_equivalent_line_bundles}
+        Let \(X\) be a scheme over a field \(\kk\) and \(\calL, \calL'\) two line bundles on \(X\).
+        We say that \(\calL\) and \(\calL'\) are \emph{algebraically equivalent} if there exists a \Yang{non-singular} variety \(T\) over \(\kk\), two points \(t_0, t_1 \in T(\kkk)\) and a line bundle \(\calM\) on \(X \times T\) such that 
+        \[ \calM|_{X \times \{t_0\}} \cong \calL, \quad \calM|_{X \times \{t_1\}} \cong \calL'. \]
+        We denote it by \(\calL \sim_{\text{alg}} \calL'\).
+        \Yang{To be checked.}
+    \end{definition}
+
 \subsection{Weil Divisors and Reflexive Sheaves}

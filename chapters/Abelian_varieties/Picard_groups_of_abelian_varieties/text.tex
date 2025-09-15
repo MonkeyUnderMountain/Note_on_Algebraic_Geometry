@@ -55,7 +55,7 @@ Let \(A\) be an abelian variety over \(\kk\).
     \end{definition}
 
     \begin{theorem}[Theorem of the square]\label{thm: theorem of the square}
-        Let \(A\) be an abelian variety over \(\kkk\), \(x,y \in A(\kkk)\) two points and \(\calL\) a line bundle on \(A\).
+        Let \(A\) be an abelian variety over \(\kk\), \(x,y \in A(\kk)\) two points and \(\calL\) a line bundle on \(A\).
         Then 
         \[ t_{x+y}^*\calL \ten \calL \cong t_x^*\calL \ten t_y^*\calL. \]
     \end{theorem}
@@ -80,7 +80,7 @@ Let \(A\) be an abelian variety over \(\kk\).
     If we assume the scheme structure on \(\Pic(A)\), then \(\Phi_\calL\) is a morphism of scheme and factors through \(\Pic^0(A)\).
     Let \(K(\calL) \coloneqq \Ker \Phi_\calL\), then \(K(\calL)\) is a subgroup scheme of \(A\).
     We give another description of \(K(\calL)\).
-    From this point, we can recover the dual abelian variety \(A^\vee = \Pic^0(A)\) as the quotient \(A/K(\calL)\).
+    From this point, when \(K(\calL)\) is finite, we can recover the dual abelian variety \(A^\vee = \Pic^0(A)\) as the quotient \(A/K(\calL)\).
     \Yang{To be completed.}
 
 
@@ -88,20 +88,26 @@ Let \(A\) be an abelian variety over \(\kk\).
 \subsection{Projectivity}
 
     \begin{proposition}\label{prop:2D_is_base_point_free}
-        Let \(A\) be an abelian variety over \(\kkk\) and \(D\) an effective divisor on \(A\).
+        Let \(A\) be an abelian variety over \(\kk\) and \(D\) an effective divisor on \(A\).
         Then \(|2D|\) is base point free.
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{theorem}\label{thm:ample_criteria_for_abelian_varieties}
-        Let \(A\) be an abelian variety over \(\kkk\) and \(D\) an effective divisor on \(A\).
+        Let \(A\) be an abelian variety over \(\kk\) and \(D\) an effective divisor on \(A\).
         TFAE:
         \begin{enumerate}
             \item the stabilizer \(\Stab(D)\) of \(D\) is finite;
             \item the morphism \(\Phi_{|2D|}\) induced by the complete linear system \(|2D|\) is finite;
             \item \(D\) is ample;
-            \item \(K(\calo_A(D))\) is finite.
+            \item \(K(\calO_A(D))\) is finite.
         \end{enumerate}
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{theorem}\label{thm: abelian varieties are projective}
         Let $A$ be an abelian variety over $\kk$. 
@@ -111,28 +117,43 @@ Let \(A\) be an abelian variety over \(\kk\).
         \Yang{To be completed.}
     \end{proof}
 
-
-\subsection{Isogenies and finite subgroups}
-
-    \begin{theorem}\label{thm: torsion subgroups of abelian varieties}
-        Let \(A\) be an abelian variety of dimension \(d\) over \(\kkk\). 
-        Then the subgroup \(A[n]\) of \(n\) torsion points is finite and we have 
-        \begin{enumerate}
-            \item if \(n\) is coprime to \(\characteristic(\kk)\), then \(A[n] \cong (\bbZ/n\bbZ)^{2d}\);
-            \item if \(n = p^k\) for \(p = \characteristic(\kk) > 0\)
-        \end{enumerate}
-    \end{theorem}
+    \begin{corollary}\label{cor:psef_iff_nef_for_abelian_varieties}
+        Let \(A\) be an abelian variety over \(\kk\) and \(D\) a divisor on \(A\).
+        Then \(D\) is pseudo-effective if and only if it is nef, i.e. \(\Psef^1(A) = \Nef^1(A)\).
+    \end{corollary}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
 
-    \begin{theorem}\label{thm:isogenies_and_finite_subgroups}
-        Let \(A\) be an abelian variety over \(\kkk\). 
-        There is a bijection between the isogenies from \(A\) over \(\kkk\) and the finite subgroup schemes of \(A\).
-    \end{theorem}
+
+% \subsection{Isogenies and finite subgroups}
+
+%     \begin{theorem}\label{thm: torsion subgroups of abelian varieties}
+%         Let \(A\) be an abelian variety of dimension \(d\) over \(\kkk\). 
+%         Then the subgroup \(A[n]\) of \(n\) torsion points is finite and we have 
+%         \begin{enumerate}
+%             \item if \(n\) is coprime to \(\characteristic(\kk)\), then \(A[n] \cong (\bbZ/n\bbZ)^{2d}\);
+%             \item if \(n = p^k\) for \(p = \characteristic(\kk) > 0\)
+%         \end{enumerate}
+%     \end{theorem}
+%     \begin{proof}
+%         \Yang{To be completed.}
+%     \end{proof}
+
+%     \begin{theorem}\label{thm:isogenies_and_finite_subgroups}
+%         Let \(A\) be an abelian variety over \(\kkk\). 
+%         There is a bijection between the isogenies from \(A\) over \(\kkk\) and the finite subgroup schemes of \(A\).
+%     \end{theorem}
 
 
 \subsection{Dual abelian varieties}
+
+    \begin{definition}\label{def:dual_abelian_variety}
+        Let \(A\) be an abelian variety over \(\kk\).
+        We define the \emph{dual abelian variety} of \(A\) to be \(A/K(\calL)\) for some ample line bundle \(\calL\) on \(A\).
+        We denote it by \(A^\vee\).
+        % \Yang{To be completed.}
+    \end{definition}
 
     \begin{theorem}\label{thm: dual abelian varieties}
         Let $A$ be an abelian variety over $\kk$. 
