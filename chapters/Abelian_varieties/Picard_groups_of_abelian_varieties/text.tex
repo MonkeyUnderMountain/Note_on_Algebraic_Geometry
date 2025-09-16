@@ -12,7 +12,7 @@ Let \(A\) be an abelian variety over \(\kk\).
 
     \begin{theorem}[Theorem of the cube]\label{thm: theorem of the cube}
         Let \(X,Y,Z\) be proper varieties over \(\kk\) and \(\calL\) a line bundle on \(X \times Y \times Z\). 
-        Suppose that there exist \(x \in X(\kkk), y \in Y(\kkk), z \in Z(\kkk)\) such that the restriction \(\calL|_{\{x\} \times Y \times Z}\), \(\calL|_{X \times \{y\} \times Z}\) and \(\calL|_{X \times Y \times \{z\}}\) are trivial. 
+        Suppose that there exist \(x \in X(\kk), y \in Y(\kk), z \in Z(\kk)\) such that the restriction \(\calL|_{\{x\} \times Y \times Z}\), \(\calL|_{X \times \{y\} \times Z}\) and \(\calL|_{X \times Y \times \{z\}}\) are trivial. 
         Then \(\calL\) is trivial.
     \end{theorem}
     \begin{proof}
@@ -33,7 +33,7 @@ Let \(A\) be an abelian variety over \(\kk\).
 
     \begin{proposition}
         Let \(A\) be an abelian variety over \(\kk\), \(f,g,h: X \to A\) morphisms from a variety \(X\) to \(A\) and \(\calL\) a line bundle on \(A\).
-        Then 
+        Then we have
         \[ (f+g+h)^*\calL \cong (f+g)^*\calL \ten (f+h)^*\calL \ten (g+h)^*\calL \ten f^*\calL^{-1} \ten g^*\calL^{-1} \ten h^*\calL^{-1}. \]
     \end{proposition}
     \begin{proof}
@@ -50,7 +50,7 @@ Let \(A\) be an abelian variety over \(\kk\).
     \end{proof}
 
     \begin{definition}\label{def:symmetric_and_antisymmetric_line_bundles}
-        Let \(A\) be an abelian variety over \(\kkk\) and \(\calL\) a line bundle on \(A\).
+        Let \(A\) be an abelian variety over \(\kk\) and \(\calL\) a line bundle on \(A\).
         We say that \(\calL\) is \emph{symmetric} if \([-1]_A^*\calL \cong \calL\) and \emph{antisymmetric} if \([-1]_A^*\calL \cong \calL^{-1}\).
     \end{definition}
 
@@ -65,23 +65,23 @@ Let \(A\) be an abelian variety over \(\kk\).
 
     \begin{remark}\label{rmk: theorem of the square and homomorphism to Picard group}
         We can define a map
-        \[ \Phi_\calL: A(\kkk) \to \Pic(A), \quad x \mapsto t_x^*\calL \ten \calL^{-1}. \]
+        \[ \Phi_\calL: A(\kk) \to \Pic(A), \quad x \mapsto t_x^*\calL \ten \calL^{-1}. \]
         Then theorem of the square implies that \(\Phi_\calL\) is a homomorphism of groups.
         When we vary \(\calL\), the map 
-        \[ \Phi_{\square}: \Pic(A) \to \Hom_{\Grp}(A(\kkk), \Pic(A)), \quad \calL \mapsto \Phi_\calL \]
-        is a group homomorphism.
-        For any \(x \in A(\kkk)\), we have
-        \[ \Phi_{t_x^*\calL} = \Phi_\calL. \]
-        In the other words, 
-        \[ \Phi_\calL(x) \in \Ker \Phi_{\square}, \quad \forall \calL \in \Pic(A), x \in A(\kkk). \]
-        \Yang{To be completed.}
+        \[ \Phi_{\square}: \Pic(A) \to \Hom_{\Grp}(A(\kk), \Pic(A)), \quad \calL \mapsto \Phi_\calL \]
+        is also a group homomorphism.
+        % For any \(x \in A(\kk)\), we have
+        % \[ \Phi_{t_x^*\calL} = \Phi_\calL. \]
+        % In the other words, 
+        % \[ \Phi_\calL(x) \in \Ker \Phi_{\square}, \quad \forall \calL \in \Pic(A), x \in A(\kk). \]
+        % \Yang{To be completed.}
     \end{remark}
 
     If we assume the scheme structure on \(\Pic(A)\), then \(\Phi_\calL\) is a morphism of scheme and factors through \(\Pic^0(A)\).
     Let \(K(\calL) \coloneqq \Ker \Phi_\calL\), then \(K(\calL)\) is a subgroup scheme of \(A\).
     We give another description of \(K(\calL)\).
-    From this point, when \(K(\calL)\) is finite, we can recover the dual abelian variety \(A^\vee = \Pic^0(A)\) as the quotient \(A/K(\calL)\).
-    \Yang{To be completed.}
+    From this point, when \(K(\calL)\) is finite, we can recover the dual abelian variety \(A^\vee = \Pic^0_{A/\kk}\) as the quotient \(A/K(\calL)\).
+    % \Yang{To be completed.}
 
 
 
@@ -100,7 +100,7 @@ Let \(A\) be an abelian variety over \(\kk\).
         TFAE:
         \begin{enumerate}
             \item the stabilizer \(\Stab(D)\) of \(D\) is finite;
-            \item the morphism \(\Phi_{|2D|}\) induced by the complete linear system \(|2D|\) is finite;
+            \item the morphism \(\phi_{|2D|}\) induced by the complete linear system \(|2D|\) is finite;
             \item \(D\) is ample;
             \item \(K(\calO_A(D))\) is finite.
         \end{enumerate}
@@ -148,6 +148,14 @@ Let \(A\) be an abelian variety over \(\kk\).
 
 \subsection{Dual abelian varieties}
 
+    \begin{proposition}\label{prop:ample_line_bundles_induce_surjective_homomorphisms}
+        Let \(A\) be an abelian variety over \(\kk\) and \(\calL\) an ample line bundle on \(A\).
+        Then the homomorphism \(\Phi_\calL: A(\kk) \to \Pic(A)\) factors through \(\Pic^0(A)\) and \(A(\kk) \to \Pic^0(A)\) is surjective.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
     \begin{definition}\label{def:dual_abelian_variety}
         Let \(A\) be an abelian variety over \(\kk\).
         We define the \emph{dual abelian variety} of \(A\) to be \(A/K(\calL)\) for some ample line bundle \(\calL\) on \(A\).
@@ -155,14 +163,30 @@ Let \(A\) be an abelian variety over \(\kk\).
         % \Yang{To be completed.}
     \end{definition}
 
-    \begin{theorem}\label{thm: dual abelian varieties}
+    \begin{theorem}\label{thm:dual_abelian_variety_as_Pic0}
         Let $A$ be an abelian variety over $\kk$. 
-        Then \(\Pic^0(A) \) has a natural structure of an abelian variety, called the \emph{dual abelian variety} of $A$, denoted by $A^\vee$.
+        Then the dual abelian variety \(A^\vee\) does not depend on the choice of the ample line bundle \(\calL\).
+        Moreover, there is a natural bijection \(A^\vee(\kk) \to \Pic^0(A)\).
+        % Then \(\Pic^0(A) \) has a natural structure of an abelian variety, called the \emph{dual abelian variety} of $A$, denoted by $A^\vee$.
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:dual_of_dual_is_A}
+        Let \(A\) be an abelian variety over \(\kk\).
+        Then the dual abelian variety \(A^\vee\) is also an abelian variety and the natural map \(A \to A^{\vee\vee}\) is an isomorphism.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{proposition}\label{prop: the Poincare line bundle}
         There exists a unique line bundle \(\calP\) on \(A \times A^\vee\) such that for every \(y = \calL \in A^\vee = \Pic^0(A)\), we have \(\calP|_{A \times \{y\}} \cong \calL\).
     \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 
 \subsection{The N\'eron-Severi group}
