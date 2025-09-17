@@ -31,21 +31,29 @@ Let \(A\) be an abelian variety over \(\kk\).
         Hence \(\calL\) is trivial.
     \end{remark}
 
-    \begin{proposition}
+    \begin{lemma}\label{lem: pull back of line bundles along sum of morphisms}
         Let \(A\) be an abelian variety over \(\kk\), \(f,g,h: X \to A\) morphisms from a variety \(X\) to \(A\) and \(\calL\) a line bundle on \(A\).
         Then we have
         \[ (f+g+h)^*\calL \cong (f+g)^*\calL \ten (f+h)^*\calL \ten (g+h)^*\calL \ten f^*\calL^{-1} \ten g^*\calL^{-1} \ten h^*\calL^{-1}. \]
-    \end{proposition}
+    \end{lemma}
     \begin{proof}
-        \Yang{To be completed.}
+        First consider \(X = A \times A \times A\), \(p:X \to A, (x_1,x_2,x_3) \mapsto x_1+x_2+x_3\), \(p_{ij}:X \to A, (x_1,x_2,x_3) \mapsto x_i + x_j\) for \(1 \leq i < j \leq 3\) and \(p_i: X \to A, (x_1,x_2,x_3) \mapsto x_i\) for \(1 \leq i \leq 3\).
+        Then the conclusion follows from the theorem of the cube by taking \(\calL' = p^*\calL^{-1} \ten p_{12}^*\calL \ten p_{13}^*\calL \ten p_{23}^*\calL \ten p_1^*\calL^{-1} \ten p_2^*\calL^{-1} \ten p_3^*\calL^{-1}\) and considering the restriction to \(\{0\} \times A \times A\), \(A \times \{0\} \times A\) and \(A \times A \times \{0\}\).
+
+        In general, consider the morphism \(\varphi = (f,g,h): X \to A \times A \times A\) and pull back the above isomorphism along \(\varphi\).
     \end{proof}
 
     \begin{proposition}\label{prop: pull back of line bundles along the multiplication by n}
-        Let \(A\) be an abelian variety over \(\kkk\), \(n\in \bbZ\) and \(\calL\) a line bundle on \(A\). 
+        Let \(A\) be an abelian variety over \(\kk\), \(n\in \bbZ\) and \(\calL\) a line bundle on \(A\). 
         Then we have 
         \[ [n]_A^*\calL \cong \calL^{\ten \frac{1}{2}(n^2+n)} \ten [-1]_A^*\calL^{\ten \frac{1}{2}(n^2-n)}. \]
     \end{proposition}
     \begin{proof}
+        For \(n = 0,1\), the conclusion is trivial.
+        For \(n \geq 2\), we can use the previous lemma on \([n-2]_A,[1]_A,[1]_A\) and induct on \(n\).
+        Hence we have 
+        \[ [n]_A^*\calL \cong [n-1]_A^*\calL \ten [n-1]_A^*\calL \ten [2]_A^*\calL \ten [1]_A^*\calL^{-1} \ten [1]_A^*\calL^{-1} \ten [n-2]_A^*\calL^{-1}. \]
+        Then the conclusion follows from induction.
         \Yang{To be completed.}
     \end{proof}
 
@@ -87,8 +95,10 @@ Let \(A\) be an abelian variety over \(\kk\).
 
 \subsection{Projectivity}
 
+    In this subsection, we work over the algebraically closed field \(\kkk\).
+
     \begin{proposition}\label{prop:2D_is_base_point_free}
-        Let \(A\) be an abelian variety over \(\kk\) and \(D\) an effective divisor on \(A\).
+        Let \(A\) be an abelian variety over \(\kkk\) and \(D\) an effective divisor on \(A\).
         Then \(|2D|\) is base point free.
     \end{proposition}
     \begin{proof}
@@ -96,7 +106,7 @@ Let \(A\) be an abelian variety over \(\kk\).
     \end{proof}
 
     \begin{theorem}\label{thm:ample_criteria_for_abelian_varieties}
-        Let \(A\) be an abelian variety over \(\kk\) and \(D\) an effective divisor on \(A\).
+        Let \(A\) be an abelian variety over \(\kkk\) and \(D\) an effective divisor on \(A\).
         TFAE:
         \begin{enumerate}
             \item the stabilizer \(\Stab(D)\) of \(D\) is finite;
@@ -110,7 +120,7 @@ Let \(A\) be an abelian variety over \(\kk\).
     \end{proof}
 
     \begin{theorem}\label{thm: abelian varieties are projective}
-        Let $A$ be an abelian variety over $\kk$. 
+        Let $A$ be an abelian variety over $\kkk$. 
         Then $A$ is projective.
     \end{theorem}
     \begin{proof}
@@ -118,7 +128,7 @@ Let \(A\) be an abelian variety over \(\kk\).
     \end{proof}
 
     \begin{corollary}\label{cor:psef_iff_nef_for_abelian_varieties}
-        Let \(A\) be an abelian variety over \(\kk\) and \(D\) a divisor on \(A\).
+        Let \(A\) be an abelian variety over \(\kkk\) and \(D\) a divisor on \(A\).
         Then \(D\) is pseudo-effective if and only if it is nef, i.e. \(\Psef^1(A) = \Nef^1(A)\).
     \end{corollary}
     \begin{proof}
@@ -148,16 +158,18 @@ Let \(A\) be an abelian variety over \(\kk\).
 
 \subsection{Dual abelian varieties}
 
+    In this subsection, we work over the algebraically closed field \(\kkk\).
+
     \begin{proposition}\label{prop:ample_line_bundles_induce_surjective_homomorphisms}
         Let \(A\) be an abelian variety over \(\kk\) and \(\calL\) an ample line bundle on \(A\).
-        Then the homomorphism \(\Phi_\calL: A(\kk) \to \Pic(A)\) factors through \(\Pic^0(A)\) and \(A(\kk) \to \Pic^0(A)\) is surjective.
+        Then the homomorphism \(\Phi_\calL: A(\kkk) \to \Pic(A)\) factors through \(\Pic^0(A)\) and \(A(\kkk) \to \Pic^0(A)\) is surjective.
     \end{proposition}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
 
     \begin{definition}\label{def:dual_abelian_variety}
-        Let \(A\) be an abelian variety over \(\kk\).
+        Let \(A\) be an abelian variety over \(\kkk\).
         We define the \emph{dual abelian variety} of \(A\) to be \(A/K(\calL)\) for some ample line bundle \(\calL\) on \(A\).
         We denote it by \(A^\vee\).
         % \Yang{To be completed.}
