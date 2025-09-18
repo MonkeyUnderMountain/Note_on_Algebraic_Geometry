@@ -78,10 +78,11 @@ Let \(A\) be an abelian variety over \(\kk\).
         When we vary \(\calL\), the map 
         \[ \Phi_{\square}: \Pic(A) \to \Hom_{\Grp}(A(\kk), \Pic(A)), \quad \calL \mapsto \Phi_\calL \]
         is also a group homomorphism.
-        % For any \(x \in A(\kk)\), we have
-        % \[ \Phi_{t_x^*\calL} = \Phi_\calL. \]
-        % In the other words, 
-        % \[ \Phi_\calL(x) \in \Ker \Phi_{\square}, \quad \forall \calL \in \Pic(A), x \in A(\kk). \]
+        For any \(x \in A(\kk)\), we have
+        \[ \Phi_{t_x^*\calL} = \Phi_\calL \]
+        by \cref{thm: theorem of the square}.
+        In the other words, 
+        \[ \Phi_\calL(x) \in \Ker \Phi_{\square}, \quad \forall \calL \in \Pic(A), x \in A(\kk). \]
         % \Yang{To be completed.}
     \end{remark}
 
@@ -160,13 +161,13 @@ Let \(A\) be an abelian variety over \(\kk\).
 
     In this subsection, we work over the algebraically closed field \(\kkk\).
 
-    \begin{proposition}\label{prop:ample_line_bundles_induce_surjective_homomorphisms}
-        Let \(A\) be an abelian variety over \(\kk\) and \(\calL\) an ample line bundle on \(A\).
-        Then the homomorphism \(\Phi_\calL: A(\kkk) \to \Pic(A)\) factors through \(\Pic^0(A)\) and \(A(\kkk) \to \Pic^0(A)\) is surjective.
-    \end{proposition}
-    \begin{proof}
-        \Yang{To be completed.}
-    \end{proof}
+    % \begin{proposition}\label{prop:ample_line_bundles_induce_surjective_homomorphisms}
+    %     Let \(A\) be an abelian variety over \(\kk\) and \(\calL\) an ample line bundle on \(A\).
+    %     Then the homomorphism \(\Phi_\calL: A(\kkk) \to \Pic(A)\) factors through \(\Pic^0(A)\) and \(A(\kkk) \to \Pic^0(A)\) is surjective.
+    % \end{proposition}
+    % \begin{proof}
+    %     \Yang{To be completed.}
+    % \end{proof}
 
     \begin{definition}\label{def:dual_abelian_variety}
         Let \(A\) be an abelian variety over \(\kkk\).
@@ -174,6 +175,13 @@ Let \(A\) be an abelian variety over \(\kk\).
         We denote it by \(A^\vee\).
         % \Yang{To be completed.}
     \end{definition}
+
+    \begin{proposition}\label{prop: the Poincare line bundle}
+        There exists a unique line bundle \(\calP\) on \(A \times A^\vee\) such that for every \(y = \calL \in A^\vee = \Pic^0(A)\), we have \(\calP|_{A \times \{y\}} \cong \calL\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
     \begin{theorem}\label{thm:dual_abelian_variety_as_Pic0}
         Let $A$ be an abelian variety over $\kk$. 
@@ -188,13 +196,6 @@ Let \(A\) be an abelian variety over \(\kk\).
     \begin{proposition}\label{prop:dual_of_dual_is_A}
         Let \(A\) be an abelian variety over \(\kk\).
         Then the dual abelian variety \(A^\vee\) is also an abelian variety and the natural map \(A \to A^{\vee\vee}\) is an isomorphism.
-    \end{proposition}
-    \begin{proof}
-        \Yang{To be completed.}
-    \end{proof}
-
-    \begin{proposition}\label{prop: the Poincare line bundle}
-        There exists a unique line bundle \(\calP\) on \(A \times A^\vee\) such that for every \(y = \calL \in A^\vee = \Pic^0(A)\), we have \(\calP|_{A \times \{y\}} \cong \calL\).
     \end{proposition}
     \begin{proof}
         \Yang{To be completed.}
