@@ -1,0 +1,176 @@
+\section{Introduction to Moduli Problems}
+
+\subsection{Setup}
+
+    Let \(X\) be a smooth projective curve of genus \(g\) over an algebraically closed field \(\kkk\) of characteristic \(0\).
+
+    We are interested in the moduli space of vector bundles on \(X\).
+
+\subsection{Moduli functors}
+
+    Let \(S\) be a noetherian scheme and \(T\) is a scheme of finite type over \(S\).
+
+    \begin{theorem}[Yoneda lemma]\label{thm:yoneda_lemma}
+        There is a full and faithful functor 
+        \[ h : (\Sch_S)^{\op} \to \Fun((\Sch_S)^{\op}, \Set), \quad T \mapsto h_T(S) \coloneqq \Hom_{\Sch_S}(T, S). \]
+    \end{theorem}
+
+    \begin{definition}\label{def:representable_functor}
+        A functor \(F : (\Sch_S)^{\op} \to \Set\) is representable if there exists a scheme \(M\) over \(S\) such that \(F \cong h_M\).
+    \end{definition}
+
+    We say that \(M\) is \emph{the fine moduli space} of \(F\).
+
+    \begin{remark}\label{rmk:fine_moduli_space}
+        If \(F\) is representable by \(M\), then there is a universal object \(\calU \in F(M)\) given by \(\id_M \in h_M(M)\) satisfying the following universal property: 
+        for any \(T \in \Sch_S\) and any \(\xi \in F(T)\), there exists a unique morphism \(f : T \to M\) such that \(F(f)(\calU) = \xi\).
+    \end{remark}
+
+    \begin{example}\label{eg:Quot_scheme}
+        Let \(S\) be a noetherian scheme, \(\pi:X \to S\) a projective morphism, \(\calL\) a relatively ample line bundle on \(X\), \(\calF\) a coherent sheaf on \(X\), and \(P \in \bbQ[t]\) a polynomial.
+        We define a functor
+        \begin{align*}
+            \Quot_{\calF/X/S}^{P,\calL} : & (\Sch_S)^{\op} \to \Set \\
+            & T \mapsto 
+            \left\{ 
+                \pi^*_T \calF \surjmap \calQ 
+            \;\middle|\;
+                \calQ \text{ is flat over } T, \forall t \in T, \calQ_t \text{ has Hilbert polynomial } P
+            \right\}/ \sim,
+        \end{align*}
+        where \Yang{}
+
+        By Grothendieck's Quot scheme theorem, \(\Quot_{\calF/X/S}^{P,\calL}\) is representable by a projective \(S\)-scheme \(\Quot_{\calF/X/S}^{P,\calL}\).
+    \end{example}
+
+\subsection{Moduli functor of vector bundles}
+
+    Consider the functor 
+    \begin{align*}
+        \tilde{\calM}_{r,d} : & (\Sch_S)^{\op} \to \Set \\
+        & T \mapsto \left\{ 
+            \calE 
+        \;\middle|\;
+            \calE \text{ is a vector bundle on } X \times T \text{ of rank } r, \forall t \in T, \deg(\calE_t) = d
+         \right\}/ \sim,
+    \end{align*}
+    \Yang{To be continued...}
+
+    Unfortunately, \(\tilde{\calM}_{r,d}\) is not representable.
+    There are two main reasons:
+    \begin{itemize}
+        \item unboundedness and 
+        \item jumping phenomenon.
+    \end{itemize}
+
+    \begin{definition}\label{def:bounded_family}
+        A family of vector bundles on \(X\) is \emph{bounded} if there exists a scheme \(S\) of finite type over \(\kkk\) and a vector bundle \(\calE\) on \(X \times S\) such that every vector bundle in the family is isomorphic to \(\calE_s\) for some \(s \in S\).
+    \end{definition}
+
+    If \(\tilde{\calM}_{r,d}\) is representable by a scheme \(M\) of finite type over \(\kkk\), then the family of vector bundles parametrized by \(M\) is bounded.
+    This is impossible since if so, \(\{h^0(X,\calE) \mid \calE \in \tilde{\calM}_{r,d}(\kkk)\}\) is bounded by semicontinuity theorem, which is not true.
+
+    \begin{example}\label{eg:Roes_construction}
+        Let \(\calE\) be a vector bundle on \(X\) of rank \(r\) and degree \(d\) with a filtration
+        \[F: 0 = \calE_0 \subset \calE_1 \subset \cdots \subset \calE_r = \calE. \]
+        Let \(\calF \coloneqq \bigoplus_{i=1}^r \calE_i/\calE_{i-1}\) be a coherent sheaf defined over \(X \times \bbA^1\).
+        We have 
+        \[ \calF_t \cong \begin{cases}
+            \calE, & t \neq 0, \\
+            \bigoplus_{i=1}^r \calE_i/\calE_{i-1}, & t = 0.
+        \end{cases} \]
+        
+    \end{example}
+
+    If \(\tilde{\calM}_{r,d}\) is representable by a scheme \(M\), then the family of vector bundles parametrized by \(M\) does not have jumping phenomenon.
+    \Yang{To be continued...}
+
+    To fix the above problems, we need to 
+    \begin{itemize}
+        \item restrict to a smaller family of vector bundles,
+        \item kill jumping phenomenon, and
+        \item weaken the notion of representability.
+    \end{itemize}
+
+\subsection{Coarse moduli space}
+
+    Let \(F : (\Sch_S)^{\op} \to \Set\) be a functor, \(M\) a scheme over \(S\), and \(\eta : F \to h_M\) a natural transformation.
+    We say that \((M, \eta)\) \emph{corepresents} \(F\) if it satisfies the following universal property: 
+    for any scheme \(N\) over \(S\) and any natural transformation \(\eta' : F \to h_N\), there exists a unique morphism \(f : M \to N\) such that the following diagram commutes:
+    \[
+    \begin{tikzcd}
+        F \arrow[r, "\eta"] \arrow[d, "\eta'"'] & h_M \arrow[d, "h_f"] \\
+        h_N \arrow[r, "\sim"] & N.
+    \end{tikzcd}
+    \]
+
+    \begin{definition}\label{def:coarse_moduli_space}
+        A scheme \(M\) over \(S\) is called the \emph{coarse moduli space} of \(F\) if 
+        \begin{enumerate}
+            \item there exists a natural transformation \(\eta : F \to h_M\) such that \((M, \eta)\) corepresents \(F\);
+            \item \(\eta_\kkk : F(\kkk) \to M(\kkk)\) is a bijection.
+        \end{enumerate}
+    \end{definition}
+
+    For a vector bundle \(\calE\) of rank \(r\) and degree \(d\) on \(X\), we define its slope to be \(\mu(\calE) \coloneqq d/r\).
+    We say that \(\calE\) is \emph{stable} (resp. \emph{semistable}) if for any proper sub-bundle \(\calF \subset \calE\), we have \(\mu(\calF) < \mu(\calE)\) (resp. \(\mu(\calF) \leq \mu(\calE)\)).
+
+    \begin{proposition}\label{prop:homomorphism_between_semistable_and_stable_bundles}
+        If \(\calE\) is a stable vector bundle on \(X\) and \(\calF\) is a semistable vector bundle on \(X\) with \(\mu(\calE) \geq \mu(\calF)\), then any non-zero homomorphism \(\varphi : \calE \to \calF\) is an isomorphism.
+
+
+        If \(\calE\) and \(\calF\) are stable vector bundles on \(X\) with \(\mu(\calE) \geq \mu(\calF)\), then any non-zero homomorphism \(\varphi : \calE \to \calF\) is an isomorphism.
+        In particular, if \(\calE\) is a stable vector bundle, then \(\End(\calE) \cong \kkk\).
+        \Yang{To be continued...}
+    \end{proposition}
+
+    \begin{corollary}\label{cor:stable_vector_bundles_are_simple}
+        A stable vector bundle is simple.
+    \end{corollary}
+
+    \begin{lemma}\label{lem:vanishing_and_global_generation_of_semistable_vector_bundles}
+        Let \(\calE\) be a semistable vector bundle on \(X\).
+        \begin{enumerate}
+            \item if \(\mu(\calE) > 2g-2\), then \(H^1(X,\calE) = 0\);
+            \item if \(\mu(\calE) > 2g-1\), then \(\calE\) is globally generated.
+        \end{enumerate}
+    \end{lemma}
+
+    Let \(S_{r,d}\) be set of isomorphism classes of semistable vector bundles on \(X\) of rank \(r\) and degree \(d\).
+
+    \begin{proposition}\label{prop:semistable_vector_bundles_are_bounded}
+        The family \(S_{r,d}\) is bounded.
+    \end{proposition}
+
+
+    \begin{definition}[Jordan-H\"older filtration]\label{def:Jordan-Holder_filtration}
+        Let \(\calE\) be a semistable vector bundle on \(X\).
+        A \emph{Jordan-H\"older filtration} of \(\calE\) is a filtration 
+        \[ F : 0 = \calE_0 \subset \calE_1 \subset \cdots \subset \calE_n = \calE \]
+        such that each successive quotient \(\calE_i/\calE_{i-1}\) is a stable vector bundle with slope \(\mu(\calE_i/\calE_{i-1}) = \mu(\calE)\).
+        
+        The associated graded object of \(F\) is defined to be 
+        \[ \gr(\calE) \coloneqq \bigoplus_{i=1}^n \calE_i/\calE_{i-1}. \]
+        
+        Any semistable vector bundle on \(X\) admits a Jordan-H\"older filtration, and the associated graded object is unique up to isomorphism.
+        \Yang{To be continued...}
+    \end{definition}
+
+    \begin{definition}[S-equivalence]\label{def:S-equivalence}
+        Two semistable vector bundles \(\calE\) and \(\calF\) on \(X\) are S-equivalent if their associated graded objects \(\gr(\calE)\) and \(\gr(\calF)\) (from their Jordan-H\"older filtrations) are isomorphic.
+    \end{definition}
+
+
+    \begin{definition}\label{def:coarse_moduli_functor_of_vector_bundles}
+        We define a functor 
+        \begin{align*}
+            \calM_{r,d} : & (\Sch_\kkk)^{\op} \to \Set \\
+            & T \mapsto \left\{ 
+                \calE 
+            \;\middle|\;
+                \calE \text{ is a family of semistable vector bundles on } X \text{ of rank } r, \forall t \in T, \deg(\calE_t) = d
+            \right\}/ \sim,
+        \end{align*}
+        where \(\calE \sim \calE'\) if for any \(t \in T\), the vector bundles \(\calE_t\) and \(\calE'_t\) are S-equivalent.
+        \Yang{To be continued...}
+    \end{definition}

@@ -1,0 +1,32 @@
+\documentclass[sectionlevel=chapter]{noteformyself}
+\usepackage{draftwatermark}               % 水印宏包，可�?
+
+
+\input{../../Accessories/notation.tex}
+\addbibresource{../../Accessories/ref.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
+
+
+\title{}
+\author{Tianle Yang}
+\date{\today}
+\authorpage{\href{www.example.com}{My Homepage}}
+
+% available on the mode "\sectionlevel=chapter" or "\sectionlevel=book".
+\setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
+\coversentence{\CJKfamily{lxgwwenkai}阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴!}
+\coverimage{placeholder.jpg} % 封面图片
+\covertitlefont{Allura} % 封面标题字体, 若未安装，请去掉相关代码编译或使用其他字�?
+% \coverlinecolor{red} % 封面线条颜色
+% \covertextcolor{green} % 封面文字颜色
+
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \printbibliography[heading=bibintoc, title={References}]
+    
+\end{document}
