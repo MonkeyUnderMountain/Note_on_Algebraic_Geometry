@@ -1,1 +1,25 @@
 \section{Preliminaries}
+
+\begin{definition}\label{def:constructible_set}
+    Let \(X\) be a scheme with underlying topological space \(|X|\).
+    The family \(\frakC\) of constructible sets in \(|X|\) is the smallest family of subsets of \(|X|\) that contains all open subsets and is closed under finite intersections, finite unions, and complements.
+    A subset \(E \subseteq |X|\) is called a \emph{constructible set} if \(E \in \frakC\).
+\end{definition}
+
+\begin{theorem}\label{thm:Chavellaye_constructible_theorem}
+    Let \(f: X \to Y\) be a morphism of varieties.
+    Then the image of \(f\) is a constructible set in \(Y\).
+    % \Yang{To be checked.}
+\end{theorem}
+
+\begin{lemma}\label{lem:tangent_space_of_product}
+    Let \(X\) and \(Y\) be varieties over a field \(\kk\).
+    For any point \(x \in X(\kk)\) and \(y \in Y(\kk)\), there is a natural isomorphism of \(\kk\)-vector spaces
+    \[
+        T_{(x,y)}(X \times Y) \cong T_x X \oplus T_y Y
+    \]
+    given by \(v \mapsto (d\pi_1(v), d\pi_2(v))\), where \(\pi_1: X \times Y \to X\) and \(\pi_2: X \times Y \to Y\) are the projection morphisms.
+\end{lemma}
+\begin{proof}
+    The inverse map is given by \((u,w) \mapsto d(\iota_1)(u) + d(\iota_2)(w)\), where \(\iota_1: X \cong X \times \{y\} \to X \times Y\) and \(\iota_2: Y \cong \{x\} \times Y \to X \times Y\) are the natural inclusions.
+\end{proof}

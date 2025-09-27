@@ -49,12 +49,27 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         Similar definition applies to the right translation \(r_x\).
     \end{definition}
 
+    \begin{remark}\label{rmk:notation_of_multiplication_and_inverse}
+        In the context of algebraic groups, we often use multiplicative notation for the group law.
+        That is, for \(g,h \in G(\kk)\), we write \(gh\) instead of \(\mu(g,h)\) and \(g^{-1}\) instead of \(\iota(g)\).
+        The identity element \(\varepsilon\) is often denoted by \(e\).
+        
+        Sometimes we also abuse the notation by \(\mu:G \times \cdots \times G \to G\) to denote the multiplication of multiple elements, i.e. \(\mu(g_1,\ldots,g_n) = g_1 \cdots g_n\) for \(g_1,\ldots,g_n \in G(\kk)\).
+    \end{remark}
+
+    \begin{remark}\label{rmk:algebraic_group_and_its_closed_points}
+        Since algebraic groups are almost varieties over an arbitrary field \(\kk\), we often identify an algebraic group \(G\) with its set of closed points \(G(\kkk)\) when there is no confusion.
+    \end{remark}
+
     \begin{proposition}\label{prop:algebraic_group_is_smooth}
         Let \(G\) be an algebraic group.
-        Then \(G\) is a smooth over \(\kk\).
+        Then \(G\) is smooth over \(\kk\).
     \end{proposition}
     \begin{proof}
-        \Yang{To be continued...}
+        Since \(G\) is reduced and of finite type over a field, it is generically regular.
+        Let \(g \in G(\kkk)\) be a regular point.
+        Then the left translation \(l_{gh^{-1}}: G \to G\) is an isomorphism, hence \(G\) is regular at \(h \in G(\kkk)\).
+        It follows that \(G\) is regular at every \(\kkk\)-point, hence \(G\) is smooth over \(\kk\).
     \end{proof}
 
     \begin{remark}\label{rmk:irreducible_and_connected_components_of_algebraic_group}
@@ -67,22 +82,20 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         The \emph{additive group} $\bbG_a$ is defined to be the affine line $\mathbb{A}^1$ with the group law given by addition.
         Concretely, we can write $\bbG_a = \Spec \kk[T]$ with the group law given by the morphism
         \begin{align*}
-            \mu:\bbG_a \times \bbG_a \to \bbG_a \quad & \kk[T] \to \kk[T]\ten_\kk \kk[T], \quad T \mapsto T\ten 1 + 1 \ten T. \\
-            \iota:\bbG_a \to \bbG_a \quad & \kk[T] \to \kk[T], \quad T \mapsto -T. \\
-            \varepsilon:\Spec \kk \to \bbG_a \quad & \kk[T] \to \kk, \quad T \mapsto 0.
+            \mu:\bbG_a \times \bbG_a \to \bbG_a, \quad & (x,y) \mapsto x+y, \\
+            \iota:\bbG_a \to \bbG_a, \quad & x \mapsto -x, \\
+            \varepsilon:\Spec \kk \to \bbG_a, \quad & * \mapsto 0.
         \end{align*}
-        % \Yang{To be continued...}
     \end{example}
 
     \begin{example}\label{eg:multiplicative_group}
         The \emph{multiplicative group} $\bbG_m$ is defined to be the affine variety $\mathbb{A}^1 \setminus \{0\}$ with the group law given by multiplication.
         Concretely, we can write $\bbG_m = \Spec \kk[T,T^{-1}]$ with the group law given by the morphism
         \begin{align*}
-            \mu: \bbG_m \times \bbG_m \to \bbG_m & \leadsto \kk[T,T^{-1}] \to \kk[T,T^{-1}]\ten_\kk \kk[T,T^{-1}], \quad T \mapsto T\ten T. \\
-            \iota: \bbG_m \to \bbG_m & \leadsto \kk[T,T^{-1}] \to \kk[T,T^{-1}], \quad T \mapsto T^{-1}. \\
-            \varepsilon: \Spec \kk \to \bbG_m & \leadsto \kk[T,T^{-1}] \to \kk, \quad T \mapsto 1.
+            \mu: \bbG_m \times \bbG_m \to \bbG_m, \quad & (x,y) \mapsto xy, \\
+            \iota: \bbG_m \to \bbG_m, \quad & x \mapsto x^{-1}, \\
+            \varepsilon: \Spec \kk \to \bbG_m, \quad & * \mapsto 1.
         \end{align*}
-        % \Yang{To be continued...}
     \end{example}
 
     \begin{example}\label{eg:general_linear_group}
@@ -91,9 +104,8 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         \begin{align*}
             \mu: & \GL_n \times \GL_n \to \GL_n, \quad (A,B) \mapsto AB, \\
             \iota: & \GL_n \to \GL_n, \quad A \mapsto A^{-1}, \\
-            \varepsilon: & \Spec \kk \to \GL_n, \quad 1 \mapsto I_n.
+            \varepsilon: & \Spec \kk \to \GL_n, \quad * \mapsto I_n.
         \end{align*}
-        % \Yang{To be continued...}
     \end{example}
 
     \begin{example}\label{eg:abelian_varieties_as_algebraic_groups}
@@ -108,10 +120,11 @@ All varieties are defined over \(\kk\) unless otherwise specified.
             \varepsilon_{G \times H} = \varepsilon_G \times \varepsilon_H &: \Spec \kk \cong \Spec \kk \times \Spec \kk \to G \times H, \\
             \iota_{G \times H} = \iota_G \times \iota_H &: G \times H \to G \times H.
         \end{align*}
-        %     
-        % \]
-        % where \(\mu_G\) and \(\mu_H\) are the group laws of \(G\) and \(H\), respectively.
-        % \Yang{To be continued...}
+    \end{example}
+
+    \begin{example}\label{eg:base_change_of_algebraic_groups}
+        Let \(G\) be an algebraic group over \(\kk\) and \(\KK/\kk\) a field extension.
+        The base change \(G_\KK = G \times_{\Spec \kk} \Spec \KK\) is an algebraic group over \(\KK\) with the group law defined by the base change of the original group law of \(G\) to \(\KK\).
     \end{example}
 
     \begin{definition}\label{def:homomorphism_of_algebraic_groups}
@@ -129,14 +142,14 @@ All varieties are defined over \(\kk\) unless otherwise specified.
 
     \begin{definition}\label{def:algebraic_subgroup}
         An \emph{algebraic subgroup} of an algebraic group \(G\) is a closed subscheme \(H \subseteq G\) that is also a subgroup of \(G\).
-        More precisely, \(H\) is an algebraic subgroup and the inclusion morphism \(H \hookrightarrow G\) is a morphism of algebraic groups.
+        More precisely, \(H\) is an algebraic subgroup and the inclusion morphism \(H \hookrightarrow G\) is compatible with the group laws.
         % \Yang{To be continued...}
     \end{definition}
 
     \begin{example}\label{eg:special_linear_group}
         The \emph{special linear group} $\SL_n$ is defined to be the closed subvariety of $\GL_n$ defined by the equation \(\det = 1\).
         It is an algebraic subgroup of \(\GL_n\).
-        \Yang{To be continued...}
+        % \Yang{To be continued...}
     \end{example}
 
     \begin{definition}\label{def:neutral_component}
@@ -147,18 +160,18 @@ All varieties are defined over \(\kk\) unless otherwise specified.
     \end{definition}
 
     \begin{proposition}\label{prop:neutral_component_is_subgroup}
-        The neutral component \(G^0\) is a closed, normal algebraic subgroup of \(G\) of finite index.
-        Moreover, each closed subgroup \(H\) of finite index contains \(G^0\).
+        The neutral component \(G^0(\kkk)\) is a closed, normal algebraic subgroup of \(G(\kkk)\) of finite index.
+        Moreover, each closed subgroup \(H\) of finite index contains \(G^0(\kkk)\).
     \end{proposition}
     \begin{proof}
         \Yang{To be continued...}
     \end{proof}
 
     \begin{proposition}\label{prop:closure_of_subgroup_is_subgroup}
-        Let \(G\) be an algebraic group and \(H \subseteq G\) a subgroup (not necessarily closed).
+        Let \(G\) be an algebraic group and \(H \subseteq G(\kkk)\) a subgroup (not necessarily closed).
         Then the Zariski closure \(\overline{H}\) of \(H\) in \(G\) is an algebraic subgroup of \(G\).
-        If \(H\) is constructible, then \(H = \overline{H}\).
-        \Yang{To be continued...}
+        If \(H \subset G(\kkk)\) is constructible, then \(H = \overline{H}(\kkk)\).
+        % \Yang{To be continued...}
     \end{proposition}
     \begin{proof}
         \Yang{To be continued...}
@@ -175,7 +188,7 @@ All varieties are defined over \(\kk\) unless otherwise specified.
             0 & 1
         \end{pmatrix}\).
         Set \(S = gTg^{-1}\).
-        Then both \(T\) and \(S\) are closed algebraic subgroups of \(G\), but the product \(TS\) is not closed in \(G\).
+        Then both \(T\) and \(S\) are closed algebraic subgroups of \(G(\kkk)\), but the product \(TS\) is not closed in \(G(\kkk)\).
         By direct computation, we have
         \[ S = \left\{ \begin{pmatrix}
             s & s^{-1}-s \\
@@ -196,11 +209,11 @@ All varieties are defined over \(\kk\) unless otherwise specified.
             1 & s^{-2}-1 \\
             0 & 1
         \end{pmatrix} \;\middle|\; s \in \kkk^\times \right\}. \]
-        The right hand side is not closed in \(\SL_2\) since it does not contain the matrix \(\begin{pmatrix}
+        The right hand side is not closed in \(\SL_2(\kkk)\) since it does not contain the matrix \(\begin{pmatrix}
             1 & -1 \\
             0 & 1
         \end{pmatrix}\).
-        Hence \(TS\) is not closed in \(G\).
+        Hence \(TS\) is not closed in \(G(\kkk)\).
     \end{example}
 
     \begin{proposition}\label{prop:generate_subgroup_by_irred_constructible_subset}
@@ -215,8 +228,10 @@ All varieties are defined over \(\kk\) unless otherwise specified.
 
     \begin{remark}\label{rmk:generated_subgroup_by_irred_constructible_subset}
         We can take \(m \leq 2 \dim G\) in \cref{prop:generate_subgroup_by_irred_constructible_subset}.
-        \Yang{To be continued...}
+        % \Yang{To be continued...}
     \end{remark}
+
+
 
 
 \subsection{Action and representations}
@@ -240,35 +255,35 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         \]
         where \(\mu\) is the group law of \(G\) and \(\varepsilon\) is the identity element of \(G\).
         In other words, for any \(\kk\)-scheme \(S\), the induced map \(G(S) \times X(S) \to X(S)\) defines a group action of the abstract group \(G(S)\) on the set \(X(S)\).
-        We say that \(X\) is a \emph{\(G\)-variety}.
-        \Yang{To be checked.}
+        % We say that \(X\) is a \emph{\(G\)-variety}.
+        % \Yang{To be checked.}
     \end{definition}
 
-    \begin{definition}\label{def:basic_concepts_in_group_action}
-        Let \(G\) be an algebraic group acting on a variety \(X\).
-        For any field extension \(K/\kk\) and \(x \in X(K)\), the \emph{orbit} of \(x\) is the subset
-        \[
-            G(K) \cdot x = \{\sigma(g,x) | g \in G(K)\} \subseteq X(K).
-        \]
-        The \emph{stabilizer} of \(x\) is the subgroup
-        \[
-            G_x(K) = \{g \in G(K) | \sigma(g,x) = x\} \subseteq G(K).
-        \]
-        The action is called \emph{transitive} if for any field extension \(K/\kk\), the induced map \(G(K) \times X(K) \to X(K)\) is transitive.
-        The action is called \emph{faithful} if for any field extension \(K/\kk\), the induced map \(G(K) \times X(K) \to X(K)\) is faithful.
-        \Yang{To be checked.}
-    \end{definition}
+    % \begin{definition}\label{def:basic_concepts_in_group_action}
+    %     Let \(G\) be an algebraic group acting on a variety \(X\).
+    %     For any field extension \(K/\kk\) and \(x \in X(K)\), the \emph{orbit} of \(x\) is the subset
+    %     \[
+    %         G(K) \cdot x = \{\sigma(g,x) | g \in G(K)\} \subseteq X(K).
+    %     \]
+    %     The \emph{stabilizer} of \(x\) is the subgroup
+    %     \[
+    %         G_x(K) = \{g \in G(K) | \sigma(g,x) = x\} \subseteq G(K).
+    %     \]
+    %     The action is called \emph{transitive} if for any field extension \(K/\kk\), the induced map \(G(K) \times X(K) \to X(K)\) is transitive.
+    %     The action is called \emph{faithful} if for any field extension \(K/\kk\), the induced map \(G(K) \times X(K) \to X(K)\) is faithful.
+    %     \Yang{To be checked.}
+    % \end{definition}
 
-    \begin{example}\label{eg:linear_representation}
-        A \emph{linear representation} of an algebraic group \(G\) on a finite-dimensional vector space \(V = \bbA_\kk^k\) over \(\kk\) is an action of \(G\) on the affine space associated to \(V\), i.e. a morphism
-        \[
-            \rho: G \times V \to V
-        \]
-        such that for any field extension \(K/\kk\), the induced map \(G(K) \times V(K) \to V(K)\) defines a group homomorphism from the abstract group \(G(K)\) to the general linear group of the vector space \(V(K)\).
-        In other words, for any \(g \in G(K)\), the map \(\rho_g: V(K) \to V(K)\) defined by \(\rho_g(v) = \rho(g,v)\) is a linear automorphism of \(V(K)\).
-        We say that \(V\) is a \(G\)-module.
-        \Yang{To be checked.}
-    \end{example}
+    % \begin{example}\label{eg:linear_representation}
+    %     A \emph{linear representation} of an algebraic group \(G\) on a finite-dimensional vector space \(V = \bbA_\kk^k\) over \(\kk\) is an action of \(G\) on the affine space associated to \(V\), i.e. a morphism
+    %     \[
+    %         \rho: G \times V \to V
+    %     \]
+    %     such that for any field extension \(K/\kk\), the induced map \(G(K) \times V(K) \to V(K)\) defines a group homomorphism from the abstract group \(G(K)\) to the general linear group of the vector space \(V(K)\).
+    %     In other words, for any \(g \in G(K)\), the map \(\rho_g: V(K) \to V(K)\) defined by \(\rho_g(v) = \rho(g,v)\) is a linear automorphism of \(V(K)\).
+    %     We say that \(V\) is a \(G\)-module.
+    %     \Yang{To be checked.}
+    % \end{example}
 
     \begin{definition}\label{def:rational_group_actions}
         An \emph{rational action} of an algebraic group \(G\) on a variety \(X\) is a rational map
@@ -296,16 +311,16 @@ All varieties are defined over \(\kk\) unless otherwise specified.
     \begin{definition}\label{def:orbit_of_algebraic_group_action}
         Let \(G\) be an algebraic group acting on a variety \(X\).
         For any \(x \in X(\kk)\), the \emph{orbit} of \(x\) is the locally closed subvariety \(G \cdot x = \sigma(G \times \{x\})\) of \(X\).
-        Note that this definition is different from the one in \cref{def:basic_concepts_in_group_action}.
+        % Note that this definition is different from the one in \cref{def:basic_concepts_in_group_action}.
         \Yang{To be checked.}
     \end{definition}
 
-    \begin{theorem}[Weil's Regularization Theorem]\label{thm:Weil_regularization}
-        Let \(G\) be an algebraic group acting on a variety \(X\).
-        Then there exists a variety \(Y\) with a regular action of \(G\) and a \(G\)-equivariant birational isomorphism \(X \dashrightarrow Y\).
-        % In other words, any rational action of an algebraic group on a variety can be regularized.
-        \Yang{To be checked.}
-    \end{theorem}
+    % \begin{theorem}[Weil's Regularization Theorem]\label{thm:Weil_regularization}
+    %     Let \(G\) be an algebraic group acting on a variety \(X\).
+    %     Then there exists a variety \(Y\) with a regular action of \(G\) and a \(G\)-equivariant birational isomorphism \(X \dashrightarrow Y\).
+    %     % In other words, any rational action of an algebraic group on a variety can be regularized.
+    %     \Yang{To be checked.}
+    % \end{theorem}
 
     \begin{proposition}\label{prop:orbit_is_locally_closed}
         Let \(G\) be an algebraic group acting on a variety \(X\).
@@ -318,7 +333,7 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         \Yang{To be continued...}
     \end{proof}
 
-\subsection{Affine algebraic groups}
+% \subsection{Affine algebraic groups}
 
     Let \(G\) be an algebraic group acting on an affine variety \(X = \Spec A\).
     For \(x \in G(\kk)\), we have the left translation of functions \(\tau_x: A \to A\) defined by \(\tau_x(f)(y) = f(x^{-1}y)\) for \(y \in X(\kk)\).
@@ -335,17 +350,37 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         % In particular, any affine algebraic group admits a faithful linear representation.
     \end{theorem}
 
-    \begin{theorem}\label{thm:Chavellaye_decomposition}
-        Let \(G\) be an algebraic group.
-        Then there exists a unique maximal connected affine normal algebraic subgroup \(G_{\text{aff}}\) of \(G\) such that the quotient \(G/G_{\text{aff}}\) is an abelian variety.
-        This subgroup is called the \emph{affine part} of \(G\).
-        \Yang{To be continued...}
-    \end{theorem}
+    % \begin{theorem}\label{thm:Chavellaye_decomposition}
+    %     Let \(G\) be an algebraic group.
+    %     Then there exists a unique maximal connected affine normal algebraic subgroup \(G_{\text{aff}}\) of \(G\) such that the quotient \(G/G_{\text{aff}}\) is an abelian variety.
+    %     This subgroup is called the \emph{affine part} of \(G\).
+    %     \Yang{To be continued...}
+    % \end{theorem}
 
-    \begin{theorem}\label{thm:Rosenlicht_decomposition}
-        Let \(G\) be an algebraic group.
-        Then there exists a smallest normal connected algebraic subgroup \(G_{\text{ant}}\) of \(G\) such that the quotient \(G/G_{\text{ant}}\) is affine.
-        This subgroup is called the \emph{anti-affine part} of \(G\).
-        Moreover, \(G_{\text{ant}}\) is contained in the center of \(G^0\) and is smooth and connected.
-        \Yang{To be continued...}
-    \end{theorem}
+    % \begin{theorem}\label{thm:Rosenlicht_decomposition}
+    %     Let \(G\) be an algebraic group.
+    %     Then there exists a smallest normal connected algebraic subgroup \(G_{\text{ant}}\) of \(G\) such that the quotient \(G/G_{\text{ant}}\) is affine.
+    %     This subgroup is called the \emph{anti-affine part} of \(G\).
+    %     Moreover, \(G_{\text{ant}}\) is contained in the center of \(G^0\) and is smooth and connected.
+    %     \Yang{To be continued...}
+    % \end{theorem}
+
+
+\subsection{Lie algebra of an algebraic group}
+
+    Let \(G\) be an algebraic group.
+    The \emph{Lie algebra} of \(G\) is defined to be the tangent space of \(G\) at the identity element \(\varepsilon\):
+    \[
+        \Lie(G) = T_\varepsilon G.
+    \]
+    It is a finite-dimensional vector space over \(\kk\).
+
+    \begin{proposition}\label{prop:multiplication_of_group_induces_plus_on_Lie_algebra}
+        The group law \(\mu: G \times G \to G\) induces the plus map on \(\Lie(G)\):
+        \[
+            d\mu_{(\varepsilon,\varepsilon)}: T_{(\varepsilon,\varepsilon)}(G \times G) \cong T_\varepsilon G \oplus T_\varepsilon G \to T_\varepsilon G, \quad (v,w) \mapsto v + w.
+        \]
+    \end{proposition}
+    \begin{proof}
+        
+    \end{proof}
