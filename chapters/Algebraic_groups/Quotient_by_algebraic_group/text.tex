@@ -1,0 +1,53 @@
+\section{Quotient by algebraic group}
+
+Everything in this section is over an arbitrary field \(\kk\) unless otherwise specified.
+
+\subsection{Quotient}
+
+    \begin{definition}\label{def:quotient_of_variety_by_group_action}
+        Let \(G\) be an algebraic group acting on a variety \(X\).
+        A \emph{quotient} of \(X\) by \(G\) is a variety \(Y\) together with a morphism \(\pi: X \to Y\) such that
+        \begin{enumerate}
+            \item \(\pi\) is \(G\)-invariant, i.e., \(\pi(g \cdot x) = \pi(x)\) for all \(g \in G\) and \(x \in X\).
+            \item For any variety \(Z\) and any \(G\)-invariant morphism \(f: X \to Z\), there exists a unique morphism \(\overline{f}: Y \to Z\) such that \(f = \overline{f} \circ \pi\).
+        \end{enumerate}
+        In other words, the following diagram commutes:
+        \[
+            \begin{tikzcd}
+                X \arrow[r, "\pi"] \arrow[rd, "f"'] & Y \arrow[d, "\overline{f}"] \\
+                & Z
+            \end{tikzcd}
+        \]
+        If a quotient exists, it is unique up to a unique isomorphism.
+        \Yang{To be continued...}
+    \end{definition}
+
+
+\subsection{Passage to projective space}
+
+    \begin{theorem}\label{thm:closed_subgroup_of_affine_algebraic_group_can_be_realized_as_stabilizer_of_line}
+        Let \(G\) be an affine algebraic group and \(H\) a closed subgroup.
+        Then there exists a finite-dimensional linear representation \(V\) of \(G\) and a one-dimensional subspace \(L \subseteq V\) such that \(H\) is the stabilizer of \(L\).
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be filled.}
+    \end{proof}
+
+
+\subsection{More general quotients}
+
+    \begin{theorem}\label{thm:existence_of_quotient_by_algebraic_group}
+        Let \(G\) be an affine algebraic group acting on a variety \(X\).
+        Then there exists a variety \(Y\) and a rational morphism \(\pi: X \ratmap Y\) with commutative diagram
+        \[
+            \begin{tikzcd}
+                X \arrow[r, dashed, "\pi"] \arrow[rd, "f"'] & Y \arrow[d, "\overline{f}"] \\
+                & Z
+            \end{tikzcd}
+        \]
+        satisfying the following universal property:
+        If a quotient exists, it is unique up to a unique isomorphism.
+
+        Furthermore, if all orbits of \(G\) in \(X\) are closed, then \(\pi\) is a morphism (i.e., defined everywhere).
+        \Yang{To be continued...}
+    \end{theorem}

@@ -137,26 +137,24 @@ All varieties are defined over \(\kk\) unless otherwise specified.
             \end{tikzcd}
         \]
         where \(\mu_G\) and \(\mu_H\) are the group laws of \(G\) and \(H\), respectively.
-        % \Yang{To be continued...}
     \end{definition}
 
     \begin{definition}\label{def:algebraic_subgroup}
         An \emph{algebraic subgroup} of an algebraic group \(G\) is a closed subscheme \(H \subseteq G\) that is also a subgroup of \(G\).
         More precisely, \(H\) is an algebraic subgroup and the inclusion morphism \(H \hookrightarrow G\) is compatible with the group laws.
-        % \Yang{To be continued...}
     \end{definition}
+
+    \Yang{I need the definition of normal subgroup here.}
 
     \begin{example}\label{eg:special_linear_group}
         The \emph{special linear group} $\SL_n$ is defined to be the closed subvariety of $\GL_n$ defined by the equation \(\det = 1\).
         It is an algebraic subgroup of \(\GL_n\).
-        % \Yang{To be continued...}
     \end{example}
 
     \begin{definition}\label{def:neutral_component}
         Let \(G\) be an algebraic group.
         The \emph{neutral component} \(G^0\) is the connected component of \(G\) containing the identity element \(\varepsilon\).
         % It is a closed, normal algebraic subgroup of \(G\).
-        % \Yang{To be continued...}
     \end{definition}
 
     \begin{proposition}\label{prop:neutral_component_is_subgroup}
@@ -171,7 +169,6 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         Let \(G\) be an algebraic group and \(H \subseteq G(\kkk)\) a subgroup (not necessarily closed).
         Then the Zariski closure \(\overline{H}\) of \(H\) in \(G\) is an algebraic subgroup of \(G\).
         If \(H \subset G(\kkk)\) is constructible, then \(H = \overline{H}(\kkk)\).
-        % \Yang{To be continued...}
     \end{proposition}
     \begin{proof}
         \Yang{To be continued...}
@@ -298,13 +295,11 @@ All varieties are defined over \(\kk\) unless otherwise specified.
             \end{tikzcd}
             \quad
             \begin{tikzcd}
-                \Spec \kk \times X \arrow{r}{\varepsilon \times \id_X} \arrow{dr}[swap]{\cong} & G \times X \arrow{d}{\sigma} \\
+                \Spec \kk \times X \arrow{r}{\varepsilon \times \id_X} \arrow{dr}[swap]{\cong} & G \times X \arrow[dashed]{d}{\sigma} \\
                 & X
             \end{tikzcd}
         \]
         where \(\mu\) is the group law of \(G\) and \(\varepsilon\) is the identity element of \(G\).
-        In other words, for any field extension \(K/\kk\), the induced map \(G(K) \times X(K) \dashrightarrow X(K)\) defines a group action of the abstract group \(G(K)\) on the set \(X(K)\).
-        We say that \(X\) is a \emph{rational \(G\)-variety}.
         \Yang{To be checked.}
     \end{definition}
 
@@ -325,9 +320,6 @@ All varieties are defined over \(\kk\) unless otherwise specified.
     \begin{proposition}\label{prop:orbit_is_locally_closed}
         Let \(G\) be an algebraic group acting on a variety \(X\).
         Then for any \(x \in X(\kk)\), the orbit \(G \cdot x\) is a locally closed subvariety of \(X\), and \(\overline{G \cdot x} \setminus G \cdot x \) is a union of orbits of strictly smaller dimension.
-        % Moreover, the morphism \(G/G_x \to G \cdot x\) induced by the action is an isomorphism, where \(G_x\) is the stabilizer of \(x\).
-        % In particular, if \(G\) is smooth, then \(G \cdot x\) is smooth.
-        \Yang{To be checked.}
     \end{proposition}
     \begin{proof}
         \Yang{To be continued...}
@@ -341,14 +333,17 @@ All varieties are defined over \(\kk\) unless otherwise specified.
     \begin{lemma}\label{lem:finite_dimensional_invariant_subspace}
         Let \(G\) be an algebraic group acting on an affine variety \(X = \Spec A\).
         For any finite-dimensional subspace \(V \subseteq A\), there exists a finite-dimensional \(G\)-invariant subspace \(W \subseteq A\) containing \(V\).
-        % In other words, any finite-dimensional subspace of \(A\) is contained in a finite-dimensional \(G\)-invariant subspace of \(A\).
-        \Yang{To be continued...}
     \end{lemma}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
 
     \begin{theorem}\label{thm:affine_algebraic_group_is_linear}
         Any affine algebraic group is isomorphic to a closed algebraic subgroup of some \(\GL_n\).
-        % In particular, any affine algebraic group admits a faithful linear representation.
     \end{theorem}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
 
     % \begin{theorem}\label{thm:Chavellaye_decomposition}
     %     Let \(G\) be an algebraic group.
@@ -378,9 +373,11 @@ All varieties are defined over \(\kk\) unless otherwise specified.
     \begin{proposition}\label{prop:multiplication_of_group_induces_plus_on_Lie_algebra}
         The group law \(\mu: G \times G \to G\) induces the plus map on \(\Lie(G)\):
         \[
-            d\mu_{(\varepsilon,\varepsilon)}: T_{(\varepsilon,\varepsilon)}(G \times G) \cong T_\varepsilon G \oplus T_\varepsilon G \to T_\varepsilon G, \quad (v,w) \mapsto v + w.
+            \upd\mu_{(\varepsilon,\varepsilon)}: T_{(\varepsilon,\varepsilon)}(G \times G) \cong T_\varepsilon G \oplus T_\varepsilon G \to T_\varepsilon G, \quad (v,w) \mapsto v + w.
         \]
     \end{proposition}
     \begin{proof}
-        
+        We have 
+        \[ \upd \mu_{(\varepsilon,\varepsilon)}(v,w) = \upd \mu_{(\varepsilon,\varepsilon)}(v,0) + \upd \mu_{(\varepsilon,\varepsilon)}(0,w) = (\upd \mu \circ (\id_G \times \varepsilon))_\varepsilon(v) + (\upd \mu \circ (\varepsilon \times \id_G))_\varepsilon(w) = v + w. \]
+        % \Yang{To be filled.}
     \end{proof}
