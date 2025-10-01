@@ -114,26 +114,26 @@
         Then any morphism \(f: A \to B\) with \(f(e_A) = e_B\) is a group homomorphism, i.e., for every \(\kk\)-scheme \(T\), the induced map \(f_T: A(T) \to B(T)\) is a group homomorphism.
     \end{theorem}
     \begin{proof}
-        Let \(\kkk\) be the algebraical closure of \(\kk\).
-        For every \(\kk\)-scheme \(T\), we have the inclusion \(A(T) \subset A_{\kkk}(T_{\kkk})\) and \(B(T) \subset B_{\kkk}(T_{\kkk})\) which is compatible with the group structure and the morphism \(f\).
-        Thus we may assume that \(\kk\) is algebraically closed.
-
-        For every \(a \in A(\kk)\), the fiber \(m_A^{-1}(a)\) is isomorphic to \(A\) via the projection to the first factor.
-        In particular, \(m_A^{-1}(a)\) is connected.
-
-        Consider the composition 
-        \[ A \times A \xrightarrow{\varphi} A \times A \xrightarrow{m_A} A, \quad (x,y) \mapsto (x,m_A(i_A(x), y)) \mapsto m_A(x, m_A(i_A(x), y)) = y. \]
-        Hence we have \((m_A \circ \varphi)_* \calO_{A \times A} \cong \calO_A \cong m_{A*} \calO_{A \times A}\) since \(\varphi\) is an isomorphism.
-        Then consider the diagram
+        Consider the diagram
         \[ \begin{tikzcd}
-            A \times A \arrow[r, "f \times f"] \arrow[d, "m_A"'] & B \times B \arrow[d, "m_B"] \\
-            A & B.
+            A \times A \arrow[rd, "\varphi"] \arrow[d, "p_1"'] &  \\
+            A  & B
         \end{tikzcd} \]
-        For every closed point \(a \in A\), the fiber \(m_A^{-1}(a) = \{(x, m_A(i_A(x), a)) | x \in A\}\) is contrac
-        % is isomorphic to \(m_{A_{\rkk(a)}}^{-1}(a)\) and 
-        % Let \(f:A\times A \to B\) be given by \(A\times A \xrightarrow{f\times f} B \times B \xrightarrow{m_B} B\).
-        % Then \(f\) contracts \(A \times e_A\) to \(e_B\).
-        \Yang{To be completed.}
+        with \(\varphi\) be given by
+        \begin{align*}
+            & A \times A \xrightarrow{\Delta \times \Delta} A \times A \times A \times A \xrightarrow{\cong} A \times A \times A \times A \xrightarrow{(f \circ m_A) \times (i_B \circ f) \times (i_B \circ f)} B \times B \times B \xrightarrow{m_B} B, \\
+            & (x,y) \mapsto (x,x,y,y) \mapsto (x,y,y,x) \mapsto (f(xy), f(y)^{-1}, f(x)^{-1}) \mapsto f(xy) f(y)^{-1} f(x)^{-1}.
+        \end{align*} 
+        We have \(\varphi(p_1^{-1}(e_A)) = \varphi(\{e_A\} \times A) = \{e_B\}\).
+        Then by Rigidity Lemma (\cref{thm:Rigidity_Lemma}), there exists a unique rational map \(\psi: A \ratmap B\) such that \(\varphi = \psi \circ p_1\).
+        Note that \(A \to A \times \{e_A\} \to A \times A\) gives a section of \(p_1\).
+        On this section, we have that \(\varphi\) is constant equal to \(e_B\).
+        Thus \(\psi\) is well-defined and \(\psi(A) = e_B\).
+        It follows that \(\varphi\) factors through the constant map \(A \times A \to \{e_B\} \to B\).
+        Then for every \((x,y) \in A(\kkk) \times A(\kkk)\), we have
+        \[ f(xy) = f(x) f(y). \]
+        \Yang{Since \(A(\kkk)\) is dense in \(A\), the conclusion follows.}
+        % \Yang{To be completed.}
     \end{proof}
 
     \begin{proposition}\label{prop: abelian varieties are abelian groups}
@@ -150,13 +150,13 @@
     \[ [n]_A: A \xrightarrow{\Delta} A \times A \xrightarrow{[n-1]_A\times \id_A} A \times A \xrightarrow{+} A, \]
     where \(\Delta\) is the diagonal morphism.
 
-    % \begin{proposition}\label{prop: multiplication by n is etale}
-    %     Let \(A\) be an abelian variety over \(\kkk\) and \(n\) a positive integer.
-    %     Then the multiplication by \(n\) morphism \([n]_A: A \to A\) is finite surjective and \'etale.
-    % \end{proposition}
-    % \begin{proof}
-    %     \Yang{To be completed.}
-    % \end{proof}
+    \begin{proposition}\label{prop:multiplication_by_n_is_etale_when_n_is_not_divisible_by_char}
+        Let \(A\) be an abelian variety over \(\kkk\) and \(n\) a positive integer not divisible by \(\chara \kkk\).
+        Then the multiplication by \(n\) morphism \([n]_A: A \to A\) is finite surjective and \'etale.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 \subsection{Complex abelian varieties}
 
@@ -164,7 +164,8 @@
         Let \(A\) be a complex abelian variety.
         Then \(A\) is a complex torus, i.e., there exists a lattice \(\Lambda \subset \bbC^d\) such that \(A \cong \bbC^d / \Lambda\).
         Conversely, let \(A = \bbC^n/\Lambda\) be a complex torus for some lattice \(\Lambda\).
-        Then \(A\) is a complex abelian variety if and only if \(\Lambda\) \Yang{To be completed.} 
+        Then \(A\) is a complex abelian variety if and only if there exists a positive definite Hermitian form \(H\) on \(\bbC^n\) such that \(\Im(H)(\Lambda, \Lambda) \subset \bbZ\).
+        \Yang{To be completed.} 
     \end{theorem}
 
 

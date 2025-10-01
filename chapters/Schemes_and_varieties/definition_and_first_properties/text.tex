@@ -84,6 +84,66 @@
 
 \subsection{Schemes}
 
+    % \begin{definition}\label{def:affine_scheme}
+    %     Let \(R\) be a ring.
+    %     The \emph{spectrum} of \(R\), denoted by \(\Spec R\), is the set of all prime ideals of \(R\) equipped with the Zariski topology, 
+    %     where the closed sets are of the form \(V(I) = \{\frakp \in \Spec R : I \subset \frakp\}\) for some ideal \(I \subset R\).
+    %     The structure sheaf \(\calO_{\Spec R}\) is defined by
+    %     \[ \calO_{\Spec R}(D(f)) = R[1/f], \]
+    %     where \(D(f) = \{\frakp \in \Spec R : f \notin \frakp\}\) and \(R_f\) is the localization of \(R\) at the multiplicative set \(\{1, f, f^2, \ldots\}\).
+    %     Then \((\Spec R, \calO_{\Spec R})\) is a locally ringed space called an \emph{affine scheme}.
+    % \end{definition}
+
+    Let \(R\) be a ring.
+    Recall that the \emph{spectrum} of \(R\), denoted by \(\Spec R\), is the set of all prime ideals of \(R\) equipped with the Zariski topology, 
+    where the closed sets are of the form \(V(I) = \{\frakp \in \Spec R : I \subset \frakp\}\) for some ideal \(I \subset R\).
+
+    For each \(f \in R\), let \(D(f) = \{\frakp \in \Spec R : f \notin \frakp\}\).
+    Such \(D(f)\) is open in \(\Spec R\) and called a \emph{principal open set}.
+    
+    \begin{proposition}\label{prop:principal_open_sets_form_a_basis}
+        Let \(R\) be a ring.
+        The collection of principal open sets \(\{D(f) : f \in R\}\) forms a basis for the Zariski topology on \(\Spec R\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued}
+    \end{proof}
+
+    Define a sheaf of rings on \(\Spec R\) by 
+    \[ \calO_{\Spec R}(D(f)) = R[1/f]. \]
+    Then \((\Spec R, \calO_{\Spec R})\) is a locally ringed space.
+
+    \begin{definition}\label{def:affine_scheme_and_scheme}
+        An \emph{affine scheme} is a locally ringed space isomorphic to \((\Spec R, \calO_{\Spec R})\) for some ring \(R\).
+        A \emph{scheme} is a locally ringed space \((X, \calO_X)\) which admits an open cover \(\{U_i\}_{i \in I}\) such that \((U_i, \calO_X|_{U_i})\) is an affine scheme for each \(i \in I\).
+
+        A \emph{morphism of schemes} is a morphism of locally ringed spaces.
+
+        These data form a category, denoted by \(\Sch\).
+        If we fix a base scheme \(S\), then an \emph{\(S\)-scheme} is a scheme \(X\) together with a morphism \(X \to S\).
+        The category of \(S\)-schemes is denoted by \(\Sch/S\) or \(\Sch_S\).
+    \end{definition}
+
+    \begin{theorem}\label{thm:equivalence_between_rings_and_affine_schemes}
+        The functor \(\Spec : \Ring^{\op} \to \Sch\) is fully faithful and induces an equivalence of categories between the category of rings and the category of affine schemes.
+        \Yang{To be continued}
+    \end{theorem}
+
+    \begin{definition}\label{def:open_and_closed_immersion}
+        A morphism of schemes \(f : X \to Y\) is an \emph{open immersion} (resp. \emph{closed immersion}) if \(f\) induces an isomorphism of \(X\) onto an open (resp. closed) subscheme of \(Y\).
+        An \emph{immersion} is a morphism which factors as a closed immersion followed by an open immersion.
+        \Yang{To be continued}
+    \end{definition}
+
+    \begin{definition}\label{def:scheme_theoretic_image}
+        Let \(f : X \to Y\) be a morphism of schemes.
+        The \emph{scheme theoretic image} of \(f\) is the smallest closed subscheme \(Z\) of \(Y\) such that \(f\) factors through \(Z\).
+        More precisely, if \(Y = \Spec A\) is affine, then the scheme theoretic image of \(f\) is \(\Spec(A/\ker(f^\sharp))\), where \(f^\sharp : A \to \Gamma(X, \calO_X)\) is the induced map on global sections.
+        In general, we can cover \(Y\) by affine open subsets and glue the scheme theoretic images on each affine open subset to get the scheme theoretic image of \(f\).
+        \Yang{To be continued}
+    \end{definition}
+
+
     \begin{example}[Glue open subschemes]\label{eg:glue_open_subschemes}
         The construction in \cref{eg:glue_open_locally_ringed_subspace} allows us to glue open subschemes to get a scheme.
         More precisely, let \((X_i, \calO_{X_i})\) be schemes for \(i \in I\) and \((U_{ij}, \calO_{X_i}|_{U_{ij}})\) be open subschemes for \(i,j \in I\).
@@ -100,4 +160,3 @@
 \subsection{Noetherian and finite type}
 
 \subsection{Separated and proper}
-

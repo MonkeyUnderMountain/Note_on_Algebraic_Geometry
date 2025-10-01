@@ -1,0 +1,35 @@
+\section{Schemes as functors}
+
+
+\subsection{The functor of points}
+
+    Let \(X\) be a scheme over a base scheme \(S\).
+    The \emph{functor of points} of \(X\) is the functor \(h_X(-)\colon (\Sch/S)^{\op} \to \Set\) defined by \(T \mapsto h_X(T) = \Hom_S(T, X)\).
+
+    When we say that \(f(x) = y\) for \(x \in X(T)\) and \(y \in Y(T)\), we mean that the following diagram commutes:
+    \[\begin{tikzcd}
+        T \arrow[r, "x"] \arrow[rd, "y"'] & X \arrow[d, "f"] \\
+                                           & Y
+    \end{tikzcd}\]
+
+\subsection{What is a scheme?}
+
+    For a scheme \(X\) over \(S\), we will often identify \(X\) with its functor of points \(h_X\).
+    In this way, we can think of a scheme as a functor from \((\Sch/S)^{\op}\) to \(\Set\).
+
+    The underlying topological space of \(X\) can be recovered from the functor of points \(h_X\) as follows:
+    The points of \(X\) correspond to the morphisms from the spectrum of a field to \(X\).
+
+    The structure sheaf of \(X\) can also be recovered from the functor of points \(h_X\).
+
+% \subsection{Recovery schemes from functors}
+
+%     Let \(\calX: (\Sch/S)^{\op} \to \Set\) be a representable functor.
+
+%     \begin{definition}\label{def:underlying_set_of_a_representable_functor_from_schemes_to_sets}
+%         The \emph{underlying set} of \(\calX\) is defined to be the set 
+%         \[ \bigcup_{\kappa} \calX(\Spec \kappa)/\sim \]
+%         where \(\kappa\) runs through all fields and \(\sim\) is the equivalence relation given by
+%         \[ (f, \kappa) \sim (g, \lambda) \text{ if } f \text{ and } g \text{ agree on }\]
+%     \end{definition}
+%     \Yang{To be continued}

@@ -1,0 +1,43 @@
+\section{Varieties in more general settings}
+
+\subsection{Geometric properties}
+
+    \begin{definition}\label{def:geometrically_property}
+        Let \(\kk\) be a field and \(X\) a separated scheme of finite type over \(\Spec \kk\).
+        We say that \(X\) has a \emph{geometric property} \(\calP\) if \(X_{\kkk}\) has the property \(\calP\) for the algebraic closure \(\kkk\) of \(\kk\).
+    \end{definition}
+
+    \begin{definition}\label{def:varieties_over_general_field}
+        A \emph{variety} over a field \(\kk\) is a geometrically integral scheme which is separated and of finite type over \(\Spec \kk\).
+    \end{definition}
+
+
+\subsection{Points in varieties}
+
+    \begin{proposition}\label{prop:points_in_varieties_and_extension_of_base_field}
+        Let \(\kk\) be a field and \(\KK\) an extension of \(\kk\).
+        Let \(X\) be a variety over \(\kk\).
+        Then we have the following:
+        \begin{enumerate}
+            \item there is a natural bijection between \(X(\KK)\) and \(X_\KK(\KK)\);
+            \item let \(\KK'/\KK\) be an extension, then there is a natural inclusion \(X(\KK) \subseteq X(\KK')\);
+            \item suppose that \(X = \Spec \kk[T_1,\ldots,T_n]/I\) is an affine variety, then there is a natural bijection between \(X(\KK)\) and the set \(\{(x_1,\ldots,x_n) \in \KK^n | f(x_1,\ldots,x_n) = 0, \forall f \in I\}\).
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued}
+    \end{proof}
+
+    \begin{proposition}\label{prop:closed_points_determines_morphism}
+        Let \(\kk\) be a field and \(X,Y\) varieties over \(\kk\).
+        Let \(f,g : X \to Y\) be two morphisms.
+        If \(f(x) = g(x)\) for all points \(x \in X(\kkk)\), then \(f = g\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued}
+    \end{proof}
+
+    \begin{example}\label{eg:relative_Frobenius_of_affine_line_does_not_coincide_with_identity_on_closed_points}
+        Let \(\kk = \bbF_p\) and \(X = \bbA^1_\kk = \Spec \kk[T]\).
+        \Yang{To be continued}
+    \end{example}
