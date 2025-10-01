@@ -22,19 +22,7 @@ Everything in this section is over an arbitrary field \(\kk\) unless otherwise s
         \Yang{To be continued...}
     \end{definition}
 
-
-\subsection{Passage to projective space}
-
-    \begin{theorem}\label{thm:closed_subgroup_of_affine_algebraic_group_can_be_realized_as_stabilizer_of_line}
-        Let \(G\) be an affine algebraic group and \(H\) a closed subgroup.
-        Then there exists a finite-dimensional linear representation \(V\) of \(G\) and a one-dimensional subspace \(L \subseteq V\) such that \(H\) is the stabilizer of \(L\).
-    \end{theorem}
-    \begin{proof}
-        \Yang{To be filled.}
-    \end{proof}
-
-
-\subsection{More general quotients}
+    Such a quotient does not always exist.
 
     \begin{theorem}\label{thm:existence_of_quotient_by_algebraic_group}
         Let \(G\) be an affine algebraic group acting on a variety \(X\).
@@ -50,4 +38,34 @@ Everything in this section is over an arbitrary field \(\kk\) unless otherwise s
 
         Furthermore, if all orbits of \(G\) in \(X\) are closed, then \(\pi\) is a morphism (i.e., defined everywhere).
         \Yang{To be continued...}
+        \Yang{Ref?}
     \end{theorem}
+
+
+\subsection{Quotient of affine algebraic group by closed subgroup}
+
+    \begin{lemma}\label{lem:fix_subspace_iff_fix_its_exterior_power}
+        Let \(V\) be a finite-dimensional vector space over \(\kk\) and \(G\) an abstract group acting linearly on \(V\).
+        Let \(W \subseteq V\) be a subspace of dimension \(m\).
+        Then \(G.W = W\) if and only if \(G.\wedge^m W = \wedge^m W\).
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be filled.}
+    \end{proof}
+
+    \begin{lemma}\label{lem:closed_subgroup_of_affine_algebraic_group_can_be_realized_as_stabilizer_of_line}
+        Let \(G\) be an affine algebraic group and \(H\) a closed subgroup.
+        Then there exists a finite-dimensional linear representation \(V\) of \(G\) and a one-dimensional subspace \(L \subseteq V\) such that \(H\) is the stabilizer of \(L\).
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be filled.}
+    \end{proof}
+
+    \begin{theorem}\label{thm:quotient_of_affine_algebraic_group_by_closed_subgroup_by_passage_to_projective_space}
+        Let \(G\) be an affine algebraic group and \(H\) a closed subgroup.
+        Then the quotient \(G/H\) exists as a quasi-projective variety.
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be filled.}
+    \end{proof}
+
