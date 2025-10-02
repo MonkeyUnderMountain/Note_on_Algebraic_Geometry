@@ -1,7 +1,5 @@
 \section{Introduction to Moduli Problems}
 
-\subsection{Setup}
-
     Let \(X\) be a smooth projective curve of genus \(g\) over an algebraically closed field \(\kkk\) of characteristic \(0\).
 
     We are interested in the moduli space of vector bundles on \(X\).
@@ -9,16 +7,11 @@
 \subsection{Moduli functors}
 
     Let \(S\) be a noetherian scheme and \(T\) is a scheme of finite type over \(S\).
-
-    \begin{theorem}[Yoneda lemma]\label{thm:yoneda_lemma}
-        There is a full and faithful functor 
-        \[ h : (\Sch_S)^{\op} \to \Fun((\Sch_S)^{\op}, \Set), \quad T \mapsto h_T(S) \coloneqq \Hom_{\Sch_S}(T, S). \]
-    \end{theorem}
-
-    \begin{definition}\label{def:representable_functor}
-        A functor \(F : (\Sch_S)^{\op} \to \Set\) is representable if there exists a scheme \(M\) over \(S\) such that \(F \cong h_M\).
-    \end{definition}
-
+    Recall the Yoneda lemma: 
+    there is a full and faithful functor 
+    \[ h : (\Sch_S)^{\op} \to \Fun((\Sch_S)^{\op}, \Set), \quad T \mapsto h_T(S) \coloneqq \Hom_{\Sch_S}(T, S). \]
+    
+    A functor \(F : (\Sch_S)^{\op} \to \Set\) is \emph{representable} if there exists a scheme \(M\) over \(S\) such that \(F \cong h_M\).
     We say that \(M\) is \emph{the fine moduli space} of \(F\).
 
     \begin{remark}\label{rmk:fine_moduli_space}
@@ -26,22 +19,25 @@
         for any \(T \in \Sch_S\) and any \(\xi \in F(T)\), there exists a unique morphism \(f : T \to M\) such that \(F(f)(\calU) = \xi\).
     \end{remark}
 
-    \begin{example}\label{eg:Quot_scheme}
-        Let \(S\) be a noetherian scheme, \(\pi:X \to S\) a projective morphism, \(\calL\) a relatively ample line bundle on \(X\), \(\calF\) a coherent sheaf on \(X\), and \(P \in \bbQ[t]\) a polynomial.
-        We define a functor
-        \begin{align*}
-            \Quot_{\calF/X/S}^{P,\calL} : & (\Sch_S)^{\op} \to \Set \\
-            & T \mapsto 
-            \left\{ 
-                \pi^*_T \calF \surjmap \calQ 
-            \;\middle|\;
-                \calQ \text{ is flat over } T, \forall t \in T, \calQ_t \text{ has Hilbert polynomial } P
-            \right\}/ \sim,
-        \end{align*}
-        where \Yang{}
+    The most famous example of representable functor is the Quot functor.
+    Let \(S\) be a noetherian scheme, \(\pi:X \to S\) a projective morphism, \(\calL\) a relatively ample line bundle on \(X\), \(\calF\) a coherent sheaf on \(X\), and \(P \in \bbQ[t]\) a polynomial.
+    We define a functor
+    \begin{align*}
+        \calQuot_{\calF/X/S}^{P,\calL} : & (\Sch_S)^{\op} \to \Set \\
+        & T \mapsto 
+        \left\{ 
+            \pi^*_T \calF \surjmap \calQ 
+        \;\middle|\;
+            \calQ \text{ is flat over } T, \forall t \in T, \calQ_t \text{ has Hilbert polynomial } P
+        \right\}/ \sim,
+    \end{align*}
+    where \(\pi^*_T \calF \surjmap \calQ\) and \(\pi^*_T \calF \surjmap \calQ'\) are equivalent if \(\Ker(\pi^*_T \calF \surjmap \calQ) = \Ker(\pi^*_T \calF \surjmap \calQ')\).
 
-        By Grothendieck's Quot scheme theorem, \(\Quot_{\calF/X/S}^{P,\calL}\) is representable by a projective \(S\)-scheme \(\Quot_{\calF/X/S}^{P,\calL}\).
-    \end{example}
+    By Grothendieck, \(\calQuot_{\calF/X/S}^{P,\calL}\) is representable by a projective \(S\)-scheme \(\Quot_{\calF/X/S}^{P,\calL}\).
+    \Yang{Reference...}
+
+    If we take \(S = \Spec \kkk\), \(X\) a projective variety and \(\calF = \calO_X\).
+    Then the Quot functor \(\calQuot_{\calO_X/X/\kkk}^{P,\calL}\) becomes the Hilbert functor \(\calHilb_{X/\Spec \kkk}^{P,\calL}\), which is representable by a projective \(\kkk\)-scheme called the \emph{Hilbert scheme} \(\Hilb_X^{P,\calL}\).
 
 \subsection{Moduli functor of vector bundles}
 
@@ -54,7 +50,7 @@
             \calE \text{ is a vector bundle on } X \times T \text{ of rank } r, \forall t \in T, \deg(\calE_t) = d
          \right\}/ \sim,
     \end{align*}
-    \Yang{To be continued...}
+    where \(\calE \sim \calE'\) if there exists a line bundle \(\calL\) on \(T\) such that \(\calE' \cong \calE \otimes \pi_T^* \calL\), where \(\pi_T : X \times T \to T\) is the projection.
 
     Unfortunately, \(\tilde{\calM}_{r,d}\) is not representable.
     There are two main reasons:
@@ -64,22 +60,36 @@
     \end{itemize}
 
     \begin{definition}\label{def:bounded_family}
-        A family of vector bundles on \(X\) is \emph{bounded} if there exists a scheme \(S\) of finite type over \(\kkk\) and a vector bundle \(\calE\) on \(X \times S\) such that every vector bundle in the family is isomorphic to \(\calE_s\) for some \(s \in S\).
+        A family of vector bundles on \(X\) is \emph{bounded} 
+        if there exists a scheme \(S\) of finite type over \(\kkk\) and a vector bundle \(\calE\) on \(X \times S\) 
+        such that every vector bundle in the family is isomorphic to \(\calE_s\) for some \(s \in S\).
     \end{definition}
 
     If \(\tilde{\calM}_{r,d}\) is representable by a scheme \(M\) of finite type over \(\kkk\), then the family of vector bundles parametrized by \(M\) is bounded.
     This is impossible since if so, \(\{h^0(X,\calE) \mid \calE \in \tilde{\calM}_{r,d}(\kkk)\}\) is bounded by semicontinuity theorem, which is not true.
+    For example, consider the family \(\calE_n = \calO_X(np) \oplus \calO_X(-np) \in \tilde{\calM}_{2,0}(\kkk)\) for \(n \geq 0\), where \(p \in X\) is a fixed point.
+    By Riemann-Roch theorem, we have \(h^0(X,\calE_n) = n + 1-g\) for \(n\) sufficiently large.
 
-    \begin{example}\label{eg:Roes_construction}
+    \begin{example}\label{eg:Ress_construction}
+        Let us see a jumping phenomenon example due to Ress.
         Let \(\calE\) be a vector bundle on \(X\) of rank \(r\) and degree \(d\) with a filtration
         \[F: 0 = \calE_0 \subset \calE_1 \subset \cdots \subset \calE_r = \calE. \]
-        Let \(\calF \coloneqq \bigoplus_{i=1}^r \calE_i/\calE_{i-1}\) be a coherent sheaf defined over \(X \times \bbA^1\).
+        On \(X \times \bbA^1\), we can construct a vector bundle \(\calF\) by ``deforming'' \(\calE\) to \(\bigoplus_{i=1}^r \calE_i/\calE_{i-1}\) as follows:
+        let \(t\) be the coordinate of \(\bbA^1\), 
+        and define \(\calF\) to be the subsheaf of \(\pi_X^* \calE\) generated by \(t^{-i} \cdot \pi_X^* \calE_i\) for \(1 \leq i \leq r\), where \(\pi_X : X \times \bbA^1 \to X\) is the projection.
+        Then \(\calF\) is a vector bundle on \(X \times \bbA^1\) of rank \(r\) and degree \(d\).
         We have 
         \[ \calF_t \cong \begin{cases}
             \calE, & t \neq 0, \\
             \bigoplus_{i=1}^r \calE_i/\calE_{i-1}, & t = 0.
         \end{cases} \]
-        
+        This is called the \emph{jumping phenomenon}.
+        \Yang{To be checked...}
+
+        For a concrete example, let \(X = \bbP^1\), we have an exact sequence
+        \[ 0 \to \calO(-2) \to \calO(-1) \oplus \calO(-1) \to \calO \to 0. \]
+        Let \(\calE = \calO(-1) \oplus \calO(-1)\) and consider the filtration \(F : 0 \subset \calO(-2) \subset \calE\).
+        \Yang{To be continued...}
     \end{example}
 
     If \(\tilde{\calM}_{r,d}\) is representable by a scheme \(M\), then the family of vector bundles parametrized by \(M\) does not have jumping phenomenon.
@@ -135,12 +145,18 @@
             \item if \(\mu(\calE) > 2g-1\), then \(\calE\) is globally generated.
         \end{enumerate}
     \end{lemma}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
 
     Let \(S_{r,d}\) be set of isomorphism classes of semistable vector bundles on \(X\) of rank \(r\) and degree \(d\).
 
     \begin{proposition}\label{prop:semistable_vector_bundles_are_bounded}
         The family \(S_{r,d}\) is bounded.
     \end{proposition}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
 
 
     \begin{definition}[Jordan-H\"older filtration]\label{def:Jordan-Holder_filtration}
