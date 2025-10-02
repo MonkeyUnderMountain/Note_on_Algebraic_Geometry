@@ -1,8 +1,8 @@
 \section{Introduction to Moduli Problems}
 
-    Let \(X\) be a smooth projective curve of genus \(g\) over an algebraically closed field \(\kkk\) of characteristic \(0\).
+    Let \(C\) be a smooth projective curve of genus \(g\) over an algebraically closed field \(\kkk\) of characteristic \(0\).
 
-    We are interested in the moduli space of vector bundles on \(X\).
+    We are interested in the moduli space of vector bundles on \(C\).
 
 \subsection{Moduli functors}
 
@@ -37,7 +37,7 @@
     \Yang{Reference...}
 
     If we take \(S = \Spec \kkk\), \(X\) a projective variety and \(\calF = \calO_X\).
-    Then the Quot functor \(\calQuot_{\calO_X/X/\kkk}^{P,\calL}\) becomes the Hilbert functor \(\calHilb_{X/\Spec \kkk}^{P,\calL}\), which is representable by a projective \(\kkk\)-scheme called the \emph{Hilbert scheme} \(\Hilb_X^{P,\calL}\).
+    Then the Quot functor \(\calQuot_{\calO_X/X/\kkk}^{P,\calL}\) becomes the Hilbert functor \(\calHilb_{X/\kkk}^{P,\calL}\), which is representable by a projective \(\kkk\)-scheme called the \emph{Hilbert scheme} \(\Hilb_X^{P,\calL}\).
 
 \subsection{Moduli functor of vector bundles}
 
@@ -60,14 +60,14 @@
     \end{itemize}
 
     \begin{definition}\label{def:bounded_family}
-        A family of vector bundles on \(X\) is \emph{bounded} 
+        A family of vector bundles on a variety \(X\) is \emph{bounded} 
         if there exists a scheme \(S\) of finite type over \(\kkk\) and a vector bundle \(\calE\) on \(X \times S\) 
         such that every vector bundle in the family is isomorphic to \(\calE_s\) for some \(s \in S\).
     \end{definition}
 
     If \(\tilde{\calM}_{r,d}\) is representable by a scheme \(M\) of finite type over \(\kkk\), then the family of vector bundles parametrized by \(M\) is bounded.
     This is impossible since if so, \(\{h^0(X,\calE) \mid \calE \in \tilde{\calM}_{r,d}(\kkk)\}\) is bounded by semicontinuity theorem, which is not true.
-    For example, consider the family \(\calE_n = \calO_X(np) \oplus \calO_X(-np) \in \tilde{\calM}_{2,0}(\kkk)\) for \(n \geq 0\), where \(p \in X\) is a fixed point.
+    For example, consider the family \(\calE_n = \calO_X(nP) \oplus \calO_X(-nP) \in \tilde{\calM}_{2,0}(\kkk)\) for \(n \geq 0\), where \(P \in X(\kkk)\) is a fixed point.
     By Riemann-Roch theorem, we have \(h^0(X,\calE_n) = n + 1-g\) for \(n\) sufficiently large.
 
     \begin{example}\label{eg:Ress_construction}
@@ -93,7 +93,11 @@
     \end{example}
 
     If \(\tilde{\calM}_{r,d}\) is representable by a scheme \(M\), then the family of vector bundles parametrized by \(M\) does not have jumping phenomenon.
-    \Yang{To be continued...}
+    Indeed, if \(\calF\) is an vector bundle on \(X \times \bbA^1\) such that \(\calF_t \cong \calE\) for \(t \neq 0\), 
+    then by the universal property of \(M\), there exists a unique morphism \(f : \bbA^1 \to M\) such that \(\calF \cong (\id_X \times f)^* \calU\), 
+    where \(\calU\) is the universal vector bundle on \(X \times M\).
+    Since \(f\) is constant on the open subset \(\bbA^1 \setminus \{0\}\), it is constant on \(\bbA^1\).
+    Thus, \(\calF_0 \cong \calE\).
 
     To fix the above problems, we need to 
     \begin{itemize}
@@ -104,15 +108,18 @@
 
 \subsection{Coarse moduli space}
 
-    Let \(F : (\Sch_S)^{\op} \to \Set\) be a functor, \(M\) a scheme over \(S\), and \(\eta : F \to h_M\) a natural transformation.
-    We say that \((M, \eta)\) \emph{corepresents} \(F\) if it satisfies the following universal property: 
-    for any scheme \(N\) over \(S\) and any natural transformation \(\eta' : F \to h_N\), there exists a unique morphism \(f : M \to N\) such that the following diagram commutes:
-    \[
-    \begin{tikzcd}
-        F \arrow[r, "\eta"] \arrow[d, "\eta'"'] & h_M \arrow[d, "h_f"] \\
-        h_N \arrow[r, "\sim"] & N.
-    \end{tikzcd}
-    \]
+    % \Yang{To be continued...}
+
+    \begin{definition}\label{def:corepresents_functor}
+        Let \(F: (\Sch_S)^{\op} \to \Set\) be a functor, \(M\) a scheme over \(S\), and \(\eta : F \to h_M\) a natural transformation.
+        We say that \((M, \eta)\) \emph{corepresents} \(F\) 
+        if for any scheme \(N\) over \(S\) and any natural transformation \(\eta' : F \to h_N\), 
+        there exists a unique morphism \(f : M \to N\) such that the following diagram commutes:
+        \[ \begin{tikzcd}
+            F \arrow[r, "\eta"] \arrow[dr, "\eta'"'] & h_M \arrow[d, "h_f"] \\
+             & h_N.
+        \end{tikzcd} \]
+    \end{definition}
 
     \begin{definition}\label{def:coarse_moduli_space}
         A scheme \(M\) over \(S\) is called the \emph{coarse moduli space} of \(F\) if 
@@ -122,21 +129,65 @@
         \end{enumerate}
     \end{definition}
 
-    For a vector bundle \(\calE\) of rank \(r\) and degree \(d\) on \(X\), we define its slope to be \(\mu(\calE) \coloneqq d/r\).
-    We say that \(\calE\) is \emph{stable} (resp. \emph{semistable}) if for any proper sub-bundle \(\calF \subset \calE\), we have \(\mu(\calF) < \mu(\calE)\) (resp. \(\mu(\calF) \leq \mu(\calE)\)).
+    \Yang{To be continued...}
+
+\subsection{Semistable vector bundles}
+
+    \begin{proposition}\label{lem:slope_of_exact_sequence}
+        Let \(0 \to \calE_1 \to \calE_2 \to \calE_3 \to 0\) be an exact sequence of non-zero vector bundles on \(C\).
+        Then \(\mu(\calE_2) \geq \mu(\calE_1)\) (resp. \(\mu(\calE_2) > \mu(\calE_1)\)) if and only if \(\mu(\calE_2) \leq \mu(\calE_3)\) (resp. \(\mu(\calE_2) < \mu(\calE_3)\)).
+    \end{proposition}
+    \begin{proof}
+        We have 
+        \[ \mu(\calE_2) = \frac{\deg \calE_2}{\rank \calE_2} = \frac{\deg \calE_1 + \deg \calE_3}{\rank \calE_1 + \rank \calE_3}. \]
+        Note that for any \(a,b,c,d \in \bbR_{>0}\), we have 
+        \[\frac{a+c}{b+d} \geq \frac{a}{b} \iff bc \geq ad \iff \frac{a+c}{b+d} \leq \frac{c}{d}. \]
+        The strict inequality case is similar.
+        Then the proposition follows.
+    \end{proof}
+
+    \begin{definition}\label{def:stable_and_semistable_vector_bundles_over_curves}
+        Let \(C\) be a smooth projective curve over \(\kkk\).
+        For a vector bundle \(\calE\) of rank \(r\) and degree \(d\) on \(C\), we define its slope to be \(\mu(\calE) \coloneqq d/r\).
+        We say that \(\calE\) is \emph{stable} (resp. \emph{semistable}) if for any proper sub-bundle \(\calF \subset \calE\), we have \(\mu(\calF) < \mu(\calE)\) (resp. \(\mu(\calF) \leq \mu(\calE)\)).
+    \end{definition}
 
     \begin{proposition}\label{prop:homomorphism_between_semistable_and_stable_bundles}
-        If \(\calE\) is a stable vector bundle on \(X\) and \(\calF\) is a semistable vector bundle on \(X\) with \(\mu(\calE) \geq \mu(\calF)\), then any non-zero homomorphism \(\varphi : \calE \to \calF\) is an isomorphism.
+        Let \(\calE\) and \(\calF\) be vector bundles on \(C\).
+        Suppose that they are semistable and \(\mu(\calE) > \mu(\calF)\).
+        Then any homomorphism \(\varphi : \calE \to \calF\) is zero.
 
-
-        If \(\calE\) and \(\calF\) are stable vector bundles on \(X\) with \(\mu(\calE) \geq \mu(\calF)\), then any non-zero homomorphism \(\varphi : \calE \to \calF\) is an isomorphism.
-        In particular, if \(\calE\) is a stable vector bundle, then \(\End(\calE) \cong \kkk\).
-        \Yang{To be continued...}
+        Suppose that they are stable and \(\mu(\calE) = \mu(\calF)\).
+        Then any non-zero homomorphism \(\varphi : \calE \to \calF\) is an isomorphism.
     \end{proposition}
+    \begin{proof}
+        Let \(\varphi : \calE \to \calF\) be a non-zero homomorphism of vector bundles on \(C\).
+        We have an exact sequence
+        \[ 0 \to \Ker \varphi \to \calE \to \Image \varphi \to 0. \]
+        Since \(\calF\) is vector bundle, hence torsion-free, \(\Image \varphi\) is also torsion-free, thus a vector bundle.
+
+        If \(\calE\) and \(\calF\) are semistable with \(\mu(\calE) > \mu(\calF)\), 
+        clearly \(\Ker \varphi \neq 0\), then by \cref{lem:slope_of_exact_sequence}, we have
+        \[ \mu(\calE) \leq \mu(\Image \varphi) \leq \mu(\calF). \]
+        This is a contradiction, thus \(\varphi = 0\).
+
+        Suppose that \(\calE\) and \(\calF\) are stable with \(\mu(\calE) = \mu(\calF)\).
+        If \(\Ker \varphi \neq 0\), then by \cref{lem:slope_of_exact_sequence}, we have
+        \[ \mu(\calE) < \mu(\Image \varphi) \leq \mu(\calF). \]
+        This is a contradiction, thus \(\varphi\) is injective.
+        Since \(\calF\) is stable and \(\Image \varphi \subset \calF\) has the same slope as \(\calF\), we have \(\Image \varphi = \calF\).
+    \end{proof}
 
     \begin{corollary}\label{cor:stable_vector_bundles_are_simple}
-        A stable vector bundle is simple.
+        A stable vector bundle is simple as a coherent sheaf, i.e., \(\End(\calE) \cong \kkk\).
     \end{corollary}
+    \begin{proof}
+        Let \(\varphi \in \End(\calE)\) be a non-zero endomorphism.
+        Then there exists \(P \in C(\kkk)\) such that \(\varphi_P : \calE_P \to \calE_P\) is non-zero.
+        Let \(a \in \kkk\) be an eigenvalue of \(\varphi_P\) and consider the endomorphism \(\varphi - a \cdot \id_\calE\).
+        Then \((\varphi - a \cdot \id_\calE)_P : \calE_P \to \calE_P\) is not an isomorphism, so is \(\varphi - a \cdot \id_\calE\).
+        By \cref{prop:homomorphism_between_semistable_and_stable_bundles}, \(\varphi - a \cdot \id_\calE = 0\), thus \(\varphi = a \cdot \id_\calE\).
+    \end{proof}
 
     \begin{lemma}\label{lem:vanishing_and_global_generation_of_semistable_vector_bundles}
         Let \(\calE\) be a semistable vector bundle on \(X\).
@@ -160,27 +211,32 @@
 
 
     \begin{definition}[Jordan-H\"older filtration]\label{def:Jordan-Holder_filtration}
-        Let \(\calE\) be a semistable vector bundle on \(X\).
+        Let \(\calE\) be a semistable vector bundle on \(C\).
         A \emph{Jordan-H\"older filtration} of \(\calE\) is a filtration 
         \[ F : 0 = \calE_0 \subset \calE_1 \subset \cdots \subset \calE_n = \calE \]
-        such that each successive quotient \(\calE_i/\calE_{i-1}\) is a stable vector bundle with slope \(\mu(\calE_i/\calE_{i-1}) = \mu(\calE)\).
-        
-        The associated graded object of \(F\) is defined to be 
-        \[ \gr(\calE) \coloneqq \bigoplus_{i=1}^n \calE_i/\calE_{i-1}. \]
-        
-        Any semistable vector bundle on \(X\) admits a Jordan-H\"older filtration, and the associated graded object is unique up to isomorphism.
-        \Yang{To be continued...}
+        such that \(\calE_i/\calE_{i-1}\) are stable with \(\mu(\calE_i/\calE_{i-1}) = \mu(\calE)\) for all \(1 \leq i \leq n\).
     \end{definition}
 
+    \begin{proposition}\label{prop:existence_and_uniqueness_of_Jordan-Holder_filtration}
+        Any semistable vector bundle on \(C\) admits a Jordan-H\"older filtration.
+        Moreover, the associated graded object 
+        \[ \gr(\calE) \coloneqq \bigoplus_{i=1}^n \calE_i/\calE_{i-1} \]
+        is independent of the choice of Jordan-H\"older filtration up to isomorphism.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
     \begin{definition}[S-equivalence]\label{def:S-equivalence}
-        Two semistable vector bundles \(\calE\) and \(\calF\) on \(X\) are S-equivalent if their associated graded objects \(\gr(\calE)\) and \(\gr(\calF)\) (from their Jordan-H\"older filtrations) are isomorphic.
+        Two semistable vector bundles \(\calE\) and \(\calF\) of the same rank and degree on \(C\) are called \emph{S-equivalent} 
+        if their associated graded objects \(\gr(\calE)\) and \(\gr(\calF)\) (from their Jordan-H\"older filtrations) are isomorphic.
     \end{definition}
 
 
     \begin{definition}\label{def:coarse_moduli_functor_of_vector_bundles}
         We define a functor 
         \begin{align*}
-            \calM_{r,d} : & (\Sch_\kkk)^{\op} \to \Set \\
+            \calM_{r,d}^{ss} : & (\Sch_\kkk)^{\op} \to \Set \\
             & T \mapsto \left\{ 
                 \calE 
             \;\middle|\;
