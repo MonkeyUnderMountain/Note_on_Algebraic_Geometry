@@ -1,10 +1,11 @@
 \documentclass[sectionlevel=chapter]{noteformyself}
+\usepackage{draftwatermark} % 水印宏包
 
 \input{../../Accessories/notation.tex}
 \addbibresource{../../Accessories/ref.bib}
 \newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
 
-\title{}
+\title{Curves}
 \author{Tianle Yang}
 \date{\today}
 \authorpage{\href{https://www.tianleyang.com}{My Homepage}}
@@ -21,6 +22,10 @@
 
     \tableofcontents
 
-    \printbibliography[heading=bibintoc, title={References}]
+    \input{The_first_properties/text.tex}
+    \input{Elliptic_curve/text.tex}
+    \input{Higher_genus_curve/text.tex}
+
+    % \printbibliography[heading=bibintoc, title={References}]
     
 \end{document}
