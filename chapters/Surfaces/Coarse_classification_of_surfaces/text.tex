@@ -1,1 +1,32 @@
-\section{}
+\section{Coarse classification of surfaces}
+
+Let \(\kkk\) be an algebraically closed field of arbitrary characteristic.
+Unless otherwise specified, all varieties are defined over \(\kkk\).
+
+Let \(X\) be a smooth projective surface over an algebraically closed field \(\kkk\). 
+We want to classify \(X\) up to birational equivalence.
+Let \(K_X\) be the canonical divisor of \(X\).
+
+% \subsection{Tools}
+
+    \begin{theorem}\label{thm:12K_is_base_point_free_on_surfaces_with_nonnegative_kodaira_dimension}
+        Let \(X\) be a smooth projective surface over an algebraically closed field \(\kkk\).
+        Suppose that the Kodaira dimension \(\kappa(X)\geq 0\).
+        Then the linear system \(|12K_X|\) is base point free.
+        \Yang{To be checked.}
+    \end{theorem}
+
+\subsection{Classification}
+
+    \begin{theorem}[Enriques-Kodaira classification]\label{thm:enriques_kodaira_classification}
+        Let \(X\) be a smooth projective surface over \(\kkk\).
+        Then \(X\) is birational to a unique minimal model \(X'\), unless \(X\) is birational to a ruled surface.
+        Moreover, the minimal model \(X'\) falls into one of the following classes:
+        \begin{enumerate}
+            \item \(\kappa(X')=-\infty\): \(X'\cong \bbP^2\) or \(X'\) is a ruled surface;
+            \item \(\kappa(X')=0\): \(X'\) is a K3 surface, an abelian surface or their quotients;
+            \item \(\kappa(X')=1\): \(X'\) is an elliptic surface;
+            \item \(\kappa(X')=2\): \(X'\) is a surface of general type.
+        \end{enumerate}
+        \Yang{To be checked.}
+    \end{theorem}
