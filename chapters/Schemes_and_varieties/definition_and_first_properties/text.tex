@@ -1,98 +1,8 @@
-\section{Definition and First Properties of Schemes}
+\section{The First Properties of Schemes}
 
-
-\subsection{Locally Ringed Space}
-
-    \begin{definition}\label{def:sheaves}
-        Let \(X\) be a topological space.
-        A \emph{presheaf} of sets (resp. abelian groups, rings, etc.) on \(X\) is a contravariant functor \(\calF : \Open(X) \to \Set\) (resp. \(\Ab\), \(\Ring\), etc.), 
-        where \(\Open(X)\) is the category of open subsets of \(X\) with inclusions as morphisms.
-
-        A presheaf \(\calF\) is a \emph{sheaf} if sections can be glued uniquely.
-        More precisely, for every open covering \(\{U_i\}_{i \in I}\) of an open set \(U \subset X\) and every family of sections \(s_i \in \calF(U_i)\) such that \(s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j}\) for all \(i,j \in I\),
-        there exists a unique section \(s \in \calF(U)\) such that \(s|_{U_i} = s_i\) for all \(i \in I\).
-    \end{definition}
-
-    \begin{example}\label{eg:sheaf_of_smooth_and_analytic_functions}
-        Let \(X\) be a real (resp. complex) manifold.
-        The assignment \(U \mapsto C^\infty(U, \bbR)\) (resp. \(U \mapsto \{\text{holomorphic functions on }U\}\)) defines a sheaf of rings on \(X\).
-    \end{example}
-
-    \begin{example}\label{eg:presheaf_but_not_sheaf}
-        Let \(X\) be a non-connected topological space.
-        The assignment 
-        \[U \mapsto \{\text{constant functions on }U\}\] 
-        defines a presheaf \(\calC\) of rings on \(X\) but not a sheaf.
-
-        For a concrete example, let \(X = (0,1)\cup (2,3)\) with the subspace topology from \(\bbR\).
-        Consider the open covering \(\{(0,1), (2,3)\}\) of \(X\).
-        The sections \(s_1 = 1 \in \calC((0,1))\) and \(s_2 = 2 \in \calC((2,3))\) agree on the intersection (which is empty), 
-        but there is no global section \(s \in \calC(X)\) such that \(s|_{(0,1)} = s_1\) and \(s|_{(2,3)} = s_2\).
-    \end{example}
-
-    \begin{definition}\label{def:locally_ringed_space}
-        A \emph{locally ringed space} is a pair \((X, \calO_X)\) where \(X\) is a topological space and \(\calO_X\) is a sheaf of rings on \(X\) such that for every \(x \in X\), the stalk \(\calO_{X,x}\) is a local ring.
-        
-        A \emph{morphism of locally ringed spaces} \(f : (X, \calO_X) \to (Y, \calO_Y)\) consists of a continuous map \(f : X \to Y\) and a morphism of sheaves of rings \(f^\sharp : \calO_Y \to f_*\calO_X\) 
-        such that for every \(x \in X\), the induced map on stalks \(f_x^\sharp : \calO_{Y,f(x)} \to \calO_{X,x}\) is a local homomorphism, 
-        i.e., it maps the maximal ideal of \(\calO_{Y,f(x)}\) to the maximal ideal of \(\calO_{X,x}\).
-    \end{definition}
-
-    \begin{example}\label{eg:non_local_homomorphism_of_local_rings}
-        Let \(p\) be a prime number.
-        Then the inclusion \(\bbZ_{(p)} \to \bbQ\) is a homomorphism of local rings but not a local homomorphism.
-        Here \(\bbZ_{(p)}\) is the localization of \(\bbZ\) at the prime ideal \((p)\).
-    \end{example}
-
-    \begin{example}[Glue morphisms]\label{eg:glue_morphisms_of_locally_ringed_spaces}
-        Let \(f : (X, \calO_X) \to (Y, \calO_Y)\) be a morphism of locally ringed spaces.
-        If \(U \subset X\) and \(V \subset Y\) are open subsets such that \(f(U) \subset V\), then the restriction \(f|_U : (U, \calO_X|_U) \to (V, \calO_Y|_V)\) is a morphism of locally ringed spaces.
-        Conversely, if \(\{U_i\}_{i \in I}\) is an open covering of \(X\) and for each \(i \in I\), we have a morphism \(f_i : (U_i, \calO_X|_{U_i}) \to (Y, \calO_Y)\) such that \(f_i|_{U_i \cap U_j} = f_j|_{U_i \cap U_j}\) for all \(i,j \in I\),
-        then there exists a unique morphism \(f : (X, \calO_X) \to (Y, \calO_Y)\) such that \(f|_{U_i} = f_i\) for all \(i \in I\).
-    \end{example}
-
-    \begin{example}[Glue locally ringed space]\label{eg:glue_open_locally_ringed_subspace}
-        We construct a locally ringed space by gluing open subspaces.
-        Let \((X_i, \calO_{X_i})\) be locally ringed spaces for \(i \in I\) and \((U_{ij}, \calO_{X_i}|_{U_{ij}})\) be open subspaces for \(i,j \in I\).
-        Suppose we have isomorphisms \(\varphi_{ij} : (U_{ij}, \calO_{X_i}|_{U_{ij}}) \to (U_{ji}, \calO_{X_j}|_{U_{ji}})\) such that
-        \begin{enumerate}
-            \item \(\varphi_{ii} = \id_{X_i}\) for all \(i \in I\);
-            \item \(\varphi_{ij}(U_{ij} \cap U_{ik}) = U_{ji} \cap U_{jk}\) for all \(i,j \in I\);
-            \item \(\varphi_{jk}\circ \varphi_{ij} = \varphi_{ik}\) on \(U_{ij} \cap U_{ik}\) for all \(i,j,k \in I\).
-        \end{enumerate}
-        Then there exists a locally ringed space \((X, \calO_X)\) and open immersions \(\psi_i : (X_i, \calO_{X_i}) \to (X, \calO_X)\) uniquely up to isomorphism such that 
-        \begin{enumerate}
-            \item \(\varphi_i(U_{ij}) = \psi_i(X_i)\cap \psi_j(X_j)\) for all \(i,j \in I\);
-            \item the following diagram 
-                \[ \begin{tikzcd}
-                    (U_{ij}, \calO_{X_i}|_{U_{ij}}) \arrow[d, "\varphi_{ij}"'] \arrow[r, hook] & (X_i, \calO_{X_i}) \arrow[r, hook, "\psi_i"] & (X, \calO_X) \arrow[d, "="] \\
-                    (U_{ji}, \calO_{X_j}|_{U_{ji}}) \arrow[r, hook] & (X_j, \calO_{X_j}) \arrow[r, hook, "\psi_j"] & (X, \calO_X)
-                \end{tikzcd} \]
-                commutes for all \(i,j \in I\);
-            \item \(X = \bigcup_{i \in I} \psi_i(X_i)\).
-        \end{enumerate}
-        Such \((X, \calO_X)\) is called \emph{the locally ringed space obtained by gluing the \((X_i, \calO_{X_i})\) along the \(\varphi_{ij}\)}.
-        
-        First \(\varphi_{ij}\) induces an equivalence relation \(\sim\) on the disjoint union \(\coprod_{i \in I} X_i\).
-        By taking the quotient space, we can glue the underlying topological spaces to get a topological space \(X\).
-        The structure sheaf \(\calO_X\) is given by 
-        \[ \calO_X(V) := \left\{ (s_i)_{i \in I} \in \prod_{i \in I} \calO_{X_i}(\psi_i^{-1}(V)) \;\middle|\; s_i|_{U_{ij}} = \varphi_{ij}^\sharp(s_j|_{U_{ji}}) \text{ for all } i,j \in I \right\}. \]
-        Easy to check that \((X, \calO_X)\) is a locally ringed space and satisfies the required properties.
-        If there is another locally ringed space \((X', \calO_{X'})\) with \(\psi'_i\) satisfying the same properties, then by gluing \(\psi_i' \circ \psi_i^{-1}\) we get an isomorphism \((X, \calO_X) \to (X', \calO_{X'})\).
-    \end{example}
-
+If you learn the following content for the first time, it is recommended to skip all the proofs in this section and focus on the examples, remarks and the statements of propositions and theorems.
 
 \subsection{Schemes}
-
-    % \begin{definition}\label{def:affine_scheme}
-    %     Let \(R\) be a ring.
-    %     The \emph{spectrum} of \(R\), denoted by \(\Spec R\), is the set of all prime ideals of \(R\) equipped with the Zariski topology, 
-    %     where the closed sets are of the form \(V(I) = \{\frakp \in \Spec R : I \subset \frakp\}\) for some ideal \(I \subset R\).
-    %     The structure sheaf \(\calO_{\Spec R}\) is defined by
-    %     \[ \calO_{\Spec R}(D(f)) = R[1/f], \]
-    %     where \(D(f) = \{\frakp \in \Spec R : f \notin \frakp\}\) and \(R_f\) is the localization of \(R\) at the multiplicative set \(\{1, f, f^2, \ldots\}\).
-    %     Then \((\Spec R, \calO_{\Spec R})\) is a locally ringed space called an \emph{affine scheme}.
-    % \end{definition}
 
     Let \(R\) be a ring.
     Recall that the \emph{spectrum} of \(R\), denoted by \(\Spec R\), is the set of all prime ideals of \(R\) equipped with the Zariski topology, 
@@ -135,14 +45,14 @@
         \Yang{To be continued}
     \end{definition}
 
-    \begin{definition}\label{def:scheme_theoretic_image}
-        Let \(f : X \to Y\) be a morphism of schemes.
-        The \emph{scheme theoretic image} of \(f\) is the smallest closed subscheme \(Z\) of \(Y\) such that \(f\) factors through \(Z\).
-        More precisely, if \(Y = \Spec A\) is affine, then the scheme theoretic image of \(f\) is \(\Spec(A/\ker(f^\sharp))\), where \(f^\sharp : A \to \Gamma(X, \calO_X)\) is the induced map on global sections.
-        In general, we can cover \(Y\) by affine open subsets and glue the scheme theoretic images on each affine open subset to get the scheme theoretic image of \(f\).
-        \Yang{To be continued}
-    \end{definition}
-
+    \begin{example}\label{eg:projective_scheme_Proj_of_graded_rings_as_schemes}
+        Let \(R\) be a graded ring. The \emph{projective scheme} \(\Proj R\) is defined as the scheme associated to the sheaf of rings
+        \[
+            \mathcal{O}_{\Proj R} = \bigoplus_{d \geq 0} R_d.
+        \]
+        It can be covered by open affine subschemes of the form \(\Spec R_f\) for homogeneous elements \(f \in R\).
+        \Yang{To be checked.}
+    \end{example}
 
     \begin{example}[Glue open subschemes]\label{eg:glue_open_subschemes}
         The construction in \cref{eg:glue_open_locally_ringed_subspace} allows us to glue open subschemes to get a scheme.
@@ -151,12 +61,227 @@
         Then the locally ringed space \((X, \calO_X)\) obtained by gluing the \((X_i, \calO_{X_i})\) along the \(\varphi_{ij}\) is a scheme.
     \end{example}
 
-\subsection{Integral, reduced and irreducible}
+    \begin{definition}\label{def:scheme_theoretic_image}
+        Let \(f : X \to Y\) be a morphism of schemes.
+        The \emph{scheme theoretic image} of \(f\) is the smallest closed subscheme \(Z\) of \(Y\) such that \(f\) factors through \(Z\).
+        More precisely, if \(Y = \Spec A\) is affine, then the scheme theoretic image of \(f\) is \(\Spec(A/\ker(f^\sharp))\), where \(f^\sharp : A \to \Gamma(X, \calO_X)\) is the induced map on global sections.
+        In general, we can cover \(Y\) by affine open subsets and glue the scheme theoretic images on each affine open subset to get the scheme theoretic image of \(f\).
+        \Yang{To be checked.}
+    \end{definition}
 
 \subsection{Fiber product}
 
-\subsection{Dimension}
+    \begin{definition}\label{def:fiber_product_in_arbitrary_category}
+        Let \(\calC\) be a category and \(X, Y, S \in \Obj(\calC)\) with morphisms \(f : X \to S\) and \(g : Y \to S\).
+        A \emph{fiber product} of \(X\) and \(Y\) over \(S\) is an object \(Z \in \Obj(\calC)\) together with morphisms \(p : Z \to X\) and \(q : Z \to Y\) such that the following diagram commutes:
+        \[
+            \begin{tikzcd}
+                Z \arrow[r, "q"] \arrow[d, "p"'] & Y \arrow[d, "g"] \\
+                X \arrow[r, "f"'] & S
+            \end{tikzcd}
+        \]
+        and satisfies the universal property that for any object \(W \in \Obj(\calC)\) with morphisms \(u : W \to X\) and \(v : W \to Y\) such that \(f \circ u = g \circ v\),
+        there exists a unique morphism \(h : W \to Z\) such that \(p \circ h = u\) and \(q \circ h = v\).
+
+        If a fiber product exists, it is unique up to a unique isomorphism.
+        We denote the fiber product by \(X \times_S Y\).
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{example}\label{eg:fiber_product_in_sets}
+        In the category of sets, the fiber product \(X \times_S Y\) is given by
+        \[ X \times_S Y = \{(x,y) \in X \times Y : f(x) = g(y)\}, \]
+        with the projections \(p : X \times_S Y \to X\) and \(q : X \times_S Y \to Y\) being the restrictions of the natural projections.
+        \Yang{To be checked.}
+    \end{example}
+
+    \begin{remark}\label{rmk:fiber_coproduct_and_in_category_of_R_algebras}
+        If one reverses the arrows in \cref{def:fiber_product_in_arbitrary_category}, one gets the notion of \emph{fiber coproduct}.
+        It is also called the \emph{pushout} or \emph{amalgamated sum} in some literature.
+        We denote the fiber coproduct of \(X\) and \(Y\) over \(S\) by \(X \amalg_S Y\).
+        Note that in the category of rings, the fiber coproduct \(A \amalg_R B\) of \(R\)-algebras \(A\) and \(B\) over \(R\) is given by the tensor product \(A \otimes_R B\).
+        Dually, one can expect that fiber products of affine schemes correspond to tensor products of rings.
+    \end{remark}
+
+    \begin{theorem}\label{thm:fiber_product_of_schemes_exists}
+        The category of schemes admits fiber products.
+        More precisely, given morphisms of schemes \(f : X \to S\) and \(g : Y \to S\), there exists a scheme \(Z\) together with morphisms \(p : Z \to X\) and \(q : Z \to Y\) such that the diagram
+        \[
+            \begin{tikzcd}
+                Z \arrow[r, "q"] \arrow[d, "p"'] & Y \arrow[d, "g"] \\
+                X \arrow[r, "f"'] & S
+            \end{tikzcd}
+        \]
+        commutes and satisfies the universal property of the fiber product.
+        We denote this scheme by \(X \times_S Y\).
+        \Yang{To be continued}
+    \end{theorem}
+
+    \begin{definition}\label{def:scheme_theoretic_fiber}
+        Let \(f : X \to Y\) be a morphism of schemes and \(y \in Y\) a point.
+        The \emph{scheme theoretic fiber} of \(f\) over \(y\) is the fiber product \(X_y = X \times_Y \Spec \kappa(y)\), where \(\kappa(y)\) is the residue field of the local ring \(\calO_{Y,y}\).
+        \Yang{To be checked.}
+        
+    \end{definition}
+
+    \begin{definition}\label{def:scheme_theoretic_intersection}
+        Let \(X\) be a scheme and \(Z_1, Z_2 \subset X\) be closed subschemes defined by quasi-coherent sheaves of ideals \(\calI_1, \calI_2 \subset \calO_X\), respectively.
+        The \emph{scheme theoretic intersection} of \(Z_1\) and \(Z_2\) is the closed subscheme \(Z_1 \cap Z_2\) defined by the quasi-coherent sheaf of ideals \(\calI_1 + \calI_2\).
+        \Yang{To be checked.}
+    \end{definition}
+
 
 \subsection{Noetherian and finite type}
 
+    \begin{definition}\label{def:noetherian_scheme}
+        A scheme \(X\) is \emph{Noetherian} if it admits a finite open cover \(\{U_i\}_{i=1}^n\) such that each \(U_i\) is an affine scheme \(\Spec A_i\) with \(A_i\) a Noetherian ring.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{proposition}\label{prop:noetherian_scheme_is_quasi_compact}
+        A Noetherian scheme is quasi-compact.
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{definition}\label{def:scheme_of_finite_type_over_base_scheme}
+        Let \(S\) be a scheme.
+        A scheme \(X\) is of \emph{finite type} over \(S\) if there exists a finite open cover \(\{U_i\}_{i=1}^n\) of \(S\) such that for each \(i\), \(f^{-1}(U_i)\) can be covered by finitely many affine open subsets \(\{V_{ij}\}_{j=1}^{m_i}\) with \(f(V_{ij}) \subseteq U_i\) and the induced morphism \(f|_{V_{ij}} : V_{ij} \to U_i\) corresponds to a finitely generated algebra over the ring of global sections of \(U_i\).
+
+        A scheme is called \emph{Noetherian} if it is of finite type over \(\Spec \bbZ\).
+        \Yang{To be checked.}
+    \end{definition}
+
+
+\subsection{Integral, reduced and irreducible}
+
+    \begin{definition}\label{def:irreducible_topological_space}
+        A topological space \(X\) is \emph{irreducible} if it is non-empty and cannot be expressed as the union of two proper closed subsets.
+        Equivalently, every non-empty open subset of \(X\) is dense in \(X\).
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{proposition}\label{prop:irreducible_components_and_primary_decomposition}
+        Let \(X\) be a topological space satisfying the descending chain condition on closed subsets.
+        Then \(X\) can be written as a finite union of irreducible closed subsets, called the \emph{irreducible components} of \(X\).
+        Moreover, this decomposition is unique up to permutation of the components.
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{definition}\label{def:reduced_scheme}
+        A scheme \(X\) is \emph{reduced} if its structure sheaf \(\calO_X\) has no nilpotent elements.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{proposition}\label{prop:reducedness_is_a_local_property}
+        A scheme \(X\) is reduced if and only if for every \(x \in X\), the stalk \(\calO_{X,x}\) is a reduced ring.
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:universal_property_of_reduced_structure_on_a_scheme}
+        Let \(X\) be a scheme.
+        There exists a unique closed subscheme \(X_{\red}\) of \(X\) such that \(X_{\red}\) is reduced and has the same underlying topological space as \(X\).
+        Moreover, for any morphism of schemes \(f : Y \to X\) with \(Y\) reduced, \(f\) factors uniquely through the inclusion \(X_{\red} \to X\).
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{definition}\label{def:integral_scheme}
+        A scheme \(X\) is \emph{integral} if it is both reduced and irreducible.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{proposition}\label{prop:integral_scheme_characterization}
+        A scheme \(X\) is integral if and only if for every open affine subset \(U = \Spec A \subset X\), the ring \(A\) is an integral domain.
+        \Yang{To be checked.}
+    \end{proposition}
+
+\subsection{Dimension}
+
+    \begin{definition}\label{def:krull_dimension_of_topological_space}
+        The \emph{Krull dimension} of a topological space \(X\), denoted by \(\dim X\), is the supremum of the lengths \(n\) of chains of distinct irreducible closed subsets
+        \[ Z_0 \subsetneq Z_1 \subsetneq \cdots \subsetneq Z_n \]
+        in \(X\).
+        If no such finite supremum exists, we say that \(X\) has infinite dimension.
+        \Yang{To be checked.}
+    \end{definition}
+
 \subsection{Separated and proper}
+
+    \begin{definition}\label{def:separated_morphism_and_separated_scheme}
+        A morphism of schemes \(f : X \to Y\) is \emph{separated} if the diagonal morphism \(\Delta_f : X \to X \times_Y X\) is a closed immersion.
+        A scheme \(X\) is \emph{separated} if the structure morphism \(X \to \Spec \bbZ\) is separated.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{proposition}\label{prop:affine_scheme_is_separated}
+        Any affine scheme is separated.
+        More generally, any morphism between affine schemes is separated.
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:separatedness_and_rigidity_of_morphisms}
+        Let \(f : X \to Y\) be a morphism of schemes.
+        Then \(f\) is separated if and only if for any scheme \(T\) and any pair of morphisms \(g_1, g_2 : T \to X\) such that \(f \circ g_1 = f \circ g_2\),
+        the equalizer of \(g_1\) and \(g_2\) is a closed subscheme of \(T\).
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:separatedness_and_intersection_of_affine_open_subschemes}
+        A scheme \(X\) is separated if and only if for any pair of affine open subschemes \(U, V \subset X\), the intersection \(U \cap V\) is also an affine open subscheme.
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:composition_and_base_change_of_separated_morphisms}
+        The composition of separated morphisms is separated.
+        Moreover, separatedness is stable under base change, i.e., if \(f : X \to Y\) is a separated morphism and \(Y' \to Y\) is any morphism, then the base change \(X \times_Y Y' \to Y'\) is also separated.
+        \Yang{To be checked.}
+        
+    \end{proposition}
+
+    \begin{proposition}\label{prop:valuative_criterion_of_separatedness}
+        A morphism of schemes \(f : X \to Y\) is separated if and only if for every commutative diagram
+        \[
+            \begin{tikzcd}
+                \Spec K \arrow[r] \arrow[d] & X \arrow[d, "f"] \\
+                \Spec R \arrow[r] \arrow[ru, dashed] & Y
+            \end{tikzcd}
+        \]
+        where \(R\) is a valuation ring with field of fractions \(K\), there exists at most one morphism \(\Spec R \to X\) making the entire diagram commute.
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{definition}\label{def:universally_closed_morphism}
+        A morphism of schemes \(f : X \to Y\) is \emph{universally closed} if for any morphism \(Y' \to Y\), the base change \(X \times_Y Y' \to Y'\) is a closed map.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:proper_morphism_and_proper_scheme}
+        A morphism of schemes \(f : X \to Y\) is \emph{proper} if it is of finite type, separated, and universally closed (i.e., for any morphism \(Y' \to Y\), the base change \(X \times_Y Y' \to Y'\) is a closed map).
+        A scheme \(X\) is \emph{proper} if the structure morphism \(X \to \Spec \bbZ\) is proper.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{theorem}\label{prop:projective_morphism_is_proper}
+        Any projective morphism is proper.
+        In particular, any projective scheme is proper.
+        \Yang{To be checked.}
+    \end{theorem}
+
+    \begin{proposition}\label{prop:composition_and_base_change_of_proper_morphisms}
+        The composition of proper morphisms is proper.
+        Moreover, properness is stable under base change, i.e., if \(f : X \to Y\) is a proper morphism and \(Y' \to Y\) is any morphism, then the base change \(X \times_Y Y' \to Y'\) is also proper.
+        \Yang{To be checked.}
+        
+    \end{proposition}
+
+    \begin{proposition}\label{prop:valuative_criterion_of_properness}
+        A morphism of schemes \(f : X \to Y\) is proper if and only if for every commutative diagram
+        \[
+            \begin{tikzcd}
+                \Spec K \arrow[r] \arrow[d] & X \arrow[d, "f"] \\
+                \Spec R \arrow[r] \arrow[ru, dashed] & Y
+            \end{tikzcd}
+        \]
+        where \(R\) is a valuation ring with field of fractions \(K\), there exists a unique morphism \(\Spec R \to X\) making the entire diagram commute.
+        \Yang{To be checked.}
+        
+    \end{proposition}
