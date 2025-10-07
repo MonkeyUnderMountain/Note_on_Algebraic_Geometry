@@ -1,6 +1,6 @@
 \section{Locally Ringed Space}
 
-\subsection{Locally Ringed Space}
+\subsection{Sheaves}
 
     \begin{definition}\label{def:sheaves}
         Let \(X\) be a topological space.
@@ -28,6 +28,9 @@
         The sections \(s_1 = 1 \in \calC((0,1))\) and \(s_2 = 2 \in \calC((2,3))\) agree on the intersection (which is empty), 
         but there is no global section \(s \in \calC(X)\) such that \(s|_{(0,1)} = s_1\) and \(s|_{(2,3)} = s_2\).
     \end{example}
+
+
+\subsection{Locally Ringed Space}
 
     \begin{definition}\label{def:locally_ringed_space}
         A \emph{locally ringed space} is a pair \((X, \calO_X)\) where \(X\) is a topological space and \(\calO_X\) is a sheaf of rings on \(X\) such that for every \(x \in X\), the stalk \(\calO_{X,x}\) is a local ring.
@@ -78,4 +81,36 @@
         \[ \calO_X(V) := \left\{ (s_i)_{i \in I} \in \prod_{i \in I} \calO_{X_i}(\psi_i^{-1}(V)) \;\middle|\; s_i|_{U_{ij}} = \varphi_{ij}^\sharp(s_j|_{U_{ji}}) \text{ for all } i,j \in I \right\}. \]
         Easy to check that \((X, \calO_X)\) is a locally ringed space and satisfies the required properties.
         If there is another locally ringed space \((X', \calO_{X'})\) with \(\psi'_i\) satisfying the same properties, then by gluing \(\psi_i' \circ \psi_i^{-1}\) we get an isomorphism \((X, \calO_X) \to (X', \calO_{X'})\).
+    \end{example}
+
+\subsection{Manifolds as locally ringed spaces}
+
+    
+
+\subsection[Vector bundles and O\_X-modules]{Vector bundles and \(\calO_X\)-modules}
+
+    \begin{definition}\label{def:sheaf_of_modules}
+        Let \((X,\calO_X)\) be a ringed space.
+        A \emph{sheaf of \(\calO_X\)-modules} is a sheaf \(\calF\) of abelian groups on \(X\) such that for every open set \(U\subseteq X\), 
+        \(\calF(U)\) is an \(\calO_X(U)\)-module, 
+        and for every inclusion of open sets \(V\subseteq U\), the restriction map \(\res_{UV}:\calF(U)\to \calF(V)\) is \(\calO_X(U)\)-linear, 
+        where the \(\calO_X(U)\)-module structure on \(\calF(V)\) is induced by the restriction map \(\res_{UV}:\calO_X(U)\to \calO_X(V)\).
+        
+        A \emph{morphism of \(\calO_X\)-modules} is a morphism of sheaves of abelian groups \(\varphi:\calF\to \calG\) such that 
+        for every open set \(U\subseteq X\), the map \(\varphi(U):\calF(U)\to \calG(U)\) is \(\calO_X(U)\)-linear.
+        \Yang{To be checked...}
+    \end{definition}
+
+    \begin{example}\label{eg:module_as_sheaf_of_modules_in_affine_case}
+        Let \(A\) be a ring and \(M\) an \(A\)-module.
+        Let \(X = \Spec A\) with the Zariski topology and structure sheaf \(\calO_X\).
+        Define a presheaf \(\widetilde{M}\) on \(X\) by 
+        \[
+            \widetilde{M}(D(f)) := M_f,
+        \]
+        where \(D(f) = \{p \in X : f \notin p\}\) and \(M_f = M \otimes_A A_f\).
+        Then the sheafification of \(\widetilde{M}\), denoted by the same symbol, is a sheaf of \(\calO_X\)-modules on \(X\).
+        The stalk at a point \(p \in X\) is given by \(\widetilde{M}_p = M_p\).
+        In particular, if \(M = A\), then \(\widetilde{A} = \calO_X\).
+        \Yang{To be checked...}
     \end{example}

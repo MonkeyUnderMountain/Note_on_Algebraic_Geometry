@@ -3,117 +3,52 @@
 \subsection{Sheaves of modules, quasi-coherent and coherent sheaves}
 
     \begin{definition}\label{def:sheaf_of_modules}
-        Let $X$ be a ringed space with structure sheaf $\calO_X$. A \textbf{sheaf of (left) $\calO_X$-modules} is a sheaf $\calF$ on $X$ such that for every open set $U\subseteq X$, $\calF(U)$ is an $\calO_X(U)$-module, and for every inclusion of open sets $V\subseteq U$, the restriction map $\rho_{UV}:\calF(U)\to \calF(V)$ is compatible with the restriction map $\rho_{UV}:\calO_X(U)\to \calO_X(V)$ in the sense that for every $s\in \calO_X(U)$ and $m\in \calF(U)$, we have
-        \[
-            \rho_{UV}(s\cdot m) = \rho_{UV}(s)\cdot \rho_{UV}(m).
-        \]
-        \Yang{To be continued...}
+        Let \((X,\calO_X)\) be a ringed space.
+        A \emph{sheaf of \(\calO_X\)-modules} is a sheaf \(\calF\) of abelian groups on \(X\) such that for every open set \(U\subseteq X\), 
+        \(\calF(U)\) is an \(\calO_X(U)\)-module, 
+        and for every inclusion of open sets \(V\subseteq U\), the restriction map \(\res_{UV}:\calF(U)\to \calF(V)\) is \(\calO_X(U)\)-linear, 
+        where the \(\calO_X(U)\)-module structure on \(\calF(V)\) is induced by the restriction map \(\res_{UV}:\calO_X(U)\to \calO_X(V)\).
+
+        A \emph{morphism of \(\calO_X\)-modules} is a morphism of sheaves of abelian groups \(\varphi:\calF\to \calG\) such that 
+        for every open set \(U\subseteq X\), the map \(\varphi(U):\calF(U)\to \calG(U)\) is \(\calO_X(U)\)-linear.
     \end{definition}
 
-    \begin{example}\label{eg:module_as_sheaf_of_modules_in_affine_case}
-        Let $X$ be a scheme. The structure sheaf $\calO_X$ is a sheaf of $\calO_X$-modules. More generally, any quasi-coherent sheaf (to be defined later) is a sheaf of $\calO_X$-modules.
-        In particular, if $X=\Spec A$ is an affine scheme, then for any $A$-module $M$, the associated sheaf $\widetilde{M}$ is a sheaf of $\calO_X$-modules.
-        \Yang{To be continued...}
-    \end{example}
-
     \begin{definition}\label{def:quasi-coherent_sheaf}
-        Let $X$ be a scheme. A sheaf of $\calO_X$-modules $\calF$ is called \textbf{quasi-coherent} if for every point $x\in X$, there exists an open neighborhood $U$ of $x$ such that $\calF|_U$ is isomorphic to the cokernel of a morphism of free $\calO_U$-modules, i.e., there exists an exact sequence of sheaves of $\calO_U$-modules
+        Let \((X,\calO_X)\) be a ringed space.
+        An \(\calO_X\)-module \(\calF\) is called \emph{quasi-coherent} if for every point \(x\in X\), there exists an open neighborhood \(U\) of \(x\) such that \(\calF|_U\) is isomorphic to the cokernel of a morphism of free \(\calO_U\)-modules, i.e., there exists an exact sequence of sheaves of \(\calO_U\)-modules
         \[
             \calO_U^{(I)} \to \calO_U^{(J)} \to \calF|_U \to 0,
         \]
-        where $I,J$ are (possibly infinite) index sets.
-        \Yang{To be continued...}
+        where \(I,J\) are (possibly infinite) index sets.
+        % \Yang{To be checked...}
+    \end{definition}
+
+    \begin{definition}\label{def:finitely_generated_sheaf}
+        Let \((X,\calO_X)\) be a ringed space.
+        An \(\calO_X\)-module \(\calF\) is called \emph{finitely generated} if for every point \(x\in X\), there exists an open neighborhood \(U\) of \(x\) such that there exists a surjective morphism of sheaves of \(\calO_U\)-modules
+        \[
+            \calO_U^n \to \calF|_U \to 0.
+        \]
     \end{definition}
 
     \begin{definition}\label{def:coherent_sheaf}
-        Let $X$ be a scheme. A sheaf of $\calO_X$-modules $\calF$ is called \textbf{coherent} if it is quasi-coherent and for every point $x\in X$, there exists an open neighborhood $U$ of $x$ such that $\calF|_U$ is isomorphic to the cokernel of a morphism of finite free $\calO_U$-modules, i.e., there exists an exact sequence of sheaves of $\calO_U$-modules
-        \[
-            \calO_U^m \to \calO_U^n \to \calF|_U \to 0,
-        \]
-        where $m,n$ are finite integers.
-        \Yang{To be continued...}
+        Let \((X,\calO_X)\) be a ringed space.
+        An \(\calO_X\)-module \(\calF\) is called \emph{coherent} if it is finitely generated, and for every open set \(U\subseteq X\) and every morphism of sheaves of \(\calO_U\)-modules \(\varphi:\calO_U^n \to \calF|_U\), the kernel of \(\varphi\) is finitely generated.
+        % \Yang{To be checked...}
     \end{definition}
 
 \subsection{As abelian categories}
 
-    \begin{theorem}\label{thm:category_of_sheaves_of_modules_is_abelian}
-        Let $X$ be a ringed space. The category of sheaves of $\calO_X$-modules is an abelian category.
-        \Yang{To be continued...}
-    \end{theorem}
-
-    \begin{theorem}\label{thm:category_of_quasi-coherent_sheaves_is_abelian}
-        Let $X$ be a scheme. The category of quasi-coherent sheaves on $X$ is an abelian category.
-        \Yang{To be continued...}
-    \end{theorem}
-
-    \begin{theorem}\label{thm:category_of_coherent_sheaves_is_abelian}
-        Let $X$ be a noetherian scheme. The category of coherent sheaves on $X$ is an abelian category.
-        \Yang{To be continued...}
-    \end{theorem}
+    
 
 \subsection{Relevant functors}
 
-    \begin{theorem}\label{thm:global_sections_functor}
-        Let $X$ be a ringed space. The global sections functor
-        \[
-            \Gamma(X,-): \text{(Sheaves of $\calO_X$-modules)} \to \text{($\calO_X(X)$-modules)}
-        \]
-        is left exact.
-        \Yang{To be continued...}
-    \end{theorem}
-
-    \begin{theorem}\label{thm:direct_image_functor}
-        Let $f:X\to Y$ be a morphism of ringed spaces. The direct image functor
-        \[
-            f_*: \text{(Sheaves of $\calO_X$-modules)} \to \text{(Sheaves of $\calO_Y$-modules)}
-        \]
-        is left exact.
-        \Yang{To be continued...}
-    \end{theorem}
-
-    \begin{theorem}\label{thm:inverse_image_functor}
-        Let $f:X\to Y$ be a morphism of ringed spaces. The inverse image functor
-        \[
-            f^*: \text{(Sheaves of $\calO_Y$-modules)} \to \text{(Sheaves of $\calO_X$-modules)}
-        \]
-        is right exact.
-        \Yang{To be continued...}
-    \end{theorem}
+    
 
 \subsection{Locally free sheaves and vector bundles}
 
-    \begin{definition}\label{def:locally_free_sheaf}
-        Let $X$ be a scheme. A sheaf of $\calO_X$-modules $\calF$ is called \textbf{locally free} if for every point $x\in X$, there exists an open neighborhood $U$ of $x$ such that $\calF|_U$ is isomorphic to a finite free $\calO_U$-module, i.e., there exists an isomorphism of sheaves of $\calO_U$-modules
-        \[
-            \calF|_U \cong \calO_U^n,
-        \]
-        where $n$ is a finite integer called the \textbf{rank} of $\calF$ at $x$.
-        \Yang{To be continued...}
-    \end{definition}
-
-    \begin{example}\label{eg:line_bundle}
-        A \textbf{line bundle} on a scheme $X$ is a locally free sheaf of rank 1. The sheaf of differentials $\Omega_{X/k}$ on a smooth variety $X$ over a field $k$ is a locally free sheaf of rank equal to the dimension of $X$.
-        \Yang{To be continued...}
-    \end{example}
-
-    \begin{theorem}\label{thm:locally_free_sheaf_is_vector_bundle}
-        Let $X$ be a scheme. There is an equivalence of categories between the category of locally free sheaves of finite rank on $X$ and the category of vector bundles on $X$.
-        \Yang{To be continued...}
-    \end{theorem}
+    
 
 \subsection{Cohomological theory}
 
-    \begin{theorem}\label{thm:cohomology_of_sheaves_of_modules}
-        Let $X$ be a ringed space and $\calF$ a sheaf of $\calO_X$-modules. Then the cohomology groups $H^i(X,\calF)$ are $\calO_X(X)$-modules for all $i\geq 0$.
-        \Yang{To be continued...}
-    \end{theorem}
-
-    \begin{theorem}\label{thm:cohomology_of_quasi-coherent_sheaves}
-        Let $X$ be a scheme and $\calF$ a quasi-coherent sheaf on $X$. Then the cohomology groups $H^i(X,\calF)$ are $\calO_X(X)$-modules for all $i\geq 0$.
-        \Yang{To be continued...}
-    \end{theorem}
-
-    \begin{theorem}\label{thm:cohomology_of_coherent_sheaves}
-        Let $X$ be a noetherian scheme and $\calF$ a coherent sheaf on $X$. Then the cohomology groups $H^i(X,\calF)$ are $\calO_X(X)$-modules for all $i\geq 0$.
-        \Yang{To be continued...}
-    \end{theorem}
+    
