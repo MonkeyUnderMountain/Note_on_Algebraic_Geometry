@@ -2,16 +2,16 @@
 
 \subsection{Sheaves of modules, quasi-coherent and coherent sheaves}
 
-    \begin{definition}\label{def:sheaf_of_modules}
-        Let \((X,\calO_X)\) be a ringed space.
-        A \emph{sheaf of \(\calO_X\)-modules} is a sheaf \(\calF\) of abelian groups on \(X\) such that for every open set \(U\subseteq X\), 
-        \(\calF(U)\) is an \(\calO_X(U)\)-module, 
-        and for every inclusion of open sets \(V\subseteq U\), the restriction map \(\res_{UV}:\calF(U)\to \calF(V)\) is \(\calO_X(U)\)-linear, 
-        where the \(\calO_X(U)\)-module structure on \(\calF(V)\) is induced by the restriction map \(\res_{UV}:\calO_X(U)\to \calO_X(V)\).
+    % \begin{definition}\label{def:sheaf_of_modules}
+    %     Let \((X,\calO_X)\) be a ringed space.
+    %     A \emph{sheaf of \(\calO_X\)-modules} is a sheaf \(\calF\) of abelian groups on \(X\) such that for every open set \(U\subseteq X\), 
+    %     \(\calF(U)\) is an \(\calO_X(U)\)-module, 
+    %     and for every inclusion of open sets \(V\subseteq U\), the restriction map \(\res_{UV}:\calF(U)\to \calF(V)\) is \(\calO_X(U)\)-linear, 
+    %     where the \(\calO_X(U)\)-module structure on \(\calF(V)\) is induced by the restriction map \(\res_{UV}:\calO_X(U)\to \calO_X(V)\).
 
-        A \emph{morphism of \(\calO_X\)-modules} is a morphism of sheaves of abelian groups \(\varphi:\calF\to \calG\) such that 
-        for every open set \(U\subseteq X\), the map \(\varphi(U):\calF(U)\to \calG(U)\) is \(\calO_X(U)\)-linear.
-    \end{definition}
+    %     A \emph{morphism of \(\calO_X\)-modules} is a morphism of sheaves of abelian groups \(\varphi:\calF\to \calG\) such that 
+    %     for every open set \(U\subseteq X\), the map \(\varphi(U):\calF(U)\to \calG(U)\) is \(\calO_X(U)\)-linear.
+    % \end{definition}
 
     \begin{definition}\label{def:quasi-coherent_sheaf}
         Let \((X,\calO_X)\) be a ringed space.
@@ -38,6 +38,17 @@
     \end{definition}
 
 \subsection{As abelian categories}
+
+    \begin{theorem}\label{thm:sheaves_of_ab_mod_qcoh_coh_are_abelian_categories}
+        The categories of sheaves of abelian groups, quasi-coherent sheaves, and coherent sheaves on a ringed space \((X,\calO_X)\) are all abelian categories.
+        \Yang{To be checked.}
+    \end{theorem}
+
+    \begin{theorem}\label{thm:O_X_mod_has_enough_injectives}
+        Let \((X,\calO_X)\) be a ringed space.
+        The category of sheaves of \(\calO_X\)-modules has enough injectives.
+        \Yang{To be checked.}
+    \end{theorem}
 
     
 
