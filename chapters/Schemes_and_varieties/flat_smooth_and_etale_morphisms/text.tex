@@ -1,1 +1,52 @@
 \section{Flat, smooth and \'etale morphisms}
+
+
+\subsection{Flat family and Hilbert polynomial}
+
+    \begin{theorem}\label{thm:flat_iff_has_the_same_Hilbert_polynomials}
+        Let \(X\subseteq \bbP^n_T\) be a closed subscheme, where \(T\) is a noetherian scheme. Then the following are equivalent:
+        \begin{enumerate}
+            \item \(X\to T\) is flat.
+            \item The Hilbert polynomial of the fiber \(X_t\subseteq \bbP^n_{k(t)}\) is independent of the choice of \(t\in T\).
+        \end{enumerate}
+        \Yang{To be checked.}
+    \end{theorem}
+
+\subsection{Base change and semicontinuity}
+
+    \begin{theorem}[Base change of flat morphisms]
+        Let \(f:X\to Y\) be a flat morphism of schemes. Then for any morphism \(Y'\to Y\), the base change morphism \(f':X\times_Y Y'\to Y'\) is also flat.
+    \end{theorem}
+
+    \begin{theorem}[Semicontinuity theorem]
+        Let \(f:X\to Y\) be a proper morphism of noetherian schemes, and let \(\calF\) be a coherent sheaf on \(X\) which is flat over \(Y\). Then for each integer \(i\geq 0\), the function
+        \[
+            h^i:Y\to \bbZ, \quad y\mapsto \dim_{k(y)} H^i(X_y,\calF_y)
+        \]
+        is upper semicontinuous on \(Y\).
+    \end{theorem}
+    \Yang{To be checked.}
+
+\subsection{Smooth morphisms}
+
+    \begin{definition}[Smooth morphism]
+        A morphism of schemes \(f:X\to Y\) is called \textbf{smooth} at a point \(x\in X\) if there exists an open neighborhood \(U\) of \(x\) such that the restriction \(f|_U:U\to Y\) factors as
+        \[
+            U \xrightarrow{g} \bbA^n_Y \xrightarrow{p} Y,
+        \]
+        where \(g\) is \'etale and \(p\) is the projection morphism. The morphism \(f\) is called \textbf{smooth} if it is smooth at every point of \(X\).
+    \end{definition}
+    \Yang{To be checked.}
+
+
+\subsection{\'Etale morphisms}
+
+    \begin{definition}[\'Etale morphism]
+        A morphism of schemes \(f:X\to Y\) is called \textbf{\'etale} at a point \(x\in X\) if there exists an open neighborhood \(U\) of \(x\) such that the restriction \(f|_U:U\to Y\) factors as
+        \[
+            U \xrightarrow{g} \bbA^n_Y \xrightarrow{p} Y,
+        \]
+        where \(g\) is unramified and \(p\) is the projection morphism. The morphism \(f\) is called \textbf{\'etale} if it is \'etale at every point of \(X\).
+    \end{definition}
+    \Yang{To be checked.}
+
