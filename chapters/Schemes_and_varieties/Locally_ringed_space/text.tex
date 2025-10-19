@@ -12,6 +12,8 @@
         there exists a unique section \(s \in \calF(U)\) such that \(s|_{U_i} = s_i\) for all \(i \in I\).
     \end{definition}
 
+    For two open sets \(V \subset U \subset X\), the morphism \(\calF(U) \to \calF(V)\), often denoted by \(\res^U_V\), is called the \emph{restriction map}.
+
     \begin{example}\label{eg:sheaf_of_smooth_and_analytic_functions}
         Let \(X\) be a real (resp. complex) manifold.
         The assignment \(U \mapsto C^\infty(U, \bbR)\) (resp. \(U \mapsto \{\text{holomorphic functions on }U\}\)) defines a sheaf of rings on \(X\).
@@ -29,9 +31,124 @@
         but there is no global section \(s \in \calC(X)\) such that \(s|_{(0,1)} = s_1\) and \(s|_{(2,3)} = s_2\).
     \end{example}
 
+    \begin{definition}\label{def:morphism_of_sheaves_and_presheaves}
+        Let \(X\) be a topological space and \(\calF, \calG\) be presheaves on \(X\) with values in the same category (e.g., \(\Set\), \(\Ab\), \(\Ring\), etc.).
+        A \emph{morphism of presheaves} \(\varphi : \calF \to \calG\) is a natural transformation between the functors \(\calF\) and \(\calG\).
+        In other words, for every open set \(U \subset X\), there is a morphism \(\varphi(U) : \calF(U) \to \calG(U)\) such that for every inclusion of open sets \(V \subset U\), the following diagram commutes:
+        \[
+            \begin{tikzcd}
+                \calF(U) \arrow[r, "\varphi(U)"] \arrow[d, "\res^U_V"'] & \calG(U) \arrow[d, "\res^U_V"] \\
+                \calF(V) \arrow[r, "\varphi(V)"'] & \calG(V).
+            \end{tikzcd}
+        \]
+
+        If \(\calF\) and \(\calG\) are sheaves, then \(\varphi\) is called a \emph{morphism of sheaves}.
+    \end{definition}
+
+    Fix a topological space \(X\) and a category \(\bfC\).
+    The sheaves (resp. presheaves) on \(X\) with values in \(\bfC\) form a category, denoted by \(\Sh(X, \bfC)\) (resp. \(\PSh(X, \bfC)\)), 
+    where the objects are sheaves (resp. presheaves) on \(X\) with values in \(\bfC\) and the morphisms are morphisms of sheaves (resp. presheaves).
+
+    \begin{definition}\label{def:stalk_of_sheaves}
+        Let \(X\) be a topological space and \(\calF\) a presheaf on \(X\) with values in a category \(\bfC\).
+        For a point \(x \in X\), the \emph{stalk} of \(\calF\) at \(x\), denoted by \(\calF_x\), is defined as the colimit
+        \[
+            \calF_x := \varinjlim_{U \ni x} \calF(U),
+        \]
+        where the colimit is taken over all open neighborhoods \(U\) of \(x\).
+        An element of \(\calF_x\) is called a \emph{germ} of sections of \(\calF\) at \(x\).
+    \end{definition}
+
+    More concretely, we have 
+    \[ \calF_x = \{(U,s) : U \in \Open(X), U \ni x, s \in \calF(U)\} / \sim, \]
+    where \((U,s) \sim (V,t)\) if there exists an open neighborhood \(W \subset U \cap V\) of \(x\) such that \(s|_W = t|_W\).
+
+    \begin{definition}\label{def:sheafification_of_presheaf}
+        Let \(X\) be a topological space and \(\calF\) a presheaf on \(X\) with values in \(\Set\) (resp. \(\Ab\), \(\Ring\), etc.).
+        A \emph{sheafification} of \(\calF\) is a sheaf \(\calF^\dagger\) on \(X\) together with a morphism of presheaves \(\eta : \calF \to \calF^+\) such that for every sheaf \(\calG\) on \(X\) and every morphism of presheaves \(\varphi : \calF \to \calG\), 
+        there exists a unique morphism of sheaves \(\varphi^+ : \calF^+ \to \calG\) such that \(\varphi = \varphi^+ \circ \eta\).
+        
+        In other words, the following diagram commutes:
+        \[
+            \begin{tikzcd}
+                \calF \arrow[r, "\eta"] \arrow[rd, "\varphi"'] & \calF^\dagger \arrow[d, "\varphi^\dagger"] \\
+                & \calG.
+            \end{tikzcd}
+        \]
+        \Yang{To be checked.}
+    \end{definition}
+
+    \Yang{The concrete describe of sheafification.}
+
+    % Now we consider \(\Sh(X, \Ab)\).
+
+    \begin{definition}\label{def:injective_and_surjective_of_homomorphism_of_sheaves}
+        Let \(X\) be a topological space and \(\varphi : \calF \to \calG\) be a homomorphism of sheaves of abelian groups on \(X\).
+        The morphism \(\varphi\) is called \emph{injective} (resp. \emph{surjective}) if for every \(x \in X\), the map \(\varphi_x : \calF_x \to \calG_x\) is injective (resp. surjective).
+    \end{definition}
+
+    \begin{proposition}\label{prop:injective_on_section_iff_on_stalk_sheaves}
+        Let \(X\) be a topological space and \(\varphi : \calF \to \calG\) be a homomorphism of sheaves of abelian groups on \(X\).
+        Then \(\varphi\) is injective if and only if for every open set \(U \subset X\), the map \(\varphi(U) : \calF(U) \to \calG(U)\) is injective.
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{remark}\label{prop:surjective_on_stalk_cannot_imply_on_sections}
+        The surjectivity on stalks cannot imply the surjectivity on sections.
+        A counterexample is given by the exponential map \(\exp : \calO_\bbC \to \calO_\bbC^*\) defined by \(\exp(f) = e^{f}\), 
+        where \(\calO_\bbC\) is the sheaf of holomorphic functions on \(\bbC\) and \(\calO_\bbC^*\) is the sheaf of non-vanishing holomorphic functions on \(\bbC\).
+        The induced map on stalks \(\exp_z : \calO_{\bbC,z} \to \calO_{\bbC,z}^*\) is surjective for every \(z \in \bbC\) by the existence of logarithm locally.
+        However, the map on global sections \(\exp(\bbC) : \calO_\bbC(\bbC) \to \calO_\bbC^*(\bbC)\) is not surjective since there is no entire function \(f\) such that \(e^{f(z)} = z\) for all \(z \in \bbC^*\).
+        \Yang{To be continued.}
+    \end{remark}
+
+    \begin{proposition}\label{prop:isomorphism_of_homomorphism_of_sheaves}
+        Let \(X\) be a topological space and \(\varphi : \calF \to \calG\) be a homomorphism of sheaves of abelian groups on \(X\).
+        Then \(\varphi\) is an isomorphism if and only if it is injective and surjective.
+    \end{proposition}
+
+    \Yang{Now we consider sheaves with values in an abelian category.}
+
+    \begin{definition}\label{def:ker_and_cokernel_of_homomorphisms_of_sheaves}
+        Let \(X\) be a topological space and \(\varphi : \calF \to \calG\) be a homomorphism of sheaves of abelian groups on \(X\).
+        The \emph{kernel} of \(\varphi\), denoted by \(\ker \varphi\), is the sheaf defined by 
+        \[
+            (\ker \varphi)(U) := \ker(\varphi(U) : \calF(U) \to \calG(U))
+        \]
+        for every open set \(U \subset X\).
+
+        The \emph{cokernel} of \(\varphi\), denoted by \(\coker \varphi\), is the sheafification of the presheaf defined by 
+        \[
+            (\coker \varphi)_{\text{pre}}(U) := \coker(\varphi(U) : \calF(U) \to \calG(U))
+        \]
+        for every open set \(U \subset X\).
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{theorem}\label{thm:sheaves_on_topological_space_is_an_abelian_category}
+        Let \(X\) be a topological space and \(\bfC\) be an abelian category (e.g., \(\Ab\)).
+        Then the category of sheaves on \(X\) with values in \(\bfC\) is an abelian category.
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+
+
+    \Yang{To be checked and continuous.}
+
 
 \subsection{Locally Ringed Space}
 
+       \begin{definition}\label{def:push_forward_of_sheaves}
+        Let \(f : X \to Y\) be a continuous map between topological spaces.
+        The \emph{push-forward} functor \(f_* : \Sh(X, \bfC) \to \Sh(Y, \bfC)\) is defined by 
+        \[
+            (f_*\calF)(V) := \calF(f^{-1}(V))
+        \]
+        for every open set \(V \subset Y\) and sheaf \(\calF \in \Sh(X, \bfC)\).
+    \end{definition}
+    
     \begin{definition}\label{def:locally_ringed_space}
         A \emph{locally ringed space} is a pair \((X, \calO_X)\) where \(X\) is a topological space and \(\calO_X\) is a sheaf of rings on \(X\) such that for every \(x \in X\), the stalk \(\calO_{X,x}\) is a local ring.
         
@@ -89,6 +206,10 @@
 
 \subsection[Vector bundles and O\_X-modules]{Vector bundles and \(\calO_X\)-modules}
 
+    Let \((X,\calO_X)\) be a manifold (real or complex) and \((\calE, \pi, X)\) a vector bundle over \(X\).
+
+    \Yang{It can regard as a sheaf on \(X\).}
+
     \begin{definition}\label{def:sheaf_of_modules}
         Let \((X,\calO_X)\) be a ringed space.
         A \emph{sheaf of \(\calO_X\)-modules} is a sheaf \(\calF\) of abelian groups on \(X\) such that for every open set \(U\subseteq X\), 
@@ -101,16 +222,32 @@
         \Yang{To be checked...}
     \end{definition}
 
-    \begin{example}\label{eg:module_as_sheaf_of_modules_in_affine_case}
-        Let \(A\) be a ring and \(M\) an \(A\)-module.
-        Let \(X = \Spec A\) with the Zariski topology and structure sheaf \(\calO_X\).
-        Define a presheaf \(\widetilde{M}\) on \(X\) by 
+    \Yang{We will try to construct a sequence of subcategories of \(\Mod_{\calO_X}\).}
+
+    \begin{definition}\label{def:finitely_generated_O_X_modules}
+        A sheaf of \(\calO_X\)-modules \(\calF\) is said to be \emph{finitely generated} if for every open set \(U \subseteq X\), the \(\calO_X(U)\)-module \(\calF(U)\) is finitely generated.
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{definition}\label{def:locally_free_O_X_modules}
+        A sheaf of \(\calO_X\)-modules \(\calF\) is said to be \emph{locally free of rank \(r\)} if for every point \(x \in X\), there exists an open neighborhood \(U\) of \(x\) such that \(\calF|_U\) is isomorphic to \(\calO_U^r\), 
+        where \(\calO_U^r\) is the direct sum of \(r\) copies of \(\calO_U\).
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{definition}\label{def:quasi_coherent_sheaves}
+        A sheaf of \(\calO_X\)-modules \(\calF\) is said to be \emph{quasi-coherent} if for every point \(x \in X\), there exists an open neighborhood \(U\) of \(x\) such that \(\calF|_U\) is isomorphic to the cokernel of a morphism of free \(\calO_U\)-modules, i.e., there exists an exact sequence of sheaves of \(\calO_U\)-modules
         \[
-            \widetilde{M}(D(f)) := M_f,
+            \calO_U^{(I)} \to \calO_U^{(J)} \to \calF|_U \to 0,
         \]
-        where \(D(f) = \{p \in X : f \notin p\}\) and \(M_f = M \otimes_A A_f\).
-        Then the sheafification of \(\widetilde{M}\), denoted by the same symbol, is a sheaf of \(\calO_X\)-modules on \(X\).
-        The stalk at a point \(p \in X\) is given by \(\widetilde{M}_p = M_p\).
-        In particular, if \(M = A\), then \(\widetilde{A} = \calO_X\).
+        where \(I,J\) are (possibly infinite) index sets.
         \Yang{To be checked...}
-    \end{example}
+        
+    \end{definition}
+
+    \begin{definition}\label{def:coherent_sheaves}
+        A sheaf of \(\calO_X\)-modules \(\calF\) is said to be \emph{coherent} if it is finitely generated, and for every open set \(U \subseteq X\) and every morphism of sheaves of \(\calO_U\)-modules \(\varphi:\calO_U^n \to \calF|_U\), the kernel of \(\varphi\) is finitely generated.
+        \Yang{To be checked...}
+    \end{definition}
+
+
