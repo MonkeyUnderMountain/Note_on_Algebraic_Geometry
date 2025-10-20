@@ -131,28 +131,27 @@ If you learn the following content for the first time, it is recommended to skip
     \end{definition}
 
 
-\subsection{Noetherian and finite type}
+\subsection{Noetherian schemes and morphisms of finite type}
 
     \begin{definition}\label{def:noetherian_scheme}
-        A scheme \(X\) is \emph{Noetherian} if it admits a finite open cover \(\{U_i\}_{i=1}^n\) such that each \(U_i\) is an affine scheme \(\Spec A_i\) with \(A_i\) a Noetherian ring.
+        A scheme \(X\) is \emph{noetherian} if it admits a finite open cover \(\{U_i\}_{i=1}^n\) such that each \(U_i\) is an affine scheme \(\Spec A_i\) with \(A_i\) a noetherian ring.
         \Yang{To be checked.}
     \end{definition}
 
     \begin{proposition}\label{prop:noetherian_scheme_is_quasi_compact}
-        A Noetherian scheme is quasi-compact.
+        A noetherian scheme is quasi-compact.
         \Yang{To be checked.}
     \end{proposition}
 
     \begin{definition}\label{def:scheme_of_finite_type_over_base_scheme}
         Let \(S\) be a scheme.
-        A scheme \(X\) is of \emph{finite type} over \(S\) if there exists a finite open cover \(\{U_i\}_{i=1}^n\) of \(S\) such that for each \(i\), \(f^{-1}(U_i)\) can be covered by finitely many affine open subsets \(\{V_{ij}\}_{j=1}^{m_i}\) with \(f(V_{ij}) \subseteq U_i\) and the induced morphism \(f|_{V_{ij}} : V_{ij} \to U_i\) corresponds to a finitely generated algebra over the ring of global sections of \(U_i\).
+        A scheme \(X\) is \emph{of finite type} over \(S\) if there exists a finite open cover \(\{U_i\}_{i=1}^n\) of \(S\) such that for each \(i\), \(f^{-1}(U_i)\) can be covered by finitely many affine open subsets \(\{V_{ij}\}_{j=1}^{m_i}\) with \(f(V_{ij}) \subseteq U_i\) and the induced morphism \(f|_{V_{ij}} : V_{ij} \to U_i\) corresponds to a finitely generated algebra over the ring of global sections of \(U_i\).
 
-        A scheme is called \emph{Noetherian} if it is of finite type over \(\Spec \bbZ\).
         \Yang{To be checked.}
     \end{definition}
 
 
-\subsection{Integral, reduced and irreducible}
+\subsection{Integral, reduced and irreducible schemes}
 
     \begin{definition}\label{def:irreducible_topological_space}
         A topological space \(X\) is \emph{irreducible} if it is non-empty and cannot be expressed as the union of two proper closed subsets.
@@ -204,7 +203,7 @@ If you learn the following content for the first time, it is recommended to skip
         \Yang{To be checked.}
     \end{definition}
 
-\subsection{Separated and proper}
+\subsection{Separated and proper morphisms}
 
     \begin{definition}\label{def:separated_morphism_and_separated_scheme}
         A morphism of schemes \(f : X \to Y\) is \emph{separated} if the diagonal morphism \(\Delta_f : X \to X \times_Y X\) is a closed immersion.
@@ -285,3 +284,31 @@ If you learn the following content for the first time, it is recommended to skip
         \Yang{To be checked.}
         
     \end{proposition}
+
+% \subsection{Projective morphisms}
+
+%     \begin{definition}\label{def:projective_morphisms}
+%         Let \(f : X \to Y\) be a morphism of schemes.
+%         We say that \(f\) is \emph{projective} if there exists a closed immersion \(i : X \to \bbP^n_Y\) for some \(n \geq 0\) such that the following diagram commutes:
+%         \[
+%             \begin{tikzcd}
+%                 X \arrow[rr, "i"] \arrow[dr, "f"'] & & \bbP^n_Y \arrow[dl, "\pi"] \\
+%                 & Y &
+%             \end{tikzcd}
+%         \]
+%         where \(\pi : \bbP^n_Y \to Y\) is the natural projection.
+%         \Yang{To be checked.}
+%     \end{definition}
+
+%     \begin{theorem}\label{thm:projective_morphism_is_proper}
+%         Any projective morphism is proper.
+%         In particular, any projective scheme is proper.
+%         \Yang{To be checked.}
+%     \end{theorem}
+
+%     \begin{definition}\label{def:the_tautological_line_bundle}
+%         Let \(Y\) be a scheme. 
+%         The \emph{tautological line bundle} \(\mathcal{O}_{\bbP^n_Y}(1)\) is the line bundle on \(\bbP^n_Y\) associated to the divisor corresponding to the hyperplane at infinity.
+%     \end{definition}
+
+\subsection{Varieties}

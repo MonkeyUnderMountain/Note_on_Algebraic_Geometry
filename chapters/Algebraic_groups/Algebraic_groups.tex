@@ -7,7 +7,7 @@
 \newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
 
 
-\title{}
+\title{Algebraic Groups}
 \author{Tianle Yang}
 \date{\today}
 \authorpage{\href{www.example.com}{My Homepage}}
@@ -15,7 +15,7 @@
 % available on the mode "\sectionlevel=chapter" or "\sectionlevel=book".
 \setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
 \coversentence{\CJKfamily{lxgwwenkai}阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴!}
-\coverimage{placeholder.jpg} % 封面图片
+\coverimage{} % 封面图片
 \covertitlefont{Allura} % 封面标题字体, 若未安装，请去掉相关代码编译或使用其他字体
 % \coverlinecolor{red} % 封面线条颜色
 % \covertextcolor{green} % 封面文字颜色
@@ -26,6 +26,11 @@
     \maketitle
 
     \tableofcontents
+
+    \input{First_properties/text.tex}
+    \input{Decomposition_of_algebraic_groups/text.tex}
+    \input{Quotient_by_algebraic_group/text.tex}
+    \input{Weil_regularization_theorem/text.tex}
 
     \printbibliography[heading=bibintoc, title={References}]
     

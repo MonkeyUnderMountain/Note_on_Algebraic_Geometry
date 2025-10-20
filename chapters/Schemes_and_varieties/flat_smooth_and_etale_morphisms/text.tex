@@ -1,24 +1,97 @@
 \section{Flat, smooth and \'etale morphisms}
 
 
-\subsection{Flat family and Hilbert polynomial}
+\subsection{Flat families}
+
+    \begin{definition}\label{def:flat_morphisms}
+        Let \(f:X\to Y\) be a morphism of schemes. 
+        For a point \(\xi \in X\), we say that \(f\) is \emph{flat at \(\xi\)} if the local ring \(\calO_{X,\xi}\) is a flat \(\calO_{Y,f(\xi)}\)-module via the induced map \(f^\sharp_\xi:\calO_{Y,f(\xi)}\to \calO_{X,\xi}\).
+        We say that \(f\) is \emph{flat} if it is flat at every point \(\xi \in X\).
+    \end{definition}
+
+    \begin{definition}\label{def:flat_sheaves_over_base}
+        Let \(X\) be \(Y\)-scheme via a morphism \(f:X\to Y\), and let \(\calF\) be a sheaf of \(\calO_X\)-modules.
+        We say that \(\calF\) is \emph{flat over \(Y\) at \(\xi \in X\)} if the stalk \(\calF_\xi\) is a flat \(\calO_{Y,f(\xi)}\)-module via the induced map \(f^\sharp_\xi:\calO_{Y,f(\xi)}\to \calO_{X,\xi}\).
+        We say that \(\calF\) is \emph{flat over \(Y\)} if it is flat over \(Y\) at every point \(\xi \in X\).
+    \end{definition}
+
+    \begin{proposition}\label{prop:fundamental_properties_of_flat_morphism}
+        We have the following fundamental properties of flat morphisms:
+        \begin{enumerate}
+            \item open immersions are flat;
+            \item the composition of flat morphisms is flat;
+            \item flatness is preserved under base change;
+            \item a coherent sheaf \(\calF\) on a noetherian scheme \(X\) is flat over \(X\) iff it is locally free.
+        \end{enumerate}
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:flat_over_curve_iff_torsion_free}
+        Let \(X\) be a regular integral scheme of dimension \(1\) and \(\calF\) be a coherent sheaf on \(X\).
+        Then \(\calF\) is flat over \(X\) iff it is torsion-free, i.e., for every non-zero-divisor \(s \in \calO_{X,x}\), the multiplication map
+        \[
+            s:\calF\to\calF
+        \]
+        is injective.
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:flat_and_equi_dimensional_fiber}
+        Let \(f:X \to Y\) be a flat morphism of schemes of finite type over a field \(\kk\).
+        Then for every point \(\xi \in X\), we have
+        \[ \dim_\xi X = \dim_{f(\xi)} Y + \dim_\xi X_{f(\xi)}. \]
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{theorem}[Miracle flatness]\label{thm:Miracle_flatness}
+        Let \(f:X\to Y\) be a morphism between noetherian schemes.
+        Suppose that \(X\) is Cohen--Macaulay and that \(Y\) is regular.
+        Then \(f\) is flat at \(\xi \in X\) iff \(\dim_\xi X = \dim_{f(\xi)} Y + \dim_\xi X_{f(\xi)}\).
+        \Yang{To be checked.}
+    \end{theorem}
 
     \begin{theorem}\label{thm:flat_iff_has_the_same_Hilbert_polynomials}
-        Let \(X\subseteq \bbP^n_T\) be a closed subscheme, where \(T\) is a noetherian scheme. Then the following are equivalent:
+        Let \(T\) be a integral noetherian scheme and \(f:X\to T\) be a projective morphism.
+        Let \(\calF\) be a coherent sheaf on \(X\).
+        Fix a relatively ample line bundle \(H\) on \(X\) over \(T\).
+        Then \(\calF\) is flat over \(T\) iff the Hilbert polynomials 
+        \[
+            P(X_t,\calF_t,H_t)(n) = \chi(X_t,\calF_t \otimes H_t^{\otimes n})
+        \]
+        are independent of \(t \in T\).
+        \Yang{To be checked.}
+    \end{theorem}
+
+    \Yang{To be added: deformation, algebraic families...}
+
+
+\subsection{Base change and semicontinuity}
+
+    \begin{theorem}[Grauert's theorem]\label{thm:Grauert_theorem}
+        Let \(f:X\to Y\) be a proper morphism of noetherian schemes, and let \(\calF\) be a coherent sheaf on \(X\) which is flat over \(Y\).
+        Then for each integer \(i\geq 0\), the sheaf \(R^i f_* \calF\) is coherent on \(Y\), and there exists an open subset \(U \subseteq Y\) such that for every point \(y \in U\), the base change map
+        \[
+            (R^i f_* \calF)_y \otimes_{\calO_{Y,y}} k(y) \to H^i(X_y,\calF_y)
+        \]
+        is an isomorphism.
+        \Yang{To be checked.}
+    \end{theorem}
+
+    \begin{theorem}[Cohomology and base change]\label{thm:cohomology_and_base_change}
+        Let \(f:X\to Y\) be a proper morphism of noetherian schemes, and let \(\calF\) be a coherent sheaf on \(X\) which is flat over \(Y\).
+        For each integer \(i\geq 0\), the following are equivalent:
         \begin{enumerate}
-            \item \(X\to T\) is flat.
-            \item The Hilbert polynomial of the fiber \(X_t\subseteq \bbP^n_{k(t)}\) is independent of the choice of \(t\in T\).
+            \item the base change map
+            \[
+                (R^i f_* \calF)_y \otimes_{\calO_{Y,y}} k(y) \to H^i(X_y,\calF_y)
+            \]
+            is an isomorphism for all points \(y \in Y\);
+            \item the sheaf \(R^i f_* \calF\) is locally free on \(Y\).
         \end{enumerate}
         \Yang{To be checked.}
     \end{theorem}
 
-\subsection{Base change and semicontinuity}
-
-    \begin{theorem}[Base change of flat morphisms]
-        Let \(f:X\to Y\) be a flat morphism of schemes. Then for any morphism \(Y'\to Y\), the base change morphism \(f':X\times_Y Y'\to Y'\) is also flat.
-    \end{theorem}
-
-    \begin{theorem}[Semicontinuity theorem]
+    \begin{theorem}[Semicontinuity of cohomology]\label{thm:semicontinuity_of_cohomology}
         Let \(f:X\to Y\) be a proper morphism of noetherian schemes, and let \(\calF\) be a coherent sheaf on \(X\) which is flat over \(Y\). Then for each integer \(i\geq 0\), the function
         \[
             h^i:Y\to \bbZ, \quad y\mapsto \dim_{k(y)} H^i(X_y,\calF_y)
@@ -29,24 +102,21 @@
 
 \subsection{Smooth morphisms}
 
-    \begin{definition}[Smooth morphism]
-        A morphism of schemes \(f:X\to Y\) is called \textbf{smooth} at a point \(x\in X\) if there exists an open neighborhood \(U\) of \(x\) such that the restriction \(f|_U:U\to Y\) factors as
-        \[
-            U \xrightarrow{g} \bbA^n_Y \xrightarrow{p} Y,
-        \]
-        where \(g\) is \'etale and \(p\) is the projection morphism. The morphism \(f\) is called \textbf{smooth} if it is smooth at every point of \(X\).
+    \begin{definition}\label{def:smooth_morphism}
+        Let \(f:X\to Y\) be a morphism of finite type between noetherian schemes.
+        For \(\xi \in X\) with image \(\zeta = f(\xi) \in Y\), set \(\overline{\zeta}: \Spec \overline{\rkk(\zeta)} \to Y\) to be the geometric point over \(\zeta\) and \(X_{\overline{\zeta}}\) be the geometric fiber over \(\zeta\).
+        We say that \(f\) is \emph{smooth at \(\xi\)} if \(f\) is flat at \(\xi\) and the geometric fiber \(X_{\overline{\zeta}}\) is regular over \(\overline{\rkk(\zeta)}\) at every point lying over \(\xi\).
+        We say that \(f\) is \emph{smooth} if it is smooth at every point \(\xi \in X\).
     \end{definition}
     \Yang{To be checked.}
 
 
 \subsection{\'Etale morphisms}
 
-    \begin{definition}[\'Etale morphism]
-        A morphism of schemes \(f:X\to Y\) is called \textbf{\'etale} at a point \(x\in X\) if there exists an open neighborhood \(U\) of \(x\) such that the restriction \(f|_U:U\to Y\) factors as
-        \[
-            U \xrightarrow{g} \bbA^n_Y \xrightarrow{p} Y,
-        \]
-        where \(g\) is unramified and \(p\) is the projection morphism. The morphism \(f\) is called \textbf{\'etale} if it is \'etale at every point of \(X\).
+    \begin{definition}\label{def:etale_morphism}
+        Let \(f:X\to Y\) be a morphism of finite type between noetherian schemes.
+        We say that \(f\) is \emph{\'etale at \(\xi\)} if \(f\) is smooth and finite at \(\xi\).
+        We say that \(f\) is \emph{\'etale} if it is \'etale at every point \(\xi \in X\).
     \end{definition}
     \Yang{To be checked.}
 
