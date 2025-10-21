@@ -31,6 +31,11 @@
         \]
     \end{definition}
 
+    \begin{remark}\label{rmk:local_properties_of_sheaves}
+        There are many versions of ``local'' properties for sheaves of \(\calO_X\)-modules.
+        \Yang{To be continued.}
+    \end{remark}
+
     \begin{definition}\label{def:coherent_sheaf}
         Let \((X,\calO_X)\) be a ringed space.
         An \(\calO_X\)-module \(\calF\) is called \emph{coherent} if it is finitely generated, and for every open set \(U\subseteq X\) and every morphism of sheaves of \(\calO_U\)-modules \(\varphi:\calO_U^n \to \calF|_U\), the kernel of \(\varphi\) is finitely generated.
@@ -53,6 +58,51 @@
     
 
 \subsection{Relevant functors}
+
+    \begin{definition}\label{def:hom_sheaves}
+        Let \((X,\calO_X)\) be a ringed space, and let \(\calF,\calG\) be sheaves of \(\calO_X\)-modules.
+        The \emph{sheaf Hom} \(\calHom_{\calO_X}(\calF,\calG)\) is the sheaf of abelian groups defined as follows:
+        for an open set \(U\subseteq X\), we define
+        \[
+            \calHom_{\calO_X}(\calF,\calG)(U) := \Hom_{\calO_U}(\calF|_U,\calG|_U),
+        \]
+        where \(\Hom_{\calO_U}(\calF|_U,\calG|_U)\) is the set of morphisms of sheaves of \(\calO_U\)-modules from \(\calF|_U\) to \(\calG|_U\).
+        For an inclusion of open sets \(V\subseteq U\), the restriction map
+        \[
+            \res_{UV}:\calHom_{\calO_X}(\calF,\calG)(U) \to \calHom_{\calO_X}(\calF,\calG)(V)
+        \]
+        is defined by sending a morphism \(\varphi:\calF|_U \to \calG|_U\) to its restriction \(\varphi|_V:\calF|_V \to \calG|_V\).
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{definition}\label{def:pull_back_of_sheaves}
+        Let \(f:X\to Y\) be a morphism of ringed spaces.
+        The \emph{pull-back functor} \(f^*:\Mod(\calO_Y)\to \Mod(\calO_X)\) is defined as follows:
+        for an \(\calO_Y\)-module \(\calF\), we define
+        \[
+            f^*\calF := f^{-1}\calF \otimes_{f^{-1}\calO_Y} \calO_X,
+        \]
+        where \(f^{-1}\calF\) is the inverse image sheaf of \(\calF\).
+        For a morphism of \(\calO_Y\)-modules \(\varphi:\calF\to \calG\), we define
+        \[
+            f^*\varphi: f^*\calF \to f^*\calG
+        \]
+        to be the morphism induced by the morphism of sheaves of abelian groups \(f^{-1}\varphi:f^{-1}\calF \to f^{-1}\calG\).
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{definition}\label{def:tensor_product_of_sheaves}
+        Let \((X,\calO_X)\) be a ringed space, and let \(\calF,\calG\) be sheaves of \(\calO_X\)-modules.
+        The \emph{tensor product} \(\calF \otimes_{\calO_X} \calG\) is the sheaf of \(\calO_X\)-modules defined as follows:
+        for an open set \(U\subseteq X\), we define
+        \[
+            (\calF \otimes_{\calO_X} \calG)(U) := \calF(U) \otimes_{\calO_X(U)} \calG(U),
+        \]
+        where \(\calF(U) \otimes_{\calO_X(U)} \calG(U)\) is the tensor product of \(\calO_X(U)\)-modules.
+        For an inclusion of open sets \(V\subseteq U\), the restriction map
+
+        \Yang{To be continued.}
+    \end{definition}
 
     
 
