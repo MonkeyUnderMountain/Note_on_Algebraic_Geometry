@@ -1,0 +1,48 @@
+\section{Quot Functor}
+
+
+% \subsection{Flat family of coherent sheaves}
+
+    \begin{definition}\label{def:m-regular_of_coherent_sheaves}
+        Let \(X\) be a projective variety over \(\kk\) with a very ample line bundle \(\calH\).
+        A coherent sheaf \(\calF\) on \(X\) is said to be \emph{\(m\)-regular} (with respect to \(\calH\)) if
+        \[H^i(X, \calF\otimes \calH^{\otimes (m-i)}) = 0 \quad \text{for all } i > 0.\]
+        \Yang{To be continued.}
+    \end{definition}
+
+\subsection{Boundness of Quotients}
+
+    \begin{lemma}\label{lem}
+        Let \(\calF\) be a coherent sheaf of dimension \(d\). 
+        Let \(s_1,\cdots,s_d\) be an \(\calF\)-regular sequence of global sections of \(\calO_X(1)\).
+        Let \(H_i = V(s_i)\) be the corresponding hyperplane sections.
+        Let \(\calF_i = \calF|_{H_1\cap \cdots \cap H_i}\) be the restriction of \(\calF\) to the intersection.
+        Assume that \(h^0(\calF_i)\leq b_i\).
+        Then 
+        \[ h^0(\calF \ten \calH^{\otimes m}) \leq \sum_{i=0}^d \binom{m+i-1}{i} b_i. \]
+    \end{lemma}
+
+    \begin{proposition}
+        There are universal polynomials \(P_i \in \bbQ[T_0,\cdots,T_i]\) such that the following holds.
+        Let \(\calF\) be a coherent sheaf of dimension \(d\).
+        Let \(s_1,\cdots,s_d\) be an \(\calF\)-regular sequence of global sections of \(\calO_X(1)\) and \(H_i = V(s_i)\) the corresponding hyperplane sections.
+        Set \(\calF_i = \calF|_{H_1\cap \cdots \cap H_i}\) and \(h^0(\calF_i) \leq b_i\).
+        Suppose that \(\chi(\calF_i) = a_i\).
+        Then \(\calF\) is \(P_d(a_0-b_0,\cdots,a_d-b_d)\)-regular.
+    \end{proposition}
+
+    \begin{theorem}\label{thm:Kleiman_criterion_for_boundness_of_coherent_sheaves}
+        Let \(S\) be a noetherian scheme, \(X\) a projective scheme over \(S\) with a relatively very ample line bundle \(\calO_X(1)\).
+        Let \(P \in \bbQ[T]\) be a polynomial of degree \(d\).
+        Let \(\Sigma\) be a set-theoretic family of coherent sheaves on the fibers of \(X/S\) with Hilbert polynomial \(P\).
+        TFAE:
+        \begin{enumerate}
+            \item \(\Sigma\) is bounded;
+            \item there are constant \(C_i\) such that for any \(\calF \in \Sigma\), there is an \(\calF\)-regular sequence of global sections \(s_1,\cdots,s_d\) of \(\calO_X(1)\) such that for each \(i\),
+                \[ h^0(\calF|_{H_1\cap \cdots \cap H_i}) \leq C_i; \]
+            \item there is \(m\) such that any \(\calF \in \Sigma\) is \(m\)-regular;
+            \item there is a coherent sheaf \(\calE\) on \(X\) such that any \(\calF \in \Sigma\) is a quotient of \(\calE_t\) for some \(t \in S\).
+            \item there is a scheme \(T\) of finite type over \(S\) and a coherent sheaf \(\calG\) on \(X_T\) such that any \(\calF \in \Sigma\) is isomorphic to \(\calG_t\) for some \(t \in T\).
+        \end{enumerate}
+        \Yang{To be checked.}
+    \end{theorem}
