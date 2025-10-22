@@ -1,2 +1,30 @@
-\section{Run the MMP}
+\section{Minimal Model Program}
 
+Let \(\kkk\) be an algebraically closed field.
+Unless otherwise specified, all varieties are assumed to be defined over \(\kkk\).
+
+\subsection{Building block of varieties}
+
+    \begin{definition}\label{def:Fano_variety}
+        A projective variety \(X\) is called \emph{Fano} if its anticanonical divisor \(-K_X\) is ample.
+    \end{definition}
+
+    \begin{definition}\label{def:Calabi_Yau_variety}
+        A projective variety \(X\) is called \emph{Calabi-Yau} if its canonical divisor \(K_X\) is numerically trivial, i.e., \(K_X\equiv 0\).
+    \end{definition}
+
+    \begin{definition}\label{def:variety_of_general_type}
+        A projective variety \(X\) is called \emph{of general type} if its canonical divisor \(K_X\) is big.
+    \end{definition}
+
+\subsection{Pseudo-effectiveness of canonical divisor}
+
+    \begin{definition}\label{def:uniruled_variety}
+        A projective variety \(X\) is called \emph{uniruled} if there exists a dominant rational map \(\bbP^1\times Y\dashrightarrow X\) for some variety \(Y\) with \(\dim Y=\dim X-1\).
+    \end{definition}
+
+    \begin{theorem}[{ref. \cite[Corollary 0.3]{BDPP12}}]\label{thm:K_X_not_pseudo_effective_iff_uniruled}
+        Let \(X\) be a smooth projective variety over an algebraically closed field \(\kkk\) of characteristic zero.
+        Then the canonical divisor \(K_X\) is not pseudo-effective if and only if \(X\) is uniruled.
+    \end{theorem}
+    % \Yang{ref:\cite[Corollary 0.3]{BDPP12}}

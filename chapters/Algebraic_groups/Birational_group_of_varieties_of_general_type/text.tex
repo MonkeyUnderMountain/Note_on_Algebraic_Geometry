@@ -1,6 +1,145 @@
-\section{Birational group of varieties of general type}
+\section{Application: birational group of varieties of general type}
+
+    In this section, we apply the results from the previous sections to study the birational automorphism groups of varieties of general type.
 
     \begin{theorem}\label{thm:birational_group_of_varieties_of_general_type}
-        Let \(X\) be a projective variety of general type over an algebraically closed field \(\kk\) of characteristic zero. 
+        Let \(X\) be a projective variety of general type over an algebraically closed field \(\kkk\) of characteristic zero. 
         Then the group of birational automorphisms \(\Bir(X)\) is finite.
     \end{theorem}
+    \begin{proof}
+        We will prove this theorem in several steps.
+        By replacing \(X\) with its resolution of singularities, we may assume that \(X\) is smooth.
+
+        \begin{step}\label{step_in_thm:birational_group_of_varieties_of_general_type:pluricanonical_representation}
+            For every \(m \geq 1\), \(\Bir(X)\) linearly acts on \(H^0(X, mK_X)\) via pull-back of functions (as abstract group).
+        \end{step}
+
+        Let \(\fkk(X)\) be the function field of \(X\).
+        Then for every \(g \in \Bir(X)\), \(g\) induces an automorphism of \(\fkk(X)\) over \(\kkk\), which we denote by \(g^*\).
+        In particular we know that \(g^*\) is injective and \(\kkk\)-linear.
+        By definition, \(H^0(X,mK_X) = \{ s \in \fkk(X) \mid \divisor(s) + mK_X \geq 0 \} \).
+        We only need to show that for every \(s \in H^0(X,mK_X)\), \(g^*(s) \in H^0(X,mK_X)\) since \(\dim_\kkk H^0(X,mK_X) < \infty\).
+        Consider the commutative diagram
+        \[ \begin{tikzcd}
+            \Gamma \arrow[d, "p"'] \arrow[rd, "q"] & \\
+            X \arrow[r, dashed, "g"] & X
+        \end{tikzcd} \]
+        with \(\Gamma\) smooth and \(p,q\) birational morphisms.
+        Then we have
+        \[ K_\Gamma = p^*K_X + E_p = q^*K_X + E_q, \]
+        where \(E_p\) and \(E_q\) are \(p\)- and \(q\)-exceptional divisors respectively.
+        Moreover, \(E_p\) and \(E_q\) are effective since \(X\) is smooth.
+        For every \(s \in H^0(X,mK_X)\), we have
+        \[ \divisor (q^*s) + mK_\Gamma = q^*(\divisor(s) + mK_X) + mE_q \geq 0. \]
+        Then
+        \begin{align*}
+            \divisor (g^*s) + mK_X &= p_* p^*(\divisor (g^*s) + mK_X) \\
+            &= p_* \left(\divisor (q^*s) + mK_\Gamma - mE_p\right) \\
+            &= p_* \left(\divisor (q^*s) + mK_\Gamma\right) \geq 0.
+        \end{align*}
+        It follows that \(g^*(s) \in H^0(X,mK_X)\).
+
+        Note this action \(g \mapsto g^*\) is contravariant, i.e., for every \(g_1,g_2 \in \Bir(X)\), we have \((g_1 \circ g_2)^* = g_2^* \circ g_1^*\).
+
+        \begin{step}\label{step_in_thm:birational_group_of_varieties_of_general_type:Bir_X_is_linear}
+            The group \(\Bir(X)\) is a linear algebraic group by identifying it with a closed subgroup of \(\PGL(H^0(X,mK_X))\) for some integer \(m > 0\).
+            Moreover, its rational action on \(X\) is algebraic.
+        \end{step}
+
+        % Consider the rational map defined by the complete linear system associated to \(mK_X\):
+        % \[ \psi: X \dashrightarrow \bbP(H^0(X,mK_X)), \quad x \mapsto [s_0(x):s_1(x):\cdots:s_N(x)], \]
+        % where \(\{s_0,s_1,\ldots,s_N\}\) is a basis of \(H^0(X,mK_X)\).
+        % For \(g \in \Bir(X)\), we have a commutative diagram
+        % \[ \begin{tikzcd}
+        %     X \arrow[r, dashed,"\psi'"] \arrow[d, dashed, "g"'] & \bbP(H^0(X,mK_X))  \\
+        %     X \arrow[r, dashed,"\psi"] & \bbP(H^0(X,mK_X)), \arrow[u,"\overline{g^*}"']
+        % \end{tikzcd} 
+        % \begin{tikzcd}
+        %     x \arrow[mapsto, r] \arrow[mapsto, d] & {[g^*s_0(x):g^*s_1(x):\cdots:g^*s_N(x)]} \\
+        %     g(x) \arrow[mapsto, r] & {[s_0(g(x)):s_1(g(x)):\cdots:s_N(g(x))],} \arrow[u,mapsto]
+        % \end{tikzcd}
+        % \]
+        % where \(\overline{g^*}\) is the automorphism of \(\bbP(H^0(X,mK_X))\) induced by the linear automorphism \(g^* \in \GL(H^0(X,mK_X))\) and \(\psi'\) given by the composition.
+
+        By \cref{thm:Iitaka_fibration}, there exists an integer \(m > 0\) such that the map \(\psi: X \dashrightarrow \bbP(H^0(X,mK_X))\) is birational onto its image \(Y\).
+        Let \(V\) be the subspace of \(H^0(X,mK_X)\) spanned by the affine cone over \(Y\).
+        % Then we have that \(h \in \PGL(V)\) is the identity whenever \(h|_Y\) is the identity.
+        Since \(\Bir(X)\) linearly acts on \(H^0(X,mK_X)\) by \cref{step_in_thm:birational_group_of_varieties_of_general_type:pluricanonical_representation}, it also linearly acts on \(V\).
+        we have a commutative diagram
+        \[ \begin{tikzcd}
+            X \arrow[d, dashed, "\psi"] \arrow[r, dashed, "g"] & X \arrow[d, dashed, "\psi"] \\
+            Y \arrow[r, "\varphi_g|_Y"] \arrow[d, hook] & Y \arrow[d, hook] \\
+            \bbP(V) \arrow[r, "\varphi_g"] & \bbP(V)
+        \end{tikzcd} \]
+        for every \(g \in \Bir(X)\), where \(\varphi_g\) is the induced automorphism of \(\bbP(V)\).
+        
+        Since \(\psi\) is birational, the map \(g \mapsto \varphi_g\) defines an injective group homomorphism from \(\Bir(X)\) to \(\Aut(\bbP(V))\).
+        Consider the natural algebraic group structure on \(\Aut(\bbP(V))\) and let \(G\) be the Zariski closure of the image of \(\Bir(X)\) in \(\Aut(\bbP(V))\).
+        Note that \(\Bir(X)\) fixes \(Y\).
+        Thus \(G\) also fixes \(Y\).
+        Since the affine cone over \(Y\) spans \(V\), we conclude that any element \(g \in G\) is uniquely determined by its restriction to \(Y\).
+        In particular, we have \(G = \Bir(X)\).
+        Note that \(\Aut(\bbP(V))\) is a linear algebraic group and so is its closed subgroup \(\Bir(X)\).
+
+        \begin{step}\label{step_in_thm:birational_group_of_varieties_of_general_type:Bir_X_is_finite}
+            If \(\dim \Bir(X) > 0\), then it contains \(\bbG_a\) or \(\bbG_m\) as a subgroup.
+            We show that the action of \(\bbG_a\) or \(\bbG_m\) on \(X\) leads to \(X\) being uniruled, which contradicts the assumption that \(X\) is of general type.
+        \end{step}
+
+        By \cref{lem:any_linear_alg_gp_has_one_dimensional_alg_subgroup} and \cref{thm:classification_of_linear_alg_gp_of_dim1}, if \(\dim \Bir(X) > 0\), then \(\Bir(X)\) contains either \(\bbG_a\) or \(\bbG_m\) as a subgroup.
+        Note that both \(\bbG_a\) and \(\bbG_m\) are rational varieties, without loss of generality, we may assume that \(\Bir(X)\) contains \(\bbG_m\) as a subgroup.
+        By replacing \(X\) by \(Y\) in the above diagram if necessary, we may assume that \(\Bir(X)\) acts on \(X\) morphismically.
+        Then we have a morphism
+        \[ \Phi: \bbG_m \times X \to X. \]
+        Note that \(\{x \in X \mid \Phi|_{\bbG_m \times \{x\}} \text{ is constant}\}\) is a closed subset of \(X\).
+        Then there is a non-empty Zariski open subset \(U \subseteq X\) such that \(\forall x \in U\), \(\Phi|_{\bbG_m \times \{x\}}: \bbG_m \to X\) is not constant.
+        We get a morphism
+        \[ \Phi: \bbG_m \times U \to U. \]
+        Choosing any closed subvariety \(V \subseteq U\) of codimension \(1\), we have a dominant rational map
+        \[ \Phi: \bbP^1 \times V \ratmap X. \]
+        This contradicts \cref{thm:K_X_not_pseudo_effective_iff_uniruled} and the assumption that \(X\) is of general type.
+        Therefore, we must have \(\dim \Bir(X) = 0\), i.e., \(\Bir(X)\) is finite.
+    \end{proof}
+
+    \begin{remark}\label{rmk_on_finite_birational_group_of_general_type:projection_in_the_sense_of_Grothendieck_and_its_dual}
+        In the proof of \cref{thm:birational_group_of_varieties_of_general_type}, by \(\bbP(V)\) we mean the projective space associated to the vector space \(V\) in the sense of Grothendieck, i.e., \(\bbP(V) = \Proj(\bigoplus_{k \geq 0} \Sym^k V)\).
+        Hence if one have a linear map \(f: V \to W\) between two finite-dimensional \(\kkk\)-vector spaces, then it induces a morphism \(\bbP(W) \to \bbP(V)\) (not \(\bbP(V) \to \bbP(W)\)).
+    \end{remark}
+
+    \begin{corollary}\label{cor:regularization_of_birational_group_of_varieties_of_general_type}
+        Let \(X\) be a projective variety of general type over an algebraically closed field \(\kkk\) of characteristic zero. 
+        Then there exists a projective variety \(Y\) birational to \(X\) such that \(\Bir(Y) = \Aut(Y)\).
+    \end{corollary}
+
+    \begin{corollary}\label{cor:automorphism_group_of_Fano_varieties_is_linear}
+        Let \(X\) be a Fano variety over an algebraically closed field \(\kkk\) of characteristic zero. 
+        Then the group of automorphisms \(\Aut(X)\) is a linear algebraic group.
+    \end{corollary}
+    \begin{proof}
+        Note that for every \(g \in \Aut(X)\), \(g\) induces an automorphism of \(H^0(X, -mK_X)\) for every integer \(m \geq 1\) via pull-back of functions.
+        Then the same argument as in \cref{step_in_thm:birational_group_of_varieties_of_general_type:Bir_X_is_linear} shows that \(\Aut(X)\) is a linear algebraic group.
+    \end{proof}
+
+    % \begin{example}\label{eg:graph_of_birational_self_map_of_x_mapsto_1_over_x_on_P2}
+    %     Here is an example to illustrate the construction in \cref{step_in_thm:birational_group_of_varieties_of_general_type:pluricanonical_representation}.
+    %     Consider the birational self-map \(g: \bbP^2 \dashrightarrow \bbP^2\) defined by \([x:y:z] \mapsto [yz:xz:xy]\).
+    %     The graph \(\Gamma\) of \(g\) is given by the blow-up of \(\bbP^2\) at the three points \([1:0:0]\), \([0:1:0]\) and \([0:0:1]\) and \(p,q\) contract different exceptional divisors as follows.
+    %     \begin{center}
+    %         \begin{tikzpicture}
+    %               % Top part: hexagon with six lines, three red and three blue
+    %                 \draw[red, thick] (1,0.866) -- (-1,0.866);
+    %                 \draw[blue, thick] (-0.35,1.1258) -- (-1.15,-0.2598);
+    %                 \draw[red, thick] (-1.15,0.2598) -- (-0.35,-1.1258);
+    %                 \draw[blue, thick] (-1,-0.866) -- (1,-0.866);
+    %                 \draw[red, thick] (0.35,-1.1258) -- (1.15,0.2598);
+    %                 \draw[blue, thick] (1.15,-0.2598) -- (0.35,1.1258);
+    
+    %             % Bottom left: triangle from contracting red lines
+    
+    %             % Bottom right: triangle from contracting blue lines
+    
+    %             % Labels
+    %             \node at (0,1.5) {\(\Gamma\)};
+    %         \end{tikzpicture}
+    %     \end{center}
+    % \end{example}

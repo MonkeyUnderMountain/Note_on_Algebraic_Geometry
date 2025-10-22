@@ -1,1 +1,58 @@
 \section{Appendix}
+
+    \begin{definition}\label{def:variety_of_general_type}
+        A projective variety \(X\) is called \emph{of general type} if its canonical divisor \(K_X\) is big.
+    \end{definition}
+
+    \begin{definition}\label{def:uniruled_variety}
+        A projective variety \(X\) is called \emph{uniruled} if there exists a dominant rational map \(\bbP^1\times Y\dashrightarrow X\) for some variety \(Y\) with \(\dim Y=\dim X-1\).
+    \end{definition}
+
+    \begin{theorem}[{ref. \cite[Corollary 0.3]{BDPP12}}]\label{thm:K_X_not_pseudo_effective_iff_uniruled}
+        Let \(X\) be a smooth projective variety over an algebraically closed field \(\kkk\) of characteristic zero.
+        Then the canonical divisor \(K_X\) is not pseudo-effective if and only if \(X\) is uniruled.
+    \end{theorem}
+
+    \begin{theorem}\label{thm:classification_of_linear_alg_gp_of_dim1}
+        Let \(G\) be a linear algebraic group of dimension \(1\) over an algebraically closed field \(\kkk\). 
+        Then \(G\) is isomorphic to either \(\bbG_m\) or \(\bbG_a\).
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be proved.}
+    \end{proof}
+
+    \begin{lemma}\label{lem:any_linear_alg_gp_has_one_dimensional_alg_subgroup}
+        Let \(G\) be a linear algebraic group over an algebraically closed field \(\kkk\). 
+        Then \(G\) has a one-dimensional algebraic subgroup.
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be proved.}
+    \end{proof}
+
+    \begin{definition}\label{def:canonical_divisor_on_normal_varieties}
+        Let \(X\) be a normal variety over \(\kkk\) of dimension \(n\).
+        If \(X\) is smooth, then the \emph{canonical divisor} \(K_X\) is defined to be \(c_1(\omega_X)\).
+        In general, let \(U\subseteq X\) be the smooth locus of \(X\) and \(i:U\hookrightarrow X\) be the inclusion map.
+        Then the \emph{canonical divisor} \(K_X\) is defined to be any Weil divisor on \(X\) such that \(\calO_X(K_X)\cong i_*\omega_U\).
+        Note that \(U\) is big in \(X\) since \(X\) is normal, so such a Weil divisor always exists and is unique up to linear equivalence.
+    \end{definition}
+
+    \begin{theorem}[{Iitaka fibration, ref. \cite[Theorem2.1.33]{Laz04a}}]\label{thm:Iitaka_fibration}
+        Let \( X \) be a normal projective variety, and \( L \) a line bundle on \( X \) such that \( \kappa(X,L) > 0 \). Then for all sufficiently large \( k \in N(X,L) \), the rational mappings \( \phi_k : X \rightarrow Y_k \) are birationally equivalent to a fixed algebraic fibre space
+        \[
+        \phi_{\infty} : X_{\infty} \rightarrow Y_{\infty}
+        \]
+        of normal varieties, and the restriction of \( L \) to a very general fibre of \( \phi_{\infty} \) has Iitaka dimension \( = 0 \). More specifically, there exists for large \( k \in N(X,L) \) a commutative diagram
+        \[
+        \begin{tikzcd}
+        X \arrow[d, "\phi_k"'] \arrow[r, dashed, "u_{\infty}"] & X_{\infty} \arrow[d, "\phi_{\infty}"] \\
+        Y_k \arrow[r, dashed, "\nu_k"'] & Y_{\infty}
+        \end{tikzcd}
+        \]
+        of rational maps and morphisms, where the horizontal maps are birational and \( u_{\infty} \) is a morphism. One has \(\dim Y_{\infty} = \kappa(X,L)\). Moreover, if we set \( L_{\infty} = u^{*}_{\infty}L \), and take \( F \subseteq X_{\infty} \) to be a very general fibre of \( \phi_{\infty} \), then
+        \[
+        \kappa(F, L_{\infty} | F) = 0.
+        \]
+        More precisely, the assertion is that the last displayed formula holds for the fibres of \( \phi_{\infty} \) over all points in the complement of the union of countably many proper subvarieties of \( Y_{\infty} \).
+    \end{theorem}
+
