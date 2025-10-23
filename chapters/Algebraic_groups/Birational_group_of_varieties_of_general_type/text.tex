@@ -73,18 +73,19 @@
 
         By \cref{lem:any_linear_alg_gp_has_one_dimensional_alg_subgroup} and \cref{thm:classification_of_linear_alg_gp_of_dim1}, if \(\dim \Bir(X) > 0\), then \(\Bir(X)\) contains either \(\bbG_a\) or \(\bbG_m\) as a subgroup.
         Note that both \(\bbG_a\) and \(\bbG_m\) are rational varieties, without loss of generality, we may assume that \(\Bir(X)\) contains \(\bbG_m\) as a subgroup.
-        By replacing \(X\) by \(Y\) in the above diagram if necessary, we may assume that \(\Bir(X)\) acts on \(X\) morphismically.
-        Then we have a morphism
-        \[ \Phi: \bbG_m \times X \to X. \]
-        Note that \(\{x \in X \mid \Phi|_{\bbG_m \times \{x\}} \text{ is constant}\}\) is a closed subset of \(X\).
-        Then there is a non-empty Zariski open subset \(U \subseteq X\) such that \(\forall x \in U\), \(\Phi|_{\bbG_m \times \{x\}}: \bbG_m \to X\) is not constant.
-        We get a morphism
-        \[ \Phi: \bbG_m \times U \to U. \]
+        % By replacing \(X\) by \(Y\) in the above diagram if necessary, we may assume that \(\Bir(X)\) acts on \(X\) morphismically.
+        Then we have a rational map
+        \[ \Phi: \bbG_m \times X \ratmap X. \]
+        % Note that \(\{x \in X \mid \Phi|_{\bbG_m \times \{x\}} \text{ is constant}\}\) is a closed subset of \(X\).
+        % Then there is a non-empty Zariski open subset \(U \subseteq X\) such that \(\forall x \in U\), \(\Phi|_{\bbG_m \times \{x\}}: \bbG_m \to X\) is not constant.
+        % We get a morphism
+        % \[ \Phi: \bbG_m \times U \to U. \]
 
-        Fix \(x \in U\), choose \(V \subset U\) a closed subvariety of codimension \(1\) passing through \(x\) such that \(\bbG_m.x \not\subseteq V\).
-        Then the closure of \(\Phi(\bbG_m \times V)\) in \(X\) has dimension at least \(\dim V + 1 = \dim X\).
+        Fix \(x \in X\) such that \(\Phi|_{\bbG_m \times \{x\}}: \bbG_m \to X\) is not constant.
+        Choose \(Z \subset X\) a closed subvariety of codimension \(1\) passing through \(x\) such that \(\bbG_m.x \not\subseteq Z\).
+        Then the closure of \(\Phi(\bbG_m \times Z)\) in \(X\) has dimension at least \(\dim Z + 1 = \dim X\).
         Hence we have a dominant rational map
-        \[ \Phi: \bbP^1 \times V \ratmap X. \]
+        \[ \Phi: \bbP^1 \times Z \ratmap X. \]
         This contradicts \cref{thm:K_X_not_pseudo_effective_iff_uniruled} and the assumption that \(X\) is of general type.
         Therefore, we must have \(\dim \Bir(X) = 0\), i.e., \(\Bir(X)\) is finite.
     \end{proof}
