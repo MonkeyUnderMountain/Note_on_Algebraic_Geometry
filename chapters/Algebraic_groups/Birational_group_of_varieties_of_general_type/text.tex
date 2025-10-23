@@ -42,24 +42,9 @@
         Note this action \(g \mapsto g^*\) is contravariant, i.e., for every \(g_1,g_2 \in \Bir(X)\), we have \((g_1 \circ g_2)^* = g_2^* \circ g_1^*\).
 
         \begin{step}\label{step_in_thm:birational_group_of_varieties_of_general_type:Bir_X_is_linear}
-            The group \(\Bir(X)\) is a linear algebraic group by identifying it with a closed subgroup of \(\PGL(H^0(X,mK_X))\) for some integer \(m > 0\).
+            The group \(\Bir(X)\) is a linear algebraic group by identifying it with a closed subgroup of \(\Aut(\bbP(V))\) for some finite-dimensional \(\kkk\)-vector space \(V\) (subspace of \(H^0(X,mK_X)\) for some \(m > 0\)).
             Moreover, its rational action on \(X\) is algebraic.
         \end{step}
-
-        % Consider the rational map defined by the complete linear system associated to \(mK_X\):
-        % \[ \psi: X \dashrightarrow \bbP(H^0(X,mK_X)), \quad x \mapsto [s_0(x):s_1(x):\cdots:s_N(x)], \]
-        % where \(\{s_0,s_1,\ldots,s_N\}\) is a basis of \(H^0(X,mK_X)\).
-        % For \(g \in \Bir(X)\), we have a commutative diagram
-        % \[ \begin{tikzcd}
-        %     X \arrow[r, dashed,"\psi'"] \arrow[d, dashed, "g"'] & \bbP(H^0(X,mK_X))  \\
-        %     X \arrow[r, dashed,"\psi"] & \bbP(H^0(X,mK_X)), \arrow[u,"\overline{g^*}"']
-        % \end{tikzcd} 
-        % \begin{tikzcd}
-        %     x \arrow[mapsto, r] \arrow[mapsto, d] & {[g^*s_0(x):g^*s_1(x):\cdots:g^*s_N(x)]} \\
-        %     g(x) \arrow[mapsto, r] & {[s_0(g(x)):s_1(g(x)):\cdots:s_N(g(x))],} \arrow[u,mapsto]
-        % \end{tikzcd}
-        % \]
-        % where \(\overline{g^*}\) is the automorphism of \(\bbP(H^0(X,mK_X))\) induced by the linear automorphism \(g^* \in \GL(H^0(X,mK_X))\) and \(\psi'\) given by the composition.
 
         By \cref{thm:Iitaka_fibration}, there exists an integer \(m > 0\) such that the map \(\psi: X \dashrightarrow \bbP(H^0(X,mK_X))\) is birational onto its image \(Y\).
         Let \(V\) be the subspace of \(H^0(X,mK_X)\) spanned by the affine cone over \(Y\).
@@ -95,7 +80,10 @@
         Then there is a non-empty Zariski open subset \(U \subseteq X\) such that \(\forall x \in U\), \(\Phi|_{\bbG_m \times \{x\}}: \bbG_m \to X\) is not constant.
         We get a morphism
         \[ \Phi: \bbG_m \times U \to U. \]
-        Choosing any closed subvariety \(V \subseteq U\) of codimension \(1\), we have a dominant rational map
+
+        Fix \(x \in U\), choose \(V \subset U\) a closed subvariety of codimension \(1\) passing through \(x\) such that \(\bbG_m.x \not\subseteq V\).
+        Then the closure of \(\Phi(\bbG_m \times V)\) in \(X\) has dimension at least \(\dim V + 1 = \dim X\).
+        Hence we have a dominant rational map
         \[ \Phi: \bbP^1 \times V \ratmap X. \]
         This contradicts \cref{thm:K_X_not_pseudo_effective_iff_uniruled} and the assumption that \(X\) is of general type.
         Therefore, we must have \(\dim \Bir(X) = 0\), i.e., \(\Bir(X)\) is finite.
@@ -112,7 +100,7 @@
     \end{corollary}
 
     \begin{corollary}\label{cor:automorphism_group_of_Fano_varieties_is_linear}
-        Let \(X\) be a normal projective Fano variety over an algebraically closed field \(\kkk\) of characteristic zero. 
+        Let \(X\) be a smooth projective Fano variety over an algebraically closed field \(\kkk\) of characteristic zero. 
         Then the group of automorphisms \(\Aut(X)\) is a linear algebraic group.
     \end{corollary}
     \begin{proof}
