@@ -1,9 +1,59 @@
 \section{Normal, Cohen-Macaulay, and regular schemes}
 
 
-\subsection{Tangent spaces}
+\subsection{Normal scheme}
 
-    There are many description of the tangent space of a scheme at a point. 
+    \begin{definition}\label{def:normal_scheme}
+        A scheme \(X\) is called \emph{normal} if for every open affine subset \(U = \Spec A\) of \(X\), the ring \(A\) is an integrally closed domain.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:normalization}
+        The \emph{normalization} of a scheme \(X\) is a normal scheme \(\widetilde{X}\) together with a finite birational morphism \(\pi:\widetilde{X}\to X\) such that for every normal scheme \(Y\) and every birational morphism \(f:Y\to X\), there exists a unique morphism \(g:Y\to \widetilde{X}\) such that \(f = \pi \circ g\).
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{theorem}\label{thm:existence_of_normalization}
+        Let \(X\) be a scheme. Then there exists a normalization \(\widetilde{X}\) of \(X\).
+    \end{theorem}
+
+    \begin{theorem}[Hartog's phenomenon]\label{thm:Hartogs_phenomenon}
+        Let \(X\) be a normal integral scheme, and let \(U\subseteq X\) be an open subset whose complement has codimension at least \(2\).
+        Then every regular function on \(U\) extends uniquely to a regular function on \(X\), i.e., the restriction map \(\Gamma(X,\calO_X) \to \Gamma(U,\calO_X)\) is an isomorphism.
+        \Yang{To be checked.}
+    \end{theorem}
+
+    \begin{proposition}\label{prop:normal_scheme_is_regular_in_codimension_1}
+        Let \(X\) be a normal scheme, and let \(x \in X\) be a point with codimension \(1\). Then \(X\) is regular at \(x\).
+    \end{proposition}
+
+\subsection{Cohen-Macaulay scheme}
+
+    \begin{definition}\label{def:local_cohomology}
+        Let \(X\) be a scheme, and let \(Z\subseteq X\) be a closed subset.
+        For a sheaf of \(\calO_X\)-modules \(\calF\), the \emph{local cohomology} \(H_Z^i(X,\calF)\) is defined as the \(i\)-th right derived functor of the functor \(\Gamma_Z(X,-):\Mod(\calO_X)\to \Ab\) that sends a sheaf of \(\calO_X\)-modules \(\calG\) to the abelian group of sections of \(\calG\) with support in \(Z\), i.e.,
+        \[
+            H_Z^i(X,\calF) := \sfR^i \Gamma_Z(X,\calF).
+        \]
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:Cohen-Macaulay_scheme}
+        A scheme \(X\) is called \emph{Cohen-Macaulay} if for every point \(x \in X\), the local ring \(\calO_{X,x}\) is a Cohen-Macaulay ring.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{theorem}\label{thm:Cohen-Macaulay_scheme_and_vanishing_of_local_cohomology}
+        Let \(X\) be a Cohen-Macaulay scheme, and let \(Z\subseteq X\) be a closed subset of codimension at least \(2\).
+        Then for every sheaf of \(\calO_X\)-modules \(\calF\), the local cohomology \(H_Z^i(X,\calF) = 0\) for every \(i < 2\).
+        \Yang{To be checked.}
+    \end{theorem}
+
+\subsection{Regular scheme}
+
+    We first define the tangent space of a scheme at a point.
+
+    There are many descriptions of the tangent space of a scheme at a point. 
     Here we give one of them.
 
     Let $X$ be a scheme over a field $\kk$, and let $x \in X(\kk)$.

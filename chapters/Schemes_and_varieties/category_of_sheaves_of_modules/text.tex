@@ -1,5 +1,7 @@
 \section{Category of sheaves of modules}
 
+Mostly results in this section fits into the context of ringed spaces.
+
 \subsection{Sheaves of modules, quasi-coherent and coherent sheaves}
 
     % \begin{definition}\label{def:sheaf_of_modules}
@@ -74,6 +76,19 @@
         is defined by sending a morphism \(\varphi:\calF|_U \to \calG|_U\) to its restriction \(\varphi|_V:\calF|_V \to \calG|_V\).
         \Yang{To be continued.}
     \end{definition}
+    
+    \begin{definition}\label{def:tensor_product_of_sheaves}
+        Let \((X,\calO_X)\) be a ringed space, and let \(\calF,\calG\) be sheaves of \(\calO_X\)-modules.
+        The \emph{tensor product} \(\calF \otimes_{\calO_X} \calG\) is the sheaf of \(\calO_X\)-modules defined as follows:
+        for an open set \(U\subseteq X\), we define
+        \[
+            (\calF \otimes_{\calO_X} \calG)(U) := \calF(U) \otimes_{\calO_X(U)} \calG(U),
+        \]
+        where \(\calF(U) \otimes_{\calO_X(U)} \calG(U)\) is the tensor product of \(\calO_X(U)\)-modules.
+        For an inclusion of open sets \(V\subseteq U\), the restriction map
+
+        \Yang{To be continued.}
+    \end{definition}
 
     \begin{definition}\label{def:pull_back_of_sheaves}
         Let \(f:X\to Y\) be a morphism of ringed spaces.
@@ -91,25 +106,53 @@
         \Yang{To be continued.}
     \end{definition}
 
-    \begin{definition}\label{def:tensor_product_of_sheaves}
-        Let \((X,\calO_X)\) be a ringed space, and let \(\calF,\calG\) be sheaves of \(\calO_X\)-modules.
-        The \emph{tensor product} \(\calF \otimes_{\calO_X} \calG\) is the sheaf of \(\calO_X\)-modules defined as follows:
-        for an open set \(U\subseteq X\), we define
-        \[
-            (\calF \otimes_{\calO_X} \calG)(U) := \calF(U) \otimes_{\calO_X(U)} \calG(U),
-        \]
-        where \(\calF(U) \otimes_{\calO_X(U)} \calG(U)\) is the tensor product of \(\calO_X(U)\)-modules.
-        For an inclusion of open sets \(V\subseteq U\), the restriction map
-
-        \Yang{To be continued.}
-    \end{definition}
-
-    
-
-\subsection{Locally free sheaves and vector bundles}
-
-    
+% \subsection{Locally free sheaves and vector bundles}
 
 \subsection{Cohomological theory}
 
+    \begin{definition}\label{def:sheaf_cohomology}
+        Let \((X,\calO_X)\) be a ringed space, and let \(\calF\) be a sheaf of \(\calO_X\)-modules.
+        The \emph{sheaf cohomology} \(H^i(X,\calF)\) is defined as the \(i\)-th right derived functor of the global section functor \(\Gamma(X,-):\Mod(\calO_X)\to \Ab\) applied to \(\calF\), i.e.,
+        \[
+            H^i(X,\calF) := \sfR^i\Gamma(X,\calF).
+        \]
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:higher_direct_image}
+        Let \(f:X\to Y\) be a morphism of ringed spaces, and let \(\calF\) be a sheaf of \(\calO_X\)-modules.
+        The \emph{\(i\)-th higher direct image} \(\sfR^i f_*\calF\) is defined as the \(i\)-th right derived functor of the direct image functor \(f_*:\Mod(\calO_X)\to \Mod(\calO_Y)\) applied to \(\calF\), i.e.,
+        \[
+            \sfR^i f_*\calF := \sfR^i (f_*\calF).
+        \]
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{proposition}\label{prop:long_exact_sequence_of_cohomology_and_direct_image_associated_to_short_exact_sequence_of_sheaves}
+        Let \(f:X\to Y\) be a morphism of ringed spaces, and let
+        \[
+            0 \to \calF \to \calG \to \calH \to 0
+        \]
+        be a short exact sequence of sheaves of \(\calO_X\)-modules.
+        Then there are long exact sequences of \(\calO_Y\)-modules
+        \[
+            0 \to f_*\calF \to f_*\calG \to f_*\calH \to \sfR^1 f_*\calF \to \sfR^1 f_*\calG \to \sfR^1 f_*\calH \to \sfR^2 f_*\calF \to \cdots
+        \]
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{theorem}[Affine criterion by Serre]\label{thm:affine_criterion_by_Serre}
+        Let \(X\) be a scheme.
+        Then \(X\) is affine if and only if \(H^i(X,\calF) = 0\) for every quasi-coherent sheaf \(\calF\) on \(X\) and every \(i>0\).
+        \Yang{To be checked.}
+    \end{theorem}
+    
+    \begin{theorem}[Leray spectral sequence]\label{thm:Leray_spectral_sequence}
+        Let \(f:X\to Y\) be a morphism of ringed spaces, and let \(\calF\) be a sheaf of \(\calO_X\)-modules.
+        Then there exists a spectral sequence
+        \[
+            E_2^{p,q} = H^p(Y,\sfR^q f_*\calF) \Rightarrow H^{p+q}(X,\calF).
+        \]
+        \Yang{To be checked.}
+    \end{theorem}
     

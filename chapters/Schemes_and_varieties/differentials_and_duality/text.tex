@@ -13,4 +13,52 @@ Unless otherwise specified, all schemes and varieties are assumed to be defined 
         Note that \(U\) is big in \(X\) since \(X\) is normal, so such a Weil divisor always exists and is unique up to linear equivalence.
     \end{definition}
 
-    
+\subsection{Fundamental sequence}
+
+    \begin{theorem}\label{thm:the_first_fundamental_sequence_of_differentials}
+        Let \(f: X \to Y\) be a morphism of schemes.
+        Then there is a natural exact sequence of \(\calO_X\)-modules
+        \[
+            f^* \Omega_{Y/\kkk} \to \Omega_{X/\kkk} \to \Omega_{X/Y} \to 0.
+        \]
+        \Yang{... it will be exact.}
+    \end{theorem}
+
+    \begin{theorem}[Ramification formula]\label{thm:ramification_formula}
+        Let \(f: X \to Y\) be a morphism of schemes and let \(Z \subseteq Y\) be a closed subscheme defined by the sheaf of ideals \(\calI \subseteq \calO_Y\). Then there is a natural isomorphism
+        \[
+            \Omega_{X/Y} \cong \calJ/\calJ^2,
+        \]
+        where \(\calJ = f^*\calI \cdot \calO_X \subseteq \calO_X\) is the sheaf of ideals defining the preimage \(W = f^{-1}(Z)\) in \(X\).
+        \Yang{It is wrong.}
+    \end{theorem}
+
+    \begin{theorem}\label{thm:the_second_fundamental_sequence_of_differentials}
+        Let \(Z \subseteq Y\) be a closed subscheme defined by the sheaf of ideals \(\calI \subseteq \calO_Y\) and let \(W = f^{-1}(Z)\) be the preimage of \(Z\) in \(X\), defined by the sheaf of ideals \(\calJ = f^*\calI \cdot \calO_X \subseteq \calO_X\).
+        Then there is a natural exact sequence of \(\calO_W\)-modules
+        \[
+            \calJ/\calJ^2 \to \Omega_{X/\kkk}|_W \to \Omega_{W/\kkk} \to 0.
+        \]
+        \Yang{... it will be exact.}
+    \end{theorem}
+
+    \begin{theorem}[Adjunction formula]\label{thm:adjunction_formula_smooth_case}
+        Let \(f: X \to Y\) be a smooth morphism of schemes. Then there is a natural isomorphism
+        \[
+            \Omega_{X/Y} \cong \Omega_{X/\kkk}|_W,
+        \]
+        where \(W = f^{-1}(Z)\) is the preimage of a closed subscheme \(Z \subseteq Y\).
+        \Yang{It is wrong.}
+    \end{theorem}
+
+\subsection{Serre duality}
+
+    \begin{theorem}[Serre duality]\label{thm:Serre_duality}
+        Let \(X\) be a proper variety over \(\kkk\) and let \(\calF\) be a coherent sheaf on \(X\).
+        Then there is a natural isomorphism
+        \[
+            H^i(X, \calF) \cong H^{n-i}(X, \calF^\vee \otimes \omega_X)^\vee,
+        \]
+        where \(\omega_X\) is the canonical sheaf on \(X\) and \(\calF^\vee = \mathcal{H}om_{\calO_X}(\calF, \calO_X)\) is the dual sheaf.
+        \Yang{there are some errors. Need to be revised}
+    \end{theorem}

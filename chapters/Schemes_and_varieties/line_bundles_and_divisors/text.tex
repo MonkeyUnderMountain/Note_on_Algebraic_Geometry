@@ -2,6 +2,13 @@
 
 \subsection{Cartier Divisors}
 
+    \begin{definition}\label{def:Cartier_divisor}
+        Let \(X\) be a scheme. 
+        A \emph{Cartier divisor} on \(X\) is a global section of the sheaf of groups \(\calK_X^*/\calO_X^*\), where \(\calK_X\) is the sheaf of total quotient rings of \(X\).
+        Equivalently, a Cartier divisor \(D\) can be represented by an open covering \(\{U_i\}\) of \(X\) and a collection of rational functions \(f_i \in \calK_X^*(U_i)\) such that for any \(i, j\), the function \(f_i/f_j \in \calO_X^*(U_i \cap U_j)\).
+        We denote a Cartier divisor by \(D = \{(U_i, f_i)\}\).
+    \end{definition}
+
 \subsection{Line Bundles and Picard Group}
 
     \begin{definition}\label{def:picard_group}
@@ -19,3 +26,19 @@
     \end{definition}
 
 \subsection{Weil Divisors and Reflexive Sheaves}
+
+    To talk about Weil divisors, we need to work with normal schemes.
+
+    \begin{definition}\label{def:Weil_divisor}
+        Let \(X\) be a normal integral scheme.
+        A \emph{Weil divisor} on \(X\) is a formal sum 
+        \[ D = \sum_{Z} n_Z Z, \]
+        where the sum runs over all prime divisors \(Z\) of \(X\) (i.e., integral closed subschemes of codimension 1) and \(n_Z \in \bbZ\), such that for any affine open subset \(U = \Spec A \subseteq X\), only finitely many \(Z\) intersecting \(U\) have nonzero coefficients \(n_Z\).
+        The group of Weil divisors on \(X\) is denoted by \(\WDiv(X)\).
+    \end{definition}
+
+    \begin{definition}\label{def:reflexive_sheaves}
+        Let \(X\) be a scheme and \(\calF\) a coherent sheaf on \(X\).
+        The \emph{dual sheaf} of \(\calF\) is defined as \(\calF^\vee = \calHom_{\calO_X}(\calF, \calO_X)\).
+        The sheaf \(\calF\) is called \emph{reflexive} if the natural map \(\calF \to (\calF^\vee)^\vee\) is an isomorphism.
+    \end{definition}

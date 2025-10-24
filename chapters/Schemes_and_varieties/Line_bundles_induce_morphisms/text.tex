@@ -1,5 +1,18 @@
-\section{Line bundles induce morphisms}
+\section{Projective morphisms and ``positive'' line bundles}
 
+
+\subsection{Ample line bundles}
+
+    \begin{definition}\label{def:very_ample_line_bundle}
+        A line bundle \(\calL\) on a scheme \(X\) is \emph{very ample} if there exists a closed embedding \(i:X\to \bbP^n_A\) such that \(\calL\cong i^*\calO(1)\).
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{theorem}[Serre Vanishing]\label{thm:Serre_vanishing}
+        Let \(X\) be a projective scheme over a field \(k\) and \(\calL\) an ample line bundle on \(X\). 
+        Then for any coherent sheaf \(\calF\) on \(X\), there exists an integer \(N\) such that for all \(n \geq N\), we have
+        \[ H^i(X, \calF \otimes \calL^{\otimes n}) = 0 \]
+    \end{theorem}
 
 \subsection{Ample and basepoint free line bundles}
 
@@ -86,10 +99,7 @@
         \Yang{To be continued.}
     \end{definition}
 
-    \begin{definition}\label{def:very_ample_line_bundle}
-        A line bundle \(\calL\) on a scheme \(X\) is \emph{very ample} if there exists a closed embedding \(i:X\to \bbP^n_A\) such that \(\calL\cong i^*\calO(1)\).
-        \Yang{To be continued.}
-    \end{definition}
+    
 
     % \begin{definition}\label{def:base_locus}
     %     Let \(\calL\) be a line bundle on a scheme \(X\) and \(V\subseteq \Gamma(X,\calL)\) a subspace.
@@ -138,16 +148,16 @@
         \Yang{To be continued.}
     \end{proof}
 
-    \begin{proposition}\label{prop:very_ample_iff_separates_points_and_vectors}
-        Let \(X\) be a scheme of finite type over a noetherian ring \(A\) and \(\calL\) a line bundle on \(X\).
-        Then \(\calL\) is very ample if and only if the following two conditions hold:
-        \begin{enumerate}
-            \item (separate points) for any two distinct points \(x,y\in X\), there exists \(s\in \Gamma(X,\calL)\) such that \(s(x)=0\) but \(s(y)\neq 0\);
-            \item (separate tangent vectors) for any point \(x\in X\) and non-zero tangent vector \(v\in T_xX\), there exists \(s\in \Gamma(X,\calL)\) such that \(s(x)=0\) but \(v(s)\neq 0\).
-        \end{enumerate}
-        \Yang{To be continued.}
-        
-    \end{proposition}
+    % \begin{proposition}\label{prop:very_ample_iff_separates_points_and_vectors}
+    %     Let \(X\) be a scheme of finite type over a noetherian ring \(A\) and \(\calL\) a line bundle on \(X\).
+    %     Then \(\calL\) is very ample if and only if the following two conditions hold:
+    %     \begin{enumerate}
+    %         \item (separate points) for any two distinct points \(x,y\in X\), there exists \(s\in \Gamma(X,\calL)\) such that \(s(x)=0\) but \(s(y)\neq 0\);
+    %         \item (separate tangent vectors) for any point \(x\in X\) and non-zero tangent vector \(v\in T_xX\), there exists \(s\in \Gamma(X,\calL)\) such that \(s(x)=0\) but \(v(s)\neq 0\).
+    %     \end{enumerate}
+    %     \Yang{To be continued.}
+    % \end{proposition}
+    
 
 \subsection{Linear systems}
 
@@ -163,24 +173,23 @@
     Here the elements in \(\bbP(\Gamma(X,\calL))\) are one-dimensional subspaces of \(\Gamma(X,\calL)\).
     Consider the vector subspace \(V\subseteq \Gamma(X,\calL)\), we can define the generate linear system \(|V|\) as the image of \(V\setminus \{0\}\) in \(\bbP(\Gamma(X,\calL))\).
 
+    % \begin{definition}\label{def:general_linear_system}
+    %     A \emph{linear system} on a scheme \(X\) is a pair \((\calL,V)\) where \(\calL\) is a line bundle on \(X\) and \(V\subseteq \Gamma(X,\calL)\) is a subspace.
+    %     The dimension of the linear system is \(\dim V - 1\).
+    %     A linear system is \emph{base-point free} if \(V\) is base-point free.
+    %     A linear system is \emph{complete} if \(V=\Gamma(X,\calL)\).
+    %     \Yang{To be continued.}
+    % \end{definition}
 
-    \begin{definition}\label{def:general_linear_system}
-        A \emph{linear system} on a scheme \(X\) is a pair \((\calL,V)\) where \(\calL\) is a line bundle on \(X\) and \(V\subseteq \Gamma(X,\calL)\) is a subspace.
-        The dimension of the linear system is \(\dim V - 1\).
-        A linear system is \emph{base-point free} if \(V\) is base-point free.
-        A linear system is \emph{complete} if \(V=\Gamma(X,\calL)\).
-        \Yang{To be continued.}
-    \end{definition}
-
-    \begin{definition}\label{def:base_locus}
-        Let \(\calL\) be a line bundle on a scheme \(X\) and \(V\subseteq \Gamma(X,\calL)\) a subspace.
-        The \emph{base locus} of \(V\) is the closed subset
-        \[
-            \Bs(V) = \{x\in X : s(x)=0, \forall s\in V\}.
-        \]
-        If \(\Bs(V)=\emptyset\), we say that \(V\) is \emph{base-point free}.
-        \Yang{To be continued.}
-    \end{definition}
+    % \begin{definition}\label{def:base_locus}
+    %     Let \(\calL\) be a line bundle on a scheme \(X\) and \(V\subseteq \Gamma(X,\calL)\) a subspace.
+    %     The \emph{base locus} of \(V\) is the closed subset
+    %     \[
+    %         \Bs(V) = \{x\in X : s(x)=0, \forall s\in V\}.
+    %     \]
+    %     If \(\Bs(V)=\emptyset\), we say that \(V\) is \emph{base-point free}.
+    %     \Yang{To be continued.}
+    % \end{definition}
 
 
 \subsection{Asymptotic behavior}
@@ -193,13 +202,11 @@
         \]
         with multiplication induced by the tensor product of sections.
         \Yang{To be continued.}
-        
     \end{definition}
 
     \begin{definition}\label{def:semiample_line_bundle}
         A line bundle \(\calL\) on a scheme \(X\) is \emph{semiample} if for some \(n>0\), \(\calL^{\otimes n}\) is base-point free.
         \Yang{To be continued.}
-        
     \end{definition}
 
     \begin{theorem}\label{thm:fibration_associated_to_semiample_line_bundle}
@@ -217,28 +224,11 @@
         \]
         for all sufficiently large \(n\).
         \Yang{To be continued.}
-        
     \end{definition}
 
     \begin{example}\label{eg:base_locus_-K_of_Hirzebruch_surface}
         Let \(X=\bbF_2\) be the second Hirzebruch surface, i.e., the projective bundle \(\bbP(\calO_{\bbP^1}\oplus \calO_{\bbP^1}(2))\) over \(\bbP^1\).
         Let \(\pi:X\to \bbP^1\) be the projection and \(E\) the unique section of \(\pi\) with self-intersection \(-2\).
         \Yang{To be continued.}
-        
     \end{example}
 
-
-% \subsection{Iitaka fibration}
-
-%     \begin{theorem}\label{thm:Iitaka_fibration}
-%         Let \(X\) be a projective variety over a field \(k\) and \(\calL\) a line bundle on \(X\).
-%         Then there exists a unique rational map \(f:X\dashrightarrow Y\) to a projective variety \(Y\) such that:
-%         \begin{enumerate}
-%             \item The general fiber of \(f\) is connected.
-%             \item The dimension of \(Y\) is equal to the Iitaka dimension of \(\calL\), i.e., the transcendence degree of the section ring \(R(X,\calL)\) minus one.
-%             \item For some \(n>0\), the linear system associated to \(\calL^{\otimes n}\) defines the map \(f\).
-%         \end{enumerate}
-%         The map \(f\) is called the \emph{Iitaka fibration} associated to \(\calL\).
-%         \Yang{To be continued.}
-        
-%     \end{theorem}

@@ -1,1 +1,44 @@
 \section{Finite morphisms and fibrations}
+
+    \begin{theorem}[Zariski's Main Theorem]\label{thm:Zariski_main_theorem}
+        Let \(f: Y \to X\) be a quasi-finite and separated morphism of schemes.
+        Then there exists a factorization
+    \end{theorem}
+
+    \begin{theorem}[Stein factorization]\label{thm:Stein_factorization}
+        Let \(f: Y \to X\) be a proper morphism of noetherian schemes.
+        Then there exists a factorization
+        \[
+            Y \xrightarrow{g} Z \xrightarrow{h} X,
+        \]
+        where \(g\) is a proper morphism with connected fibers and \(h\) is a finite morphism.
+        Moreover, this factorization is unique up to isomorphism.
+        \Yang{To be checked.}
+    \end{theorem}
+
+\subsection{Finite morphisms}
+
+    \begin{theorem}\label{thm:finite_preserve_ampleness}
+        Let \(f: Y \to X\) be a finite morphism of schemes. 
+        If \(\calL\) is an ample line bundle on \(X\), then \(f^*\calL\) is an ample line bundle on \(Y\).
+        If and only if.
+    \end{theorem}
+
+\subsection{Fibrations}
+
+    \begin{definition}\label{def:fibration_of_proper_morphism}
+        Let \(f: Y \to X\) be a proper morphism of noetherian schemes.
+        We say that \(f\) is a fibration if for every point \(x \in X\), the fiber \(f^{-1}(x)\) is a geometrically connected scheme.
+    \end{definition}
+
+    \begin{proposition}\label{prop:fibration_direct_image_of_O_Y_and_algebraically_closed_in_function_field}
+        Let \(f: Y \to X\) be a proper morphism of noetherian schemes.
+        Then \(f\) is a fibration if and only if the natural map \(\calO_X \to f_*\calO_Y\) is an isomorphism.
+        In particular, if \(X\) is an algebraically closed field and \(f\) is a fibration, then the fibers \(f^{-1}(x)\) are also algebraically closed in the function field \(K(X)\).
+        \Yang{To be revised}
+    \end{proposition}
+
+    \begin{definition}\label{def:fibration_of_rational_map}
+        Let \(f: Y \dashrightarrow X\) be a rational map of noetherian schemes.
+        We say that \(f\) is a fibration if there exists an open subset \(U \subseteq Y\) such that the restriction \(f|_U : U \to X\) is a fibration.
+    \end{definition}
