@@ -10,3 +10,52 @@
         Let \(G\) be a linear algebraic group over an algebraically closed field \(\kkk\). 
         Then \(G\) has a one-dimensional algebraic subgroup.
     \end{lemma}
+
+
+\subsection{Jordan-Chevalley Decomposition}
+
+    \begin{theorem}\label{thm:jordan_chevalley_decomposition}
+        Let \(G \subset \GL_n(\kkk)\) be a linear algebraic group over a field \(\kkk\). 
+        Then for every element \(g \in G(\kkk)\), there exist unique commuting elements \(g_s, g_u \in G(\kkk)\) such that \(g = g_s g_u\), where \(g_s\) is semisimple and \(g_u\) is unipotent.
+        Moreover, this decomposition is functorial in the sense that for any morphism of linear algebraic groups \(\varphi: G \to H\), we have \(\varphi(g_s) = \varphi(g)_s\) and \(\varphi(g_u) = \varphi(g)_u\).
+        \Yang{To be checked}
+    \end{theorem}
+
+\subsection{Solvable part}
+
+    \begin{definition}\label{def:solvable_group}
+        A group \(G\) is said to be \emph{solvable} if there exists a finite sequence of subgroups
+        \[
+            G = G_0 \triangleright G_1 \triangleright G_2 \triangleright \cdots \triangleright G_n = \{e\}
+        \]
+        such that each \(G_{i+1}\) is normal in \(G_i\) and the quotient group \(G_i/G_{i+1}\) is abelian for all \(0 \leq i < n\).
+        \Yang{to be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:radical_of_linear_algebraic_group}
+        Let \(G\) be a linear algebraic group over a field \(\kkk\). 
+        The \emph{radical} of \(G\), denoted by \(\rad(G)\), is defined to be the unique maximal connected normal solvable subgroup of \(G\).
+    \end{definition}
+
+    \begin{theorem}\label{thm:Lie-Kolchin_theorem}
+        Let \(G \subset \GL_n(\kkk)\) be a solvable linear algebraic group over an algebraically closed field \(\kkk\). 
+        Then there exists a basis of \(\kkk^n\) such that \(G\) is contained in the group of upper triangular matrices with respect to this basis.
+    \end{theorem}
+
+\subsection{Semisimple}
+
+    \begin{definition}\label{def:simple_and_semisimple_algebraic_group}
+        Let \(G\) be a linear algebraic group over a field \(\kkk\). 
+        \begin{enumerate}
+            \item We say that \(G\) is \emph{simple} if \(G\) is non-abelian and has no non-trivial proper connected normal algebraic subgroups.
+            \item We say that \(G\) is \emph{semisimple} if \(\rad(G)\) is trivial.
+        \end{enumerate}
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:reductive_linear_algebraic_group}
+        Let \(G\) be a linear algebraic group over a field \(\kkk\). 
+        We say that \(G\) is \emph{reductive} if the unipotent radical of \(G\) is trivial.
+        \Yang{To be checked.}
+        
+    \end{definition}
