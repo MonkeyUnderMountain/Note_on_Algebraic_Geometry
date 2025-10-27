@@ -1,10 +1,90 @@
 \section{Introduction to moduli problems}
 
 
-\subsection{Moduli problem}
+\subsection{Moduli problem by representable functors}
     
     Moduli space is a geometric space whose points represent isomorphism classes of certain geometric objects.
     For example, fix a field \(\kkk\), all elliptic curves over \(\kkk\) can be classified by the \(j\)-invariant, which gives a bijection between isomorphism classes of elliptic curves and elements of \(\kkk\).
+    However, this classification is just a set-theoretic one.
+    We would like to have a geometric ``parameter space'' such that we can ``deform'' the objects continuously.
+    This is the initial motivation for moduli spaces.
+
+    In algebraic geometry, ``deforming objects continuously'' is usually described by flat families.
+    Hence the most perfect object to represent this moduli problem is such a flat family \(\calX \to M\), where \(M\) is a variety parameterizing all elliptic curves, and the fiber over each point \(m \in M(\kkk)\) is the elliptic curve corresponding to \(m\).
+    Furthermore, we hope that this family is universal, i.e., any other flat family \(\calY \to B\) of elliptic curves is obtained by pulling back \(\calX \to M\) along a unique morphism \(B \to M\).
+    (Despite in this example, such a perfect family does not exist; we will discuss this later.)
+    It can be described by the language of functors.
+    Consider the functor
+    \[ \calM: \Var_{\kkk}^{\op} \to \Set,\quad X \mapsto \{\text{flat families of elliptic curves over } X\}/\sim, \]
+    where \(\sim\) is the equivalence relation given by isomorphisms of families over \(X\).
+    If the family \(\calX \to M\) above exists, then it represents the functor \(\calM\).
+    In this case, we say that the moduli problem \(\calM\) is \emph{representable}, \(M\) is called a \emph{fine moduli space} and \(\calX \to M\) is called a \emph{universal object}.
+
+
+    
+    % Moduli space is a geometric space whose points represent isomorphism classes of certain geometric objects.
+    % For example, fix a field \(\kkk\), we want to parameterize all line on the projective plane \(\bbP_{\kkk}^2\).
+    % Each line \(L \subset \bbP_{\kkk}^2\) can be described by a linear equation
+    % \[ a x + b y + c z = 0, \]
+    % where \([a:b:c] \in \bbP_{\kkk}^2\).
+    % Hence, all lines on \(\bbP_{\kkk}^2\) can be parameterized by the dual projective plane \((\bbP_{\kkk}^2)^{\vee}\).
+    % However, this parameterization is just a set-theoretic one.
+    % We would like to have a geometric ``parameter space'' such that we can ``deform'' the objects continuously.
+    % This is the initial motivation for moduli spaces.
+
+    % In algebraic geometry, ``deforming objects continuously'' is usually described by flat families.
+    % Hence the best object to represent this moduli problem is such a flat family \(\calU \to M\), where \(M\) is a variety parameterizing all lines on \(\bbP_{\kkk}^2\), and the fiber over each point \(m \in M(\kkk)\) is the line corresponding to \(m\).
+    % Furthermore, we hope that this family is universal, i.e., any other flat family \(\calY \to B\) of lines on \(\bbP_{\kkk}^2\) is obtained by pulling back \(\calU \to M\) along a unique morphism \(B \to M\).
+    % It can be described by the language of representable functors.
+    % Consider the functor
+    % \[ \calM: \Sch_{\kkk}^{\op} \to \Set,\quad X \mapsto \{L \subset \bbP^2 \times X | L \text{ is flat over } X, L_x \text{ is a line in } \bbP^2 \text{ for all } x \in X(\kkk)\}. \]
+
+
+
+
+    % Hence the most perfect object to represent this moduli problem is such a flat family \(\calX \to M\), where \(M\) is a variety parameterizing all elliptic curves, and the fiber over each point \(m \in M(\kkk)\) is the elliptic curve corresponding to \(m\).
+    % Furthermore, we hope that this family is universal, i.e., any other flat family \(\calY \to B\) of elliptic curves is obtained by pulling back \(\calX \to M\) along a unique morphism \(B \to M\).
+    % (Despite in this example, such a perfect family does not exist; we will discuss this later.)
+    % It can be described by the language of functors.
+    % Consider the functor
+    % \[ \calM: \Var_{\kkk}^{\op} \to \Set,\quad X \mapsto \{\text{flat families of elliptic curves over } X\}/\sim, \]
+    % where \(\sim\) is the equivalence relation given by isomorphisms of families over \(X\).
+    % If the family \(\calX \to M\) above exists, then it represents the functor \(\calM\).
+    % In this case, we say th
+
+    Hence, to study a moduli problem, we follow the steps:
+    \begin{enumerate}[label=\arabic*.]
+        \item Define the moduli functor \(\calM\).
+        \item Check whether \(\calM\) is representable.
+    \end{enumerate}
+
+    \begin{definition}\label{def:fine_moduli_space}
+        Let \(S\) be a noetherian scheme and \(\calM: \Sch_{S}^{\op} \to \Set\) be a functor.
+        If \(\calM\) is representable by a scheme \(M\) of finite type over \(S\), then we say that \(M\) is a \emph{fine moduli space} for the moduli problem \(\calM\).
+        The object \(\calU \in \calM(M)\) corresponding to the identity morphism \(\id_M \in \Hom_{\Sch_{S}}(M, M)\) is called a \emph{universal object} over \(M\).
+    \end{definition}
+
+    We give a simple example of a fine moduli space.
+
+    \begin{example}\label{eg:moduli_of_lines_in_P2}
+        Consider the moduli problem of lines in the projective plane \(\bbP_{\kkk}^2\) over a field \(\kkk\).
+        Define the moduli functor
+        \[
+            \calG: \Sch_{\kkk}^{\op} \to \Set,\quad X \mapsto \{L \subset \bbP^2 \times X | L \text{ is flat over } X, L_x \text{ is a line in } \bbP^2 \text{ for all } x \in X(\kkk)\}.
+        \]
+        Then the dual projective plane \(G = \bbP_{\kkk}^2\) is a fine moduli space for the moduli problem \(\calG\).
+        The universal object is given by 
+        \[
+            \calU = \{([x:y:z], [a:b:c]) \in \bbP_{\kkk}^2 \times G | ax + by + cz = 0\} \subset \bbP_{\kkk}^2 \times G.
+        \]
+
+        For every \(X \in \Sch_{\kkk}\) and \(f \in G(X)\), we can give a family of lines \(L = \calU \times_G X \in \calG(X)\) by pulling back the universal object \(\calU\) along \(\id_{\bbP_{\kkk}^2} \times f: \bbP_{\kkk}^2 \times X \to \bbP_{\kkk}^2 \times G\).
+        The difficult part is to construct the inverse map, i.e., given a family of lines \(L \in \calG(X)\), we need to construct a morphism \(f: X \to G\) such that \(L\) is obtained by pulling back \(\calU\) along \(\id_{\bbP_{\kkk}^2} \times f\).
+
+        \Yang{To be completed.}
+    \end{example}
+
+    
 
 
 \subsection{Coarse moduli space}
