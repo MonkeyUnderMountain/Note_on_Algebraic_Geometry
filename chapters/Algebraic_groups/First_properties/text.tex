@@ -1,7 +1,7 @@
 \section{First properties of algebraic groups}
 
 Let \(\kk\) be a field and \(\kkk\) its algebraic closure. 
-All varieties are defined over \(\kk\) unless otherwise specified.
+Everything are defined over \(\kk\) unless otherwise specified.
 
 \subsection{Basic concepts}
 
@@ -32,13 +32,18 @@ All varieties are defined over \(\kk\) unless otherwise specified.
                 \end{tikzcd}.
             \]
         \end{enumerate}
-        In other words, a group scheme is a group object in the category of schemes.
+        In other words, an \(S\)-group scheme is a group object in the category \(\Sch_S\).
         % \Yang{To be continued...}
     \end{definition}
 
     \begin{definition}\label{def:algebraic_group}
         An \emph{algebraic group} is a \(\kk\)-group scheme \(G\) which is reduced, separated and of finite type over a field \(\kk\).
     \end{definition}
+
+    \begin{remark}\label{rmk:algebraic_group_and_its_closed_points}
+        We often identify an algebraic group \(G\) with its set of closed points \(G(\kkk)\) when there is no confusion.
+        \Yang{Why can we do this?}
+    \end{remark}
 
     \begin{remark}\label{rmk:algebraic_group_is_not_topological_group}
         Even if we work over \(\kkk\) and just consider the closed points \(G(\kkk)\) of an algebraic group \(G\), \(G(\kkk)\) is not a topological group with respect to the Zariski topology in general.
@@ -61,10 +66,6 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         
         Sometimes we also abuse the notation by \(\mu:G \times \cdots \times G \to G\) to denote the multiplication of multiple elements, i.e. \(\mu(g_1,\ldots,g_n) = g_1 \cdots g_n\) for \(g_1,\ldots,g_n \in G(\kk)\).
     \end{remark}
-
-    % \begin{remark}\label{rmk:algebraic_group_and_its_closed_points}
-    %     Since algebraic groups are almost varieties over an arbitrary field \(\kk\), we often identify an algebraic group \(G\) with its set of closed points \(G(\kkk)\) when there is no confusion.
-    % \end{remark}
 
     \begin{proposition}\label{prop:algebraic_group_is_smooth}
         Let \(G\) be an algebraic group.
@@ -153,6 +154,11 @@ All varieties are defined over \(\kk\) unless otherwise specified.
 
     % \Yang{I need the definition of normal subgroup here.}
 
+    \begin{remark}\label{rmk:normal_algebraic_subgroup_and_kkk_points}
+        To check \(H < G\) whether \(H\) is a normal subgroup of \(G\), it suffices to check that \(H(\kkk)\) is normal in \(G(\kkk)\).
+        \Yang{To be continued.}
+    \end{remark}
+
     \begin{example}\label{eg:special_linear_group}
         The \emph{special linear group} $\SL_n$ is defined to be the closed subvariety of $\GL_n$ defined by the equation \(\det = 1\).
         It is an algebraic subgroup of \(\GL_n\).
@@ -204,10 +210,15 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         \Yang{To be continued...}
     \end{proof}
 
-    % \begin{remark}\label{rmk:closure_of_subgroup_is_subgroup}
-    %     The assumption that \(H\) is a subgroup is essential.
-    %     \Yang{To be continued...}
-    % \end{remark}
+    \begin{remark}\label{rmk:subgroup_and_constructible_subset}
+        In general, we can only expect the image of a morphism of varieties to be a constructible subset.
+        This is not sufficient to guarantee that the image is closed, even if the original variety is closed.
+        However, the group structure provides additional constraints that ensure the constructible subgroup is indeed closed.
+        \cref{eg:product_of_closed_algebraic_subgroups_which_is_not_closed} provides an example where the product of two closed algebraic subgroups is not closed, illustrating that the importance of the subgroup condition.
+
+        % The assumption that \(H\) is a subgroup is essential.
+        \Yang{To be continued...}
+    \end{remark}
 
     \begin{example}\label{eg:product_of_closed_algebraic_subgroups_which_is_not_closed}
         Let \(G = \SL_2\) over \(\kkk\), \(T = \{\diag(t,t^{-1})|t \in \kkk^\times\}\) and \(g = \begin{pmatrix}
@@ -342,7 +353,7 @@ All varieties are defined over \(\kk\) unless otherwise specified.
     \end{proof}
 
     \begin{theorem}\label{thm:affine_algebraic_group_is_linear}
-        Any affine algebraic group is isomorphic to a closed algebraic subgroup of some \(\GL_n\).
+        Any affine algebraic group is linear, i.e. is isomorphic to a closed algebraic subgroup of some \(\GL_n\).
     \end{theorem}
     \begin{proof}
         \Yang{To be continued...}
@@ -371,3 +382,37 @@ All varieties are defined over \(\kk\) unless otherwise specified.
         \[ \upd \mu_{(\varepsilon,\varepsilon)}(v,w) = \upd \mu_{(\varepsilon,\varepsilon)}(v,0) + \upd \mu_{(\varepsilon,\varepsilon)}(0,w) = (\upd \mu \circ (\id_G \times \varepsilon))_\varepsilon(v) + (\upd \mu \circ (\varepsilon \times \id_G))_\varepsilon(w) = v + w. \]
         % \Yang{To be filled.}
     \end{proof}
+
+    \begin{proposition}\label{prop:power_map_is_generically_finite}
+        Let \(G\) be an algebraic group and \(n\) a positive integer which is not divisible by \(\characteristic \kk\).
+        Then the power map \(p_n: G \to G\) is generically finite.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    \begin{corollary}\label{cor:finite_index_subgroup_of_connected_algebraic_group}
+        Let \(G\) be a connected algebraic group and \(H\) a closed subgroup of \(G(\kkk)\) with finite index.
+        Then \(H = G(\kkk)\).
+    \end{corollary}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    \begin{corollary}\label{cor:Burnside_theorem_on_finite_exponent_subgroup_of_algebraic_subgroup}
+        Let \(G\) be an algebraic group and \(H\) a closed subgroup of \(G(\kkk)\).
+        Suppose that there exists a positive integer \(n\) which is not divisible by \(\characteristic \kk\) such that \(h^n = e\) for all \(h \in H\).
+        Then \(H\) is finite.
+        \Yang{To be completed.}
+    \end{corollary}
+
+    \begin{remark}\label{rmk:acknowledge_Burnside_theorem_on_finite_exponent_subgroup_of_algebraic_subgroup}
+        Thanks for my mathematical brother Zelong Chen for telling me this.
+        \Yang{To be revised}
+    \end{remark}
+
+    \begin{remark}\label{rmk:Burnside_theorem_on_finite_exponential_subgroup_of_algebraic_subgroup_and_matrix_group}
+        The classical Burnside theorem states that a finite exponent subgroup of \(\GL_n(\bbC)\) is finite.
+        \cref{cor:Burnside_theorem_on_finite_exponent_subgroup_of_algebraic_subgroup} can be viewed as a generalization of the classical Burnside theorem to arbitrary algebraic groups over arbitrary fields.
+    \end{remark}
+

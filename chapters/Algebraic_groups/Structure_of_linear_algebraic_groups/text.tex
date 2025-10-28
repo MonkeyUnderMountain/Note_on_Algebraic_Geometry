@@ -1,61 +1,108 @@
 \section{Structure of linear algebraic groups}
 
 
+\subsection{Jordan-Chevalley Decomposition of elements}
+
+    Recall that for a linear operator \(T:V \to V\) of finite-dimensional \(\kkk\)-vector space \(V\) is called \emph{semisimple} if it is diagonalizable, and \emph{unipotent} if \(T-\id_V\) is nilpotent.
+
+    \begin{definition}\label{def:semisimple_and_unipotent_element}
+        Let \(G\) be a linear algebraic group and \(g \in G(\kkk)\). 
+        We say that \(g\) is \emph{semisimple} (resp. \emph{unipotent}) if its image under some (equivalently, any) faithful linear representation of \(G\) is a semisimple (resp. unipotent) linear operator.
+    \end{definition}
+
+    \begin{lemma}\label{lem:semisimple_and_unipotent_elements_do_not_depend_on_faithful_representation}
+        The notion of semisimple and unipotent elements in \cref{def:semisimple_and_unipotent_element} does not depend on the choice of faithful linear representation.
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    \begin{theorem}[Jordan-Chevalley Decomposition]\label{thm:jordan_chevalley_decomposition}
+        Let \(G\) be a linear algebraic group and \(g \in G(\kkk)\). 
+        Then there exist unique commuting elements \(g_s, g_u \in G(\kkk)\) such that \(g = g_s g_u\), where \(g_s\) is semisimple and \(g_u\) is unipotent.
+
+        Moreover, this decomposition is functorial in the sense that for any homomorphism of linear algebraic groups \(\varphi: G \to H\), we have \(\varphi(g)_s = \varphi(g_s)\) and \(\varphi(g)_u = \varphi(g_u)\).
+        \Yang{To be checked}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+
+
+\subsection{Solvable groups and Borel subgroups}
+
+    \begin{definition}\label{def:solvable_group}
+        A group \(G\) is said to be \emph{solvable} if there exists a finite sequence of algebraic subgroups
+        \[
+            G = G_0 \vartriangleright G_1 \vartriangleright G_2 \vartriangleright \cdots \vartriangleright G_n = \{e\}
+        \]
+        such that each \(G_{i+1}\) is normal in \(G_i\) and the quotient group \(G_i/G_{i+1}\) is commutative for all \(0 \leq i < n\).
+        \Yang{to be checked.}
+    \end{definition}
+
+    \begin{theorem}\label{prop:fixed_point_of_solvable_group_acting_on_proper_varieties}
+        Let \(G\) be a solvable linear algebraic group acting on a proper variety \(X\). 
+        Then there exists a fixed point \(x \in X(\kkk)\) such that \(g \cdot x = x\) for all \(g \in G(\kkk)\).
+    \end{theorem}
+
+    \begin{corollary}[Lie-Kolchin Theorem]\label{prop:Lie-Kolchin_theorem}
+        Let \(G < \GL_n(\kkk)\) be a solvable linear algebraic group over an algebraically closed field \(\kkk\). 
+        Then there exists a basis of \(\kkk^n\) such that \(G\) is contained in the group of upper triangular matrices with respect to this basis.
+    \end{corollary}
+
     \begin{theorem}\label{thm:classification_of_linear_alg_gp_of_dim1}
         Let \(G\) be a linear algebraic group of dimension \(1\) over an algebraically closed field \(\kkk\). 
         Then \(G\) is isomorphic to either \(\bbG_m\) or \(\bbG_a\).
     \end{theorem}
 
-    \begin{lemma}\label{lem:any_linear_alg_gp_has_one_dimensional_alg_subgroup}
-        Let \(G\) be a linear algebraic group over an algebraically closed field \(\kkk\). 
-        Then \(G\) has a one-dimensional algebraic subgroup.
-    \end{lemma}
 
 
-\subsection{Jordan-Chevalley Decomposition}
-
-    \begin{theorem}\label{thm:jordan_chevalley_decomposition}
-        Let \(G \subset \GL_n(\kkk)\) be a linear algebraic group over a field \(\kkk\). 
-        Then for every element \(g \in G(\kkk)\), there exist unique commuting elements \(g_s, g_u \in G(\kkk)\) such that \(g = g_s g_u\), where \(g_s\) is semisimple and \(g_u\) is unipotent.
-        Moreover, this decomposition is functorial in the sense that for any morphism of linear algebraic groups \(\varphi: G \to H\), we have \(\varphi(g_s) = \varphi(g)_s\) and \(\varphi(g_u) = \varphi(g)_u\).
-        \Yang{To be checked}
-    \end{theorem}
-
-\subsection{Solvable part}
-
-    \begin{definition}\label{def:solvable_group}
-        A group \(G\) is said to be \emph{solvable} if there exists a finite sequence of subgroups
-        \[
-            G = G_0 \triangleright G_1 \triangleright G_2 \triangleright \cdots \triangleright G_n = \{e\}
-        \]
-        such that each \(G_{i+1}\) is normal in \(G_i\) and the quotient group \(G_i/G_{i+1}\) is abelian for all \(0 \leq i < n\).
-        \Yang{to be checked.}
-    \end{definition}
+\subsection{Decomposition of linear algebraic groups}
 
     \begin{definition}\label{def:radical_of_linear_algebraic_group}
         Let \(G\) be a linear algebraic group over a field \(\kkk\). 
         The \emph{radical} of \(G\), denoted by \(\rad(G)\), is defined to be the unique maximal connected normal solvable subgroup of \(G\).
     \end{definition}
+    \Yang{Well-defined?}
 
-    \begin{theorem}\label{thm:Lie-Kolchin_theorem}
-        Let \(G \subset \GL_n(\kkk)\) be a solvable linear algebraic group over an algebraically closed field \(\kkk\). 
-        Then there exists a basis of \(\kkk^n\) such that \(G\) is contained in the group of upper triangular matrices with respect to this basis.
-    \end{theorem}
+    \begin{definition}\label{def:nilradical_of_linear_algebraic_group}
+        Let \(G\) be a linear algebraic group. 
+        The \emph{unipotent radical} of \(G\), denoted by \(\rad_u(G)\), is defined to be the subgroup of \(\rad(G)\) consisting of all unipotent elements.
+    \end{definition}
+    \Yang{Why a group?}
 
-\subsection{Semisimple}
-
-    \begin{definition}\label{def:simple_and_semisimple_algebraic_group}
+    \begin{definition}\label{def:semisimple_linear_algebraic_group}
         Let \(G\) be a linear algebraic group over a field \(\kkk\). 
-        \begin{enumerate}
-            \item We say that \(G\) is \emph{simple} if \(G\) is non-abelian and has no non-trivial proper connected normal algebraic subgroups.
-            \item We say that \(G\) is \emph{semisimple} if \(\rad(G)\) is trivial.
-        \end{enumerate}
-        \Yang{To be checked.}
+        We say that \(G\) is \emph{semisimple} if \(\rad(G)\) is trivial.
     \end{definition}
 
     \begin{definition}\label{def:reductive_linear_algebraic_group}
         Let \(G\) be a linear algebraic group over a field \(\kkk\). 
         We say that \(G\) is \emph{reductive} if the unipotent radical of \(G\) is trivial.
-        \Yang{To be checked.}
-        
     \end{definition}
+
+    \begin{slogan}\label{slogan:structure_of_linear_algebraic_groups}
+        \[ 
+            \begin{tikzcd}[row sep=small,column sep=small]
+                \text{``unipotent radical''} \arrow[r,phantom,"\rightarrow\!\leftarrow"] \arrow[d,Rightarrow]   & \text{``reductive''}  \\
+                \text{``solvable radical''} \arrow[r,phantom,"\rightarrow\!\leftarrow"]                         & \text{``semisimple''} \arrow[u,Rightarrow]
+            \end{tikzcd}
+        \]
+    \end{slogan}
+
+    \begin{theorem}[Levi Decomposition]\label{thm:levi_decomposition}
+        Let \(G\) be a linear algebraic group over an algebraically closed field \(\kkk\). 
+        Then there exists a reductive subgroup \(H\) of \(G\) such that the multiplication map \(\rad_u(G) \rtimes H \to G\) is an isomorphism of algebraic groups.
+        Such a subgroup \(H\) is called a \emph{Levi subgroup} of \(G\).
+        \Yang{To be checked.}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+
+
+\subsection{Semisimple and reductive algebraic groups}
+
+
