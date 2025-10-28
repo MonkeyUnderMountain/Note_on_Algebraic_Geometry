@@ -22,7 +22,7 @@
     \begin{example}\label{eg:presheaf_but_not_sheaf}
         Let \(X\) be a non-connected topological space.
         The assignment 
-        \[U \mapsto \{\text{constant functions on }U\}\] 
+        \[U \mapsto \{\text{constant functions on }U \to \bbR\}\] 
         defines a presheaf \(\calC\) of rings on \(X\) but not a sheaf.
 
         For a concrete example, let \(X = (0,1)\cup (2,3)\) with the subspace topology from \(\bbR\).
@@ -100,6 +100,7 @@
         The induced map on stalks \(\exp_z : \calO_{\bbC,z} \to \calO_{\bbC,z}^*\) is surjective for every \(z \in \bbC\) by the existence of logarithm locally.
         However, the map on global sections \(\exp(\bbC) : \calO_\bbC(\bbC) \to \calO_\bbC^*(\bbC)\) is not surjective since there is no entire function \(f\) such that \(e^{f(z)} = z\) for all \(z \in \bbC^*\).
         \Yang{To be continued.}
+        \Yang{This is wrong, need to be revised.}
     \end{remark}
 
     \begin{proposition}\label{prop:isomorphism_of_homomorphism_of_sheaves}
@@ -133,8 +134,6 @@
         \Yang{To be continued.}
     \end{proof}
 
-
-
     \Yang{To be checked and continuous.}
 
 
@@ -163,14 +162,14 @@
         Here \(\bbZ_{(p)}\) is the localization of \(\bbZ\) at the prime ideal \((p)\).
     \end{example}
 
-    \begin{example}[Glue morphisms]\label{eg:glue_morphisms_of_locally_ringed_spaces}
+    \begin{construction}[Glue morphisms]\label{constr:glue_morphisms_of_locally_ringed_spaces}
         Let \(f : (X, \calO_X) \to (Y, \calO_Y)\) be a morphism of locally ringed spaces.
         If \(U \subset X\) and \(V \subset Y\) are open subsets such that \(f(U) \subset V\), then the restriction \(f|_U : (U, \calO_X|_U) \to (V, \calO_Y|_V)\) is a morphism of locally ringed spaces.
         Conversely, if \(\{U_i\}_{i \in I}\) is an open covering of \(X\) and for each \(i \in I\), we have a morphism \(f_i : (U_i, \calO_X|_{U_i}) \to (Y, \calO_Y)\) such that \(f_i|_{U_i \cap U_j} = f_j|_{U_i \cap U_j}\) for all \(i,j \in I\),
         then there exists a unique morphism \(f : (X, \calO_X) \to (Y, \calO_Y)\) such that \(f|_{U_i} = f_i\) for all \(i \in I\).
-    \end{example}
+    \end{construction}
 
-    \begin{example}[Glue locally ringed space]\label{eg:glue_open_locally_ringed_subspace}
+    \begin{construction}[Glue locally ringed space]\label{constr:glue_open_locally_ringed_subspace}
         We construct a locally ringed space by gluing open subspaces.
         Let \((X_i, \calO_{X_i})\) be locally ringed spaces for \(i \in I\) and \((U_{ij}, \calO_{X_i}|_{U_{ij}})\) be open subspaces for \(i,j \in I\).
         Suppose we have isomorphisms \(\varphi_{ij} : (U_{ij}, \calO_{X_i}|_{U_{ij}}) \to (U_{ji}, \calO_{X_j}|_{U_{ji}})\) such that
@@ -198,9 +197,18 @@
         \[ \calO_X(V) := \left\{ (s_i)_{i \in I} \in \prod_{i \in I} \calO_{X_i}(\psi_i^{-1}(V)) \;\middle|\; s_i|_{U_{ij}} = \varphi_{ij}^\sharp(s_j|_{U_{ji}}) \text{ for all } i,j \in I \right\}. \]
         Easy to check that \((X, \calO_X)\) is a locally ringed space and satisfies the required properties.
         If there is another locally ringed space \((X', \calO_{X'})\) with \(\psi'_i\) satisfying the same properties, then by gluing \(\psi_i' \circ \psi_i^{-1}\) we get an isomorphism \((X, \calO_X) \to (X', \calO_{X'})\).
-    \end{example}
+    \end{construction}
+
+    \begin{definition}\label{def:closed_and_open_immersion_of_locally_ringed_space}
+        A morphism of locally ringed spaces \(f : (X, \calO_X) \to (Y, \calO_Y)\) is called a \emph{closed immersion} (resp. \emph{open immersion}) if 
+        \(f\) induces a homeomorphism from \(X\) to a closed (resp. open) subset of \(Y\) and the map \(f^\sharp : \calO_Y \to f_*\calO_X\) is surjective (resp. an isomorphism).
+        \Yang{To be checked.}
+    \end{definition}
+
+
 
 \subsection{Manifolds as locally ringed spaces}
+
 
     
 

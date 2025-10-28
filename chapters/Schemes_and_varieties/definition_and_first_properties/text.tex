@@ -45,21 +45,21 @@ If you learn the following content for the first time, it is recommended to skip
         \Yang{To be continued}
     \end{definition}
 
-    \begin{example}\label{eg:projective_scheme_Proj_of_graded_rings_as_schemes}
+    \begin{construction}\label{constr:projective_scheme_Proj_of_graded_rings_as_schemes}
         Let \(R\) be a graded ring. The \emph{projective scheme} \(\Proj R\) is defined as the scheme associated to the sheaf of rings
         \[
-            \mathcal{O}_{\Proj R} = \bigoplus_{d \geq 0} R_d.
+            \calO_{\Proj R} = \bigoplus_{d \geq 0} R_d.
         \]
         It can be covered by open affine subschemes of the form \(\Spec R_f\) for homogeneous elements \(f \in R\).
         \Yang{To be checked.}
-    \end{example}
+    \end{construction}
 
-    \begin{example}[Glue open subschemes]\label{eg:glue_open_subschemes}
+    \begin{construction}[Glue open subschemes]\label{eg:glue_open_subschemes}
         The construction in \cref{eg:glue_open_locally_ringed_subspace} allows us to glue open subschemes to get a scheme.
         More precisely, let \((X_i, \calO_{X_i})\) be schemes for \(i \in I\) and \((U_{ij}, \calO_{X_i}|_{U_{ij}})\) be open subschemes for \(i,j \in I\).
         Suppose we have isomorphisms \(\varphi_{ij} : (U_{ij}, \calO_{X_i}|_{U_{ij}}) \to (U_{ji}, \calO_{X_j}|_{U_{ji}})\) satisfying the cocycle condition as in \cref{eg:glue_open_locally_ringed_subspace}.
         Then the locally ringed space \((X, \calO_X)\) obtained by gluing the \((X_i, \calO_{X_i})\) along the \(\varphi_{ij}\) is a scheme.
-    \end{example}
+    \end{construction}
 
     \begin{definition}\label{def:scheme_theoretic_image}
         Let \(f : X \to Y\) be a morphism of schemes.
@@ -69,22 +69,20 @@ If you learn the following content for the first time, it is recommended to skip
         \Yang{To be checked.}
     \end{definition}
 
-\subsection{Fiber product}
+\subsection{Fiber product and base change}
 
     \begin{definition}\label{def:fiber_product_in_arbitrary_category}
-        Let \(\calC\) be a category and \(X, Y, S \in \Obj(\calC)\) with morphisms \(f : X \to S\) and \(g : Y \to S\).
-        A \emph{fiber product} of \(X\) and \(Y\) over \(S\) is an object \(Z \in \Obj(\calC)\) together with morphisms \(p : Z \to X\) and \(q : Z \to Y\) such that the following diagram commutes:
-        \[
+        Let \(\bfC\) be a category and \(X, Y, S \in \Obj(\bfC)\) with morphisms \(f : X \to S\) and \(g : Y \to S\).
+        A \emph{fiber product} of \(X\) and \(Y\) over \(S\) is an object \(X \times_S Y \in \Obj(\bfC)\) together with morphisms \(p : X \times_S Y \to X\) and \(q : X \times_S Y \to Y\) such that \(f \circ p = g \circ q\)
+        and satisfies the universal property that for any object \(W \in \Obj(\bfC)\) with morphisms \(u : W \to X\) and \(v : W \to Y\) such that \(f \circ u = g \circ v\),
+        there exists a unique morphism \(h = (u,v) : W \to X \times_S Y\) such that \(p \circ h = u\) and \(q \circ h = v\).
+        \begin{center}
             \begin{tikzcd}
-                Z \arrow[r, "q"] \arrow[d, "p"'] & Y \arrow[d, "g"] \\
-                X \arrow[r, "f"'] & S
+                W   \arrow[drr, bend left, "u"] \arrow[ddr, bend right, "v"] \arrow[dr, gray, "h"] & & \\
+                    & X \times_S Y \arrow[r, "p"] \arrow[d, "q"]    & X \arrow[d, "f"] \\
+                    & Y \arrow[r, "g"]                              & S.
             \end{tikzcd}
-        \]
-        and satisfies the universal property that for any object \(W \in \Obj(\calC)\) with morphisms \(u : W \to X\) and \(v : W \to Y\) such that \(f \circ u = g \circ v\),
-        there exists a unique morphism \(h : W \to Z\) such that \(p \circ h = u\) and \(q \circ h = v\).
-
-        If a fiber product exists, it is unique up to a unique isomorphism.
-        We denote the fiber product by \(X \times_S Y\).
+        \end{center}
         \Yang{To be checked.}
     \end{definition}
 
@@ -105,15 +103,15 @@ If you learn the following content for the first time, it is recommended to skip
 
     \begin{theorem}\label{thm:fiber_product_of_schemes_exists}
         The category of schemes admits fiber products.
-        More precisely, given morphisms of schemes \(f : X \to S\) and \(g : Y \to S\), there exists a scheme \(Z\) together with morphisms \(p : Z \to X\) and \(q : Z \to Y\) such that the diagram
-        \[
-            \begin{tikzcd}
-                Z \arrow[r, "q"] \arrow[d, "p"'] & Y \arrow[d, "g"] \\
-                X \arrow[r, "f"'] & S
-            \end{tikzcd}
-        \]
-        commutes and satisfies the universal property of the fiber product.
-        We denote this scheme by \(X \times_S Y\).
+        % More precisely, given morphisms of schemes \(f : X \to S\) and \(g : Y \to S\), there exists a scheme \(Z\) together with morphisms \(p : Z \to X\) and \(q : Z \to Y\) such that the diagram
+        % \[
+        %     \begin{tikzcd}
+        %         Z \arrow[r, "q"] \arrow[d, "p"'] & Y \arrow[d, "g"] \\
+        %         X \arrow[r, "f"'] & S
+        %     \end{tikzcd}
+        % \]
+        % commutes and satisfies the universal property of the fiber product.
+        % We denote this scheme by \(X \times_S Y\).
         \Yang{To be continued}
     \end{theorem}
 
@@ -125,8 +123,8 @@ If you learn the following content for the first time, it is recommended to skip
     \end{definition}
 
     \begin{definition}\label{def:scheme_theoretic_intersection}
-        Let \(X\) be a scheme and \(Z_1, Z_2 \subset X\) be closed subschemes defined by quasi-coherent sheaves of ideals \(\calI_1, \calI_2 \subset \calO_X\), respectively.
-        The \emph{scheme theoretic intersection} of \(Z_1\) and \(Z_2\) is the closed subscheme \(Z_1 \cap Z_2\) defined by the quasi-coherent sheaf of ideals \(\calI_1 + \calI_2\).
+        Let \(X\) be a scheme and \(Z_1, Z_2 \subset X\) be closed subschemes of \(X\) with inclusion morphisms \(i_1 : Z_1 \to X\) and \(i_2 : Z_2 \to X\).
+        The \emph{scheme theoretic intersection} of \(Z_1\) and \(Z_2\) is the fiber product \(Z_1 \times_X Z_2\).
         \Yang{To be checked.}
     \end{definition}
 
@@ -144,9 +142,13 @@ If you learn the following content for the first time, it is recommended to skip
     \end{proposition}
 
     \begin{definition}\label{def:scheme_of_finite_type_over_base_scheme}
-        Let \(S\) be a scheme.
-        A scheme \(X\) is \emph{of finite type} over \(S\) if there exists a finite open cover \(\{U_i\}_{i=1}^n\) of \(S\) such that for each \(i\), \(f^{-1}(U_i)\) can be covered by finitely many affine open subsets \(\{V_{ij}\}_{j=1}^{m_i}\) with \(f(V_{ij}) \subseteq U_i\) and the induced morphism \(f|_{V_{ij}} : V_{ij} \to U_i\) corresponds to a finitely generated algebra over the ring of global sections of \(U_i\).
+        Let \(f:X \to S\) be a morphism of schemes.
+        We say that \(f\) is \emph{of finite type}, or \(X\) is \emph{of finite type} over \(S\), 
+        if there exists a finite affine cover \(\{U_i\}_{i=1}^n\) of \(S\) such that for each \(i\), 
+        \(f^{-1}(U_i)\) can be covered by finitely many affine open subsets \(\{V_{ij}\}_{j=1}^{m_i}\) with \(f(V_{ij}) \subseteq U_i\) 
+        and the induced morphism \(f|_{V_{ij}} : V_{ij} \to U_i\) corresponds to a finitely generated algebra over the ring of global sections of \(U_i\).
 
+        Given \(S\), the category consisted of \(S\)-scheme of finite type over \(S\), together with morphisms of \(S\)-schemes, is denoted by \(\sch_S\).
         \Yang{To be checked.}
     \end{definition}
 
@@ -193,6 +195,13 @@ If you learn the following content for the first time, it is recommended to skip
         \Yang{To be checked.}
     \end{proposition}
 
+    \begin{corollary}\label{prop:determinant_is_irreducible_as_a_polynomial}
+        Let \(\kkk\) be an algebraically closed field and \(n \geq 1\) be an integer.
+        Then the polynomial \(\det(x_{ij}) \in k[x_{ij} : 1 \leq i,j \leq n]\) is irreducible.
+        % In particular, the variety of \(n \times n\) matrices of rank less than \(n\) is an irreducible subvariety of \(\bbA^{n^2}_k\).
+        \Yang{To be checked.}
+    \end{corollary}
+
 \subsection{Dimension}
 
     \begin{definition}\label{def:krull_dimension_of_topological_space}
@@ -200,6 +209,13 @@ If you learn the following content for the first time, it is recommended to skip
         \[ Z_0 \subsetneq Z_1 \subsetneq \cdots \subsetneq Z_n \]
         in \(X\).
         If no such finite supremum exists, we say that \(X\) has infinite dimension.
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:local_dimension_of_schemes}
+        Let \(\xi \in X\) be a point in a scheme \(X\).
+        The \emph{local dimension} of \(X\) at \(\xi\), denoted by \(\dim_\xi X\), is defined as the infimum of the dimensions of all open neighborhoods \(U\) of \(\xi\):
+        \[ \dim_\xi X = \inf \{\dim U : U \text{ is an open neighborhood of } \xi\}. \]
         \Yang{To be checked.}
     \end{definition}
 
@@ -240,8 +256,9 @@ If you learn the following content for the first time, it is recommended to skip
         A morphism of schemes \(f : X \to Y\) is separated if and only if for every commutative diagram
         \[
             \begin{tikzcd}
-                \Spec K \arrow[r] \arrow[d] & X \arrow[d, "f"] \\
-                \Spec R \arrow[r] \arrow[ru, dashed] & Y
+                \Spec K \arrow[d] \arrow[rd]        & \\
+                \Spec R \arrow[rd] \arrow[r, gray]  & X \arrow[d, "f"] \\
+                                                    & Y
             \end{tikzcd}
         \]
         where \(R\) is a valuation ring with field of fractions \(K\), there exists at most one morphism \(\Spec R \to X\) making the entire diagram commute.
@@ -254,7 +271,7 @@ If you learn the following content for the first time, it is recommended to skip
     \end{definition}
 
     \begin{definition}\label{def:proper_morphism_and_proper_scheme}
-        A morphism of schemes \(f : X \to Y\) is \emph{proper} if it is of finite type, separated, and universally closed (i.e., for any morphism \(Y' \to Y\), the base change \(X \times_Y Y' \to Y'\) is a closed map).
+        A morphism of schemes \(f : X \to Y\) is \emph{proper} if it is of finite type, separated, and universally closed.
         A scheme \(X\) is \emph{proper} if the structure morphism \(X \to \Spec \bbZ\) is proper.
         \Yang{To be checked.}
     \end{definition}
@@ -277,38 +294,34 @@ If you learn the following content for the first time, it is recommended to skip
         \[
             \begin{tikzcd}
                 \Spec K \arrow[r] \arrow[d] & X \arrow[d, "f"] \\
-                \Spec R \arrow[r] \arrow[ru, dashed] & Y
+                \Spec R \arrow[r] \arrow[ru, gray] & Y
             \end{tikzcd}
         \]
         where \(R\) is a valuation ring with field of fractions \(K\), there exists a unique morphism \(\Spec R \to X\) making the entire diagram commute.
         \Yang{To be checked.}
-        
     \end{proposition}
 
-% \subsection{Projective morphisms}
-
-%     \begin{definition}\label{def:projective_morphisms}
-%         Let \(f : X \to Y\) be a morphism of schemes.
-%         We say that \(f\) is \emph{projective} if there exists a closed immersion \(i : X \to \bbP^n_Y\) for some \(n \geq 0\) such that the following diagram commutes:
-%         \[
-%             \begin{tikzcd}
-%                 X \arrow[rr, "i"] \arrow[dr, "f"'] & & \bbP^n_Y \arrow[dl, "\pi"] \\
-%                 & Y &
-%             \end{tikzcd}
-%         \]
-%         where \(\pi : \bbP^n_Y \to Y\) is the natural projection.
-%         \Yang{To be checked.}
-%     \end{definition}
-
-%     \begin{theorem}\label{thm:projective_morphism_is_proper}
-%         Any projective morphism is proper.
-%         In particular, any projective scheme is proper.
-%         \Yang{To be checked.}
-%     \end{theorem}
-
-%     \begin{definition}\label{def:the_tautological_line_bundle}
-%         Let \(Y\) be a scheme. 
-%         The \emph{tautological line bundle} \(\mathcal{O}_{\bbP^n_Y}(1)\) is the line bundle on \(\bbP^n_Y\) associated to the divisor corresponding to the hyperplane at infinity.
-%     \end{definition}
-
+    
 \subsection{Varieties}
+
+    \begin{definition}\label{def:variety_over_algebraically_closed_field}
+        Let \(\kkk\) be a algebraically closed field.
+        A \emph{variety over \(\kkk\)} is an integral scheme of finite type over \(\Spec \kkk\).
+        The category of varieties over \(\kkk\) is denoted by \(\Var_\kkk\).
+        \Yang{To be checked.}
+    \end{definition}
+
+    Let \(X\) be a variety over \(\kkk\).
+    The closed points \(X(\kkk)\) is a locally ringed subspace of \(X\) with the induced topology and structure sheaf.
+    We denote the category of such locally ringed spaces by \(\symbf{ClaVar}_\kkk\), meaning the category of \emph{classical varieties} over \(\kkk\).
+
+    \begin{theorem}\label{prop:closed_point_determine_varieties}
+        Let \(X\) be a variety over \(\kkk\).
+        Then there is an equivalence of categories between \(\Var_\kkk\) and \(\symbf{ClaVar}_\kkk\).
+    \end{theorem}
+    \begin{slogan}
+        Closed points determine varieties.
+    \end{slogan}
+    \begin{proof}
+        \Yang{To be continued}.
+    \end{proof}
