@@ -58,6 +58,10 @@
         \item Check whether \(\calM\) is representable.
     \end{enumerate}
 
+    \begin{slogan}
+        To solve a moduli problem is to find a representable functor which describes ``continuous deformations''.
+    \end{slogan}
+
     \begin{definition}\label{def:fine_moduli_space}
         Let \(S\) be a noetherian scheme and \(\calM: \Sch_{S}^{\op} \to \Set\) be a functor.
         If \(\calM\) is representable by a scheme \(M\) of finite type over \(S\), then we say that \(M\) is a \emph{fine moduli space} for the moduli problem \(\calM\).
@@ -72,16 +76,57 @@
         \[
             \calG: \Sch_{\kkk}^{\op} \to \Set,\quad X \mapsto \{L \subset \bbP^2 \times X | L \text{ is flat over } X, L_x \text{ is a line in } \bbP^2 \text{ for all } x \in X(\kkk)\}.
         \]
-        Then the dual projective plane \(G = \bbP_{\kkk}^2\) is a fine moduli space for the moduli problem \(\calG\).
+
+        We claim that the dual projective plane \(G = \bbP_{\kkk}^2\) is a fine moduli space for the moduli problem \(\calG\).
         The universal object is given by 
         \[
-            \calU = \{([x:y:z], [a:b:c]) \in \bbP_{\kkk}^2 \times G | ax + by + cz = 0\} \subset \bbP_{\kkk}^2 \times G.
+            U = \{([x:y:z], [a:b:c]) \in \bbP_{\kkk}^2 \times G | ax + by + cz = 0\} \subset \bbP_{\kkk}^2 \times G.
         \]
+        For every \(X \in \Sch_{\kkk}\) and \(f \in G(X)\), we can give a family of lines \(L = U \times_G X \in \calG(X)\) by pulling back the universal object \(U\) along \(\id_{\bbP_{\kkk}^2} \times f: \bbP_{\kkk}^2 \times X \to \bbP_{\kkk}^2 \times G\).
+        The difficult part is to construct the inverse map, i.e., given a family of lines \(L \in \calG(X)\), we need to construct a morphism \(f: X \to G\) such that \(L\) is obtained by pulling back \(U\) along \(\id_{\bbP_{\kkk}^2} \times f\).
 
-        For every \(X \in \Sch_{\kkk}\) and \(f \in G(X)\), we can give a family of lines \(L = \calU \times_G X \in \calG(X)\) by pulling back the universal object \(\calU\) along \(\id_{\bbP_{\kkk}^2} \times f: \bbP_{\kkk}^2 \times X \to \bbP_{\kkk}^2 \times G\).
-        The difficult part is to construct the inverse map, i.e., given a family of lines \(L \in \calG(X)\), we need to construct a morphism \(f: X \to G\) such that \(L\) is obtained by pulling back \(\calU\) along \(\id_{\bbP_{\kkk}^2} \times f\).
+        We need a more ``functorial'' way to describe the dual projective plane \(G\).
+        Set \(V = H^0(\calO_{\bbP_{\kkk}^2}(1))\), let \(G = \Proj (\Sym^{\bullet} V^{\vee})\) be the dual projective plane.
+        To give a morphism \(f:X \to G\), it is equivalent to giving a line bundle \(\calL\) on \(X\) and a surjective morphism \(\calO_X \ten_\kkk V^{\vee} \surjmap \calL\) by \Yang{To be added.}.
+        
+        Let \(\calI_L\) be the ideal sheaf of \(L\) in \(\bbP_X^2 = \bbP^2 \times X\).
+        Consider the short exact sequence on \(\bbP_X^2\):
+        \[ 0 \to \calI_L(1) \to \calO_{\bbP_{X}^2}(1) \to \calO_{L}(1) \to 0. \]
+        Since \(L\) is a family of lines, we have \(\calI_L(1)|_{\bbP^2 \times \{x\}} \cong \calO_{\bbP^2}\) for all \(x \in X(\kkk)\).
+        By Theorem of Cohomology and Base Change (\Yang{To be added.}), we have \(\calL^\vee \coloneqq (\pr_X)_*(\calI_L(1))\) is a line bundle on \(X\) and \(\sfR^1(\pr_X)_*\calI_L(1) = 0\).
+        Then, pushing forward the above short exact sequence along the projection \(\pr_X: \bbP_X^2 \to X\) gives a short exact sequence
+        \[ 0 \to \calL^{\vee} \to \calO_X \ten_{\kkk} V \to (\pr_X)_*\calO_L(1) \to 0. \]
+        Dualizing it gives a surjective morphism \(\calO_X \ten_{\kkk} V^{\vee} \surjmap \calL\).
+        In particular, if \(X = G\) and \(L = U\) is the universal family, we get the line bundle \(\calU = \calO_G(1)\) on \(G\) and the surjective morphism \(\calO_G \ten_{\kkk} V^{\vee} \surjmap \calO_G(1)\) corresponding to the identity morphism \(\id_G\).
 
-        \Yang{To be completed.}
+        Let \(f: X \to G\) be the morphism induced by the surjective morphism \(\calO_X \ten_{\kkk} V^{\vee} \surjmap \calL\).
+        Then we have the following commutative diagram:(\Yang{Why?})
+        \[ \begin{tikzcd}
+            f^* (\calO_{G} \ten_\kkk V^\vee) \arrow[d,"\cong"] \arrow{r}    & f^*\calU \arrow[d,"\cong"] \arrow{r} & 0 \\
+            \calO_{X}\ten_\kkk V^\vee \arrow[r]                             & \calL \arrow{r} & 0.
+        \end{tikzcd} \]
+        Take duals and pull back along \(\pr_X: \bbP_X^2 \to X\), we get a commutative diagram: (\Yang{To be added.})
+        \[ \begin{tikzcd}
+            0   \arrow{r}   & \pr_X^*f^* \calU^\vee \arrow[d,"\cong"] \arrow{r} & \pr_X^*f^* \calO_{G} \ten_\kkk V \arrow[d,"\cong"] \\
+            0   \arrow[r]   & \pr_X^* \calL^\vee \arrow{r} & \pr_X^* \calO_{X}\ten_\kkk V.
+        \end{tikzcd} \]
+        Note that \(\calL^\vee = (\pr_X)_*(\calI_L(1))\) and \(\calU^\vee = (\pr_G)_*(\calI_U(1))\).
+        Hence, by cohomology commuting with flat base change \Yang{To be added.}, we have
+        \[ \begin{tikzcd}
+            0   \arrow{r}   & \pr_X^* (\pr_X)_* \Big((\id_{\bbP^2} \times f)^* \calI_U(1)\Big) \arrow[d,"\cong"] \arrow{r}  & \pr_X^* \Big(f^* \calO_{G} \ten_\kkk V\Big) \arrow[d,"\cong"] \\
+            0   \arrow[r]   & \pr_X^* (\pr_X)_* \Big(\calI_L(1) \Big) \arrow{r}                                             & \pr_X^* \Big(\calO_{X}\ten_\kkk V\Big).
+        \end{tikzcd} \]
+        Note that \((\pr_X)_* \calI_L(1)\) is a line bundle and hence we have \(\pr_X^*(\pr_X)_* (\calI_L(1) ) \cong \calI_L(1)\).
+        Together with the natural surjective homomorphism \(\pr_X^* (\calO_{X}\ten_\kkk V) \to \calO_{\bbP_X^2}(1)\), we have 
+        \[ \begin{tikzcd}
+                        &                                                                               & \pr_X^* \Big(f^* \calO_{G} \ten_\kkk V\Big) \arrow[dr, two heads] & \\
+            0 \arrow[r] & (\id_{\bbP^2} \times f)^* \calI_U(1) \arrow[d,"\cong"] \arrow[rr] \arrow[ur]  &                                                                   & \calO_{\bbP_X^2}(1) \arrow[d,"\cong"]  \\
+            0 \arrow[r] & \calI_L(1) \arrow[rr] \arrow[dr]                                              &                                                                   & \calO_{\bbP_X^2}(1). \\
+                        &                                                                               & \pr_X^* \Big(\calO_{X}\ten_\kkk V\Big)      \arrow[ur,two heads]  &   \\
+        \end{tikzcd} \]
+        After identifying the last vertical isomorphism, we have the equality of sheaf ideals \((\id_{\bbP^2} \times f)^* \calI_U = \calI_L\).
+        It follows that \(L = U \times_G X\) and we are done.
+        % \Yang{To be completed.}
     \end{example}
 
     

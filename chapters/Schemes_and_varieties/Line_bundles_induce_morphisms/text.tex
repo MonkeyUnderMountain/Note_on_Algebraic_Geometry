@@ -14,6 +14,19 @@
         \[ H^i(X, \calF \otimes \calL^{\otimes n}) = 0 \]
     \end{theorem}
 
+    \begin{definition}\label{def:Hilbert_polynomial_w.r.t_ample_line_bundles}
+        Let \((X,\calO_X(1))\) be a projective scheme over a field \(k\) and \(\calF\) a coherent sheaf on \(X\).
+        The \emph{Hilbert polynomial} of \(\calF\) with respect to \(\calO_X(1)\) is the polynomial 
+        \[
+            P_{\calF}(n) = \chi(X, \calF \otimes \calO_X(n)) = \sum_{i=0}^{\infty} (-1)^i \dim_k H^i(X, \calF \otimes \calO_X(n)).
+        \]
+        \Yang{To be continued.}
+
+        Let \(Z \subseteq X\) be a closed subscheme with ideal sheaf \(\calI_Z\).
+        The \emph{Hilbert polynomial} of \(Z\) with respect to \(\calO_X(1)\) is defined as \(P_Z(n) = P_{\calO_X/\calI_Z}(n)\).
+        \Yang{To be revised.}
+    \end{definition}
+
 \subsection{Ample and basepoint free line bundles}
 
     The story begins with the following theorem, which uses global sections of a line bundle to construct a morphism to projective space.
@@ -22,7 +35,8 @@
         Let \(A\) be a ring and \(X\) an \(A\)-scheme.
         Let \(\calL\) be a line bundle on \(X\) and \(s_0,\ldots,s_n\in\Gamma(X,\calL)\).
         Suppose that \(\{s_i\}\) generate \(\calL\), i.e., \(\bigoplus_i \calO_X\cdot s_i \to \calL\) is surjective.
-        Then there is a unique morphism \(f:X\to \bbP^n_A\) such that \(\calL\cong f^*\calO(1)\) and \(s_i=f^*x_i\), where \(x_i\) are the standard coordinates on \(\bbP^n_A\).   
+        Then there is a unique morphism \(f:X\to \bbP^n_A\) such that \(\calL\cong f^*\calO(1)\) and \(s_i=f^*x_i\), where \(x_i\) are the standard coordinates on \(\bbP^n_A\). 
+        \Yang{We need a more ``functorial'' expression.}  
     \end{theorem}
     \begin{proof}
         Let \(U_i\coloneqq \{\xi \in X: s_i(\xi) \not\in \frakm_\xi \calL_\xi\}\) be the open subset where \(s_i\) does not vanish.
