@@ -1,1 +1,35 @@
-\section{}
+\section{The Quot functor}
+
+\subsection{Grassmannian}
+
+    \begin{definition}\label{def:Grassmannian_functor}
+        Let \(S\) be a noetherian scheme and \(\calE\) a vector bundle of rank \(n\) on \(S\).
+        The \emph{Grassmannian functor} \(\frakGrass_{\calE,r}:\Sch_S^\op \to \Set\) is defined as 
+        \[ T \mapsto \left\{\calE_T \to \calQ \to 0 \ \middle|\ \calQ \text{ locally free of rank }r\text{ on } T \right\} / \sim, \]
+        where two quotients \(\calE_T \to \calQ \to 0\) and \(\calE_T \to \calQ' \to 0\) are equivalent if there is an isomorphism \(\calQ \cong \calQ'\) making the obvious diagram commute.
+        \Yang{To be revised.}
+    \end{definition}
+
+
+\subsection{Hilbert functor and scheme}
+
+    \begin{definition}\label{def:Hilbert_functor}
+        Let \(S\) be a noetherian scheme and \(X\) a projective scheme over \(S\).
+        Fix a relatively very ample line bundle \(\calO_X(1)\) on \(X\) over \(S\).
+        For a polynomial \(P \in \bbQ[t]\), the \emph{Hilbert functor} \(\frakHilb_{X/S,P}:\Sch_S^\op \to \Set\) is defined as
+        \[ T \mapsto \left\{ Y \subseteq X_T \ \middle|\ Y \to T \text{ is flat and for all } t \in T, P_{\calO_{Y_t}} = P \right\}, \]
+        where \(Y_t\) is the fiber of \(Y\) over the point \(t\) and \(P_{\calO_{Y_t}}\) is the Hilbert polynomial of \(\calO_{Y_t}\) with respect to \(\calO_X(1)\).
+        \Yang{To be revised.}
+    \end{definition}
+
+
+\subsection{Quot functor and scheme}
+
+    \begin{definition}\label{def:Quot_functor}
+        Let \(S\) be a noetherian scheme, \(X\) a projective scheme over \(S\), and \(\calE\) a vector bundle on \(X\).
+        Fix a relatively very ample line bundle \(\calO_X(1)\) on \(X\) over \(S\).
+        The \emph{Quot functor} \(\frakQuot_{\calE/X/S}:\Sch_S^\op \to \Set\) is defined as
+        \[ T \mapsto \left\{ \calE_T \to \calQ \to 0 \ \middle|\ \calQ \text{ locally free of rank }r \text{ on } T \right\} / \sim, \]
+        where two quotients \(\calE_T \to \calQ \to 0\) and \(\calE_T \to \calQ' \to 0\) are equivalent if there is an isomorphism \(\calQ \cong \calQ'\) making the obvious diagram commute.
+        \Yang{To be revised.}
+    \end{definition}
