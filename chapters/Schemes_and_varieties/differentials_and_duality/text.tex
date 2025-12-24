@@ -1,28 +1,34 @@
 \section{Differentials and duality}
 
-Let \(S\) be a base noetherian scheme.
-Unless otherwise specified, all schemes and varieties are assumed to be defined and of finite type over \(S\).
-
-% Let \(\kkk\) be an algebraically closed field.
-% Unless otherwise specified, all schemes and varieties are assumed to be defined and of finite type over \(\kkk\).
+Let \(S\) be a base noetherian scheme, \(\kkk\) be an algebraically closed field.
+Unless otherwise specified, all schemes are assumed to be defined and of finite type over \(S\) and all varieties are assumed to be defined over \(\kkk\).
 
 \subsection{The sheaves of differentials}
 
     \begin{definition}\label{def:sheaves_of_differentials}
-        Let \(X\) be an \(S\)-scheme.
-        The \emph{sheaf of differentials} of \(X\) over \(S\), denoted by \(\Omega_{X/S}\), is the \(\calO_X\)-module representing the functor from the category of \(\calO_X\)-modules to the category of sets that sends an \(\calO_X\)-module \(\calF\) to the set of \(S\)-derivations from \(\calO_X\) to \(\calF\), i.e.,
-        \[
-            \Hom_{\calO_X}(\Omega_{X/S}, \calF) \cong \Der_S(\calO_X, \calF).
-        \]
-        Equivalently, \(\Omega_{X/S}\) is the sheaf associated to the presheaf that sends an open subset \(U \subseteq X\) to the module of Kähler differentials \(\Omega_{\calO_X(U)/\calO_S(f(U))}\), where \(f: X \to S\) is the structure morphism.
-
-        \Yang{To be revised.}
+        Let \(f:X \to S\) be an \(S\)-scheme.
+        The \emph{sheaf of differentials} of \(X\) over \(S\), denoted by \(\Omega_{X/S}\), is the \(\calO_X\)-module locally given by
+        \[ \Omega_{X/S}(U) = \Omega_{\calO_X(U)/\calO_S(V)} \]
+        for any affine open subsets \(U \subseteq X\) and \(V \subseteq S\) with \(f(U) \subseteq V\).
     \end{definition}
+
+    \begin{example}\label{eg:differentials_sheaves_on_projective_space}
+        
+    \end{example}
 
 
     \begin{theorem}[Euler sequence for projective bundle]\label{thm:Euler_sequence_for_projective_bundle}
-        
+        Let \(X\) be a normal variety over \(\kkk\) and \(\calE\) be a locally free sheaf of rank \(r+1\) on \(X\).
+        Let \(\pi: \bbP_X(\calE) \to X\) be the projective bundle associated to \(\calE\).
+        Then there is a natural exact sequence of \(\calO_{\bbP_X(\calE)}\)-modules
+        \[
+            0 \to \Omega_{\bbP_X(\calE)/X} \to \pi^*\calE(-1) \to \calO_{\bbP_X(\calE)} \to 0.
+        \]
+        \Yang{To be checked.}
     \end{theorem}
+    \begin{proof}
+        
+    \end{proof}
 
     \begin{definition}\label{def:canonical_divisor_on_normal_varieties}
         Let \(X\) be a normal variety over \(\kkk\) of dimension \(n\).
@@ -31,6 +37,12 @@ Unless otherwise specified, all schemes and varieties are assumed to be defined 
         Then the \emph{canonical divisor} \(K_X\) is defined to be any Weil divisor on \(X\) such that \(\calO_X(K_X)\cong i_*\omega_U\).
         Note that \(U\) is big in \(X\) since \(X\) is normal, so such a Weil divisor always exists and is unique up to linear equivalence.
     \end{definition}
+
+    \begin{example}\label{eg:canonical_divisor_of_projective_space}
+        Let \(\bbP^n_\kkk\) be the projective space of dimension \(n\) over \(\kkk\).
+        Then the canonical divisor \(K_{\bbP^n_\kkk} \sim -(n+1)H\), where \(H\) is a hyperplane in \(\bbP^n_\kkk\).
+        \Yang{To be checked.}
+    \end{example}
 
 \subsection{Fundamental sequence}
 
@@ -44,20 +56,24 @@ Unless otherwise specified, all schemes and varieties are assumed to be defined 
         Then the above sequence is also exact on the left.
         \Yang{... it will be exact.}
     \end{theorem}
-
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 
     \begin{theorem}[The second fundamental sequence of differentials]\label{thm:the_second_fundamental_sequence_of_differentials}
         Let \(Z \subseteq X\) be a closed subscheme defined by the sheaf of ideals \(\calI \subseteq \calO_X\).
         Then there is a natural exact sequence of \(\calO_X\)-modules
         \[
-            \calJ/\calJ^2 \to \Omega_{X/S}|_Z \to \Omega_{Z/S} \to 0.
+            \calI/\calI^2 \to \Omega_{X/S}|_Z \to \Omega_{Z/S} \to 0.
         \]
-
-        Suppose further that \(Z\) is locally a complete intersection in \(X\).
+        Suppose further that \(Z\) is a local complete intersection in \(X\).
         Then the above sequence is also exact on the left.
         \Yang{... it will be exact.}
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 
 
@@ -72,28 +88,64 @@ Unless otherwise specified, all schemes and varieties are assumed to be defined 
         where 
         \[ R_f := \sum_{D \subseteq X \text{ prime divisor}} \left( \Mult_D f^*\big(f(D)\big)-1 \right) D \]
         is the ramification divisor of \(f\).
-        % \Yang{It is wrong.}
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 
     \begin{theorem}[Adjunction formula]\label{thm:adjunction_formula_smooth_case}
         Let \(X\) be a smooth variety and \(Z \subseteq X\) be a smooth subvariety of codimension \(1\).
         Then 
         \[ K_Z = (K_X + Z)|_Z. \]
-        %\Yang{It is wrong.}
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
 
 
 \subsection{Serre duality}
 
-    \begin{theorem}[Serre duality]\label{thm:Serre_duality}
-        Let \(X\) be a proper variety over \(\kkk\) and let \(\calF\) be a coherent sheaf on \(X\).
-        Then there is a natural isomorphism
+    \begin{definition}[Dualizing sheaf]\label{def:dualizing_sheaf}
+        Let \(X\) be a proper scheme of dimension \(n\) over \(\kkk\).
+        A \emph{dualizing sheaf} on \(X\) is a coherent sheaf \(\omega_X^\circ\) together with a trace map \(\tr_X: H^n(X, \omega_X^\circ) \to \kkk\) such that for every coherent sheaf \(\calF\) on \(X\), the natural pairing
         \[
-            H^i(X, \calF) \cong H^{n-i}(X, \calF^\vee \otimes \omega_X)^\vee,
+            \Hom(\calF, \omega_X^\circ) \times H^n(X, \calF) \to H^n(X, \omega_X^\circ) \xrightarrow{\tr_X} \kkk
         \]
-        where \(\omega_X\) is the canonical sheaf on \(X\) and \(\calF^\vee = \mathcal{H}om_{\calO_X}(\calF, \calO_X)\) is the dual sheaf.
-        \Yang{there are some errors. Need to be revised}
+        induces an isomorphism
+        \[
+            \Hom(\calF, \omega_X^\circ) \cong H^n(X, \calF)^\vee.
+        \]
+    %    \Yang{To be revised.} 
+    \end{definition}
+
+
+    \begin{theorem}\label{thm:existence_of_dualizing_sheaf}
+        Let \(X\) be a projective scheme of dimension \(n\) over \(\kkk\).
+        Then there exists a dualizing sheaf \(\omega_X^\circ\) on \(X\) up to isomorphism.
+        Moreover, if \(X\) is smooth, \(\omega_X^\circ \cong \omega_X = \bigwedge^n \Omega_{X/\kkk}\).
+        % Then the dualizing sheaf \(\omega_X\) is a coherent sheaf on \(X\) and is in fact a dualizing complex concentrated in degree \(-n\).
+        % \Yang{To be revised.}
     \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+
+    \begin{theorem}[Serre duality]\label{thm:Serre_duality}
+        Let \(X\) be a projective, Cohen-Macaulay variety of dimension \(n\) over \(\kkk\) with dualizing sheaf \(\omega_X^\circ\).
+        Then for every coherent sheaf \(\calF\) on \(X\), there is a natural isomorphism
+        \[ \Ext^i(\calF, \omega_X^\circ) \cong H^{n-i}(X, \calF)^\vee. \]
+        % \Yang{there are some errors. Need to be revised}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{corollary}\label{cor:Serre_duality_for_the_canonical_divisor}
+        Let \(X\) be a projective, normal variety of dimension \(n\) over \(\kkk\).
+        Then for every integer \(m\) and \(0 \leq i \leq n\), there is a natural isomorphism
+        \Yang{To be completed.}
+    \end{corollary}
 
 \subsection{Logarithm version}
