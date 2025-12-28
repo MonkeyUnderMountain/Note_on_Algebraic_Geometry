@@ -44,11 +44,17 @@ Mostly results in this section fits into the context of ringed spaces.
         % \Yang{To be checked...}
     \end{definition}
 
+    \begin{slogan}\label{slogan:categories_of_some_specific_sheaves}
+        \[ \Sh_X(\Ab) \supseteq \Mod_{\calO_X} \supseteq \QCoh_X \supseteq \Coh_X. \]
+    \end{slogan}
+
 \subsection{As abelian categories}
 
     \begin{theorem}\label{thm:sheaves_of_ab_mod_qcoh_coh_are_abelian_categories}
-        The categories of sheaves of abelian groups, quasi-coherent sheaves, and coherent sheaves on a ringed space \((X,\calO_X)\) are all abelian categories.
-        \Yang{To be checked.}
+        % The categories of sheaves of abelian groups, quasi-coherent sheaves, and coherent sheaves on a ringed space \((X,\calO_X)\) are all abelian categories.
+        % \Yang{To be checked.}
+        Let \((X,\calO_X)\) be a ringed space.
+        All of \(\Sh_X(\Ab), \Mod(\calO_X), \QCoh_X, \Coh_X\) are abelian categories.
     \end{theorem}
 
     \begin{theorem}\label{thm:O_X_mod_has_enough_injectives}
@@ -57,6 +63,10 @@ Mostly results in this section fits into the context of ringed spaces.
         \Yang{To be checked.}
     \end{theorem}
 
+    \begin{remark}\label{thm:O_X_mod_has}
+        The category of sheaves of \(\calO_X\)-modules generally does not have enough projectives.
+        \Yang{To be checked.}
+    \end{remark}
     
 
 \subsection{Relevant functors}
@@ -74,6 +84,15 @@ Mostly results in this section fits into the context of ringed spaces.
             \res_{UV}:\calHom_{\calO_X}(\calF,\calG)(U) \to \calHom_{\calO_X}(\calF,\calG)(V)
         \]
         is defined by sending a morphism \(\varphi:\calF|_U \to \calG|_U\) to its restriction \(\varphi|_V:\calF|_V \to \calG|_V\).
+        \Yang{To be continued.}
+    \end{definition}
+
+    \begin{definition}\label{def:dual_sheaves}
+        Let \((X,\calO_X)\) be a ringed space, and let \(\calF\) be a sheaf of \(\calO_X\)-modules.
+        The \emph{dual sheaf} \(\calF^\vee\) is defined to be
+        \[
+            \calF^\vee := \calHom_{\calO_X}(\calF,\calO_X).
+        \]
         \Yang{To be continued.}
     \end{definition}
     
@@ -124,6 +143,15 @@ Mostly results in this section fits into the context of ringed spaces.
         The \emph{\(i\)-th higher direct image} \(\sfR^i f_*\calF\) is defined as the \(i\)-th right derived functor of the direct image functor \(f_*:\Mod(\calO_X)\to \Mod(\calO_Y)\) applied to \(\calF\), i.e.,
         \[
             \sfR^i f_*\calF := \sfR^i (f_*\calF).
+        \]
+        \Yang{To be checked.}
+    \end{definition}
+
+    \begin{definition}\label{def:sheaf_ext_functor}
+        Let \((X,\calO_X)\) be a ringed space, and let \(\calF,\calG\) be sheaves of \(\calO_X\)-modules.
+        The \emph{\(i\)-th sheaf Ext functor} \(\calExt^i_{\calO_X}(\calF,\calG)\) is defined as the \(i\)-th right derived functor of the sheaf Hom functor \(\calHom_{\calO_X}(\calF,-):\Mod(\calO_X)\to \Mod(\calO_X)\) applied to \(\calG\), i.e.,
+        \[
+            \calExt^i_{\calO_X}(\calF,\calG) := \sfR^i \calHom_{\calO_X}(\calF,\calG).
         \]
         \Yang{To be checked.}
     \end{definition}

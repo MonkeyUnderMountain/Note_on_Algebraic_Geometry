@@ -63,7 +63,23 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
         \]
         Suppose further that \(f\) is smooth.
         Then the above sequence is also exact on the left.
-        \Yang{... it will be exact.}
+        \Yang{Need to be checked.}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    
+    \begin{theorem}[Ramification formula]\label{thm:ramification_formula}
+        Let \(f: X \to Y\) be a finite morphism of normal varieties. 
+        Then 
+        \[
+            K_X = f^*K_Y + R_f,
+        \]
+        where 
+        \[ R_f := \sum_{D \subseteq X \text{ prime divisor}} \left( \Mult_D f^*\big(f(D)\big)-1 \right) D \]
+        is the ramification divisor of \(f\).
+        \Yang{To be checked. definition of ramification divisor needs to be checked.}
     \end{theorem}
     \begin{proof}
         \Yang{To be completed.}
@@ -78,39 +94,35 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
         \]
         Suppose further that \(Z\) is a local complete intersection in \(X\).
         Then the above sequence is also exact on the left.
-        \Yang{... it will be exact.}
+        % \Yang{... it will be exact.}
     \end{theorem}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
-
-
-
-\subsection{Application of fundamental sequences}
-
-        \begin{theorem}[Ramification formula]\label{thm:ramification_formula}
-        Let \(f: X \to Y\) be a finite morphism of normal varieties. 
-        Then 
-        \[
-            K_X = f^*K_Y + R_f,
-        \]
-        where 
-        \[ R_f := \sum_{D \subseteq X \text{ prime divisor}} \left( \Mult_D f^*\big(f(D)\big)-1 \right) D \]
-        is the ramification divisor of \(f\).
-    \end{theorem}
-    \begin{proof}
-        \Yang{To be completed.}
-    \end{proof}
-
-
-    \begin{theorem}[Adjunction formula]\label{thm:adjunction_formula_smooth_case}
+    
+    \begin{corollary}[Adjunction formula]\label{thm:adjunction_formula_smooth_case}
         Let \(X\) be a smooth variety and \(Z \subseteq X\) be a smooth subvariety of codimension \(1\).
         Then 
         \[ K_Z = (K_X + Z)|_Z. \]
-    \end{theorem}
+    \end{corollary}
     \begin{proof}
-        \Yang{To be completed.}
+        Since both \(X\) and \(Z\) are smooth, \(Z\) is a local complete intersection in \(X\).
+        By \cref{thm:the_second_fundamental_sequence_of_differentials}, we have the exact sequence
+        \[ 0 \to \calI_Z/\calI_Z^2 \to \Omega_{X/\kkk}|_Z \to \Omega_{Z/\kkk} \to 0. \]
+        Note that \(Z\) is of codimension \(1\) in \(X\), so \(\calI_Z \cong \calO_X(-Z)\) and thus \(\calI_Z/\calI_Z^2 \cong \calO_X(-Z)|_Z\).
+        Taking the top exterior power, we obtain
+        \[ c_1(\Omega_{X})|_Z = c_1(\Omega_{Z}) + c_1(\calO_X(-Z))|_Z. \]
+        That is,
+        \[ K_X|_Z = K_Z - Z|_Z. \]
+        Rearranging gives the desired result.
     \end{proof}
+
+
+
+% \subsection{Application of fundamental sequences}
+
+
+
 
 
 \subsection{Serre duality}
@@ -150,6 +162,8 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
+
+    \Yang{When \(\calF\) is locally free, we have \(\Ext^i(\calF,\omega_X^\circ) \cong H^i(X,\omega_X^\circ \ten \calF^\vee)\).}
 
     \begin{corollary}\label{cor:Serre_duality_for_the_canonical_divisor}
         Let \(X\) be a projective, normal variety of dimension \(n\) over \(\kkk\).
