@@ -4,7 +4,7 @@ Let \(\kkk\) be an algebraically closed field of arbitrary characteristic.
 Unless otherwise specified, all varieties are defined over \(\kkk\).
 
 
-\subsection{}
+\subsection{The first properties}
 
     \begin{definition}\label{def:K3_surface}
         A \emph{K3 surface} is a smooth, projective surface \(X\) with trivial canonical bundle \(K_X\cong \calO_X\) and irregularity \(q(X)=h^1(X,\calO_X)=0\).
@@ -17,10 +17,22 @@ Unless otherwise specified, all varieties are defined over \(\kkk\).
             K_X = (K_{\bbP^3} + X)|_X = (-4H + 4H)|_X = 0,
         \]
         where \(H\) is a hyperplane in \(\bbP^3\).
-        Moreover, by the Lefschetz hyperplane theorem, we have \(h^1(X,\calO_X)=h^1(\bbP^3,\calO_{\bbP^3})=0\).
-        \Yang{To be checked.}
+        Moreover, by the exact sequence
+        \[
+            0 \to \calO_{\bbP^3}(-4) \to \calO_{\bbP^3} \to \calO_X \to 0,
+        \]
+        we have long exact sequence in cohomology
+        \[
+            \cdots \to H^1(\bbP^3,\calO_{\bbP^3}) \to H^1(X,\calO_X) \to H^2(\bbP^3,\calO_{\bbP^3}(-4)) \to \cdots.
+        \]
+        Since \(H^1(\bbP^3,\calO_{\bbP^3})=0\) and \(H^2(\bbP^3,\calO_{\bbP^3}(-4))=0\), we get \(H^1(X,\calO_X)=0\).
+        % By the Lefschetz hyperplane theorem, we have \(h^1(X,\calO_X)=h^1(\bbP^3,\calO_{\bbP^3})=0\).
+        % \Yang{To be checked.}
     \end{example}
 
 \subsection{Hodge Structure and Moduli of K3 surfaces}
+
+
+\subsection{Neron-Severi group of K3 surfaces}
 
     
