@@ -48,6 +48,16 @@ Mostly results in this section fits into the context of ringed spaces.
         \[ \Sh_X(\Ab) \supseteq \Mod_{\calO_X} \supseteq \QCoh_X \supseteq \Coh_X. \]
     \end{slogan}
 
+    \begin{definition}\label{def:support_of_coherent_sheaves}
+        Let \((X,\calO_X)\) be a ringed space, and let \(\calF\) be a coherent sheaf on \(X\).
+        The \emph{support} of \(\calF\) is defined to be the set
+        \[
+            \Supp(\calF) := \{ x \in X \mid \calF_x \neq 0 \},
+        \]
+        where \(\calF_x\) is the stalk of \(\calF\) at \(x\).
+        \Yang{To be checked.}
+    \end{definition}
+
 \subsection{As abelian categories}
 
     \begin{theorem}\label{thm:sheaves_of_ab_mod_qcoh_coh_are_abelian_categories}
@@ -67,6 +77,14 @@ Mostly results in this section fits into the context of ringed spaces.
         The category of sheaves of \(\calO_X\)-modules generally does not have enough projectives.
         \Yang{To be checked.}
     \end{remark}
+
+    \begin{theorem}\label{thm:locally_free_resolution_of_coherent_sheaves}
+        Let \(X\) be a noetherian, integral, separated, regular scheme.
+        Then every coherent sheaf on \(X\) admits a finite resolution by locally free sheaves.
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
     
 
 \subsection{Relevant functors}
@@ -123,6 +141,17 @@ Mostly results in this section fits into the context of ringed spaces.
         \]
         to be the morphism induced by the morphism of sheaves of abelian groups \(f^{-1}\varphi:f^{-1}\calF \to f^{-1}\calG\).
         \Yang{To be continued.}
+    \end{definition}
+
+    \begin{definition}\label{def:functor_of_sections_with_support}
+        Let \((X,\calO_X)\) be a ringed space, and let \(Z\subseteq X\) be a closed subset.
+        The \emph{functor of sections with support in \(Z\)} is defined as follows:
+        for an \(\calO_X\)-module \(\calF\), we define
+        \[
+            \Gamma_Z(X,\calF) := \{ s \in \Gamma(X,\calF) \mid \Supp(s) \subseteq Z \},
+        \]
+        where \(\Supp(s)\) is the support of the section \(s\).
+        \Yang{To be checked.}
     \end{definition}
 
 % \subsection{Locally free sheaves and vector bundles}

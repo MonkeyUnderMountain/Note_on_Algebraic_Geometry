@@ -17,9 +17,17 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
     \end{example}
 
 
-    \begin{proposition}\label{prop:Omega_X_is_locally_free_when_X_is_smooth_variety}
-        Let \(X\) be a smooth variety over \(\kkk\) of dimension \(n\).
+    \begin{proposition}\label{prop:Omega_X_is_locally_free_when_X_is_regular_variety}
+        Let \(X\) be a regular variety over \(\kkk\) of dimension \(n\).
         Then \(\Omega_{X/\kkk}\) is a locally free sheaf of rank \(n\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:Omega_X_is_reflexive_when_X_is_normal}
+        Let \(X\) be a normal variety over \(\kkk\) of dimension \(n\).
+        Then \(\Omega_{X/\kkk}\) is a reflexive sheaf of rank \(n\).
     \end{proposition}
     \begin{proof}
         \Yang{To be continued.}
@@ -29,22 +37,19 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
     \begin{theorem}[Euler sequence for projective bundle]\label{thm:Euler_sequence_for_projective_bundle}
         Let \(X\) be a normal variety over \(\kkk\) and \(\calE\) be a locally free sheaf of rank \(r+1\) on \(X\).
         Let \(\pi: \bbP_X(\calE) \to X\) be the projective bundle associated to \(\calE\).
-        Then there is a natural exact sequence of \(\calO_{\bbP_X(\calE)}\)-modules
+        Then there is an exact sequence of \(\calO_{\bbP_X(\calE)}\)-modules
         \[
             0 \to \Omega_{\bbP_X(\calE)/X} \to \pi^*\calE(-1) \to \calO_{\bbP_X(\calE)} \to 0.
         \]
         \Yang{To be checked.}
     \end{theorem}
     \begin{proof}
-        
+        \Yang{To be continued.}
     \end{proof}
 
     \begin{definition}\label{def:canonical_divisor_on_normal_varieties}
-        Let \(X\) be a normal variety over \(\kkk\) of dimension \(n\).
-        If \(X\) is smooth, then the \emph{canonical divisor} \(K_X\) is defined to be \(c_1(\omega_X)\).
-        In general, let \(U\subseteq X\) be the smooth locus of \(X\) and \(i:U\hookrightarrow X\) be the inclusion map.
-        Then the \emph{canonical divisor} \(K_X\) is defined to be any Weil divisor on \(X\) such that \(\calO_X(K_X)\cong i_*\omega_U\).
-        Note that \(U\) is big in \(X\) since \(X\) is normal, so such a Weil divisor always exists and is unique up to linear equivalence.
+        Let \(X\) be a normal variety over \(\kkk\).
+        The \emph{canonical divisor} \(K_X\) of \(X\) is defined to be the Weil divisor class \(c_1(\Omega_{X/\kkk})\).
     \end{definition}
 
     \begin{example}\label{eg:canonical_divisor_of_projective_space}
@@ -53,7 +58,7 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
         \Yang{To be checked.}
     \end{example}
 
-\subsection{Fundamental sequence}
+\subsection{Fundamental sequences}
 
     \begin{theorem}[The first fundamental sequence of differentials]\label{thm:the_first_fundamental_sequence_of_differentials}
         Let \(f: X \to Y\) be a morphism of schemes.
@@ -61,16 +66,20 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
         \[
             f^* \Omega_{Y/S} \to \Omega_{X/S} \to \Omega_{X/Y} \to 0.
         \]
-        Suppose further that \(f\) is smooth.
-        Then the above sequence is also exact on the left.
-        \Yang{Need to be checked.}
     \end{theorem}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
 
+    \begin{proposition}\label{prop:the_first_fundamental_sequence_exact_when}
+        Let \(f: X \to Y\) be a surjective and generically finite morphism of normal varieties over \(\kkk\).
+        Then the first fundamental sequence of differentials is exact on the left.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
     
-    \begin{theorem}[Ramification formula]\label{thm:ramification_formula}
+    \begin{corollary}[Ramification formula]\label{cor:ramification_formula}
         Let \(f: X \to Y\) be a finite morphism of normal varieties. 
         Then 
         \[
@@ -80,7 +89,7 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
         \[ R_f := \sum_{D \subseteq X \text{ prime divisor}} \left( \Mult_D f^*\big(f(D)\big)-1 \right) D \]
         is the ramification divisor of \(f\).
         \Yang{To be checked. definition of ramification divisor needs to be checked.}
-    \end{theorem}
+    \end{corollary}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
@@ -92,38 +101,34 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
         \[
             \calI/\calI^2 \to \Omega_{X/S}|_Z \to \Omega_{Z/S} \to 0.
         \]
-        Suppose further that \(Z\) is a local complete intersection in \(X\).
+        Suppose further that \(Z \to X\) is a regular immersion.
         Then the above sequence is also exact on the left.
-        % \Yang{... it will be exact.}
     \end{theorem}
     \begin{proof}
         \Yang{To be completed.}
     \end{proof}
     
-    \begin{corollary}[Adjunction formula]\label{thm:adjunction_formula_smooth_case}
-        Let \(X\) be a smooth variety and \(Z \subseteq X\) be a smooth subvariety of codimension \(1\).
+    \begin{corollary}[Adjunction formula]\label{cor:adjunction_formula_smooth_case}
+        Let \(X\) be a normal variety and \(Z \subseteq X\) be a prime Cartier divisor which is normal as variety.
         Then 
         \[ K_Z = (K_X + Z)|_Z. \]
     \end{corollary}
     \begin{proof}
-        Since both \(X\) and \(Z\) are smooth, \(Z\) is a local complete intersection in \(X\).
+        Since both \(X\) and \(Z\) are normal, they are smooth in codimension \(1\).
+        Removing the singular locus of \(X\) and \(Z\), we may assume that both \(X\) and \(Z\) are smooth varieties.
+        This is valid since the canonical divisor is determined by the smooth locus.
+
+        Since \(Z\) is Cartier, it is a local complete intersection in \(X\).
         By \cref{thm:the_second_fundamental_sequence_of_differentials}, we have the exact sequence
         \[ 0 \to \calI_Z/\calI_Z^2 \to \Omega_{X/\kkk}|_Z \to \Omega_{Z/\kkk} \to 0. \]
         Note that \(Z\) is of codimension \(1\) in \(X\), so \(\calI_Z \cong \calO_X(-Z)\) and thus \(\calI_Z/\calI_Z^2 \cong \calO_X(-Z)|_Z\).
-        Taking the top exterior power, we obtain
+        Taking \(c_1\), we obtain
         \[ c_1(\Omega_{X})|_Z = c_1(\Omega_{Z}) + c_1(\calO_X(-Z))|_Z. \]
         That is,
         \[ K_X|_Z = K_Z - Z|_Z. \]
         Rearranging gives the desired result.
+        \Yang{To be revised. restriction of Weil divisors needs to be clarified.}
     \end{proof}
-
-
-
-% \subsection{Application of fundamental sequences}
-
-
-
-
 
 \subsection{Serre duality}
 

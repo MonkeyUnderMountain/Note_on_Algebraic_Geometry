@@ -13,8 +13,8 @@
 
     \begin{definition}\label{def:picard_group}
         Let \(X\) be a scheme. 
-        The \emph{Picard group} of \(X\) is defined to be \(\Pic(X) = H^1(X, \calO_X^*)\).
-        The group operation is given by the tensor product of line bundles.
+        The \emph{Picard group} of \(X\) is defined to be the group of isomorphism classes of line bundles on \(X\) with the group operation given by the tensor product.
+        It is denoted by \(\Pic(X)\).
     \end{definition}
 
     \begin{definition}\label{def:algebraically_equivalent_line_bundles}
@@ -39,6 +39,51 @@
 
     \begin{definition}\label{def:reflexive_sheaves}
         Let \(X\) be a scheme and \(\calF\) a coherent sheaf on \(X\).
-        The \emph{dual sheaf} of \(\calF\) is defined as \(\calF^\vee = \calHom_{\calO_X}(\calF, \calO_X)\).
-        The sheaf \(\calF\) is called \emph{reflexive} if the natural map \(\calF \to (\calF^\vee)^\vee\) is an isomorphism.
+        The sheaf \(\calF\) is called \emph{reflexive} if the natural map \(\calF \to \calF^{\vee\vee}\) is an isomorphism.
     \end{definition}
+
+    \begin{proposition}\label{prop:reflexive_sheaf_determined_by_codimension_locus}
+        Let \(X\) be a normal scheme and \(\calF\) a coherent sheaf on \(X\).
+        If \(\calF\) is reflexive, then it is determined by its restriction to any open subset \(U \subseteq X\) whose complement has codimension at least \(2\), i.e., \(\calF \cong i_* (\calF|_U)\), where \(i: U \hookrightarrow X\) is the inclusion map.
+        \Yang{To be checked.}
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+    \begin{theorem}\label{thm:reflexive_sheaves_of_rank_1_and_Weil_divisors_class_group}
+        Let \(X\) be a normal integral scheme.
+        There is a one-to-one correspondence between the set of isomorphism classes of reflexive sheaves of rank \(1\) on \(X\) and the \Yang{Weil divisor class group \(\WDiv(X)\)} of \(X\).
+        Under this correspondence, a Weil divisor \(D\) corresponds to the reflexive sheaf \(\calO_X(D)\).
+        \Yang{To be checked.}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+
+\subsection{The first Chern class}
+
+    \begin{definition}\label{def:first_chern_class_vector_bundles}
+        Let \(X\) be a normal scheme and \(\calL\) a vector bundle on \(X\).
+        The \emph{first Chern class} of \(\calL\), denoted by \(c_1(\calL)\), is a Weil divisor class defined as follows:
+        
+        \Yang{To be completed.}
+    \end{definition}
+
+    \begin{definition}\label{def:first_chern_class_coherent_sheaves}
+        Let \(X\) be a normal scheme and \(\calF\) a coherent sheaf on \(X\).
+        On \(X_{\text{reg}}\), the regular locus of \(X\), \(\calF|_{X_{\text{reg}}}\) admits a finite resolution by vector bundles
+        \[ 0 \to \calE_n \to \calE_{n-1} \to \cdots \to \calE_0 \to \calF|_{X_{\text{reg}}} \to 0. \]
+        The \emph{first Chern class} of \(\calF\), denoted by \(c_1(\calF)\), is defined to be
+        \[ c_1(\calF) = \sum_{i=0}^n (-1)^i c_1(\calE_i). \]
+        \Yang{To be revised.}
+    \end{definition}
+
+    \begin{proposition}\label{prop:first_chern_class_of_torsion_sheaves}
+        Let \(X\) be a normal scheme and \(\calF\) a torsion sheaf on \(X\).
+        Then 
+        \[ c_1(\calF) = \sum_{Z} \length_{\calO_{X,Z}}(\calF_Z) \cdot Z, \]
+        where the sum runs over all prime divisors \(Z\) of \(X\) and \(\calF_Z\) is the stalk of \(\calF\) at the generic point of \(Z\).
+        \Yang{To be checked.}
+    \end{proposition}
