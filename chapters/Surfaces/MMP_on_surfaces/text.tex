@@ -3,22 +3,69 @@
 Let \(\kkk\) be an algebraically closed field of arbitrary characteristic.
 Unless otherwise specified, all varieties are defined over \(\kkk\).
 
+\subsection{Birational morphisms on surfaces}
 
-\subsection{Birational map}
+    Let \(X\) be a smooth projective surface, \(0 \in X(\kkk)\) and \(\pi:\tilde{X} = \Bl_0 X \to X\) the blow-up of \(X\) at \(0\).
+    Denote by \(E\) the exceptional divisor of \(\pi\).
+    
+    \begin{proposition}\label{prop:self-intersection_number_of_exceptional_curve_of_blow_up}
+        We have \(E^2 = -1\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued}
+    \end{proof}
 
-    \begin{theorem}
-        Let \(X\) and \(Y\) be two smooth projective surfaces over an algebraically closed field \(\kkk\).
-        Then any birational map \(f:X\dashrightarrow Y\) can be decomposed as a finite sequence of blow-ups and blow-downs.
-        \Yang{To be checked.}
+    \begin{proposition}\label{prop:canonical_divisor_after_blowing_up_on_surface}
+        We have \(K_{\tilde{X}} = \pi^* K_X + E\).
+    \end{proposition}
+    \begin{proof}
+        We have the exact sequence
+        \[ \Omega_{\tilde{X}} \to \pi^* \Omega_X \to \Omega_{\tilde{X}/X} \to 0. \]
+        Since both \(\tilde{X}\) and \(X\) are smooth, \(\Omega_{\tilde{X}}\) and \(\Omega_X\) are locally free sheaves of rank \(2\).
+        The kernel of the first map is of rank \(0\) and torsion, thus it is zero.
+        Therefore, we have the short exact sequence
+        \[ 0 \to \Omega_{\tilde{X}} \to \pi^* \Omega_X \to \Omega_{\tilde{X}/X} \to 0. \]
+        \Yang{To be continued}
+    \end{proof}
+
+
+    \begin{corollary}\label{cor:self-intersection_number_of_canonical_divisor_after_blowing_up_on_surface}
+        We have \(K_{\tilde{X}}^2 = K_X^2 - 1\).
+    \end{corollary}
+    \begin{proof}
+        By \cref{prop:canonical_divisor_after_blowing_up_on_surface}, we have
+        \[ K_{\tilde{X}}^2 = (\pi^* K_X + E)^2 = (\pi^* K_X)^2 + 2 \pi^* K_X \cdot E + E^2 = K_X^2 + 0 - 1 = K_X^2 - 1. \]
+    \end{proof}
+    
+
+    \begin{theorem}\label{thm:birational_map_decomposition_on_surfaces}
+        Let \(f:X \to Y\) be a birational morphism between two smooth projective surfaces.
+        Then \(f\) can be decomposed as a finite sequence of blow-ups at points.
+        % \Yang{To be checked.}
     \end{theorem}
+    \begin{proof}
+        \Yang{To be continued}
+    \end{proof}
 
-\subsection{Castelnuovo's Theorem and Run the MMP}
+\subsection{Castelnuovo's Theorem}
+
+    \begin{definition}\label{def:-1-curve}
+        A \emph{\((-1)\)-curve} on a smooth projective surface \(X\) is an irreducible curve \(C\subseteq X\) such that \(C\cong \bbP^1\) and \(C^2=-1\).
+    \end{definition}
+
+    \begin{remark}\label{rmk:-1-curve_and_extremal_ray_of_Psef_1}
+        Let \(C\) be a \((-1)\)-curve on a smooth projective surface \(X\).
+        Then its numerical class \([C]\in \rmN_1(X)\) spans an extremal ray of \(\Psef_1(X)\) such that \(K_X\cdot C < 0\).
+        \Yang{To be revised.}
+    \end{remark}
 
     \begin{theorem}[Castelnuovo's contractibility criterion]\label{thm:castelnuovo_contractibility_criterion}
-        Let \(X\) be a smooth projective surface over an algebraically closed field \(\kkk\).
-        Let \(C\subseteq X\) be an irreducible curve.
-        Then there exists a birational morphism \(f:X\to Y\) contracting \(C\) to a smooth point if and only if \(C\cong \bbP^1\) and \(C^2=-1\).
+        Let \(X\) be a smooth projective surface and \(C\subseteq X\) an irreducible curve.
+        Then there exists a birational morphism \(f:X\to Y\) contracting \(C\) to a smooth point if and only if \(C\) is a \((-1)\)-curve.
     \end{theorem}
+    \begin{proof}
+        \Yang{To be continued}
+    \end{proof}
 
     \begin{definition}\label{def:minimal_surface}
         A \emph{minimal surface} is a smooth projective surface that does not contain any \((-1)\)-curves.
@@ -27,9 +74,26 @@ Unless otherwise specified, all varieties are defined over \(\kkk\).
 
 \subsection{Resolution of singularities on surface}
 
+    \begin{definition}\label{def:resolution_of_singularities}
+        A \emph{resolution of singularities} of a projective surface \(X\) is a smooth projective surface \(\widetilde{X}\) together with a birational and proper morphism \(\pi:\widetilde{X}\to X\) such that \(\pi\) is an isomorphism over the smooth locus of \(X\).
+        \Yang{To be checked.}
+    \end{definition}
+
     \begin{theorem}[Resolution of singularities on surfaces]\label{thm:resolution_of_singularities_on_surfaces}
         Let \(X\) be a projective surface over an algebraically closed field \(\kkk\).
-        Then there exists a smooth projective surface \(\widetilde{X}\) and a birational morphism \(\pi:\widetilde{X}\to X\) such that \(\pi\) is an isomorphism over the smooth locus of \(X\).
-        Moreover, \(\widetilde{X}\) can be obtained from \(X\) by a finite sequence of blow-ups at singular points.
+        Then \(X\) admits a resolution of singularities.
         \Yang{To be checked.}
     \end{theorem}
+
+    \begin{definition}\label{def:minimal_resolution}
+        Let \(X\) be a projective surface.
+        A \emph{minimal resolution} of \(X\) is a resolution of singularities \(\pi:\widetilde{X}\to X\) such that for any other resolution of singularities \(\pi':\widetilde{X}'\to X\), there exists a morphism \(f:\widetilde{X}'\to \widetilde{X}\) such that \(\pi'\) factors as \(\pi' = \pi \circ f\).
+    \end{definition}
+
+    \begin{proposition}\label{prop:minimal_resolution_on_surfaces}
+        Let \(X\) be a projective surface.
+        Then \(X\) admits a unique minimal resolution of singularities.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued}
+    \end{proof}
