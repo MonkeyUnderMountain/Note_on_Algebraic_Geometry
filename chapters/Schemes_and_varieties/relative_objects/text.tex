@@ -10,7 +10,7 @@
 
     \begin{definition}\label{def:relative_Spec}
         Let \(X\) be a scheme and \(\calA\) be a quasi-coherent \(\calO_X\)-algebra.
-        The relative Spec of \(\calA\), denoted by \(\calSpec_X \calA\), is the scheme obtained by gluing the affine schemes \(\Spec \calA(U)\) for all affine open subsets \(U \subset X\).
+        The relative Spec of \(\calA\), denoted by \(\calSpec_X \calA\), is the scheme obtained by gluing the affine schemes \(\Spec \calA(U) \to U\) for all affine open subsets \(U \subset X\).
         \Yang{To be continued...}
     \end{definition}
 
@@ -29,19 +29,60 @@
         \Yang{To be continued...}
     \end{definition}
 
+
+\subsection{Relative ampleness and projective morphisms}
+
+    \begin{definition}\label{def:relative_ample_line_bundle}
+        Let \(X\) be an \(S\)-scheme via a morphism \(f : X \to S\).
+        A line bundle \(\calL\) on \(X\) is called \emph{relatively ample} (or \(f\)-ample) if for every affine open subset \(U \subset S\), the restriction \(\calL|_{f^{-1}(U)}\) is an ample line bundle on the scheme \(f^{-1}(U)\).
+        \Yang{To be revised.}
+    \end{definition}
+
+    \begin{definition}\label{def:projective_morphism}
+        Let \(f : X \to S\) be a morphism of schemes.
+        The morphism \(f\) is called \emph{projective} if there exists a quasi-coherent
+    \end{definition}
+
+    \begin{remark}\label{rmk:definitions_of_projective_morphism}
+        There are subtle differences between various definitions of projective morphisms in the literature. (see \cite[abaaba]{FGA05})
+        
+    \end{remark}
+
 \subsection{Blowing up}
 
-    \begin{definition}\label{def:blowing_up}
+    \begin{definition}\label{def:blow_up}
         Let \(X\) be a scheme and \(\calI \subset \calO_X\) be a quasi-coherent sheaf of ideals.
-        The blowing up of \(X\) along \(\calI\), denoted by \(\Bl_\calI X\), is defined to be the relative Proj of the Rees algebra of \(\calI\):
+        The blow up of \(X\) along \(\calI\), denoted by \(\Bl_\calI X\), is defined to be the relative Proj of the Rees algebra of \(\calI\):
         \[
             \Bl_\calI X = \calProj_X \bigoplus_{n=0}^\infty \calI^n.
         \]
-        The projection morphism \(\pi : \Bl_\calI X \to X\) is projective and for any open subset \(U \subset X\), we have \(\pi^{-1}(U) \cong \Bl_{\calI(U)} U\).
-        The exceptional divisor of the blowing up is defined to be the closed subscheme \(E = \pi^{-1}(V(\calI))\) of \(\Bl_\calI X\).
+        % The projection morphism \(\pi : \Bl_\calI X \to X\) is projective and for any open subset \(U \subset X\), we have \(\pi^{-1}(U) \cong \Bl_{\calI(U)} U\).
+        % The exceptional divisor of the blowing up is defined to be the closed subscheme \(E = \pi^{-1}(V(\calI))\) of \(\Bl_\calI X\).
         \Yang{To be continued...}
     \end{definition}
 
-\subsection{Relative ampleness and relative morphisms}
+    \begin{proposition}\label{prop:blow_up_is_birational_and_projective}
+        Let \(X\) be a scheme and \(\calI \subset \calO_X\) be a quasi-coherent sheaf of ideals.
+        The blow up morphism \(\pi : \Bl_\calI X \to X\) is projective.
+        Moreover, if the support of \(\calO_X / \calI\) is nowhere dense in \(X\), then \(\pi\) is birational.
+        \Yang{To be continued...}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:blow_up_regular_is_regular}
+        Let \(X\) be a regular scheme and \(\calI \subset \calO_X\) be a quasi-coherent sheaf of ideals.
+        Then the blow up \(\Bl_\calI X\) is also a regular scheme.
+        \Yang{To be continued...}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:exceptional_locus_of_blow_up}
+        Let \(X\) be a scheme and \(\calI \subset \calO_X\) be a quasi-coherent sheaf of ideals.
+        The exceptional locus of the blow up morphism \(\pi : \Bl_\calI X \to X\) is equal to the inverse image of the support of \(\calO_X / \calI\):
+        \[
+            \Exc(\pi) = \pi^{-1}(\Supp(\calO_X / \calI)).
+        \]
+        \Yang{To be continued...}
+    \end{proposition}
+
+% \subsection{Relative ampleness and relative morphisms}
 
 

@@ -12,10 +12,27 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
         for any affine open subsets \(U \subseteq X\) and \(V \subseteq S\) with \(f(U) \subseteq V\).
     \end{definition}
 
-    \begin{example}\label{eg:differentials_sheaves_on_projective_space}
-        
-    \end{example}
+    \begin{proposition}\label{prop:differential_sheaves_under_base_change}
+        Let \(X\) and \(T\) be \(S\)-schemes and \(X_T := X \times_S T\) be the base change of \(X\) along \(T \to S\).
+        Let \(p: X_T \to X\) be the projection morphism.
+        Then there is a natural isomorphism of \(\calO_{X_T}\)-modules
+        \[ \Omega_{X_T/T} \cong p^* \Omega_{X/S}. \]
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
 
+    \begin{proposition}\label{prop:differentials_sheaves_under_localization}
+        Let \(X\) be an \(S\)-scheme and \(U \subseteq X\) be an open subscheme.
+        Then there is a natural isomorphism of \(\calO_U\)-modules
+        \[ \Omega_{U/S} \cong \Omega_{X/S}|_U. \]
+        Furthermore, let \(\xi \in X\), then there is a natural isomorphism of \(\calO_{X,\xi}\)-modules
+        \[ \Omega_{X/S,\xi} \cong \Omega_{\calO_{X,\xi}/\calO_{S,f(\xi)}}. \]
+        \Yang{To be checked.}
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
 
     \begin{proposition}\label{prop:Omega_X_is_locally_free_when_X_is_regular_variety}
         Let \(X\) be a regular variety over \(\kkk\) of dimension \(n\).
@@ -32,7 +49,6 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
     \begin{proof}
         \Yang{To be continued.}
     \end{proof}
-
 
     \begin{theorem}[Euler sequence for projective bundle]\label{thm:Euler_sequence_for_projective_bundle}
         Let \(X\) be a normal variety over \(\kkk\) and \(\calE\) be a locally free sheaf of rank \(r+1\) on \(X\).
