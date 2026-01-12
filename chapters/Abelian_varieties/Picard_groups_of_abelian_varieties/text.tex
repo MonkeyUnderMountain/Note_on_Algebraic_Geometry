@@ -71,6 +71,23 @@ Let \(A\) be an abelian variety over \(\kk\).
         \Yang{To be completed.}
     \end{proof}
 
+    \begin{example}\label{eg:isomorphism_of_Pic0_of_elliptic_to_itself_by_Theorem_of_square}
+        Let \(E\) be an elliptic curve over \(\kkk\) with origin \(0\).
+        For \(x \in E(\kkk)\), let \(P_x\) be the corresponding prime divisor on \(E\).
+        Denote \(\Pic^0(E)\) the subgroup of \(\Pic(E)\) consisting of line bundles of degree zero.
+        Given \(x,y \in E(\kkk)\), by the theorem of the square, we have
+        \[ t_{-x-y}^*\calO_E(P_0) \ten \calO_E(P_0) \cong t_{-x}^*\calO_E(P_0) \ten t_{-y}^*\calO_E(P_0). \]
+        Note that \(t_{-x}^*\calO_E(P_0) \cong \calO_E(P_{x})\).
+        Hence
+        \[ \calO_E(P_{x+y} - P_0) \cong \calO_E(P_x - P_0 + P_y - P_0). \]
+        This shows that the map \(E(\kkk) \to \Pic^0(E), x \mapsto \calO_E(P_x - P_0)\) is a group homomorphism.
+        It is injective since if \(\calO_E(P_x - P_0) \cong \calO_E\), then \(P_x \sim P_0\) and hence \(x = 0\).
+        It is also surjective since for any \(\calL \in \Pic^0(E)\), we can write \(\calL \cong \calO_E(\sum a_i P_{x_i})\) with \(\sum a_i = 0\) and then 
+        \[ \calL \cong \calO_E\left( \sum a_i (P_{x_i} - P_0) \right) \cong \calO_E\left( P_{\sum a_i x_i} - P_0 \right). \]
+        Hence we have an isomorphism of groups \(E(\kkk) \cong \Pic^0(E)\).
+        % \(\calL \cong \calO_E(P_x - P_0)\) where \(x = \sum a_i x_i\).
+    \end{example}
+
     \begin{remark}\label{rmk: theorem of the square and homomorphism to Picard group}
         We can define a map
         \[ \Phi_\calL: A(\kk) \to \Pic(A), \quad x \mapsto t_x^*\calL \ten \calL^{-1}. \]
@@ -93,11 +110,15 @@ Let \(A\) be an abelian variety over \(\kk\).
     % \Yang{To be completed.}
 
     \begin{example}\label{eg:describe_Phi_on_elliptic_curves}
-        Let \(E\) be an elliptic curve over \(\kkk\) with origin \(0\) and \(\calL = \calO_E(n \cdot 0)\) for some \(n \in \bbZ\).
-        Then for any \(x \in E(\kkk)\), we have 
-        \[ \Phi_\calL(x) = t_x^*\calO_E(n \cdot 0) \ten \calO_E(-n \cdot 0) \cong \calO_E(n \cdot x - n \cdot 0). \]
+        Let \(E\) be an elliptic curve over \(\kkk\) with origin \(0\).
+        We have \(\Pic^0(E) \cong E(\kkk)\) by sending \(x \in E(\kkk)\) to \(\calO_E(P_x - P_0)\) where \(P_x\) is the point on \(E\) corresponding to \(x\).
+
+        Then 
+        \[ \Phi_{n\calO(P_x)}(y) = t_y^*\calO_E(nP_x) \ten \calO_E(-nP_x) \cong \calO_E(nP_{x-y} - nP_0 + nP_0 - nP_x) \leftrightarrow -ny \]
+        Hence 
+        \[ \Phi_{n\calO(P_x)}: E(\kkk) \to E(\kkk), \quad y \mapsto -ny. \]
         Hence \(K(\calL) = \{ x \in E(\kkk) : n \cdot x \sim n \cdot 0 \} = E[n](\kkk)\) is the subgroup of \(n\)-torsion points of \(E\).
-        \Yang{to be revised.}
+        % \Yang{to be revised.}
     \end{example}
 
 
