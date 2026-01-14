@@ -1,0 +1,211 @@
+\section{Algebraic spaces}
+
+\begin{definition}\label{def:etale_equivalent_relation}
+        Let \(U\) be a scheme over a base scheme \(S\).
+        An \emph{\'etale equivalence relation} on \(U\) is a morphism \(R \to U \times_S U\) between schemes over \(S\) such that:
+        \begin{enumerate}
+            \item the projections in two factors \(R \to U\) are \'etale and surjective;
+            \item for every \(S\)-scheme \(T\), \(h_R(T) \to h_U(T) \times h_U(T)\) gives an equivalence relation on \(h_U(T)\) set-theoretically.
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}\label{def:algebraic_space_as_topological_space}
+        An \emph{algebraic space} \(X\) over a base scheme \(S\) is an \(S\)-scheme \(U\) together with an \'etale equivalence relation \(R \to U \times_S U\).
+    \end{definition}
+
+    Let \(X = (U,R)\) be an algebraic space over \(S\).
+    We explain \(X\) as a sheaf on the big \'etale site \((\Sch/S)_{\text{\'et}}\).
+    For any scheme \(T\) over \(S\), \(h_R(T)\) is an equivalence relation on \(h_U(T)\).
+    The rule sending \(T\) to the set of equivalence classes of \(h_R(T)\) gives a presheaf on the site \((\Sch/S)_{\text{\'et}}\).
+    The sheafification of this presheaf is the sheaf associated to the algebraic space \(X\).
+    Explicitly, we have
+    \[ X(T) := \left\{ f = (f_i) \Bigg| \begin{array}{c}
+        \{T_i\to T\} \text{ a covering, } f_i \in h_U(T_i) \text{ such}  \\
+        \text{that } (f_i|_{T_i\times_T T_j},f_j|_{T_i\times_T T_j}) \in h_R(T_i \times_T T_j)
+    \end{array}     \right\}\Bigg/ \sim, \]
+    where 
+    \[ \alpha \sim \beta \quad \text{ if } \exists \{S_i \to T\} \text{ such that } (\alpha|_{S_i},\beta|_{S_i}) \in h_R(S_i). \]
+
+    \begin{definition}\label{def:algebraic_space_as_sheaf}
+        An \emph{algebraic space} over a base scheme \(S\) is a sheaf \(F\) on the big \'etale site \((\Sch/S)_{\text{\'et}}\) such that 
+        \begin{enumerate}
+            \item the diagonal morphism \(F \to F \times_S F\) is representable;
+            \item there exists a scheme \(U\) over \(S\) and a map \(h_U \to F\) which is surjective and \'etale.
+        \end{enumerate}
+        The \emph{morphism between algebraic spaces} \(F_1,F_2\) is defined as a natural transformation of functors \(F_1, F_2\).
+        % \Yang{to be completed.}
+    \end{definition}
+
+    \begin{remark}
+        By Yoneda's Lemma, given a morphism \(h_U \to F\) between sheaves is the same as giving an element of \(F(U)\).
+        We may abuse the notation.
+    \end{remark}
+
+    \begin{definition}\label{def:properties_of_sheaves_by_scheme}
+        Let \(\calp\) be a property of morphisms of schemes satisfying the following conditions:
+        \begin{enumerate}
+            \item is preserved under any base change;
+            \item is \'etale local on the base.\Yang{In \cite{Stacks}, this requires that ``fppf local''.}
+        \end{enumerate}
+        Let \(\alpha: F \to G\) be a representable morphism of sheaves on the big \'etale site \((\Sch/S)_{\text{\'et}}\).
+        We say that \(\alpha\) has property \(\calp\) if for every \(h_T \to G\), the base change \(h_T\times_{G} F \to F\) has property \(\calp\).
+    \end{definition}
+
+    \begin{remark}
+        The fiber product \(F_1 \times_F F_2\) is just defined as \(F_1 \times_F F_2(T) := F_1(T) \times_{F(T)} F_2(T)\) for any object \(T \in \Obj(\Sch_S)\).
+        We say that a morphism \(f: F_1 \to F_2\) of sheaves is \emph{representable} if for every \(T \in \Obj(\Sch/S)\) and every \(\xi \in F_2(T)\), the sheaf \(F_1 \times_{F_2} h_T\) is representable as a functor.
+        Here \(h_T \to F_2\) is given by 
+        \[ h_T(U) \to F_2(U), \quad f \in \Hom(U,T) \mapsto F_2(f)(\xi) \in F_2(U). \]
+
+        In our case, given an arbitrary \(h_U \to F \times F\) is equivalent to giving morphisms \(h_{U_i} \to F\) for \(i=1,2\).
+        And the fiber product \(F \times_{F \times F} (h_{U_1} \times h_{U_2})\) is just the fiber product \(h_{U_1} \times_{F} h_{U_2}\).
+        Hence the first condition in \cref{def:algebraic_space_as_sheaf} is equivalent to that \(h_{U_1} \times_F h_{U_2}\) is representable for any \(U_1,U_2\) over \(F\).
+        This implies that \(h_U \to F\) is representable, whence the second condition in \cref{def:algebraic_space_as_sheaf} makes sense.
+    \end{remark}
+
+    \begin{definition}\label{def:underlying_set_of_algebraic_space}
+        Let \(X\) be an algebraic space over a base scheme \(S\).
+        Two two morphisms form field \(\Spec k_i \to X\) is called equivalent if there is a common extension \(K \supset k_1,k_2\) such that we have \(\Spec K \to \Spec k_i \to X\) are the same for \(i=1,2\).
+        The \emph{underlying point set} of \(X\), denote by \(|X|\), is defined as the set of equivalence classes of morphisms \(\Spec k \to X\) for all field \(k\) over the base field \(\kkk\).
+    \end{definition}
+
+    This definition coincides with the underlying set of a scheme.
+    Let \(\alpha: X \to Y\) be a morphism of algebraic spaces.
+    It induces a map \(|\alpha|: |X| \to |Y|\) by \(x \mapsto \alpha \circ x\) (vertical composition).
+
+    \begin{proposition}[{ref. \cite[Lemma 66.4.6]{Stacks}}]\label{prop:underlying_topological_space_of_algebraic_space}
+        There is a unique topology on \(|X|\) such that
+        \begin{enumerate}
+            \item if \(X\) is a scheme, then the topology coincides with the usual topology.
+            \item every morphism of algebraic spaces \(f: X \to Y\) induces a continuous map \(|f|: |X| \to |Y|\).
+            \item if \(U\) is a scheme and \(U \to X\) is \'etale, then the induced map \(|U| \to |X|\) is open.
+        \end{enumerate}
+    \end{proposition}
+
+    This topology is called the \emph{Zariski topology} on \(|X|\).
+
+    \begin{definition}\label{def:structure_sheaf_of_algebraic_space}
+        Let \(X\) be an algebraic space over a base scheme \(S\).
+        All \'etale morphisms \(U \to X\) with \(U\) scheme form a small site \(X_{\text{\'et}}\).
+        All \'etale morphisms \(U \to X\) with \(U\) algebraic space form a small site \(X_{\text{sp, \'et}}\).
+        The \emph{structure sheaf} \(\calO_X\) of \(X\) is given by \(U \mapsto \Gamma(U,\calO_U)\) for every \'etale morphism \(U \to X\) from a scheme.
+        It extends to a sheaf on the site \(X_{\text{sp, \'et}}\) uniquely.
+    \end{definition}
+
+    \begin{example}\label{eg:C/Z_as_algebraic_space}
+        Let \(U = \bba_\bbc^1\) and \(R \subset U \times U\) given by \(y=x+n, n \in \bbZ\).
+        Then \(R\) is a disjoint union of lines in \(U \times U\).
+        Write \(R = \coprod_{n\in \bbZ} R_n\) with \(R_n = \{(x,x+n): x \in \bbc\}\).
+        Then the projection is given by 
+        \begin{align*}
+            &\pi_1|_{R_n}:R_n \to U, \quad (x,x+n) \mapsto x, \\
+            &\pi_2|_{R_n}:R_n \to U, \quad (x,x+n) \mapsto x+n.
+        \end{align*} 
+        Easily see that the projection \(\pi_i: R \to U\) is \'etale and surjective for \(i=1,2\).
+        Let \(r_{ij}:R \times U \to U \times U \times U\) be the morphism which maps \(((x,y),u)\) to \((a_1,a_2,a_3)\) where \(a_i = x\), \(a_j = y\) and \(a_k = u\) for \(k \neq i,j\).
+        Since \(\Delta_U \to U\times U\) factors through \(R\), \((\pi_1,\pi_2) = (\pi_2,\pi_1)\) and 
+        \(r_{12} \times_{(U\times U\times U)} r_{23}\) factors through \(r_{13}\), 
+        we have that \(h_R(T)\) is an equivalence relation on \(h_U(T)\) for all \(T\) over \(S\).
+        Then \(X := (U,R)\) is an algebraic space.
+        
+        % Easy to check that \(h_X\) is a sheaf on the big \'etale site \((\Sch/\bbc)_{\text{\'et}}\).
+        We do not check the representability here but give an example.
+        Let \(U \to X\) be the natural morphism given by \(\id_U \in X(U)\).
+        For any scheme \(T\) over \(\bbc\), we have
+        \[ (U\times_X U)(T) = \{(f,g) \in h_{U\times U}(T): \exists \{T_i \to T\} \text{ s.t. } (f_i,g_i) \in h_R(T_i) \} = h_R(T). \]
+        Hence the fiber product \(h_U \times_X h_U\) is represented by \(R\).
+        
+        We show that \(X \not\cong \bbc^{\times}\) by computing the the global sections.
+        Consider the covering \(U \to X\), a section \(s \in \calO_X(X)\) is given by a section \(s \in \Gamma(U,\calO_U) = \bbc[t]\) such that \(\pi_1^*s = \pi_2^*s\) in \(\Gamma(R,\calO_R)\).
+        This means that \(s(x+n) = s(x)\) for all \(n \in \bbZ\).
+        Hence \(s\) is a constant function.
+        In particular, \(\calO_X(X) = \bbc \neq \bbc[t,t^{-1}]\).
+
+        The underlying set \(|X|\) is union of the quotient set \(\bbc/\bbZ\) and a generic point.
+        The Zariski topology on \(|X|\) is the trivial topology.
+    \end{example}
+
+    In following, we will use the technique of \emph{local construction} to construct many scheme-like objects on algebraic spaces.
+    For local construction, see \cite{Knu71}.
+    Roughly speaking, for every \'etale morphism \(U \to X\) with \(U\) a scheme, we construct a scheme-theoretic object on \(U\) which is compatible under base change.
+    Then we glue these objects together to get a global object on \(X\).
+
+    \begin{definition}\label{def:coherent_sheaf_on_algebraic_space}
+        Let \(X\) be an algebraic space over a base scheme \(S\).
+        A \emph{coherent sheaf} on \(X\) is a sheaf \(\calF\) on \(X_{\text{\'et}}\) such that for every covering \(\{U_i \to X\}\) with \(U_i\) schemes, the sheaf \(\calF|_{U_i}\) is coherent for every \(i\).
+        It extends to a sheaf on the site \(X_{\text{sp, \'et}}\) uniquely.
+
+        An \emph{ideal sheaf} on \(X\) is a coherent sheaf \(\calI \subset \calO_X\).
+        It defines a closed subspace \(V(\calI) \subset X\) by \Yang{to be completed.}
+        And every closed subspace \(Y \subset X\) is defined by an ideal sheaf \(\calI_Y\) such that \(V(\calI_Y) = Y\).
+    \end{definition}
+
+    \begin{definition}\label{def:line_bundles_and_divisors_on_algebraic_space}
+        Let \(X\) be an algebraic space over a base scheme \(S\).
+        A \emph{line bundle} on \(X\) is a coherent sheaf \(\calL\) on \(X\) such that for every covering \(\{U_i \to X\}\) with \(U_i\) schemes, the sheaf \(\calL|_{U_i}\) is a line bundle on \(U_i\).
+        It extends to a sheaf on the site \(X_{\text{sp, \'et}}\) uniquely.
+    \end{definition}
+
+    % \begin{theorem}[{ref. \cite{Wiki}}]\label{thm:one-dimensional_algebraic_space_is_scheme}
+    %     Let \(X\) be an algebraic space over a field \(\kkk\).
+    %     Suppose that \(X\) is one-dimensional and proper.
+    %     Then \(X\) is a scheme.
+    % \end{theorem}
+
+    % Hence we can define the intersection number of line bundles and curves on proper algebraic spaces over a field.
+
+    \begin{theorem}[{ref. \cite[Theorem 76.36.4]{Stacks}}]\label{thm:Stein_factorization_for_algebraic_space}
+        Let \(f: X \to Y\) be a proper morphism of algebraic spaces over a base scheme \(S\).
+        Then there exists a factorization 
+        \[ X \xrightarrow{f_1} Z \xrightarrow{f_2} Y, \]
+        where \(f_1\) has geometrically connected fibers and \((f_1)_*\calO_X = \calO_Z\) and \(f_2\) is finite.
+    \end{theorem}
+
+    \begin{definition}\label{def:formal_completion_of_algebraic_space}
+        Let \(X\) be an algebraic space over a base scheme \(S\) and \(Y\) a closed subset of \(|X|\).
+        The \emph{formal completion} of \(X\) along \(Y\), denoted by \(\frakX\), is 
+
+        Its structure sheaf \(\calO_{\frakX}\) is defined as \(\varprojlim_n \calO_X / \calI^n\) where \(\calI\) is the ideal sheaf of \(Y\) in \(\calO_X\).
+        \Yang{to be completed.}
+    \end{definition}
+
+    \begin{definition}\label{def:modification}
+        Let \(X\) be an algebraic space and \(Y\) a closed subset of \(X\).
+        A \emph{modification} of \(X\) along \(Y\) is a proper morphism \(f: X' \to X\) and a closed subset \(Y' \subset X'\) such that \(X'\setminus Y' \to X \setminus Y\) is an isomorphism and \(f^{-1}(Y) = Y'\).
+    \end{definition}
+
+    \begin{theorem}[{ref. \cite[Theorem 3.1]{Art70}}]\label{thm:Artin_existence_of_modification}
+        Let \(Y'\) be a closed subset of an algebraic space \(X'\) of finite type over \(\kkk\).
+        Let \(\frakX'\) be the formal completion of \(X'\) along \(Y'\).
+        Suppose that there is a formal modification \(\frakf: \frakX' \to \frakX\).
+        Then there is a unique modification 
+        \[ f: X' \to X, \quad Y \subset X \]
+        such that the formal completion of \(X\) along \(Y\) is isomorphic to \(\frakX\) and the induced morphism \(\frakX' \to \frakX\) is isomorphic to \(\frakf\).
+    \end{theorem}
+
+    \begin{theorem}[{ref. \cite[Theorem 6.2]{Art70}}]\label{thm:Artin_higher_direct_image_and_modification}
+        Let \(\frakX'\) be a formal algebraic space and \(Y' = V(\calI')\) with \(\calI'\) the defining ideal sheaf of \(\frakX'\).
+        Let \(f:Y' \to Y\) be a proper morphism.
+        Suppose that 
+        \begin{enumerate}
+            \item for every coherent sheaf \(\calF\) on \(\frakX'\), we have 
+                \[ R^1f_* \calI'^n\calF/\calI'^{n+1}\calF = 0, \quad \forall n \gg 0; \]
+            \item for every \(n\), the homomorphism 
+                \[ f_*(\calO_{\frakX'} / \calI'^{n})\ten_{f_*\calO_{Y'}} \calO_Y \to \calO_Y \]
+                is surjective.
+        \end{enumerate}
+        Then there exists a modification \(\frakf: \frakX' \to \frakX\) and a defining ideal sheaf \(\calI\) of \(\frakX\) such that \(V(\calI) = Y\) and \(\frakf\) induces \(f\) on \(Y\).
+    \end{theorem}
+
+    \begin{theorem}[{ref. \cite[Theorem 6.1]{Art70}}]\label{thm:finite_modification}
+        Let \(Y'\) be a closed algebraic subspace of an algebraic space \(X'\) and \(f_0:Y' \to Y\) a finite morphism.
+        Then there exists a modification \(f:X' \to X\) whose restriction to \(Y'\) is \(f_0\).
+        It is the amalgamated sum \(X = X' \amalg_{Y'} Y\) in the category of algebraic spaces \(\AlgSp\).
+    \end{theorem}
+
+    \begin{example}\label{eg:finite_modification_of_line_in_plane}
+        Let \(X = \bba^2 = \Spec \kkk[x,y]\) and \(Y = V(y)\) be the \(x\)-axis.
+        Let \(f_0:Y'=\bba^1 \to Y, x \mapsto x^2\).
+        Then there exists a modification \(f:X' \to X\) such that the restriction \(f|_{Y'}: Y' \to Y\) is \(f_0\).
+        \Yang{To be completed.}
+    \end{example}
