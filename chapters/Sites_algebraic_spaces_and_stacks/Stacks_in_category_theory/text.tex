@@ -1,1 +1,64 @@
 \section{Stacks in category theory}
+
+\subsection{Prestacks}
+
+    \begin{notation}\label{notation:object_and_morphisms_over_base}
+        Let \(\bfS\) be a site and \(\bfp: \bfX \to \bfS\) a functor.
+        For \(a,b \in \Obj(\bfX)\) and \(f\in \Hom_{\bfX}(a, b)\), we say that \(a\) is \emph{over} \(\bfp(a)\) and \(f\) is \emph{over} \(\bfp(f)\).
+        In a diagram, we have 
+        \[ \begin{tikzcd}
+            \bfX \arrow[d, "\bfp"'] & a \arrow[d, mapsto] \arrow[r, "f"] & b \arrow[d, mapsto] \\
+            \bfS & \bfp(a) \arrow[r, "\bfp(f)"] & \bfp(b)
+        \end{tikzcd} \]
+    \end{notation}
+
+    \begin{definition}\label{def:prestacks_as_functor}
+        A functor \(\bfp: \bfX \to \bfS\) is called a \emph{prestack} over the site \(\bfS\) if for every object \(U \in \Obj(\bfS)\) and every pair of objects \(a,b \in \Obj(\bfX)\) over \(U\) (i.e., \(\bfp_{\bfX}(a) = U = \bfp_{\bfX}(b)\)), the presheaf
+        \[\underline{\Hom}_U(a,b): (\bfS/U)^{op} \to \Set \]
+        defined by
+        \[ (V \xrightarrow{g} U) \mapsto \Hom_{\bfX_V}(g^*a, g^*b) \]
+        is a sheaf on the site \(\bfS/U\).
+        \Yang{To be revised.}
+    \end{definition}
+
+
+    \begin{proposition}\label{prop:prestack_is_a_category_fibred_by_groupoids}
+        A functor \(\bfp: \bfX \to \bfS\) is a prestack over the site \(\bfS\) if and only if \(\bfX\) is a category fibred in groupoids over \(\bfS\) and for every object \(U \in \Obj(\bfS)\) and every pair of objects \(a,b \in \Obj(\bfX)\) over \(U\), the presheaf
+        \[\underline{\Hom}_U(a,b): (\bfS/U)^{op} \to \Set \]
+        defined by
+        \[ (V \xrightarrow{g} U) \mapsto \Hom_{\bfX_V}(g^*a, g^*b) \]
+        is a sheaf on the site \(\bfS/U\).
+        \Yang{To be checked.}
+    \end{proposition}
+
+    \begin{slogan}\label{slogan:prestack_and_presheaf}
+        Prestacks are ``presheaf remembering automorphisms''.
+    \end{slogan}
+
+
+    \begin{theorem}[Yoneda 2-Lemma]\label{thm:Yoneda_2_lemma}
+        Let \(\bfS\) be a site, and let \(\bfp: \bfX \to \bfS\) and \(\bfq: \bfY \to \bfS\) be prestacks over \(\bfS\).
+        Then the functor
+        \[
+            \Fun_{\bfS}(\bfX, \bfY) \to (\bfp_*, \bfq_*)
+        \]
+        given by \(\Phi \mapsto \Phi_*\) is an equivalence of categories.
+        \Yang{To be revised.}
+    \end{theorem}
+
+
+    \begin{theorem}\label{thm:existence_of_fiber_product_of_prestacks}
+        Let \(\bfS\) be a site, and let \(\bfp: \bfX \to \bfS\), \(\bfq: \bfY \to \bfS\), and \(\bfr: \bfZ \to \bfS\) be prestacks over \(\bfS\).
+        Let \(\Phi: \bfX \to \bfZ\) and \(\Psi: \bfY \to \bfZ\) be morphisms of prestacks over \(\bfS\).
+        Then the fiber product \(\bfX \times_{\bfZ} \bfY\) exists in the category of prestacks over \(\bfS\).
+        \Yang{To be checked.}
+    \end{theorem}
+
+
+\subsection{Stacks}
+
+    \begin{definition}\label{def:stacks_in_categories}
+        Let \(\bfS\) be a site.
+        A prestack \(\bfp: \bfX \to \bfS\) is called a \emph{stack} over the site \(\bfS\) if for every object \(U \in \Obj(\bfS)\) and every covering \(\{ U_i \to U \}\) in \(\bfS\), the descent data for objects of \(\bfX\) relative to the covering \(\{ U_i \to U \}\) are effective.
+        \Yang{To be revised.}
+    \end{definition}
