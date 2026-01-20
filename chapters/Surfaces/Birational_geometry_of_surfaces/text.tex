@@ -8,8 +8,8 @@ Unless otherwise specified, all varieties are defined over \(\kkk\).
     Let \(X\) be a smooth projective surface, \(0 \in X(\kkk)\) and \(\pi:\tilde{X} = \Bl_0 X \to X\) the blow-up of \(X\) at \(0\).
     Denote by \(E\) the exceptional divisor of \(\pi\).
     
-    \begin{proposition}\label{prop:self-intersection_number_of_exceptional_curve_of_blow_up}
-        We have \(E^2 = -1\).
+    \begin{proposition}\label{prop:picard_group_after_blowing_up_on_surface}
+        We have \(\Pic \tilde{X} = \Pic X \oplus \bbZ \cdot [E]\) and \(E^2 = -1\).
     \end{proposition}
     \begin{proof}
         \Yang{To be continued}
@@ -41,6 +41,13 @@ Unless otherwise specified, all varieties are defined over \(\kkk\).
         \[ K_{\tilde{X}}^2 = (\pi^* K_X + E)^2 = (\pi^* K_X)^2 + 2 \pi^* K_X \cdot E + E^2 = K_X^2 + 0 - 1 = K_X^2 - 1. \]
     \end{proof}
     
+    \begin{proposition}\label{prop:pull_back_of_curves_pass_through_center_along_blow_up}
+        Let \(C \subseteq X\) be an irreducible curve passing through \(0\) with multiplicity \(m = \mult_0 C\).
+        Then the total transform of \(C\) along \(\pi:\tilde{X} \to X\) is given by
+        \[ \pi^* C = \tilde{C} + m E, \]
+        where \(\tilde{C}\subseteq \tilde{X}\) is the strict transform of \(C\).
+        \Yang{To be revised.}
+    \end{proposition}
 
     \begin{theorem}\label{thm:birational_map_decomposition_on_surfaces}
         Let \(f:X \to Y\) be a birational morphism between two smooth projective surfaces.
