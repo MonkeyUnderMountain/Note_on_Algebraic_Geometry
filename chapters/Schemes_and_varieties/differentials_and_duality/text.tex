@@ -51,37 +51,103 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
         \Yang{To be continued.}
     \end{proof}
 
-    \begin{theorem}[Euler sequence for projective bundle]\label{thm:Euler_sequence_for_projective_bundle}
-        Let \(X\) be a normal variety over \(\kkk\) and \(\calE\) be a locally free sheaf of rank \(r+1\) on \(X\).
-        Let \(\pi: \bbP_X(\calE) \to X\) be the projective bundle associated to \(\calE\).
-        Then there is an exact sequence of \(\calO_{\bbP_X(\calE)}\)-modules
-        \[
-            0 \to \Omega_{\bbP_X(\calE)/X} \to \pi^*\calE(-1) \to \calO_{\bbP_X(\calE)} \to 0.
-        \]
-        Here \(\pi^*\calE(-1)\) is twisted by the tautological line bundle \(\calO_{\bbP_X(\calE)}(-1)\).
-    \end{theorem}
-    \begin{proof}
-        \begin{step}\label{step_in_Euler_sequence:affine_base}
-            First assume that \(X = \Spec A\) is affine and \(\calE\) is free.
-        \end{step}
-        
-        Fix a basis \(e_0, \ldots, e_r\) of the free \(A\)-module \(\calE(X)\).
-        
-        
-
-        \Yang{To be continued.}
-    \end{proof}
-
     \begin{definition}\label{def:canonical_divisor_on_normal_varieties}
         Let \(X\) be a normal variety over \(\kkk\).
         The \emph{canonical divisor} \(K_X\) of \(X\) is defined to be the Weil divisor class \(c_1(\Omega_{X/\kkk})\).
     \end{definition}
 
-    \begin{example}\label{eg:canonical_divisor_of_projective_space}
-        Let \(\bbP^n_\kkk\) be the projective space of dimension \(n\) over \(\kkk\).
-        Then the canonical divisor \(K_{\bbP^n_\kkk} \sim -(n+1)H\), where \(H\) is a hyperplane in \(\bbP^n_\kkk\).
-        \Yang{To be checked.}
-    \end{example}
+
+
+    \begin{theorem}[Euler sequence for projective bundle]\label{thm:Euler_sequence_for_projective_bundle}
+        Let \(X\) be a normal variety over \(\kkk\) and \(\calE\) be a locally free sheaf of rank \(r+1\) on \(X\).
+        Let \(\pi: \bbP_X(\calE) \to X\) be the projective bundle associated to \(\calE\).
+        Then there is an exact sequence of \(\calO_{\bbP_X(\calE)}\)-modules
+        \[
+            0 \to \Omega_{\bbP_X(\calE)/X} \xrightarrow{\phi} \pi^*\calE(-1) \xrightarrow{\psi} \calO_{\bbP_X(\calE)} \to 0.
+        \]
+        Here \(\pi^*\calE(-1)\) is twisted by the tautological line bundle \(\calO_{\bbP_X(\calE)}(-1)\).
+    \end{theorem}
+    \begin{proof}
+        \hspace{1em}
+        \begin{step}\label{step_in_Euler_sequence:affine_base_to_find_phi_psi}
+            First assume that \(X = \Spec A\) is affine and \(\calE\) is free.
+            Under this assumption, find expressions for \(\phi\) and \(\psi\).
+        \end{step}
+        
+        Fix a basis \(T_0, \ldots, T_r\) of the free \(A\)-module \(\calE(X)\).
+        On the standard open subset \(U_i = \{T_i \neq 0\} = \Spec B_i \subseteq \bbP_X(\calE)\), we have coordinates \(t_{j,i} := T_j/T_i\) for \(j \neq i\).
+        The exact sequence becomes
+        \[ 
+            0 \to \bigoplus_{k \neq i} B_i \upd t_{k,i} \xrightarrow{\phi} \bigoplus_{k=0}^r B_i e_i \cdot T_k \xrightarrow{\psi} B_i \to 0.
+        \]
+        Here \(e_i\) is the local generator of \(\calO_{\bbP_A(\calE)}(-1)\) on \(U_i\)\textcolor{gray}{, symbolically satisfying \(e_i T_i = 1\)}.
+
+        Recall that on the overlap \(U_{ij} = U_i \cap U_j\), the coordinates are related by
+        \[ t_{i,j} e_i = e_j, \quad \upd t_{k,i} = t_{j,i} \upd t_{k,j} - t_{k,i} t_{j,i} \upd t_{i,j}. \]
+        Here we set \(t_{l,l} := 1\) for convenience.
+        \textcolor{gray}{Symbolically, we have }
+        \[ \textcolor{gray}{\text{`` }\upd t_{k,i} = \frac{T_i \upd T_k - T_k \upd T_i}{T_i^2} = e_i \upd T_k - t_{k,i} e_i \upd T_i \text{ ''.}} \]
+        \textcolor{gray}{On the overlap \(U_{ij}\), it transitions as}
+        \begin{align*}
+            \textcolor{gray}{\text{``}\upd t_{k,i}}  &\textcolor{gray}{= t_{j,i} \upd t_{k,j} - t_{k,i} t_{j,i} \upd t_{i,j}} \\
+                                            &\textcolor{gray}{= t_{j,i} e_j \upd T_k - t_{j,i} t_{k,j} e_j \upd T_j - t_{k,i} t_{j,i} \left( e_j \upd T_i - t_{i,j} e_j \upd T_j \right)} \\
+                                            &\textcolor{gray}{= e_i \upd T_k - t_{k,i} e_i \upd T_i \text{''}.}
+        \end{align*}
+        % \[ \textcolor{gray}{\text{`` } \upd t_{k,i} = t_{j,i} \upd t_{k,j} - t_{k,i} t_{j,i} \upd t_{i,j} = t_{j,i}e_j\upd T_k \text{ ''.}} \]
+        \textcolor{gray}{To make sense of the above symbolic expressions,} we define \(\phi\) and \(\psi\) locally on each \(U_i\) by
+        \[
+            \phi(\upd t_{k,i}) = e_i T_k - t_{k,i} e_i T_i, \quad \psi(e_i T_k) = t_{k,i}.
+        \]
+
+        \begin{step}\label{step_in_Euler_sequence:verify_phi_psi_well_defined_and_exactness}
+            Verify that \(\phi\) and \(\psi\) are well-defined and the sequence is exact.
+        \end{step}
+        By computations in \cref{step_in_Euler_sequence:affine_base_to_find_phi_psi}, \(\phi\) is well-defined on the overlaps \(U_{ij}\).
+        For \(\psi\), on the overlap \(U_{ij}\), we have
+        \[
+            \psi(e_j T_k) = \psi(t_{i,j} e_i T_k) = t_{i,j} t_{k,i} = t_{k,j}.
+        \]
+        Thus \(\psi\) is also well-defined.
+        It is clear that \(\psi \circ \phi = 0\).
+        Consider the matrix representation of \(\phi\) with respect to the bases \(\{\upd t_{k,i}\}_{k \neq i}\) and \(\{e_i T_k\}_{k=0}^r\):
+        \[ \begin{pmatrix}
+            1 & & & & & & \\
+            & 1 & & & & & \\
+            & & \ddots & & & &  \\
+            & & & 1 & & & \\
+            -t_{0,i} & -t_{1,i} & \cdots & -t_{i-1,i} & -t_{i+1,i} & \cdots & -t_{r,i} \\
+            & & & & 1 & & \\
+            & & & & &\ddots & \\
+            & & & & & & 1 \\
+        \end{pmatrix}. \]
+        It has rank \(r\), \(\phi\) is injective and \(\ker \psi = \im \phi\).
+        Thus the sequence is exact.
+
+        \begin{step}\label{step_in_Euler_sequence:glue_local_exact_sequences}
+            General case: glue the local exact sequences on affine open subsets of \(X\).
+        \end{step}
+
+        In the local case, choose a different basis \(S_0, \ldots, S_r\) of \(\calE(X)\) given by the transition matrix \(g \in \GL_{r+1}(A)\).
+        For simplicity, we just look at on the open subset \(U= \{T_0 \neq 0, S_0 \neq 0\}\).
+        Set \(B_U\) be the localization of \(B = A[T_0, \ldots, T_r]\) at the multiplicative set generated by \(T_0\) and \(S_0\).
+        It is still a graded algebra.
+        
+        Note that \(\phi\) is formally given by differentials in \(A[T_0, \ldots, T_r]\) and then sending the symbol \(\upd T_i\) to \(T_i\) and \(1/T_0\) to \(e_0\).
+        The differentials are intrinsic and linear over \(A\), and the assignment of \(1/T_0\) to \(e_0\) is just a change of notation.
+        Thus \(\phi\) is independent of the choice of basis.
+        For \(\psi\), it is indeed given by multiplying \(B_U(-1)\) by the linear part of \(B\) and then taking the degree \(0\) part.
+        It is also independent of the choice of basis.
+        
+        Therefore, after changing basis, \(\phi\) and \(\psi\) remain the same.
+        This allows us to glue the local exact sequences on each affine open subset of \(X\) to obtain a global exact sequence.
+    \end{proof}
+
+    \begin{corollary}\label{cor:canonical_divisor_of_projective_space}
+        Let \(\kk\) be a field.
+        We have 
+        \[ \omega_{\bbP^n_\kk/\kk} \cong \calO_{\bbP^n_\kk}(-(n+1)) \quad \text{and} \quad K_{\bbP^n_\kk} \sim -(n+1)H, \]
+        where \(H\) is a hyperplane in \(\bbP^n_\kk\).
+    \end{corollary}
 
 \subsection{Fundamental sequences}
 
