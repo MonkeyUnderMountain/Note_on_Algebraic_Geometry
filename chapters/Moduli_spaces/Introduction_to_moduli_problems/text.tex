@@ -58,15 +58,36 @@
         \item Check whether \(\calM\) is representable.
     \end{enumerate}
 
-    \begin{slogan}
-        To solve a moduli problem is to find a representable functor which describes ``continuous deformations''.
+    \begin{slogan}\label{slogan:moduli_problem_is_find_representable_functor}
+        \hspace{1em}
+        \begin{center}
+            Moduli problem \(\longleftrightarrow\) Find a representable functor describing ``deformations''.
+        \end{center}
     \end{slogan}
+
+    \begin{definition}\label{def:moduli_functor}
+        Let \(S\) be a noetherian scheme.
+        A \emph{moduli functor} over \(S\) is a functor \(\calM: \Sch_{S}^{\op} \to \Set\).
+    \end{definition}
+
+    \begin{remark}\label{rmk:moduli_functor_as_presheaf_and_fibred_category}
+        Let \(S\) be a noetherian scheme and \(\calM: \Sch_{S}^{\op} \to \Set\) be a functor.
+        In other words, \(\calM\) is a presheaf on the category \(\Sch_{S}\) with values in \(\Set\).
+        By \cref{eg:presheaves_as_category_fibered_in_set}, we can view \(\calM\) as a category  fibred in sets over \(\Sch_{S}\).
+
+        For every \(X \in \Sch_{S}\), the fiber category \(\calM(X)\) is the set of ``deformation families over \(X\)''.
+        If \(x \in \Sch_{S}\) is a point, then the fiber category \(\calM(x)\) is the isomorphism classes of objects represented by the point \(x\).
+    \end{remark}
+
+
 
     \begin{definition}\label{def:fine_moduli_space}
         Let \(S\) be a noetherian scheme and \(\calM: \Sch_{S}^{\op} \to \Set\) be a functor.
+
         If \(\calM\) is representable by a scheme \(M\) of finite type over \(S\), then we say that \(M\) is a \emph{fine moduli space} for the moduli problem \(\calM\).
         The object \(\calU \in \calM(M)\) corresponding to the identity morphism \(\id_M \in \Hom_{\Sch_{S}}(M, M)\) is called a \emph{universal object} over \(M\).
     \end{definition}
+
 
     We give a simple example of a fine moduli space.
 

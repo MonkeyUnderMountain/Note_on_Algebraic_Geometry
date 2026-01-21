@@ -1,1 +1,29 @@
 \section{Appendix}
+
+    \begin{example}\label{eg:presheaves_as_category_fibered_in_set}
+        Let \(\bfS\) be a category and \(\calF: \bfS^{op} \to \Set\) be a presheaf on \(\bfS\) taking values in \(\Set\).
+        We can construct a category \(\bfF\) fibred over \(\bfS\) as follows:
+        \begin{itemize}
+            \item The objects of \(\bfF\) are pairs \((U, x)\) where \(U \in \Obj(\bfS)\) and \(x \in \calF(U)\);
+            \item morphisms from \((V, y)\) to \((U, x)\) in \(\bfF\) are morphisms \(\iota: V \to U\) in \(\bfS\) such that \(\calF(\iota)(x) = y\),
+                denoted by \(\res_{\iota}\).
+        \end{itemize}
+        The functor \(\bfp: \bfF \to \bfS\) is defined by \(\bfp(U, x) = U\) on objects and \(\bfp(\iota) = \iota\) on morphisms.
+        If one has the diagram
+        \[ \begin{tikzcd}
+            (W, z)  \arrow[rrd,bend left,"\res_{\tau}"] \arrow[dd, mapsto] & & \\
+                    & (V, y) \arrow[d,mapsto] \arrow[r, "\res_{\iota}"] & (U, x) \arrow[d,mapsto] \\
+            W \arrow[r, "\sigma"] & V \arrow[r, "\iota"] & U
+        \end{tikzcd} \]
+        with \(\bfp(\res_{\tau}) = \iota \circ \sigma\).
+        By definition, we have \(\tau = \iota \circ \sigma\) and \(\calF(\tau)(x) = z\),\(\calF(\iota)(x) = y\).
+        Thus, we have \(\calF(\sigma)(y) = z\).
+        This verifies that \(\res_{\sigma}\) is a strongly Cartesian morphism.
+        Note that the fiber of \(\bfF\) over an \(U \in \Obj(\bfS)\) is the discrete category associated to the set \(\calF(U)\).
+        Therefore, presheaves of sets can be viewed as categories fibred in sets.
+
+        Conversely, given a category \(\bfF\) fibred in sets over \(\bfS\) via \(\bfp: \bfF \to \bfS\),
+        one can construct a presheaf of sets \(\calF: \bfS^{op} \to \Set\) by defining \(\calF(U) = \Obj(\bfF_U)\) for each \(U \in \Obj(\bfS)\),
+        and for each morphism \(\iota: V \to U\) in \(\bfS\), defining \(\calF(\iota): \calF(U) \to \calF(V)\) by sending an object \(x \in \calF(U)\) to its pullback \(\iota^*x \in \calF(V)\) along \(\iota\).
+        This establishes an equivalence between presheaves of sets on \(\bfS\) and categories fibred in sets over \(\bfS\).
+    \end{example}
