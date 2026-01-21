@@ -1,19 +1,27 @@
 \section{Stacks in category theory}
 
-\subsection{Prestacks}
+\subsection{Fibered categories and descent conditions}
 
     \begin{definition}\label{def:strongly_Cartesian_morphism}
-        Let \(\bfS\) be a site and \(\bfp: \bfX \to \bfS\) a functor.
-        A morphism \(f: a \to b\) in \(\bfX\) is called \emph{strongly Cartesian} if for every object \(c \in \Obj(\bfX)\), the diagram
+        Let \(\bfS\) be a category and \(\bfp: \bfX \to \bfS\) a functor.
+        A morphism \(f: b \to a\) in \(\bfX\) is called \emph{strongly Cartesian} if for every object \(c \in \Obj(\bfX)\), the diagram
         \[ \begin{tikzcd}
-            \Hom_{\bfX}(c, a) \arrow[r, "f \circ -"] \arrow[d, "\bfp"'] & \Hom_{\bfX}(c, b) \arrow[d, "\bfp"] \\
-            \Hom_{\bfS}(\bfp(c), \bfp(a)) \arrow[r, "\bfp(f) \circ -"] & \Hom_{\bfS}(\bfp(c), \bfp(b))
+            \Hom_{\bfX}(c, b) \arrow[r, "f \circ -"] \arrow[d, "\bfp"'] & \Hom_{\bfX}(c, a) \arrow[d, "\bfp"] \\
+            \Hom_{\bfS}(w, v) \arrow[r, "\bfp(f) \circ -"] & \Hom_{\bfS}(w, u)
         \end{tikzcd} \]
-        is a pullback of sets.
+        is a pullback of sets, where \(u=\bfp(a), v=\bfp(b),w=\bfp(c)\).
     \end{definition}
 
+    The condition in \cref{def:strongly_Cartesian_morphism} can be interpreted as follows: for any diagram as below black part with \(\bfp(g) = \bfp(f) \circ \alpha\), 
+    \[ \begin{tikzcd}
+        c \arrow[rd,gray,"h"] \arrow[rrd,bend left,"g"] \arrow[dd, mapsto] & & \\
+         & b \arrow[d,mapsto] \arrow[r, "f"] & a \arrow[d,mapsto] \\
+        w \arrow[r, "\alpha"] & v \arrow[r, "\bfp(f)"] & u
+    \end{tikzcd} \]
+    there exists a unique gray morphism \(h: c \to a\) such that \(\bfp(h) = \alpha\) and \(f \circ h = g\).
+
     \begin{notation}\label{notation:object_and_morphisms_over_base}
-        Let \(\bfS\) be a site and \(\bfp: \bfX \to \bfS\) a functor.
+        Let \(\bfS\) be a category and \(\bfp: \bfX \to \bfS\) a functor.
         For \(a,b \in \Obj(\bfX)\) and \(f\in \Hom_{\bfX}(a, b)\), we say that \(a\) is \emph{over} \(\bfp(a)\) and \(f\) is \emph{over} \(\bfp(f)\).
         In a diagram, we have 
         \[ \begin{tikzcd}
@@ -23,10 +31,10 @@
     \end{notation}
 
     \begin{definition}\label{def:fibered_categories}
-        Let \(\bfS\) be a site.
+        Let \(\bfS\) be a category.
         A category \(\bfX\) over \(\bfS\) via \(\bfp\) is called a \emph{category fibred} over the site \(\bfS\) if
-        for every morphism \(r: u\to v\) in \(\bfS\) and every object \(b \in \Obj(\bfX)\) over \(v\), there exists an object \(a \in \Obj(\bfX)\) over \(u\) and a strongly Cartesian morphism \(f: a \to b\) over \(r\).
-        Such an object \(a\) is called a \emph{pullback} of \(b\) along \(r\), and is often denoted by \(r^*b\).
+        for every morphism \(\iota: v\to u\) in \(\bfS\) and every object \(a \in \Obj(\bfX)\) over \(u\), there exists an object \(b \in \Obj(\bfX)\) over \(v\) and a strongly Cartesian morphism \(f: b \to a\) over \(\iota\).
+        Such an object \(b\) is called a \emph{pullback} of \(a\) along \(\iota\), and is often denoted by \(\iota^*a\).
     \end{definition}
 
     \begin{definition}\label{def:fiber_of_fiber_category}
@@ -36,68 +44,105 @@
     \end{definition}
 
     \begin{remark}\label{rmk:choice_of_pullback_in_fibered_category}
-        Note that in Definition \ref{def:fibered_categories}, the pullback \(r^*b\) of an object \(b\) along a morphism \(r\) is not necessarily unique.
+        Note that in \cref{def:fibered_categories}, the pullback \(r^*b\) of an object \(b\) along a morphism \(r\) is not necessarily unique.
         \Yang{To be continued.}
     \end{remark}
 
-    \Yang{Why do we need the Cartesian morphisms exists?}
+    % \Yang{Why do we need the Cartesian morphisms exists?}
 
-    \begin{remark}
-        \Yang{presheaves as category fibered in set, right?}
-    \end{remark}
+    \begin{example}\label{eg:presheaves_as_category_fibered_in_set}
+        Let \(\bfS\) be a category and \(\calF: \bfS^{op} \to \Set\) be a presheaf on \(\bfS\) taking values in \(\Set\).
+        We can construct a category \(\bfF\) fibred over \(\bfS\) as follows:
+        \begin{itemize}
+            \item The objects of \(\bfF\) are pairs \((U, x)\) where \(U \in \Obj(\bfS)\) and \(x \in \calF(U)\);
+            \item morphisms from \((V, y)\) to \((U, x)\) in \(\bfF\) are morphisms \(\iota: V \to U\) in \(\bfS\) such that \(\calF(\iota)(x) = y\),
+                denoted by \(\res_{\iota}\).
+        \end{itemize}
+        The functor \(\bfp: \bfF \to \bfS\) is defined by \(\bfp(U, x) = U\) on objects and \(\bfp(\iota) = \iota\) on morphisms.
+        If one has the diagram
+        \[ \begin{tikzcd}
+            (W, z)  \arrow[rrd,bend left,"\res_{\tau}"] \arrow[dd, mapsto] & & \\
+                    & (V, y) \arrow[d,mapsto] \arrow[r, "\res_{\iota}"] & (U, x) \arrow[d,mapsto] \\
+            W \arrow[r, "\sigma"] & V \arrow[r, "\iota"] & U
+        \end{tikzcd} \]
+        with \(\bfp(\res_{\tau}) = \iota \circ \sigma\).
+        By definition, we have \(\tau = \iota \circ \sigma\) and \(\calF(\tau)(x) = z\),\(\calF(\iota)(x) = y\).
+        Thus, we have \(\calF(\sigma)(y) = z\).
+        This verifies that \(\res_{\sigma}\) is a strongly Cartesian morphism.
+        Note that the fiber of \(\bfF\) over an \(U \in \Obj(\bfS)\) is the discrete category associated to the set \(\calF(U)\).
+        Therefore, presheaves of sets can be viewed as categories fibred in sets.
+
+        Conversely, given a category \(\bfF\) fibred in sets over \(\bfS\) via \(\bfp: \bfF \to \bfS\),
+        one can construct a presheaf of sets \(\calF: \bfS^{op} \to \Set\) by defining \(\calF(U) = \Obj(\bfF_U)\) for each \(U \in \Obj(\bfS)\),
+        and for each morphism \(\iota: V \to U\) in \(\bfS\), defining \(\calF(\iota): \calF(U) \to \calF(V)\) by sending an object \(x \in \calF(U)\) to its pullback \(\iota^*x \in \calF(V)\) along \(\iota\).
+        This establishes an equivalence between presheaves of sets on \(\bfS\) and categories fibred in sets over \(\bfS\).
+    \end{example}
+
+    \begin{example}\label{eg:toy_example_of_fibered_categories}
+        \Yang{case \(\bfS = set, group\). To be added.}
+    \end{example}
 
     \begin{slogan}\label{slogan:presheaf_is_set-fibered_category}
-        Presheaf is a category fibered in sets.
+        Presheaves of sets are categories fibered in sets.
     \end{slogan}
 
-    \begin{definition}\label{def:prestacks_as_functor}
-        A \emph{prestack} over the site \(\bfS\) is a category \(\bfX\) fibered in groupoids over \(\bfS\) via \(\bfp: \bfX \to \bfS\).
-        \Yang{To be revised.}
+    In following, we describe categories fibered in groupoids.
+
+    \begin{definition}\label{def:presheaves_of_morphisms_associated_to_fibred_categories}
+        Let \(\bfX\) be a category fibred over a category \(\bfS\) via \(\bfp: \bfX \to \bfS\).
+        For every \(u \in \Obj(\bfS)\) and every pair of objects \(a,b\) over \(u\), we define the \emph{presheaf of morphisms} \(\Hom_{\bfX}(a,b): (\bfS/u)^{\op} \to \Set\) by
+        \[ \Hom_{\bfX}(a,b)(\iota: v \to u) = \Hom_{\bfX_v}(\iota^*a, \iota^*b) \]
+        for every morphism \(\iota: v \to u\) in \(\bfS/u\).
+        For a morphism \(\alpha: w \to v\) in \(\bfS/u\), the restriction map
+        \[ \Hom_{\bfX}(a,b)(\iota) \to \Hom_{\bfX}(a,b)(\iota \circ \alpha) \]
+        is given by sending a morphism \(f: \iota^*a \to \iota^*b\) in \(\bfX_v\) to the pullback morphism 
+        \Yang{\(\alpha^*f: (\iota \circ \alpha)^*a \to (\iota \circ \alpha)^*b\) need to conjugate with a natural transformation.}
+        in \(\bfX_w\).
+        \Yang{To be checked.}
     \end{definition}
 
-    % \begin{proposition}\label{prop:prestack_is_a_category_fibred_by_groupoids}
-    %     A functor \(\bfp: \bfX \to \bfS\) is a prestack over the site \(\bfS\) if and only if \(\bfX\) is a category fibred in groupoids over \(\bfS\) and for every object \(U \in \Obj(\bfS)\) and every pair of objects \(a,b \in \Obj(\bfX)\) over \(U\), the presheaf
-    %     \[\underline{\Hom}_U(a,b): (\bfS/U)^{op} \to \Set \]
-    %     defined by
-    %     \[ (V \xrightarrow{g} U) \mapsto \Hom_{\bfX_V}(g^*a, g^*b) \]
-    %     is a sheaf on the site \(\bfS/U\).
-    %     \Yang{To be checked.}
-    % \end{proposition}
+    In a diagram, the presheaf of morphisms can be visualized as follows:
+    \[\begin{tikzcd}
+        && {\iota^*a} &&&& a \\
+        {\tau^*a} &&& {\iota^*b} &&&& b \\
+        & {\tau^*b} \\
+        && v &&&& u \\
+        w
+        \arrow[from=1-3, to=1-7]
+        \arrow[bend right,red!80!black, from=1-3, to=2-4]
+        \arrow["f"{description}, bend left,red!80!black, from=1-3, to=2-4]
+        \arrow[from=1-3,red!80!black, to=2-4]
+        \arrow[maps to, from=1-3, to=4-3]
+        \arrow[maps to, from=1-7, to=4-7]
+        \arrow["{f|_w}"{description},blue!80!black, bend left, from=2-1, to=3-2]
+        \arrow[bend right,blue!80!black, from=2-1, to=3-2]
+        \arrow[from=2-1,blue!80!black, to=3-2]
+        \arrow[maps to, from=2-1, to=5-1]
+        \arrow[from=2-4, to=2-8]
+        \arrow[maps to, from=2-4, to=4-3]
+        \arrow[maps to, from=2-8, to=4-7]
+        \arrow[maps to, from=3-2, to=5-1]
+        \arrow["\iota",red!80!black,  from=4-3, to=4-7]
+        \arrow["\alpha",from=5-1, to=4-3]
+        \arrow["\tau", from=5-1, blue!80!black, to=4-7]
+    \end{tikzcd}\]
 
-    \begin{remark}\label{rmk:prestack_compares_with_presheaf_as_functor}
-        Let \(\bfS\) be a site.
-        A presheaf of sets on \(\bfS\) can be viewed as a functor \(\bfS^{op} \to \Set\).
-        A prestack over \(\bfS\) can be viewed as a functor \(\bfS^{op} \to \Grpd\) by associating to each object \(u \in \Obj(\bfS)\) the fiber category \(\bfX_u\), which is a groupoid, and to each morphism \(u \to v\) in \(\bfS\) the pullback functor \(\bfX_v \to \bfX_u\).
-        Thus, prestacks can be seen as a generalization of presheaves of sets, where the values are groupoids instead of sets.
+    \begin{proposition}\label{prop:presheaves_of_morphisms_is_sheaf_iff_fibered_category_in_groupoids}
+        Let \(\bfS\) be a category and \(\bfp: \bfX \to \bfS\) a category fibred over \(\bfS\).
+        Then \(\bfX\) is a category fibred in groupoids if and only if for every object \(u \in \Obj(\bfS)\) and every pair of objects \(a,b\) over \(u\), the presheaf of morphisms \(\Hom_{\bfX}(a,b): (\bfS/u)^{\op} \to \Set\) is a sheaf.
         \Yang{To be checked.}
-    \end{remark}
+    \end{proposition}
 
-    \begin{slogan}\label{slogan:prestack_and_presheaf}
-        Prestacks are ``presheaf remembering automorphisms''.
-    \end{slogan}
-
-    \Yang{Where is the 2-category?}
-
-    \begin{theorem}[Yoneda 2-Lemma]\label{thm:Yoneda_2_lemma}
-        Let \(\bfS\) be a site, and let \(\bfp: \bfX \to \bfS\) and \(\bfq: \bfY \to \bfS\) be prestacks over \(\bfS\).
-        Then the functor
-        \[
-            \Fun_{\bfS}(\bfX, \bfY) \to (\bfp_*, \bfq_*)
-        \]
-        given by \(\Phi \mapsto \Phi_*\) is an equivalence of categories.
-        \Yang{To be revised.}
-    \end{theorem}
-
-
-    \begin{theorem}\label{thm:existence_of_fiber_product_of_prestacks}
-        Let \(\bfS\) be a site, and let \(\bfp: \bfX \to \bfS\), \(\bfq: \bfY \to \bfS\), and \(\bfr: \bfZ \to \bfS\) be prestacks over \(\bfS\).
-        Let \(\Phi: \bfX \to \bfZ\) and \(\Psi: \bfY \to \bfZ\) be morphisms of prestacks over \(\bfS\).
-        Then the fiber product \(\bfX \times_{\bfZ} \bfY\) exists in the category of prestacks over \(\bfS\).
+    \begin{definition}\label{def:category_fibered_in_groupoids}
+        Let \(\bfS\) be a category.
+        A category \(\bfX\) fibred over \(\bfS\) via \(\bfp: \bfX \to \bfS\) is called a \emph{category fibred in groupoids} over \(\bfS\) if for every object \(u \in \Obj(\bfS)\) and every pair of objects \(a,b\) over \(u\), the presheaf of morphisms \(\Hom_{\bfX}(a,b): (\bfS/u)^{\op} \to \Set\) is a sheaf.
         \Yang{To be checked.}
-    \end{theorem}
+    \end{definition}
 
 
-\subsection{Descent conditions}
+    Now let us discuss how sheaves fit into the framework of fibered categories.
+    Of course, we need assume the base category \(\bfS\) is a site.
+    The glued condition for sheaves can be interpreted in terms of descent data in fibered categories.
 
     \begin{definition}\label{def:descent_data_in_categories}
         Let \(\bfS\) be a site and \(\bfp: \bfX \to \bfS\) a fibered category over \(\bfS\).
@@ -113,6 +158,9 @@
         \Yang{To be checked.}
     \end{definition}
 
+    \begin{example}\label{eg:descent_data_for_presheaves}
+        \Yang{To be added.}
+    \end{example}
 
     \begin{definition}\label{def:effective_descent_data_in_categories}
         Let \(\bfS\) be a site and \(\bfp: \bfX \to \bfS\) a fibered category over \(\bfS\).
@@ -130,7 +178,61 @@
     \end{slogan}
 
 
-\subsection{Stacks}
+\subsection{Prestacks and stacks}
+
+
+
+    \begin{definition}\label{def:prestacks_as_functor}
+        A \emph{prestack} over the site \(\bfS\) is a category \(\bfX\) fibered in groupoids over \(\bfS\).
+    \end{definition}
+
+    % \begin{remark}\label{rmk:prestack_compares_with_presheaf_as_functor}
+    %     Let \(\bfS\) be a site.
+    %     A presheaf of sets on \(\bfS\) can be viewed as a functor \(\bfS^{op} \to \Set\).
+    %     A prestack over \(\bfS\) can be viewed as a functor \(\bfS^{op} \to \Grpd\) by associating to each object \(u \in \Obj(\bfS)\) the fiber category \(\bfX_u\), which is a groupoid, and to each morphism \(u \to v\) in \(\bfS\) the pullback functor \(\bfX_v \to \bfX_u\).
+    %     Thus, prestacks can be seen as a generalization of presheaves of sets, where the values are groupoids instead of sets.
+    %     \Yang{To be checked.}
+    % \end{remark}
+
+    \begin{slogan}\label{slogan:prestack_and_presheaf}
+        Prestacks are ``presheaf remembering automorphisms''.
+    \end{slogan}
+
+
+    \begin{example}\label{eg:presheaf_is_prestack}
+        presheaf is a prestack.
+        \Yang{To be added.}
+    \end{example}
+
+    \begin{example}\label{eg:prestack_of_moduli_of_curves}
+        The moduli problem of classifying algebraic curves of a fixed genus \(g\) can be formulated as a prestack over the site of schemes.
+        Consider the category \(\bfM_g\) whose objects are families of smooth projective curves of genus \(g\) over schemes, and whose morphisms are isomorphisms of such families.
+        The functor \(\bfp: \bfM_g \to \Sch\) sending a family of curves to its base scheme makes \(\bfM_g\) a category fibred in groupoids over \(\Sch\).
+        For each scheme \(S\), the fiber category \(\bfM_{g,S}\) consists of families of smooth projective curves of genus \(g\) over \(S\) and their isomorphisms.
+        The descent data for objects in \(\bfM_g\) relative to a covering of schemes correspond to gluing families of curves along isomorphisms on overlaps, which is effective due to the nature of algebraic curves.
+        Thus, \(\bfM_g\) is a prestack over the site of schemes.
+        \Yang{To be revised.}
+    \end{example}
+
+    % \Yang{Where is the 2-category?}
+
+    % \begin{theorem}[Yoneda 2-Lemma]\label{thm:Yoneda_2_lemma}
+    %     Let \(\bfS\) be a site, and let \(\bfp: \bfX \to \bfS\) and \(\bfq: \bfY \to \bfS\) be prestacks over \(\bfS\).
+    %     Then the functor
+    %     \[
+    %         \Fun_{\bfS}(\bfX, \bfY) \to (\bfp_*, \bfq_*)
+    %     \]
+    %     given by \(\Phi \mapsto \Phi_*\) is an equivalence of categories.
+    %     \Yang{To be revised.}
+    % \end{theorem}
+
+
+    \begin{proposition}\label{prop:existence_of_fiber_product_of_prestacks}
+        Let \(\bfS\) be a site, and let \(\bfp: \bfX \to \bfS\), \(\bfq: \bfY \to \bfS\), and \(\bfr: \bfZ \to \bfS\) be prestacks over \(\bfS\).
+        Let \(\Phi: \bfX \to \bfZ\) and \(\Psi: \bfY \to \bfZ\) be morphisms of prestacks over \(\bfS\).
+        Then the fiber product \(\bfX \times_{\bfZ} \bfY\) exists in the category of prestacks over \(\bfS\).
+        \Yang{To be checked.}
+    \end{proposition}
 
     \begin{definition}\label{def:stacks_in_categories}
         Let \(\bfS\) be a site.
@@ -139,17 +241,43 @@
     \end{definition}
 
     \begin{slogan}\label{slogan:stacks_and_sheaves}
-        Stacks to prestacks are like sheaves to presheaves.
+        Stacks are to prestacks as sheaves are to presheaves.
     \end{slogan}
 
+    \begin{example}\label{eg:functor_of_points_as_stacks}
+        Let \(X\) be a scheme over a base noetherian scheme \(S\).
+        The functor of points \(h_X: (\Sch/S)_{\et}^{\op} \to \Set\) is a sheaf, and thus a stack.
+    \end{example}
 
-    \begin{definition}\label{def:quotient_stack}
-        Let \(\bfS\) be a site, and let \(G\) be a group object in \(\bfS\) acting on an object \(X \in \Obj(\bfS)\).
-        The \emph{quotient stack} \([X/G]\) is the stack over \(\bfS\) defined as follows:
-        \begin{itemize}
-            \item For each object \(U \in \Obj(\bfS)\), the groupoid \([X/G](U)\) has as objects the pairs \((P, f)\), where \(P\) is a \(G\)-torsor over \(U\) and \(f: P \to X\) is a \(G\)-equivariant morphism.
-            \item Morphisms between two objects \((P, f)\) and \((P', f')\) in \([X/G](U)\) are given by \(G\)-equivariant morphisms \(\varphi: P \to P'\) such that \(f' \circ \varphi = f\).
-        \end{itemize}
-        The assignment \(U \mapsto [X/G](U)\) defines a stack over \(\bfS\).
+    \begin{construction}\label{const:stackification_of_prestacks}
+        Let \(\bfS\) be a site, and let \(\bfp: \bfX \to \bfS\) be a prestack over \(\bfS\).
+        There exists a stack \(\bfp^{+}: \bfX^{+} \to \bfS\) over \(\bfS\) together with a morphism of prestacks \(F: \bfX \to \bfX^{+}\) over \(\bfS\) satisfying the following universal property:
+        for every stack \(\bfp': \bfY \to \bfS\) over \(\bfS\) and every morphism of prestacks \(G: \bfX \to \bfY\) over \(\bfS\),
+        there exists a unique morphism of stacks \(G^{+}: \bfX^{+} \to \bfY\) over \(\bfS\) such that \(G = G^{+} \circ F\).
+        The stack \(\bfX^{+}\) is called the \emph{stackification} of the prestack \(\bfX\).
         \Yang{To be checked.}
-    \end{definition}
+    \end{construction}
+
+    \begin{example}\label{const:quotient_stack_of_schemes}
+        Let \(S\) be a noetherian scheme, and let \(G\) be a group scheme over \(S\) acting on a scheme \(X\) over \(S\) via a morphism \(\sigma: G \times_S X \to X\).
+        The \emph{quotient stack} \([X/G]\) is defined as following:
+        \begin{itemize}
+            \item For each scheme \(U\) over \(S\), the objects of \([X/G](U)\) are pairs \((P, f)\) where \(P\) is a \(G\)-torsor over \(U\) and \(f: P \to X\) is a \(G\)-equivariant morphism over \(S\).
+            \item Morphisms between two objects \((P, f)\) and \((P', f')\) in \([X/G](U)\) are given by \(G\)-equivariant morphisms \(\varphi: P \to P'\) over \(U\) such that \(f' \circ \varphi = f\).
+        \end{itemize}
+        The assignment \(U \mapsto [X/G](U)\) defines a stack over the site \((\Sch/S)_{\et}\).
+        This stack captures the quotient of \(X\) by the action of \(G\) in a way that respects the group action and the torsor structure.
+        \Yang{To be added.}
+    \end{example}
+
+
+    % \begin{definition}\label{def:quotient_stack}
+    %     Let \(\bfS\) be a site, and let \(G\) be a group object in \(\bfS\) acting on an object \(X \in \Obj(\bfS)\).
+    %     The \emph{quotient stack} \([X/G]\) is the stack over \(\bfS\) defined as follows:
+    %     \begin{itemize}
+    %         \item For each object \(U \in \Obj(\bfS)\), the groupoid \([X/G](U)\) has as objects the pairs \((P, f)\), where \(P\) is a \(G\)-torsor over \(U\) and \(f: P \to X\) is a \(G\)-equivariant morphism.
+    %         \item Morphisms between two objects \((P, f)\) and \((P', f')\) in \([X/G](U)\) are given by \(G\)-equivariant morphisms \(\varphi: P \to P'\) such that \(f' \circ \varphi = f\).
+    %     \end{itemize}
+    %     The assignment \(U \mapsto [X/G](U)\) defines a stack over \(\bfS\).
+    %     \Yang{To be checked.}
+    % \end{definition}
