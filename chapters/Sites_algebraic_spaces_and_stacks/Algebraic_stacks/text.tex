@@ -1,24 +1,57 @@
 \section{Algebraic stacks}
 
-\subsection{Deligne-Mumford stacks}
 
+\subsection{Definitions}
 
+    \paragraph{Conventions} Throughout this section, we fix a base noetherian scheme \(S\).
+    All schemes are viewed as its associated functor of points over \(S\).
+    In other words, we work in the category \(\Fun((\Sch/S)^{\op}, \Grpd)\).
+    On the base category \(\Sch/S\), we consider the \'etale topology unless otherwise specified.
+
+    \begin{definition}\label{def:representable_morphisms_of_stacks}
+        A morphism \(f \colon X \to Y\) of stacks is said to be \emph{representable (by schemes)} if for every morphism of schemes \(U \to Y\), 
+        the fiber product \(X \times_Y U\) is a scheme.
+    \end{definition}
+
+    \begin{definition}\label{def:properties_of_representable_morphisms_of_stacks}
+        Let \(P\) be a property of morphisms of schemes which is stable under base change, for example, being \'etale, smooth, flat, surjective, etc.
+        A representable morphism of stacks \(f \colon X \to Y\) is said to \emph{satisfy property \(P\)} if for every morphism of schemes \(U \to Y\), 
+        the projection morphism \(X \times_Y U \to U\) satisfies property \(P\).
+    \end{definition}
 
     \begin{definition}\label{def:Deligne-Mumford_stacks}
-        A \emph{Deligne-Mumford stack} is an algebraic stack \(X\) such that there exists a scheme \(U\) and a representable \'etale surjective morphism \(U \to X\).
+        A \emph{Deligne-Mumford stack} over \(S\) is a stack \(\calX\) over \(S\) such that
+        \begin{enumerate}
+            \item the diagonal morphism \(\Delta \colon \calX \to \calX \times_S \calX\) is representable, and
+            \item there exists a scheme \(U\) over \(S\) and an \'etale surjective morphism \(U \to \calX\).
+        \end{enumerate}
     \end{definition}
-
-
-
-\subsection{Algebraic Stacks}
-
 
     \begin{definition}\label{def:algebraic_stacks}
-        An \emph{algebraic stack} is an algebraic stack \(X\) such that there exists a scheme \(U\) and a representable smooth surjective morphism \(U \to X\).
+        An \emph{algebraic stack} over \(S\) is a stack \(\calX\) over \(S\) such that
+        \begin{enumerate}
+            \item the diagonal morphism \(\Delta \colon \calX \to \calX \times_S \calX\) is representable, and
+            \item there exists a scheme \(U\) over \(S\) and a smooth surjective morphism \(U \to \calX\).
+        \end{enumerate}
     \end{definition}
 
+    \begin{construction}\label{const:quotient_stack_of_schemes}
+        Let \(G\) be a group scheme over \(S\) acting on a scheme \(X\) over \(S\) via a morphism \(\sigma: G \times_S X \to X\).
+        The \emph{quotient stack} \([X/G]\) is defined as following:
+        \begin{itemize}
+            \item For each scheme \(U\) over \(S\), the objects of \([X/G](U)\) are pairs \((P, f)\) where \(P\) is a \(G\)-torsor over \(U\) and \(f: P \to X\) is a \(G\)-equivariant morphism over \(S\).
+            \item Morphisms between two objects \((P, f)\) and \((P', f')\) in \([X/G](U)\) are given by \(G\)-equivariant morphisms \(\varphi: P \to P'\) over \(U\) such that \(f' \circ \varphi = f\).
+        \end{itemize}
+
+        The assignment \(U \mapsto [X/G](U)\) defines a stack over the site \((\Sch/S)_{\et}\).
+        This stack captures the quotient of \(X\) by the action of \(G\) in a way that respects the group action and the torsor structure.
+        \Yang{To be added.}
+    \end{construction}
+
+
     \begin{example}\label{eg:cubic_curve_in_projective_plane_as_algebraic_stacks}
-        Let \(\kkk\) be a field. Consider the projective plane \(\bbP^2_\kkk\) over \(\kkk\) and all cubic curve \(C \subseteq \bbP^2_\kkk\).
+        Let \(\kkk\) be a field. 
+        Consider the projective plane \(\bbP^2_\kkk\) over \(\kkk\) and all cubic curve \(C \subseteq \bbP^2_\kkk\).
         Its moduli stack \(\calM\) of cubic curves is an algebraic stack.
         \Yang{To be revised.}
     \end{example}
