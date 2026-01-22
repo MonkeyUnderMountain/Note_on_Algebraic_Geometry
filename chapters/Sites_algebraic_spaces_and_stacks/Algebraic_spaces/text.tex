@@ -93,9 +93,9 @@
     \end{definition}
 
     \begin{example}\label{eg:C/Z_as_algebraic_space}
-        Let \(U = \bba_\bbc^1\) and \(R \subset U \times U\) given by \(y=x+n, n \in \bbZ\).
+        Let \(U = \bbA_\bbC^1\) and \(R \subset U \times U\) given by \(y=x+n, n \in \bbZ\).
         Then \(R\) is a disjoint union of lines in \(U \times U\).
-        Write \(R = \coprod_{n\in \bbZ} R_n\) with \(R_n = \{(x,x+n): x \in \bbc\}\).
+        Write \(R = \coprod_{n\in \bbZ} R_n\) with \(R_n = \{(x,x+n): x \in \bbC\}\).
         Then the projection is given by 
         \begin{align*}
             &\pi_1|_{R_n}:R_n \to U, \quad (x,x+n) \mapsto x, \\
@@ -108,20 +108,20 @@
         we have that \(h_R(T)\) is an equivalence relation on \(h_U(T)\) for all \(T\) over \(S\).
         Then \(X := (U,R)\) is an algebraic space.
         
-        % Easy to check that \(h_X\) is a sheaf on the big \'etale site \((\Sch/\bbc)_{\text{\'et}}\).
+        % Easy to check that \(h_X\) is a sheaf on the big \'etale site \((\Sch/\bbC)_{\text{\'et}}\).
         We do not check the representability here but give an example.
         Let \(U \to X\) be the natural morphism given by \(\id_U \in X(U)\).
-        For any scheme \(T\) over \(\bbc\), we have
+        For any scheme \(T\) over \(\bbC\), we have
         \[ (U\times_X U)(T) = \{(f,g) \in h_{U\times U}(T): \exists \{T_i \to T\} \text{ s.t. } (f_i,g_i) \in h_R(T_i) \} = h_R(T). \]
         Hence the fiber product \(h_U \times_X h_U\) is represented by \(R\).
         
-        We show that \(X \not\cong \bbc^{\times}\) by computing the the global sections.
-        Consider the covering \(U \to X\), a section \(s \in \calO_X(X)\) is given by a section \(s \in \Gamma(U,\calO_U) = \bbc[t]\) such that \(\pi_1^*s = \pi_2^*s\) in \(\Gamma(R,\calO_R)\).
+        We show that \(X \not\cong \bbC^{\times}\) by computing the the global sections.
+        Consider the covering \(U \to X\), a section \(s \in \calO_X(X)\) is given by a section \(s \in \Gamma(U,\calO_U) = \bbC[t]\) such that \(\pi_1^*s = \pi_2^*s\) in \(\Gamma(R,\calO_R)\).
         This means that \(s(x+n) = s(x)\) for all \(n \in \bbZ\).
         Hence \(s\) is a constant function.
-        In particular, \(\calO_X(X) = \bbc \neq \bbc[t,t^{-1}]\).
+        In particular, \(\calO_X(X) = \bbC \neq \bbC[t,t^{-1}]\).
 
-        The underlying set \(|X|\) is union of the quotient set \(\bbc/\bbZ\) and a generic point.
+        The underlying set \(|X|\) is union of the quotient set \(\bbC/\bbZ\) and a generic point.
         The Zariski topology on \(|X|\) is the trivial topology.
     \end{example}
 
@@ -204,8 +204,8 @@
     \end{theorem}
 
     \begin{example}\label{eg:finite_modification_of_line_in_plane}
-        Let \(X = \bba^2 = \Spec \kkk[x,y]\) and \(Y = V(y)\) be the \(x\)-axis.
-        Let \(f_0:Y'=\bba^1 \to Y, x \mapsto x^2\).
+        Let \(X = \bbA^2 = \Spec \kkk[x,y]\) and \(Y = V(y)\) be the \(x\)-axis.
+        Let \(f_0:Y'=\bbA^1 \to Y, x \mapsto x^2\).
         Then there exists a modification \(f:X' \to X\) such that the restriction \(f|_{Y'}: Y' \to Y\) is \(f_0\).
         \Yang{To be completed.}
     \end{example}

@@ -240,6 +240,12 @@
         \Yang{To be revised.}
     \end{definition}
 
+    \begin{definition}\label{def:morphism_of_stacks}
+        Let \(\bfS\) be a site, and let \(\bfp: \bfX \to \bfS\) and \(\bfq: \bfY \to \bfS\) be stacks over \(\bfS\).
+        A \emph{morphism of stacks} \(F: \bfX \to \bfY\) over \(\bfS\) is a functor \(F: \bfX \to \bfY\) such that \(\bfq \circ F = \bfp\).
+        \Yang{To be checked.}
+    \end{definition}
+
     \begin{slogan}\label{slogan:stacks_and_sheaves}
         Stacks are to prestacks as sheaves are to presheaves.
     \end{slogan}
@@ -269,6 +275,21 @@
         This stack captures the quotient of \(X\) by the action of \(G\) in a way that respects the group action and the torsor structure.
         \Yang{To be added.}
     \end{example}
+
+
+    \begin{notation}
+        As \cref{eg:presheaves_as_category_fibered_in_set}, we can associate a prestack \(\bfX\) over a \(\bfS\) to a functor \(\calX: \bfS^{\op} \to \Grpd\) by setting \(\bfX_u = \calX(u)\) for each \(u \in \Obj(\bfS)\) and defining the pullback functors accordingly.
+        In particular, we can talk about representability of such prestacks.
+        \Yang{To be revised.}
+        \Yang{Why do not we just talk about sheaves of groupoid?}
+    \end{notation}
+
+    \begin{definition}\label{def:representable_of_morphisms_between_stacks}
+        Let \(\bfS\) be a site, and let \(\bfX, \bfY\) be prestacks over \(\bfS\).
+        A morphism of prestacks \(F: \bfX \to \bfY\) over \(\bfS\) is called \emph{representable} if for every \(\bfZ \to \bfY\) over \(\bfS\) with \(\bfZ\) representable in \(\bfS\),
+        the fiber product \(\bfX \times_{\bfY} \bfZ\) is representable in \(\bfS\).
+        % \Yang{To be checked.}
+    \end{definition}
 
 
     % \begin{definition}\label{def:quotient_stack}
