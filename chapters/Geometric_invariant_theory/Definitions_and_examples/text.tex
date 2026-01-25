@@ -1,0 +1,27 @@
+\section{Definitions and examples}
+
+    Let \(\kkk\) be an algebraically closed field of characteristic zero. 
+    Let \(G\) be a reductive group over \(\kkk\) acting on a variety \(X\) over \(\kkk\).
+    
+    \begin{definition}\label{def:category_quotient}
+        A \emph{categorical quotient} of \(X\) by \(G\) is a variety \(Y\) together with a \(G\)-invariant morphism \(\pi: X \to Y\) such that for any \(G\)-invariant morphism \(\varphi: X \to Z\) to a variety \(Z\), there exists a unique morphism \(\psi: Y \to Z\) making the following diagram commute:
+        \[
+        \begin{tikzcd}
+            X \arrow[r, "\pi"] \arrow[rd, "\varphi"'] & Y \arrow[d, "\psi"] \\
+            & Z
+        \end{tikzcd}
+        \]
+    \end{definition}
+
+
+    \begin{definition}\label{def:geometric_quotient}
+        A \emph{geometric quotient} of \(X\) by \(G\) is a variety \(Y\) together with a \(G\)-invariant morphism \(\pi: X \to Y\) satisfying the following conditions:
+        \begin{enumerate}
+            \item The morphism \(\pi\) is surjective, and the fibers of \(\pi\) are precisely the \(G\)-orbits in \(X\).
+            \item The topology on \(Y\) is the quotient topology induced by \(\pi\), i.e., a subset \(U \subseteq Y\) is open if and only if \(\pi^{-1}(U)\) is open in \(X\).
+            \item The structure sheaf \(\mathcal{O}_Y\) is given by the sheaf of \(G\)-invariant regular functions on \(X\), i.e., for any open subset \(U \subseteq Y\),
+            \[
+                \mathcal{O}_Y(U) = \mathcal{O}_X(\pi^{-1}(U))^G.
+            \]
+        \end{enumerate}
+    \end{definition}
