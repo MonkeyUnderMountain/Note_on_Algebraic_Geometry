@@ -1,13 +1,27 @@
 \section{Definitions and examples}
 
     Let \(\kkk\) be an algebraically closed field of characteristic zero. 
-    Let \(G\) be a reductive group over \(\kkk\) acting on a variety \(X\) over \(\kkk\).
+    Let \(G\) be an algebraic group over \(\kkk\) acting on a variety \(X\) over \(\kkk\).
+
+    % \begin{definition}\label{def:G-invariant_morphism}
+    %     Let \(X\) and \(Y\) be varieties with a \(G\)-action.
+    %     A morphism \(\varphi: X \to Y\) is called \emph{\(G\)-invariant} if the following diagram
+    %     \[
+    %     \begin{tikzcd}
+    %         G \times X \arrow[r, "\sigma_X"] \arrow[d, "id_G \times \varphi"'] & X \arrow[d, "\varphi"] \\
+    %         G \times Y \arrow[r, "\sigma_Y"] & Y
+    %     \end{tikzcd}
+    %     \]
+    %     commutes, where \(\sigma_X\) and \(\sigma_Y\) denote the actions of \(G\) on \(X\) and \(Y\) respectively.
+    % \end{definition}
     
     \begin{definition}\label{def:category_quotient}
-        A \emph{categorical quotient} of \(X\) by \(G\) is a variety \(Y\) together with a \(G\)-invariant morphism \(\pi: X \to Y\) such that for any \(G\)-invariant morphism \(\varphi: X \to Z\) to a variety \(Z\), there exists a unique morphism \(\psi: Y \to Z\) making the following diagram commute:
+        A \emph{categorical quotient} of \(X\) by \(G\) is a variety \(Y\) with trivial \(G\)-action together with a \(G\)-invariant morphism \(\pi: X \to Y\) 
+        such that for any \(G\)-invariant morphism \(\varphi: X \to Z\) to a variety \(Z\) with trivial \(G\)-action, 
+        there exists a unique morphism \(\psi: Y \to Z\) making the following diagram commute:
         \[
         \begin{tikzcd}
-            X \arrow[r, "\pi"] \arrow[rd, "\varphi"'] & Y \arrow[d, "\psi"] \\
+            X \arrow[r, "\pi"] \arrow[rd, "\varphi"'] & Y \arrow[d,gray, "\psi"] \\
             & Z
         \end{tikzcd}
         \]
@@ -17,11 +31,40 @@
     \begin{definition}\label{def:geometric_quotient}
         A \emph{geometric quotient} of \(X\) by \(G\) is a variety \(Y\) together with a \(G\)-invariant morphism \(\pi: X \to Y\) satisfying the following conditions:
         \begin{enumerate}
-            \item The morphism \(\pi\) is surjective, and the fibers of \(\pi\) are precisely the \(G\)-orbits in \(X\).
-            \item The topology on \(Y\) is the quotient topology induced by \(\pi\), i.e., a subset \(U \subseteq Y\) is open if and only if \(\pi^{-1}(U)\) is open in \(X\).
+            \item The morphism \(\pi\) is surjective, and \((\sigma,p_2):G \times X \to X \times X\) factors through the fiber product \(X \times_Y X \to X \times X\) and \(G \times X \to X \times_Y X\) is surjective;
+            \item The topology on \(Y\) is the quotient topology induced by \(\pi\), i.e., a subset \(U \subseteq Y\) is open if and only if \(\pi^{-1}(U)\) is open in \(X\);
             \item The structure sheaf \(\mathcal{O}_Y\) is given by the sheaf of \(G\)-invariant regular functions on \(X\), i.e., for any open subset \(U \subseteq Y\),
             \[
                 \mathcal{O}_Y(U) = \mathcal{O}_X(\pi^{-1}(U))^G.
             \]
         \end{enumerate}
     \end{definition}
+
+    \Yang{geometric quotient must be categorical quotient}
+    \begin{proposition}\label{prop:geometric_quotient_is_categorical_quotient}
+        A geometric quotient is a categorical quotient.
+    \end{proposition}
+
+    \begin{example}\label{eg:G_m_acting_on_A^1_has_no_geometric_quotient}
+        Let \(G = \bbG_m\) and \(X = \bbA^1\) with the action of \(G\) on \(X\) given by multiplication.
+        \Yang{To be continous}
+    \end{example}
+
+    \Yang{Scheme and universal and uniform quotient.}
+
+
+    \begin{proposition}\label{prop:descend_properties_to_categorical_quotient}
+        Let \(\pi: X \to Y\) be a categorical quotient of \(X\) by \(G\).
+        \begin{enumerate}
+            \item If \(X\) is separated, then \(Y\) is separated.
+            \item If \(X\) is normal, then \(Y\) is normal.
+            \item If \(X\) is smooth, then \(Y\) is smooth.
+        \end{enumerate}
+        \Yang{To be revised}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:fiber_is_single_orbit_implies_geometric_quotient}
+        Let \(\pi: X \to Y\) be a categorical quotient of \(X\) by \(G\).
+        If for every \(y \in Y\), the fiber \(\pi^{-1}(y)\) is a single \(G\)-orbit, then \(\pi: X \to Y\) is a geometric quotient.
+        \Yang{To be checked.}
+    \end{proposition}
