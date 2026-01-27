@@ -8,3 +8,46 @@ Everything is over \(\kkk\) unless otherwise specified.
     Let \(C \subset \bbP^n\) be a smooth projective curve.
     The \emph{projective cone} over \(C\) is the projective variety \(X \subset \bbP^{n+1}\) defined by the same homogeneous equations as \(C\).
     The variety \(X\) is singular at the vertex of the cone, which corresponds to the point \([0:\cdots:0:1]\in \bbP^{n+1}\).
+
+
+\subsection{Du Val singularites}
+
+
+    Du Val singularities (also known as rational double points, or ADE singularities) are a class of surface singularities that arise in algebraic geometry and complex surface theory.
+    They are characterized by their resolution properties and can be classified according to the ADE classification of simply laced Dynkin diagrams.
+
+    A Du Val singularity can be locally described by one of the following equations in \(\bbC^3\):
+
+    \begin{itemize}
+        \item \(A_n\) singularity: \(x^2 + y^2 + z^{n+1} = 0\) for \(n \geq 1\)
+        \item \(D_n\) singularity: \(x^2 + y^{n-1} + yz^2 = 0\) for \(n \geq 4\)
+        \item \(E_6\) singularity: \(x^2 + y^3 + z^4 = 0\)
+        \item \(E_7\) singularity: \(x^2 + y^3 + yz^3 = 0\)
+        \item \(E_8\) singularity: \(x^2 + y^3 + z^5 = 0\)
+    \end{itemize}
+
+    These singularities are important in the study of algebraic surfaces, particularly in the context of minimal models and the classification of surfaces.
+    They also appear in various areas of mathematics and theoretical physics, including string theory and mirror symmetry.
+
+    {\Large \Yang{Above by ai}}
+
+\subsection{Quotient singularities}
+
+    Consider \(\mu_n\), the group of \(n\)-th roots of unity, acting on \(\bbA^2\) by
+    \[ \zeta \cdot (x,y) = (\zeta x, \zeta^m y) \]
+    for a fixed integer \(m\) with \(\gcd(m,n) = 1\).
+
+    \((a_1,...,a_n)/r\)-singularity is the singularity obtained by taking the quotient of \(\bbA^n\) by the action of \(\mu_r\) defined by
+    \[ \zeta \cdot (x_1,...,x_n) = (\zeta^{a_1} x_1, ..., \zeta^{a_n} x_n) \]
+    where \(\zeta\) is a primitive \(r\)-th root of unity.
+
+    \(A_n\) singularity is the quotient singularity of type \((1,-1)/ (n+1)\).
+
+    Its minimal resolution has exceptional locus consisting of a chain of \(n\) smooth rational curves, each with self-intersection \(-2\).
+    Looks like:
+    \[ \tikzcdset{every arrow/.append style={dash}}
+    \begin{tikzcd}
+        \bullet \arrow[r] & \bullet \arrow[r] & \bullet \arrow[r] & \cdots \arrow[r] & \bullet
+    \end{tikzcd} \]
+
+    Du Val singularities can be got by deforming \(A_n\) singularities.(general fiber \(A_n\), special fiber Du Val).
