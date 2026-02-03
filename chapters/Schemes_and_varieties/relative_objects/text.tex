@@ -29,24 +29,80 @@
         \Yang{To be continued...}
     \end{definition}
 
+    Let \(X\) be a scheme and \(\calF\) be a quasi-coherent sheaf on \(X\).
+    The \emph{projective bundle} associated to \(\calF\) is defined to be \(\bbP(\calF) = \calProj_X \Sym_{\calO_X} \calF\).
+    The \emph{vector bundle} associated to \(\calF\) is defined to be \(\bbV(\calF) = \calSpec_X \Sym_{\calO_X} \calF\).
+
 
 \subsection{Relative ampleness and projective morphisms}
 
     \begin{definition}\label{def:relative_ample_line_bundle}
         Let \(X\) be an \(S\)-scheme via a morphism \(f : X \to S\).
-        A line bundle \(\calL\) on \(X\) is called \emph{relatively ample} (or \(f\)-ample) if for every affine open subset \(U \subset S\), the restriction \(\calL|_{f^{-1}(U)}\) is an ample line bundle on the scheme \(f^{-1}(U)\).
+        A line bundle \(\calL\) on \(X\) is called \emph{relatively ample} or \emph{\(f\)-ample} if for every affine open subset \(U \subset S\), the restriction \(\calL|_{f^{-1}(U)}\) is an ample line bundle on the scheme \(f^{-1}(U)\).
         \Yang{To be revised.}
     \end{definition}
 
     \begin{definition}\label{def:projective_morphism}
         Let \(f : X \to S\) be a morphism of schemes.
-        The morphism \(f\) is called \emph{projective} if there exists a quasi-coherent
+        The morphism \(f\) is called \emph{projective} if there exists a coherent sheaf \(\calF\) on \(S\) and a closed immersion \(i : X \to \bbP(\calF)\) over \(S\).
     \end{definition}
 
-    \begin{remark}\label{rmk:definitions_of_projective_morphism}
-        There are subtle differences between various definitions of projective morphisms in the literature. (see \cite[abaaba]{FGA05})
-        
+    \begin{remark}\label{rmk:different_def_of_relative_projectivity}
+        There may be three different definitions of projective morphisms in the literature:
+        \begin{itemize}
+            \item (Grothendieck) this is the definition in the sense of \cref{def:projective_morphism};
+            \item (Altman and Kleiman) this need the coherent sheaf \(\calF\) to be locally free of finite rank in \cref{def:projective_morphism};
+            \item (Hartshorne) this need the coherent sheaf \(\calF\) to be free of finite rank in \cref{def:projective_morphism}.
+        \end{itemize}
+        For more details, see \cite[Section 5.5]{FGA05}.
     \end{remark}
+
+    \begin{definition}\label{def:relatively_very_ample}
+        Let \(f : X \to S\) be a proper morphism of schemes.
+        A line bundle \(\calL\) on \(X\) is called \emph{relatively very ample} or \emph{\(f\)-very ample} if there exists a closed immersion \(i : X \to \bbP(\calF)\) over \(S\) for some coherent sheaf \(\calF\) on \(S\) such that \(\calL \cong i^* \calO_{\bbP(\calF)}(1)\).
+    \end{definition}
+
+    \begin{theorem}\label{thm:equivalent_definitions_of_relative_ample}
+        Let \(f : X \to S\) be a proper morphism of schemes and \(\calL\) be a line bundle on \(X\).
+        The following are equivalent:
+        \begin{enumerate}
+            \item \(\calL\) is \(f\)-ample;
+            \item for every coherent sheaf \(\calF\) on \(X\), there exists an integer \(n_0 > 0\) such that for all integers \(n \geq n_0\), 
+                \[ f^* f_* (\calF \otimes \calL^{\otimes n}) \to \calF \otimes \calL^{\otimes n} \]
+                is surjective;
+            \item \(\calL^{\otimes n}\) is \(f\)-very ample for some integer \(n > 0\);
+        \end{enumerate}
+        Moreover, the morphism \(f\) is projective if and only if there exists an \(f\)-ample line bundle on \(X\).
+        \Yang{To be continued...}
+    \end{theorem}
+
+    \begin{theorem}[Relative Serre Vanishing]\label{thm:Serre_vanishing_relatively_version}
+        Let \(f : X \to S\) be a projective morphism of Noetherian schemes and \(\calL\) be a line bundle on \(X\).
+        Then \(\calL\) is \(f\)-ample if and only if for every coherent sheaf \(\calF\) on \(X\), there exists an integer \(n_0 > 0\) such that for all integers \(n \geq n_0\) and all \(i > 0\), we have
+        \[
+            R^i f_* (\calF \otimes \calL^{\otimes n}) = 0.
+        \]
+        \Yang{To be continued...}
+    \end{theorem}
+
+
+    \begin{theorem}[Openness of ample locus]\label{thm:openness_of_ample_locus}
+        Let \(f : X \to S\) be a projective morphism of varieties over \(\kk\) and \(\calL\) be a line bundle on \(X\).
+        Then the set
+        \[
+            U = \{ s \in S(\kkk) : \calL|_{X_s} \text{ is an ample line bundle on the fibre } X_s = f^{-1}(s) \}
+        \]
+        is an open subset of \(S(\kkk)\).
+        \Yang{To be continued...}
+    \end{theorem}
+    
+
+    \begin{theorem}[Fibrewise ampleness]\label{thm:fibrewise_ampleness}
+        Let \(f : X \to S\) be a projective morphism of varieties over \(\kk\) and \(\calL\) be a line bundle on \(X\).
+        Then \(\calL\) is \(f\)-ample if and only if for every point \(s \in S(\kkk)\), the restriction \(\calL|_{X_s}\) is an ample line bundle on the fibre \(X_s = f^{-1}(s)\).
+        \Yang{To be continued...}
+    \end{theorem}
+
 
 \subsection{Blowing up}
 
