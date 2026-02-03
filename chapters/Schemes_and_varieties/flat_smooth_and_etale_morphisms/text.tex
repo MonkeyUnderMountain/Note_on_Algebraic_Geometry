@@ -9,6 +9,8 @@
         We say that \(f\) is \emph{flat} if it is flat at every point \(\xi \in X\).
     \end{definition}
 
+    The notation and terminology of flatness can be extended to sheaves of modules over schemes.
+
     \begin{definition}\label{def:flat_sheaves_over_base}
         Let \(X\) be \(Y\)-scheme via a morphism \(f:X\to Y\), and let \(\calF\) be a sheaf of \(\calO_X\)-modules.
         We say that \(\calF\) is \emph{flat over \(Y\) at \(\xi \in X\)} if the stalk \(\calF_\xi\) is a flat \(\calO_{Y,f(\xi)}\)-module via the induced map \(f^\sharp_\xi:\calO_{Y,f(\xi)}\to \calO_{X,\xi}\).
@@ -23,22 +25,15 @@
             \item flatness is preserved under base change;
             \item a coherent sheaf \(\calF\) on a noetherian scheme \(X\) is flat over \(X\) iff it is locally free.
         \end{enumerate}
-        \Yang{To be checked.}
+        % \Yang{To be checked.}
     \end{proposition}
-
-    \begin{proposition}\label{prop:openness_of_flat_locus}
-        Let \(f:X\to Y\) be a morphism of finite type between noetherian schemes.
-        Then the set of points \(\xi \in X\) at which \(f\) is flat is open in \(X\).
-        \Yang{To be checked.}
-    \end{proposition}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
 
     \begin{proposition}\label{prop:flat_over_curve_iff_torsion_free}
         Let \(X\) be a regular integral scheme of dimension \(1\) and \(\calF\) be a coherent sheaf on \(X\).
-        Then \(\calF\) is flat over \(X\) iff it is torsion-free, i.e., for every non-zero-divisor \(s \in \calO_{X,x}\), the multiplication map
-        \[
-            s:\calF\to\calF
-        \]
-        is injective.
+        Then \(\calF\) is flat over \(X\) iff it is torsion-free.
         \Yang{To be checked.}
     \end{proposition}
 
@@ -57,16 +52,21 @@
     \end{theorem}
 
     \begin{theorem}\label{thm:flat_iff_has_the_same_Hilbert_polynomials}
-        Let \(T\) be a integral noetherian scheme and \(f:X\to T\) be a projective morphism.
+        Let \(X\) be a projective scheme with relatively ample line bundle \(\calO_X(1)\) over a noetherian scheme \(T\).
         Let \(\calF\) be a coherent sheaf on \(X\).
-        Fix a relatively ample line bundle \(H\) on \(X\) over \(T\).
-        Then \(\calF\) is flat over \(T\) iff the Hilbert polynomials 
-        \[
-            P_{(X_t,H_t;\calF_t)}(n) = \chi(X_t,\calF_t \otimes H_t^{\otimes n})
-        \]
-        are independent of \(t \in T\).
+        Suppose that \(\calF\) is flat over \(T\).
+        Then the Hilbert polynomials \(P_{X_t,\calF_t}(m)\) are independent of \(t \in T\).
+        Conversely, suppose that \(T\) is reduced, the constant Hilbert polynomial \(P_{X_t,\calF_t}(m)\) implies that \(\calF\) is flat over \(T\).
         \Yang{To be checked.}
     \end{theorem}
+
+    \begin{theorem}\label{thm:generic_flatness}
+        Let \(S\) be a integral noetherian scheme, \(f:X\to S\) be a morphism of finite type and \(\calF\) be a coherent sheaf on \(X\).
+        Then there exists a non-empty open subset \(U \subseteq S\) such that the restriction \(\calF|_{f^{-1}(U)}\) is flat over \(U\).
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
 
     \Yang{To be added: deformation, algebraic families...}
 
