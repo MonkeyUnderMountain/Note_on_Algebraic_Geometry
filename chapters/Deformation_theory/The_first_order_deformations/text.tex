@@ -1,0 +1,50 @@
+\section{The first order deformations}
+
+Fix a field \( \kk \) throughout this section.
+
+\subsection{Dual number}
+
+    \begin{definition}\label{def:dual_number}
+        The \emph{dual number} over \( \kk \) is the ring \( \kk[\epsilon] \) defined as
+        \[
+            \kk[\epsilon] := \kk[x]/(x^2),
+        \]
+        where \( \epsilon \) is the image of \( x \) in the quotient.
+    \end{definition}
+
+    \begin{definition}\label{def:the_first_order_deformations}
+        Let \( X \) be a \( \kk \)-scheme, and let \( Z \subseteq X \) be a closed subscheme. 
+        A \emph{deformation} of \( Z \) in \( X \) over the dual number \( \kk[\epsilon] \) is a closed subscheme \( \calZ \subseteq X \times_{\Spec \kk} \Spec \kk[\epsilon] \) flat over \( \Spec \kk[\epsilon] \) such that the special fiber \( \calZ_0 := \calZ \times_{\Spec \kk[\epsilon]} \Spec \kk \) is isomorphic to \( Z \).
+        \Yang{To be revised.}
+    \end{definition}
+
+
+    \begin{proposition}\label{thm:the_first_order_deformations_and_tangent_space_of_moduli}
+        Let \( X \) be a \( \kk \)-scheme, and let \( Z \subseteq X \) be a closed subscheme. 
+        Suppose that there exists a moduli space \( \calM \) parameterizing closed subschemes of \( X \) (e.g., the Hilbert scheme \( \Hilb_{X/\kk} \)). 
+        Then the set of deformations of \( Z \) in \( X \) over the dual number \( \kk[\epsilon] \) is in bijection with the tangent space \( T_{[Z]} \calM \) of \( \calM \) at the point \( [Z] \in \calM \) corresponding to \( Z \).
+        \Yang{To be checked.}
+    \end{proposition}
+
+
+    \begin{theorem}\label{thm:deformations_of_subschemes_over_dual_number}
+        Let \(X\) be a \( \kk \)-scheme, and let \( Z \subseteq X \) be a closed subscheme. 
+        Then the deformations of \( Z \) in \( X \) over the dual number \( \kk[\epsilon] \) is in bijection with \(H^0(Z, \calN_{Z/X})\), 
+        where \( \calN_{Z/X} = (\calI_Z/\calI_Z^2)^\vee \) is the normal sheaf of \( Z \) in \( X \).
+    \end{theorem}
+
+    \begin{theorem}\label{thm:deformations_of_coherent_sheaf_over_dual_number}
+        Let \( X \) be a \( \kk \)-scheme, and let \( \calF \) be a coherent sheaf on \( X \). 
+        Then the deformations of \( \calF \) over the dual number \( \kk[\epsilon] \) is in bijection with \( \Ext^1_X(\calF, \calF) \).
+        In particular, if \(\calF \cong \calL\) is a line bundle on \( X \), then the deformations of \( \calL \) over the dual number \( \kk[\epsilon] \) is in bijection with \( H^1(X, \calO_X) \).
+    \end{theorem}
+
+    \begin{corollary}\label{cor:Pic0_and_h10_and_irregularity}
+        Let \( X \) be a smooth projective variety over \( \kk \). 
+        Then \(\dim \Pic^0(X) = q(X) = h^{1,0}(X)\).
+    \end{corollary}
+    \begin{proof}
+        \Yang{To be added.}
+    \end{proof}
+
+    \Yang{To be checked.}
