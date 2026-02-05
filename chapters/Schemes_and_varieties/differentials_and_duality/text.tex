@@ -120,7 +120,7 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
             & & & & &\ddots & \\
             & & & & & & 1 \\
         \end{pmatrix}. \]
-        It has rank \(r\), \(\phi\) is injective and \(\ker \psi = \im \phi\).
+        It has rank \(r\), \(\phi\) is injective and \(\ker \psi = \Image \phi\).
         Thus the sequence is exact.
 
         \begin{step}\label{step_in_Euler_sequence:glue_local_exact_sequences}
@@ -262,8 +262,9 @@ Unless otherwise specified, all schemes are assumed to be defined and of finite 
     \Yang{When \(\calF\) is locally free, we have \(\Ext^i(\calF,\omega_X^\circ) \cong H^i(X,\omega_X^\circ \ten \calF^\vee)\).}
 
     \begin{corollary}\label{cor:Serre_duality_for_the_canonical_divisor}
-        Let \(X\) be a projective, normal variety of dimension \(n\) over \(\kkk\).
-        Then for every integer \(m\) and \(0 \leq i \leq n\), there is a natural isomorphism
+        Let \(X\) be a projective, normal and Cohen-Macaulay variety of dimension \(n\) over \(\kkk\).
+        Then for every divisor \(D\), there is a natural isomorphism
+        \[ H^i(X, D) \cong H^{n-i}(X, K_X - D)^\vee. \]
         \Yang{To be completed.}
     \end{corollary}
 

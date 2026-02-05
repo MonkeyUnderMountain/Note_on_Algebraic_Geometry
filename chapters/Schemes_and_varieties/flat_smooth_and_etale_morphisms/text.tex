@@ -68,43 +68,45 @@
         \Yang{To be added.}
     \end{proof}
 
-    \Yang{To be added: deformation, algebraic families...}
+    % \Yang{To be added: deformation, algebraic families...}
 
 
 \subsection{Base change and semicontinuity}
 
+
+    Let \(Y\) be an integral noetherian scheme, \(f:X\to Y\) be a projective morphism, and \(\calF\) be a coherent sheaf on \(X\) which is flat over \(Y\). 
+    There is a natural base change map for every point \(y \in Y\) and integer \(i \geq 0\):
+    \[
+        \varphi^i_y:(\sfR^i f_* \calF)_y \otimes_{\calO_{Y,y}} k(y) \to H^i(X_y,\calF_y).
+    \]
+    Consider the function 
+    \[
+        h^i:Y\to \bbZ, \quad y\mapsto \dim_{k(y)} H^i(X_y,\calF_y).
+    \]
+
+    \begin{theorem}[Semicontinuity of cohomology]\label{thm:semicontinuity_of_cohomology}
+        The function \(h^i\) is upper semicontinuous on \(Y\).
+    \end{theorem}
+    \Yang{To be checked.}
+
+
     \begin{theorem}[Grauert's theorem]\label{thm:Grauert_theorem}
-        Let \(f:X\to Y\) be a proper morphism of noetherian schemes, and let \(\calF\) be a coherent sheaf on \(X\) which is flat over \(Y\).
-        Then for each integer \(i\geq 0\), the sheaf \(R^i f_* \calF\) is coherent on \(Y\), and there exists an open subset \(U \subseteq Y\) such that for every point \(y \in U\), the base change map
-        \[
-            (R^i f_* \calF)_y \otimes_{\calO_{Y,y}} k(y) \to H^i(X_y,\calF_y)
-        \]
-        is an isomorphism.
-        \Yang{To be checked.}
+        Suppose that for an integer \(i\geq 0\), the function \(h^i(y)\) is constant for all points \(y \in Y\).
+        Then the sheaf \(\sfR^i f_* \calF\) is locally free on \(Y\), 
+        and for every point \(y \in Y\), the base change map \(\varphi^i_y\) is an isomorphism.
     \end{theorem}
 
     \begin{theorem}[Cohomology and base change]\label{thm:cohomology_and_base_change}
-        Let \(f:X\to Y\) be a proper morphism of noetherian schemes, and let \(\calF\) be a coherent sheaf on \(X\) which is flat over \(Y\).
-        For each integer \(i\geq 0\), the following are equivalent:
+        Suppose that for a point \(y \in Y\) and an integer \(i \geq 0\), the base change map \(\varphi^i_y\) is surjective.
+        Then there exists an open neighborhood \(U\) of \(y\) in \(Y\) such that for every point \(y' \in U\), the base change map is an isomorphism. 
+        Moreover, the following are equivalent:
         \begin{enumerate}
-            \item the base change map
-            \[
-                (R^i f_* \calF)_y \otimes_{\calO_{Y,y}} k(y) \to H^i(X_y,\calF_y)
-            \]
-            is an isomorphism for all points \(y \in Y\);
-            \item the sheaf \(R^i f_* \calF\) is locally free on \(Y\).
+            \item the base change map \(\varphi^i_y\) is surjective;
+            \item the sheaf \(\sfR^i f_* \calF\) is locally free on an open neighborhood of \(y\).
         \end{enumerate}
         \Yang{To be checked.}
     \end{theorem}
 
-    \begin{theorem}[Semicontinuity of cohomology]\label{thm:semicontinuity_of_cohomology}
-        Let \(f:X\to Y\) be a proper morphism of noetherian schemes, and let \(\calF\) be a coherent sheaf on \(X\) which is flat over \(Y\). Then for each integer \(i\geq 0\), the function
-        \[
-            h^i:Y\to \bbZ, \quad y\mapsto \dim_{k(y)} H^i(X_y,\calF_y)
-        \]
-        is upper semicontinuous on \(Y\).
-    \end{theorem}
-    \Yang{To be checked.}
 
 \subsection{Smooth morphisms}
 
@@ -125,4 +127,11 @@
         We say that \(f\) is \emph{\'etale} if it is \'etale at every point \(\xi \in X\).
     \end{definition}
     \Yang{To be checked.}
+
+    \begin{theorem}\label{thm:purity_of_branch_locus}
+        Let \(f:X\to Y\) be a morphism of finite type between noetherian integral regular schemes.
+        Suppose that \(f\) is \'etale in codimension \(1\), i.e., there exists a closed subset \(Z \subseteq X\) of codimension at least \(2\) such that \(f|_{X\setminus Z}:X\setminus Z \to Y\) is \'etale.
+        Then \(f\) is \'etale.
+        \Yang{To be checked.}
+    \end{theorem}
 
