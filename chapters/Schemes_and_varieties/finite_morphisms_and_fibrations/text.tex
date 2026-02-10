@@ -1,8 +1,64 @@
 \section{Finite morphisms and fibrations}
 
+    The main references for this section are \cite{Har77}, \cite{Laz04a} and \cite{FOV99:joinsAndIntersections}.
+
+
+
+\subsection{Finite morphisms}
+
+    \begin{theorem}\label{thm:finite_preserve_ampleness}
+        Let \(f: Y \to X\) be a finite morphism of schemes. 
+        If \(\calL\) is an ample line bundle on \(X\), then \(f^*\calL\) is an ample line bundle on \(Y\).
+        If and only if.
+    \end{theorem}
+
+\subsection{Fibrations}
+
+    \begin{definition}\label{def:fibration}
+        Let \(S\) be an integral excellent scheme and \(X\) be an integral scheme over \(S\) of finite type via the structure morphism \(f: X \to S\).
+        Suppose that \(f\) is dominant.
+        We say that \(f\) is a \emph{fibration} if \(\fkk(S)\) is algebraically closed in \(\fkk(X)\).
+    \end{definition}
+
+    \begin{theorem}\label{thm:general_irreducible_of_fibration}
+        Let \(f: X \to S\) be a fibration.
+        Then for a general point \(\sigma \in S\), the fiber \(X_\sigma\) is integral.
+    \end{theorem}
+    \begin{proof}
+
+        \Yang{}
+    \end{proof}
+
+    \begin{slogan}
+        Fibration is the relatively version of ``integral''.
+    \end{slogan}
+
+    \begin{proposition}\label{prop:fibration_for_proper_morphism}
+        Let \(S\) be an integral excellent scheme and \(X\) be an integral scheme over \(S\) of finite type via the structure morphism \(f: X \to S\).
+        Suppose that \(f\) is proper surjective and that \(S\) is normal.
+        Then \(f\) is a fibration if and only if \(f_*\calO_X = \calO_S\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{}
+    \end{proof}
+
+    \begin{proposition}\label{prop:fibration_and_connected_fibers}
+        Let \(f: X \to Y\) be a fibration with \(Y\) normal.
+        Then the fibers of \(f\) are connected.
+    \end{proposition}
+
+    \begin{remark}\label{rmk:normality_in_definition_of_fibration}
+        If we drop the normality assumption in Proposition \ref{prop:fibration_for_proper_morphism}, then the condition \(f_*\calO_X = \calO_Y\) is still sufficient to guarantee that \(f\) is a fibration.
+        However, the converse may fail.
+
+        \Yang{To be added.}
+    \end{remark}
+
+
     \begin{theorem}[Zariski's Main Theorem]\label{thm:Zariski_main_theorem}
-        Let \(f: Y \to X\) be a quasi-finite and separated morphism of schemes.
-        Then there exists a factorization
+        Let \(f: Y \to X\) be a birational finite type morphism of excellent integral schemes.
+        Suppose that \(X\) is normal.
+        Then the fiber of \(f\) are connected.
     \end{theorem}
 
     \begin{theorem}[Stein factorization]\label{thm:Stein_factorization}
@@ -16,29 +72,59 @@
         \Yang{To be checked.}
     \end{theorem}
 
-\subsection{Finite morphisms}
-
-    \begin{theorem}\label{thm:finite_preserve_ampleness}
-        Let \(f: Y \to X\) be a finite morphism of schemes. 
-        If \(\calL\) is an ample line bundle on \(X\), then \(f^*\calL\) is an ample line bundle on \(Y\).
-        If and only if.
+    \begin{theorem}[Rigidity Lemma]\label{thm:rigidity_lemma}
+        Let \(f: Y \to X\) be a fibration of noetherian schemes.
+        Let \(g: Y \to Z\) be a morphism such that the restriction \(g|_{f^{-1}(x)} : f^{-1}(x) \to Z\) is constant for every point \(x \in X\).
+        Then there exists a unique morphism \(h: X \to Z\) such that \(g = h \circ f\).
+        \Yang{}
     \end{theorem}
 
-\subsection{Fibrations}
 
-    \begin{definition}\label{def:fibration_of_proper_morphism}
-        Let \(f: Y \to X\) be a proper morphism of noetherian schemes.
-        We say that \(f\) is a fibration if for every point \(x \in X\), the fiber \(f^{-1}(x)\) is a geometrically connected scheme.
-    \end{definition}
 
-    \begin{proposition}\label{prop:fibration_direct_image_of_O_Y_and_algebraically_closed_in_function_field}
-        Let \(f: Y \to X\) be a proper morphism of noetherian schemes.
-        Then \(f\) is a fibration if and only if the natural map \(\calO_X \to f_*\calO_Y\) is an isomorphism.
-        In particular, if \(X\) is an algebraically closed field and \(f\) is a fibration, then the fibers \(f^{-1}(x)\) are also algebraically closed in the function field \(K(X)\).
-        \Yang{To be revised}
-    \end{proposition}
+% \subsection{Bertini}
 
-    \begin{definition}\label{def:fibration_of_rational_map}
-        Let \(f: Y \dashrightarrow X\) be a rational map of noetherian schemes.
-        We say that \(f\) is a fibration if there exists an open subset \(U \subseteq Y\) such that the restriction \(f|_U : U \to X\) is a fibration.
-    \end{definition}
+
+    % \begin{theorem}\label{thm:general_fiber_of_fibration_is_integral}
+    %     Let \(X \to Y\) be a fibration of varieties over a field \(k\).
+    %     Then for a general point \(y \in Y\), the fiber \(X_y\) is integral.
+    % \end{theorem}
+
+    % \begin{theorem}\label{thm:general_fiber_of_fibration_is_R_n_S_n}
+    %     Let \(X \to Y\) be a fibration of varieties over a field \(k\).
+    %     Suppose that the total space \(X\) satisfies \(R_n\) (resp. \(S_n\)) for some integer \(n \geq 1\).
+    %     Then for a general point \(y \in Y\), the fiber \(X_y\) also satisfies \(R_n\) (resp. \(S_n\)).
+    % \end{theorem}
+
+    % \begin{corollary}\label{cor:general_fiber_of_fibration_is_normal}
+    %     Let \(X \to Y\) be a fibration of varieties over a field \(k\).
+    %     Suppose that the total space \(X\) is normal.
+    %     Then for a general point \(y \in Y\), the fiber \(X_y\) is also normal.
+    % \end{corollary}
+
+
+    % \begin{corollary}\label{thm:bertini_of_irreducibility}
+    %     Let \(X \subseteq \bbP^n_k\) be an irreducible closed subvariety of dimension \(\geq 2\).
+    %     Then for a general hyperplane \(H \subseteq \bbP^n_k\), the (scheme-theoretic) intersection \(X \cap H\) is integral.
+    % \end{corollary}
+    % \begin{proof}
+    %     \Yang{}
+    % \end{proof}
+
+    % \begin{corollary}\label{thm:curve_through_finite_given_point}
+    %     Let \(X\) be a quasi-projective variety over a field \(\kk\) of dimension \(\geq 2\).
+    %     Given any finitely many closed points \(x_1, x_2, \ldots, x_r\in X(\kkk)\), there exists an irreducible curve \(C \subseteq X\) passing through all the given points.
+    % \end{corollary}
+    % \begin{proof}
+    %     \Yang{}
+    % \end{proof}
+
+    % \begin{theorem}\label{thm:bertini_of_R_n_S_n}
+    %     Let \(X \subseteq \bbP^n_k\) be a closed subvariety.
+    %     Suppose that \(X\) satisfies \(R_n\) (resp. \(S_n\)) for some integer \(n \geq 1\).
+    %     Then for a general hyperplane \(H \subseteq \bbP^n_k\), then the (scheme-theoretic) intersection \(X \cap H\) also satisfies \(R_n\) (resp. \(S_n\)).
+    % \end{theorem}
+
+    % \begin{corollary}\label{cor:bertini_of_normality}
+    %     Let \(X \subseteq \bbP^n_k\) be a normal closed subvariety.
+    %     Then for a general hyperplane \(H \subseteq \bbP^n_k\), the (scheme-theoretic) intersection \(X \cap H\) is also normal.
+    % \end{corollary}
