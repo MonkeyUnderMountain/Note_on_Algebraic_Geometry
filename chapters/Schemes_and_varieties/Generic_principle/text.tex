@@ -1,0 +1,130 @@
+\section{Generic principle and general varieties}
+
+The main references for this section are \cite{Har77,Laz04a,FOV99:joinsAndIntersections}.
+
+
+
+\subsection{Generic principle}
+
+    Let \(X\) be a scheme of finite type over an excellent integral scheme \(S\) and \(\calF\) be a coherent sheaf on \(X\).
+    Consider the following properties of \(\calF\):
+    \begin{enumerate}
+        \item \(\calF\) is locally free;
+        \item \(\calF\) is flat over \(S\);
+        \item \(\calF\) satisfies the condition \(S_k\);
+    \end{enumerate}
+
+    Consider the following properties of \(X\):
+    \begin{enumerate}
+        \item \(X\) is smooth over \(S\);
+        \item \(X\) satisfies the condition \(R_k\);
+        \item \(X\) is Gorenstein;
+    \end{enumerate}
+
+    \begin{theorem}\label{thm:generic_principle_for_schemes}
+        Let \(X\) be a scheme of finite type over an excellent integral scheme \(S\) and \(\calF\) be a coherent sheaf on \(X\).
+        Then for a general point \(\sigma \in S\), the fiber \(X_\sigma\) satisfies the same properties as \(X\) and the restriction \(\calF|_{X_\sigma}\) satisfies the same properties as \(\calF\).
+        \Yang{}
+    \end{theorem}
+
+    \begin{theorem}\label{thm:generic_principle_for_coherent_sheaves}
+        
+    \end{theorem}
+
+    \begin{corollary}\label{cor:bertini_for_smooth_condition}
+        Let \(X\) be a smooth variety over an algebraically closed field \(k\) and let \(\calL\) be a very ample line bundle on \(X\).
+        Then for a general member \(D \in |\calL|\), the divisor \(D\) is smooth.
+        \Yang{}
+    \end{corollary}
+
+
+\subsection{Fibration}
+
+    \begin{example}\label{eg:generic_integral_does_not_hold}
+        Consider the morphism \(f: \Spec k[x,y]/(xy) \to \Spec k[t]\) given by \(t \mapsto xy\).
+        Then the generic fiber of \(f\) is not integral.
+        \Yang{}
+    \end{example}
+
+    Here we want to find out a relative version of the notion of ``integral''.
+
+
+    \begin{definition}\label{def:fibration}
+        Let \(S\) be an integral excellent scheme and \(X\) be an integral scheme over \(S\) of finite type via the structure morphism \(f: X \to S\).
+        Suppose that \(f\) is dominant.
+        We say that \(f\) is a \emph{fibration} if \(\fkk(S)\) is algebraically closed in \(\fkk(X)\).
+    \end{definition}
+
+    \begin{theorem}\label{thm:general_irreducible_of_fibration}
+        Let \(f: X \to S\) be a fibration.
+        Then for a general point \(\sigma \in S\), the fiber \(X_\sigma\) is integral.
+    \end{theorem}
+    \begin{proof}
+
+        \Yang{}
+    \end{proof}
+
+    \begin{slogan}
+        Fibration is the relatively version of ``integral''.
+    \end{slogan}
+
+    \begin{proposition}\label{prop:fibration_for_proper_morphism}
+        Let \(S\) be an integral excellent scheme and \(X\) be an integral scheme over \(S\) of finite type via the structure morphism \(f: X \to S\).
+        Suppose that \(f\) is proper surjective and that \(S\) is normal.
+        Then \(f\) is a fibration if and only if \(f_*\calO_X = \calO_S\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{}
+    \end{proof}
+
+    \begin{proposition}\label{prop:fibration_and_connected_fibers}
+        Let \(f: X \to Y\) be a fibration with \(Y\) normal.
+        Then the fibers of \(f\) are connected.
+    \end{proposition}
+
+    \begin{remark}\label{rmk:normality_in_definition_of_fibration}
+        If we drop the normality assumption in Proposition \ref{prop:fibration_for_proper_morphism}, then the condition \(f_*\calO_X = \calO_Y\) is still sufficient to guarantee that \(f\) is a fibration.
+        However, the converse may fail.
+
+        \Yang{To be added.}
+    \end{remark}
+
+    \begin{theorem}[Zariski's Main Theorem]\label{thm:Zariski_main_theorem}
+        Let \(f: Y \to X\) be a birational finite type morphism of excellent integral schemes.
+        Suppose that \(X\) is normal.
+        Then the fiber of \(f\) are connected.
+    \end{theorem}
+
+    \begin{theorem}[Stein factorization]\label{thm:Stein_factorization}
+        Let \(f: Y \to X\) be a proper morphism of noetherian schemes.
+        Then there exists a factorization
+        \[
+            Y \xrightarrow{g} Z \xrightarrow{h} X,
+        \]
+        where \(g\) is a proper morphism with connected fibers and \(h\) is a finite morphism.
+        Moreover, this factorization is unique up to isomorphism.
+        \Yang{To be checked.}
+    \end{theorem}
+
+    \begin{theorem}[Rigidity Lemma]\label{thm:rigidity_lemma}
+        Let \(f: Y \to X\) be a fibration of noetherian schemes.
+        Let \(g: Y \to Z\) be a morphism such that the restriction \(g|_{f^{-1}(x)} : f^{-1}(x) \to Z\) is constant for every point \(x \in X\).
+        Then there exists a unique morphism \(h: X \to Z\) such that \(g = h \circ f\).
+        \Yang{}
+    \end{theorem}
+
+
+\subsection{Varieties in general setting}
+
+    \begin{definition}\label{def:varieties_in_general_setting}
+        Let \(S\) be an integral excellent scheme.
+        An \emph{\(S\)-variety} is a scheme \(X\) of finite type over \(S\) such that the structure morphism \(f: X \to S\) is a fibration.
+        \Yang{}
+    \end{definition}
+
+
+    \begin{theorem}\label{thm:spread_out}
+        Let \(X\) be a variety over a field \(\kk\).
+        Then there exists an integral excellent scheme \(S\) of finite type over \(\Spec \bbZ\) and an \(S\)-variety \(X_S\) such that the generic fiber of the structure morphism \(X_S \to S\) is isomorphic to \(X\).
+        \Yang{}
+    \end{theorem}
