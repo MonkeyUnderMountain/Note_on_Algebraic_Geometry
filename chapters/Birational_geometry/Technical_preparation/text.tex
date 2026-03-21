@@ -39,4 +39,41 @@
         Then we have \(f_* \calO_Y(E) \cong \calO_X\).
     \end{proposition}
 
+
+\subsection{Base locus}
+
+    \begin{example}
+        Let $E$ be an elliptic curve and $P \in E(\kkk)$.
+        Set $X = \bbP(\calO_E \oplus \calO_E(-P))$ with the natural projection $\pi: X \to E$ and the unique minimal section $C_0$ with $C_0^2 = -1$.
+        Let $D = C_0 + \pi^*P$.
+        Then 
+        \[ \Bs |D| = \{Q\}, \]
+        where $Q$ is some point on $X$ projecting to $P$.
+
+        Indeed, we have 
+        \[ h^0(X, D) = h^0(E, \pi_*\left(\calO_X(C_0) \otimes \pi^*\calO_E(P) \right)) = h^0(E, \calO_E \oplus \calO_E(P)) = 2. \]
+        Thus $\dim |D| = 1$.
+        For $D_t \in |D|$, write $D_t = H_t + \pi^*B$ where $H_t$ is the horizontal part and $B \in \Div(E)$ is the vertical part.
+        Intersecting with fibers, we get that $H_t$ is prime and a section of $\pi$.
+        By Bernstein's theorem, for general $t$, $D_t$ is irreducible and thus $D_t = H_t$.
+        Since $D^2 = 1$, we only need to find the intersection of two distinct members of $|D|$ to find the base locus.
+        Note on $\CH_0(X)$, we have 
+        \[ D_t \cap D_s = (C_0 + \pi^*P) \cdot (C_0 + \pi^*P) = [Q] \]
+        for a point $Q$.
+        By proper pushforward of $\CH_0$, we see that $Q$ projects to $P$.
+        It follows that any two irreducible members of $|D|$ intersect at $Q$ since they are section and $\Bs |D| \subset \{Q\}$.
+        
+        Fix an irreducible member $D_0 \in |D|$.
+        For every $D_t = H_t + \pi^*B_t \in |D|$, $H_t$ is different from $D_0$ and thus 
+        \[ D_t \cap D_0 = [H_t \cap D_0] + [\pi^*B_t \cap D_0] = [Q]. \]
+        Note both $[H_t \cap D_0]$ and $[\pi^*B_t \cap D_0]$ are effective, we get that $[\pi^*B_t \cap D_0] = [Q]$ or $0$.
+        If $[\pi^*B_t \cap D_0] = [Q]$, then $B_t = P$ and thus $D_t = H_t + \pi^*P \sim C_0 + \pi^*P$.
+        Then $H_t \sim C_0$ and thus $H_t = C_0$.
+        It pass through $Q$.
+        Otherwise, $[\pi^*B_t \cap D_0] = 0$ and thus $B_t = 0$ and thus $D_t$ is irreducible.
+        We have seen that $D_t$ also pass through $Q$.
+        Hence, $\Bs |D| = \{Q\}$.
+
+        % Hence $Q$ is the unique base point of $|D|$.
+    \end{example}
     
