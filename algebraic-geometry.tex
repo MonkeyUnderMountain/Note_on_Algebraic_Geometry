@@ -1,0 +1,181 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !BIB program = biber
+\documentclass[sectionlevel=book]{noteformyself}
+% manage-notes:begin watermark
+\usepackage{draftwatermark}
+% manage-notes:end watermark
+
+\input{accessories/notation.tex}
+\addbibresource{refs.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{#1}}
+
+
+\title{Notes in Algebraic Geometry}
+\author{Tianle Yang}
+\date{\today}
+\authoremail{\href{mailto:loveandjustice@88.com}{loveandjustice@88.com}}
+\authorpage{\href{https://www.tianleyang.com}{www.tianleyang.com}}
+\texsource{\href{https://github.com/MonkeyUnderMountain/algebraic-geometry}{github.com/MonkeyUnderMountain/algebraic-geometry}}
+\version{0.1.0}
+
+\setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
+\coversentence{\CJKfamily{lxgwwenkai}「あんたバかァ？」}
+\coverimage{Asuka.png} % 封面图片
+\coverlinecolor{brown!80!yellow} % 封面横线颜色
+\covertitlefont{TeX Gyre Termes} % 封面标题字体, 若未安装，可注释掉此行编译或使用其他字体
+\covertextcolor{red!80!black} % 封面标题颜色
+
+
+\begin{document}
+
+    % \pagestyle{empty}
+    \maketitle
+
+    \frontmatter
+
+    \tableofcontents
+
+    \mainmatter
+
+    % manage-notes:begin chapters
+    \chapter{Schemes and Varieties}
+        \section{Locally Ringed Space}
+        \input{chapters/schemes-and-varieties/locally-ringed-space/text.tex}
+        \section{The First Properties of Schemes}
+        \input{chapters/schemes-and-varieties/definition-and-first-properties/text.tex}
+        \section{Category of sheaves of modules}
+        \input{chapters/schemes-and-varieties/category-of-sheaves-of-modules/text.tex}
+        \section{Line bundles and divisors}
+        \input{chapters/schemes-and-varieties/line-bundles-and-divisors/text.tex}
+        \section{Morphisms by line bundles and ampleness}
+        \input{chapters/schemes-and-varieties/line-bundles-induce-morphisms/text.tex}
+        \section{Finite morphisms and fibrations}
+        \input{chapters/schemes-and-varieties/finite-morphisms-and-fibrations/text.tex}
+        \section{Differentials and duality}
+        \input{chapters/schemes-and-varieties/differentials-and-duality/text.tex}
+        \section{Flat, smooth and étale morphisms}
+        \input{chapters/schemes-and-varieties/flat-smooth-and-etale-morphisms/text.tex}
+        \section{Normal, Cohen-Macaulay, and regular schemes}
+        \input{chapters/schemes-and-varieties/normal-cohen-macaulay-and-regular-schemes/text.tex}
+        \section{Relative objects}
+        \input{chapters/schemes-and-varieties/relative-objects/text.tex}
+        \section{Generic principle and general varieties}
+        \input{chapters/schemes-and-varieties/generic-principle/text.tex}
+        \section{Formal schemes}
+        \input{chapters/schemes-and-varieties/formal-schemes/text.tex}
+
+    \chapter{Surfaces}
+        \section{The first properties of surfaces}
+        \input{chapters/surfaces/the-first-properties/text.tex}
+        \section{Birational geometry on surfaces}
+        \input{chapters/surfaces/mmp-on-surfaces/text.tex}
+        \section{Coarse classification of surfaces}
+        \input{chapters/surfaces/coarse-classification-of-surfaces/text.tex}
+        \section{Ruled Surface}
+        \input{chapters/surfaces/ruled-surface/text.tex}
+        \section{K3 surface}
+        \input{chapters/surfaces/k3-surfaces/text.tex}
+        \section{Elliptic surfaces}
+        \input{chapters/surfaces/elliptic-surfaces/text.tex}
+        \section{Some Singular Surfaces}
+        \input{chapters/surfaces/some-singular-surfaces/text.tex}
+        \section{Birational geometry on surfaces}
+        \input{chapters/surfaces/birational-geometry-of-surfaces/text.tex}
+
+    \chapter{Birational Geometry}
+        \section{Technical Preparation}
+        \input{chapters/birational-geometry/technical-preparation/text.tex}
+        \section{Kodaira Vanishing Theorem}
+        \input{chapters/birational-geometry/kodaira-vanishing/text.tex}
+        \section{Cone Theorem}
+        \input{chapters/birational-geometry/cone-theorem/text.tex}
+        \section{Asymptotic behavior of divisors}
+        \input{chapters/birational-geometry/asymptotic-behavior-of-divisors/text.tex}
+        \section{Singularities in MMP}
+        \input{chapters/birational-geometry/singularities-in-mmp/text.tex}
+        \section{Bend and Break}
+        \input{chapters/birational-geometry/bend-and-break/text.tex}
+        \section{F-singularities}
+        \input{chapters/birational-geometry/f-singularities/text.tex}
+        \section{Minimal Model Program}
+        \input{chapters/birational-geometry/run-the-mmp/text.tex}
+
+    \chapter{Abelian Varieties}
+        \section{The First Properties of Abelian Varieties}
+        \input{chapters/abelian-varieties/definition-and-examples/text.tex}
+        \section{Picard Groups of Abelian Varieties}
+        \input{chapters/abelian-varieties/picard-groups-of-abelian-varieties/text.tex}
+        \section{Isogenies and finite subgroups}
+        \input{chapters/abelian-varieties/isogenies-and-finite-subgroups/text.tex}
+        \section{Structure of Endomorphism Rings}
+        \input{chapters/abelian-varieties/structure-of-endomorphism-rings/text.tex}
+
+    \chapter{Algebraic Groups}
+        \section{First properties of algebraic groups}
+        \input{chapters/algebraic-groups/first-properties/text.tex}
+        \section{Quotient by algebraic group}
+        \input{chapters/algebraic-groups/quotient-by-algebraic-group/text.tex}
+        \section{Decomposition of algebraic groups}
+        \input{chapters/algebraic-groups/decomposition-of-algebraic-groups/text.tex}
+        \section{Structure of linear algebraic groups I: commutative and solvable groups}
+        \input{chapters/algebraic-groups/structure-of-linear-algebraic-groups/text.tex}
+        \section{Application: birational group of varieties of general type}
+        \input{chapters/algebraic-groups/birational-group-of-varieties-of-general-type/text.tex}
+        \section{Weil regularization theorem}
+        \input{chapters/algebraic-groups/weil-regularization-theorem/text.tex}
+
+    \chapter{Sites, algebraic spaces, and stacks}
+        \section{Preliminaries in Category Theory}
+        \input{chapters/sites-algebraic-spaces-and-stacks/preliminaries-in-category-theory/text.tex}
+        \section{Algebraic spaces}
+        \input{chapters/sites-algebraic-spaces-and-stacks/algebraic-spaces/text.tex}
+        \section{Algebraic stacks}
+        \input{chapters/sites-algebraic-spaces-and-stacks/algebraic-stacks/text.tex}
+        \section{Sites}
+        \input{chapters/sites-algebraic-spaces-and-stacks/sites/text.tex}
+        \section{Stacks in category theory}
+        \input{chapters/sites-algebraic-spaces-and-stacks/stacks-in-category-theory/text.tex}
+
+    \chapter{Moduli Spaces}
+        \section{Introduction to moduli problems}
+        \input{chapters/moduli-spaces/introduction-to-moduli-problems/text.tex}
+        \section{The Quot functor}
+        \input{chapters/moduli-spaces/the-quot-functor/text.tex}
+
+    \chapter{Curves}
+        \section{The First Properties of Curves}
+        \input{chapters/curves/the-first-properties/text.tex}
+        \section{Elliptic Curve}
+        \input{chapters/curves/elliptic-curve/text.tex}
+        \section{Curves of Higher Genus}
+        \input{chapters/curves/higher-genus-curve/text.tex}
+
+    \chapter{Deformation theory}
+        \section{The first order deformations}
+        \input{chapters/deformation-theory/the-first-order-deformations/text.tex}
+
+    \chapter{Geometric invariant theory}
+        \section{Action by reductive groups}
+        \input{chapters/geometric-invariant-theory/action-by-reductive-groups/text.tex}
+        \section{Definitions and examples}
+        \input{chapters/geometric-invariant-theory/definitions-and-examples/text.tex}
+
+    \chapter{Intersection theory}
+        \section{Introduction to Intersection Theory}
+        \input{chapters/intersection-theory/rational-equivalence/text.tex}
+
+    \chapter{More scattered topics}
+        \section{Formal Schemes}
+        \input{chapters/more-scattered-topics/formal-scheme/text.tex}
+        \section{Iitaka fibration}
+        \input{chapters/more-scattered-topics/iitaka-fibration/text.tex}
+        \section{Schemes as functors}
+        \input{chapters/more-scattered-topics/schemes-as-functors/text.tex}
+        \section{Varieties in more general settings}
+        \input{chapters/more-scattered-topics/varieties-in-more-general-settings/text.tex}
+    % manage-notes:end chapters
+
+    \printbibliography[heading=bibintoc, title={References}]
+    
+\end{document}

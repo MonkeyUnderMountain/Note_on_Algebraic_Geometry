@@ -1,0 +1,140 @@
+\section{Appendix}
+
+    Let \(S\) be a variety over \(\kkk\) and \(\calE\) a vector bundle of rank \(r+1\) on \(S\).
+
+    \begin{proposition}\label{prop:isomorphic_projective_bundle_iff_twist_by_line_bundle}
+        The \(S\)-varieties \(\bbP_X(\calE) \cong \bbP_X(\calE')\) if and only if \(\calE \cong \calE' \otimes \calL\) for some line bundle \(\calL\) on \(S\).
+    \end{proposition}
+
+    \begin{theorem}\label{thm:Eulur_sequence_for_projective_bundle}
+        Let \(\pi: X=\bbP_S(\calE) \to S\) be the projective bundle associated to a vector bundle \(\calE\) of rank \(r+1\) on \(S\). 
+        Then there is an exact sequence of vector bundles on \(\bbP_S(\calE)\)
+        \[
+            0 \to \Omega_{\bbP_S(\calE)/S} \to \pi^*(\calE)(-1) \to \calO_{\bbP_S(\calE)} \to 0.
+        \]
+        In particular, \(K_X \sim \pi^*(K_S + \det \calE) - (r+1)\calO_{\bbP_S(\calE)}(1)\).
+        \Yang{To be continued...}
+    \end{theorem}
+
+    \begin{theorem}[Tsen's Theorem, {\cite[Tag 03RD]{Stacks}}]\label{thm:Tsen_theorem}
+        Let \(C\) be a smooth curve over an algebraically closed field \(\kkk\). 
+        Then \(\KK=\kkk(C)\) is a \(C_1\) field, i.e., every degree \(d\) hypersurface in \(\bbP^n_{\KK}\) has a \(\KK\)-rational point provided \(d \leq n\).
+        % \Yang{Need a reference.}
+    \end{theorem}
+
+    % \begin{theorem}[Cohomology and Base Change, {\cite[Theorem 12.11]{Har77}}]\label{thm:cohomology_and_base_change}
+    %     Let \(f:X \to S\) be a projective morphism of noetherian schemes and \(\calF\) a coherent sheaf on \(X\) which is flat over \(S\). 
+    %     Then for each \(i \geq 0\) and each point \(s \in S\) there is a natural base change homomorphism
+    %     \[
+    %         \varphi_s^i: \sfR^i f_*\calF \ten_{\calO_S} \rkk(s) \to H^i(X_s,\calF_s).
+    %     \]
+    %     Suppose that \(\varphi_s^i\) is surjective. 
+    %     Then
+    %     \begin{enumerate}
+    %         \item there exists an open neighborhood \(U\) of \(s\) such that \(\varphi_{s'}^i\) is an isomorphism for all \(s' \in U\);
+    %         \item TFAE:
+    %             \begin{enumerate}
+    %                 \item \(\varphi_{s}^{i-1}\) is surjective;
+    %                 \item \(\sfR^i f_*\calF\) is locally free on an open neighborhood of \(s\).
+    %             \end{enumerate}
+    %     \end{enumerate}
+    % \end{theorem}
+
+    \begin{theorem}[Grauert's Theorem, {\cite[Corollary 12.9]{Har77}}]\label{thm:Grauert_theorem}
+        Let \(f:X \to S\) be a projective morphism of noetherian schemes and \(\calF\) a coherent sheaf on \(X\) which is flat over \(S\).
+        Suppose that \(S\) is integral and the function \(s \mapsto \dim_{\rkk(s)} H^i(X_s,\calF_s)\) is constant on \(S\) for some \(i \geq 0\). 
+        Then \(\sfR^i f_*\calF\) is locally free and the base change homomorphism
+        \[
+            \varphi_s^i: \sfR^i f_*\calF \ten_{\calO_S} \rkk(s) \to H^i(X_s,\calF_s)
+        \]
+        is an isomorphism for all \(s \in S\).
+    \end{theorem}
+
+    \begin{theorem}[Miracle Flatness, {\cite[Theorem 23.1]{Mat89}}]\label{thm:miracle_flatness}
+        Let \(f:X \to Y\) be a morphism of noetherian schemes. 
+        Assume that \(Y\) is regular and \(X\) is Cohen-Macaulay. 
+        If all fibers of \(f\) have the same dimension \(d = \dim X - \dim Y\), then \(f\) is flat.
+    \end{theorem}
+
+    \begin{proposition}[Geometric form of Nakayama's Lemma]\label{prop: geometric form of Nakayama's lemma}
+        Let \(X\) be a variety, $x\in X$ a closed point and $\calF$ a coherent sheaf on $X$.
+        If $a_1,\cdots,a_k \in \calF(X)$ generate $\calF|_x = \calF \ten \rkk(x)$, then there is an open subset $U \subset X$ such that $a_i|_U$ generate $\calF(U)$. 
+    \end{proposition}
+
+    \begin{proposition}\label{prop:relative_morphism_to_projective_bundle}
+        Let \(S\) be a noetherian scheme and \(\calE\) a vector bundle of rank \(r+1\) on \(S\).
+        Denote by \(\pi: \bbP_S(\calE) \to S\) the projection.
+        Let \(X\) be an \(S\)-scheme via a morphism \(g:X \to S\).
+        Then there is a bijection
+        \[
+            \left\{\begin{array}{l}
+                S\text{-morphisms }\\
+                X \to \bbP_S(\calE)
+            \end{array}\right\}
+            \leftrightarrow
+            \left\{
+                \begin{array}{l}
+                    \calL \in \Pic(X) \text{ and surjective}\\
+                    \text{homomorphisms } g^*\calE \to \calL
+                \end{array}
+            \right\}.
+        \]
+        % \Yang{Need to check.}
+    \end{proposition}
+    \begin{proof}
+        We have a surjection \(\pi^*\calE \to \calO_{\bbP_S(\calE)}(1)\) by the definition of \(\bbP_S(\calE)\).
+        If we have a morphism \(f:X \to \bbP_S(\calE)\) over \(S\), then we have a surjective homomorphism \(f^*\pi^*\calE \to f^*\calO_{\bbP_S(\calE)}(1)\).
+
+        Suppose we have a surjective homomorphism \(g^*\calE \surjmap \calL\) where \(\calL\) is a line bundle on \(X\).
+        Take an affine cover \(\{U_i\}\) of \(S\) such that \(\calE|_{U_i}\) is trivial.
+        On \(U_i\), choose a basis \(e_0^{(i)},\ldots,e_r^{(i)}\) of \(\calE|_{U_i}\).
+        Suppose \(\bbP_S(\calE)\) is given by gluing \(\bbP^r_{U_i}\) via \(\varphi_{ij}\) induced by the transition functions of \(\calE\).
+        
+        The surjection \(g^*\calE|_{U_i} \surjmap \calL|_{X_{U_i}}\) gives a unique morphism \(f_i: X_{U_i} \to \bbP^r_{U_i}\) by \cref{thm:morphism_to_projective_space}.
+        On \(X_{U_i \cap U_j}\), \(f_i\) and \(f_j\) agree since we have 
+        \[ \begin{tikzcd}
+            X_{U_i \cap U_j} \arrow[r, "="] \arrow[d, "f_i"'] & X_{U_i \cap U_j} \arrow[d, "f_j"]  \\
+            \bbP_{U_i\cap U_j}(\bigoplus\calO_{U_i \cap U_j} e_k^{(i)}) \arrow[r, "\varphi_{ij}"] & \bbP_{U_i\cap U_j}(\bigoplus\calO_{U_i \cap U_j} e_k^{(j)})
+        \end{tikzcd} \]
+        and the bottom arrow is identical to the identity map on \(\bbP_{S}(\calE)_{U_i\cap U_j}\).
+        Gluing \(f_i\) gives a morphism \(f:X \to \bbP_S(\calE)\) over \(S\).
+        In particular, we have \(\calL \cong f^*\calO_{\bbP_S(\calE)}(1)\).
+    \end{proof}
+
+    \begin{definition}\label{def:extension}
+        An \emph{extension} of a coherent sheaf \(\calF\) by a coherent sheaf \(\calG\) on a scheme \(X\) is an exact sequence of coherent sheaves
+        \[ S = (0 \to \calG \to \calE \to \calF \to 0). \]
+        Two extensions \(S\) and \(S'\) are \emph{equivalent} if there is a commutative diagram
+        \[
+            \begin{tikzcd}
+                0 \arrow[r] & \calG \arrow[r] \arrow[d, "\id_{\calG}"] & \calE \arrow[r] \arrow[d, "\cong"] & \calF \arrow[r] \arrow[d, "\id_{\calF}"] & 0 \\
+                0 \arrow[r] & \calG \arrow[r] & \calE' \arrow[r] & \calF \arrow[r] & 0.
+            \end{tikzcd}
+        \]
+    \end{definition}
+
+    \begin{proposition}\label{prop:extension_and_Ext1}
+        Let \(X\) be a scheme and \(\calF,\calG\) be coherent sheaves on \(X\).
+        Then there is a one-to-one correspondence between equivalence classes of extensions
+        \[ S = (0 \to \calG \to \calE \to \calF \to 0) \]
+        and elements of \(\Ext^1_X(\calF,\calG)\) given by 
+        \[ S \mapsto \delta(\id_{\calF}) \]
+        where \(\delta:\Hom_X(\calF,\calF) \to \Ext^1_X(\calF,\calG)\) is the connecting homomorphism.
+    \end{proposition}
+    \begin{proof}
+        Take an exact sequence
+        \[ 0 \to \calG \to \calI \xrightarrow{\varphi} \calC \to 0 \] 
+        with \(\calI\) injective.
+        Applying \(\Hom_X(\calF,-)\) gives a long exact sequence
+        \[ 0 \to \Hom_X(\calF,\calG) \to \Hom_X(\calF,\calI) \to \Hom_X(\calF,\calC) \xrightarrow{\delta} \Ext^1_X(\calF,\calG) \to 0. \]
+        For \(a \in \Ext^1_X(\calF,\calG)\), choose a lifting \(\alpha \in \Hom_X(\calF,\calC)\) of \(a\).
+        Let \(\calE := \Ker (\calI \oplus \calF \to \calC, (i,f) \mapsto \varphi(i) - \alpha(f))\).
+
+        Let \(\calE \to \calF\) be the projection to the second factor.
+        It is surjective since \(\varphi\) is surjective.
+        Consider the inclusion \(\calG \to \calI \to \calI \oplus \calF\), which factors through \(\calE\).
+        On the other hand, if \(e \in \calE\) maps to \(0\) in \(\calF\), then \(e \in \calI\) and \(\varphi(e) = 0\), whence \(e \in \calG\).
+        Hence we have an extension \(S = (0 \to \calG \to \calE \to \calF \to 0)\).
+
+        \Yang{To be continued...}
+    \end{proof}

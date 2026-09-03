@@ -1,0 +1,34 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !BIB program = biber
+\documentclass{noteformyself}
+% manage-notes:begin watermark
+\usepackage{draftwatermark}
+% manage-notes:end watermark
+
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}        % 批注命令
+\input{../../../accessories/notation.tex}               % 加载符号定义文件
+\addbibresource{../../../refs.bib}
+
+
+\title{Singularities in MMP}
+\author{Tianle Yang}
+\date{\today}
+\authorpage{\href{https://www.tianleyang.com}{My Homepage}}
+
+
+\begin{document}
+
+    \maketitle
+
+    % manage-notes:begin section
+    \section{Singularities in MMP}
+    % manage-notes:end section
+
+    \input{text.tex} % 这里是正文
+
+    % \input{appendix.tex} % 这里是附录
+
+    % \printbibliography[heading=bibintoc, title={References}] % 打印参考文献
+
+\end{document}

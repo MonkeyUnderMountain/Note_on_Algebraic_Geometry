@@ -1,0 +1,52 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !BIB program = biber
+\documentclass[sectionlevel=chapter]{noteformyself}
+% manage-notes:begin watermark
+\usepackage{draftwatermark}
+% manage-notes:end watermark
+
+
+\input{../../accessories/notation.tex}
+\addbibresource{../../refs.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
+
+\title{Surfaces}
+\author{Tianle Yang}
+\date{\today}
+\authorpage{\href{www.tianleyang.com}{My Homepage}}
+\setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
+\coversentence{\CJKfamily{lxgwwenkai}“仿造的又如何，当不成真正的勇者也无妨，即便如此，我也是勇者！”}
+\coverimage{King_of_demons_and_infant_and_the_brave.jpeg} % 封面图片
+% \coverlinecolor{red}
+\covertitlefont{TeX Gyre Termes} % 封面标题字体
+% \covertextcolor{green}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    % manage-notes:begin sections
+    \section{The first properties of surfaces}
+    \input{the-first-properties/text.tex}
+    \section{Birational geometry on surfaces}
+    \input{mmp-on-surfaces/text.tex}
+    \section{Coarse classification of surfaces}
+    \input{coarse-classification-of-surfaces/text.tex}
+    \section{Ruled Surface}
+    \input{ruled-surface/text.tex}
+    \section{K3 surface}
+    \input{k3-surfaces/text.tex}
+    \section{Elliptic surfaces}
+    \input{elliptic-surfaces/text.tex}
+    \section{Some Singular Surfaces}
+    \input{some-singular-surfaces/text.tex}
+    \section{Birational geometry on surfaces}
+    \input{birational-geometry-of-surfaces/text.tex}
+    % manage-notes:end sections
+
+    % \printbibliography[heading=bibintoc, title={References}]
+    
+\end{document}

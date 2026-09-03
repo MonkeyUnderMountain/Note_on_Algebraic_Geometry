@@ -1,0 +1,790 @@
+{
+  "schemaVersion": 3,
+  "build": {
+    "engine": "xelatex"
+  },
+  "book": {
+    "id": "algebraic-geometry",
+    "title": "Notes in Algebraic Geometry",
+    "tex": "algebraic-geometry.tex",
+    "url": "pdf/algebraic-geometry.pdf",
+    "status": {
+      "published": 0,
+      "finished": 0
+    },
+    "chapters": [
+      {
+        "id": "schemes-and-varieties",
+        "title": "Schemes and Varieties",
+        "order": 1,
+        "tex": "chapters/schemes-and-varieties/schemes-and-varieties.tex",
+        "url": "pdf/chapters/schemes-and-varieties/schemes-and-varieties.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "locally-ringed-space",
+            "title": "Locally Ringed Space",
+            "order": 1,
+            "tex": "chapters/schemes-and-varieties/locally-ringed-space/locally-ringed-space.tex",
+            "url": "pdf/chapters/schemes-and-varieties/locally-ringed-space/locally-ringed-space.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "definition-and-first-properties",
+            "title": "The First Properties of Schemes",
+            "order": 2,
+            "tex": "chapters/schemes-and-varieties/definition-and-first-properties/definition-and-first-properties.tex",
+            "url": "pdf/chapters/schemes-and-varieties/definition-and-first-properties/definition-and-first-properties.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "category-of-sheaves-of-modules",
+            "title": "Category of sheaves of modules",
+            "order": 3,
+            "tex": "chapters/schemes-and-varieties/category-of-sheaves-of-modules/category-of-sheaves-of-modules.tex",
+            "url": "pdf/chapters/schemes-and-varieties/category-of-sheaves-of-modules/category-of-sheaves-of-modules.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "line-bundles-and-divisors",
+            "title": "Line bundles and divisors",
+            "order": 4,
+            "tex": "chapters/schemes-and-varieties/line-bundles-and-divisors/line-bundles-and-divisors.tex",
+            "url": "pdf/chapters/schemes-and-varieties/line-bundles-and-divisors/line-bundles-and-divisors.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "line-bundles-induce-morphisms",
+            "title": "Morphisms by line bundles and ampleness",
+            "order": 5,
+            "tex": "chapters/schemes-and-varieties/line-bundles-induce-morphisms/line-bundles-induce-morphisms.tex",
+            "url": "pdf/chapters/schemes-and-varieties/line-bundles-induce-morphisms/line-bundles-induce-morphisms.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "finite-morphisms-and-fibrations",
+            "title": "Finite morphisms and fibrations",
+            "order": 6,
+            "tex": "chapters/schemes-and-varieties/finite-morphisms-and-fibrations/finite-morphisms-and-fibrations.tex",
+            "url": "pdf/chapters/schemes-and-varieties/finite-morphisms-and-fibrations/finite-morphisms-and-fibrations.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "differentials-and-duality",
+            "title": "Differentials and duality",
+            "order": 7,
+            "tex": "chapters/schemes-and-varieties/differentials-and-duality/differentials-and-duality.tex",
+            "url": "pdf/chapters/schemes-and-varieties/differentials-and-duality/differentials-and-duality.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "flat-smooth-and-etale-morphisms",
+            "title": "Flat, smooth and étale morphisms",
+            "order": 8,
+            "tex": "chapters/schemes-and-varieties/flat-smooth-and-etale-morphisms/flat-smooth-and-etale-morphisms.tex",
+            "url": "pdf/chapters/schemes-and-varieties/flat-smooth-and-etale-morphisms/flat-smooth-and-etale-morphisms.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "normal-cohen-macaulay-and-regular-schemes",
+            "title": "Normal, Cohen-Macaulay, and regular schemes",
+            "order": 9,
+            "tex": "chapters/schemes-and-varieties/normal-cohen-macaulay-and-regular-schemes/normal-cohen-macaulay-and-regular-schemes.tex",
+            "url": "pdf/chapters/schemes-and-varieties/normal-cohen-macaulay-and-regular-schemes/normal-cohen-macaulay-and-regular-schemes.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "relative-objects",
+            "title": "Relative objects",
+            "order": 10,
+            "tex": "chapters/schemes-and-varieties/relative-objects/relative-objects.tex",
+            "url": "pdf/chapters/schemes-and-varieties/relative-objects/relative-objects.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "generic-principle",
+            "title": "Generic principle and general varieties",
+            "order": 11,
+            "tex": "chapters/schemes-and-varieties/generic-principle/generic-principle.tex",
+            "url": "pdf/chapters/schemes-and-varieties/generic-principle/generic-principle.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "formal-schemes",
+            "title": "Formal schemes",
+            "order": 12,
+            "tex": "chapters/schemes-and-varieties/formal-schemes/formal-schemes.tex",
+            "url": "pdf/chapters/schemes-and-varieties/formal-schemes/formal-schemes.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "surfaces",
+        "title": "Surfaces",
+        "order": 2,
+        "tex": "chapters/surfaces/surfaces.tex",
+        "url": "pdf/chapters/surfaces/surfaces.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "the-first-properties",
+            "title": "The first properties of surfaces",
+            "order": 1,
+            "tex": "chapters/surfaces/the-first-properties/the-first-properties.tex",
+            "url": "pdf/chapters/surfaces/the-first-properties/the-first-properties.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "mmp-on-surfaces",
+            "title": "Birational geometry on surfaces",
+            "order": 2,
+            "tex": "chapters/surfaces/mmp-on-surfaces/mmp-on-surfaces.tex",
+            "url": "pdf/chapters/surfaces/mmp-on-surfaces/mmp-on-surfaces.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "coarse-classification-of-surfaces",
+            "title": "Coarse classification of surfaces",
+            "order": 3,
+            "tex": "chapters/surfaces/coarse-classification-of-surfaces/coarse-classification-of-surfaces.tex",
+            "url": "pdf/chapters/surfaces/coarse-classification-of-surfaces/coarse-classification-of-surfaces.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "ruled-surface",
+            "title": "Ruled Surface",
+            "order": 4,
+            "tex": "chapters/surfaces/ruled-surface/ruled-surface.tex",
+            "url": "pdf/chapters/surfaces/ruled-surface/ruled-surface.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "k3-surfaces",
+            "title": "K3 surface",
+            "order": 5,
+            "tex": "chapters/surfaces/k3-surfaces/k3-surfaces.tex",
+            "url": "pdf/chapters/surfaces/k3-surfaces/k3-surfaces.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "elliptic-surfaces",
+            "title": "Elliptic surfaces",
+            "order": 6,
+            "tex": "chapters/surfaces/elliptic-surfaces/elliptic-surfaces.tex",
+            "url": "pdf/chapters/surfaces/elliptic-surfaces/elliptic-surfaces.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "some-singular-surfaces",
+            "title": "Some Singular Surfaces",
+            "order": 7,
+            "tex": "chapters/surfaces/some-singular-surfaces/some-singular-surfaces.tex",
+            "url": "pdf/chapters/surfaces/some-singular-surfaces/some-singular-surfaces.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "birational-geometry-of-surfaces",
+            "title": "Birational geometry on surfaces",
+            "order": 8,
+            "tex": "chapters/surfaces/birational-geometry-of-surfaces/birational-geometry-of-surfaces.tex",
+            "url": "pdf/chapters/surfaces/birational-geometry-of-surfaces/birational-geometry-of-surfaces.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "birational-geometry",
+        "title": "Birational Geometry",
+        "order": 3,
+        "tex": "chapters/birational-geometry/birational-geometry.tex",
+        "url": "pdf/chapters/birational-geometry/birational-geometry.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "technical-preparation",
+            "title": "Technical Preparation",
+            "order": 1,
+            "tex": "chapters/birational-geometry/technical-preparation/technical-preparation.tex",
+            "url": "pdf/chapters/birational-geometry/technical-preparation/technical-preparation.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "kodaira-vanishing",
+            "title": "Kodaira Vanishing Theorem",
+            "order": 2,
+            "tex": "chapters/birational-geometry/kodaira-vanishing/kodaira-vanishing.tex",
+            "url": "pdf/chapters/birational-geometry/kodaira-vanishing/kodaira-vanishing.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "cone-theorem",
+            "title": "Cone Theorem",
+            "order": 3,
+            "tex": "chapters/birational-geometry/cone-theorem/cone-theorem.tex",
+            "url": "pdf/chapters/birational-geometry/cone-theorem/cone-theorem.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "asymptotic-behavior-of-divisors",
+            "title": "Asymptotic behavior of divisors",
+            "order": 4,
+            "tex": "chapters/birational-geometry/asymptotic-behavior-of-divisors/asymptotic-behavior-of-divisors.tex",
+            "url": "pdf/chapters/birational-geometry/asymptotic-behavior-of-divisors/asymptotic-behavior-of-divisors.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "singularities-in-mmp",
+            "title": "Singularities in MMP",
+            "order": 5,
+            "tex": "chapters/birational-geometry/singularities-in-mmp/singularities-in-mmp.tex",
+            "url": "pdf/chapters/birational-geometry/singularities-in-mmp/singularities-in-mmp.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "bend-and-break",
+            "title": "Bend and Break",
+            "order": 6,
+            "tex": "chapters/birational-geometry/bend-and-break/bend-and-break.tex",
+            "url": "pdf/chapters/birational-geometry/bend-and-break/bend-and-break.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "f-singularities",
+            "title": "F-singularities",
+            "order": 7,
+            "tex": "chapters/birational-geometry/f-singularities/f-singularities.tex",
+            "url": "pdf/chapters/birational-geometry/f-singularities/f-singularities.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "run-the-mmp",
+            "title": "Minimal Model Program",
+            "order": 8,
+            "tex": "chapters/birational-geometry/run-the-mmp/run-the-mmp.tex",
+            "url": "pdf/chapters/birational-geometry/run-the-mmp/run-the-mmp.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "abelian-varieties",
+        "title": "Abelian Varieties",
+        "order": 4,
+        "tex": "chapters/abelian-varieties/abelian-varieties.tex",
+        "url": "pdf/chapters/abelian-varieties/abelian-varieties.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "definition-and-examples",
+            "title": "The First Properties of Abelian Varieties",
+            "order": 1,
+            "tex": "chapters/abelian-varieties/definition-and-examples/definition-and-examples.tex",
+            "url": "pdf/chapters/abelian-varieties/definition-and-examples/definition-and-examples.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "picard-groups-of-abelian-varieties",
+            "title": "Picard Groups of Abelian Varieties",
+            "order": 2,
+            "tex": "chapters/abelian-varieties/picard-groups-of-abelian-varieties/picard-groups-of-abelian-varieties.tex",
+            "url": "pdf/chapters/abelian-varieties/picard-groups-of-abelian-varieties/picard-groups-of-abelian-varieties.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "isogenies-and-finite-subgroups",
+            "title": "Isogenies and finite subgroups",
+            "order": 3,
+            "tex": "chapters/abelian-varieties/isogenies-and-finite-subgroups/isogenies-and-finite-subgroups.tex",
+            "url": "pdf/chapters/abelian-varieties/isogenies-and-finite-subgroups/isogenies-and-finite-subgroups.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "structure-of-endomorphism-rings",
+            "title": "Structure of Endomorphism Rings",
+            "order": 4,
+            "tex": "chapters/abelian-varieties/structure-of-endomorphism-rings/structure-of-endomorphism-rings.tex",
+            "url": "pdf/chapters/abelian-varieties/structure-of-endomorphism-rings/structure-of-endomorphism-rings.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "algebraic-groups",
+        "title": "Algebraic Groups",
+        "order": 5,
+        "tex": "chapters/algebraic-groups/algebraic-groups.tex",
+        "url": "pdf/chapters/algebraic-groups/algebraic-groups.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "first-properties",
+            "title": "First properties of algebraic groups",
+            "order": 1,
+            "tex": "chapters/algebraic-groups/first-properties/first-properties.tex",
+            "url": "pdf/chapters/algebraic-groups/first-properties/first-properties.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "quotient-by-algebraic-group",
+            "title": "Quotient by algebraic group",
+            "order": 2,
+            "tex": "chapters/algebraic-groups/quotient-by-algebraic-group/quotient-by-algebraic-group.tex",
+            "url": "pdf/chapters/algebraic-groups/quotient-by-algebraic-group/quotient-by-algebraic-group.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "decomposition-of-algebraic-groups",
+            "title": "Decomposition of algebraic groups",
+            "order": 3,
+            "tex": "chapters/algebraic-groups/decomposition-of-algebraic-groups/decomposition-of-algebraic-groups.tex",
+            "url": "pdf/chapters/algebraic-groups/decomposition-of-algebraic-groups/decomposition-of-algebraic-groups.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "structure-of-linear-algebraic-groups",
+            "title": "Structure of linear algebraic groups I: commutative and solvable groups",
+            "order": 4,
+            "tex": "chapters/algebraic-groups/structure-of-linear-algebraic-groups/structure-of-linear-algebraic-groups.tex",
+            "url": "pdf/chapters/algebraic-groups/structure-of-linear-algebraic-groups/structure-of-linear-algebraic-groups.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "birational-group-of-varieties-of-general-type",
+            "title": "Application: birational group of varieties of general type",
+            "order": 5,
+            "tex": "chapters/algebraic-groups/birational-group-of-varieties-of-general-type/birational-group-of-varieties-of-general-type.tex",
+            "url": "pdf/chapters/algebraic-groups/birational-group-of-varieties-of-general-type/birational-group-of-varieties-of-general-type.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "weil-regularization-theorem",
+            "title": "Weil regularization theorem",
+            "order": 6,
+            "tex": "chapters/algebraic-groups/weil-regularization-theorem/weil-regularization-theorem.tex",
+            "url": "pdf/chapters/algebraic-groups/weil-regularization-theorem/weil-regularization-theorem.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "sites-algebraic-spaces-and-stacks",
+        "title": "Sites, algebraic spaces, and stacks",
+        "order": 6,
+        "tex": "chapters/sites-algebraic-spaces-and-stacks/sites-algebraic-spaces-and-stacks.tex",
+        "url": "pdf/chapters/sites-algebraic-spaces-and-stacks/sites-algebraic-spaces-and-stacks.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "preliminaries-in-category-theory",
+            "title": "Preliminaries in Category Theory",
+            "order": 1,
+            "tex": "chapters/sites-algebraic-spaces-and-stacks/preliminaries-in-category-theory/preliminaries-in-category-theory.tex",
+            "url": "pdf/chapters/sites-algebraic-spaces-and-stacks/preliminaries-in-category-theory/preliminaries-in-category-theory.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "algebraic-spaces",
+            "title": "Algebraic spaces",
+            "order": 2,
+            "tex": "chapters/sites-algebraic-spaces-and-stacks/algebraic-spaces/algebraic-spaces.tex",
+            "url": "pdf/chapters/sites-algebraic-spaces-and-stacks/algebraic-spaces/algebraic-spaces.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "algebraic-stacks",
+            "title": "Algebraic stacks",
+            "order": 3,
+            "tex": "chapters/sites-algebraic-spaces-and-stacks/algebraic-stacks/algebraic-stacks.tex",
+            "url": "pdf/chapters/sites-algebraic-spaces-and-stacks/algebraic-stacks/algebraic-stacks.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "sites",
+            "title": "Sites",
+            "order": 4,
+            "tex": "chapters/sites-algebraic-spaces-and-stacks/sites/sites.tex",
+            "url": "pdf/chapters/sites-algebraic-spaces-and-stacks/sites/sites.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "stacks-in-category-theory",
+            "title": "Stacks in category theory",
+            "order": 5,
+            "tex": "chapters/sites-algebraic-spaces-and-stacks/stacks-in-category-theory/stacks-in-category-theory.tex",
+            "url": "pdf/chapters/sites-algebraic-spaces-and-stacks/stacks-in-category-theory/stacks-in-category-theory.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "moduli-spaces",
+        "title": "Moduli Spaces",
+        "order": 7,
+        "tex": "chapters/moduli-spaces/moduli-spaces.tex",
+        "url": "pdf/chapters/moduli-spaces/moduli-spaces.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "introduction-to-moduli-problems",
+            "title": "Introduction to moduli problems",
+            "order": 1,
+            "tex": "chapters/moduli-spaces/introduction-to-moduli-problems/introduction-to-moduli-problems.tex",
+            "url": "pdf/chapters/moduli-spaces/introduction-to-moduli-problems/introduction-to-moduli-problems.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "the-quot-functor",
+            "title": "The Quot functor",
+            "order": 2,
+            "tex": "chapters/moduli-spaces/the-quot-functor/the-quot-functor.tex",
+            "url": "pdf/chapters/moduli-spaces/the-quot-functor/the-quot-functor.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "curves",
+        "title": "Curves",
+        "order": 8,
+        "tex": "chapters/curves/curves.tex",
+        "url": "pdf/chapters/curves/curves.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "the-first-properties",
+            "title": "The First Properties of Curves",
+            "order": 1,
+            "tex": "chapters/curves/the-first-properties/the-first-properties.tex",
+            "url": "pdf/chapters/curves/the-first-properties/the-first-properties.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "elliptic-curve",
+            "title": "Elliptic Curve",
+            "order": 2,
+            "tex": "chapters/curves/elliptic-curve/elliptic-curve.tex",
+            "url": "pdf/chapters/curves/elliptic-curve/elliptic-curve.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "higher-genus-curve",
+            "title": "Curves of Higher Genus",
+            "order": 3,
+            "tex": "chapters/curves/higher-genus-curve/higher-genus-curve.tex",
+            "url": "pdf/chapters/curves/higher-genus-curve/higher-genus-curve.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "deformation-theory",
+        "title": "Deformation theory",
+        "order": 9,
+        "tex": "chapters/deformation-theory/deformation-theory.tex",
+        "url": "pdf/chapters/deformation-theory/deformation-theory.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "the-first-order-deformations",
+            "title": "The first order deformations",
+            "order": 1,
+            "tex": "chapters/deformation-theory/the-first-order-deformations/the-first-order-deformations.tex",
+            "url": "pdf/chapters/deformation-theory/the-first-order-deformations/the-first-order-deformations.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "geometric-invariant-theory",
+        "title": "Geometric invariant theory",
+        "order": 10,
+        "tex": "chapters/geometric-invariant-theory/geometric-invariant-theory.tex",
+        "url": "pdf/chapters/geometric-invariant-theory/geometric-invariant-theory.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "action-by-reductive-groups",
+            "title": "Action by reductive groups",
+            "order": 1,
+            "tex": "chapters/geometric-invariant-theory/action-by-reductive-groups/action-by-reductive-groups.tex",
+            "url": "pdf/chapters/geometric-invariant-theory/action-by-reductive-groups/action-by-reductive-groups.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "definitions-and-examples",
+            "title": "Definitions and examples",
+            "order": 2,
+            "tex": "chapters/geometric-invariant-theory/definitions-and-examples/definitions-and-examples.tex",
+            "url": "pdf/chapters/geometric-invariant-theory/definitions-and-examples/definitions-and-examples.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "intersection-theory",
+        "title": "Intersection theory",
+        "order": 11,
+        "tex": "chapters/intersection-theory/intersection-theory.tex",
+        "url": "pdf/chapters/intersection-theory/intersection-theory.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "rational-equivalence",
+            "title": "Introduction to Intersection Theory",
+            "order": 1,
+            "tex": "chapters/intersection-theory/rational-equivalence/rational-equivalence.tex",
+            "url": "pdf/chapters/intersection-theory/rational-equivalence/rational-equivalence.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      },
+      {
+        "id": "more-scattered-topics",
+        "title": "More scattered topics",
+        "order": 12,
+        "tex": "chapters/more-scattered-topics/more-scattered-topics.tex",
+        "url": "pdf/chapters/more-scattered-topics/more-scattered-topics.pdf",
+        "status": {
+          "published": 0,
+          "finished": 0
+        },
+        "sections": [
+          {
+            "id": "formal-scheme",
+            "title": "Formal Schemes",
+            "order": 1,
+            "tex": "chapters/more-scattered-topics/formal-scheme/formal-scheme.tex",
+            "url": "pdf/chapters/more-scattered-topics/formal-scheme/formal-scheme.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "iitaka-fibration",
+            "title": "Iitaka fibration",
+            "order": 2,
+            "tex": "chapters/more-scattered-topics/iitaka-fibration/iitaka-fibration.tex",
+            "url": "pdf/chapters/more-scattered-topics/iitaka-fibration/iitaka-fibration.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "schemes-as-functors",
+            "title": "Schemes as functors",
+            "order": 3,
+            "tex": "chapters/more-scattered-topics/schemes-as-functors/schemes-as-functors.tex",
+            "url": "pdf/chapters/more-scattered-topics/schemes-as-functors/schemes-as-functors.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          },
+          {
+            "id": "varieties-in-more-general-settings",
+            "title": "Varieties in more general settings",
+            "order": 4,
+            "tex": "chapters/more-scattered-topics/varieties-in-more-general-settings/varieties-in-more-general-settings.tex",
+            "url": "pdf/chapters/more-scattered-topics/varieties-in-more-general-settings/varieties-in-more-general-settings.pdf",
+            "status": {
+              "published": 0,
+              "finished": 0
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

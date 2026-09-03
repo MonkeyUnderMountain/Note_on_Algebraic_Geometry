@@ -1,0 +1,89 @@
+% !TeX root = bend-and-break.tex
+\subsection{Preliminary}
+
+    \begin{definition}[Frobinius morphism]\label{def:Frobinius_morphism}
+        Let \(X\) be a variety over a field \(\kkk\) of characteristic \(p > 0\).
+        Denote the structure morphism by \(\pi: X \to \Spec \kkk\).
+        The \emph{absolute Frobenius morphism} is the morphism given by \(\calo_X \to \calo_X, f \mapsto f^p\), denoted by \(\Frob_{X/\bbf_p}\).
+        The \emph{relative Frobenius morphism} is the morphism \(\Frob_{X/\kkk}\) given by the following commutative diagram:
+        \[ \xymatrix{
+            X \ar@/^/[rrd]^{\Frob_{X/\bbf_p}}  \ar@/_/[ddr]_\pi \ar[rd]|{\Frob_{X/\kkk}}  &   & \\
+                & X\times_{\kkk} \Spec \kkk \ar[r] \ar[d] & X \ar[d]^\pi \\
+                & \Spec \kkk \ar[r]^{\Frob_{\kkk/\bbf_p}} &  \Spec \kkk
+        }. \] 
+        We usually denote \(X \times_{\kkk} \Spec \kkk\) appearing above by \(X^{(p)}\).
+    \end{definition}
+
+    \begin{proposition}\label{prop:relative_frobinius_is_finite_of_degree_p^d}
+        Let \(X\) be a variety of dimension \(d\) over a field \(\kkk\) of characteristic \(p > 0\).
+        Then the relative Frobenius morphism \(\Frob_{X/\kkk}: X \to X^{(p)}\) is a finite morphism of degree \(p^d\) over \(\kkk\).
+    \end{proposition}
+
+\subsection{Deformation of curves}
+
+    \begin{theorem}[{ref. \cite[Chapter II, Theorem 1.2]{Kol96}}]\label{thm:dimension_of_deformation_space_of_curves}
+        Let \(C\) be a smooth projective curve of genus \(g\) and \(X\) a smooth projective variety of dimension \(n\).
+        Let \(f:C \to X\) be a non-constant morphism.
+        Then every irreducible component of \(\Mor(C, X)\) containing \(f\) has dimension at least
+        \[ -K_Y\cdot f(C) + (1-g)n. \]
+    \end{theorem}
+
+    \begin{proposition}\label{prop:deformation_of_curves_to_rational}
+        Let \(X\) be a projective variety and \(f:C\to X\) a non-constant morphism from a pointed smooth projective curve \(p_0 \in C\).
+        Let \(0 \in T\) be a pointed smooth curve (may not be projective).
+        Suppose that we have a non-trivial family of morphisms \(f_t: C \to X\) for \(t \in T\) such that \(f_0 = f\) and \(f_t(p_0) = x_0\) for some point \(x_0 \in X\) and all \(t\).
+        Then there exist some rational curves \(\Gamma_1, \ldots, \Gamma_m \subset X\) such that 
+        \begin{enumerate}
+            \item \(x_0 \in \bigcup_{i=1}^m \Gamma_i\);
+            \item there is a morphism \(g: C \to X\) such that \(f(C) \equiv_{alg} g(C) + \sum_{i=1}^m a_i\Gamma_i\) with \(a_i > 0\) for all \(i\).
+        \end{enumerate}
+    \end{proposition}
+
+    \begin{proposition}\label{prop:deformation_of_rational_curves_to_lower_degree}
+        Let \(X\) be a projective variety and \(f:\bbp^1 \to X\) a non-constant morphism with \(f(0) = x_0, f(\infty) = x_\infty\).
+        Let \(0 \in T\) be a pointed smooth curve (may not be projective).
+        Suppose that we have a non-trivial family of morphisms \(f_t: \bbp^1 \to X\) for \(t \in T\) such that \(f_0 = f\) and \(f_t(0) = x_0, f_t(\infty) = x_\infty\) for all \(t\).
+        Then there exists a curve \(C \subset X\) such that \(f(\bbp^1) \equiv_{alg} a C\) with \(a>1\).
+    \end{proposition}
+
+\subsection{Find rational curves}
+
+    \begin{theorem}\label{thm:rational_curve_on_smooth_fano}
+        Let \(X\) be a smooth Fano variety.
+        Then for any \(x \in X(\kkk)\), there is a rational curve \(C\) passing through \(x\) with 
+        \[ 0 < - C \cdot K_X \leq \dim X + 1. \]
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{theorem}\label{thm:rational_curve_on_smooth_variety_with_not_nef_K}
+        Let \(X\) be a smooth projective variety such that \(K_X \cdot C < 0\) for some irreducible curve \(C \subset X\).
+        Let \(H\) be an ample divisor on \(X\).
+        Then there exists a rational curve \(\Gamma\) such that
+        \[ -(K_X \cdot C) \cdot \frac{H\cdot \Gamma}{H \cdot C} \leq -K_X \cdot \Gamma \leq \dim X + 1. \]
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{theorem}\label{thm:rational_curve_on_exceptional_locus}
+        Let \((X,B)\) be a projective klt pair and \(f:X \to Y\) a birational projective morphism.
+        Suppose that \(K_{(X,B)}\) is \(f\)-ample.
+        Then the exceptional locus of \(f\) is covered by rational curves \(\Gamma\) with 
+        \[ 0 < -K_{(X,B)} \cdot \Gamma \leq 2\dim X. \]
+    \end{theorem}
+
+    \begin{theorem}\label{thm:general_rational_curve_on_smooth_variety_with_negative_intersection}
+        Let \(X\) be a smooth projective variety of dimension \(n\) and \(H, H_1,\cdots,H_{n-1}\) ample divisors on \(X\).
+        Suppose that \(K_X\cdot H_1 \cdots H_{n-1} < 0\).
+        Then for a general point \(x\in X\), there exists a rational curve \(\Gamma\) passing through \(x\) such that
+        \[ 0 < H \cdot \Gamma \leq - 2n \cdot \frac{H\cdot H_1 \cdots H_{n-1}}{K_X \cdot H_1 \cdots H_{n-1}}. \]
+    \end{theorem}
+
+    % \begin{proposition}\label{prop:general_rational_curve_on_klt_variety_with_negative_intersection}
+    %     Let \(X\) be a normal projective variety of dimension \(n\) and \(H\) an ample divisor on \(X\).
+    %     Suppose that \(K_X\cdot H^{n-1} < 0\).
+    %     Then for a general point \(x\in X\), there exists a rational curve \(\Gamma\) passing through \(x\) such that
+    %     \[ 0 < H \cdot \Gamma \leq - 2n \cdot \frac{H^n}{K_X \cdot H^{n-1}}. \]
+    % \end{proposition}

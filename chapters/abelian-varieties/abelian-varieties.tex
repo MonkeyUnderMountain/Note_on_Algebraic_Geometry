@@ -1,0 +1,45 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !BIB program = biber
+\documentclass[sectionlevel=chapter]{noteformyself}
+% manage-notes:begin watermark
+\usepackage{draftwatermark}
+% manage-notes:end watermark
+
+
+\input{../../accessories/notation.tex}
+\addbibresource{../../refs.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
+
+
+\title{Abelian Varieties}
+\author{Tianle Yang}
+\date{\today}
+\authorpage{\href{www.tianleyang.com}{My Homepage}}
+\setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
+\coversentence{\CJKfamily{lxgwwenkai}“如果是勇者辛美尔，他一定会这么做的！”}
+\coverimage{cover.png} % 封面图片
+% \coverlinecolor{red}
+\covertitlefont{TeX Gyre Termes} % 封面标题字体
+% \covertextcolor{green}
+
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    % manage-notes:begin sections
+    \section{The First Properties of Abelian Varieties}
+    \input{definition-and-examples/text.tex}
+    \section{Picard Groups of Abelian Varieties}
+    \input{picard-groups-of-abelian-varieties/text.tex}
+    \section{Isogenies and finite subgroups}
+    \input{isogenies-and-finite-subgroups/text.tex}
+    \section{Structure of Endomorphism Rings}
+    \input{structure-of-endomorphism-rings/text.tex}
+    % manage-notes:end sections
+
+    % \printbibliography
+\end{document}

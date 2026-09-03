@@ -1,0 +1,40 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !BIB program = biber
+\documentclass{noteformyself}
+% manage-notes:begin watermark
+\usepackage{draftwatermark}
+% manage-notes:end watermark
+
+
+\input{../../../accessories/notation.tex}
+\addbibresource{../../../refs.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
+
+
+\title{The First Properties of Abelian Varieties}
+\author{Tianle Yang}
+\date{\today}
+\authorpage{\href{www.tianleyang.com}{My Website}}
+% \setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
+% \coversentence{\CJKfamily{lxgwwenkai}阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴！}
+% \coverimage{placeholder.jpg} % 封面图片
+% % \coverlinecolor{red}
+% \covertitlefont{TeX Gyre Termes} % 封面标题字体
+% % \covertextcolor{green}
+
+
+\begin{document}
+
+    \maketitle
+
+    % manage-notes:begin section
+    \section{The First Properties of Abelian Varieties}
+    % manage-notes:end section
+
+    \input{text.tex} % 这里是正文
+    
+    \input{preliminaries.tex} % 这里是预备知识
+
+    % \printbibliography
+\end{document}

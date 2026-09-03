@@ -1,0 +1,222 @@
+name: Build and deploy notes
+
+on:
+  workflow_dispatch:
+    inputs:
+      full_build:
+        description: Recompile every book, chapter, and section
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  actions: read
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository and template submodule
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Validate the note manifest and TeX sources
+        run: ./accessories/manage-notes validate
+
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Restore published PDFs and select changed documents
+        id: documents
+        shell: bash
+        env:
+          FORCE_FULL_BUILD: ${{ inputs.full_build }}
+          GITHUB_TOKEN: ${{ github.token }}
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          set -euo pipefail
+          cache_dir="_pdf-cache"
+          previous_build="$RUNNER_TEMP/previous-build.json"
+          base_sha=""
+          mkdir -p "$cache_dir"
+
+          if [[ "$FORCE_FULL_BUILD" != "true" ]] \
+            && curl --connect-timeout 10 --max-time 30 -fsSL \
+              "${PAGES_BASE_URL%/}/build.json" -o "$previous_build"; then
+            candidate_sha="$(jq -r '.commit // empty' "$previous_build")"
+            if [[ "$candidate_sha" =~ ^[0-9a-f]{40}$ ]] \
+              && git cat-file -e "${candidate_sha}^{commit}" \
+              && git merge-base --is-ancestor "$candidate_sha" HEAD; then
+              base_sha="$candidate_sha"
+            fi
+          fi
+
+          # The first incremental run predates build.json. Seed it from the
+          # most recent successful run, whose PDFs are already on Pages.
+          if [[ "$FORCE_FULL_BUILD" != "true" && -z "$base_sha" ]]; then
+            previous_runs="$RUNNER_TEMP/previous-runs.json"
+            if curl --connect-timeout 10 --max-time 30 -fsSL \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "X-GitHub-Api-Version: 2026-03-10" \
+              "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/workflows/pages.yml/runs?status=success&per_page=1" \
+              -o "$previous_runs"; then
+              candidate_sha="$(jq -r '.workflow_runs[0].head_sha // empty' "$previous_runs")"
+              if [[ "$candidate_sha" =~ ^[0-9a-f]{40}$ ]] \
+                && git cat-file -e "${candidate_sha}^{commit}" \
+                && git merge-base --is-ancestor "$candidate_sha" HEAD; then
+                base_sha="$candidate_sha"
+              fi
+            fi
+          fi
+
+          if [[ -n "$base_sha" ]]; then
+            while IFS=$'\t' read -r tex_path pdf_url; do
+              cached_pdf="$cache_dir/${tex_path%.tex}.pdf"
+              mkdir -p "$(dirname "$cached_pdf")"
+              if ! curl --connect-timeout 10 --max-time 120 -fsSL \
+                "${PAGES_BASE_URL%/}/$pdf_url" -o "$cached_pdf" \
+                || [[ "$(head -c 4 "$cached_pdf" 2>/dev/null || true)" != '%PDF' ]]; then
+                rm -f "$cached_pdf"
+              fi
+            done < <(
+              jq -r '
+                [.book, .book.chapters[], .book.chapters[].sections[]]
+                | .[]
+                | [.tex, .url]
+                | @tsv
+              ' notes.json
+            )
+            root_files="$(
+              python3 .github/select-tex-roots.py \
+                --base "$base_sha" \
+                --pdf-cache "$cache_dir"
+            )"
+          else
+            root_files="$(
+              python3 .github/select-tex-roots.py \
+                --full \
+                --pdf-cache "$cache_dir"
+            )"
+          fi
+
+          if [[ -n "$root_files" ]]; then
+            compile_required="true"
+          else
+            compile_required="false"
+          fi
+
+          {
+            echo 'root_files<<__ROOT_FILES__'
+            printf '%s\n' "$root_files"
+            echo '__ROOT_FILES__'
+            echo "compile_required=$compile_required"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            if [[ -n "$base_sha" ]]; then
+              echo "Comparing against deployed commit: \`$base_sha\`"
+            else
+              echo "No usable deployed baseline was found; performing a full build."
+            fi
+            echo
+            if [[ -n "$root_files" ]]; then
+              echo 'Documents selected for compilation:'
+              while IFS= read -r root_file; do
+                echo "- \`$root_file\`"
+              done <<< "$root_files"
+            else
+              echo "No PDFs require recompilation."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Compile changed documents
+        if: steps.documents.outputs.compile_required == 'true'
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: ${{ steps.documents.outputs.root_files }}
+          texlive_version: 2026
+          os: debian
+          work_in_root_file_dir: true
+          continue_on_error: false
+          latexmk_use_xelatex: true
+          extra_fonts: ./accessories/fonts/lxgw-wenkai/LXGWWenKai-Regular.ttf
+          pre_compile: |
+            texmf_home="$(kpsewhich -var-value=TEXMFHOME)"
+            mkdir -p "$texmf_home/tex/latex/noteformyself"
+            cp accessories/templates-of-latex/noteformyself/noteformyself.cls \
+              "$texmf_home/tex/latex/noteformyself/noteformyself.cls"
+            mktexlsr "$texmf_home"
+
+      - name: Assemble the Pages site
+        shell: bash
+        run: |
+          set -euo pipefail
+          site_dir="_site"
+          mkdir -p "$site_dir"
+          cp notes.json "$site_dir/notes.json"
+          cp .github/pages/index.html "$site_dir/index.html"
+          touch "$site_dir/.nojekyll"
+          jq -n \
+            --arg commit "$GITHUB_SHA" \
+            --arg builtAt "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            '{commit: $commit, builtAt: $builtAt}' \
+            > "$site_dir/build.json"
+
+          while IFS=$'\t' read -r tex_path pdf_url; do
+            pdf_path="${tex_path%.tex}.pdf"
+            cached_pdf="_pdf-cache/$pdf_path"
+            if [[ -f "$pdf_path" ]]; then
+              mkdir -p "$(dirname "$cached_pdf")"
+              cp "$pdf_path" "$cached_pdf"
+            fi
+            if [[ ! -f "$cached_pdf" ]]; then
+              echo "Missing compiled or previously published PDF: $pdf_path" >&2
+              exit 1
+            fi
+            destination="$site_dir/$pdf_url"
+            mkdir -p "$(dirname "$destination")"
+            cp "$cached_pdf" "$destination"
+          done < <(
+            jq -r '
+              [.book, .book.chapters[], .book.chapters[].sections[]]
+              | .[]
+              | [.tex, .url]
+              | @tsv
+            ' notes.json
+          )
+
+          expected_count="$(
+            jq '[.book, .book.chapters[], .book.chapters[].sections[]] | length' notes.json
+          )"
+          actual_count="$(find "$site_dir/pdf" -type f -name '*.pdf' | wc -l)"
+          if [[ "$actual_count" -ne "$expected_count" ]]; then
+            echo "Expected $expected_count PDFs, staged $actual_count." >&2
+            exit 1
+          fi
+
+      - name: Upload the Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

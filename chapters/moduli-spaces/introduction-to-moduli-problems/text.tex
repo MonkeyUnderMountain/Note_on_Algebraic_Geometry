@@ -1,0 +1,155 @@
+% !TeX root = introduction-to-moduli-problems.tex
+\subsection{Moduli problem by representable functors}
+    
+    Moduli space is a geometric space whose points represent isomorphism classes of certain geometric objects.
+    For example, fix a field \(\kkk\), all elliptic curves over \(\kkk\) can be classified by the \(j\)-invariant, which gives a bijection between isomorphism classes of elliptic curves and elements of \(\kkk\).
+    However, this classification is just a set-theoretic one.
+    We would like to have a geometric ``parameter space'' such that we can ``deform'' the objects continuously.
+    This is the initial motivation for moduli spaces.
+
+    In algebraic geometry, ``deforming objects continuously'' is usually described by flat families.
+    Hence the most perfect object to represent this moduli problem is such a flat family \(\calX \to M\), where \(M\) is a variety parameterizing all elliptic curves, and the fiber over each point \(m \in M(\kkk)\) is the elliptic curve corresponding to \(m\).
+    Furthermore, we hope that this family is universal, i.e., any other flat family \(\calY \to B\) of elliptic curves is obtained by pulling back \(\calX \to M\) along a unique morphism \(B \to M\).
+    (Despite in this example, such a perfect family does not exist; we will discuss this later.)
+    It can be described by the language of functors.
+    Consider the functor
+    \[ \calM: \Var_{\kkk}^{\op} \to \Set,\quad X \mapsto \{\text{flat families of elliptic curves over } X\}/\sim, \]
+    where \(\sim\) is the equivalence relation given by isomorphisms of families over \(X\).
+    If the family \(\calX \to M\) above exists, then it represents the functor \(\calM\).
+    In this case, we say that the moduli problem \(\calM\) is \emph{representable}, \(M\) is called a \emph{fine moduli space} and \(\calX \to M\) is called a \emph{universal object}.
+
+
+    
+    % Moduli space is a geometric space whose points represent isomorphism classes of certain geometric objects.
+    % For example, fix a field \(\kkk\), we want to parameterize all line on the projective plane \(\bbP_{\kkk}^2\).
+    % Each line \(L \subset \bbP_{\kkk}^2\) can be described by a linear equation
+    % \[ a x + b y + c z = 0, \]
+    % where \([a:b:c] \in \bbP_{\kkk}^2\).
+    % Hence, all lines on \(\bbP_{\kkk}^2\) can be parameterized by the dual projective plane \((\bbP_{\kkk}^2)^{\vee}\).
+    % However, this parameterization is just a set-theoretic one.
+    % We would like to have a geometric ``parameter space'' such that we can ``deform'' the objects continuously.
+    % This is the initial motivation for moduli spaces.
+
+    % In algebraic geometry, ``deforming objects continuously'' is usually described by flat families.
+    % Hence the best object to represent this moduli problem is such a flat family \(\calU \to M\), where \(M\) is a variety parameterizing all lines on \(\bbP_{\kkk}^2\), and the fiber over each point \(m \in M(\kkk)\) is the line corresponding to \(m\).
+    % Furthermore, we hope that this family is universal, i.e., any other flat family \(\calY \to B\) of lines on \(\bbP_{\kkk}^2\) is obtained by pulling back \(\calU \to M\) along a unique morphism \(B \to M\).
+    % It can be described by the language of representable functors.
+    % Consider the functor
+    % \[ \calM: \Sch_{\kkk}^{\op} \to \Set,\quad X \mapsto \{L \subset \bbP^2 \times X | L \text{ is flat over } X, L_x \text{ is a line in } \bbP^2 \text{ for all } x \in X(\kkk)\}. \]
+
+
+
+
+    % Hence the most perfect object to represent this moduli problem is such a flat family \(\calX \to M\), where \(M\) is a variety parameterizing all elliptic curves, and the fiber over each point \(m \in M(\kkk)\) is the elliptic curve corresponding to \(m\).
+    % Furthermore, we hope that this family is universal, i.e., any other flat family \(\calY \to B\) of elliptic curves is obtained by pulling back \(\calX \to M\) along a unique morphism \(B \to M\).
+    % (Despite in this example, such a perfect family does not exist; we will discuss this later.)
+    % It can be described by the language of functors.
+    % Consider the functor
+    % \[ \calM: \Var_{\kkk}^{\op} \to \Set,\quad X \mapsto \{\text{flat families of elliptic curves over } X\}/\sim, \]
+    % where \(\sim\) is the equivalence relation given by isomorphisms of families over \(X\).
+    % If the family \(\calX \to M\) above exists, then it represents the functor \(\calM\).
+    % In this case, we say th
+
+    Hence, to study a moduli problem, we follow the steps:
+    \begin{enumerate}[label=\arabic*.]
+        \item Define the moduli functor \(\calM\).
+        \item Check whether \(\calM\) is representable.
+    \end{enumerate}
+
+    \begin{slogan}\label{slogan:moduli_problem_is_find_representable_functor}
+        \hspace{1em}
+        \begin{center}
+            Moduli problem \(\longleftrightarrow\) Find a representable functor describing ``deformations''.
+        \end{center}
+    \end{slogan}
+
+    \begin{definition}\label{def:moduli_functor}
+        Let \(S\) be a noetherian scheme.
+        A \emph{moduli functor} over \(S\) is a functor \(\calM: \Sch_{S}^{\op} \to \Set\).
+    \end{definition}
+
+    \begin{remark}\label{rmk:moduli_functor_as_presheaf_and_fibred_category}
+        Let \(S\) be a noetherian scheme and \(\calM: \Sch_{S}^{\op} \to \Set\) be a functor.
+        In other words, \(\calM\) is a presheaf on the category \(\Sch_{S}\) with values in \(\Set\).
+        By \cref{eg:presheaves_as_category_fibered_in_set}, we can view \(\calM\) as a category  fibred in sets over \(\Sch_{S}\).
+
+        For every \(X \in \Sch_{S}\), the fiber category \(\calM(X)\) is the set of ``deformation families over \(X\)''.
+        If \(x \in \Sch_{S}\) is a point, then the fiber category \(\calM(x)\) is the isomorphism classes of objects represented by the point \(x\).
+    \end{remark}
+
+
+
+    \begin{definition}\label{def:fine_moduli_space}
+        Let \(S\) be a noetherian scheme and \(\calM: \Sch_{S}^{\op} \to \Set\) be a functor.
+
+        If \(\calM\) is representable by a scheme \(M\) of finite type over \(S\), then we say that \(M\) is a \emph{fine moduli space} for the moduli problem \(\calM\).
+        The object \(\calU \in \calM(M)\) corresponding to the identity morphism \(\id_M \in \Hom_{\Sch_{S}}(M, M)\) is called a \emph{universal object} over \(M\).
+    \end{definition}
+
+
+    We give a simple example of a fine moduli space.
+
+    \begin{example}\label{eg:moduli_of_lines_in_P2}
+        Consider the moduli problem of lines in the projective plane \(\bbP_{\kkk}^2\) over a field \(\kkk\).
+        Define the moduli functor
+        \[
+            \calG: \Sch_{\kkk}^{\op} \to \Set,\quad X \mapsto \{L \subset \bbP^2 \times X | L \text{ is flat over } X, L_x \text{ is a line in } \bbP^2 \text{ for all } x \in X(\kkk)\}.
+        \]
+
+        We claim that the dual projective plane \(G = \bbP_{\kkk}^2\) is a fine moduli space for the moduli problem \(\calG\).
+        The universal object is given by 
+        \[
+            U = \{([x:y:z], [a:b:c]) \in \bbP_{\kkk}^2 \times G | ax + by + cz = 0\} \subset \bbP_{\kkk}^2 \times G.
+        \]
+        For every \(X \in \Sch_{\kkk}\) and \(f \in G(X)\), we can give a family of lines \(L = U \times_G X \in \calG(X)\) by pulling back the universal object \(U\) along \(\id_{\bbP_{\kkk}^2} \times f: \bbP_{\kkk}^2 \times X \to \bbP_{\kkk}^2 \times G\).
+        The difficult part is to construct the inverse map, i.e., given a family of lines \(L \in \calG(X)\), we need to construct a morphism \(f: X \to G\) such that \(L\) is obtained by pulling back \(U\) along \(\id_{\bbP_{\kkk}^2} \times f\).
+
+        We need a more ``functorial'' way to describe the dual projective plane \(G\).
+        Set \(V = H^0(\calO_{\bbP_{\kkk}^2}(1))\), let \(G = \Proj (\Sym^{\bullet} V^{\vee})\) be the dual projective plane.
+        To give a morphism \(f:X \to G\), it is equivalent to giving a line bundle \(\calL\) on \(X\) and a surjective morphism \(\calO_X \ten_\kkk V^{\vee} \surjmap \calL\) by \Yang{To be added.}.
+        
+        Let \(\calI_L\) be the ideal sheaf of \(L\) in \(\bbP_X^2 = \bbP^2 \times X\).
+        Consider the short exact sequence on \(\bbP_X^2\):
+        \[ 0 \to \calI_L(1) \to \calO_{\bbP_{X}^2}(1) \to \calO_{L}(1) \to 0. \]
+        Since \(L\) is a family of lines, we have \(\calI_L(1)|_{\bbP^2 \times \{x\}} \cong \calO_{\bbP^2}\) for all \(x \in X(\kkk)\).
+        By Theorem of Cohomology and Base Change (\Yang{To be added.}), we have \(\calL^\vee \coloneqq (\pr_X)_*(\calI_L(1))\) is a line bundle on \(X\) and \(\sfR^1(\pr_X)_*\calI_L(1) = 0\).
+        Then, pushing forward the above short exact sequence along the projection \(\pr_X: \bbP_X^2 \to X\) gives a short exact sequence
+        \[ 0 \to \calL^{\vee} \to \calO_X \ten_{\kkk} V \to (\pr_X)_*\calO_L(1) \to 0. \]
+        Dualizing it gives a surjective morphism \(\calO_X \ten_{\kkk} V^{\vee} \surjmap \calL\).
+        In particular, if \(X = G\) and \(L = U\) is the universal family, we get the line bundle \(\calU = \calO_G(1)\) on \(G\) and the surjective morphism \(\calO_G \ten_{\kkk} V^{\vee} \surjmap \calO_G(1)\) corresponding to the identity morphism \(\id_G\).
+
+        Let \(f: X \to G\) be the morphism induced by the surjective morphism \(\calO_X \ten_{\kkk} V^{\vee} \surjmap \calL\).
+        Then we have the following commutative diagram:(\Yang{Why?})
+        \[ \begin{tikzcd}
+            f^* (\calO_{G} \ten_\kkk V^\vee) \arrow[d,"\cong"] \arrow{r}    & f^*\calU \arrow[d,"\cong"] \arrow{r} & 0 \\
+            \calO_{X}\ten_\kkk V^\vee \arrow[r]                             & \calL \arrow{r} & 0.
+        \end{tikzcd} \]
+        Take duals and pull back along \(\pr_X: \bbP_X^2 \to X\), we get a commutative diagram: (\Yang{To be added.})
+        \[ \begin{tikzcd}
+            0   \arrow{r}   & \pr_X^*f^* \calU^\vee \arrow[d,"\cong"] \arrow{r} & \pr_X^*f^* \calO_{G} \ten_\kkk V \arrow[d,"\cong"] \\
+            0   \arrow[r]   & \pr_X^* \calL^\vee \arrow{r} & \pr_X^* \calO_{X}\ten_\kkk V.
+        \end{tikzcd} \]
+        Note that \(\calL^\vee = (\pr_X)_*(\calI_L(1))\) and \(\calU^\vee = (\pr_G)_*(\calI_U(1))\).
+        Hence, by cohomology commuting with flat base change \Yang{To be added.}, we have
+        \[ \begin{tikzcd}
+            0   \arrow{r}   & \pr_X^* (\pr_X)_* \Big((\id_{\bbP^2} \times f)^* \calI_U(1)\Big) \arrow[d,"\cong"] \arrow{r}  & \pr_X^* \Big(f^* \calO_{G} \ten_\kkk V\Big) \arrow[d,"\cong"] \\
+            0   \arrow[r]   & \pr_X^* (\pr_X)_* \Big(\calI_L(1) \Big) \arrow{r}                                             & \pr_X^* \Big(\calO_{X}\ten_\kkk V\Big).
+        \end{tikzcd} \]
+        Note that \((\pr_X)_* \calI_L(1)\) is a line bundle and hence we have \(\pr_X^*(\pr_X)_* (\calI_L(1) ) \cong \calI_L(1)\).
+        Together with the natural surjective homomorphism \(\pr_X^* (\calO_{X}\ten_\kkk V) \to \calO_{\bbP_X^2}(1)\), we have 
+        \[ \begin{tikzcd}
+                        &                                                                               & \pr_X^* \Big(f^* \calO_{G} \ten_\kkk V\Big) \arrow[dr, two heads] & \\
+            0 \arrow[r] & (\id_{\bbP^2} \times f)^* \calI_U(1) \arrow[d,"\cong"] \arrow[rr] \arrow[ur]  &                                                                   & \calO_{\bbP_X^2}(1) \arrow[d,"\cong"]  \\
+            0 \arrow[r] & \calI_L(1) \arrow[rr] \arrow[dr]                                              &                                                                   & \calO_{\bbP_X^2}(1). \\
+                        &                                                                               & \pr_X^* \Big(\calO_{X}\ten_\kkk V\Big)      \arrow[ur,two heads]  &   \\
+        \end{tikzcd} \]
+        \Yang{Why this homomorphism injective and why it is the natural inclusion?}
+        After identifying the last vertical isomorphism, we have the equality of sheaf ideals \((\id_{\bbP^2} \times f)^* \calI_U = \calI_L\).
+        It follows that \(L = U \times_G X\) and we are done.
+        % \Yang{To be completed.}
+    \end{example}
+
+    
+
+
+\subsection{Coarse moduli space}

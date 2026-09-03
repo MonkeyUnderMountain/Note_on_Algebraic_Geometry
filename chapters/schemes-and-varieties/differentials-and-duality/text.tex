@@ -1,0 +1,270 @@
+% !TeX root = differentials-and-duality.tex
+Let \(S\) be a base noetherian scheme, \(\kkk\) be an algebraically closed field.
+Unless otherwise specified, all schemes are assumed to be defined and of finite type over \(S\) and all varieties are assumed to be defined over \(\kkk\).
+
+\subsection{The sheaves of differentials}
+
+    \begin{definition}\label{def:sheaves_of_differentials}
+        Let \(f:X \to S\) be an \(S\)-scheme.
+        The \emph{sheaf of differentials} of \(X\) over \(S\), denoted by \(\Omega_{X/S}\), is the \(\calO_X\)-module locally given by
+        \[ \Omega_{X/S}(U) = \Omega_{\calO_X(U)/\calO_S(V)} \]
+        for any affine open subsets \(U \subseteq X\) and \(V \subseteq S\) with \(f(U) \subseteq V\).
+    \end{definition}
+
+    \begin{proposition}\label{prop:differential_sheaves_under_base_change}
+        Let \(X\) and \(T\) be \(S\)-schemes and \(X_T := X \times_S T\) be the base change of \(X\) along \(T \to S\).
+        Let \(p: X_T \to X\) be the projection morphism.
+        Then there is a natural isomorphism of \(\calO_{X_T}\)-modules
+        \[ \Omega_{X_T/T} \cong p^* \Omega_{X/S}. \]
+    \end{proposition}
+    \begin{proof}
+        Given by algebras, see \Yang{ref.}
+        \Yang{To be continued.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:differentials_sheaves_under_localization}
+        Let \(X\) be an \(S\)-scheme and \(U \subseteq X\) be an open subscheme.
+        Then there is a natural isomorphism of \(\calO_U\)-modules
+        \[ \Omega_{U/S} \cong \Omega_{X/S}|_U. \]
+        Furthermore, let \(\xi \in X\), then there is a natural isomorphism of \(\calO_{X,\xi}\)-modules
+        \[ \Omega_{X/S,\xi} \cong \Omega_{\calO_{X,\xi}/\calO_{S,f(\xi)}}. \]
+        \Yang{To be checked.}
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:Omega_X_is_locally_free_when_X_is_regular_variety}
+        Let \(X\) be a regular variety over \(\kkk\) of dimension \(n\).
+        Then \(\Omega_{X/\kkk}\) is a locally free sheaf of rank \(n\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:Omega_X_is_reflexive_when_X_is_normal}
+        Let \(X\) be a normal variety over \(\kkk\) of dimension \(n\).
+        Then \(\Omega_{X/\kkk}\) is a reflexive sheaf of rank \(n\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued.}
+    \end{proof}
+
+    \begin{definition}\label{def:canonical_divisor_on_normal_varieties}
+        Let \(X\) be a normal variety over \(\kkk\).
+        The \emph{canonical divisor} \(K_X\) of \(X\) is defined to be the Weil divisor class \(c_1(\Omega_{X/\kkk})\).
+    \end{definition}
+
+
+
+    \begin{theorem}[Euler sequence for projective bundle]\label{thm:Euler_sequence_for_projective_bundle}
+        Let \(X\) be a normal variety over \(\kkk\) and \(\calE\) be a locally free sheaf of rank \(r+1\) on \(X\).
+        Let \(\pi: \bbP_X(\calE) \to X\) be the projective bundle associated to \(\calE\).
+        Then there is an exact sequence of \(\calO_{\bbP_X(\calE)}\)-modules
+        \[
+            0 \to \Omega_{\bbP_X(\calE)/X} \xrightarrow{\phi} \pi^*\calE(-1) \xrightarrow{\psi} \calO_{\bbP_X(\calE)} \to 0.
+        \]
+        Here \(\pi^*\calE(-1)\) is twisted by the tautological line bundle \(\calO_{\bbP_X(\calE)}(-1)\).
+    \end{theorem}
+    \begin{proof}
+        \hspace{1em}
+        \begin{step}\label{step_in_Euler_sequence:affine_base_to_find_phi_psi}
+            First assume that \(X = \Spec A\) is affine and \(\calE\) is free.
+            Under this assumption, find expressions for \(\phi\) and \(\psi\).
+        \end{step}
+        
+        Fix a basis \(T_0, \ldots, T_r\) of the free \(A\)-module \(\calE(X)\).
+        On the standard open subset \(U_i = \{T_i \neq 0\} = \Spec B_i \subseteq \bbP_X(\calE)\), we have coordinates \(t_{j,i} := T_j/T_i\) for \(j \neq i\).
+        The exact sequence becomes
+        \[ 
+            0 \to \bigoplus_{k \neq i} B_i \upd t_{k,i} \xrightarrow{\phi} \bigoplus_{k=0}^r B_i e_i \cdot T_k \xrightarrow{\psi} B_i \to 0.
+        \]
+        Here \(e_i\) is the local generator of \(\calO_{\bbP_A(\calE)}(-1)\) on \(U_i\)\textcolor{gray}{, symbolically satisfying \(e_i T_i = 1\)}.
+
+        Recall that on the overlap \(U_{ij} = U_i \cap U_j\), the coordinates are related by
+        \[ t_{i,j} e_i = e_j, \quad \upd t_{k,i} = t_{j,i} \upd t_{k,j} - t_{k,i} t_{j,i} \upd t_{i,j}. \]
+        Here we set \(t_{l,l} := 1\) for convenience.
+        \textcolor{gray}{Symbolically, we have }
+        \[ \textcolor{gray}{\text{`` }\upd t_{k,i} = \frac{T_i \upd T_k - T_k \upd T_i}{T_i^2} = e_i \upd T_k - t_{k,i} e_i \upd T_i \text{ ''.}} \]
+        \textcolor{gray}{On the overlap \(U_{ij}\), it transitions as}
+        \begin{align*}
+            \textcolor{gray}{\text{``}\upd t_{k,i}}  &\textcolor{gray}{= t_{j,i} \upd t_{k,j} - t_{k,i} t_{j,i} \upd t_{i,j}} \\
+                                            &\textcolor{gray}{= t_{j,i} e_j \upd T_k - t_{j,i} t_{k,j} e_j \upd T_j - t_{k,i} t_{j,i} \left( e_j \upd T_i - t_{i,j} e_j \upd T_j \right)} \\
+                                            &\textcolor{gray}{= e_i \upd T_k - t_{k,i} e_i \upd T_i \text{''}.}
+        \end{align*}
+        % \[ \textcolor{gray}{\text{`` } \upd t_{k,i} = t_{j,i} \upd t_{k,j} - t_{k,i} t_{j,i} \upd t_{i,j} = t_{j,i}e_j\upd T_k \text{ ''.}} \]
+        \textcolor{gray}{To make sense of the above symbolic expressions,} we define \(\phi\) and \(\psi\) locally on each \(U_i\) by
+        \[
+            \phi(\upd t_{k,i}) = e_i T_k - t_{k,i} e_i T_i, \quad \psi(e_i T_k) = t_{k,i}.
+        \]
+
+        \begin{step}\label{step_in_Euler_sequence:verify_phi_psi_well_defined_and_exactness}
+            Verify that \(\phi\) and \(\psi\) are well-defined and the sequence is exact.
+        \end{step}
+        By computations in \cref{step_in_Euler_sequence:affine_base_to_find_phi_psi}, \(\phi\) is well-defined on the overlaps \(U_{ij}\).
+        For \(\psi\), on the overlap \(U_{ij}\), we have
+        \[
+            \psi(e_j T_k) = \psi(t_{i,j} e_i T_k) = t_{i,j} t_{k,i} = t_{k,j}.
+        \]
+        Thus \(\psi\) is also well-defined.
+        It is clear that \(\psi \circ \phi = 0\).
+        Consider the matrix representation of \(\phi\) with respect to the bases \(\{\upd t_{k,i}\}_{k \neq i}\) and \(\{e_i T_k\}_{k=0}^r\):
+        \[ \begin{pmatrix}
+            1 & & & & & & \\
+            & 1 & & & & & \\
+            & & \ddots & & & &  \\
+            & & & 1 & & & \\
+            -t_{0,i} & -t_{1,i} & \cdots & -t_{i-1,i} & -t_{i+1,i} & \cdots & -t_{r,i} \\
+            & & & & 1 & & \\
+            & & & & &\ddots & \\
+            & & & & & & 1 \\
+        \end{pmatrix}. \]
+        It has rank \(r\), \(\phi\) is injective and \(\ker \psi = \Image \phi\).
+        Thus the sequence is exact.
+
+        \begin{step}\label{step_in_Euler_sequence:glue_local_exact_sequences}
+            General case: glue the local exact sequences on affine open subsets of \(X\).
+        \end{step}
+
+        In the local case, choose a different basis \(S_0, \ldots, S_r\) of \(\calE(X)\) given by the transition matrix \(g \in \GL_{r+1}(A)\).
+        For simplicity, we just look at on the open subset \(U= \{T_0 \neq 0, S_0 \neq 0\}\).
+        Set \(B_U\) be the localization of \(B = A[T_0, \ldots, T_r]\) at the multiplicative set generated by \(T_0\) and \(S_0\).
+        It is still a graded algebra.
+        
+        Note that \(\phi\) is formally given by differentials in \(A[T_0, \ldots, T_r]\) and then sending the symbol \(\upd T_i\) to \(T_i\) and \(1/T_0\) to \(e_0\).
+        The differentials are intrinsic and linear over \(A\), and the assignment of \(1/T_0\) to \(e_0\) is just a change of notation.
+        Thus \(\phi\) is independent of the choice of basis.
+        For \(\psi\), it is indeed given by multiplying \(B_U(-1)\) by the linear part of \(B\) and then taking the degree \(0\) part.
+        It is also independent of the choice of basis.
+        
+        Therefore, after changing basis, \(\phi\) and \(\psi\) remain the same.
+        This allows us to glue the local exact sequences on each affine open subset of \(X\) to obtain a global exact sequence.
+    \end{proof}
+
+    \begin{corollary}\label{cor:canonical_divisor_of_projective_space}
+        Let \(\kk\) be a field.
+        We have 
+        \[ \omega_{\bbP^n_\kk/\kk} \cong \calO_{\bbP^n_\kk}(-(n+1)) \quad \text{and} \quad K_{\bbP^n_\kk} \sim -(n+1)H, \]
+        where \(H\) is a hyperplane in \(\bbP^n_\kk\).
+    \end{corollary}
+
+\subsection{Fundamental sequences}
+
+    \begin{theorem}[The first fundamental sequence of differentials]\label{thm:the_first_fundamental_sequence_of_differentials}
+        Let \(f: X \to Y\) be a morphism of schemes.
+        Then there is a natural exact sequence of \(\calO_X\)-modules
+        \[
+            f^* \Omega_{Y/S} \to \Omega_{X/S} \to \Omega_{X/Y} \to 0.
+        \]
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{proposition}\label{prop:the_first_fundamental_sequence_exact_when}
+        Let \(f: X \to Y\) be a surjective and generically finite morphism of normal varieties over \(\kkk\).
+        Then the first fundamental sequence of differentials is exact on the left.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+    
+    \begin{corollary}[Ramification formula]\label{cor:ramification_formula}
+        Let \(f: X \to Y\) be a finite morphism of normal varieties. 
+        Then 
+        \[
+            K_X = f^*K_Y + R_f,
+        \]
+        where 
+        \[ R_f := \sum_{D \subseteq X \text{ prime divisor}} \left( \Mult_D f^*\big(f(D)\big)-1 \right) D \]
+        is the ramification divisor of \(f\).
+        \Yang{To be checked. definition of ramification divisor needs to be checked.}
+    \end{corollary}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+
+    \begin{theorem}[The second fundamental sequence of differentials]\label{thm:the_second_fundamental_sequence_of_differentials}
+        Let \(Z \subseteq X\) be a closed subscheme defined by the sheaf of ideals \(\calI \subseteq \calO_X\).
+        Then there is a natural exact sequence of \(\calO_X\)-modules
+        \[
+            \calI/\calI^2 \to \Omega_{X/S}|_Z \to \Omega_{Z/S} \to 0.
+        \]
+        Suppose further that \(Z \to X\) is a regular immersion.
+        Then the above sequence is also exact on the left.
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+    
+    \begin{corollary}[Adjunction formula]\label{cor:adjunction_formula_smooth_case}
+        Let \(X\) be a normal variety and \(Z \subseteq X\) be a prime Cartier divisor which is normal as variety.
+        Then 
+        \[ K_Z = (K_X + Z)|_Z. \]
+    \end{corollary}
+    \begin{proof}
+        Since both \(X\) and \(Z\) are normal, they are smooth in codimension \(1\).
+        Removing the singular locus of \(X\) and \(Z\), we may assume that both \(X\) and \(Z\) are smooth varieties.
+        This is valid since the canonical divisor is determined by the smooth locus.
+
+        Since \(Z\) is Cartier, it is a local complete intersection in \(X\).
+        By \cref{thm:the_second_fundamental_sequence_of_differentials}, we have the exact sequence
+        \[ 0 \to \calI_Z/\calI_Z^2 \to \Omega_{X/\kkk}|_Z \to \Omega_{Z/\kkk} \to 0. \]
+        Note that \(Z\) is of codimension \(1\) in \(X\), so \(\calI_Z \cong \calO_X(-Z)\) and thus \(\calI_Z/\calI_Z^2 \cong \calO_X(-Z)|_Z\).
+        Taking \(c_1\), we obtain
+        \[ c_1(\Omega_{X})|_Z = c_1(\Omega_{Z}) + c_1(\calO_X(-Z))|_Z. \]
+        That is,
+        \[ K_X|_Z = K_Z - Z|_Z. \]
+        Rearranging gives the desired result.
+        \Yang{To be revised. restriction of Weil divisors needs to be clarified.}
+    \end{proof}
+
+\subsection{Serre duality}
+
+    \begin{definition}[Dualizing sheaf]\label{def:dualizing_sheaf}
+        Let \(X\) be a proper scheme of dimension \(n\) over \(\kkk\).
+        A \emph{dualizing sheaf} on \(X\) is a coherent sheaf \(\omega_X^\circ\) together with a trace map \(\tr_X: H^n(X, \omega_X^\circ) \to \kkk\) such that for every coherent sheaf \(\calF\) on \(X\), the natural pairing
+        \[
+            \Hom(\calF, \omega_X^\circ) \times H^n(X, \calF) \to H^n(X, \omega_X^\circ) \xrightarrow{\tr_X} \kkk
+        \]
+        induces an isomorphism
+        \[
+            \Hom(\calF, \omega_X^\circ) \cong H^n(X, \calF)^\vee.
+        \]
+    %    \Yang{To be revised.} 
+    \end{definition}
+
+
+    \begin{theorem}\label{thm:existence_of_dualizing_sheaf}
+        Let \(X\) be a projective scheme of dimension \(n\) over \(\kkk\).
+        Then there exists a dualizing sheaf \(\omega_X^\circ\) on \(X\) up to isomorphism.
+        Moreover, if \(X\) is smooth, \(\omega_X^\circ \cong \omega_X = \bigwedge^n \Omega_{X/\kkk}\).
+        % Then the dualizing sheaf \(\omega_X\) is a coherent sheaf on \(X\) and is in fact a dualizing complex concentrated in degree \(-n\).
+        % \Yang{To be revised.}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+
+    \begin{theorem}[Serre duality]\label{thm:Serre_duality}
+        Let \(X\) be a projective, Cohen-Macaulay variety of dimension \(n\) over \(\kkk\) with dualizing sheaf \(\omega_X^\circ\).
+        Then for every coherent sheaf \(\calF\) on \(X\), there is a natural isomorphism
+        \[ \Ext^i(\calF, \omega_X^\circ) \cong H^{n-i}(X, \calF)^\vee. \]
+        % \Yang{there are some errors. Need to be revised}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \Yang{When \(\calF\) is locally free, we have \(\Ext^i(\calF,\omega_X^\circ) \cong H^i(X,\omega_X^\circ \ten \calF^\vee)\).}
+
+    \begin{corollary}\label{cor:Serre_duality_for_the_canonical_divisor}
+        Let \(X\) be a projective, normal and Cohen-Macaulay variety of dimension \(n\) over \(\kkk\).
+        Then for every divisor \(D\), there is a natural isomorphism
+        \[ H^i(X, D) \cong H^{n-i}(X, K_X - D)^\vee. \]
+        \Yang{To be completed.}
+    \end{corollary}
+
+\subsection{Logarithm version}

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Notes</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: Georgia, "Times New Roman", serif;
+        line-height: 1.55;
+        --background: #f5f2ea;
+        --surface: #fffdf8;
+        --text: #25231f;
+        --muted: #6d685e;
+        --border: #d8d0c2;
+        --accent: #80572e;
+        --draft: #8b5b13;
+        --published: #24643b;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #1b1916;
+          --surface: #24211d;
+          --text: #eee8dc;
+          --muted: #b9b0a2;
+          --border: #4a443a;
+          --accent: #e0b27a;
+          --draft: #e0b15f;
+          --published: #7fc99a;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 3rem auto;
+      }
+
+      header,
+      .chapter {
+        border: 1px solid var(--border);
+        border-radius: 0.7rem;
+        background: var(--surface);
+        padding: 1.25rem 1.5rem;
+      }
+
+      header {
+        margin-bottom: 1.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+
+      .chapter + .chapter {
+        margin-top: 1rem;
+      }
+
+      .document-row,
+      .section-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .sections {
+        margin: 1rem 0 0;
+        padding-left: 1.5rem;
+      }
+
+      .section-row {
+        padding: 0.35rem 0;
+      }
+
+      a {
+        color: var(--accent);
+        text-underline-offset: 0.18em;
+      }
+
+      .statuses {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.35rem;
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.75rem;
+        white-space: nowrap;
+      }
+
+      .status {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.08rem 0.45rem;
+        color: var(--muted);
+      }
+
+      .status.published,
+      .status.finished {
+        color: var(--published);
+      }
+
+      .status.draft {
+        color: var(--draft);
+      }
+
+      .meta,
+      footer {
+        color: var(--muted);
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.9rem;
+      }
+
+      footer {
+        margin-top: 1.5rem;
+        text-align: center;
+      }
+
+      @media (max-width: 650px) {
+        main {
+          margin: 1rem auto;
+        }
+
+        .document-row,
+        .section-row {
+          display: block;
+        }
+
+        .statuses {
+          margin-top: 0.35rem;
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="content" class="meta">Loading notes…</div>
+      <footer>
+        Structure and PDF paths are available in
+        <a href="notes.json">notes.json</a>.
+      </footer>
+    </main>
+
+    <script>
+      const content = document.querySelector("#content");
+
+      function statusElement(status) {
+        const statuses = document.createElement("span");
+        statuses.className = "statuses";
+
+        const publication = document.createElement("span");
+        publication.className = `status ${status.published ? "published" : "unpublished"}`;
+        publication.textContent = status.published ? "Published" : "Unpublished";
+
+        const completion = document.createElement("span");
+        completion.className = `status ${status.finished ? "finished" : "draft"}`;
+        completion.textContent = status.finished ? "Finished" : "Draft";
+
+        statuses.append(publication, completion);
+        return statuses;
+      }
+
+      function documentLink(entry, label) {
+        const link = document.createElement("a");
+        link.href = entry.url;
+        link.textContent = label;
+        return link;
+      }
+
+      function render(manifest) {
+        const fragment = document.createDocumentFragment();
+        const book = manifest.book;
+        document.title = book.title;
+
+        const header = document.createElement("header");
+        const title = document.createElement("h1");
+        title.textContent = book.title;
+        const bookRow = document.createElement("div");
+        bookRow.className = "document-row";
+        bookRow.append(documentLink(book, "Download complete book"), statusElement(book.status));
+        header.append(title, bookRow);
+        fragment.append(header);
+
+        for (const chapter of book.chapters) {
+          const article = document.createElement("article");
+          article.className = "chapter";
+
+          const chapterRow = document.createElement("div");
+          chapterRow.className = "document-row";
+          const chapterTitle = document.createElement("h2");
+          chapterTitle.append(
+            `${chapter.order}. `,
+            documentLink(chapter, chapter.title),
+          );
+          chapterRow.append(chapterTitle, statusElement(chapter.status));
+          article.append(chapterRow);
+
+          if (chapter.sections.length > 0) {
+            const sections = document.createElement("ol");
+            sections.className = "sections";
+            for (const section of chapter.sections) {
+              const item = document.createElement("li");
+              const sectionRow = document.createElement("div");
+              sectionRow.className = "section-row";
+              sectionRow.append(
+                documentLink(section, section.title),
+                statusElement(section.status),
+              );
+              item.append(sectionRow);
+              sections.append(item);
+            }
+            article.append(sections);
+          }
+
+          fragment.append(article);
+        }
+
+        content.className = "";
+        content.replaceChildren(fragment);
+      }
+
+      fetch("notes.json", { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(render)
+        .catch((error) => {
+          content.textContent = `Could not load notes.json: ${error.message}`;
+        });
+    </script>
+  </body>
+</html>

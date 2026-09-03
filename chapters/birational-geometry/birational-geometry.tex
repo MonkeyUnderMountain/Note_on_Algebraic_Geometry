@@ -1,0 +1,55 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !BIB program = biber
+\documentclass[sectionlevel=chapter]{noteformyself}
+% manage-notes:begin watermark
+\usepackage{draftwatermark}
+% manage-notes:end watermark
+
+
+\input{../../accessories/notation.tex}
+\addbibresource{../../refs.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
+
+
+\title{Birational Geometry}
+\author{Tianle Yang}
+\date{\today}
+\authorpage{\href{www.tianleyang.com}{My Homepage}}
+\setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
+\coversentence{\CJKfamily{lxgwwenkai}“要知道你为什么出枪，你的心里有闷烧的火，那是大地上燃烧的煤矿，它的火焰终有一天烧破地面去点燃天空。你会吼叫，因为你若是不吐出那火焰，它会烧穿你的胸膛，它像是愤怒，又像是高亢的歌，龙虎的吼声让时间停止。”}
+\coverimage{spear_and_loong.jpg} % 封面图片
+% \coverlinecolor{red}
+\covertitlefont{TeX Gyre Termes} % 封面标题字体
+% \covertextcolor{green}
+
+
+
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    % manage-notes:begin sections
+    \section{Technical Preparation}
+    \input{technical-preparation/text.tex}
+    \section{Kodaira Vanishing Theorem}
+    \input{kodaira-vanishing/text.tex}
+    \section{Cone Theorem}
+    \input{cone-theorem/text.tex}
+    \section{Asymptotic behavior of divisors}
+    \input{asymptotic-behavior-of-divisors/text.tex}
+    \section{Singularities in MMP}
+    \input{singularities-in-mmp/text.tex}
+    \section{Bend and Break}
+    \input{bend-and-break/text.tex}
+    \section{F-singularities}
+    \input{f-singularities/text.tex}
+    \section{Minimal Model Program}
+    \input{run-the-mmp/text.tex}
+    % manage-notes:end sections
+
+    \printbibliography[heading=bibintoc, title={References}]
+\end{document}

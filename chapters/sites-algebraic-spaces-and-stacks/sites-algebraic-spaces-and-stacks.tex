@@ -1,0 +1,49 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !BIB program = biber
+\documentclass[sectionlevel=chapter]{noteformyself}
+% manage-notes:begin watermark
+\usepackage{draftwatermark}
+% manage-notes:end watermark
+
+\input{../../accessories/notation.tex}
+\addbibresource{../../refs.bib}
+\newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
+
+
+\title{Sites, algebraic spaces, and stacks}
+\author{Tianle Yang}
+\date{\today}
+\authorpage{\href{www.example.com}{My Homepage}}
+
+% available on the mode "\sectionlevel=chapter" or "\sectionlevel=book".
+\setCJKfamilyfont{lxgwwenkai}{LXGW WenKai} % 定义霞鹜文楷，若未安装，请去掉相关代码编译或使用其他字体
+\coversentence{\CJKfamily{lxgwwenkai}阿巴阿巴!}
+\coverimage{} % 封面图片
+\covertitlefont{TeX Gyre Termes} % 封面标题字体, 若未安装，请去掉相关代码编译或使用其他字体
+% \coverlinecolor{red} % 封面线条颜色
+% \covertextcolor{green} % 封面文字颜色
+
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    % manage-notes:begin sections
+    \section{Preliminaries in Category Theory}
+    \input{preliminaries-in-category-theory/text.tex}
+    \section{Algebraic spaces}
+    \input{algebraic-spaces/text.tex}
+    \section{Algebraic stacks}
+    \input{algebraic-stacks/text.tex}
+    \section{Sites}
+    \input{sites/text.tex}
+    \section{Stacks in category theory}
+    \input{stacks-in-category-theory/text.tex}
+    % manage-notes:end sections
+
+    \printbibliography[heading=bibintoc, title={References}]
+    
+\end{document}
