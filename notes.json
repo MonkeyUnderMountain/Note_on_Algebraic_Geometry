@@ -3,6 +3,11 @@
   "build": {
     "engine": "xelatex"
   },
+  "referenceCatalog": {
+    "file": "external-labels.json",
+    "downloadUrl": "https://www.tianleyang.com/algebraic-geometry/external-labels.json"
+  },
+  "externalReferences": [],
   "book": {
     "id": "algebraic-geometry",
     "title": "Notes in Algebraic Geometry",

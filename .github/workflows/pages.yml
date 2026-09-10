@@ -1,6 +1,9 @@
 name: Build and deploy notes
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       full_build:
@@ -80,6 +83,12 @@ jobs:
             fi
           fi
 
+          # A first catalog cannot be assembled incrementally because there is
+          # no ownership baseline yet.
+          if [[ ! -f label-references/catalogs/self.json ]]; then
+            base_sha=""
+          fi
+
           if [[ -n "$base_sha" ]]; then
             while IFS=$'\t' read -r tex_path pdf_url; do
               cached_pdf="$cache_dir/${tex_path%.tex}.pdf"
@@ -122,6 +131,7 @@ jobs:
             echo '__ROOT_FILES__'
             echo "compile_required=$compile_required"
           } >> "$GITHUB_OUTPUT"
+          printf '%s\n' "$root_files" > "$RUNNER_TEMP/reference-build-documents.txt"
 
           {
             if [[ -n "$base_sha" ]]; then
@@ -158,13 +168,29 @@ jobs:
               "$texmf_home/tex/latex/noteformyself/noteformyself.cls"
             mktexlsr "$texmf_home"
 
+      - name: Build the external reference catalog
+        shell: bash
+        run: |
+          set -euo pipefail
+          previous_catalog="label-references/catalogs/self.json"
+          if [[ -f "$previous_catalog" ]]; then
+            ./accessories/labels-ref-sync release \
+              --previous "$previous_catalog" \
+              --documents-file "$RUNNER_TEMP/reference-build-documents.txt"
+          else
+            ./accessories/labels-ref-sync release \
+              --documents-file "$RUNNER_TEMP/reference-build-documents.txt"
+          fi
+
       - name: Assemble the Pages site
         shell: bash
         run: |
           set -euo pipefail
           site_dir="_site"
+          catalog_file="$(jq -r '.referenceCatalog.file // "external-labels.json"' notes.json)"
           mkdir -p "$site_dir"
           cp notes.json "$site_dir/notes.json"
+          cp "$catalog_file" "$site_dir/external-labels.json"
           cp .github/pages/index.html "$site_dir/index.html"
           touch "$site_dir/.nojekyll"
           jq -n \
